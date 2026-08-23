@@ -1,0 +1,8 @@
+{
+  "name": "Mathematics And Physics",
+  "description": "An interactive learning and practice platform designed for students studying Mathematics and Physics according to the Sindh Textbook Board (STBB) curriculum. The app provides chapter-wise and exercise-wise multiple-choice questions with detailed explanations, helping students understand concepts rather than simply memorise answers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

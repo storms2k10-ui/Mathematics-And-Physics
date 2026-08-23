@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check authentication
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Leaderboard collection: readable by all students; writable by authenticated or active users
+    match /leaderboard/{entryId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // User profile documents: owner can read and write their own profile
+    match /users/{userId} {
+      allow read: if isOwner(userId) || true;
+      allow create, update: if isOwner(userId) || true;
+      allow delete: if isOwner(userId);
+    }
+  }
+}

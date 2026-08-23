@@ -1,0 +1,11 @@
+import { ALL_CHAPTERS, ADVANCED_MATH_11_CHAPTERS, ELEMENTARY_CHAPTERS } from './chaptersData';
+import { ALL_QUESTIONS } from './questionsData';
+import { CLASS_INFO_DATA } from './classInfoData';
+
+export { 
+  ALL_CHAPTERS as CHAPTERS_DATA, 
+  ADVANCED_MATH_11_CHAPTERS, 
+  ELEMENTARY_CHAPTERS,
+  ALL_QUESTIONS as QUESTIONS_DATA, 
+  CLASS_INFO_DATA 
+};

@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Newsreader", Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+@keyframes gradientShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes purplePulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(217, 70, 239, 0.7));
+  }
+}
+
+@keyframes emeraldPulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(52, 211, 153, 0.75));
+  }
+}
+
+@keyframes universalCosmicGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(129, 140, 248, 0.8));
+  }
+}
+
+.animate-gradient-shimmer {
+  background-size: 200% auto;
+  animation: gradientShimmer 4s ease infinite;
+}
+
+.animate-purple-glow {
+  animation: purplePulseGlow 3s ease-in-out infinite;
+}
+
+.animate-emerald-glow {
+  animation: emeraldPulseGlow 3s ease-in-out infinite;
+}
+
+.animate-cosmic-glow {
+  animation: universalCosmicGlow 3.5s ease-in-out infinite;
+}
+
+/* KaTeX Typography & Error Fallbacks */
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fireworkGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(234, 179, 8, 0.4), 0 0 40px rgba(99, 102, 241, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(234, 179, 8, 0.8), 0 0 60px rgba(236, 72, 153, 0.6);
+  }
+}
+
+.animate-slide-fade {
+  animation: slideFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes optionSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-option-stagger-0 {
+  animation: optionSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.04s both;
+}
+.animate-option-stagger-1 {
+  animation: optionSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.11s both;
+}
+.animate-option-stagger-2 {
+  animation: optionSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+}
+.animate-option-stagger-3 {
+  animation: optionSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.animate-firework-glow {
+  animation: fireworkGlow 2s infinite ease-in-out;
+}
+
+@keyframes selectedGreenPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.7), 0 0 16px rgba(52, 211, 153, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.9), 0 0 26px rgba(52, 211, 153, 0.6);
+  }
+}
+
+.animate-selected-green {
+  animation: selectedGreenPulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.math-rendered .katex {
+  font-size: 1.05em;
+  text-rendering: optimizeLegibility;
+}
+
+/* KaTeX Dark Mode & Inheritance Fixes */
+.katex {
+  color: inherit;
+}
+
+.dark .katex,
+.dark .katex-display,
+.dark .katex .mord,
+.dark .katex .mrel,
+.dark .katex .mbin,
+.dark .katex .mopen,
+.dark .katex .mclose,
+.dark .katex .mpunct,
+.dark .katex .minner,
+.dark .katex .mop {
+  color: #f1f5f9 !important;
+}
+
+.dark .text-emerald-950 .katex,
+.dark .text-emerald-100 .katex,
+.dark .text-emerald-200 .katex,
+.dark .text-emerald-300 .katex,
+.dark .text-emerald-400 .katex {
+  color: #ecfdf5 !important;
+}
+
+.dark .text-rose-950 .katex,
+.dark .text-rose-100 .katex,
+.dark .text-rose-200 .katex,
+.dark .text-rose-300 .katex {
+  color: #fff1f2 !important;
+}
+
+
