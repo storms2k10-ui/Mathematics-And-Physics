@@ -59,7 +59,7 @@ export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
             {chapter.track === 'Advanced Mathematics' && (
               <span className="px-2.5 py-1 rounded-full text-xs font-black bg-indigo-600/90 text-white shadow-md flex items-center gap-1">
                 <Sparkles className="w-3 h-3" />
-                Dynamic Syllabus
+                Practice Chapter
               </span>
             )}
           </div>
@@ -164,9 +164,9 @@ export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
                     <History className="w-3.5 h-3.5 text-amber-500" />
                     <span>Historical Evolution &amp; Origin</span>
                   </h5>
-                  <p className="text-xs text-amber-900/80 dark:text-amber-200/90 leading-relaxed">
-                    {chapter.overview.historicalContext}
-                  </p>
+                  <div className="text-xs text-amber-900/80 dark:text-amber-200/90 leading-relaxed">
+                    <MathText text={chapter.overview.historicalContext} />
+                  </div>
                 </div>
               )}
 
@@ -210,7 +210,7 @@ export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
                         <MathText text={thm.statement} />
                       </div>
                       <div className="text-[11px] text-slate-500 dark:text-slate-400 pt-0.5">
-                        <span className="font-semibold text-indigo-600 dark:text-indigo-400">Significance:</span> {thm.importance}
+                        <span className="font-semibold text-indigo-600 dark:text-indigo-400">Significance:</span> <MathText text={thm.importance} />
                       </div>
                     </div>
                   ))}
@@ -252,9 +252,9 @@ export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
                     </div>
 
                     {f.explanation && (
-                      <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                        {f.explanation}
-                      </p>
+                      <div className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <MathText text={f.explanation} />
+                      </div>
                     )}
                   </div>
                 ))}

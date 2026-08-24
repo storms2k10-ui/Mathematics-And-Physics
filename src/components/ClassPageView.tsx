@@ -145,8 +145,8 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
                         onClick={() => onOpenChapterDetails(chapter)}
                         className="flex-2 py-2 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm shadow-indigo-600/20 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                       >
-                        <BookOpen className="w-3.5 h-3.5" />
-                        <span>Dynamic Syllabus</span>
+                        <Play className="w-3.5 h-3.5 fill-white" />
+                        <span>Practice Chapter</span>
                       </button>
                     )}
                   </div>
