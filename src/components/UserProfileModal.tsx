@@ -288,55 +288,26 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
         <div className={`bg-gradient-to-r ${theme.headerGradient} p-5 sm:p-6 text-white relative overflow-hidden flex flex-col justify-between gap-4 shadow-lg`}>
           
           {/* Top Actions: Sign Out + Close */}
-          <div className="flex items-center justify-between relative z-10">
-            <div className="flex items-center gap-2">
-              <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-black tracking-wider uppercase border backdrop-blur-xs ${theme.badgeBg}`}>
-                {theme.badgeText}
-              </span>
-              <span className="text-xs text-white/90 font-bold bg-white/15 px-2.5 py-0.5 rounded-full">
-                Class {userProfile.classLevel}
-              </span>
-            </div>
+          <div className="flex items-center justify-end relative z-10 gap-2">
+            <button
+              onClick={() => {
+                signOut();
+                onClose();
+              }}
+              className="p-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-white/15 hover:bg-rose-600 text-white transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-bold shadow-xs"
+              title="Sign Out"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Sign Out</span>
+            </button>
 
-            <div className="flex items-center gap-2">
-              <button
-                onClick={handleShareTrackRecord}
-                className="px-3 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 text-white transition-all cursor-pointer flex items-center gap-1.5 text-xs font-bold shadow-xs hover:scale-105"
-                title="Share Academic Track Record with others"
-              >
-                {copiedShare ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-emerald-300" />
-                    <span className="text-emerald-200">Copied!</span>
-                  </>
-                ) : (
-                  <>
-                    <Share2 className="w-3.5 h-3.5 text-white" />
-                    <span>Share Track Record</span>
-                  </>
-                )}
-              </button>
-
-              <button
-                onClick={() => {
-                  signOut();
-                  onClose();
-                }}
-                className="p-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-white/15 hover:bg-rose-600 text-white transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-bold shadow-xs"
-                title="Sign Out"
-              >
-                <LogOut className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Sign Out</span>
-              </button>
-
-              <button
-                onClick={onClose}
-                className="p-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/20 transition-colors cursor-pointer"
-                aria-label="Close"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
+            <button
+              onClick={onClose}
+              className="p-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/20 transition-colors cursor-pointer"
+              aria-label="Close"
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
 
           {/* Candidate Profile Details & Avatar */}

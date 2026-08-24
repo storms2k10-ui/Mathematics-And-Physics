@@ -10,7 +10,7 @@ import {
   setPersistence,
   browserLocalPersistence
 } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, collection, query, where, getDocs, limit } from 'firebase/firestore';
 import { auth, db } from '../lib/firebase';
 import { UserProfile, UserTestHistory, ClassLevel } from '../types';
 import { safeFetchJson } from '../lib/apiHelper';
@@ -110,14 +110,39 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     return active;
   };
 
-  // Pre-flight check to verify email uniqueness on the server before signup
+  // Pre-flight check to verify email uniqueness on the server & Firestore before signup
   const checkEmailUniqueness = async (email: string): Promise<{ exists: boolean; available: boolean; error?: string }> => {
     const cleanEmail = email.trim().toLowerCase();
     if (!cleanEmail || !cleanEmail.includes('@')) {
       return { exists: false, available: false, error: 'Please enter a valid email address.' };
     }
 
-    // 1. Check local registered user records
+    // 1. Check Server live endpoint
+    try {
+      const res = await safeFetchJson<{ exists?: boolean; available?: boolean; error?: string; success?: boolean }>(
+        `/api/auth/check-email?email=${encodeURIComponent(cleanEmail)}`
+      );
+      if (res.ok && res.data?.success) {
+        if (res.data.exists) {
+          return { exists: true, available: false, error: 'An account with this email address already exists. Please sign in instead.' };
+        }
+      }
+    } catch {
+      // ignore
+    }
+
+    // 2. Check Firestore 'users' cloud collection
+    try {
+      const q = query(collection(db, 'users'), where('email', '==', cleanEmail), limit(1));
+      const snap = await getDocs(q);
+      if (!snap.empty) {
+        return { exists: true, available: false, error: 'An account with this email address already exists. Please sign in instead.' };
+      }
+    } catch {
+      // ignore
+    }
+
+    // 3. Check local registered user records
     try {
       const regRaw = localStorage.getItem(REGISTERED_USERS_KEY);
       if (regRaw) {
@@ -130,18 +155,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       // ignore
     }
 
-    // 2. Check server
-    try {
-      const res = await safeFetchJson<{ exists?: boolean; available?: boolean; error?: string; success?: boolean }>(
-        `/api/auth/check-email?email=${encodeURIComponent(cleanEmail)}`
-      );
-      if (res.ok && res.data?.success) {
-        return { exists: Boolean(res.data.exists), available: Boolean(res.data.available) };
-      }
-      return { exists: false, available: true };
-    } catch {
-      return { exists: false, available: true };
-    }
+    return { exists: false, available: true };
   };
 
   // Configure browser local persistence for Firebase Auth
@@ -255,23 +269,49 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       throw new Error('Password must be at least 6 characters.');
     }
 
-    // 1. Check local registered user cache for duplicate email
-    try {
-      const regRaw = localStorage.getItem(REGISTERED_USERS_KEY);
-      if (regRaw) {
-        const regList = JSON.parse(regRaw);
-        if (Array.isArray(regList) && regList.some((u: any) => u.email === cleanEmail)) {
-          throw new Error('An account with this email address already exists. Please sign in instead.');
-        }
-      }
-    } catch (err: any) {
-      if (err.message && err.message.includes('already exists')) throw err;
+    // 1. Check live uniqueness across Server & Firestore cloud database
+    const uniqueness = await checkEmailUniqueness(cleanEmail);
+    if (uniqueness.exists) {
+      throw new Error('An account with this email address already exists. Please sign in instead.');
     }
 
     let createdUser: UserProfile | null = null;
     let firebaseUser: FirebaseUser | null = null;
 
-    // 2. Primary: Firebase Authentication Account Creation
+    // 2. Server Registration first (enforcing server database uniqueness)
+    try {
+      const serverRes = await safeFetchJson<{ success?: boolean; user?: UserProfile; error?: string }>('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: cleanEmail,
+          password: pass,
+          displayName: cleanName,
+          classLevel,
+        }),
+      });
+
+      if (serverRes.status === 409 || !serverRes.ok || (serverRes.data && !serverRes.data.success)) {
+        const errMsg = serverRes.data?.error || serverRes.error || '';
+        if (serverRes.status === 409 || errMsg.toLowerCase().includes('already exists') || errMsg.toLowerCase().includes('exists')) {
+          throw new Error('An account with this email address already exists. Please sign in instead.');
+        }
+      }
+
+      if (serverRes.ok && serverRes.data?.success && serverRes.data?.user) {
+        createdUser = {
+          ...serverRes.data.user,
+          history: Array.isArray(serverRes.data.user.history) ? serverRes.data.user.history : [],
+        };
+      }
+    } catch (srvErr: any) {
+      if (srvErr.message && (srvErr.message.includes('already exists') || srvErr.message.includes('exists'))) {
+        throw srvErr;
+      }
+      console.warn('Server background signup note (using cloud/local sync):', srvErr?.message);
+    }
+
+    // 3. Primary: Firebase Authentication Account Creation
     try {
       const cred = await createUserWithEmailAndPassword(auth, cleanEmail, pass);
       if (cred?.user) {
@@ -289,7 +329,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       console.warn('Firebase Auth registration note:', fbErr?.message);
     }
 
-    const uid = firebaseUser?.uid || `usr_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
+    const uid = createdUser?.uid || firebaseUser?.uid || `usr_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
 
     const newUser: UserProfile = {
       uid,
@@ -305,45 +345,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       history: [],
     };
 
-    // 3. Server Registration (Graceful fallback if server unavailable or running in static preview)
-    try {
-      const serverRes = await safeFetchJson<{ success?: boolean; user?: UserProfile; error?: string }>('/api/auth/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: cleanEmail,
-          password: pass,
-          displayName: cleanName,
-          classLevel,
-        }),
-      });
-
-      if (serverRes.status === 409 || (serverRes.data?.error && serverRes.data.error.includes('already exists'))) {
-        throw new Error('An account with this email address already exists. Please sign in instead.');
-      }
-
-      if (serverRes.ok && serverRes.data?.success && serverRes.data?.user) {
-        createdUser = {
-          ...serverRes.data.user,
-          history: Array.isArray(serverRes.data.user.history) ? serverRes.data.user.history : [],
-        };
-      }
-    } catch (srvErr: any) {
-      if (srvErr.message && srvErr.message.includes('already exists')) {
-        throw srvErr;
-      }
-      console.warn('Server background signup note (using cloud/local sync):', srvErr?.message);
-    }
-
     const finalProfile: UserProfile = createdUser || newUser;
 
     // 4. Save to Firestore
-    if (firebaseUser?.uid) {
-      try {
-        await setDoc(docRefForUser(firebaseUser.uid), finalProfile, { merge: true });
-      } catch (fsErr) {
-        console.warn('Firestore user save note:', fsErr);
-      }
+    try {
+      await setDoc(docRefForUser(finalProfile.uid), finalProfile, { merge: true });
+    } catch (fsErr) {
+      console.warn('Firestore user save note:', fsErr);
     }
 
     // 5. Save in local registered users cache
