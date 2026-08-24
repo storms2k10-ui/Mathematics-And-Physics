@@ -98,29 +98,20 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
     return fallbackFormatted || 'Recent Session';
   };
 
-  // Use authenticated profile or fallback to local cache
-  const userProfile = authProfile || (() => {
-    try {
-      const cached = localStorage.getItem('maths_user_profile_cache');
-      if (cached) return JSON.parse(cached);
-    } catch {
-      // ignore
-    }
-    const savedName = localStorage.getItem('maths_student_name') || 'Student Candidate';
-    return {
-      uid: 'guest_student',
-      displayName: savedName,
-      email: 'Local Candidate Session',
-      classLevel: 9 as ClassLevel,
-      createdAt: Date.now(),
-      testsAttempted: 0,
-      totalQuestionsAnswered: 0,
-      totalCorrect: 0,
-      totalWrong: 0,
-      accuracy: 0,
-      history: [],
-    };
-  })();
+  // Use authenticated profile or default empty state
+  const userProfile = authProfile || {
+    uid: 'guest_student',
+    displayName: 'Student Candidate',
+    email: '',
+    classLevel: 9 as ClassLevel,
+    createdAt: Date.now(),
+    testsAttempted: 0,
+    totalQuestionsAnswered: 0,
+    totalCorrect: 0,
+    totalWrong: 0,
+    accuracy: 0,
+    history: [],
+  };
 
   const totalQuestions = userProfile.totalQuestionsAnswered || 0;
   const totalCorrect = userProfile.totalCorrect || 0;

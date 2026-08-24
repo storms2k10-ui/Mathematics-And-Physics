@@ -92,22 +92,26 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
     try {
       // 1. Try Firebase Firestore Cloud Database first
       const firestoreData = await FirestoreLeaderboardService.fetchRanked('all', 'practice', selectedTrack);
-      if (firestoreData && firestoreData.length > 0) {
+      if (Array.isArray(firestoreData) && firestoreData.length > 0) {
         setAllEntries(firestoreData);
         return;
       }
 
       // 2. Fallback to Node.js Server API
       const serverEntries = await MathService.fetchServerLeaderboard('all', 'practice', selectedTrack);
-      if (serverEntries && serverEntries.length > 0) {
+      if (Array.isArray(serverEntries) && serverEntries.length > 0) {
         setAllEntries(serverEntries);
       } else {
-        const local = MathService.getRankedLeaderboard('all', 'practice', selectedTrack);
-        setAllEntries(local);
+        const local = await MathService.getRankedLeaderboard('all', 'practice', selectedTrack);
+        setAllEntries(Array.isArray(local) ? local : []);
       }
     } catch {
-      const local = MathService.getRankedLeaderboard('all', 'practice', selectedTrack);
-      setAllEntries(local);
+      try {
+        const local = await MathService.getRankedLeaderboard('all', 'practice', selectedTrack);
+        setAllEntries(Array.isArray(local) ? local : []);
+      } catch {
+        setAllEntries([]);
+      }
     }
   }, [selectedTrack]);
 
@@ -120,7 +124,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
     let unsubscribe: (() => void) | undefined;
     try {
       unsubscribe = FirestoreLeaderboardService.subscribeToLeaderboard('all', (cloudEntries) => {
-        if (cloudEntries && cloudEntries.length > 0) {
+        if (Array.isArray(cloudEntries)) {
           setAllEntries(cloudEntries);
         }
       }, selectedTrack);
@@ -138,22 +142,25 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
     };
   }, [isOpen, selectedTrack, loadLeaderboardData]);
 
+  // Safe entries array helper
+  const safeEntries = useMemo(() => Array.isArray(allEntries) ? allEntries : [], [allEntries]);
+
   // Filter live submissions for track and active class
   const classLiveSubmissions = useMemo(() => {
-    return allEntries.filter((e) => {
+    return safeEntries.filter((e) => {
       if (!e) return false;
       const entryTrack = e.track || 'Elementary Mathematics';
       return entryTrack === selectedTrack && Number(e.classLevel) === Number(selectedClass) && (!e.id || !e.id.startsWith('lead-seed-'));
     }).length;
-  }, [allEntries, selectedTrack, selectedClass]);
+  }, [safeEntries, selectedTrack, selectedClass]);
 
   const trackLiveSubmissions = useMemo(() => {
-    return allEntries.filter((e) => {
+    return safeEntries.filter((e) => {
       if (!e) return false;
       const entryTrack = e.track || 'Elementary Mathematics';
       return entryTrack === selectedTrack && (!e.id || !e.id.startsWith('lead-seed-'));
     }).length;
-  }, [allEntries, selectedTrack]);
+  }, [safeEntries, selectedTrack]);
 
   // Aggregate and Rank Candidate Profiles by Overall Accuracy across unique chapters
   const rankedCandidateProfiles: CandidateRankingProfile[] = useMemo(() => {
@@ -165,7 +172,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
       latestTimestamp: number;
     }>();
 
-    for (const entry of allEntries) {
+    for (const entry of safeEntries) {
       if (!entry) continue;
       if (entry.mode === 'exam' || (entry.chapterName && entry.chapterName.toLowerCase().includes('mock'))) continue;
       if (entry.id && entry.id.startsWith('lead-seed-')) continue;
@@ -405,7 +412,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
           {/* Class Switcher Tabs (Class 9, 10, 11, 12 only) */}
           <div className="flex flex-wrap items-center p-1 rounded-2xl bg-slate-200/80 dark:bg-slate-800/80 w-full gap-1">
             {([9, 10, 11, 12] as ClassLevel[]).map((lvl) => {
-              const count = allEntries.filter(e => {
+              const count = safeEntries.filter(e => {
                 if (!e) return false;
                 const entryTrack = e.track || 'Elementary Mathematics';
                 return entryTrack === selectedTrack && Number(e.classLevel) === lvl && (!e.id || !e.id.startsWith('lead-seed-'));

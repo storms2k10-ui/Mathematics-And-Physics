@@ -83,7 +83,7 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
 
   // Student name adjustment & live server sync state
   const [studentName, setStudentName] = useState<string>(() => {
-    return studentProfile?.name || localStorage.getItem('maths_student_name') || 'Student Candidate';
+    return studentProfile?.name || 'Student Candidate';
   });
   const [isEditingName, setIsEditingName] = useState(false);
   const [tempName, setTempName] = useState(studentName);
@@ -142,8 +142,6 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
     setSyncStatus('Syncing to Cloud Database...');
 
     try {
-      localStorage.setItem('maths_student_name', newName);
-
       const mins = Math.floor(totalTimeSeconds / 60);
       const secs = totalTimeSeconds % 60;
       const formattedTime = `${mins}m ${secs.toString().padStart(2, '0')}s`;

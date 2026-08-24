@@ -98,22 +98,6 @@ export default function App() {
   // Load initial classes data & sync server/cloud leaderboard for all users
   useEffect(() => {
     const loadData = async () => {
-      // Purge any legacy sample seed data from earlier sessions
-      try {
-        const stored = localStorage.getItem('mathematics_class_leaderboard_data');
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          if (Array.isArray(parsed)) {
-            const clean = parsed.filter((e) => e && e.id && !e.id.startsWith('lead-seed-'));
-            if (clean.length !== parsed.length) {
-              localStorage.setItem('mathematics_class_leaderboard_data', JSON.stringify(clean));
-            }
-          }
-        }
-      } catch {
-        // ignore
-      }
-
       setLoading(true);
       const classes = await MathService.getClasses();
       setClassesInfo(classes);
@@ -121,7 +105,7 @@ export default function App() {
       setCurrentChapters(chapters);
       setLoading(false);
 
-      // Preload global leaderboard from Firestore / server in background
+      // Preload global leaderboard from Firestore in background
       MathService.fetchServerLeaderboard('all', 'practice').catch(() => {});
     };
     loadData();
@@ -263,8 +247,7 @@ export default function App() {
     const correctCount = Object.values(results.userAnswers).filter(a => a?.isCorrect).length;
     const scorePct = totalQ > 0 ? Math.round((correctCount / totalQ) * 100) : 0;
 
-    const savedName = localStorage.getItem('maths_student_name');
-    const studentName = userProfile?.displayName || currentUser?.displayName || student?.name || savedName || 'Student Candidate';
+    const studentName = userProfile?.displayName || currentUser?.displayName || student?.name || 'Student Candidate';
     const mins = Math.floor(results.totalTimeSeconds / 60);
     const secs = results.totalTimeSeconds % 60;
     const formattedTime = `${mins}m ${secs.toString().padStart(2, '0')}s`;
@@ -312,10 +295,10 @@ export default function App() {
     setCurrentView('results');
     window.scrollTo({ top: 0, behavior: 'instant' });
 
-    // 2. Perform live sync to server backend, user history & leaderboard in background
+    // 2. Perform live sync to Firestore cloud database, user history & leaderboard in background
     Promise.all([
       recordTestAttempt(historyItem).catch((e) => console.warn('Record attempt async sync:', e)),
-      MathService.saveLeaderboardEntry(leaderboardEntry).catch((e) => console.warn('Leaderboard async sync:', e)),
+      MathService.saveLeaderboardEntry(leaderboardEntry, currentUser?.uid).catch((e) => console.warn('Leaderboard async sync:', e)),
     ]).catch(() => {});
   };
 

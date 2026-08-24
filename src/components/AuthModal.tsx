@@ -13,7 +13,7 @@ import {
   LogIn,
   UserPlus
 } from 'lucide-react';
-import { useAuth, hasUserSignedUp } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import { ClassLevel } from '../types';
 import { MathText } from './MathText';
 
@@ -36,13 +36,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 }) => {
   const { signIn, signUp, resetPassword, checkEmailUniqueness } = useAuth();
   
-  // Dynamic starting mode based on whether the user has previously signed up
-  const getStartingMode = (): 'signin' | 'signup' | 'forgot' => {
-    if (initialMode) return initialMode;
-    return hasUserSignedUp() ? 'signin' : 'signup';
-  };
-
-  const [mode, setMode] = useState<'signin' | 'signup' | 'forgot'>(getStartingMode);
+  const [mode, setMode] = useState<'signin' | 'signup' | 'forgot'>(initialMode || 'signin');
   
   // Form fields
   const [email, setEmail] = useState('');
@@ -58,21 +52,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
   useEffect(() => {
     if (isOpen) {
-      const userAlreadySignedUp = hasUserSignedUp();
-      const targetMode = initialMode || (userAlreadySignedUp ? 'signin' : 'signup');
+      const targetMode = initialMode || 'signin';
       setMode(targetMode);
       setLoading(false);
       setError(null);
       setSuccessMsg(null);
       setEmailCheckStatus('idle');
-
-      // If in signin mode and user previously signed up, prefill their email
-      if (targetMode === 'signin') {
-        const lastEmail = localStorage.getItem('math_app_last_email') || '';
-        if (lastEmail && !email) {
-          setEmail(lastEmail);
-        }
-      }
     }
   }, [isOpen, initialMode]);
 

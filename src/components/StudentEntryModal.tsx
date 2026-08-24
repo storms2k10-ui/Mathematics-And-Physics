@@ -40,13 +40,6 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
   useEffect(() => {
     if (userProfile) {
       setName(userProfile.displayName || '');
-    } else {
-      try {
-        const savedName = localStorage.getItem('maths_student_name');
-        if (savedName) setName(savedName);
-      } catch {
-        // ignore
-      }
     }
   }, [userProfile]);
 
@@ -83,12 +76,6 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
     if (!finalName) {
       setError('Please enter your name to begin practice.');
       return;
-    }
-
-    try {
-      localStorage.setItem('maths_student_name', finalName);
-    } catch {
-      // ignore
     }
 
     onStartTest({

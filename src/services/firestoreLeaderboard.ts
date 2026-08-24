@@ -9,19 +9,21 @@ import {
   orderBy, 
   limit, 
   onSnapshot, 
-  Unsubscribe 
+  Unsubscribe,
+  serverTimestamp
 } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { LeaderboardEntry, ClassLevel } from '../types';
+import { LeaderboardEntry, ClassLevel, UserTestHistory } from '../types';
 
 const LEADERBOARD_COLLECTION = 'leaderboard';
+const TEST_RESULTS_COLLECTION = 'test_results';
 
 export class FirestoreLeaderboardService {
   /**
    * Saves a practice or exam score directly to Firestore cloud database.
-   * Enforces chapter deduplication: if candidate retakes same chapter, only updates if accuracy improves.
+   * Enforces chapter deduplication per student per class per track: only updates if accuracy improves.
    */
-  static async saveEntry(entry: LeaderboardEntry): Promise<void> {
+  static async saveEntry(entry: LeaderboardEntry, uid?: string): Promise<void> {
     try {
       const cleanTrack = (entry.track || 'Elementary Mathematics').toLowerCase().replace(/[^a-z0-9]/g, '_');
       const cleanStudent = (entry.studentName || 'student').toLowerCase().replace(/[^a-z0-9]/g, '_');
@@ -29,16 +31,17 @@ export class FirestoreLeaderboardService {
       
       const docRef = doc(db, LEADERBOARD_COLLECTION, chapterDocId);
       
-      // Attempt to check if candidate already has a better attempt for this chapter
+      // Check if candidate already has a better attempt for this chapter
       try {
         const existingSnap = await getDoc(docRef);
         if (existingSnap.exists()) {
           const oldData = existingSnap.data() as LeaderboardEntry;
-          // If previous accuracy is higher, do not overwrite with a worse score
           if (
             oldData.scorePercentage > entry.scorePercentage ||
             (oldData.scorePercentage === entry.scorePercentage && oldData.timeSpentSeconds <= entry.timeSpentSeconds)
           ) {
+            // Keep existing best in leaderboard, but still save this attempt in test_results collection
+            await this.saveTestResultRecord(entry, uid);
             return;
           }
         }
@@ -46,20 +49,97 @@ export class FirestoreLeaderboardService {
         // Continue if getDoc fails
       }
 
+      // Save / Update best score in leaderboard collection
       await setDoc(docRef, {
         ...entry,
         id: chapterDocId,
+        uid: uid || null,
+        classLevel: Number(entry.classLevel),
         track: entry.track || 'Elementary Mathematics',
-        savedAt: Date.now()
+        timestamp: Date.now(),
+        updatedAt: serverTimestamp(),
       }, { merge: true });
+
+      // Save individual attempt in test_results collection
+      await this.saveTestResultRecord(entry, uid);
     } catch (error) {
-      console.warn('Firestore saveEntry error (falling back):', error);
+      console.error('Firestore saveEntry error:', error);
       throw error;
     }
   }
 
   /**
-   * Fetches the ranked leaderboard from Firestore cloud database.
+   * Saves a dedicated test attempt record in Firestore 'test_results' collection
+   */
+  static async saveTestResultRecord(entry: LeaderboardEntry, uid?: string): Promise<void> {
+    try {
+      const resultDocId = entry.id || `result_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
+      const resultDocRef = doc(db, TEST_RESULTS_COLLECTION, resultDocId);
+      
+      await setDoc(resultDocRef, {
+        id: resultDocId,
+        uid: uid || null,
+        studentName: entry.studentName,
+        classLevel: Number(entry.classLevel),
+        track: entry.track || 'Elementary Mathematics',
+        chapterId: entry.chapterId || 'general_quiz',
+        chapterName: entry.chapterName,
+        mode: entry.mode || 'practice',
+        correctCount: entry.correctCount,
+        totalQuestions: entry.totalQuestions,
+        scorePercentage: entry.scorePercentage,
+        timeSpentSeconds: entry.timeSpentSeconds,
+        formattedTime: entry.formattedTime,
+        timestamp: entry.timestamp || Date.now(),
+        formattedDate: entry.formattedDate || new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+        completedAt: serverTimestamp(),
+        createdAt: serverTimestamp(),
+      }, { merge: true });
+    } catch (err) {
+      console.error('Firestore saveTestResultRecord error:', err);
+    }
+  }
+
+  /**
+   * Fetches user's full test history directly from Cloud Firestore 'test_results' collection
+   */
+  static async fetchUserTestHistory(uid: string): Promise<UserTestHistory[]> {
+    if (!uid) return [];
+    try {
+      const colRef = collection(db, TEST_RESULTS_COLLECTION);
+      const q = query(colRef, where('uid', '==', uid));
+      const snap = await getDocs(q);
+      const results: UserTestHistory[] = [];
+
+      snap.forEach((docSnap) => {
+        const data = docSnap.data();
+        results.push({
+          id: data.id || docSnap.id,
+          chapterId: data.chapterId,
+          chapterName: data.chapterName,
+          classLevel: Number(data.classLevel) as ClassLevel,
+          track: data.track || 'Elementary Mathematics',
+          scorePercentage: Number(data.scorePercentage) || 0,
+          correctCount: Number(data.correctCount) || 0,
+          totalQuestions: Number(data.totalQuestions) || 0,
+          timeSpentSeconds: Number(data.timeSpentSeconds) || 0,
+          formattedTime: data.formattedTime || '0m 00s',
+          timestamp: Number(data.timestamp) || Date.now(),
+          formattedDate: data.formattedDate || 'Recent',
+        });
+      });
+
+      // Sort by newest first
+      results.sort((a, b) => b.timestamp - a.timestamp);
+      return results;
+    } catch (err) {
+      console.error('Firestore fetchUserTestHistory error:', err);
+      return [];
+    }
+  }
+
+  /**
+   * Fetches the ranked leaderboard from Firestore cloud database with strict class separation.
    */
   static async fetchRanked(
     classLevel?: ClassLevel | 'all',
@@ -97,7 +177,7 @@ export class FirestoreLeaderboardService {
         entries.push(data);
       });
 
-      // Sort client-side by accuracy -> correct count -> fastest time -> newest
+      // Sort by accuracy (desc) -> correct count (desc) -> fastest time (asc) -> newest (desc)
       entries.sort((a, b) => {
         if (b.scorePercentage !== a.scorePercentage) {
           return b.scorePercentage - a.scorePercentage;
@@ -113,13 +193,13 @@ export class FirestoreLeaderboardService {
 
       return entries;
     } catch (error) {
-      console.warn('Firestore fetchRanked error:', error);
+      console.error('Firestore fetchRanked error:', error);
       return [];
     }
   }
 
   /**
-   * Listens to real-time updates from Firestore cloud leaderboard
+   * Listens to real-time updates from Firestore cloud leaderboard with strict class separation
    */
   static subscribeToLeaderboard(
     classLevel: ClassLevel | 'all',
@@ -160,7 +240,7 @@ export class FirestoreLeaderboardService {
 
       onUpdate(entries);
     }, (error) => {
-      console.warn('Firestore realtime subscription error:', error);
+      console.error('Firestore realtime subscription error:', error);
     });
   }
 }

@@ -10,9 +10,21 @@ import {
   setPersistence,
   browserLocalPersistence
 } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc, collection, query, where, getDocs, limit } from 'firebase/firestore';
+import { 
+  doc, 
+  getDoc, 
+  setDoc, 
+  updateDoc, 
+  collection, 
+  query, 
+  where, 
+  getDocs, 
+  limit,
+  serverTimestamp 
+} from 'firebase/firestore';
 import { auth, db } from '../lib/firebase';
 import { UserProfile, UserTestHistory, ClassLevel } from '../types';
+import { FirestoreLeaderboardService } from '../services/firestoreLeaderboard';
 import { safeFetchJson } from '../lib/apiHelper';
 
 interface AuthContextType {
@@ -31,181 +43,98 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const LOCAL_USER_KEY = 'maths_user_profile_cache';
-const HAS_SIGNED_UP_KEY = 'math_app_has_signed_up';
-const LAST_EMAIL_KEY = 'math_app_last_email';
-const REGISTERED_USERS_KEY = 'maths_local_registered_users';
-
-/**
- * Checks whether a student candidate has registered an account on this browser.
- */
-export function hasUserSignedUp(): boolean {
-  try {
-    if (localStorage.getItem(HAS_SIGNED_UP_KEY) === 'true') return true;
-    if (localStorage.getItem(LOCAL_USER_KEY)) return true;
-    if (localStorage.getItem('mathematics_user_profile')) return true;
-    const registered = localStorage.getItem(REGISTERED_USERS_KEY);
-    if (registered) {
-      const parsed = JSON.parse(registered);
-      if (Array.isArray(parsed) && parsed.length > 0) return true;
-    }
-    if (localStorage.getItem(LAST_EMAIL_KEY)) return true;
-  } catch {
-    // ignore
-  }
-  return false;
-}
-
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<FirebaseUser | null>(null);
-  const [userProfile, setUserProfile] = useState<UserProfile | null>(() => {
-    try {
-      const cached = localStorage.getItem(LOCAL_USER_KEY);
-      return cached ? JSON.parse(cached) : null;
-    } catch {
-      return null;
-    }
-  });
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Save profile to local storage cache
-  const saveProfileCache = (profile: UserProfile | null) => {
-    setUserProfile(profile);
+  // Configure browser local persistence for Firebase Auth
+  useEffect(() => {
     try {
-      if (profile) {
-        localStorage.setItem(LOCAL_USER_KEY, JSON.stringify(profile));
-        localStorage.setItem('maths_student_name', profile.displayName);
-        localStorage.setItem(HAS_SIGNED_UP_KEY, 'true');
-        if (profile.email) {
-          localStorage.setItem(LAST_EMAIL_KEY, profile.email);
-        }
-      } else {
-        localStorage.removeItem(LOCAL_USER_KEY);
-      }
-    } catch {
-      // ignore
+      setPersistence(auth, browserLocalPersistence).catch((err) => {
+        console.warn('Firebase Auth persistence setup note:', err);
+      });
+    } catch (e) {
+      console.warn('Firebase Auth persistence error:', e);
     }
-  };
+  }, []);
 
   const docRefForUser = (uid: string) => doc(db, 'users', uid);
 
-  // Sync profile live with Express backend
-  const syncWithServer = async (): Promise<UserProfile | null> => {
-    const active = userProfile;
-    if (!active) return null;
-    try {
-      const query = active.uid ? `uid=${encodeURIComponent(active.uid)}` : `email=${encodeURIComponent(active.email)}`;
-      const res = await safeFetchJson<{ success?: boolean; user?: UserProfile }>(`/api/auth/profile?${query}`);
-      if (res.ok && res.data?.success && res.data?.user) {
-        const syncedUser: UserProfile = {
-          ...res.data.user,
-          history: Array.isArray(res.data.user.history) ? res.data.user.history : [],
-        };
-        saveProfileCache(syncedUser);
-        return syncedUser;
-      }
-    } catch (err) {
-      console.warn('Server live sync notice:', err);
-    }
-    return active;
-  };
-
-  // Pre-flight check to verify email uniqueness on the server & Firestore before signup
+  // Authoritative check on Firebase Cloud Firestore for email uniqueness
   const checkEmailUniqueness = async (email: string): Promise<{ exists: boolean; available: boolean; error?: string }> => {
     const cleanEmail = email.trim().toLowerCase();
     if (!cleanEmail || !cleanEmail.includes('@')) {
       return { exists: false, available: false, error: 'Please enter a valid email address.' };
     }
 
-    // 1. Check Server live endpoint
     try {
-      const res = await safeFetchJson<{ exists?: boolean; available?: boolean; error?: string; success?: boolean }>(
-        `/api/auth/check-email?email=${encodeURIComponent(cleanEmail)}`
-      );
-      if (res.ok && res.data?.success) {
-        if (res.data.exists) {
-          return { exists: true, available: false, error: 'An account with this email address already exists. Please sign in instead.' };
-        }
-      }
-    } catch {
-      // ignore
-    }
-
-    // 2. Check Firestore 'users' cloud collection
-    try {
+      // 1. Authoritative check against Firestore 'users' cloud collection
       const q = query(collection(db, 'users'), where('email', '==', cleanEmail), limit(1));
       const snap = await getDocs(q);
       if (!snap.empty) {
         return { exists: true, available: false, error: 'An account with this email address already exists. Please sign in instead.' };
       }
-    } catch {
-      // ignore
-    }
 
-    // 3. Check local registered user records
-    try {
-      const regRaw = localStorage.getItem(REGISTERED_USERS_KEY);
-      if (regRaw) {
-        const regList = JSON.parse(regRaw);
-        if (Array.isArray(regList) && regList.some((u: any) => u.email === cleanEmail)) {
-          return { exists: true, available: false, error: 'An account with this email address already exists. Please sign in instead.' };
-        }
+      // 2. Also check server endpoint
+      const res = await safeFetchJson<{ exists?: boolean; available?: boolean; error?: string; success?: boolean }>(
+        `/api/auth/check-email?email=${encodeURIComponent(cleanEmail)}`
+      );
+      if (res.ok && res.data?.success && res.data.exists) {
+        return { exists: true, available: false, error: 'An account with this email address already exists. Please sign in instead.' };
       }
-    } catch {
-      // ignore
-    }
 
-    return { exists: false, available: true };
+      return { exists: false, available: true };
+    } catch {
+      return { exists: false, available: true };
+    }
   };
 
-  // Configure browser local persistence for Firebase Auth
-  useEffect(() => {
+  // Authoritative fetch of user profile and history from Cloud Firestore
+  const fetchCloudUserProfile = async (user: FirebaseUser): Promise<UserProfile> => {
     try {
-      setPersistence(auth, browserLocalPersistence).catch((err) => {
-        console.warn('Auth persistence config:', err);
-      });
-    } catch (e) {
-      console.warn('Auth persistence error:', e);
-    }
-  }, []);
+      const userRef = docRefForUser(user.uid);
+      const [userSnap, cloudHistory] = await Promise.all([
+        getDoc(userRef),
+        FirestoreLeaderboardService.fetchUserTestHistory(user.uid).catch(() => [] as UserTestHistory[]),
+      ]);
 
-  // Fetch Firestore profile
-  const fetchUserProfile = async (user: FirebaseUser) => {
-    try {
-      // First try fetching live server user profile
-      try {
-        const srvRes = await safeFetchJson<{ success?: boolean; user?: UserProfile }>(
-          `/api/auth/profile?email=${encodeURIComponent(user.email || '')}&uid=${encodeURIComponent(user.uid)}`
-        );
-        if (srvRes.ok && srvRes.data?.success && srvRes.data?.user) {
-          saveProfileCache({
-            ...srvRes.data.user,
-            history: Array.isArray(srvRes.data.user.history) ? srvRes.data.user.history : [],
-          });
-          return;
-        }
-      } catch {
-        // Fallback to Firestore
-      }
+      if (userSnap.exists()) {
+        const data = userSnap.data() as Partial<UserProfile>;
+        
+        // Merge history from cloud test_results and user doc
+        const combinedHistory = cloudHistory && cloudHistory.length > 0
+          ? cloudHistory
+          : Array.isArray(data.history) ? data.history : [];
 
-      const docRef = docRefForUser(user.uid);
-      const snap = await getDoc(docRef);
-      if (snap.exists()) {
-        const data = snap.data() as UserProfile;
-        const fullProfile: UserProfile = {
-          ...data,
+        const totalQ = combinedHistory.reduce((acc, h) => acc + (Number(h.totalQuestions) || 0), 0);
+        const totalC = combinedHistory.reduce((acc, h) => acc + (Number(h.correctCount) || 0), 0);
+        const totalW = Math.max(0, totalQ - totalC);
+        const accPct = totalQ > 0 ? Math.round((totalC / totalQ) * 100) : 0;
+
+        const profile: UserProfile = {
           uid: user.uid,
-          email: data.email || user.email || '',
-          displayName: data.displayName || user.displayName || user.email?.split('@')[0] || 'Student',
-          classLevel: data.classLevel || 9,
-          history: Array.isArray(data.history) ? data.history : [],
+          email: user.email || data.email || '',
+          displayName: data.displayName || user.displayName || user.email?.split('@')[0] || 'Student Candidate',
+          classLevel: (data.classLevel as ClassLevel) || 9,
+          createdAt: typeof data.createdAt === 'number' ? data.createdAt : Date.now(),
+          testsAttempted: combinedHistory.length,
+          totalQuestionsAnswered: totalQ,
+          totalCorrect: totalC,
+          totalWrong: totalW,
+          accuracy: accPct,
+          history: combinedHistory,
         };
-        saveProfileCache(fullProfile);
+
+        setUserProfile(profile);
+        return profile;
       } else {
+        // Create initial cloud user profile in Firestore
+        const cleanName = user.displayName || user.email?.split('@')[0] || 'Student Candidate';
         const newProfile: UserProfile = {
           uid: user.uid,
           email: user.email || '',
-          displayName: user.displayName || user.email?.split('@')[0] || 'Student',
+          displayName: cleanName,
           classLevel: 9,
           createdAt: Date.now(),
           testsAttempted: 0,
@@ -215,41 +144,44 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           accuracy: 0,
           history: [],
         };
-        await setDoc(docRef, newProfile, { merge: true });
-        saveProfileCache(newProfile);
+
+        await setDoc(userRef, {
+          ...newProfile,
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp(),
+        }, { merge: true });
+
+        setUserProfile(newProfile);
+        return newProfile;
       }
-    } catch (e) {
-      console.warn('Could not fetch Firestore user profile, using fallback:', e);
+    } catch (error) {
+      console.error('Failed to load user profile from Firestore:', error);
+      const fallback: UserProfile = {
+        uid: user.uid,
+        email: user.email || '',
+        displayName: user.displayName || 'Student Candidate',
+        classLevel: 9,
+        createdAt: Date.now(),
+        testsAttempted: 0,
+        totalQuestionsAnswered: 0,
+        totalCorrect: 0,
+        totalWrong: 0,
+        accuracy: 0,
+        history: [],
+      };
+      setUserProfile(fallback);
+      return fallback;
     }
   };
 
+  // Listen to Firebase Auth state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
       if (user) {
-        await fetchUserProfile(user);
+        await fetchCloudUserProfile(user);
       } else {
-        // Check if there is a cached active user session and sync with server live
-        try {
-          const cached = localStorage.getItem(LOCAL_USER_KEY);
-          if (cached) {
-            const parsed = JSON.parse(cached);
-            setUserProfile(parsed);
-            // Verify and sync live with server safely
-            if (parsed.email || parsed.uid) {
-              const query = parsed.uid ? `uid=${encodeURIComponent(parsed.uid)}` : `email=${encodeURIComponent(parsed.email)}`;
-              safeFetchJson<{ success?: boolean; user?: UserProfile }>(`/api/auth/profile?${query}`)
-                .then((res) => {
-                  if (res.ok && res.data?.success && res.data?.user) {
-                    saveProfileCache(res.data.user);
-                  }
-                })
-                .catch(() => {});
-            }
-          }
-        } catch {
-          // ignore
-        }
+        setUserProfile(null);
       }
       setLoading(false);
     });
@@ -257,7 +189,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     return () => unsubscribe();
   }, []);
 
-  // Email-based Sign Up: Resilient registration supporting Firebase Auth, Firestore, and Server sync
+  // Synchronize profile on demand with Cloud Firestore
+  const syncWithServer = async (): Promise<UserProfile | null> => {
+    if (!currentUser) return null;
+    return await fetchCloudUserProfile(currentUser);
+  };
+
+  // Sign Up with Firebase Authentication & Cloud Firestore
   const signUp = async (email: string, pass: string, displayName: string, classLevel: ClassLevel = 9) => {
     const cleanEmail = email.trim().toLowerCase();
     const cleanName = displayName.trim() || cleanEmail.split('@')[0] || 'Student Candidate';
@@ -269,264 +207,173 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       throw new Error('Password must be at least 6 characters.');
     }
 
-    // 1. Check live uniqueness across Server & Firestore cloud database
+    // 1. Authoritative check for existing account
     const uniqueness = await checkEmailUniqueness(cleanEmail);
     if (uniqueness.exists) {
       throw new Error('An account with this email address already exists. Please sign in instead.');
     }
 
-    let createdUser: UserProfile | null = null;
-    let firebaseUser: FirebaseUser | null = null;
-
-    // 2. Server Registration first (enforcing server database uniqueness)
     try {
-      const serverRes = await safeFetchJson<{ success?: boolean; user?: UserProfile; error?: string }>('/api/auth/signup', {
+      // 2. Authoritative creation in Firebase Authentication
+      const cred = await createUserWithEmailAndPassword(auth, cleanEmail, pass);
+      const firebaseUser = cred.user;
+
+      try {
+        await updateProfile(firebaseUser, { displayName: cleanName });
+      } catch {
+        // ignore profile update warning
+      }
+
+      // 3. Save profile document permanently to Cloud Firestore
+      const newProfile: UserProfile = {
+        uid: firebaseUser.uid,
+        email: cleanEmail,
+        displayName: cleanName,
+        classLevel,
+        createdAt: Date.now(),
+        testsAttempted: 0,
+        totalQuestionsAnswered: 0,
+        totalCorrect: 0,
+        totalWrong: 0,
+        accuracy: 0,
+        history: [],
+      };
+
+      const userDocRef = docRefForUser(firebaseUser.uid);
+      await setDoc(userDocRef, {
+        ...newProfile,
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
+      }, { merge: true });
+
+      // 4. Background sync with server
+      safeFetchJson('/api/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          uid: firebaseUser.uid,
           email: cleanEmail,
           password: pass,
           displayName: cleanName,
           classLevel,
         }),
-      });
+      }).catch(() => {});
 
-      if (serverRes.status === 409 || !serverRes.ok || (serverRes.data && !serverRes.data.success)) {
-        const errMsg = serverRes.data?.error || serverRes.error || '';
-        if (serverRes.status === 409 || errMsg.toLowerCase().includes('already exists') || errMsg.toLowerCase().includes('exists')) {
-          throw new Error('An account with this email address already exists. Please sign in instead.');
-        }
-      }
-
-      if (serverRes.ok && serverRes.data?.success && serverRes.data?.user) {
-        createdUser = {
-          ...serverRes.data.user,
-          history: Array.isArray(serverRes.data.user.history) ? serverRes.data.user.history : [],
-        };
-      }
-    } catch (srvErr: any) {
-      if (srvErr.message && (srvErr.message.includes('already exists') || srvErr.message.includes('exists'))) {
-        throw srvErr;
-      }
-      console.warn('Server background signup note (using cloud/local sync):', srvErr?.message);
-    }
-
-    // 3. Primary: Firebase Authentication Account Creation
-    try {
-      const cred = await createUserWithEmailAndPassword(auth, cleanEmail, pass);
-      if (cred?.user) {
-        firebaseUser = cred.user;
-        try {
-          await updateProfile(cred.user, { displayName: cleanName });
-        } catch {
-          // ignore
-        }
-      }
+      setUserProfile(newProfile);
+      setCurrentUser(firebaseUser);
     } catch (fbErr: any) {
       if (fbErr.code === 'auth/email-already-in-use') {
         throw new Error('An account with this email address already exists. Please sign in instead.');
       }
-      console.warn('Firebase Auth registration note:', fbErr?.message);
-    }
-
-    const uid = createdUser?.uid || firebaseUser?.uid || `usr_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
-
-    const newUser: UserProfile = {
-      uid,
-      email: cleanEmail,
-      displayName: cleanName,
-      classLevel,
-      createdAt: Date.now(),
-      testsAttempted: 0,
-      totalQuestionsAnswered: 0,
-      totalCorrect: 0,
-      totalWrong: 0,
-      accuracy: 0,
-      history: [],
-    };
-
-    const finalProfile: UserProfile = createdUser || newUser;
-
-    // 4. Save to Firestore
-    try {
-      await setDoc(docRefForUser(finalProfile.uid), finalProfile, { merge: true });
-    } catch (fsErr) {
-      console.warn('Firestore user save note:', fsErr);
-    }
-
-    // 5. Save in local registered users cache
-    try {
-      const regRaw = localStorage.getItem(REGISTERED_USERS_KEY);
-      const regList = regRaw ? JSON.parse(regRaw) : [];
-      if (Array.isArray(regList) && !regList.some((u: any) => u.email === cleanEmail)) {
-        regList.push({
-          uid: finalProfile.uid,
-          email: cleanEmail,
-          displayName: cleanName,
-          classLevel,
-          passHash: btoa(pass),
-        });
-        localStorage.setItem(REGISTERED_USERS_KEY, JSON.stringify(regList));
+      if (fbErr.code === 'auth/weak-password') {
+        throw new Error('Password should be at least 6 characters.');
       }
-    } catch {
-      // ignore
+      if (fbErr.code === 'auth/invalid-email') {
+        throw new Error('Please enter a valid email address.');
+      }
+      throw new Error(fbErr.message || 'Failed to create account. Please try again.');
     }
-
-    saveProfileCache(finalProfile);
   };
 
-  // Sign In: Validates with Firebase Auth, Server, and local credentials
+  // Sign In with Firebase Authentication & Cloud Firestore
   const signIn = async (email: string, pass: string) => {
     const cleanEmail = email.trim().toLowerCase();
     if (!cleanEmail || !pass) {
       throw new Error('Please enter both your email and password.');
     }
 
-    let loggedInUser: UserProfile | null = null;
-    let serverErrorMessage = '';
-
-    // 1. Try Firebase Auth
-    let fbUser: any = null;
     try {
+      // 1. Authoritative authentication via Firebase Auth
       const cred = await signInWithEmailAndPassword(auth, cleanEmail, pass);
-      fbUser = cred.user;
-    } catch (fbErr: any) {
-      console.warn('Firebase Auth sign in note:', fbErr?.code || fbErr?.message);
-    }
+      setCurrentUser(cred.user);
 
-    // 2. Try Server API
-    try {
-      const serverRes = await safeFetchJson<{ success?: boolean; user?: UserProfile; error?: string }>('/api/auth/signin', {
+      // 2. Fetch full profile and test history from Cloud Firestore
+      await fetchCloudUserProfile(cred.user);
+
+      // 3. Background notify server
+      safeFetchJson('/api/auth/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: cleanEmail,
-          password: pass,
-        }),
-      });
-
-      if (serverRes.ok && serverRes.data?.success && serverRes.data?.user) {
-        loggedInUser = serverRes.data.user;
-      } else if (serverRes.data?.error) {
-        serverErrorMessage = serverRes.data.error;
+        body: JSON.stringify({ email: cleanEmail, password: pass }),
+      }).catch(() => {});
+    } catch (fbErr: any) {
+      if (
+        fbErr.code === 'auth/user-not-found' || 
+        fbErr.code === 'auth/invalid-credential' || 
+        fbErr.code === 'auth/wrong-password' ||
+        fbErr.code === 'auth/invalid-login-credentials'
+      ) {
+        throw new Error('Invalid email or password. Please verify your credentials or sign up.');
       }
-    } catch (e: any) {
-      serverErrorMessage = e?.message || '';
-    }
-
-    // 3. If Firebase succeeded, fetch or construct profile
-    if (fbUser && !loggedInUser) {
-      try {
-        const snap = await getDoc(docRefForUser(fbUser.uid));
-        if (snap.exists()) {
-          loggedInUser = snap.data() as UserProfile;
-        } else {
-          loggedInUser = {
-            uid: fbUser.uid,
-            email: cleanEmail,
-            displayName: fbUser.displayName || cleanEmail.split('@')[0] || 'Student Candidate',
-            classLevel: 9,
-            createdAt: Date.now(),
-            testsAttempted: 0,
-            totalQuestionsAnswered: 0,
-            totalCorrect: 0,
-            totalWrong: 0,
-            accuracy: 0,
-            history: [],
-          };
-          await setDoc(docRefForUser(fbUser.uid), loggedInUser, { merge: true });
-        }
-      } catch {
-        // ignore
+      if (fbErr.code === 'auth/invalid-email') {
+        throw new Error('Please enter a valid email address.');
       }
-    }
-
-    // 4. Fallback: Local registered users cache
-    if (!loggedInUser) {
-      try {
-        const regRaw = localStorage.getItem(REGISTERED_USERS_KEY);
-        if (regRaw) {
-          const regList = JSON.parse(regRaw);
-          if (Array.isArray(regList)) {
-            const found = regList.find((u: any) => u.email === cleanEmail);
-            if (found && (!found.passHash || found.passHash === btoa(pass))) {
-              loggedInUser = {
-                uid: found.uid || `usr_${Date.now()}`,
-                email: cleanEmail,
-                displayName: found.displayName || cleanEmail.split('@')[0] || 'Student Candidate',
-                classLevel: found.classLevel || 9,
-                createdAt: Date.now(),
-                testsAttempted: 0,
-                totalQuestionsAnswered: 0,
-                totalCorrect: 0,
-                totalWrong: 0,
-                accuracy: 0,
-                history: [],
-              };
-            }
-          }
-        }
-      } catch {
-        // ignore
+      if (fbErr.code === 'auth/too-many-requests') {
+        throw new Error('Too many failed attempts. Please try again in a few minutes or reset your password.');
       }
+      throw new Error(fbErr.message || 'Failed to sign in. Please check your credentials.');
     }
-
-    if (!loggedInUser) {
-      if (serverErrorMessage && serverErrorMessage.toLowerCase().includes('password')) {
-        throw new Error('Invalid password. Please check your credentials.');
-      }
-      throw new Error('No registered account found with this email. Please sign up before signing in.');
-    }
-
-    saveProfileCache(loggedInUser);
   };
 
-  // Forgot password via Server & Firebase
+  // Send Password Reset Email via Firebase Authentication
   const resetPassword = async (email: string) => {
     const cleanEmail = email.trim().toLowerCase();
     if (!cleanEmail) {
       throw new Error('Please enter your registered email address.');
     }
 
-    // Call server to verify account exists
-    const res = await safeFetchJson<{ success?: boolean; error?: string }>('/api/auth/reset-password', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: cleanEmail }),
-    });
-
-    if (!res.ok || !res.data?.success) {
-      throw new Error(res.data?.error || res.error || 'No registered account found with this email address.');
-    }
-
     try {
       await sendPasswordResetEmail(auth, cleanEmail);
-    } catch {
-      // Ignore if Firebase operation is in local mode
+    } catch (err: any) {
+      if (err.code === 'auth/user-not-found') {
+        throw new Error('No registered account found with this email address.');
+      }
+      throw new Error(err.message || 'Failed to send password reset email.');
     }
   };
 
-  // Sign out cleanly
+  // Sign out cleanly from Firebase Auth and clear memory state
   const signOut = async () => {
     try {
       await firebaseSignOut(auth);
     } catch (e) {
-      console.warn('Sign out error:', e);
+      console.warn('Firebase Auth sign out notice:', e);
     }
-    saveProfileCache(null);
     setCurrentUser(null);
     setUserProfile(null);
     setLoading(false);
   };
 
-  // Record test attempt into user profile and sync live with server
-  const recordTestAttempt = async (historyItem: UserTestHistory) => {
+  // Record a completed test result directly to Cloud Firestore
+  const recordTestAttempt = async (historyItem: UserTestHistory): Promise<UserProfile> => {
     const current = userProfile;
-    const uid = current?.uid || currentUser?.uid || `usr_${Date.now()}`;
-    const email = current?.email || currentUser?.email || '';
-    const displayName = current?.displayName || currentUser?.displayName || localStorage.getItem('maths_student_name') || 'Student Candidate';
+    const uid = currentUser?.uid || current?.uid || `usr_${Date.now()}`;
+    const email = currentUser?.email || current?.email || '';
+    const displayName = current?.displayName || currentUser?.displayName || 'Student Candidate';
 
-    // 1. Immediately calculate local updated stats for zero-lag UI responsiveness
+    // 1. Save directly into Firestore 'test_results' and 'leaderboard'
+    try {
+      await FirestoreLeaderboardService.saveTestResultRecord({
+        id: historyItem.id,
+        studentName: displayName,
+        classLevel: historyItem.classLevel,
+        chapterId: historyItem.chapterId,
+        chapterName: historyItem.chapterName,
+        mode: 'practice',
+        track: historyItem.track,
+        correctCount: historyItem.correctCount,
+        totalQuestions: historyItem.totalQuestions,
+        scorePercentage: historyItem.scorePercentage,
+        timeSpentSeconds: historyItem.timeSpentSeconds,
+        formattedTime: historyItem.formattedTime,
+        timestamp: historyItem.timestamp,
+        formattedDate: historyItem.formattedDate,
+      }, uid);
+    } catch (e) {
+      console.error('Error recording test result to Firestore test_results:', e);
+    }
+
+    // 2. Fetch or calculate updated aggregate history from Firestore
     const baseHistory = Array.isArray(current?.history) ? current.history : [];
     const filteredHistory = baseHistory.filter((h) => h.id !== historyItem.id);
     const updatedHistory = [historyItem, ...filteredHistory].slice(0, 100);
@@ -536,7 +383,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const totalW = Math.max(0, totalQ - totalC);
     const accPct = totalQ > 0 ? Math.round((totalC / totalQ) * 100) : 0;
 
-    const locallyUpdatedProfile: UserProfile = {
+    const updatedProfile: UserProfile = {
       uid,
       email,
       displayName,
@@ -550,100 +397,61 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       history: updatedHistory,
     };
 
-    saveProfileCache(locallyUpdatedProfile);
-
-    // 2. Push live sync to server database
-    let serverUpdatedProfile: UserProfile = locallyUpdatedProfile;
-    try {
-      const syncRes = await safeFetchJson<{ success?: boolean; user?: UserProfile }>('/api/auth/sync', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          uid,
-          email,
-          displayName,
-          classLevel: historyItem.classLevel || current?.classLevel || 9,
-          historyItem,
-        }),
-      });
-
-      if (syncRes.ok && syncRes.data?.success && syncRes.data?.user) {
-        serverUpdatedProfile = {
-          ...syncRes.data.user,
-          history: Array.isArray(syncRes.data.user.history) ? syncRes.data.user.history : [],
-        };
-        saveProfileCache(serverUpdatedProfile);
-      }
-    } catch (syncErr) {
-      console.warn('Server live sync background notice:', syncErr);
-    }
-
-    // 3. Dual-sync to Firestore if available
+    // 3. Update Cloud Firestore 'users/{uid}' document
     if (currentUser?.uid) {
       try {
         const userRef = docRefForUser(currentUser.uid);
-        await setDoc(userRef, serverUpdatedProfile, { merge: true });
+        await setDoc(userRef, {
+          testsAttempted: updatedProfile.testsAttempted,
+          totalQuestionsAnswered: updatedProfile.totalQuestionsAnswered,
+          totalCorrect: updatedProfile.totalCorrect,
+          totalWrong: updatedProfile.totalWrong,
+          accuracy: updatedProfile.accuracy,
+          classLevel: updatedProfile.classLevel,
+          updatedAt: serverTimestamp(),
+          history: updatedHistory,
+        }, { merge: true });
       } catch (err) {
-        console.warn('Firestore live sync notice:', err);
+        console.error('Firestore user profile update error:', err);
       }
     }
 
-    return serverUpdatedProfile;
-  };
-
-  const updateUserClass = async (lvl: ClassLevel) => {
-    let current = userProfile;
-    if (!current) {
-      try {
-        const cached = localStorage.getItem(LOCAL_USER_KEY);
-        if (cached) current = JSON.parse(cached);
-      } catch {
-        // ignore
-      }
-    }
-    const uid = current?.uid || (currentUser ? currentUser.uid : 'guest_student');
-    const email = current?.email || currentUser?.email || 'Local Candidate Session';
-    const displayName = current?.displayName || currentUser?.displayName || localStorage.getItem('maths_student_name') || 'Student Candidate';
-
-    const updated: UserProfile = {
-      ...(current || {
+    // 4. Background broadcast to server
+    safeFetchJson('/api/auth/sync', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
         uid,
         email,
         displayName,
-        createdAt: Date.now(),
-        testsAttempted: 0,
-        totalQuestionsAnswered: 0,
-        totalCorrect: 0,
-        totalWrong: 0,
-        accuracy: 0,
-        history: [],
+        classLevel: historyItem.classLevel || current?.classLevel || 9,
+        historyItem,
       }),
-      classLevel: lvl,
-    };
+    }).catch(() => {});
 
-    saveProfileCache(updated);
-    setUserProfile(updated);
+    setUserProfile(updatedProfile);
+    return updatedProfile;
+  };
 
-    try {
-      await safeFetchJson('/api/auth/sync', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          uid,
-          email,
-          classLevel: lvl,
-        }),
+  // Update student class in Cloud Firestore
+  const updateUserClass = async (lvl: ClassLevel) => {
+    if (!currentUser) return;
+    
+    if (userProfile) {
+      setUserProfile({
+        ...userProfile,
+        classLevel: lvl,
       });
-    } catch {
-      // ignore
     }
 
-    if (currentUser?.uid) {
-      try {
-        await updateDoc(docRefForUser(currentUser.uid), { classLevel: lvl });
-      } catch {
-        // ignore
-      }
+    try {
+      const userRef = docRefForUser(currentUser.uid);
+      await updateDoc(userRef, {
+        classLevel: lvl,
+        updatedAt: serverTimestamp(),
+      });
+    } catch (err) {
+      console.error('Failed to update class in Firestore:', err);
     }
   };
 
@@ -675,4 +483,3 @@ export const useAuth = () => {
   }
   return context;
 };
-

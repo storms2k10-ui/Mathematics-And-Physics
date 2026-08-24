@@ -186,51 +186,22 @@ export class MathService {
   }
 
   // =========================================================================
-  // 🏆 ACADEMIC RANKING ENGINE (SERVER SYNC + CLIENT STORAGE + DEDUPLICATION)
+  // 🏆 CLOUD ACADEMIC RANKING ENGINE (FIRESTORE CLOUD DATABASE)
   // =========================================================================
 
   /**
-   * Saves a new Academic Ranking entry with chapter deduplication:
-   * If a candidate re-attempts the same chapter, it only updates if accuracy improves.
+   * Saves a new Academic Ranking entry directly into Cloud Firestore:
+   * Enforces chapter deduplication per student per class per track in Firestore.
    */
-  static async saveLeaderboardEntry(entry: LeaderboardEntry): Promise<LeaderboardEntry> {
-    // 1. Optimistic Local Save with Chapter Deduplication
+  static async saveLeaderboardEntry(entry: LeaderboardEntry, uid?: string): Promise<LeaderboardEntry> {
+    // 1. Authoritative Cloud Firestore Save
     try {
-      const existing = this.getLeaderboardEntries();
-      const existingIdx = existing.findIndex(
-        (e) =>
-          e.studentName.toLowerCase() === entry.studentName.toLowerCase() &&
-          e.chapterId === entry.chapterId &&
-          Number(e.classLevel) === Number(entry.classLevel) &&
-          (e.track || 'Elementary Mathematics') === (entry.track || 'Elementary Mathematics')
-      );
-
-      let updated = [...existing];
-      if (existingIdx !== -1) {
-        const prev = existing[existingIdx];
-        if (
-          entry.scorePercentage > prev.scorePercentage ||
-          (entry.scorePercentage === prev.scorePercentage && entry.timeSpentSeconds < prev.timeSpentSeconds)
-        ) {
-          updated[existingIdx] = { ...entry, id: prev.id || entry.id };
-        }
-      } else {
-        updated = [entry, ...existing.filter((e) => e.id !== entry.id)];
-      }
-
-      localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(updated));
-    } catch {
-      // ignore
-    }
-
-    // 2. Persistent Firestore Cloud Save
-    try {
-      await FirestoreLeaderboardService.saveEntry(entry);
+      await FirestoreLeaderboardService.saveEntry(entry, uid);
     } catch (e) {
-      console.warn('Firestore cloud save notice:', e);
+      console.error('Firestore cloud save error in saveLeaderboardEntry:', e);
     }
 
-    // 3. Server API Sync (Cross-user server broadcast)
+    // 2. Server API Sync (Cross-user server broadcast)
     try {
       const response = await safeFetchJson<{ entry?: LeaderboardEntry }>('/api/leaderboard', {
         method: 'POST',
@@ -241,19 +212,17 @@ export class MathService {
       });
 
       if (response.ok && response.data?.entry) {
-        // Trigger a background refresh of the full global rankings
-        this.fetchServerLeaderboard('all').catch(() => {});
         return response.data.entry;
       }
     } catch (e) {
-      console.warn('Server sync failed or offline, kept in local cache:', e);
+      console.warn('Server sync notice:', e);
     }
 
     return entry;
   }
 
   /**
-   * Fetches latest global leaderboard entries from server with local fallback.
+   * Fetches latest global leaderboard entries from Firestore cloud database.
    */
   static async fetchServerLeaderboard(
     classLevel?: ClassLevel | 'all',
@@ -261,114 +230,36 @@ export class MathService {
     track?: string | 'all'
   ): Promise<LeaderboardEntry[]> {
     try {
-      const params = new URLSearchParams();
-      if (classLevel && classLevel !== 'all') params.append('classLevel', String(classLevel));
-      if (mode && mode !== 'all') params.append('mode', mode);
-      if (track && track !== 'all') params.append('track', track);
-
-      const res = await safeFetchJson<{ entries?: LeaderboardEntry[] }>(`/api/leaderboard?${params.toString()}`);
-      if (res.ok && res.data?.entries && Array.isArray(res.data.entries)) {
-        const entries = res.data.entries;
-        // Intelligently merge into local cache
-        try {
-          if (!classLevel || classLevel === 'all') {
-            localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(entries));
-          } else {
-            const existing = this.getLeaderboardEntries();
-            const otherClassEntries = existing.filter((e) => e.classLevel !== Number(classLevel));
-            const merged = [...entries, ...otherClassEntries];
-            localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(merged));
-          }
-        } catch {
-          // ignore
-        }
-        return entries;
-      }
+      return await FirestoreLeaderboardService.fetchRanked(classLevel, mode || 'practice', track);
     } catch (err) {
-      console.warn('Failed to fetch leaderboard from server, using local fallback:', err);
-    }
-    return this.getRankedLeaderboard(classLevel, mode, track);
-  }
-
-  /**
-   * Retrieves raw leaderboard entries, purging any legacy mock seeds.
-   */
-  static getLeaderboardEntries(): LeaderboardEntry[] {
-    try {
-      const data = localStorage.getItem(LEADERBOARD_STORAGE_KEY);
-      if (!data) {
-        return [];
-      }
-      const parsed = JSON.parse(data) as LeaderboardEntry[];
-      if (Array.isArray(parsed)) {
-        // Strip out any legacy sample seeds
-        const clean = parsed.filter((e) => e && e.id && !e.id.startsWith('lead-seed-'));
-        if (clean.length !== parsed.length) {
-          localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(clean));
-        }
-        return clean;
-      }
-      return [];
-    } catch (e) {
-      console.error('Failed to parse leaderboard entries', e);
+      console.error('Failed to fetch leaderboard from Firestore:', err);
       return [];
     }
   }
 
   /**
-   * Gets ranked leaderboard for a given class (or all classes).
-   * Primary sort: Score / Correct Answers (Descending)
-   * Secondary sort (Tie-breaker): Time Spent in Seconds (Ascending - fastest is ranked higher)
-   * Tertiary sort: Most recent timestamp
+   * Retrieves raw leaderboard entries from Firestore
    */
-  static getRankedLeaderboard(
+  static async getLeaderboardEntries(): Promise<LeaderboardEntry[]> {
+    return await FirestoreLeaderboardService.fetchRanked('all', 'practice');
+  }
+
+  /**
+   * Gets ranked leaderboard for a given class (or all classes) from Cloud Firestore
+   */
+  static async getRankedLeaderboard(
     classLevel?: ClassLevel | 'all',
-    _modeFilter?: 'all' | 'practice' | 'exam',
+    modeFilter?: 'all' | 'practice' | 'exam',
     track?: string | 'all'
-  ): LeaderboardEntry[] {
-    const raw = this.getLeaderboardEntries();
-    
-    // Filter to only practice mode entries
-    let filtered = raw.filter((item) => item.mode === 'practice' || !item.mode);
-
-    // Filter by class
-    if (classLevel && classLevel !== 'all') {
-      filtered = filtered.filter((item) => item.classLevel === Number(classLevel));
-    }
-
-    // Filter by track
-    if (track && track !== 'all') {
-      filtered = filtered.filter((item) => {
-        const itemTrack = item.track || 'Elementary Mathematics';
-        return itemTrack === track;
-      });
-    }
-
-    // Sort strictly by:
-    // 1. scorePercentage (highest first)
-    // 2. correctCount (highest first)
-    // 3. timeSpentSeconds (lowest first = faster)
-    // 4. timestamp (newest first)
-    return [...filtered].sort((a, b) => {
-      if (b.scorePercentage !== a.scorePercentage) {
-        return b.scorePercentage - a.scorePercentage;
-      }
-      if (b.correctCount !== a.correctCount) {
-        return b.correctCount - a.correctCount;
-      }
-      if (a.timeSpentSeconds !== b.timeSpentSeconds) {
-        return a.timeSpentSeconds - b.timeSpentSeconds;
-      }
-      return b.timestamp - a.timestamp;
-    });
+  ): Promise<LeaderboardEntry[]> {
+    return await FirestoreLeaderboardService.fetchRanked(classLevel, modeFilter || 'practice', track);
   }
 
   /**
-   * Clears the leaderboard and restores default seeds on server and client
+   * Clears the leaderboard on server
    */
   static async resetLeaderboard(): Promise<void> {
     try {
-      localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(DEFAULT_SEED_LEADERBOARD));
       await fetch('/api/leaderboard/reset', { method: 'POST' }).catch(() => {});
     } catch (e) {
       console.error('Failed to reset leaderboard', e);
@@ -376,13 +267,9 @@ export class MathService {
   }
 
   /**
-   * Completely clears all custom & seed entries
+   * Clears all custom entries
    */
   static clearLeaderboard(): void {
-    try {
-      localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify([]));
-    } catch (e) {
-      console.error('Failed to clear leaderboard', e);
-    }
+    // No-op for cloud data
   }
 }
