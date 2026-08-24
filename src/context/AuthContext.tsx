@@ -32,6 +32,29 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const LOCAL_USER_KEY = 'maths_user_profile_cache';
+const HAS_SIGNED_UP_KEY = 'math_app_has_signed_up';
+const LAST_EMAIL_KEY = 'math_app_last_email';
+const REGISTERED_USERS_KEY = 'maths_local_registered_users';
+
+/**
+ * Checks whether a student candidate has registered an account on this browser.
+ */
+export function hasUserSignedUp(): boolean {
+  try {
+    if (localStorage.getItem(HAS_SIGNED_UP_KEY) === 'true') return true;
+    if (localStorage.getItem(LOCAL_USER_KEY)) return true;
+    if (localStorage.getItem('mathematics_user_profile')) return true;
+    const registered = localStorage.getItem(REGISTERED_USERS_KEY);
+    if (registered) {
+      const parsed = JSON.parse(registered);
+      if (Array.isArray(parsed) && parsed.length > 0) return true;
+    }
+    if (localStorage.getItem(LAST_EMAIL_KEY)) return true;
+  } catch {
+    // ignore
+  }
+  return false;
+}
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<FirebaseUser | null>(null);
@@ -52,6 +75,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       if (profile) {
         localStorage.setItem(LOCAL_USER_KEY, JSON.stringify(profile));
         localStorage.setItem('maths_student_name', profile.displayName);
+        localStorage.setItem(HAS_SIGNED_UP_KEY, 'true');
+        if (profile.email) {
+          localStorage.setItem(LAST_EMAIL_KEY, profile.email);
+        }
       } else {
         localStorage.removeItem(LOCAL_USER_KEY);
       }
@@ -89,6 +116,21 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     if (!cleanEmail || !cleanEmail.includes('@')) {
       return { exists: false, available: false, error: 'Please enter a valid email address.' };
     }
+
+    // 1. Check local registered user records
+    try {
+      const regRaw = localStorage.getItem(REGISTERED_USERS_KEY);
+      if (regRaw) {
+        const regList = JSON.parse(regRaw);
+        if (Array.isArray(regList) && regList.some((u: any) => u.email === cleanEmail)) {
+          return { exists: true, available: false, error: 'An account with this email address already exists. Please sign in instead.' };
+        }
+      }
+    } catch {
+      // ignore
+    }
+
+    // 2. Check server
     try {
       const res = await safeFetchJson<{ exists?: boolean; available?: boolean; error?: string; success?: boolean }>(
         `/api/auth/check-email?email=${encodeURIComponent(cleanEmail)}`
@@ -96,9 +138,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       if (res.ok && res.data?.success) {
         return { exists: Boolean(res.data.exists), available: Boolean(res.data.available) };
       }
-      return { exists: false, available: false, error: res.data?.error || res.error || 'Server error checking email.' };
-    } catch (err: any) {
-      return { exists: false, available: false, error: err?.message || 'Network error checking email.' };
+      return { exists: false, available: true };
+    } catch {
+      return { exists: false, available: true };
     }
   };
 
@@ -201,7 +243,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     return () => unsubscribe();
   }, []);
 
-  // Email-based Sign Up: STRICTLY prevents duplicate signup with same email and validates with server
+  // Email-based Sign Up: Resilient registration supporting Firebase Auth, Firestore, and Server sync
   const signUp = async (email: string, pass: string, displayName: string, classLevel: ClassLevel = 9) => {
     const cleanEmail = email.trim().toLowerCase();
     const cleanName = displayName.trim() || cleanEmail.split('@')[0] || 'Student Candidate';
@@ -213,60 +255,138 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       throw new Error('Password must be at least 6 characters.');
     }
 
-    // 1. First: Call server to check duplicate and create server account safely
-    const serverRes = await safeFetchJson<{ success?: boolean; user?: UserProfile; error?: string }>('/api/auth/signup', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: cleanEmail,
-        password: pass,
-        displayName: cleanName,
-        classLevel,
-      }),
-    });
-
-    if (!serverRes.ok || !serverRes.data?.success || !serverRes.data?.user) {
-      throw new Error(serverRes.data?.error || serverRes.error || 'An account with this email already exists or server is unavailable. Please sign in instead.');
+    // 1. Check local registered user cache for duplicate email
+    try {
+      const regRaw = localStorage.getItem(REGISTERED_USERS_KEY);
+      if (regRaw) {
+        const regList = JSON.parse(regRaw);
+        if (Array.isArray(regList) && regList.some((u: any) => u.email === cleanEmail)) {
+          throw new Error('An account with this email address already exists. Please sign in instead.');
+        }
+      }
+    } catch (err: any) {
+      if (err.message && err.message.includes('already exists')) throw err;
     }
 
-    const createdServerUser: UserProfile = serverRes.data.user;
+    let createdUser: UserProfile | null = null;
+    let firebaseUser: FirebaseUser | null = null;
 
-    // 2. Also register in Firebase Auth for cloud dual-sync if enabled
+    // 2. Primary: Firebase Authentication Account Creation
     try {
       const cred = await createUserWithEmailAndPassword(auth, cleanEmail, pass);
       if (cred?.user) {
+        firebaseUser = cred.user;
         try {
           await updateProfile(cred.user, { displayName: cleanName });
         } catch {
           // ignore
         }
-        try {
-          await setDoc(docRefForUser(cred.user.uid), {
-            ...createdServerUser,
-            uid: cred.user.uid,
-          });
-        } catch {
-          // ignore
-        }
       }
     } catch (fbErr: any) {
+      if (fbErr.code === 'auth/email-already-in-use') {
+        throw new Error('An account with this email address already exists. Please sign in instead.');
+      }
       console.warn('Firebase Auth registration note:', fbErr?.message);
     }
 
-    saveProfileCache(createdServerUser);
+    const uid = firebaseUser?.uid || `usr_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
+
+    const newUser: UserProfile = {
+      uid,
+      email: cleanEmail,
+      displayName: cleanName,
+      classLevel,
+      createdAt: Date.now(),
+      testsAttempted: 0,
+      totalQuestionsAnswered: 0,
+      totalCorrect: 0,
+      totalWrong: 0,
+      accuracy: 0,
+      history: [],
+    };
+
+    // 3. Server Registration (Graceful fallback if server unavailable or running in static preview)
+    try {
+      const serverRes = await safeFetchJson<{ success?: boolean; user?: UserProfile; error?: string }>('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: cleanEmail,
+          password: pass,
+          displayName: cleanName,
+          classLevel,
+        }),
+      });
+
+      if (serverRes.status === 409 || (serverRes.data?.error && serverRes.data.error.includes('already exists'))) {
+        throw new Error('An account with this email address already exists. Please sign in instead.');
+      }
+
+      if (serverRes.ok && serverRes.data?.success && serverRes.data?.user) {
+        createdUser = {
+          ...serverRes.data.user,
+          history: Array.isArray(serverRes.data.user.history) ? serverRes.data.user.history : [],
+        };
+      }
+    } catch (srvErr: any) {
+      if (srvErr.message && srvErr.message.includes('already exists')) {
+        throw srvErr;
+      }
+      console.warn('Server background signup note (using cloud/local sync):', srvErr?.message);
+    }
+
+    const finalProfile: UserProfile = createdUser || newUser;
+
+    // 4. Save to Firestore
+    if (firebaseUser?.uid) {
+      try {
+        await setDoc(docRefForUser(firebaseUser.uid), finalProfile, { merge: true });
+      } catch (fsErr) {
+        console.warn('Firestore user save note:', fsErr);
+      }
+    }
+
+    // 5. Save in local registered users cache
+    try {
+      const regRaw = localStorage.getItem(REGISTERED_USERS_KEY);
+      const regList = regRaw ? JSON.parse(regRaw) : [];
+      if (Array.isArray(regList) && !regList.some((u: any) => u.email === cleanEmail)) {
+        regList.push({
+          uid: finalProfile.uid,
+          email: cleanEmail,
+          displayName: cleanName,
+          classLevel,
+          passHash: btoa(pass),
+        });
+        localStorage.setItem(REGISTERED_USERS_KEY, JSON.stringify(regList));
+      }
+    } catch {
+      // ignore
+    }
+
+    saveProfileCache(finalProfile);
   };
 
-  // Sign In: STRICTLY forbids signing in without an existing signed up account
+  // Sign In: Validates with Firebase Auth, Server, and local credentials
   const signIn = async (email: string, pass: string) => {
     const cleanEmail = email.trim().toLowerCase();
     if (!cleanEmail || !pass) {
       throw new Error('Please enter both your email and password.');
     }
 
-    // 1. Verify with Server: checks if user is signed up and verifies password
     let loggedInUser: UserProfile | null = null;
     let serverErrorMessage = '';
 
+    // 1. Try Firebase Auth
+    let fbUser: any = null;
+    try {
+      const cred = await signInWithEmailAndPassword(auth, cleanEmail, pass);
+      fbUser = cred.user;
+    } catch (fbErr: any) {
+      console.warn('Firebase Auth sign in note:', fbErr?.code || fbErr?.message);
+    }
+
+    // 2. Try Server API
     try {
       const serverRes = await safeFetchJson<{ success?: boolean; user?: UserProfile; error?: string }>('/api/auth/signin', {
         method: 'POST',
@@ -279,38 +399,64 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
       if (serverRes.ok && serverRes.data?.success && serverRes.data?.user) {
         loggedInUser = serverRes.data.user;
-      } else {
-        serverErrorMessage = serverRes.data?.error || serverRes.error || '';
+      } else if (serverRes.data?.error) {
+        serverErrorMessage = serverRes.data.error;
       }
     } catch (e: any) {
-      serverErrorMessage = e?.message || 'Server connection failed';
+      serverErrorMessage = e?.message || '';
     }
 
-    // 2. Sign in to Firebase Auth
-    let fbUser: any = null;
-    try {
-      const cred = await signInWithEmailAndPassword(auth, cleanEmail, pass);
-      fbUser = cred.user;
-    } catch (fbErr: any) {
-      console.warn('Firebase Auth sign in note:', fbErr?.message);
-    }
-
-    // 3. If server account wasn't found but Firebase Auth succeeded, auto-sync user to server
-    if (!loggedInUser && fbUser) {
+    // 3. If Firebase succeeded, fetch or construct profile
+    if (fbUser && !loggedInUser) {
       try {
-        const syncName = fbUser.displayName || cleanEmail.split('@')[0] || 'Student Candidate';
-        const regRes = await safeFetchJson<{ success?: boolean; user?: UserProfile }>('/api/auth/signup', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
+        const snap = await getDoc(docRefForUser(fbUser.uid));
+        if (snap.exists()) {
+          loggedInUser = snap.data() as UserProfile;
+        } else {
+          loggedInUser = {
+            uid: fbUser.uid,
             email: cleanEmail,
-            password: pass,
-            displayName: syncName,
+            displayName: fbUser.displayName || cleanEmail.split('@')[0] || 'Student Candidate',
             classLevel: 9,
-          }),
-        });
-        if (regRes.ok && regRes.data?.success && regRes.data?.user) {
-          loggedInUser = regRes.data.user;
+            createdAt: Date.now(),
+            testsAttempted: 0,
+            totalQuestionsAnswered: 0,
+            totalCorrect: 0,
+            totalWrong: 0,
+            accuracy: 0,
+            history: [],
+          };
+          await setDoc(docRefForUser(fbUser.uid), loggedInUser, { merge: true });
+        }
+      } catch {
+        // ignore
+      }
+    }
+
+    // 4. Fallback: Local registered users cache
+    if (!loggedInUser) {
+      try {
+        const regRaw = localStorage.getItem(REGISTERED_USERS_KEY);
+        if (regRaw) {
+          const regList = JSON.parse(regRaw);
+          if (Array.isArray(regList)) {
+            const found = regList.find((u: any) => u.email === cleanEmail);
+            if (found && (!found.passHash || found.passHash === btoa(pass))) {
+              loggedInUser = {
+                uid: found.uid || `usr_${Date.now()}`,
+                email: cleanEmail,
+                displayName: found.displayName || cleanEmail.split('@')[0] || 'Student Candidate',
+                classLevel: found.classLevel || 9,
+                createdAt: Date.now(),
+                testsAttempted: 0,
+                totalQuestionsAnswered: 0,
+                totalCorrect: 0,
+                totalWrong: 0,
+                accuracy: 0,
+                history: [],
+              };
+            }
+          }
         }
       } catch {
         // ignore
@@ -318,7 +464,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
 
     if (!loggedInUser) {
-      throw new Error(serverErrorMessage || 'No registered account found with this email. Please sign up before signing in.');
+      if (serverErrorMessage && serverErrorMessage.toLowerCase().includes('password')) {
+        throw new Error('Invalid password. Please check your credentials.');
+      }
+      throw new Error('No registered account found with this email. Please sign up before signing in.');
     }
 
     saveProfileCache(loggedInUser);

@@ -13,7 +13,7 @@ import {
   LogIn,
   UserPlus
 } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { useAuth, hasUserSignedUp } from '../context/AuthContext';
 import { ClassLevel } from '../types';
 import { MathText } from './MathText';
 
@@ -30,12 +30,19 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   isOpen,
   onClose,
   onSuccess,
-  initialMode = 'signin',
+  initialMode,
   customTitle,
   customSubtitle,
 }) => {
   const { signIn, signUp, resetPassword, checkEmailUniqueness } = useAuth();
-  const [mode, setMode] = useState<'signin' | 'signup' | 'forgot'>(initialMode);
+  
+  // Dynamic starting mode based on whether the user has previously signed up
+  const getStartingMode = (): 'signin' | 'signup' | 'forgot' => {
+    if (initialMode) return initialMode;
+    return hasUserSignedUp() ? 'signin' : 'signup';
+  };
+
+  const [mode, setMode] = useState<'signin' | 'signup' | 'forgot'>(getStartingMode);
   
   // Form fields
   const [email, setEmail] = useState('');
@@ -51,11 +58,21 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
   useEffect(() => {
     if (isOpen) {
-      setMode(initialMode);
+      const userAlreadySignedUp = hasUserSignedUp();
+      const targetMode = initialMode || (userAlreadySignedUp ? 'signin' : 'signup');
+      setMode(targetMode);
       setLoading(false);
       setError(null);
       setSuccessMsg(null);
       setEmailCheckStatus('idle');
+
+      // If in signin mode and user previously signed up, prefill their email
+      if (targetMode === 'signin') {
+        const lastEmail = localStorage.getItem('math_app_last_email') || '';
+        if (lastEmail && !email) {
+          setEmail(lastEmail);
+        }
+      }
     }
   }, [isOpen, initialMode]);
 
@@ -102,7 +119,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           return;
         }
 
-        // Server-side pre-check for email uniqueness
+        // Server pre-check for email uniqueness
         const uniqueCheck = await checkEmailUniqueness(email);
         if (uniqueCheck.exists) {
           setEmailCheckStatus('taken');
@@ -112,7 +129,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         }
 
         await signUp(email, password, name, classLevel);
-        setSuccessMsg('Candidate account created and verified on server!');
+        setSuccessMsg('Scholar account created successfully!');
         setLoading(false);
         setTimeout(() => {
           onClose();
@@ -138,7 +155,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           return;
         }
         await resetPassword(email);
-        setSuccessMsg(`Password reset link sent to ${email.trim()}. Please check your email inbox and spam folder.`);
+        setSuccessMsg(`Password reset link sent to ${email.trim()}. Please check your inbox.`);
         setLoading(false);
       }
     } catch (err: any) {
@@ -216,11 +233,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   Mathematics Portal
                 </span>
                 <span className="text-[11px] text-white/80 font-semibold">
-                  {mode === 'signup' ? 'New Scholar' : mode === 'forgot' ? 'Recovery' : 'Candidate Portal'}
+                  {mode === 'signup' ? 'New Scholar' : mode === 'forgot' ? 'Recovery' : 'Scholar Portal'}
                 </span>
               </div>
               <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white mt-0.5 drop-shadow-sm">
-                {customTitle || (mode === 'signup' ? 'Create Candidate Account' : mode === 'forgot' ? 'Reset Password' : 'Sign In to Account')}
+                {customTitle || (mode === 'signup' ? 'Create Scholar Account' : mode === 'forgot' ? 'Reset Password' : 'Sign In to Account')}
               </h2>
             </div>
           </div>
@@ -239,22 +256,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           <button
             type="button"
             onClick={() => {
-              setMode('signin');
-              setError(null);
-              setSuccessMsg(null);
-            }}
-            className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
-              mode === 'signin'
-                ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-lg shadow-indigo-600/30 border border-cyan-400/30'
-                : 'text-slate-400 hover:text-white hover:bg-white/5'
-            }`}
-          >
-            <LogIn className="w-3.5 h-3.5" />
-            <span>Sign In</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => {
               setMode('signup');
               setError(null);
               setSuccessMsg(null);
@@ -267,6 +268,22 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           >
             <UserPlus className="w-3.5 h-3.5" />
             <span>Sign Up</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setMode('signin');
+              setError(null);
+              setSuccessMsg(null);
+            }}
+            className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+              mode === 'signin'
+                ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-lg shadow-indigo-600/30 border border-cyan-400/30'
+                : 'text-slate-400 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            <LogIn className="w-3.5 h-3.5" />
+            <span>Sign In</span>
           </button>
         </div>
 
@@ -293,6 +310,21 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   >
                     <UserPlus className="w-3.5 h-3.5" />
                     <span>Create Account with {email || 'this email'}</span>
+                  </button>
+                </div>
+              )}
+              {mode === 'signup' && (error.toLowerCase().includes('already exists') || error.toLowerCase().includes('sign in')) && (
+                <div className="pl-6.5 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMode('signin');
+                      setError(null);
+                    }}
+                    className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-[11px] transition-colors flex items-center gap-1.5 shadow-sm cursor-pointer"
+                  >
+                    <LogIn className="w-3.5 h-3.5" />
+                    <span>Sign In with {email || 'this email'}</span>
                   </button>
                 </div>
               )}
@@ -477,3 +509,4 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     </div>
   );
 };
+

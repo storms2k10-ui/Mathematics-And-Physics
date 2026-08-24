@@ -1,6 +1,6 @@
 /**
  * Safe API request utility that handles HTML error pages, non-JSON responses,
- * and network failures gracefully without throwing "Unexpected token 'T'" errors.
+ * and network failures gracefully without throwing "Unexpected token" or raw edge NOT_FOUND errors.
  */
 
 export interface SafeFetchResult<T = any> {
@@ -23,7 +23,6 @@ export async function safeFetchJson<T = any>(
     let parseError: string | undefined;
 
     if (text && text.trim().length > 0) {
-      // If content-type is HTML or text starts with '<' or plain text error
       const trimmed = text.trim();
       if (
         (trimmed.startsWith('{') && trimmed.endsWith('}')) ||
@@ -35,7 +34,20 @@ export async function safeFetchJson<T = any>(
           parseError = 'Invalid JSON response from server';
         }
       } else {
-        parseError = trimmed.length < 120 ? trimmed : 'Non-JSON response received';
+        // If plain text or HTML error page was returned
+        if (
+          trimmed.includes('<!DOCTYPE') ||
+          trimmed.includes('<!doctype') ||
+          trimmed.includes('<html') ||
+          trimmed.includes('NOT_FOUND') ||
+          trimmed.includes('The page could not be found') ||
+          trimmed.includes('Cannot GET') ||
+          trimmed.includes('Cannot POST')
+        ) {
+          parseError = 'Server endpoint unavailable (offline mode active)';
+        } else {
+          parseError = trimmed.length < 100 ? trimmed : 'Non-JSON response received';
+        }
       }
     }
 
@@ -68,3 +80,4 @@ export async function safeFetchJson<T = any>(
     };
   }
 }
+

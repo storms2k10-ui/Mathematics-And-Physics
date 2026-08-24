@@ -177,8 +177,14 @@ export default function App() {
   };
 
   // Handler to select a class from subject dropdown or hero
-  const handleSelectClass = (lvl: ClassLevel) => {
+  const handleSelectClass = (
+    lvl: ClassLevel,
+    track?: 'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics'
+  ) => {
     setSelectedClass(lvl);
+    if (track) {
+      setActiveTrack(track);
+    }
     setActiveTab('classes');
     setCurrentView('class-page');
     window.scrollTo({ top: 0, behavior: 'smooth' });
