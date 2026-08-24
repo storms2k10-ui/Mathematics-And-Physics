@@ -13,6 +13,7 @@ import {
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { auth, db } from '../lib/firebase';
 import { UserProfile, UserTestHistory, ClassLevel } from '../types';
+import { safeFetchJson } from '../lib/apiHelper';
 
 interface AuthContextType {
   currentUser: FirebaseUser | null;
@@ -67,17 +68,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     if (!active) return null;
     try {
       const query = active.uid ? `uid=${encodeURIComponent(active.uid)}` : `email=${encodeURIComponent(active.email)}`;
-      const res = await fetch(`/api/auth/profile?${query}`);
-      if (res.ok) {
-        const data = await res.json();
-        if (data.success && data.user) {
-          const syncedUser: UserProfile = {
-            ...data.user,
-            history: Array.isArray(data.user.history) ? data.user.history : [],
-          };
-          saveProfileCache(syncedUser);
-          return syncedUser;
-        }
+      const res = await safeFetchJson<{ success?: boolean; user?: UserProfile }>(`/api/auth/profile?${query}`);
+      if (res.ok && res.data?.success && res.data?.user) {
+        const syncedUser: UserProfile = {
+          ...res.data.user,
+          history: Array.isArray(res.data.user.history) ? res.data.user.history : [],
+        };
+        saveProfileCache(syncedUser);
+        return syncedUser;
       }
     } catch (err) {
       console.warn('Server live sync notice:', err);
@@ -92,12 +90,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       return { exists: false, available: false, error: 'Please enter a valid email address.' };
     }
     try {
-      const res = await fetch(`/api/auth/check-email?email=${encodeURIComponent(cleanEmail)}`);
-      const data = await res.json();
-      if (res.ok && data.success) {
-        return { exists: Boolean(data.exists), available: Boolean(data.available) };
+      const res = await safeFetchJson<{ exists?: boolean; available?: boolean; error?: string; success?: boolean }>(
+        `/api/auth/check-email?email=${encodeURIComponent(cleanEmail)}`
+      );
+      if (res.ok && res.data?.success) {
+        return { exists: Boolean(res.data.exists), available: Boolean(res.data.available) };
       }
-      return { exists: false, available: false, error: data.error || 'Server error checking email.' };
+      return { exists: false, available: false, error: res.data?.error || res.error || 'Server error checking email.' };
     } catch (err: any) {
       return { exists: false, available: false, error: err?.message || 'Network error checking email.' };
     }
@@ -119,16 +118,15 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     try {
       // First try fetching live server user profile
       try {
-        const srvRes = await fetch(`/api/auth/profile?email=${encodeURIComponent(user.email || '')}&uid=${encodeURIComponent(user.uid)}`);
-        if (srvRes.ok) {
-          const srvData = await srvRes.json();
-          if (srvData.success && srvData.user) {
-            saveProfileCache({
-              ...srvData.user,
-              history: Array.isArray(srvData.user.history) ? srvData.user.history : [],
-            });
-            return;
-          }
+        const srvRes = await safeFetchJson<{ success?: boolean; user?: UserProfile }>(
+          `/api/auth/profile?email=${encodeURIComponent(user.email || '')}&uid=${encodeURIComponent(user.uid)}`
+        );
+        if (srvRes.ok && srvRes.data?.success && srvRes.data?.user) {
+          saveProfileCache({
+            ...srvRes.data.user,
+            history: Array.isArray(srvRes.data.user.history) ? srvRes.data.user.history : [],
+          });
+          return;
         }
       } catch {
         // Fallback to Firestore
@@ -181,14 +179,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           if (cached) {
             const parsed = JSON.parse(cached);
             setUserProfile(parsed);
-            // Verify and sync live with server
+            // Verify and sync live with server safely
             if (parsed.email || parsed.uid) {
               const query = parsed.uid ? `uid=${encodeURIComponent(parsed.uid)}` : `email=${encodeURIComponent(parsed.email)}`;
-              fetch(`/api/auth/profile?${query}`)
-                .then((r) => r.json())
-                .then((data) => {
-                  if (data.success && data.user) {
-                    saveProfileCache(data.user);
+              safeFetchJson<{ success?: boolean; user?: UserProfile }>(`/api/auth/profile?${query}`)
+                .then((res) => {
+                  if (res.ok && res.data?.success && res.data?.user) {
+                    saveProfileCache(res.data.user);
                   }
                 })
                 .catch(() => {});
@@ -216,8 +213,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       throw new Error('Password must be at least 6 characters.');
     }
 
-    // 1. First: Call server to check duplicate and create server account
-    const serverRes = await fetch('/api/auth/signup', {
+    // 1. First: Call server to check duplicate and create server account safely
+    const serverRes = await safeFetchJson<{ success?: boolean; user?: UserProfile; error?: string }>('/api/auth/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -228,12 +225,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }),
     });
 
-    const serverData = await serverRes.json();
-    if (!serverRes.ok || !serverData.success) {
-      throw new Error(serverData.error || 'An account with this email already exists. Please sign in instead.');
+    if (!serverRes.ok || !serverRes.data?.success || !serverRes.data?.user) {
+      throw new Error(serverRes.data?.error || serverRes.error || 'An account with this email already exists or server is unavailable. Please sign in instead.');
     }
 
-    const createdServerUser: UserProfile = serverData.user;
+    const createdServerUser: UserProfile = serverRes.data.user;
 
     // 2. Also register in Firebase Auth for cloud dual-sync if enabled
     try {
@@ -272,7 +268,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     let serverErrorMessage = '';
 
     try {
-      const serverRes = await fetch('/api/auth/signin', {
+      const serverRes = await safeFetchJson<{ success?: boolean; user?: UserProfile; error?: string }>('/api/auth/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -281,11 +277,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }),
       });
 
-      const serverData = await serverRes.json();
-      if (serverRes.ok && serverData.success && serverData.user) {
-        loggedInUser = serverData.user;
+      if (serverRes.ok && serverRes.data?.success && serverRes.data?.user) {
+        loggedInUser = serverRes.data.user;
       } else {
-        serverErrorMessage = serverData.error || '';
+        serverErrorMessage = serverRes.data?.error || serverRes.error || '';
       }
     } catch (e: any) {
       serverErrorMessage = e?.message || 'Server connection failed';
@@ -304,7 +299,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     if (!loggedInUser && fbUser) {
       try {
         const syncName = fbUser.displayName || cleanEmail.split('@')[0] || 'Student Candidate';
-        const regRes = await fetch('/api/auth/signup', {
+        const regRes = await safeFetchJson<{ success?: boolean; user?: UserProfile }>('/api/auth/signup', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -314,9 +309,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             classLevel: 9,
           }),
         });
-        const regData = await regRes.json();
-        if (regData.success && regData.user) {
-          loggedInUser = regData.user;
+        if (regRes.ok && regRes.data?.success && regRes.data?.user) {
+          loggedInUser = regRes.data.user;
         }
       } catch {
         // ignore
@@ -338,15 +332,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
 
     // Call server to verify account exists
-    const res = await fetch('/api/auth/reset-password', {
+    const res = await safeFetchJson<{ success?: boolean; error?: string }>('/api/auth/reset-password', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: cleanEmail }),
     });
 
-    const data = await res.json();
-    if (!res.ok || !data.success) {
-      throw new Error(data.error || 'No registered account found with this email address.');
+    if (!res.ok || !res.data?.success) {
+      throw new Error(res.data?.error || res.error || 'No registered account found with this email address.');
     }
 
     try {
@@ -405,7 +398,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     // 2. Push live sync to server database
     let serverUpdatedProfile: UserProfile = locallyUpdatedProfile;
     try {
-      const syncRes = await fetch('/api/auth/sync', {
+      const syncRes = await safeFetchJson<{ success?: boolean; user?: UserProfile }>('/api/auth/sync', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -417,15 +410,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }),
       });
 
-      if (syncRes.ok) {
-        const syncData = await syncRes.json();
-        if (syncData.success && syncData.user) {
-          serverUpdatedProfile = {
-            ...syncData.user,
-            history: Array.isArray(syncData.user.history) ? syncData.user.history : [],
-          };
-          saveProfileCache(serverUpdatedProfile);
-        }
+      if (syncRes.ok && syncRes.data?.success && syncRes.data?.user) {
+        serverUpdatedProfile = {
+          ...syncRes.data.user,
+          history: Array.isArray(syncRes.data.user.history) ? syncRes.data.user.history : [],
+        };
+        saveProfileCache(serverUpdatedProfile);
       }
     } catch (syncErr) {
       console.warn('Server live sync background notice:', syncErr);
@@ -478,7 +468,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setUserProfile(updated);
 
     try {
-      await fetch('/api/auth/sync', {
+      await safeFetchJson('/api/auth/sync', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

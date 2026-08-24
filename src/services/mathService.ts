@@ -1,6 +1,7 @@
 import { CHAPTERS_DATA, ADVANCED_MATH_11_CHAPTERS, CLASS_INFO_DATA, QUESTIONS_DATA } from '../data/mockData';
 import { Chapter, ClassInfo, ClassLevel, FilterState, Question, DifficultyLevel, LeaderboardEntry, TestAttemptRecord } from '../types';
 import { FirestoreLeaderboardService } from './firestoreLeaderboard';
+import { safeFetchJson } from '../lib/apiHelper';
 
 const LEADERBOARD_STORAGE_KEY = 'mathematics_class_leaderboard_data';
 const ATTEMPTS_STORAGE_KEY = 'mathematics_student_attempts_data';
@@ -231,7 +232,7 @@ export class MathService {
 
     // 3. Server API Sync (Cross-user server broadcast)
     try {
-      const response = await fetch('/api/leaderboard', {
+      const response = await safeFetchJson<{ entry?: LeaderboardEntry }>('/api/leaderboard', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -239,13 +240,10 @@ export class MathService {
         body: JSON.stringify(entry),
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        if (data.entry) {
-          // Trigger a background refresh of the full global rankings
-          this.fetchServerLeaderboard('all').catch(() => {});
-          return data.entry;
-        }
+      if (response.ok && response.data?.entry) {
+        // Trigger a background refresh of the full global rankings
+        this.fetchServerLeaderboard('all').catch(() => {});
+        return response.data.entry;
       }
     } catch (e) {
       console.warn('Server sync failed or offline, kept in local cache:', e);
@@ -268,25 +266,23 @@ export class MathService {
       if (mode && mode !== 'all') params.append('mode', mode);
       if (track && track !== 'all') params.append('track', track);
 
-      const res = await fetch(`/api/leaderboard?${params.toString()}`);
-      if (res.ok) {
-        const json = await res.json();
-        if (json.entries && Array.isArray(json.entries)) {
-          // Intelligently merge into local cache
-          try {
-            if (!classLevel || classLevel === 'all') {
-              localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(json.entries));
-            } else {
-              const existing = this.getLeaderboardEntries();
-              const otherClassEntries = existing.filter((e) => e.classLevel !== Number(classLevel));
-              const merged = [...json.entries, ...otherClassEntries];
-              localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(merged));
-            }
-          } catch {
-            // ignore
+      const res = await safeFetchJson<{ entries?: LeaderboardEntry[] }>(`/api/leaderboard?${params.toString()}`);
+      if (res.ok && res.data?.entries && Array.isArray(res.data.entries)) {
+        const entries = res.data.entries;
+        // Intelligently merge into local cache
+        try {
+          if (!classLevel || classLevel === 'all') {
+            localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(entries));
+          } else {
+            const existing = this.getLeaderboardEntries();
+            const otherClassEntries = existing.filter((e) => e.classLevel !== Number(classLevel));
+            const merged = [...entries, ...otherClassEntries];
+            localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(merged));
           }
-          return json.entries;
+        } catch {
+          // ignore
         }
+        return entries;
       }
     } catch (err) {
       console.warn('Failed to fetch leaderboard from server, using local fallback:', err);

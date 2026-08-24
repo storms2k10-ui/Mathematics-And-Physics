@@ -602,6 +602,11 @@ app.post('/api/leaderboard/reset', (_req, res) => {
   res.json({ success: true, message: 'Leaderboard reset to default seeds', entries: DEFAULT_SERVER_LEADERBOARD });
 });
 
+// Fallback for unhandled /api routes to always return JSON (never HTML)
+app.all('/api/*', (_req, res) => {
+  res.status(404).json({ success: false, error: 'API endpoint not found' });
+});
+
 // Vite middleware & Static Serving
 async function startServer() {
   if (process.env.NODE_ENV !== 'production') {
