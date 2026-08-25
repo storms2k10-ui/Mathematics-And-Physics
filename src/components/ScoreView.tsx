@@ -23,7 +23,9 @@ import {
   X,
   Home,
   Sun,
-  Moon
+  Moon,
+  SkipForward,
+  FastForward
 } from 'lucide-react';
 import { Question, ClassLevel, StudentProfile } from '../types';
 import { MathService } from '../services/mathService';
@@ -40,6 +42,7 @@ interface ScoreViewProps {
     questionId: string;
     selectedOption: 'A' | 'B' | 'C' | 'D' | null;
     isCorrect: boolean;
+    isSkipped?: boolean;
     timeSpentSeconds: number;
     timedOut?: boolean;
   }>;
@@ -72,8 +75,8 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
   onOpenLeaderboard,
 }) => {
   const { isDarkMode, toggleTheme } = useTheme();
-  const { recordTestAttempt } = useAuth();
-  const [filterType, setFilterType] = useState<'all' | 'correct' | 'incorrect'>('all');
+  const { currentUser, userProfile, recordTestAttempt } = useAuth();
+  const [filterType, setFilterType] = useState<'all' | 'correct' | 'incorrect' | 'skipped'>('all');
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   // Maintain consistent entry ID for server updates
@@ -81,12 +84,8 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
     return leaderboardEntryId || `lead_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
   });
 
-  // Student name adjustment & live server sync state
-  const [studentName, setStudentName] = useState<string>(() => {
-    return studentProfile?.name || 'Student Candidate';
-  });
-  const [isEditingName, setIsEditingName] = useState(false);
-  const [tempName, setTempName] = useState(studentName);
+  // Student name is permanently fixed from candidate registration / user profile
+  const studentName = userProfile?.displayName || currentUser?.displayName || studentProfile?.name || 'Student Candidate';
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncStatus, setSyncStatus] = useState<string>('Saved & Synced to Academic Ranking');
 
@@ -95,9 +94,15 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
     const ans = userAnswers[Number(key)];
     return ans && ans.isCorrect ? acc + 1 : acc;
   }, 0);
-  const incorrectCount = totalQuestions - correctCount;
-  const percentage = Math.round((correctCount / totalQuestions) * 100);
-  const isPerfectScore = percentage === 100;
+  const skippedCount = Object.keys(userAnswers).reduce((acc, key) => {
+    const ans = userAnswers[Number(key)];
+    return ans && ans.isSkipped ? acc + 1 : acc;
+  }, 0);
+  const incorrectCount = Math.max(0, totalQuestions - correctCount - skippedCount);
+  const attemptedCount = correctCount + incorrectCount;
+  const overallAccuracy = attemptedCount > 0 ? Math.round((correctCount / attemptedCount) * 100) : (totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0);
+  const percentage = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
+  const isPerfectScore = percentage === 100 && skippedCount === 0;
 
   // Auto-sync score to Firestore cloud and server on mount
   useEffect(() => {
@@ -109,6 +114,8 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
 
         await MathService.saveLeaderboardEntry({
           id: attemptEntryId,
+          uid: currentUser?.uid,
+          email: currentUser?.email || userProfile?.email,
           studentName: studentName,
           classLevel: classLevel,
           section: studentProfile?.section || 'Standard',
@@ -118,6 +125,22 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
           track: track || 'Elementary Mathematics',
           correctCount,
           totalQuestions,
+          skippedCount,
+          scorePercentage: percentage,
+          timeSpentSeconds: totalTimeSeconds,
+          formattedTime,
+          timestamp: Date.now(),
+          formattedDate: 'Just now',
+        }, currentUser?.uid);
+        await recordTestAttempt({
+          id: attemptEntryId,
+          chapterId: questions[0]?.chapter_id || 'general_quiz',
+          chapterName: chapterTitle,
+          classLevel: classLevel,
+          track: track || 'Elementary Mathematics',
+          correctCount,
+          totalQuestions,
+          skippedCount,
           scorePercentage: percentage,
           timeSpentSeconds: totalTimeSeconds,
           formattedTime,
@@ -129,62 +152,7 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
       }
     };
     syncCurrentAttempt();
-  }, [attemptEntryId, studentName, classLevel, studentProfile, chapterTitle, questions, mode, correctCount, totalQuestions, percentage, totalTimeSeconds]);
-
-  // Handle name change and instant sync to server leaderboard
-  const handleSaveStudentName = async (e?: React.FormEvent) => {
-    if (e) e.preventDefault();
-    if (!tempName.trim()) return;
-    const newName = tempName.trim();
-    setStudentName(newName);
-    setIsEditingName(false);
-    setIsSyncing(true);
-    setSyncStatus('Syncing to Cloud Database...');
-
-    try {
-      const mins = Math.floor(totalTimeSeconds / 60);
-      const secs = totalTimeSeconds % 60;
-      const formattedTime = `${mins}m ${secs.toString().padStart(2, '0')}s`;
-
-      await MathService.saveLeaderboardEntry({
-        id: attemptEntryId,
-        studentName: newName,
-        classLevel: classLevel,
-        section: studentProfile?.section || 'Standard',
-        chapterId: questions[0]?.chapter_id || 'general_quiz',
-        chapterName: chapterTitle,
-        mode: mode === 'exam' ? 'exam' : 'practice',
-        track: track || 'Elementary Mathematics',
-        correctCount,
-        totalQuestions,
-        scorePercentage: percentage,
-        timeSpentSeconds: totalTimeSeconds,
-        formattedTime,
-        timestamp: Date.now(),
-        formattedDate: 'Just now',
-      });
-
-      await recordTestAttempt({
-        id: attemptEntryId,
-        chapterId: questions[0]?.chapter_id || 'general_quiz',
-        chapterName: chapterTitle,
-        classLevel: classLevel,
-        track: track || 'Elementary Mathematics',
-        correctCount,
-        totalQuestions,
-        scorePercentage: percentage,
-        timeSpentSeconds: totalTimeSeconds,
-        formattedTime,
-        timestamp: Date.now(),
-        formattedDate: 'Just now',
-      });
-      setSyncStatus(`Live Synced as "${newName}"`);
-    } catch {
-      setSyncStatus('Cached locally');
-    } finally {
-      setIsSyncing(false);
-    }
-  };
+  }, [attemptEntryId, studentName, classLevel, studentProfile, chapterTitle, questions, mode, correctCount, totalQuestions, skippedCount, percentage, totalTimeSeconds, currentUser, userProfile, track, recordTestAttempt]);
 
   // Multi-stage firework celebration launcher
   const launchFireworks = () => {
@@ -328,8 +296,9 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
 
   const filteredQuestions = questions.map((q, idx) => ({ q, idx })).filter(({ idx }) => {
     const ans = userAnswers[idx];
-    if (filterType === 'correct') return ans?.isCorrect;
-    if (filterType === 'incorrect') return !ans?.isCorrect;
+    if (filterType === 'correct') return Boolean(ans?.isCorrect);
+    if (filterType === 'incorrect') return Boolean(!ans?.isCorrect && !ans?.isSkipped);
+    if (filterType === 'skipped') return Boolean(ans?.isSkipped);
     return true;
   });
 
@@ -431,87 +400,53 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                 {feedback.subtitle}
               </p>
 
-              {/* Candidate Info with Name Adjustment & Server Leaderboard Auto-Sync */}
+              {/* Candidate Info with Fixed Name & Academic Ranking Live Sync */}
               <div className="p-3.5 rounded-2xl bg-white/60 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 space-y-2 max-w-lg mx-auto shadow-xs">
                 <div className="flex flex-wrap items-center justify-center sm:justify-between gap-2">
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 flex items-center justify-center">
                       <User className="w-4 h-4" />
                     </div>
-                    {isEditingName ? (
-                      <form onSubmit={handleSaveStudentName} className="flex items-center gap-1.5">
-                        <input
-                          type="text"
-                          value={tempName}
-                          onChange={(e) => setTempName(e.target.value)}
-                          placeholder="Enter your name"
-                          autoFocus
-                          className="px-2.5 py-1 text-xs rounded-lg border border-indigo-300 dark:border-indigo-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-bold outline-none focus:ring-2 focus:ring-indigo-500"
-                        />
-                        <button
-                          type="submit"
-                          disabled={isSyncing}
-                          className="p-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
-                          title="Save and sync name to leaderboard"
-                        >
-                          <Check className="w-3.5 h-3.5" />
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setTempName(studentName);
-                            setIsEditingName(false);
-                          }}
-                          className="p-1 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 cursor-pointer"
-                          title="Cancel"
-                        >
-                          <X className="w-3.5 h-3.5" />
-                        </button>
-                      </form>
-                    ) : (
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs text-slate-600 dark:text-slate-300">
-                          Candidate: <strong className="text-slate-900 dark:text-white text-sm font-black">{studentName}</strong>
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setTempName(studentName);
-                            setIsEditingName(true);
-                          }}
-                          className="p-1 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer"
-                          title="Adjust Candidate Name"
-                        >
-                          <Edit3 className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    )}
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-slate-600 dark:text-slate-300">
+                        Candidate: <strong className="text-slate-900 dark:text-white text-sm font-black">{studentName}</strong>
+                      </span>
+                      <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                        Fixed Name
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Leaderboard Auto-Sync Status Badge */}
+                  {/* Academic Ranking Live-Sync Status Badge */}
                   <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-[11px] font-bold text-emerald-800 dark:text-emerald-300">
                     <span className={`w-2 h-2 rounded-full ${isSyncing ? 'bg-amber-500 animate-ping' : 'bg-emerald-500 animate-pulse'}`} />
                     <span>{isSyncing ? 'Syncing...' : syncStatus}</span>
                   </div>
                 </div>
               </div>
+
+              {/* Overall Accuracy Highlight Pill */}
+              <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-xs">
+                <span>Overall Accuracy on Attempted Questions:</span>
+                <span className="text-sm font-black text-indigo-600 dark:text-indigo-400">{overallAccuracy}%</span>
+              </div>
             </div>
 
-            {/* Center Aligned Twin Circles: Correct Accuracy & Wrong Accuracy in the Center */}
-            <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-5 my-2">
+            {/* Center Aligned Circles: Correct Accuracy, Error Rate & Skipped Questions in the Center */}
+            <div className="w-full flex flex-wrap items-center justify-center gap-4 my-2">
               {/* Dynamic Light Green Circle: Correct Accuracy - Aligned in Centre */}
-              <div className="w-full sm:w-56 flex flex-col items-center justify-center p-4 rounded-2xl bg-emerald-50/90 dark:bg-emerald-950/50 border-2 border-emerald-300 dark:border-emerald-700 shadow-md shadow-emerald-500/10 text-center">
-                <div className="w-28 h-28 rounded-full border-4 border-emerald-500 dark:border-emerald-400 flex flex-col items-center justify-center bg-white dark:bg-emerald-950 shadow-inner">
-                  <span className="text-3xl font-black text-emerald-600 dark:text-emerald-300 tracking-tight">
+              <div className="w-full sm:w-48 flex flex-col items-center justify-center p-4 rounded-2xl bg-emerald-50/90 dark:bg-emerald-950/50 border-2 border-emerald-300 dark:border-emerald-700 shadow-md shadow-emerald-500/10 text-center">
+                <div className="w-24 h-24 rounded-full border-4 border-emerald-500 dark:border-emerald-400 flex flex-col items-center justify-center bg-white dark:bg-emerald-950 shadow-inner">
+                  <span className="text-2xl font-black text-emerald-600 dark:text-emerald-300 tracking-tight">
                     {percentage}%
                   </span>
-                  <span className="text-[10px] font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mt-0.5">
-                    Correct Accuracy
+                  <span className="text-[9px] font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mt-0.5">
+                    Correct
                   </span>
                 </div>
-                <div className="mt-3 text-center">
+                <div className="mt-2.5 text-center">
                   <span className="text-xs font-black text-emerald-800 dark:text-emerald-200 block">
-                    {correctCount} / {totalQuestions} Correct Questions
+                    {correctCount} / {totalQuestions} Correct
                   </span>
                   <span className="text-[11px] text-emerald-700/80 dark:text-emerald-400 font-medium">
                     Validated Answers
@@ -519,22 +454,42 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                 </div>
               </div>
 
-              {/* Dynamic Light Blue Circle: Percentage of Wrong Questions / Error Rate - Aligned in Centre */}
-              <div className="w-full sm:w-56 flex flex-col items-center justify-center p-4 rounded-2xl bg-sky-50/90 dark:bg-sky-950/50 border-2 border-sky-300 dark:border-sky-700 shadow-md shadow-sky-500/10 text-center">
-                <div className="w-28 h-28 rounded-full border-4 border-sky-500 dark:border-sky-400 flex flex-col items-center justify-center bg-white dark:bg-sky-950 shadow-inner">
-                  <span className="text-3xl font-black text-sky-600 dark:text-sky-300 tracking-tight">
+              {/* Dynamic Light Blue/Rose Circle: Percentage of Wrong Questions / Error Rate - Aligned in Centre */}
+              <div className="w-full sm:w-48 flex flex-col items-center justify-center p-4 rounded-2xl bg-rose-50/90 dark:bg-rose-950/50 border-2 border-rose-300 dark:border-rose-700 shadow-md shadow-rose-500/10 text-center">
+                <div className="w-24 h-24 rounded-full border-4 border-rose-500 dark:border-rose-400 flex flex-col items-center justify-center bg-white dark:bg-rose-950 shadow-inner">
+                  <span className="text-2xl font-black text-rose-600 dark:text-rose-300 tracking-tight">
                     {totalQuestions > 0 ? Math.round((incorrectCount / totalQuestions) * 100) : 0}%
                   </span>
-                  <span className="text-[10px] font-black uppercase tracking-wider text-sky-700 dark:text-sky-400 mt-0.5">
-                    Error Rate
+                  <span className="text-[9px] font-black uppercase tracking-wider text-rose-700 dark:text-rose-400 mt-0.5">
+                    Incorrect
                   </span>
                 </div>
-                <div className="mt-3 text-center">
-                  <span className="text-xs font-black text-sky-800 dark:text-sky-200 block">
-                    {incorrectCount} / {totalQuestions} Wrong Questions
+                <div className="mt-2.5 text-center">
+                  <span className="text-xs font-black text-rose-800 dark:text-rose-200 block">
+                    {incorrectCount} / {totalQuestions} Wrong
                   </span>
-                  <span className="text-[11px] text-sky-700/80 dark:text-sky-400 font-medium">
+                  <span className="text-[11px] text-rose-700/80 dark:text-rose-400 font-medium">
                     Mistakes to Review
+                  </span>
+                </div>
+              </div>
+
+              {/* Subtle Light Black / Dark Gray Card: Skipped Questions */}
+              <div className="w-full sm:w-48 flex flex-col items-center justify-center p-4 rounded-2xl bg-slate-100/90 dark:bg-slate-900/90 border-2 border-slate-300 dark:border-slate-700 shadow-md text-center">
+                <div className="w-24 h-24 rounded-full border-4 border-slate-700 dark:border-slate-600 flex flex-col items-center justify-center bg-slate-800 dark:bg-slate-950 shadow-inner">
+                  <span className="text-2xl font-black text-slate-100 dark:text-slate-200 tracking-tight">
+                    {totalQuestions > 0 ? Math.round((skippedCount / totalQuestions) * 100) : 0}%
+                  </span>
+                  <span className="text-[9px] font-black uppercase tracking-wider text-slate-300 dark:text-slate-400 mt-0.5">
+                    Skipped
+                  </span>
+                </div>
+                <div className="mt-2.5 text-center">
+                  <span className="text-xs font-black text-slate-800 dark:text-slate-200 block">
+                    {skippedCount} / {totalQuestions} Skipped
+                  </span>
+                  <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+                    Unattempted
                   </span>
                 </div>
               </div>
@@ -580,8 +535,8 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
               </p>
             </div>
 
-            {/* Filter Pills */}
-            <div className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl">
+            {/* Filter Pills with Subtle Light Black / Dark Gray for Skipped */}
+            <div className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl">
               <button
                 onClick={() => setFilterType('all')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
@@ -606,11 +561,21 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                 onClick={() => setFilterType('incorrect')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   filterType === 'incorrect'
-                    ? 'bg-sky-600 text-white shadow-xs'
+                    ? 'bg-rose-600 text-white shadow-xs'
                     : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 Incorrect ({incorrectCount})
+              </button>
+              <button
+                onClick={() => setFilterType('skipped')}
+                className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  filterType === 'skipped'
+                    ? 'bg-black text-white dark:bg-black dark:text-white shadow-xs'
+                    : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                Skipped ({skippedCount})
               </button>
             </div>
           </div>
@@ -619,16 +584,19 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
           <div className="space-y-4">
             {filteredQuestions.map(({ q, idx }) => {
               const ans = userAnswers[idx];
-              const isCorrect = ans?.isCorrect;
+              const isCorrect = Boolean(ans?.isCorrect);
+              const isSkipped = Boolean(ans?.isSkipped);
               const isExpanded = expandedIndex === idx;
 
               return (
                 <div
                   key={q.id}
                   className={`rounded-2xl border transition-all ${
-                    isCorrect
+                    isSkipped
+                      ? 'border-slate-300 dark:border-slate-700 bg-slate-100/80 dark:bg-slate-900/80'
+                      : isCorrect
                       ? 'border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/20 dark:bg-emerald-950/10'
-                      : 'border-sky-200 dark:border-sky-900/60 bg-sky-50/20 dark:bg-sky-950/10'
+                      : 'border-rose-200 dark:border-rose-900/60 bg-rose-50/20 dark:bg-rose-950/10'
                   }`}
                 >
                   <div
@@ -637,10 +605,12 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                   >
                     <div className="flex items-start gap-3">
                       <div className="mt-0.5 shrink-0">
-                        {isCorrect ? (
+                        {isSkipped ? (
+                          <SkipForward className="w-5 h-5 text-slate-500 dark:text-slate-400" />
+                        ) : isCorrect ? (
                           <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
                         ) : (
-                          <XCircle className="w-5 h-5 text-sky-600 dark:text-sky-400" />
+                          <XCircle className="w-5 h-5 text-rose-600 dark:text-rose-400" />
                         )}
                       </div>
 
@@ -649,12 +619,17 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                           <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
                             Question {idx + 1}
                           </span>
-                          {ans?.timedOut && (
+                          {isSkipped && (
+                            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-black text-white dark:bg-black dark:text-white border border-slate-700">
+                              ⏭️ Skipped Question
+                            </span>
+                          )}
+                          {ans?.timedOut && !isSkipped && (
                             <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
                               ⏱️ 1-Min Timed Out (Marked Wrong)
                             </span>
                           )}
-                          {!ans?.selectedOption && !ans?.timedOut && !isCorrect && (
+                          {!ans?.selectedOption && !ans?.timedOut && !isCorrect && !isSkipped && (
                             <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">
                               Unattempted (Marked Wrong)
                             </span>
@@ -689,8 +664,8 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                             itemStyle = 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-400 dark:border-emerald-500 text-emerald-950 dark:text-emerald-200 font-semibold ring-1 ring-emerald-400/50';
                             badgeStyle = 'bg-emerald-600 text-white font-bold';
                           } else if (isUserChoice && !isAnswer) {
-                            itemStyle = 'bg-sky-50 dark:bg-sky-950/60 border-sky-400 dark:border-sky-500 text-sky-950 dark:text-sky-200 font-semibold ring-1 ring-sky-400/50';
-                            badgeStyle = 'bg-sky-600 text-white font-bold';
+                            itemStyle = 'bg-rose-50 dark:bg-rose-950/60 border-rose-400 dark:border-rose-500 text-rose-950 dark:text-rose-200 font-semibold ring-1 ring-rose-400/50';
+                            badgeStyle = 'bg-rose-600 text-white font-bold';
                           }
 
                           return (
@@ -707,13 +682,13 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                               {isAnswer && (
                                 <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 shrink-0">
                                   <CheckCircle2 className="w-4 h-4" />
-                                  <span className="hidden sm:inline">Correct</span>
+                                  <span className="hidden sm:inline">Correct Answer</span>
                                 </span>
                               )}
                               {isUserChoice && !isAnswer && (
                                 <span className="flex items-center gap-1 text-[11px] font-bold text-rose-600 dark:text-rose-400 shrink-0">
                                   <XCircle className="w-4 h-4" />
-                                  <span className="hidden sm:inline">Your Pick</span>
+                                  <span className="hidden sm:inline">Your Selection</span>
                                 </span>
                               )}
                             </div>

@@ -223,9 +223,11 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
       const bestAttempts = Array.from(cand.chapterEntriesMap.values());
       const totalQuestions = bestAttempts.reduce((sum, item) => sum + (item.totalQuestions || 0), 0);
       const totalCorrect = bestAttempts.reduce((sum, item) => sum + (item.correctCount || 0), 0);
-      const totalWrong = Math.max(0, totalQuestions - totalCorrect);
+      const totalSkipped = bestAttempts.reduce((sum, item) => sum + (item.skippedCount || 0), 0);
+      const totalWrong = Math.max(0, totalQuestions - totalCorrect - totalSkipped);
       const totalTimeSpentSeconds = bestAttempts.reduce((sum, item) => sum + (item.timeSpentSeconds || 0), 0);
-      const overallAccuracy = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
+      const attemptedQuestions = totalCorrect + totalWrong;
+      const overallAccuracy = attemptedQuestions > 0 ? Math.round((totalCorrect / attemptedQuestions) * 100) : (totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0);
 
       candidateProfiles.push({
         candidateId: `cand_${cand.studentName}_${cand.classLevel}_${cand.track}`,
@@ -236,6 +238,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
         totalCorrect,
         totalQuestions,
         totalWrong,
+        totalSkipped,
         testsAttempted: bestAttempts.length,
         totalTimeSpentSeconds,
         latestAttemptTimestamp: cand.latestTimestamp,
@@ -674,7 +677,10 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                           {ch.scorePercentage}%
                         </div>
                         <div className="text-[10px] text-slate-400">
-                          {ch.correctCount}/{ch.totalQuestions} Correct
+                          <span>{ch.correctCount}/{ch.totalQuestions} Correct</span>
+                          {(ch.skippedCount ?? 0) > 0 && (
+                            <span className="ml-1 text-slate-500 font-semibold">• {ch.skippedCount} Skipped</span>
+                          )}
                         </div>
                       </div>
                     </div>

@@ -333,7 +333,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                     <div className="border-t border-slate-100 dark:border-slate-800 my-1"></div>
 
-                    {/* 3. ELEMENTARY PHYSICS (Click to expand 4 classes) */}
+                    {/* 3. ELEMENTARY PHYSICS (Click to expand Class 11 & 12) */}
                     <div>
                       <button
                         type="button"
@@ -350,14 +350,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                           <span>Elementary Physics</span>
                         </span>
                         <div className="flex items-center gap-1.5 text-xs text-slate-400">
-                          <span className="text-[10px] font-bold">4 Classes</span>
+                          <span className="text-[10px] font-bold">2 Classes</span>
                           <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isPhysicsExpandedInSubject ? 'rotate-180' : ''}`} />
                         </div>
                       </button>
 
                       {isPhysicsExpandedInSubject && (
                         <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-cyan-200 dark:border-cyan-800 ml-4 animate-in fade-in duration-150">
-                          {([9, 10, 11, 12] as ClassLevel[]).map((lvl) => (
+                          {([11, 12] as ClassLevel[]).map((lvl) => (
                             <button
                               key={lvl}
                               onClick={() => handleSubjectSelect('physics', 'Elementary Physics', lvl)}
@@ -365,7 +365,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                             >
                               <span className="font-semibold">Class {lvl} Physics</span>
                               <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-cyan-50 dark:bg-cyan-950/80 text-cyan-700 dark:text-cyan-300 font-bold">
-                                Physics
+                                14 Chapters
                               </span>
                             </button>
                           ))}
@@ -887,7 +887,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="p-2.5 rounded-xl text-xs font-bold text-amber-700 dark:text-amber-300 bg-amber-50/70 dark:bg-amber-950/40 hover:bg-amber-100 dark:hover:bg-amber-900/50 flex items-center gap-1.5 col-span-2 justify-center border border-amber-200/60 dark:border-amber-800/50 cursor-pointer"
               >
                 <Trophy className="w-3.5 h-3.5 text-amber-500" />
-                <span>Academic Ranking Leaderboard</span>
+                <span>Academic Ranking</span>
               </button>
             )}
           </div>
@@ -977,20 +977,20 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </span>
                   <span className="text-xs font-bold text-cyan-950 dark:text-cyan-200">Elementary Physics</span>
                 </div>
-                <span className="text-[10px] font-bold text-cyan-600 dark:text-cyan-400">Classes 9-12</span>
+                <span className="text-[10px] font-bold text-cyan-600 dark:text-cyan-400">Classes 11 &amp; 12</span>
               </div>
-              <div className="grid grid-cols-4 gap-1.5">
-                {([9, 10, 11, 12] as ClassLevel[]).map((lvl) => (
+              <div className="grid grid-cols-2 gap-2">
+                {([11, 12] as ClassLevel[]).map((lvl) => (
                   <button
                     key={lvl}
                     onClick={() => handleSubjectSelect('physics', 'Elementary Physics', lvl)}
-                    className={`py-2 px-1 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${
+                    className={`py-2 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${
                       activeTab === 'classes' && selectedClass === lvl && activeTrack === 'Elementary Physics'
                         ? 'bg-cyan-600 text-white shadow-sm'
                         : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-cyan-50'
                     }`}
                   >
-                    Class {lvl}
+                    Class {lvl} Physics (14 Ch)
                   </button>
                 ))}
               </div>

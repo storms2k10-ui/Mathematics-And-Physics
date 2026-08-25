@@ -206,17 +206,32 @@ export default function App() {
 
     let rawQuestions: Question[] = [];
 
+    const userIdentifier = currentUser?.email || userProfile?.email || config.student.name;
+    const trackToUse = config.track || activeTrack || 'Elementary Mathematics';
+
     if (pendingQuizQuestions && pendingQuizQuestions.length > 0) {
       rawQuestions = pendingQuizQuestions;
     } else if (targetChapter) {
-      rawQuestions = await MathService.getQuestionsByChapter(targetChapter.id);
+      rawQuestions = await MathService.prepareQuizQuestions(
+        targetChapter.id,
+        targetChapter.class,
+        config.questionCount || 15,
+        'all',
+        userIdentifier,
+        trackToUse
+      );
     } else {
-      rawQuestions = await MathService.getQuickPracticeSet(config.student.classLevel, config.questionCount || 15);
+      rawQuestions = await MathService.prepareQuizQuestions(
+        undefined,
+        config.student.classLevel,
+        config.questionCount || 15,
+        'all',
+        userIdentifier,
+        trackToUse
+      );
     }
 
-    const count = config.questionCount || 15;
-    const shuffled = shuffleArray(rawQuestions);
-    const questionsToUse = shuffled.slice(0, Math.min(count, shuffled.length));
+    const questionsToUse = rawQuestions;
 
     setActiveStudent(config.student);
     setActiveTestMode(config.mode);
@@ -253,8 +268,13 @@ export default function App() {
     const formattedTime = `${mins}m ${secs.toString().padStart(2, '0')}s`;
     const attemptId = `lead_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
 
+    const userEmail = currentUser?.email || userProfile?.email || undefined;
+    const userUid = currentUser?.uid || userProfile?.uid || undefined;
+
     const leaderboardEntry: LeaderboardEntry = {
       id: attemptId,
+      uid: userUid,
+      email: userEmail,
       studentName,
       classLevel: student?.classLevel || activeQuizClass || 9,
       section: student?.section || 'Standard',
@@ -273,6 +293,8 @@ export default function App() {
 
     const historyItem: UserTestHistory = {
       id: attemptId,
+      uid: userUid,
+      email: userEmail,
       chapterId: activeChapterId || 'general_quiz',
       chapterName: activeQuizTitle || `Class ${activeQuizClass} Mathematics`,
       classLevel: student?.classLevel || activeQuizClass || 9,

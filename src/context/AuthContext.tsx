@@ -109,8 +109,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
         const totalQ = combinedHistory.reduce((acc, h) => acc + (Number(h.totalQuestions) || 0), 0);
         const totalC = combinedHistory.reduce((acc, h) => acc + (Number(h.correctCount) || 0), 0);
-        const totalW = Math.max(0, totalQ - totalC);
-        const accPct = totalQ > 0 ? Math.round((totalC / totalQ) * 100) : 0;
+        const totalS = combinedHistory.reduce((acc, h) => acc + (Number(h.skippedCount) || 0), 0);
+        const totalW = Math.max(0, totalQ - totalC - totalS);
+        const accPct = (totalC + totalW) > 0 ? Math.round((totalC / (totalC + totalW)) * 100) : (totalQ > 0 ? Math.round((totalC / totalQ) * 100) : 0);
 
         const profile: UserProfile = {
           uid: user.uid,
@@ -122,6 +123,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           totalQuestionsAnswered: totalQ,
           totalCorrect: totalC,
           totalWrong: totalW,
+          totalSkipped: totalS,
           accuracy: accPct,
           history: combinedHistory,
         };
@@ -262,14 +264,21 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setUserProfile(newProfile);
       setCurrentUser(firebaseUser);
     } catch (fbErr: any) {
-      if (fbErr.code === 'auth/email-already-in-use') {
+      const code = fbErr?.code || '';
+      if (code === 'auth/operation-not-allowed') {
+        throw new Error('Email/Password sign-in is not enabled in your Firebase project. Please enable "Email/Password" in Firebase Console under Authentication > Sign-in method.');
+      }
+      if (code === 'auth/email-already-in-use') {
         throw new Error('An account with this email address already exists. Please sign in instead.');
       }
-      if (fbErr.code === 'auth/weak-password') {
+      if (code === 'auth/weak-password') {
         throw new Error('Password should be at least 6 characters.');
       }
-      if (fbErr.code === 'auth/invalid-email') {
+      if (code === 'auth/invalid-email') {
         throw new Error('Please enter a valid email address.');
+      }
+      if (code === 'auth/network-request-failed') {
+        throw new Error('Network error. Please check your internet connection and try again.');
       }
       throw new Error(fbErr.message || 'Failed to create account. Please try again.');
     }
@@ -297,19 +306,26 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         body: JSON.stringify({ email: cleanEmail, password: pass }),
       }).catch(() => {});
     } catch (fbErr: any) {
+      const code = fbErr?.code || '';
+      if (code === 'auth/operation-not-allowed') {
+        throw new Error('Email/Password sign-in is not enabled in your Firebase project. Please enable "Email/Password" in Firebase Console under Authentication > Sign-in method.');
+      }
       if (
-        fbErr.code === 'auth/user-not-found' || 
-        fbErr.code === 'auth/invalid-credential' || 
-        fbErr.code === 'auth/wrong-password' ||
-        fbErr.code === 'auth/invalid-login-credentials'
+        code === 'auth/user-not-found' || 
+        code === 'auth/invalid-credential' || 
+        code === 'auth/wrong-password' ||
+        code === 'auth/invalid-login-credentials'
       ) {
         throw new Error('Invalid email or password. Please verify your credentials or sign up.');
       }
-      if (fbErr.code === 'auth/invalid-email') {
+      if (code === 'auth/invalid-email') {
         throw new Error('Please enter a valid email address.');
       }
-      if (fbErr.code === 'auth/too-many-requests') {
+      if (code === 'auth/too-many-requests') {
         throw new Error('Too many failed attempts. Please try again in a few minutes or reset your password.');
+      }
+      if (code === 'auth/network-request-failed') {
+        throw new Error('Network error. Please check your internet connection and try again.');
       }
       throw new Error(fbErr.message || 'Failed to sign in. Please check your credentials.');
     }
@@ -325,8 +341,18 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     try {
       await sendPasswordResetEmail(auth, cleanEmail);
     } catch (err: any) {
-      if (err.code === 'auth/user-not-found') {
+      const code = err?.code || '';
+      if (code === 'auth/operation-not-allowed') {
+        throw new Error('Password reset is not enabled in your Firebase project. Please enable "Email/Password" in Firebase Console under Authentication > Sign-in method.');
+      }
+      if (code === 'auth/user-not-found') {
         throw new Error('No registered account found with this email address.');
+      }
+      if (code === 'auth/invalid-email') {
+        throw new Error('Please enter a valid email address.');
+      }
+      if (code === 'auth/network-request-failed') {
+        throw new Error('Network error. Please check your internet connection and try again.');
       }
       throw new Error(err.message || 'Failed to send password reset email.');
     }
@@ -363,6 +389,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         track: historyItem.track,
         correctCount: historyItem.correctCount,
         totalQuestions: historyItem.totalQuestions,
+        skippedCount: historyItem.skippedCount || 0,
         scorePercentage: historyItem.scorePercentage,
         timeSpentSeconds: historyItem.timeSpentSeconds,
         formattedTime: historyItem.formattedTime,
@@ -380,8 +407,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     const totalQ = updatedHistory.reduce((acc, h) => acc + (Number(h.totalQuestions) || 0), 0);
     const totalC = updatedHistory.reduce((acc, h) => acc + (Number(h.correctCount) || 0), 0);
-    const totalW = Math.max(0, totalQ - totalC);
-    const accPct = totalQ > 0 ? Math.round((totalC / totalQ) * 100) : 0;
+    const totalS = updatedHistory.reduce((acc, h) => acc + (Number(h.skippedCount) || 0), 0);
+    const totalW = Math.max(0, totalQ - totalC - totalS);
+    const accPct = (totalC + totalW) > 0 ? Math.round((totalC / (totalC + totalW)) * 100) : (totalQ > 0 ? Math.round((totalC / totalQ) * 100) : 0);
 
     const updatedProfile: UserProfile = {
       uid,
@@ -393,6 +421,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       totalQuestionsAnswered: totalQ,
       totalCorrect: totalC,
       totalWrong: totalW,
+      totalSkipped: totalS,
       accuracy: accPct,
       history: updatedHistory,
     };

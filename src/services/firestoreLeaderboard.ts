@@ -26,8 +26,8 @@ export class FirestoreLeaderboardService {
   static async saveEntry(entry: LeaderboardEntry, uid?: string): Promise<void> {
     try {
       const cleanTrack = (entry.track || 'Elementary Mathematics').toLowerCase().replace(/[^a-z0-9]/g, '_');
-      const cleanStudent = (entry.studentName || 'student').toLowerCase().replace(/[^a-z0-9]/g, '_');
-      const chapterDocId = `rank_${cleanStudent}_c${entry.classLevel}_${entry.chapterId || 'gen'}_${cleanTrack}`;
+      const userKey = entry.email ? entry.email.toLowerCase().replace(/[^a-z0-9]/g, '_') : (entry.studentName || 'student').toLowerCase().replace(/[^a-z0-9]/g, '_');
+      const chapterDocId = `rank_${userKey}_c${entry.classLevel}_${entry.chapterId || 'gen'}_${cleanTrack}`;
       
       const docRef = doc(db, LEADERBOARD_COLLECTION, chapterDocId);
       
@@ -53,7 +53,8 @@ export class FirestoreLeaderboardService {
       await setDoc(docRef, {
         ...entry,
         id: chapterDocId,
-        uid: uid || null,
+        uid: uid || entry.uid || null,
+        email: entry.email || null,
         classLevel: Number(entry.classLevel),
         track: entry.track || 'Elementary Mathematics',
         timestamp: Date.now(),
@@ -78,7 +79,8 @@ export class FirestoreLeaderboardService {
       
       await setDoc(resultDocRef, {
         id: resultDocId,
-        uid: uid || null,
+        uid: uid || entry.uid || null,
+        email: entry.email || null,
         studentName: entry.studentName,
         classLevel: Number(entry.classLevel),
         track: entry.track || 'Elementary Mathematics',
@@ -87,6 +89,7 @@ export class FirestoreLeaderboardService {
         mode: entry.mode || 'practice',
         correctCount: entry.correctCount,
         totalQuestions: entry.totalQuestions,
+        skippedCount: entry.skippedCount || 0,
         scorePercentage: entry.scorePercentage,
         timeSpentSeconds: entry.timeSpentSeconds,
         formattedTime: entry.formattedTime,
@@ -122,6 +125,7 @@ export class FirestoreLeaderboardService {
           scorePercentage: Number(data.scorePercentage) || 0,
           correctCount: Number(data.correctCount) || 0,
           totalQuestions: Number(data.totalQuestions) || 0,
+          skippedCount: Number(data.skippedCount) || 0,
           timeSpentSeconds: Number(data.timeSpentSeconds) || 0,
           formattedTime: data.formattedTime || '0m 00s',
           timestamp: Number(data.timestamp) || Date.now(),

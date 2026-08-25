@@ -42,10 +42,13 @@ export class MathService {
   }
 
   /**
-   * Retrieves chapters for a specific class or all
+   * Retrieves chapters for a specific class or all tracks
    */
   static async getChapters(classLevel?: ClassLevel, track: string = 'Elementary Mathematics'): Promise<Chapter[]> {
     await new Promise((resolve) => setTimeout(resolve, 20));
+    if (track === 'Elementary Physics') {
+      return CHAPTERS_DATA.filter((ch) => ch.track === 'Elementary Physics' && (!classLevel || ch.class === classLevel));
+    }
     if (track === 'Advanced Mathematics') {
       if (classLevel === 11) {
         return ADVANCED_MATH_11_CHAPTERS;
@@ -77,9 +80,6 @@ export class MathService {
     track: string = 'Elementary Mathematics'
   ): Promise<Question[]> {
     await new Promise((resolve) => setTimeout(resolve, 20));
-    if (track === 'Advanced Mathematics' || track.startsWith('Advanced')) {
-      return [];
-    }
     const fullSet = QUESTIONS_DATA.filter((q) => q.chapter_id === chapterId);
     if (difficultyFilter && difficultyFilter !== 'all') {
       return fullSet.filter((q) => q.difficulty === difficultyFilter);
@@ -95,30 +95,75 @@ export class MathService {
     track: string = 'Elementary Mathematics'
   ): Promise<Question[]> {
     await new Promise((resolve) => setTimeout(resolve, 20));
-    if (track === 'Advanced Mathematics' || track.startsWith('Advanced')) {
+    const isPhysics = track.toLowerCase().includes('physics');
+    return QUESTIONS_DATA.filter((q) => {
+      if (q.class !== classLevel) return false;
+      if (isPhysics) {
+        return q.subject === 'Physics' || q.chapter_id.startsWith('el-phy');
+      }
+      return q.subject !== 'Physics';
+    });
+  }
+
+  /**
+   * Helpers for tracking attempted question history to prevent repeats
+   */
+  static getAttemptHistoryKey(userIdentifier?: string, classLevel?: ClassLevel, chapterId?: string, track?: string): string {
+    const user = userIdentifier ? userIdentifier.trim().toLowerCase() : 'guest';
+    const tr = track || 'Elementary Mathematics';
+    const cl = classLevel !== undefined ? classLevel : 'all';
+    const ch = chapterId || 'all';
+    return `attempted_q_${user}_${tr}_cls${cl}_ch${ch}`;
+  }
+
+  static getAttemptedQuestionIds(scopeKey: string): string[] {
+    try {
+      const raw = localStorage.getItem(scopeKey);
+      return raw ? JSON.parse(raw) : [];
+    } catch {
       return [];
     }
-    return QUESTIONS_DATA.filter((q) => q.class === classLevel);
+  }
+
+  static recordAttemptedQuestionIds(scopeKey: string, questionIds: string[]): void {
+    try {
+      const current = MathService.getAttemptedQuestionIds(scopeKey);
+      const combined = Array.from(new Set([...current, ...questionIds]));
+      localStorage.setItem(scopeKey, JSON.stringify(combined));
+    } catch (e) {
+      console.warn('Failed to save attempted questions history', e);
+    }
   }
 
   /**
    * Prepares randomized questions for a test/quiz session.
-   * Every attempt is shuffled freshly to guarantee unique test permutations.
+   * Tracks question history to exclude attempted questions until the pool is exhausted.
    */
   static async prepareQuizQuestions(
     chapterId?: string,
     classLevel?: ClassLevel,
     requestedCount?: number,
-    difficultyFilter?: DifficultyLevel | 'all'
+    difficultyFilter?: DifficultyLevel | 'all',
+    userIdentifier?: string,
+    track: string = 'Elementary Mathematics'
   ): Promise<Question[]> {
     let pool: Question[] = [];
+    const isPhysics = track.toLowerCase().includes('physics');
 
     if (chapterId) {
       pool = QUESTIONS_DATA.filter((q) => q.chapter_id === chapterId);
     } else if (classLevel) {
-      pool = QUESTIONS_DATA.filter((q) => q.class === classLevel);
+      pool = QUESTIONS_DATA.filter((q) => {
+        if (q.class !== classLevel) return false;
+        if (isPhysics) {
+          return q.subject === 'Physics' || q.chapter_id.startsWith('el-phy');
+        }
+        return q.subject !== 'Physics';
+      });
     } else {
-      pool = [...QUESTIONS_DATA];
+      pool = isPhysics 
+        ? QUESTIONS_DATA.filter(q => q.subject === 'Physics' || q.chapter_id.startsWith('el-phy'))
+        : QUESTIONS_DATA.filter(q => q.subject !== 'Physics');
     }
 
     if (difficultyFilter && difficultyFilter !== 'all') {
@@ -128,13 +173,49 @@ export class MathService {
       }
     }
 
-    // Always shuffle the pool for non-deterministic quiz order
-    const randomized = shuffleArray(pool);
+    if (pool.length === 0) return [];
 
-    if (requestedCount && requestedCount > 0) {
-      return randomized.slice(0, Math.min(requestedCount, randomized.length));
+    const scopeKey = MathService.getAttemptHistoryKey(userIdentifier, classLevel, chapterId, track);
+    const attemptedIds = new Set(MathService.getAttemptedQuestionIds(scopeKey));
+
+    // Split into unattempted and already attempted
+    const unattempted = pool.filter((q) => !attemptedIds.has(q.id));
+    const targetCount = requestedCount && requestedCount > 0 ? Math.min(requestedCount, pool.length) : pool.length;
+
+    let selected: Question[] = [];
+
+    if (unattempted.length >= targetCount) {
+      // Plenty of fresh questions available
+      const shuffledUnattempted = shuffleArray(unattempted);
+      selected = shuffledUnattempted.slice(0, targetCount);
+      MathService.recordAttemptedQuestionIds(scopeKey, selected.map((q) => q.id));
+    } else if (unattempted.length > 0) {
+      // Take all remaining unattempted questions, reset pool history, and fill remainder
+      const shuffledUnattempted = shuffleArray(unattempted);
+      const remainderCount = targetCount - shuffledUnattempted.length;
+      
+      // Reset history for this scope
+      try {
+        localStorage.removeItem(scopeKey);
+      } catch {}
+
+      const remainingPool = pool.filter((q) => !shuffledUnattempted.some((u) => u.id === q.id));
+      const shuffledRemainder = shuffleArray(remainingPool).slice(0, remainderCount);
+      
+      selected = [...shuffledUnattempted, ...shuffledRemainder];
+      MathService.recordAttemptedQuestionIds(scopeKey, selected.map((q) => q.id));
+    } else {
+      // Pool completely exhausted: Reset history and pick freshly shuffled set
+      try {
+        localStorage.removeItem(scopeKey);
+      } catch {}
+
+      const shuffledPool = shuffleArray(pool);
+      selected = shuffledPool.slice(0, targetCount);
+      MathService.recordAttemptedQuestionIds(scopeKey, selected.map((q) => q.id));
     }
-    return randomized;
+
+    return selected;
   }
 
   /**

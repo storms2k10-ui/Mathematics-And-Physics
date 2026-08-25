@@ -15,7 +15,17 @@ export type MathCategory =
   | 'Integration & Differential Equations'
   | 'Probability & Combinatorics'
   | 'Sequences & Induction'
-  | 'Numerical Methods & Optimization';
+  | 'Numerical Methods & Optimization'
+  | 'Mechanics & Kinematics'
+  | 'Laws of Motion & Gravitation'
+  | 'Thermodynamics & Heat'
+  | 'Fluids & Material Properties'
+  | 'Oscillations & Waves'
+  | 'Electrostatics & Current Electricity'
+  | 'Magnetism & Induction'
+  | 'Optics & Wave Theory'
+  | 'Modern Physics & Quantum Theory'
+  | 'Semiconductors & Electronics';
 
 export interface ChapterOverview {
   summary: string;
@@ -36,7 +46,7 @@ export interface Chapter {
   questionCount: number;
   difficulty?: DifficultyLevel | 'Mixed';
   keyTopics: string[];
-  color: 'indigo' | 'emerald' | 'amber' | 'rose' | 'cyan' | 'violet' | 'teal' | 'fuchsia';
+  color: 'indigo' | 'emerald' | 'amber' | 'rose' | 'cyan' | 'violet' | 'teal' | 'fuchsia' | 'blue' | 'purple' | 'sky';
   icon: string;
   artTheme: 'logarithm' | 'algebra' | 'triangle' | 'circle' | 'trigonometry' | 'matrix' | 'vector' | 'calculus' | 'integral' | 'conic' | 'coordinate' | 'probability' | 'series' | 'differential';
   formulaHighlight?: string;
@@ -46,7 +56,7 @@ export interface Chapter {
 export interface Question {
   id: string;
   class: ClassLevel;
-  subject: 'Mathematics';
+  subject?: 'Mathematics' | 'Physics' | string;
   chapter_id: string;
   chapter?: string;
   question: string;
@@ -70,6 +80,7 @@ export interface UserAnswer {
   questionId: string;
   selectedOption: 'A' | 'B' | 'C' | 'D' | null;
   isCorrect: boolean;
+  isSkipped?: boolean;
   timeSpentSeconds: number;
   timedOut?: boolean;
 }
@@ -185,6 +196,8 @@ export interface ClassInfo {
 
 export interface LeaderboardEntry {
   id: string;
+  uid?: string;
+  email?: string;
   studentName: string;
   classLevel: ClassLevel;
   section?: string;
@@ -194,6 +207,7 @@ export interface LeaderboardEntry {
   track?: 'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics' | string;
   correctCount: number;
   totalQuestions: number;
+  skippedCount?: number;
   scorePercentage: number;
   timeSpentSeconds: number;
   formattedTime: string;
@@ -203,6 +217,8 @@ export interface LeaderboardEntry {
 
 export interface UserTestHistory {
   id: string;
+  uid?: string;
+  email?: string;
   chapterId?: string;
   chapterName: string;
   classLevel: ClassLevel;
@@ -210,6 +226,7 @@ export interface UserTestHistory {
   scorePercentage: number;
   correctCount: number;
   totalQuestions: number;
+  skippedCount?: number;
   timeSpentSeconds: number;
   formattedTime: string;
   timestamp: number;
@@ -227,6 +244,7 @@ export interface UserProfile {
   totalQuestionsAnswered: number;
   totalCorrect: number;
   totalWrong: number;
+  totalSkipped?: number;
   accuracy: number;
   history?: UserTestHistory[];
 }
@@ -237,6 +255,7 @@ export interface TestAttemptAnswer {
   selectedOption: string;
   correctOption: string;
   isCorrect: boolean;
+  isSkipped?: boolean;
   explanation: string;
 }
 
@@ -244,13 +263,18 @@ export type TestAttemptRecord = UserTestHistory;
 
 export interface CandidateRankingProfile {
   candidateId?: string;
+  uid?: string;
+  email?: string;
   studentName: string;
   classLevel: ClassLevel;
   track: string;
   overallAccuracy: number;
+  averageAccuracy?: number;
   totalCorrect: number;
   totalQuestions: number;
   totalWrong: number;
+  totalSkipped?: number;
+  negativeAnswers?: number;
   totalTestsAttempted?: number;
   testsAttempted?: number;
   totalTimeSpentSeconds: number;

@@ -86,7 +86,7 @@ export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
-              <span>Dynamic Overview</span>
+              <span>Overview</span>
             </button>
 
             <button
@@ -323,26 +323,16 @@ export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
               Close
             </button>
 
-            {isMcqAvailable ? (
-              <button
-                onClick={() => {
-                  onClose();
-                  onStartTest(chapter);
-                }}
-                className="flex-2 py-3 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <Play className="w-4 h-4 fill-white" />
-                <span>Attempt Chapter MCQs</span>
-              </button>
-            ) : (
-              <button
-                onClick={onClose}
-                className="flex-2 py-3 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md shadow-indigo-600/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <CheckCircle2 className="w-4 h-4 text-indigo-200" />
-                <span>Dynamic Overview Explored</span>
-              </button>
-            )}
+            <button
+              onClick={() => {
+                onClose();
+                onStartTest(chapter);
+              }}
+              className="flex-2 py-3 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <Play className="w-4 h-4 fill-white" />
+              <span>Start Practice Session</span>
+            </button>
           </div>
 
         </div>

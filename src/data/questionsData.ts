@@ -53,6 +53,40 @@ import { C12_CH8_QUESTIONS } from './c12_chapter8_data';
 import { C12_CH9_QUESTIONS } from './c12_chapter9_data';
 import { C12_CH10_QUESTIONS } from './c12_chapter10_data';
 import { C12_CH11_QUESTIONS } from './c12_chapter11_data';
+import { EL_PHY11_CH1_QUESTIONS } from './el_phy11_chapter1_data';
+import { EL_PHY11_CH2_QUESTIONS } from './el_phy11_chapter2_data';
+import { EL_PHY11_CH3_QUESTIONS } from './el_phy11_chapter3_data';
+import { EL_PHY11_CH4_QUESTIONS } from './el_phy11_chapter4_data';
+import { EL_PHY11_CH5_QUESTIONS } from './el_phy11_chapter5_data';
+import { EL_PHY11_CH6_QUESTIONS } from './el_phy11_chapter6_data';
+import { EL_PHY11_CH7_QUESTIONS } from './el_phy11_chapter7_data';
+import {
+  EL_PHY11_CH8_QUESTIONS,
+  EL_PHY11_CH9_QUESTIONS,
+  EL_PHY11_CH10_QUESTIONS,
+  EL_PHY11_CH11_QUESTIONS,
+  EL_PHY11_CH12_QUESTIONS,
+  EL_PHY11_CH13_QUESTIONS,
+  EL_PHY11_CH14_QUESTIONS,
+} from './el_phy11_chapters8_14_data';
+import {
+  EL_PHY12_CH1_QUESTIONS,
+  EL_PHY12_CH2_QUESTIONS,
+  EL_PHY12_CH3_QUESTIONS,
+  EL_PHY12_CH4_QUESTIONS,
+  EL_PHY12_CH5_QUESTIONS,
+  EL_PHY12_CH6_QUESTIONS,
+  EL_PHY12_CH7_QUESTIONS,
+} from './el_phy12_chapters1_7_data';
+import {
+  EL_PHY12_CH8_QUESTIONS,
+  EL_PHY12_CH9_QUESTIONS,
+  EL_PHY12_CH10_QUESTIONS,
+  EL_PHY12_CH11_QUESTIONS,
+  EL_PHY12_CH12_QUESTIONS,
+  EL_PHY12_CH13_QUESTIONS,
+  EL_PHY12_CH14_QUESTIONS,
+} from './el_phy12_chapters8_14_data';
 
 const C11_CH1_QUESTIONS: Question[] = [
   // =========================================================================
@@ -926,4 +960,32 @@ export const ALL_QUESTIONS: Question[] = [
   ...C12_CH9_QUESTIONS,
   ...C12_CH10_QUESTIONS,
   ...C12_CH11_QUESTIONS,
+  ...EL_PHY11_CH1_QUESTIONS,
+  ...EL_PHY11_CH2_QUESTIONS,
+  ...EL_PHY11_CH3_QUESTIONS,
+  ...EL_PHY11_CH4_QUESTIONS,
+  ...EL_PHY11_CH5_QUESTIONS,
+  ...EL_PHY11_CH6_QUESTIONS,
+  ...EL_PHY11_CH7_QUESTIONS,
+  ...EL_PHY11_CH8_QUESTIONS,
+  ...EL_PHY11_CH9_QUESTIONS,
+  ...EL_PHY11_CH10_QUESTIONS,
+  ...EL_PHY11_CH11_QUESTIONS,
+  ...EL_PHY11_CH12_QUESTIONS,
+  ...EL_PHY11_CH13_QUESTIONS,
+  ...EL_PHY11_CH14_QUESTIONS,
+  ...EL_PHY12_CH1_QUESTIONS,
+  ...EL_PHY12_CH2_QUESTIONS,
+  ...EL_PHY12_CH3_QUESTIONS,
+  ...EL_PHY12_CH4_QUESTIONS,
+  ...EL_PHY12_CH5_QUESTIONS,
+  ...EL_PHY12_CH6_QUESTIONS,
+  ...EL_PHY12_CH7_QUESTIONS,
+  ...EL_PHY12_CH8_QUESTIONS,
+  ...EL_PHY12_CH9_QUESTIONS,
+  ...EL_PHY12_CH10_QUESTIONS,
+  ...EL_PHY12_CH11_QUESTIONS,
+  ...EL_PHY12_CH12_QUESTIONS,
+  ...EL_PHY12_CH13_QUESTIONS,
+  ...EL_PHY12_CH14_QUESTIONS,
 ];

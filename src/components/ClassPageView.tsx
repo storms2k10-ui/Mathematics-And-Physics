@@ -65,7 +65,7 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
                 {track} — Class {currentClass}
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
-                This section is currently empty. Questions and chapters will be added later. Practice sessions and scores will automatically connect to the <strong>{track}</strong> Leaderboard.
+                This section is currently empty. Questions and chapters will be added later. Practice sessions and scores will automatically connect to the <strong>{track}</strong> Academic Ranking.
               </p>
             </div>
           </div>
@@ -132,23 +132,13 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
                       <span>Overview</span>
                     </button>
 
-                    {(chapter.questionCount || 0) > 0 ? (
-                      <button
-                        onClick={() => onSelectChapter(chapter)}
-                        className="flex-2 py-2 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm shadow-indigo-600/20 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
-                      >
-                        <Play className="w-3.5 h-3.5 fill-white" />
-                        <span>Practice Chapter</span>
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => onOpenChapterDetails(chapter)}
-                        className="flex-2 py-2 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm shadow-indigo-600/20 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
-                      >
-                        <Play className="w-3.5 h-3.5 fill-white" />
-                        <span>Practice Chapter</span>
-                      </button>
-                    )}
+                    <button
+                      onClick={() => onSelectChapter(chapter)}
+                      className="flex-2 py-2 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm shadow-indigo-600/20 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      <Play className="w-3.5 h-3.5 fill-white" />
+                      <span>Practice Chapter</span>
+                    </button>
                   </div>
 
                 </div>

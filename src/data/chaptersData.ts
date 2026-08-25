@@ -1394,9 +1394,15 @@ export const ADVANCED_MATH_11_CHAPTERS: Chapter[] = [
   }
 ];
 
-// Append Advanced Chapters to Master List
+import { ELEMENTARY_PHYSICS_11_CHAPTERS, ELEMENTARY_PHYSICS_12_CHAPTERS } from './elementaryPhysicsChaptersData';
+
+export { ELEMENTARY_PHYSICS_11_CHAPTERS, ELEMENTARY_PHYSICS_12_CHAPTERS };
+
+// Master Chapters List covering Mathematics and Physics tracks
 export const ALL_CHAPTERS: Chapter[] = [
   ...ELEMENTARY_CHAPTERS,
-  ...ADVANCED_MATH_11_CHAPTERS
+  ...ADVANCED_MATH_11_CHAPTERS,
+  ...ELEMENTARY_PHYSICS_11_CHAPTERS,
+  ...ELEMENTARY_PHYSICS_12_CHAPTERS
 ];
 

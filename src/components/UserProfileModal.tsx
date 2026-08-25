@@ -115,9 +115,13 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
 
   const totalQuestions = userProfile.totalQuestionsAnswered || 0;
   const totalCorrect = userProfile.totalCorrect || 0;
-  const totalWrong = userProfile.totalWrong || 0;
+  const totalSkipped = userProfile.totalSkipped || 0;
+  const totalWrong = userProfile.totalWrong || Math.max(0, totalQuestions - totalCorrect - totalSkipped);
+  const attemptedQuestions = totalCorrect + totalWrong;
+  const overallAccuracy = attemptedQuestions > 0 ? Math.round((totalCorrect / attemptedQuestions) * 100) : 0;
   const correctPct = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
   const wrongPct = totalQuestions > 0 ? Math.round((totalWrong / totalQuestions) * 100) : 0;
+  const skippedPct = totalQuestions > 0 ? Math.round((totalSkipped / totalQuestions) * 100) : 0;
   const testsAttempted = userProfile.testsAttempted || 0;
   const historyList = userProfile.history || [];
   const latestTimestamp = historyList.length > 0 ? Math.max(...historyList.map(h => h.timestamp || 0)) : userProfile.createdAt;
@@ -362,72 +366,99 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
             </div>
           </div>
           
-          {/* Accuracy & Error Rates Section: Correct Accuracy & Wrong Accuracy Centered */}
+          {/* Accuracy & Error Rates Section: Correct Accuracy, Error Rate & Skipped Questions */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Overall Accuracy &amp; Performance Analytics
               </h4>
               <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">
-                {testsAttempted} Tests Logged
+                Overall Accuracy: {overallAccuracy}% • {testsAttempted} Tests Logged
               </span>
             </div>
             
-            {/* Center Aligned Twin Circles: Correct Accuracy & Wrong Accuracy */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* 3 Analytics Cards: Correct, Incorrect, and Skipped */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               
-              {/* Light Green Circle: Correct Accuracy - Aligned in Centre */}
-              <div className="p-5 rounded-2xl bg-emerald-50/80 dark:bg-emerald-950/40 border-2 border-emerald-300 dark:border-emerald-700/80 flex flex-col items-center justify-center text-center gap-3 shadow-xs">
-                <div className="w-24 h-24 rounded-full border-4 border-emerald-500 dark:border-emerald-400 bg-white dark:bg-emerald-900/50 flex flex-col items-center justify-center shadow-inner">
-                  <span className="text-2xl font-black text-emerald-600 dark:text-emerald-300">
+              {/* Light Green Card: Correct Accuracy */}
+              <div className="p-4 rounded-2xl bg-emerald-50/80 dark:bg-emerald-950/40 border-2 border-emerald-300 dark:border-emerald-700/80 flex flex-col items-center justify-center text-center gap-2.5 shadow-xs">
+                <div className="w-20 h-20 rounded-full border-4 border-emerald-500 dark:border-emerald-400 bg-white dark:bg-emerald-900/50 flex flex-col items-center justify-center shadow-inner">
+                  <span className="text-xl font-black text-emerald-600 dark:text-emerald-300">
                     {correctPct}%
                   </span>
-                  <span className="text-[10px] font-black uppercase text-emerald-700 dark:text-emerald-400 tracking-wider">
-                    Overall Accuracy
+                  <span className="text-[9px] font-black uppercase text-emerald-700 dark:text-emerald-400 tracking-wider">
+                    Correct
                   </span>
                 </div>
 
-                <div className="space-y-1 text-center">
-                  <div className="flex items-center justify-center gap-1.5 text-emerald-800 dark:text-emerald-300 text-xs font-bold">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                    <span>Total Correct Questions</span>
+                <div className="space-y-0.5 text-center">
+                  <div className="flex items-center justify-center gap-1 text-emerald-800 dark:text-emerald-300 text-xs font-bold">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                    <span>Correct</span>
                   </div>
-                  <p className="text-2xl font-black text-emerald-900 dark:text-emerald-100">
+                  <p className="text-lg font-black text-emerald-900 dark:text-emerald-100">
                     {totalCorrect}{' '}
-                    <span className="text-xs font-normal text-emerald-700/80 dark:text-emerald-400">
-                      / {totalQuestions} answered
+                    <span className="text-[11px] font-normal text-emerald-700/80 dark:text-emerald-400">
+                      / {totalQuestions}
                     </span>
                   </p>
-                  <p className="text-[11px] text-emerald-700 dark:text-emerald-400">
-                    Validated step-by-step mathematical answers
+                  <p className="text-[10px] text-emerald-700 dark:text-emerald-400">
+                    Validated answers
                   </p>
                 </div>
               </div>
 
-              {/* Dynamic Light Blue Circle: Error Rate / Missed Questions - Aligned in Centre */}
-              <div className="p-5 rounded-2xl bg-sky-50/80 dark:bg-sky-950/40 border-2 border-sky-300 dark:border-sky-700/80 flex flex-col items-center justify-center text-center gap-3 shadow-xs">
-                <div className="w-24 h-24 rounded-full border-4 border-sky-500 dark:border-sky-400 bg-white dark:bg-sky-900/50 flex flex-col items-center justify-center shadow-inner">
-                  <span className="text-2xl font-black text-sky-600 dark:text-sky-300">
+              {/* Dynamic Light Blue / Rose Card: Error Rate / Missed Questions */}
+              <div className="p-4 rounded-2xl bg-sky-50/80 dark:bg-sky-950/40 border-2 border-sky-300 dark:border-sky-700/80 flex flex-col items-center justify-center text-center gap-2.5 shadow-xs">
+                <div className="w-20 h-20 rounded-full border-4 border-sky-500 dark:border-sky-400 bg-white dark:bg-sky-900/50 flex flex-col items-center justify-center shadow-inner">
+                  <span className="text-xl font-black text-sky-600 dark:text-sky-300">
                     {wrongPct}%
                   </span>
-                  <span className="text-[10px] font-black uppercase text-sky-700 dark:text-sky-400 tracking-wider">
-                    Error Rate
+                  <span className="text-[9px] font-black uppercase text-sky-700 dark:text-sky-400 tracking-wider">
+                    Incorrect
                   </span>
                 </div>
 
-                <div className="space-y-1 text-center">
-                  <div className="flex items-center justify-center gap-1.5 text-sky-800 dark:text-sky-300 text-xs font-bold">
-                    <XCircle className="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0" />
-                    <span>Missed Questions</span>
+                <div className="space-y-0.5 text-center">
+                  <div className="flex items-center justify-center gap-1 text-sky-800 dark:text-sky-300 text-xs font-bold">
+                    <XCircle className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400 shrink-0" />
+                    <span>Incorrect</span>
                   </div>
-                  <p className="text-2xl font-black text-sky-900 dark:text-sky-100">
+                  <p className="text-lg font-black text-sky-900 dark:text-sky-100">
                     {totalWrong}{' '}
-                    <span className="text-xs font-normal text-sky-700/80 dark:text-sky-400">
-                      errors to review
+                    <span className="text-[11px] font-normal text-sky-700/80 dark:text-sky-400">
+                      / {totalQuestions}
                     </span>
                   </p>
-                  <p className="text-[11px] text-sky-700 dark:text-sky-400">
-                    Targeted review recommended for missed questions
+                  <p className="text-[10px] text-sky-700 dark:text-sky-400">
+                    Errors to review
+                  </p>
+                </div>
+              </div>
+
+              {/* Subtle Dark Gray / Light Black Card: Skipped Questions */}
+              <div className="p-4 rounded-2xl bg-slate-100/90 dark:bg-slate-900/90 border-2 border-slate-300 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2.5 shadow-xs">
+                <div className="w-20 h-20 rounded-full border-4 border-slate-700 dark:border-slate-600 bg-slate-800 dark:bg-slate-950 flex flex-col items-center justify-center shadow-inner">
+                  <span className="text-xl font-black text-slate-100 dark:text-slate-200">
+                    {skippedPct}%
+                  </span>
+                  <span className="text-[9px] font-black uppercase text-slate-300 dark:text-slate-400 tracking-wider">
+                    Skipped
+                  </span>
+                </div>
+
+                <div className="space-y-0.5 text-center">
+                  <div className="flex items-center justify-center gap-1 text-slate-700 dark:text-slate-300 text-xs font-bold">
+                    <span>Skipped</span>
+                  </div>
+                  <p className="text-lg font-black text-slate-900 dark:text-slate-100">
+                    {totalSkipped}{' '}
+                    <span className="text-[11px] font-normal text-slate-500 dark:text-slate-400">
+                      / {totalQuestions}
+                    </span>
+                  </p>
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400">
+                    Unanswered questions
                   </p>
                 </div>
               </div>
@@ -659,7 +690,10 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                         {item.scorePercentage}%
                       </div>
                       <div className="text-[10px] text-slate-400 font-medium">
-                        {item.correctCount}/{item.totalQuestions} Correct
+                        <span>{item.correctCount}/{item.totalQuestions} Correct</span>
+                        {(item.skippedCount ?? 0) > 0 && (
+                          <span className="ml-1 text-slate-500 font-semibold">• {item.skippedCount} Skipped</span>
+                        )}
                       </div>
                     </div>
                   </div>

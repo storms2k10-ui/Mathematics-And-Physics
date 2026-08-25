@@ -146,17 +146,27 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     } catch (err: any) {
       console.error('Auth error:', err);
       let msg = 'Authentication failed. Please try again.';
-      if (err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential' || err.code === 'auth/invalid-login-credentials') {
-        msg = 'Invalid email or password. Please verify credentials.';
-      } else if (err.code === 'auth/email-already-in-use' || (err.message && err.message.includes('already exists'))) {
+      const code = err?.code || '';
+      if (
+        code === 'auth/user-not-found' || 
+        code === 'auth/wrong-password' || 
+        code === 'auth/invalid-credential' || 
+        code === 'auth/invalid-login-credentials'
+      ) {
+        msg = 'Invalid email or password. Please verify your credentials or sign up.';
+      } else if (code === 'auth/email-already-in-use' || (err.message && err.message.includes('already exists'))) {
         setEmailCheckStatus('taken');
         msg = 'An account with this email already exists. Please sign in instead.';
-      } else if (err.code === 'auth/invalid-email') {
+      } else if (code === 'auth/invalid-email') {
         msg = 'Please enter a valid email address.';
-      } else if (err.code === 'auth/weak-password') {
+      } else if (code === 'auth/weak-password') {
         msg = 'Password is too weak. Please use at least 6 characters.';
-      } else if (err.code === 'auth/operation-not-allowed') {
-        msg = 'Sign in service is operating in local mode. Please try signing in again.';
+      } else if (code === 'auth/operation-not-allowed') {
+        msg = 'Email/Password sign-in is disabled in your Firebase project. Please enable the Email/Password sign-in method in Firebase Console under Authentication > Sign-in method.';
+      } else if (code === 'auth/network-request-failed') {
+        msg = 'Network error. Please check your internet connection and try again.';
+      } else if (code === 'auth/too-many-requests') {
+        msg = 'Too many attempts. Access is temporarily locked. Please try again in a few minutes or reset your password.';
       } else if (err.message) {
         msg = err.message;
       }
@@ -222,7 +232,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 </span>
               </div>
               <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white mt-0.5 drop-shadow-sm">
-                {customTitle || (mode === 'signup' ? 'Create Scholar Account' : mode === 'forgot' ? 'Reset Password' : 'Sign In to Account')}
+                {customTitle || (mode === 'signup' ? 'Create Account' : mode === 'forgot' ? 'Reset Password' : 'Sign In to Account')}
               </h2>
             </div>
           </div>
@@ -434,7 +444,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <span>Please wait...</span>
               ) : mode === 'signup' ? (
                 <>
-                  <span>Create Account &amp; Proceed</span>
+                  <span>Create Account</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               ) : mode === 'forgot' ? (

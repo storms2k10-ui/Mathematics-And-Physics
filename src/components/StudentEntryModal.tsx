@@ -5,7 +5,8 @@ import {
   ArrowRight, 
   X, 
   BookOpen,
-  Sparkles
+  Sparkles,
+  Lock
 } from 'lucide-react';
 import { ClassLevel, TestSessionConfig } from '../types';
 import { useAuth } from '../context/AuthContext';
@@ -36,12 +37,16 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
   const [questionCount, setQuestionCount] = useState<number>(15);
   const [error, setError] = useState<string | null>(null);
 
+  const isNameFixed = Boolean(userProfile?.displayName || currentUser?.displayName);
+
   // Sync profile info
   useEffect(() => {
-    if (userProfile) {
-      setName(userProfile.displayName || '');
+    if (userProfile?.displayName) {
+      setName(userProfile.displayName);
+    } else if (currentUser?.displayName) {
+      setName(currentUser.displayName);
     }
-  }, [userProfile]);
+  }, [userProfile, currentUser]);
 
   // Keep selectedClass locked to defaultClass when chapter/class practice is initiated
   useEffect(() => {
@@ -152,23 +157,42 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
             </div>
           )}
 
-          {/* Student Name */}
+          {/* Candidate Name (Fixed when signed up) */}
           <div className="space-y-1">
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-              Candidate Name <span className="text-rose-500">*</span>
-            </label>
+            <div className="flex items-center justify-between">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                Candidate Name <span className="text-rose-500">*</span>
+              </label>
+              {isNameFixed && (
+                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/80 px-2 py-0.5 rounded-md border border-indigo-200 dark:border-indigo-800">
+                  <Lock className="w-3 h-3" />
+                  <span>Fixed Account Name</span>
+                </span>
+              )}
+            </div>
             <div className="relative">
-              <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              {isNameFixed ? (
+                <Lock className="w-4 h-4 text-indigo-500 dark:text-indigo-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              ) : (
+                <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              )}
               <input
                 type="text"
                 required
+                readOnly={isNameFixed}
                 value={name}
                 onChange={(e) => {
-                  setName(e.target.value);
-                  if (error) setError(null);
+                  if (!isNameFixed) {
+                    setName(e.target.value);
+                    if (error) setError(null);
+                  }
                 }}
                 placeholder="Enter your full name"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-xs font-medium focus:ring-2 focus:ring-indigo-500 outline-hidden"
+                className={`w-full pl-10 pr-4 py-2.5 rounded-xl border text-xs font-semibold outline-hidden transition-all ${
+                  isNameFixed
+                    ? 'border-indigo-300 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-950/30 text-slate-900 dark:text-white cursor-not-allowed'
+                    : 'border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500'
+                }`}
               />
             </div>
           </div>
