@@ -412,15 +412,9 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
       
-      {/* Top Header Quote with Upward Top-Left DIC Component - Hidden in Quiz and Results/Score Views */}
+      {/* Top Header Banner: MATHEMATICS AND PHYSICS - Hidden in Quiz and Results/Score Views */}
       {!['quiz', 'results'].includes(currentView) && (
-        <HeaderQuote
-          onOpenDictionary={() => {
-            setActiveTab('dictionary');
-            setCurrentView('main');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-        />
+        <HeaderQuote />
       )}
 
       {/* Main Navbar - Hidden in Quiz and Results/Score Views */}

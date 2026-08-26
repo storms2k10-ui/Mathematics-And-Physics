@@ -162,13 +162,13 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
     }).length;
   }, [safeEntries, selectedTrack]);
 
-  // Aggregate and Rank Candidate Profiles by Overall Accuracy across unique chapters
+  // Aggregate and Rank Candidate Profiles by Overall Correct Accuracy across ALL submissions
   const rankedCandidateProfiles: CandidateRankingProfile[] = useMemo(() => {
     const candidateMap = new Map<string, {
       studentName: string;
       classLevel: ClassLevel;
       track: string;
-      chapterEntriesMap: Map<string, LeaderboardEntry>; // chapterId/chapterName -> best entry
+      allSubmissions: LeaderboardEntry[]; // Store all submissions made by student
       latestTimestamp: number;
     }>();
 
@@ -190,44 +190,32 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
           studentName: cleanName,
           classLevel: entry.classLevel,
           track: entryTrack,
-          chapterEntriesMap: new Map<string, LeaderboardEntry>(),
+          allSubmissions: [],
           latestTimestamp: entry.timestamp || Date.now(),
         });
       }
 
       const cand = candidateMap.get(candidateKey)!;
-      const chapterKey = entry.chapterId || entry.chapterName;
-      const existingBest = cand.chapterEntriesMap.get(chapterKey);
-
-      if (!existingBest) {
-        cand.chapterEntriesMap.set(chapterKey, entry);
-      } else {
-        // Keep highest accuracy attempt
-        if (
-          entry.scorePercentage > existingBest.scorePercentage ||
-          (entry.scorePercentage === existingBest.scorePercentage && entry.timeSpentSeconds < existingBest.timeSpentSeconds)
-        ) {
-          cand.chapterEntriesMap.set(chapterKey, entry);
-        }
-      }
+      cand.allSubmissions.push(entry);
 
       if (entry.timestamp && entry.timestamp > cand.latestTimestamp) {
         cand.latestTimestamp = entry.timestamp;
       }
     }
 
-    // Now convert to CandidateRankingProfile array with calculated Overall Accuracy
+    // Convert to CandidateRankingProfile array with calculated Overall Correct Accuracy
     const candidateProfiles: CandidateRankingProfile[] = [];
 
     for (const [_, cand] of candidateMap.entries()) {
-      const bestAttempts = Array.from(cand.chapterEntriesMap.values());
-      const totalQuestions = bestAttempts.reduce((sum, item) => sum + (item.totalQuestions || 0), 0);
-      const totalCorrect = bestAttempts.reduce((sum, item) => sum + (item.correctCount || 0), 0);
-      const totalSkipped = bestAttempts.reduce((sum, item) => sum + (item.skippedCount || 0), 0);
+      const submissions = cand.allSubmissions;
+      const totalQuestions = submissions.reduce((sum, item) => sum + (item.totalQuestions || 0), 0);
+      const totalCorrect = submissions.reduce((sum, item) => sum + (item.correctCount || 0), 0);
+      const totalSkipped = submissions.reduce((sum, item) => sum + (item.skippedCount || 0), 0);
       const totalWrong = Math.max(0, totalQuestions - totalCorrect - totalSkipped);
-      const totalTimeSpentSeconds = bestAttempts.reduce((sum, item) => sum + (item.timeSpentSeconds || 0), 0);
-      const attemptedQuestions = totalCorrect + totalWrong;
-      const overallAccuracy = attemptedQuestions > 0 ? Math.round((totalCorrect / attemptedQuestions) * 100) : (totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0);
+      const totalTimeSpentSeconds = submissions.reduce((sum, item) => sum + (item.timeSpentSeconds || 0), 0);
+      
+      // Calculate overall correct accuracy across ALL submitted questions
+      const overallAccuracy = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
 
       candidateProfiles.push({
         candidateId: `cand_${cand.studentName}_${cand.classLevel}_${cand.track}`,
@@ -239,14 +227,15 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
         totalQuestions,
         totalWrong,
         totalSkipped,
-        testsAttempted: bestAttempts.length,
+        testsAttempted: submissions.length,
+        totalTestsAttempted: submissions.length,
         totalTimeSpentSeconds,
         latestAttemptTimestamp: cand.latestTimestamp,
-        chapterAttempts: bestAttempts.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0)),
+        chapterAttempts: [...submissions].sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0)),
       });
     }
 
-    // Rank rule: Overall Accuracy descending -> Total Correct descending -> Tests attempted descending -> Time spent ascending
+    // Rank rule: Overall Correct Accuracy descending -> Total Correct descending -> Total Submissions descending -> Time spent ascending
     return candidateProfiles.sort((a, b) => {
       if (b.overallAccuracy !== a.overallAccuracy) {
         return b.overallAccuracy - a.overallAccuracy;
@@ -254,15 +243,15 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
       if (b.totalCorrect !== a.totalCorrect) {
         return b.totalCorrect - a.totalCorrect;
       }
-      if (b.testsAttempted !== a.testsAttempted) {
-        return b.testsAttempted - a.testsAttempted;
+      if ((b.testsAttempted || 0) !== (a.testsAttempted || 0)) {
+        return (b.testsAttempted || 0) - (a.testsAttempted || 0);
       }
       if (a.totalTimeSpentSeconds !== b.totalTimeSpentSeconds) {
         return a.totalTimeSpentSeconds - b.totalTimeSpentSeconds;
       }
-      return b.latestAttemptTimestamp - a.latestAttemptTimestamp;
+      return (b.latestAttemptTimestamp || 0) - (a.latestAttemptTimestamp || 0);
     });
-  }, [allEntries, selectedClass, selectedTrack]);
+  }, [safeEntries, selectedClass, selectedTrack]);
 
   if (!isOpen) return null;
 
@@ -516,15 +505,15 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
                         <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
                           <span className="font-semibold text-slate-700 dark:text-slate-300">
-                            {candidate.testsAttempted} {candidate.testsAttempted === 1 ? 'Chapter' : 'Chapters'} Mastered
+                            {candidate.testsAttempted} {candidate.testsAttempted === 1 ? 'Submission' : 'Submissions'}
                           </span>
                           <span>•</span>
                           <span className="flex items-center gap-1">
                             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                            <span>{candidate.totalCorrect}/{candidate.totalQuestions} Questions</span>
+                            <span>{candidate.totalCorrect}/{candidate.totalQuestions} Correct</span>
                           </span>
                           <span>•</span>
-                          <span>Total: {Math.floor(candidate.totalTimeSpentSeconds / 60)}m {candidate.totalTimeSpentSeconds % 60}s</span>
+                          <span>Total Time: {Math.floor(candidate.totalTimeSpentSeconds / 60)}m {candidate.totalTimeSpentSeconds % 60}s</span>
                           <span>•</span>
                           <span className="text-indigo-600 dark:text-indigo-400 font-medium flex items-center gap-1">
                             <Clock className="w-3 h-3" />
@@ -631,7 +620,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                 {/* Overall Accuracy Bar */}
                 <div className="grid grid-cols-3 gap-2 mt-4 p-3 rounded-2xl bg-black/25 backdrop-blur-md border border-white/10 text-center text-white">
                   <div>
-                    <span className="text-[10px] uppercase text-white/70 block">Overall Accuracy</span>
+                    <span className="text-[10px] uppercase text-white/70 block">Overall Correct Accuracy</span>
                     <span className="text-lg font-black text-emerald-300">{selectedCandidate.overallAccuracy}%</span>
                   </div>
                   <div>
@@ -639,17 +628,17 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                     <span className="text-lg font-black text-white">{selectedCandidate.totalCorrect}/{selectedCandidate.totalQuestions}</span>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase text-white/70 block">Chapters Attempted</span>
+                    <span className="text-[10px] uppercase text-white/70 block">Total Submissions</span>
                     <span className="text-lg font-black text-amber-300">{selectedCandidate.testsAttempted}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Drawer Body: Chapter-by-Chapter Track Record */}
+              {/* Drawer Body: All Submissions Practice History */}
               <div className="p-6 space-y-4 overflow-y-auto">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center justify-between">
-                  <span>Saved Practice History &amp; Chapter Records</span>
-                  <span>{(selectedCandidate.chapterAttempts || []).length} Chapters</span>
+                  <span>Saved Practice History &amp; All Submissions</span>
+                  <span>{(selectedCandidate.chapterAttempts || []).length} Submissions</span>
                 </h4>
 
                 <div className="space-y-2 max-h-72 overflow-y-auto pr-1">

@@ -167,20 +167,6 @@ export const ContentView: React.FC<ContentViewProps> = ({
     });
   };
 
-  const handleExpandAll = () => {
-    if (activeSection === 'definitions') {
-      setExpandedIds(new Set(filteredDefinitions.map((d) => d.id)));
-    } else if (activeSection === 'theorems') {
-      setExpandedIds(new Set(filteredTheorems.map((t) => t.id)));
-    } else if (activeSection === 'properties') {
-      setExpandedIds(new Set(filteredProperties.map((p) => p.id)));
-    }
-  };
-
-  const handleCollapseAll = () => {
-    setExpandedIds(new Set());
-  };
-
   return (
     <div id="mathematics-content-view" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8 animate-fade-in">
       
@@ -414,25 +400,6 @@ export const ContentView: React.FC<ContentViewProps> = ({
                 </button>
               )}
             </div>
-
-            {(activeSection === 'definitions' || activeSection === 'theorems' || activeSection === 'properties') && (
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={handleExpandAll}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold cursor-pointer transition-colors"
-                >
-                  <Maximize2 className="w-3.5 h-3.5" />
-                  <span>Expand All</span>
-                </button>
-                <button
-                  onClick={handleCollapseAll}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold cursor-pointer transition-colors"
-                >
-                  <Minimize2 className="w-3.5 h-3.5" />
-                  <span>Collapse All</span>
-                </button>
-              </div>
-            )}
           </div>
         </div>
       )}
