@@ -720,9 +720,11 @@ export default function App() {
         }}
       />
 
-      {/* Footer - Hidden in Quiz, Results/Score, and Class Page Views */}
+      {/* Footer - Hidden in Quiz, Results/Score, Class Page Views, and completely hidden on Mobile View */}
       {!['quiz', 'results', 'class-page'].includes(currentView) && activeTab !== 'classes' && !forceMobileDemo && (
-        <Footer onNavigate={handleNavigate} />
+        <div className="hidden md:block">
+          <Footer onNavigate={handleNavigate} />
+        </div>
       )}
 
       {/* Floating Demo Mode Switcher for Quick Mobile / Desktop Inspection */}
