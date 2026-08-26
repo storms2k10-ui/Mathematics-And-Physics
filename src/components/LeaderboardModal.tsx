@@ -362,11 +362,11 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
           </div>
         </div>
 
-        {/* Controls Bar: Track Selector + Class Switcher with dynamic text-fitted buttons */}
-        <div className="p-2.5 sm:p-3 bg-slate-50 dark:bg-slate-950/60 border-b border-slate-200 dark:border-slate-800 space-y-2">
+        {/* Controls Bar: Track Selector + Class Switcher with dynamic compact text-fitted buttons */}
+        <div className="p-2 sm:p-2.5 bg-slate-50 dark:bg-slate-950/60 border-b border-slate-200 dark:border-slate-800 space-y-1.5">
           
-          {/* 4 Track Options — Content-Fitted Dynamic Width */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-200/60 dark:bg-slate-800/60 rounded-xl">
+          {/* 4 Track Options — Content-Fitted Dynamic Width (Compact) */}
+          <div className="flex flex-wrap items-center gap-1 p-0.5 bg-slate-200/60 dark:bg-slate-800/60 rounded-lg">
             {([
               { id: 'Elementary Mathematics', label: 'Elementary Mathematics', icon: Sigma },
               { id: 'Advanced Mathematics', label: 'Advanced Mathematics', icon: Sparkles },
@@ -381,21 +381,21 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                     setSelectedTrack(tr.id);
                     setSelectedCandidate(null);
                   }}
-                  className={`w-auto px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap ${
+                  className={`w-auto px-2 py-1 rounded-md text-[10.5px] font-bold transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap ${
                     selectedTrack === tr.id
-                      ? 'bg-emerald-600 text-white shadow-xs scale-[1.02]'
+                      ? 'bg-emerald-600 text-white shadow-xs'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50'
                   }`}
                 >
-                  <Icon className="w-3 h-3 shrink-0" />
+                  <Icon className="w-2.5 h-2.5 shrink-0" />
                   <span>{tr.label}</span>
                 </button>
               );
             })}
           </div>
 
-          {/* Class Switcher Tabs — Content-Fitted Dynamic Width */}
-          <div className="flex flex-wrap items-center p-1 rounded-xl bg-slate-200/60 dark:bg-slate-800/60 gap-1.5">
+          {/* Class Switcher Tabs — Content-Fitted Dynamic Width (Compact) */}
+          <div className="flex flex-wrap items-center p-0.5 rounded-lg bg-slate-200/60 dark:bg-slate-800/60 gap-1">
             {([9, 10, 11, 12] as ClassLevel[]).map((lvl) => {
               const count = safeEntries.filter(e => {
                 if (!e) return false;
@@ -409,14 +409,14 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                     setSelectedClass(lvl);
                     setSelectedCandidate(null);
                   }}
-                  className={`w-auto px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+                  className={`w-auto px-2 py-1 rounded-md text-[10.5px] font-bold transition-all cursor-pointer flex items-center gap-1 whitespace-nowrap ${
                     selectedClass === lvl
-                      ? 'bg-teal-600 text-white shadow-xs scale-[1.02]'
+                      ? 'bg-teal-600 text-white shadow-xs'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50'
                   }`}
                 >
                   <span>Class {lvl}</span>
-                  <span className={`text-[9.5px] px-1.5 py-0.5 rounded font-semibold ${selectedClass === lvl ? 'bg-teal-700 text-white' : 'bg-slate-300/80 dark:bg-slate-700/80 text-slate-600 dark:text-slate-300'}`}>
+                  <span className={`text-[9px] px-1 py-0.2 rounded font-semibold ${selectedClass === lvl ? 'bg-teal-700 text-white' : 'bg-slate-300/80 dark:bg-slate-700/80 text-slate-600 dark:text-slate-300'}`}>
                     {count}
                   </span>
                 </button>
