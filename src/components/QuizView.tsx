@@ -355,13 +355,13 @@ export const QuizView: React.FC<QuizViewProps> = ({
   const isCurrentCorrect = userAnswers[currentIndex]?.isCorrect;
 
   return (
-    <div id="quiz-view-container" className="py-6 sm:py-10 bg-slate-50 dark:bg-slate-950 min-h-[calc(100vh-120px)] animate-fade-in">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+    <div id="quiz-view-container" className="py-4 sm:py-10 bg-slate-50 dark:bg-slate-950 min-h-[calc(100vh-120px)] animate-fade-in">
+      <div className="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 space-y-4 sm:space-y-6">
         
         {/* Top Header Card: Title, Time & Candidate Info */}
-        <div className="bg-white dark:bg-slate-900 rounded-3xl p-5 sm:p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3 sm:space-y-4">
           
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
             
             <div className="space-y-1">
               <div className="flex flex-wrap items-center gap-2">
@@ -381,7 +381,7 @@ export const QuizView: React.FC<QuizViewProps> = ({
             </div>
 
             {/* Test Timer, Theme Toggle & Exit Action */}
-            <div className="flex items-center gap-2.5 self-end sm:self-center">
+            <div className="flex items-center gap-2 self-end sm:self-center">
               {/* Day / Night Mode Toggle */}
               <button
                 id="quiz-theme-toggle"
@@ -397,7 +397,7 @@ export const QuizView: React.FC<QuizViewProps> = ({
                 )}
               </button>
 
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-mono font-bold">
+              <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-mono font-bold">
                 <Clock className="w-4 h-4 text-indigo-500" />
                 <span>{formatTime(totalTimer)}</span>
               </div>
@@ -436,12 +436,12 @@ export const QuizView: React.FC<QuizViewProps> = ({
         {/* Main Question Card with Smooth Transition Animation (key on currentIndex) */}
         <div 
           key={currentIndex} 
-          className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xl shadow-indigo-950/5 dark:shadow-indigo-950/30 space-y-6 relative overflow-hidden animate-slide-fade"
+          className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xl shadow-indigo-950/5 dark:shadow-indigo-950/30 space-y-4 sm:space-y-6 relative overflow-hidden animate-slide-fade"
         >
           {/* Question Header with 1-Minute Countdown Timer and Mode */}
-          <div className="flex flex-wrap items-center justify-between gap-3 relative z-10">
+          <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 relative z-10">
             <div className="flex items-center gap-2">
-              <span className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
+              <span className="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
                 Question {currentIndex + 1} of {totalQuestions}
               </span>
               {currentQuestion.difficulty && (
@@ -493,21 +493,21 @@ export const QuizView: React.FC<QuizViewProps> = ({
           {/* Highlighted Question Box with KaTeX and Smooth Transition Key */}
           <div 
             key={`question-box-${currentIndex}`}
-            className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-indigo-50/90 via-white to-indigo-50/50 dark:from-slate-800/95 dark:via-indigo-950/50 dark:to-slate-800/90 border-2 border-indigo-300/80 dark:border-indigo-600/60 shadow-md shadow-indigo-500/5 relative overflow-hidden z-10 animate-slide-fade"
+            className="p-4 sm:p-7 rounded-xl sm:rounded-2xl bg-gradient-to-br from-indigo-50/90 via-white to-indigo-50/50 dark:from-slate-800/95 dark:via-indigo-950/50 dark:to-slate-800/90 border-2 border-indigo-300/80 dark:border-indigo-600/60 shadow-md shadow-indigo-500/5 relative overflow-hidden z-10 animate-slide-fade"
           >
-            <div className="flex items-center justify-between gap-2 mb-3">
+            <div className="flex items-center justify-between gap-2 mb-2 sm:mb-3">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-indigo-600 dark:bg-indigo-400 animate-ping" />
                 <span className="text-xs font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
                   Question Statement
                 </span>
               </div>
-              <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
+              <span className="text-[10px] sm:text-[11px] font-medium text-slate-500 dark:text-slate-400">
                 Class {classLevel} • {chapterTitle}
               </span>
             </div>
 
-            <h2 className="text-base sm:text-xl lg:text-2xl font-bold text-slate-900 dark:text-white leading-relaxed font-sans">
+            <h2 className="text-sm sm:text-xl lg:text-2xl font-bold text-slate-900 dark:text-white leading-relaxed font-sans">
               <MathText text={currentQuestion.question} />
             </h2>
           </div>
@@ -515,7 +515,7 @@ export const QuizView: React.FC<QuizViewProps> = ({
           {/* Options Grid (A, B, C, D) with Staggered Transition Animation */}
           <div 
             key={`options-grid-${currentIndex}`}
-            className="grid grid-cols-1 gap-3 pt-2 relative z-10"
+            className="grid grid-cols-1 gap-2.5 sm:gap-3 pt-1 sm:pt-2 relative z-10"
           >
             {(['A', 'B', 'C', 'D'] as const).map((opt, idx) => {
               const optionText = currentQuestion.options?.[opt] || currentQuestion[`option_${opt.toLowerCase() as 'a' | 'b' | 'c' | 'd'}`] || '';
@@ -552,11 +552,11 @@ export const QuizView: React.FC<QuizViewProps> = ({
                   key={`${currentIndex}-${opt}`}
                   onClick={() => handleSelectOption(opt)}
                   disabled={isCurrentSkipped || isSubmitted}
-                  className={`p-4 rounded-2xl border text-left flex items-center gap-3.5 transition-all duration-200 ${staggerClass} ${optionClasses} ${
+                  className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl border text-left flex items-center gap-3 sm:gap-3.5 transition-all duration-200 ${staggerClass} ${optionClasses} ${
                     isCurrentSkipped || isSubmitted ? 'cursor-default' : 'cursor-pointer hover:shadow-xs active:scale-[0.99]'
                   }`}
                 >
-                  <span className={`w-8 h-8 rounded-xl font-bold text-xs flex items-center justify-center shrink-0 transition-all ${badgeClasses}`}>
+                  <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl font-bold text-xs flex items-center justify-center shrink-0 transition-all ${badgeClasses}`}>
                     {opt}
                   </span>
                   <div className="text-sm sm:text-base font-medium flex-1 leading-snug">

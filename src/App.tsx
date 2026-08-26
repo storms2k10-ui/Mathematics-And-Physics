@@ -21,9 +21,10 @@ import { LeaderboardModal } from './components/LeaderboardModal';
 import { AuthModal } from './components/AuthModal';
 import { UserProfileModal } from './components/UserProfileModal';
 import { MathService, shuffleArray } from './services/mathService';
+import { MobileAppView } from './components/MobileAppView';
 import { Chapter, ClassInfo, ClassLevel, Question, StudentProfile, LeaderboardEntry, TestSessionConfig, UserTestHistory } from './types';
 import { useAuth } from './context/AuthContext';
-import { Atom, ArrowLeft } from 'lucide-react';
+import { Atom, ArrowLeft, Smartphone, Monitor } from 'lucide-react';
 
 export default function App() {
   const { recordTestAttempt, currentUser, userProfile, syncWithServer } = useAuth();
@@ -61,6 +62,7 @@ export default function App() {
   const [activeQuizTitle, setActiveQuizTitle] = useState<string>('');
   const [activeQuizClass, setActiveQuizClass] = useState<ClassLevel>(9);
   const [activeChapterId, setActiveChapterId] = useState<string | undefined>(undefined);
+  const [forceMobileDemo, setForceMobileDemo] = useState(false);
 
   // Pending Quiz Results (held when not signed in yet)
   const [pendingCompletionResults, setPendingCompletionResults] = useState<{
@@ -389,9 +391,9 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Handler to return to home/philosophy
+  // Handler to return to home
   const handleBackToHome = () => {
-    setActiveTab('philosophy');
+    setActiveTab('home');
     setCurrentView('main');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -412,33 +414,63 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
       
-      {/* Top Header Banner: MATHEMATICS AND PHYSICS - Hidden in Quiz and Results/Score Views */}
-      {!['quiz', 'results'].includes(currentView) && (
-        <HeaderQuote />
+      {/* Top Header Banner: MATHEMATICS AND PHYSICS - Hidden in Quiz, Results, and Mobile App Home View */}
+      {!['quiz', 'results'].includes(currentView) && !forceMobileDemo && (
+        <div className="hidden md:block">
+          <HeaderQuote />
+        </div>
       )}
 
       {/* Main Navbar - Hidden in Quiz and Results/Score Views */}
-      {!['quiz', 'results'].includes(currentView) && (
-        <Navbar
-          activeTab={activeTab}
-          selectedClass={selectedClass}
-          activeTrack={activeTrack}
-          activeContentSection={activeContentSection}
-          activePhilosopherType={activePhilosopherType}
-          onNavigate={handleNavigate}
-          onNavigateContentSection={handleNavigateContentSection}
-          onSelectPhilosopherType={handleSelectPhilosopherType}
-          onOpenLeaderboard={() => {
-            setSelectedClass(9);
-            setIsLeaderboardModalOpen(true);
-          }}
-          onOpenAuth={() => {
-            setAuthModalCustomTitle(undefined);
-            setAuthModalCustomSubtitle(undefined);
-            setIsAuthModalOpen(true);
-          }}
-          onOpenProfile={handleOpenProfile}
-        />
+      {!['quiz', 'results'].includes(currentView) && !forceMobileDemo && (
+        <div className="hidden md:block">
+          <Navbar
+            activeTab={activeTab}
+            selectedClass={selectedClass}
+            activeTrack={activeTrack}
+            activeContentSection={activeContentSection}
+            activePhilosopherType={activePhilosopherType}
+            onNavigate={handleNavigate}
+            onNavigateContentSection={handleNavigateContentSection}
+            onSelectPhilosopherType={handleSelectPhilosopherType}
+            onOpenLeaderboard={() => {
+              setSelectedClass(9);
+              setIsLeaderboardModalOpen(true);
+            }}
+            onOpenAuth={() => {
+              setAuthModalCustomTitle(undefined);
+              setAuthModalCustomSubtitle(undefined);
+              setIsAuthModalOpen(true);
+            }}
+            onOpenProfile={handleOpenProfile}
+          />
+        </div>
+      )}
+
+      {/* Mobile Navbar for Non-Home Mobile Pages */}
+      {!['quiz', 'results'].includes(currentView) && activeTab !== 'home' && !forceMobileDemo && (
+        <div className="block md:hidden">
+          <Navbar
+            activeTab={activeTab}
+            selectedClass={selectedClass}
+            activeTrack={activeTrack}
+            activeContentSection={activeContentSection}
+            activePhilosopherType={activePhilosopherType}
+            onNavigate={handleNavigate}
+            onNavigateContentSection={handleNavigateContentSection}
+            onSelectPhilosopherType={handleSelectPhilosopherType}
+            onOpenLeaderboard={() => {
+              setSelectedClass(9);
+              setIsLeaderboardModalOpen(true);
+            }}
+            onOpenAuth={() => {
+              setAuthModalCustomTitle(undefined);
+              setAuthModalCustomSubtitle(undefined);
+              setIsAuthModalOpen(true);
+            }}
+            onOpenProfile={handleOpenProfile}
+          />
+        </div>
       )}
 
       {/* Main Content Body */}
@@ -539,20 +571,53 @@ export default function App() {
         {/* MAIN TAB VIEWS */}
         {currentView === 'main' && (
           <>
-            {/* HOME VIEW (Pure Home without Philosophy or Thinkers Section) */}
+            {/* HOME VIEW: Mobile Studio View on Mobile devices & Desktop Demo Mode, Standard Desktop layout otherwise */}
             {activeTab === 'home' && (
               <>
-                <HeroSection
-                  onSelectClass={handleSelectClass}
-                  onStartPracticing={() => handleSelectClass(9)}
-                />
-                <FeaturesSection />
+                {/* Mobile App View: Rendered for mobile viewports or when Demo Mode is enabled */}
+                <div className={forceMobileDemo ? 'block max-w-md mx-auto my-6 rounded-[40px] shadow-2xl border-8 border-slate-900 overflow-hidden relative' : 'block md:hidden'}>
+                  <MobileAppView
+                    activeTrack={activeTrack}
+                    selectedClass={selectedClass}
+                    onSelectTrack={(track) => {
+                      setActiveTrack(track);
+                      if (track === 'Advanced Mathematics' && selectedClass < 11) {
+                        setSelectedClass(11);
+                      }
+                    }}
+                    onSelectClass={(lvl, track) => {
+                      setSelectedClass(lvl);
+                      if (track) setActiveTrack(track);
+                    }}
+                    onStartChapterPractice={handlePrepareChapterTest}
+                    onStartClassPractice={handlePrepareClassPractice}
+                    onOpenLeaderboard={() => setIsLeaderboardModalOpen(true)}
+                    onOpenAuth={() => setIsAuthModalOpen(true)}
+                    onOpenProfile={handleOpenProfile}
+                    onOpenDictionary={() => {
+                      setActiveTab('dictionary');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  />
+                </div>
+
+                {/* Desktop Layout: Rendered on larger screens when not in forced demo mode */}
+                <div className={forceMobileDemo ? 'hidden' : 'hidden md:block'}>
+                  <HeroSection
+                    onSelectClass={handleSelectClass}
+                    onStartPracticing={() => handleSelectClass(9)}
+                  />
+                  <FeaturesSection />
+                </div>
               </>
             )}
 
             {/* DEDICATED PHILOSOPHY VIEW (Standalone Thinkers & Pioneers) */}
             {activeTab === 'philosophy' && (
-              <MathPhilosophySection initialTab={activePhilosopherType} />
+              <MathPhilosophySection 
+                initialTab={activePhilosopherType}
+                onBackToHome={handleBackToHome}
+              />
             )}
 
             {/* PHYSICS PLACEHOLDER */}
@@ -656,8 +721,31 @@ export default function App() {
       />
 
       {/* Footer - Hidden in Quiz, Results/Score, and Class Page Views */}
-      {!['quiz', 'results', 'class-page'].includes(currentView) && activeTab !== 'classes' && (
+      {!['quiz', 'results', 'class-page'].includes(currentView) && activeTab !== 'classes' && !forceMobileDemo && (
         <Footer onNavigate={handleNavigate} />
+      )}
+
+      {/* Floating Demo Mode Switcher for Quick Mobile / Desktop Inspection */}
+      {!['quiz', 'results'].includes(currentView) && (
+        <aside aria-label="Mobile Demo Switcher" className="hidden md:block fixed bottom-4 right-4 z-50">
+          <button
+            onClick={() => setForceMobileDemo(!forceMobileDemo)}
+            className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-slate-950/90 text-white hover:bg-slate-900 border border-purple-500/50 shadow-2xl backdrop-blur-md text-xs font-black tracking-wide transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            title="Toggle Mobile Studio UI Demo"
+          >
+            {forceMobileDemo ? (
+              <>
+                <Monitor className="w-4 h-4 text-cyan-400" />
+                <span>Switch to Desktop View</span>
+              </>
+            ) : (
+              <>
+                <Smartphone className="w-4 h-4 text-pink-400 animate-pulse" />
+                <span>📱 Preview Mobile App UI</span>
+              </>
+            )}
+          </button>
+        </aside>
       )}
 
     </div>

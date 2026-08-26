@@ -30,6 +30,7 @@ import { safeFetchJson } from '../lib/apiHelper';
 interface AuthContextType {
   currentUser: FirebaseUser | null;
   userProfile: UserProfile | null;
+  isAuthenticated: boolean;
   loading: boolean;
   checkEmailUniqueness: (email: string) => Promise<{ exists: boolean; available: boolean; error?: string }>;
   signUp: (email: string, pass: string, displayName: string, classLevel: ClassLevel) => Promise<void>;
@@ -489,6 +490,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       value={{
         currentUser,
         userProfile,
+        isAuthenticated: Boolean(currentUser || (userProfile && userProfile.email && userProfile.email.includes('@'))),
         loading,
         checkEmailUniqueness,
         signUp,

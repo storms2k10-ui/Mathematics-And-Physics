@@ -16,7 +16,9 @@ import {
   Brain,
   Layers,
   Sigma,
-  Zap
+  Zap,
+  Home,
+  ArrowLeft
 } from 'lucide-react';
 import { MATHEMATICIANS, Mathematician } from '../data/mathematiciansData';
 import { MathText } from './MathText';
@@ -24,6 +26,7 @@ import { MathText } from './MathText';
 interface MathPhilosophySectionProps {
   onExploreMathematician?: (mathematician: Mathematician) => void;
   initialTab?: 'physicists' | 'mathematicians';
+  onBackToHome?: () => void;
 }
 
 const FIELD_THEMES: Record<string, {
@@ -91,16 +94,17 @@ const FIELD_THEMES: Record<string, {
   },
 };
 
-export const MathPhilosophySection: React.FC<MathPhilosophySectionProps> = ({ initialTab = 'mathematicians' }) => {
+export const MathPhilosophySection: React.FC<MathPhilosophySectionProps> = ({ 
+  initialTab = 'mathematicians',
+  onBackToHome
+}) => {
   const [selectedMathematician, setSelectedMathematician] = useState<Mathematician | null>(null);
   const [activeMainSection, setActiveMainSection] = useState<'mathematicians' | 'physicists'>(initialTab);
-  const [activeCategory, setActiveCategory] = useState<string>('all');
 
   // Keep synced with navbar dropdown
   useEffect(() => {
     if (initialTab) {
       setActiveMainSection(initialTab);
-      setActiveCategory('all');
     }
   }, [initialTab]);
 
@@ -110,72 +114,70 @@ export const MathPhilosophySection: React.FC<MathPhilosophySectionProps> = ({ in
     return { mathCount, physCount };
   }, []);
 
-  const categories = useMemo(() => {
-    if (activeMainSection === 'physicists') {
-      return [
-        { id: 'all', label: 'All Physicists' },
-        { id: 'Theoretical Physics', label: 'Theoretical Physics & Relativity' },
-        { id: 'Ancient Pioneers', label: 'Observational & Classical' },
-      ];
-    }
-    return [
-      { id: 'all', label: 'All Mathematicians' },
-      { id: 'Calculus & Analysis', label: 'Calculus & Analysis' },
-      { id: 'Algebra & Number Theory', label: 'Algebra & Number Theory' },
-      { id: 'Geometry & Topology', label: 'Geometry & Topology' },
-      { id: 'Pure Mathematics', label: 'Pure Mathematics & Logic' },
-      { id: 'Ancient Pioneers', label: 'Ancient Pioneers' },
-    ];
-  }, [activeMainSection]);
-
   const filteredThinkers = useMemo(() => {
     return MATHEMATICIANS.filter((m) => {
-      // 1. Strict primary section filter
-      if (m.thinkerType !== (activeMainSection === 'physicists' ? 'physicist' : 'mathematician')) {
-        return false;
-      }
-
-      // 2. Subcategory filter
-      const matchesCat = activeCategory === 'all' || m.field === activeCategory;
-      return matchesCat;
+      return m.thinkerType === (activeMainSection === 'physicists' ? 'physicist' : 'mathematician');
     });
-  }, [activeMainSection, activeCategory]);
+  }, [activeMainSection]);
 
   return (
-    <section id="math-philosophy-section" className="py-12 md:py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden border-t border-b border-indigo-900/50 shadow-2xl">
+    <section id="math-philosophy-section" className="py-6 sm:py-12 md:py-16 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden border-t border-b border-indigo-900/50 shadow-2xl min-h-screen">
       
       {/* Background Sacred Geometry & Deep Space Cosmic Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(#6366f120_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none opacity-40" />
       <div className="absolute -top-48 left-1/4 w-[500px] h-[500px] bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute -bottom-48 right-1/4 w-[500px] h-[500px] bg-purple-600/15 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      {/* TOP NAVIGATION & HOME BUTTON BAR (Mobile & Desktop) */}
+      <div className="sticky top-0 z-30 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/80 px-4 sm:px-6 lg:px-8 py-3 mb-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
+          {onBackToHome && (
+            <button
+              id="philosophy-back-to-home-btn"
+              onClick={onBackToHome}
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-200 hover:text-white font-bold text-xs shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer group"
+              title="Return to Home Screen"
+            >
+              <Home className="w-4 h-4 text-indigo-400 group-hover:scale-110 transition-transform" />
+              <span>Back to Home</span>
+            </button>
+          )}
+
+          <div className="flex items-center gap-2 text-xs text-slate-400 font-semibold truncate">
+            <span className="hidden sm:inline">Philosophy of Science</span>
+            <span className="hidden sm:inline text-slate-600">•</span>
+            <span className="text-indigo-400 font-extrabold truncate">The Great Thinkers &amp; Pioneers</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 space-y-6 sm:space-y-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-950/90 border border-indigo-500/40 text-indigo-300 text-xs font-black uppercase tracking-widest shadow-lg shadow-indigo-500/10">
-            <Brain className="w-4 h-4 text-indigo-400" />
+        <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-950/90 border border-indigo-500/40 text-indigo-300 text-[11px] sm:text-xs font-black uppercase tracking-widest shadow-lg shadow-indigo-500/10">
+            <Brain className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-indigo-400" />
             <span>Philosophy of Mathematics &amp; Theoretical Physics</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
             The Great Thinkers &amp; Pioneers
           </h2>
 
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-sans max-w-2xl mx-auto">
+          <p className="text-xs sm:text-base text-slate-300 leading-relaxed font-sans max-w-2xl mx-auto px-2">
             Discover the profound philosophical worldviews, mathematical formulations, and enduring breakthroughs of humanity&apos;s greatest minds.
           </p>
         </div>
 
         {/* 🌟 PROMINENT TWO-SECTION SWITCHER: PHYSICISTS vs MATHEMATICIANS */}
         <div className="flex justify-center">
-          <div className="p-1.5 bg-slate-900/90 border border-slate-800 rounded-2xl flex items-center gap-2 shadow-2xl backdrop-blur-md max-w-md w-full">
+          <div className="p-1 sm:p-1.5 bg-slate-900/90 border border-slate-800 rounded-2xl flex items-center gap-1.5 sm:gap-2 shadow-2xl backdrop-blur-md max-w-md w-full">
             <button
+              id="philosophy-tab-physicists"
               onClick={() => {
                 setActiveMainSection('physicists');
-                setActiveCategory('all');
               }}
-              className={`flex-1 py-3 px-4 rounded-xl font-black text-sm flex items-center justify-center gap-2 transition-all cursor-pointer ${
+              className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl font-black text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 transition-all cursor-pointer ${
                 activeMainSection === 'physicists'
                   ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg shadow-cyan-600/30 scale-[1.02]'
                   : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
@@ -183,7 +185,7 @@ export const MathPhilosophySection: React.FC<MathPhilosophySectionProps> = ({ in
             >
               <Atom className={`w-4 h-4 ${activeMainSection === 'physicists' ? 'text-cyan-200 animate-spin-slow' : 'text-slate-400'}`} />
               <span>Physicists</span>
-              <span className={`px-2 py-0.5 rounded-md text-xs font-bold ${
+              <span className={`px-1.5 sm:px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-bold ${
                 activeMainSection === 'physicists' ? 'bg-cyan-900/60 text-cyan-200' : 'bg-slate-800 text-slate-400'
               }`}>
                 {counts.physCount}
@@ -191,11 +193,11 @@ export const MathPhilosophySection: React.FC<MathPhilosophySectionProps> = ({ in
             </button>
 
             <button
+              id="philosophy-tab-mathematicians"
               onClick={() => {
                 setActiveMainSection('mathematicians');
-                setActiveCategory('all');
               }}
-              className={`flex-1 py-3 px-4 rounded-xl font-black text-sm flex items-center justify-center gap-2 transition-all cursor-pointer ${
+              className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl font-black text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 transition-all cursor-pointer ${
                 activeMainSection === 'mathematicians'
                   ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-600/30 scale-[1.02]'
                   : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
@@ -203,7 +205,7 @@ export const MathPhilosophySection: React.FC<MathPhilosophySectionProps> = ({ in
             >
               <Sigma className="w-4 h-4" />
               <span>Mathematicians</span>
-              <span className={`px-2 py-0.5 rounded-md text-xs font-bold ${
+              <span className={`px-1.5 sm:px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-bold ${
                 activeMainSection === 'mathematicians' ? 'bg-indigo-900/60 text-indigo-200' : 'bg-slate-800 text-slate-400'
               }`}>
                 {counts.mathCount}
@@ -212,29 +214,8 @@ export const MathPhilosophySection: React.FC<MathPhilosophySectionProps> = ({ in
           </div>
         </div>
 
-        {/* Category Filter Pills (Centered, No Search Bar) */}
-        <div className="flex justify-center bg-slate-900/80 p-3 sm:p-4 rounded-3xl border border-slate-800 shadow-xl backdrop-blur-md">
-          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
-                  activeCategory === cat.id
-                    ? activeMainSection === 'physicists'
-                      ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-md shadow-cyan-600/30 scale-105'
-                      : 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-600/30 scale-105'
-                    : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/60'
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
         {/* Thinkers Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {filteredThinkers.map((thinker) => {
             const theme = FIELD_THEMES[thinker.field] || FIELD_THEMES['Calculus & Analysis'];
 
@@ -243,7 +224,7 @@ export const MathPhilosophySection: React.FC<MathPhilosophySectionProps> = ({ in
                 key={thinker.id}
                 id={`thinker-card-${thinker.id}`}
                 onClick={() => setSelectedMathematician(thinker)}
-                className={`group relative rounded-3xl p-6 transition-all duration-300 cursor-pointer border flex flex-col justify-between overflow-hidden hover:-translate-y-2 hover:shadow-2xl bg-slate-900/90 border-slate-800 ${theme.borderHover}`}
+                className={`group relative rounded-2xl sm:rounded-3xl p-4.5 sm:p-6 transition-all duration-300 cursor-pointer border flex flex-col justify-between overflow-hidden hover:-translate-y-1.5 sm:hover:-translate-y-2 hover:shadow-2xl bg-slate-900/90 border-slate-800 ${theme.borderHover}`}
               >
                 {/* Background Hover Aura */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${theme.glow} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
