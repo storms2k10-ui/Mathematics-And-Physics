@@ -596,10 +596,58 @@ app.post('/api/leaderboard', (req, res) => {
   }
 });
 
-// Reset Leaderboard
+// Refresh and Reset Ranking History only (keeping user profiles and history preserved)
+app.post('/api/leaderboard/refresh', (_req, res) => {
+  try {
+    // Clear out outdated ranking records
+    saveLeaderboardToFile([]);
+    
+    // Optionally rebuild ranking entries strictly from existing verified user profile history in users.json
+    const users = loadUsersFromFile();
+    const freshRankingEntries: LeaderboardEntry[] = [];
+    
+    for (const u of users) {
+      if (Array.isArray(u.history) && u.history.length > 0) {
+        for (const h of u.history) {
+          freshRankingEntries.push({
+            id: `rank_${u.uid}_${h.chapterId || 'ch'}_${Date.now()}`,
+            studentName: u.displayName || 'Candidate',
+            classLevel: Number(h.classLevel) || Number(u.classLevel) || 9,
+            section: 'Standard',
+            chapterId: h.chapterId || 'general',
+            chapterName: h.chapterName || 'Mathematics Test',
+            mode: 'practice',
+            track: h.track || 'Elementary Mathematics',
+            correctCount: Number(h.correctCount) || 0,
+            totalQuestions: Number(h.totalQuestions) || 1,
+            scorePercentage: Number(h.scorePercentage) || 0,
+            timeSpentSeconds: Number(h.timeSpentSeconds) || 0,
+            formattedTime: h.formattedTime || '0m 00s',
+            timestamp: Number(h.timestamp) || Date.now(),
+            formattedDate: h.formattedDate || 'Recent',
+          });
+        }
+      }
+    }
+    
+    saveLeaderboardToFile(freshRankingEntries);
+
+    res.json({
+      success: true,
+      message: 'Ranking history refreshed and re-synced from verified server database. User profiles and test histories remain fully preserved.',
+      totalEntries: freshRankingEntries.length,
+      entries: freshRankingEntries,
+      timestamp: Date.now(),
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err?.message || 'Failed to refresh ranking history' });
+  }
+});
+
+// Reset Leaderboard (Clears ranking history while keeping all user profiles preserved)
 app.post('/api/leaderboard/reset', (_req, res) => {
-  saveLeaderboardToFile([...DEFAULT_SERVER_LEADERBOARD]);
-  res.json({ success: true, message: 'Leaderboard reset to default seeds', entries: DEFAULT_SERVER_LEADERBOARD });
+  saveLeaderboardToFile([]);
+  res.json({ success: true, message: 'Ranking history refreshed and cleared on server. User profile history remains preserved.', entries: [] });
 });
 
 // Fallback for unhandled /api routes to always return JSON (never HTML)

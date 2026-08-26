@@ -471,14 +471,17 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
             </div>
           </div>
 
-          {/* Right Action Badges: Ranking Crown & 3-Lines Settings Menu Button */}
+          {/* Right Action Badges: View Ranking Crown Button & 3-Lines Settings Menu */}
           <div className="flex items-center gap-2">
             <button
-              onClick={onOpenLeaderboard}
-              className="w-8.5 h-8.5 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center text-white shadow-md shadow-pink-500/25 hover:shadow-lg hover:shadow-pink-500/50 hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer group"
-              title="View Leaderboard"
+              id="mobile-view-ranking-btn"
+              onClick={() => onOpenLeaderboard(activeTrack)}
+              className="h-8.5 px-3 rounded-full bg-gradient-to-tr from-purple-600 via-pink-600 to-rose-500 flex items-center justify-center gap-1.5 text-white shadow-md shadow-pink-500/25 hover:shadow-lg hover:shadow-pink-500/50 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer group"
+              title="View Ranking"
+              aria-label="View Ranking"
             >
-              <Crown className="w-4 h-4 fill-white group-hover:rotate-12 transition-transform duration-300" />
+              <Crown className="w-3.5 h-3.5 fill-white group-hover:rotate-12 transition-transform duration-300 shrink-0" />
+              <span className="text-[11px] font-black tracking-tight whitespace-nowrap">View Ranking</span>
             </button>
 
             {/* 3-Lines Settings & Preferences Menu Button */}

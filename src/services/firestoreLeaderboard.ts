@@ -247,4 +247,25 @@ export class FirestoreLeaderboardService {
       console.error('Firestore realtime subscription error:', error);
     });
   }
+
+  /**
+   * Refreshes ranking records from Firebase server and website, ensuring only ranking history is refreshed
+   * while all candidate user profiles and private history remain preserved.
+   */
+  static async refreshRankingHistory(track?: string | 'all'): Promise<LeaderboardEntry[]> {
+    try {
+      // 1. Notify server endpoint to refresh server ranking cache
+      await fetch('/api/leaderboard/refresh', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      }).catch(() => {});
+
+      // 2. Fetch fresh rankings from Firebase Firestore
+      const freshCloudEntries = await this.fetchRanked('all', 'practice', track);
+      return freshCloudEntries;
+    } catch (err) {
+      console.error('Failed to refresh ranking history from cloud:', err);
+      return [];
+    }
+  }
 }

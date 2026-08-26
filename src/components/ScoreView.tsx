@@ -515,7 +515,7 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                 className="flex-1 min-w-[160px] py-3.5 px-6 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-xs shadow-lg shadow-amber-500/30 transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-105 active:scale-95 border border-amber-300/30"
               >
                 <Trophy className="w-4 h-4 text-amber-100" />
-                <span>Academic Ranking</span>
+                <span>View Ranking</span>
               </button>
             )}
           </div>

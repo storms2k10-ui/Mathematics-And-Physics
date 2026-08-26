@@ -613,16 +613,16 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </div>
 
-            {/* Academic Ranking Button */}
+            {/* View Ranking Button */}
             {onOpenLeaderboard && (
               <button
                 id="nav-link-leaderboard"
                 onClick={() => onOpenLeaderboard(activeTrack)}
                 className="px-3 py-2 rounded-xl text-xs font-bold text-amber-700 dark:text-amber-300 hover:text-amber-800 dark:hover:text-amber-200 bg-amber-50/80 dark:bg-amber-950/40 hover:bg-amber-100 dark:hover:bg-amber-900/50 transition-all flex items-center gap-1.5 border border-amber-200/80 dark:border-amber-700/50 shadow-2xs cursor-pointer"
-                title="View Academic Rankings & Track Records"
+                title="View Ranking & Track Records"
               >
                 <Trophy className="w-3.5 h-3.5 text-amber-500 fill-amber-500/20" />
-                <span>Academic Ranking</span>
+                <span>View Ranking</span>
               </button>
             )}
           </div>
@@ -887,7 +887,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="p-2.5 rounded-xl text-xs font-bold text-amber-700 dark:text-amber-300 bg-amber-50/70 dark:bg-amber-950/40 hover:bg-amber-100 dark:hover:bg-amber-900/50 flex items-center gap-1.5 col-span-2 justify-center border border-amber-200/60 dark:border-amber-800/50 cursor-pointer"
               >
                 <Trophy className="w-3.5 h-3.5 text-amber-500" />
-                <span>Academic Ranking</span>
+                <span>View Ranking</span>
               </button>
             )}
           </div>

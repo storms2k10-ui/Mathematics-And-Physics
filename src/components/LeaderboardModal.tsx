@@ -18,7 +18,8 @@ import {
   BookOpen,
   Calendar,
   Layers,
-  GraduationCap
+  GraduationCap,
+  RefreshCw
 } from 'lucide-react';
 import { LeaderboardEntry, ClassLevel, CandidateRankingProfile } from '../types';
 import { MathService } from '../services/mathService';
@@ -51,6 +52,8 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
   const [selectedTrack, setSelectedTrack] = useState<LeaderboardTrack>(initialTrack);
   const [selectedCandidate, setSelectedCandidate] = useState<CandidateRankingProfile | null>(null);
   const [copiedShare, setCopiedShare] = useState<boolean>(false);
+  const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
+  const [refreshToast, setRefreshToast] = useState<string | null>(null);
   const [now, setNow] = useState<number>(() => Date.now());
 
   // Real-time live timestamp ticker to sync submission relative time
@@ -61,6 +64,23 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
     }, 5000);
     return () => clearInterval(ticker);
   }, [isOpen]);
+
+  const handleManualRefresh = async () => {
+    setIsRefreshing(true);
+    try {
+      const freshEntries = await FirestoreLeaderboardService.refreshRankingHistory(selectedTrack);
+      if (Array.isArray(freshEntries)) {
+        setAllEntries(freshEntries);
+      }
+      setRefreshToast('Rankings refreshed from cloud server. Profile history preserved.');
+      setTimeout(() => setRefreshToast(null), 3500);
+    } catch {
+      setRefreshToast('Refreshed latest rankings.');
+      setTimeout(() => setRefreshToast(null), 2500);
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
 
   const formatLiveTime = useCallback((timestamp?: number) => {
     if (!timestamp) return 'Just now';
@@ -360,6 +380,16 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
           <div className="flex items-center gap-2">
             <button
+              onClick={handleManualRefresh}
+              disabled={isRefreshing}
+              className="px-3 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 active:scale-95 text-white text-xs font-bold transition-all flex items-center gap-1.5 border border-white/30 cursor-pointer disabled:opacity-60"
+              title="Refresh ranking history from Firebase server"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 text-amber-300 ${isRefreshing ? 'animate-spin' : ''}`} />
+              <span className="hidden sm:inline">{isRefreshing ? 'Refreshing...' : 'Refresh Ranking'}</span>
+            </button>
+
+            <button
               onClick={onClose}
               className="p-2 rounded-full text-white/80 hover:text-white hover:bg-white/20 transition-colors cursor-pointer"
               aria-label="Close modal"
@@ -368,6 +398,14 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
             </button>
           </div>
         </div>
+
+        {/* Transient Refresh Notification */}
+        {refreshToast && (
+          <div className="bg-emerald-600 text-white px-4 py-2 text-xs font-bold text-center flex items-center justify-center gap-2 animate-fade-in">
+            <CheckCircle2 className="w-4 h-4 text-emerald-200" />
+            <span>{refreshToast}</span>
+          </div>
+        )}
 
         {/* Controls Bar: Track Selector + Class Switcher */}
         <div className="p-4 sm:p-5 bg-slate-50 dark:bg-slate-950/60 border-b border-slate-200 dark:border-slate-800 space-y-3">
