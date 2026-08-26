@@ -60,15 +60,13 @@ import { EL_PHY11_CH4_QUESTIONS } from './el_phy11_chapter4_data';
 import { EL_PHY11_CH5_QUESTIONS } from './el_phy11_chapter5_data';
 import { EL_PHY11_CH6_QUESTIONS } from './el_phy11_chapter6_data';
 import { EL_PHY11_CH7_QUESTIONS } from './el_phy11_chapter7_data';
-import {
-  EL_PHY11_CH8_QUESTIONS,
-  EL_PHY11_CH9_QUESTIONS,
-  EL_PHY11_CH10_QUESTIONS,
-  EL_PHY11_CH11_QUESTIONS,
-  EL_PHY11_CH12_QUESTIONS,
-  EL_PHY11_CH13_QUESTIONS,
-  EL_PHY11_CH14_QUESTIONS,
-} from './el_phy11_chapters8_14_data';
+import { EL_PHY11_CH8_QUESTIONS } from './el_phy11_chapter8_data';
+import { EL_PHY11_CH9_QUESTIONS } from './el_phy11_chapter9_data';
+import { EL_PHY11_CH10_QUESTIONS } from './el_phy11_chapter10_data';
+import { EL_PHY11_CH11_QUESTIONS } from './el_phy11_chapter11_data';
+import { EL_PHY11_CH12_QUESTIONS } from './el_phy11_chapter12_data';
+import { EL_PHY11_CH13_QUESTIONS } from './el_phy11_chapter13_data';
+import { EL_PHY11_CH14_QUESTIONS } from './el_phy11_chapter14_data';
 import {
   EL_PHY12_CH1_QUESTIONS,
   EL_PHY12_CH2_QUESTIONS,

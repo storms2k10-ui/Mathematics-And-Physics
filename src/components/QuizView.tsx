@@ -23,6 +23,7 @@ import {
 import { Question, ClassLevel, StudentProfile } from '../types';
 import { MathText } from './MathText';
 import { useTheme } from '../context/ThemeContext';
+import { evaluateAnswer } from '../lib/answerValidation';
 
 interface QuizViewProps {
   classLevel: ClassLevel;
@@ -60,6 +61,8 @@ export const QuizView: React.FC<QuizViewProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<'A' | 'B' | 'C' | 'D' | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isFeedbackDelay, setIsFeedbackDelay] = useState(false);
+  const advanceTimerRef = useRef<NodeJS.Timeout | null>(null);
   const [userAnswers, setUserAnswers] = useState<Record<number, {
     questionId: string;
     selectedOption: 'A' | 'B' | 'C' | 'D' | null;
@@ -139,8 +142,20 @@ export const QuizView: React.FC<QuizViewProps> = ({
     return () => clearInterval(countdownInterval);
   }, [currentIndex, isSubmitted, isCurrentSkipped, mode]);
 
+  // Clean up any pending advance timer on unmount
+  useEffect(() => {
+    return () => {
+      if (advanceTimerRef.current) {
+        clearTimeout(advanceTimerRef.current);
+      }
+    };
+  }, []);
+
   // Handle 1-minute timeout automatic advance: marks question as WRONG
   const handleAutoAdvanceOnTimeout = () => {
+    if (advanceTimerRef.current) {
+      clearTimeout(advanceTimerRef.current);
+    }
     // If not answered yet, record as WRONG
     const updatedAnswers = {
       ...userAnswers,
@@ -155,6 +170,11 @@ export const QuizView: React.FC<QuizViewProps> = ({
     };
     setUserAnswers(updatedAnswers);
 
+    // Pre-render reset
+    setSelectedOption(null);
+    setIsSubmitted(false);
+    setIsFeedbackDelay(false);
+
     if (currentIndex < totalQuestions - 1) {
       setCurrentIndex((prev) => prev + 1);
     } else {
@@ -164,6 +184,9 @@ export const QuizView: React.FC<QuizViewProps> = ({
 
   // Finalize quiz helper
   const finalizeAndSubmitQuiz = (customAnswers?: typeof userAnswers) => {
+    if (advanceTimerRef.current) {
+      clearTimeout(advanceTimerRef.current);
+    }
     const finalAnswers = { ...(customAnswers || userAnswers) };
     questions.forEach((q, idx) => {
       if (!finalAnswers[idx]) {
@@ -196,17 +219,28 @@ export const QuizView: React.FC<QuizViewProps> = ({
       setSelectedOption(null);
       setIsSubmitted(false);
     }
+    setIsFeedbackDelay(false);
     setQuestionTimer(0);
     setQuestionTimeLeft(QUESTION_TIMEOUT);
   }, [currentIndex]);
 
-  // Handle option selection: Evaluates answer immediately and advances to next question without delay
+  // Handle option selection:
+  // 1. Evaluates answer using standardized evaluateAnswer from answerValidation.ts
+  // 2. Immediately displays 1-second feedback highlighting the evaluated option
+  // 3. Applies pre-render state reset mechanics to clear selectedOption & isSubmitted before index increment
   const handleSelectOption = (opt: 'A' | 'B' | 'C' | 'D') => {
-    // If already submitted or previously skipped, do not allow modifying
-    if (userAnswers[currentIndex]?.isSkipped || (userAnswers[currentIndex]?.selectedOption !== null && userAnswers[currentIndex]?.selectedOption !== undefined)) return;
+    // If already in feedback transition, submitted, or skipped, ignore selection
+    if (
+      isFeedbackDelay ||
+      userAnswers[currentIndex]?.isSkipped ||
+      (userAnswers[currentIndex]?.selectedOption !== null && userAnswers[currentIndex]?.selectedOption !== undefined)
+    ) {
+      return;
+    }
     
-    setSelectedOption(opt);
-    const isCorrect = opt === currentQuestion.correct_answer;
+    // Evaluate answer with standardized validation logic
+    const evalResult = evaluateAnswer(opt, currentQuestion);
+    const isCorrect = evalResult.isCorrect;
     
     // Save to user answers
     const updatedAnswers = {
@@ -220,23 +254,40 @@ export const QuizView: React.FC<QuizViewProps> = ({
       },
     };
     setUserAnswers(updatedAnswers);
+    
+    // Immediately show evaluated feedback highlight
+    setSelectedOption(opt);
     setIsSubmitted(true);
+    setIsFeedbackDelay(true);
 
-    // Instant advancement: Immediately advance to next question or finalize
-    if (currentIndex < totalQuestions - 1) {
-      setCurrentIndex((i) => i + 1);
-    } else {
-      finalizeAndSubmitQuiz(updatedAnswers);
+    // Clear any previous advance timer
+    if (advanceTimerRef.current) {
+      clearTimeout(advanceTimerRef.current);
     }
+
+    // 1-second feedback display delay before advancing
+    advanceTimerRef.current = setTimeout(() => {
+      // PRE-RENDER STATE RESET: Clear selectedOption and isSubmitted before updating question index
+      // to completely eliminate previous answer flash artifacts
+      setSelectedOption(null);
+      setIsSubmitted(false);
+      setIsFeedbackDelay(false);
+
+      if (currentIndex < totalQuestions - 1) {
+        setCurrentIndex((i) => i + 1);
+      } else {
+        finalizeAndSubmitQuiz(updatedAnswers);
+      }
+    }, 1000);
   };
 
   // Handle SKIP QUESTION:
   // 1. Immediately record that current question was skipped
-  // 2. Do not reveal correct answer
-  // 3. Do not allow student to answer that skipped question later during the same quiz
-  // 4. Immediately advance to next question without intermediate Next button
-  // 5. If final question, finalize and complete test
+  // 2. Pre-render state reset and advance
   const handleSkipQuestion = () => {
+    if (advanceTimerRef.current) {
+      clearTimeout(advanceTimerRef.current);
+    }
     const updatedAnswers = {
       ...userAnswers,
       [currentIndex]: {
@@ -250,6 +301,7 @@ export const QuizView: React.FC<QuizViewProps> = ({
     setUserAnswers(updatedAnswers);
     setSelectedOption(null);
     setIsSubmitted(false);
+    setIsFeedbackDelay(false);
 
     if (currentIndex < totalQuestions - 1) {
       setCurrentIndex((i) => i + 1);
@@ -259,6 +311,12 @@ export const QuizView: React.FC<QuizViewProps> = ({
   };
 
   const handleNext = () => {
+    if (advanceTimerRef.current) {
+      clearTimeout(advanceTimerRef.current);
+    }
+    setSelectedOption(null);
+    setIsSubmitted(false);
+    setIsFeedbackDelay(false);
     if (currentIndex < totalQuestions - 1) {
       setCurrentIndex((i) => i + 1);
     } else {
@@ -267,12 +325,24 @@ export const QuizView: React.FC<QuizViewProps> = ({
   };
 
   const handlePrevious = () => {
+    if (advanceTimerRef.current) {
+      clearTimeout(advanceTimerRef.current);
+    }
+    setSelectedOption(null);
+    setIsSubmitted(false);
+    setIsFeedbackDelay(false);
     if (currentIndex > 0) {
       setCurrentIndex((i) => i - 1);
     }
   };
 
   const handleJumpToQuestion = (idx: number) => {
+    if (advanceTimerRef.current) {
+      clearTimeout(advanceTimerRef.current);
+    }
+    setSelectedOption(null);
+    setIsSubmitted(false);
+    setIsFeedbackDelay(false);
     setCurrentIndex(idx);
   };
 

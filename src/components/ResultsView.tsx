@@ -17,6 +17,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { Question, ClassLevel } from '../types';
+import { MathText } from './MathText';
 
 interface ResultsViewProps {
   classLevel: ClassLevel;
@@ -132,7 +133,7 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
           </h1>
 
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-xl mx-auto mb-6 leading-relaxed">
-            Class {classLevel} Mathematics • <strong className="text-slate-900 dark:text-white">{chapterTitle}</strong>
+            Class {classLevel} {questions[0]?.subject || (chapterTitle.toLowerCase().includes('physics') || chapterTitle.toLowerCase().includes('electric') || chapterTitle.toLowerCase().includes('motion') || chapterTitle.toLowerCase().includes('vector') ? 'Physics' : 'Mathematics')} • <strong className="text-slate-900 dark:text-white">{chapterTitle}</strong>
             <br />
             {performance.message}
           </p>
@@ -288,9 +289,9 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
                           )}
                           <span className="text-xs text-slate-400">• Level: {question.difficulty}</span>
                         </div>
-                        <p className="text-sm font-semibold text-slate-800 dark:text-slate-200 line-clamp-1">
-                          {question.question}
-                        </p>
+                        <div className="text-sm font-semibold text-slate-800 dark:text-slate-200 line-clamp-1">
+                          <MathText text={question.question} />
+                        </div>
                       </div>
                     </div>
 
@@ -303,9 +304,9 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
                   {isExpanded && (
                     <div className="p-4 sm:p-5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 space-y-4">
                       {/* Full Question */}
-                      <p className="text-sm font-bold text-slate-900 dark:text-white whitespace-pre-line">
-                        {question.question}
-                      </p>
+                      <div className="text-sm font-bold text-slate-900 dark:text-white">
+                        <MathText text={question.question} />
+                      </div>
 
                       {/* Options breakdown */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
@@ -334,20 +335,22 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
                               key={opt}
                               className={`p-2.5 rounded-lg border flex items-center justify-between ${style}`}
                             >
-                              <div className="flex items-center gap-2">
-                                <span className="w-5 h-5 rounded bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 flex items-center justify-center font-bold text-[10px]">
+                              <div className="flex items-center gap-2 flex-1">
+                                <span className="w-5 h-5 rounded bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 flex items-center justify-center font-bold text-[10px] shrink-0">
                                   {opt}
                                 </span>
-                                <span>{optText}</span>
+                                <div className="flex-1">
+                                  <MathText text={optText} />
+                                </div>
                               </div>
 
                               {isCorrectOpt && (
-                                <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
+                                <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 shrink-0 ml-2">
                                   ✓ Correct Answer
                                 </span>
                               )}
                               {isUserSelected && !isCorrectOpt && (
-                                <span className="text-[10px] font-bold text-rose-600 dark:text-rose-400">
+                                <span className="text-[10px] font-bold text-rose-600 dark:text-rose-400 shrink-0 ml-2">
                                   ✕ Your Choice
                                 </span>
                               )}
@@ -363,13 +366,13 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
                             <Lightbulb className="w-3.5 h-3.5 text-amber-500" />
                             Explanation &amp; Mathematical Steps:
                           </p>
-                          <p className="leading-relaxed whitespace-pre-line">
-                            {question.explanation}
-                          </p>
+                          <div className="leading-relaxed">
+                            <MathText text={question.explanation} />
+                          </div>
                           {question.formula && (
                             <div className="mt-2 pt-2 border-t border-indigo-200/50 dark:border-indigo-900/50">
-                              <span className="font-mono text-xs bg-white dark:bg-slate-900 px-2 py-0.5 rounded border border-indigo-200 dark:border-indigo-800 text-indigo-900 dark:text-indigo-200">
-                                Formula: {question.formula}
+                              <span className="font-mono text-xs bg-white dark:bg-slate-900 px-2 py-0.5 rounded border border-indigo-200 dark:border-indigo-800 text-indigo-900 dark:text-indigo-200 inline-block">
+                                Formula: <MathText text={question.formula} />
                               </span>
                             </div>
                           )}

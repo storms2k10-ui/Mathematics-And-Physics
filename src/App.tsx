@@ -185,6 +185,9 @@ export default function App() {
     setTargetChapter(chapter);
     setPendingQuizTitle(chapter.name);
     setPendingQuizClass(chapter.class);
+    if (chapter.track) {
+      setActiveTrack(chapter.track);
+    }
     setPendingQuizQuestions(null);
     setIsStudentModalOpen(true);
   };
@@ -192,7 +195,8 @@ export default function App() {
   // Trigger practice for a class
   const handlePrepareClassPractice = async (lvl: ClassLevel) => {
     setTargetChapter(null);
-    setPendingQuizTitle(`Class ${lvl} Mathematics Practice`);
+    const subjectName = activeTrack.includes('Physics') ? 'Physics' : 'Mathematics';
+    setPendingQuizTitle(`Class ${lvl} ${subjectName} Practice`);
     setPendingQuizClass(lvl);
     setPendingQuizQuestions(null);
     setIsStudentModalOpen(true);
@@ -408,8 +412,16 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
       
-      {/* Top Header Quote - Hidden in Quiz and Results/Score Views */}
-      {!['quiz', 'results'].includes(currentView) && <HeaderQuote />}
+      {/* Top Header Quote with Upward Top-Left DIC Component - Hidden in Quiz and Results/Score Views */}
+      {!['quiz', 'results'].includes(currentView) && (
+        <HeaderQuote
+          onOpenDictionary={() => {
+            setActiveTab('dictionary');
+            setCurrentView('main');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        />
+      )}
 
       {/* Main Navbar - Hidden in Quiz and Results/Score Views */}
       {!['quiz', 'results'].includes(currentView) && (
@@ -613,6 +625,7 @@ export default function App() {
         onClose={() => setIsStudentModalOpen(false)}
         defaultClass={pendingQuizClass}
         chapterTitle={pendingQuizTitle}
+        defaultTrack={targetChapter?.track || activeTrack}
         onStartTest={handleStartConfirmedTest}
         onOpenAuth={() => setIsAuthModalOpen(true)}
       />

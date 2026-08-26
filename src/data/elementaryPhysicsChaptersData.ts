@@ -8,43 +8,44 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     id: 'el-phy11-ch1',
     class: 11,
     track: 'Elementary Physics',
-    name: 'Physical World, Units & Measurements',
-    description: 'Fundamental units of the SI system, dimensions of physical quantities $[M^a L^b T^c]$, dimensional homogeneity, error analysis, and precision vs accuracy.',
+    name: 'Physics and Measurements',
+    description: 'Fundamental physical quantities, SI base & derived units, dimensional analysis $[M^a L^b T^c]$, errors (systematic & random), uncertainty propagation, and significant figures.',
     category: 'Mechanics & Kinematics',
-    questionCount: 0,
+    questionCount: 70,
     difficulty: 'Mixed',
     keyTopics: [
-      'SI Base Units & Derived Dimensions $[M^a L^b T^c]$',
-      'Principle of Dimensional Homogeneity in Physical Equations',
-      'Absolute, Relative, and Percentage Error Analysis',
-      'Significant Figures & Propagation of Measurement Uncertainties'
+      'Physical Quantities: Base and Derived Units',
+      'SI Standards & Metric Prefixes',
+      'Principle of Dimensional Homogeneity & Dimensional Formulas',
+      'Errors: Systematic, Random, and Percentage Errors',
+      'Significant Figures & Measurement Precision'
     ],
     color: 'cyan',
     icon: 'Atom',
     artTheme: 'algebra',
-    formulaHighlight: '[\\text{Force}] = [M L T^{-2}], \\quad \\frac{\\Delta x}{x} = \\sqrt{\\left(\\frac{\\Delta a}{a}\\right)^2 + \\left(\\frac{\\Delta b}{b}\\right)^2}',
+    formulaHighlight: '[\\text{Force}] = [M L T^{-2}], \\quad \\%\\text{Error} = \\left|\\frac{x_{\\text{exp}} - x_{\\text{true}}}{x_{\\text{true}}}\\right| \\times 100\\%',
     overview: {
-      summary: 'Physics is the foundational quantitative science exploring matter, energy, space, and time. Units and dimensional analysis establish standard measurement scales, enabling mathematical verification of equations and systematic error propagation.',
-      historicalContext: 'Standardized by the Conférence Générale des Poids et Mesures (CGPM) with the metric convention of 1875, leading to the modern 7-base-unit SI system redefined via fundamental quantum constants in 2019.',
+      summary: 'Physics is the foundational quantitative science exploring the universe. Units, standard dimensions, and rigorous error analysis establish reproducible measurements essential for formulating and verifying physical laws.',
+      historicalContext: 'Established by the CGPM metric convention in 1875, leading to the modern SI system redefined through fundamental physical constants (Planck constant, speed of light, cesium transition) in 2019.',
       learningOutcomes: [
-        'Derive dimensional formulas for mechanical, thermal, and electromagnetic quantities',
-        'Verify the dimensional consistency of complex physical equations',
-        'Calculate absolute, relative, and percentage uncertainties in composite experimental data',
-        'Apply significant figure rules in multi-step scientific computations'
+        'Distinguish between fundamental base quantities and derived physical quantities',
+        'Derive and verify dimensional formulas for mechanical and electrical quantities',
+        'Analyze systematic and random experimental errors with statistical uncertainty propagation',
+        'Apply significant figures rules in scientific calculations and experimental reports'
       ],
       coreFormulas: [
-        { label: 'Dimensional Homogeneity', formula: '[\\text{LHS}] = [\\text{RHS}]', explanation: 'All terms added, subtracted, or equated in a physical law must possess identical dimensions.' },
-        { label: 'Percentage Error', formula: '\\% \\text{ Error} = \\left| \\frac{x_{\\text{measured}} - x_{\\text{true}}}{x_{\\text{true}}} \\right| \\times 100\\%', explanation: 'Quantifies experimental deviation from standard reference value.' },
-        { label: 'Error Propagation in Product', formula: 'z = x^a y^b \\implies \\frac{\\Delta z}{z} = a\\frac{\\Delta x}{x} + b\\frac{\\Delta y}{y}', explanation: 'Maximum fractional uncertainty in powers and products of measured variables.' }
+        { label: 'Dimensional Homogeneity', formula: '[\\text{LHS}] = [\\text{RHS}]', explanation: 'All terms in a physically valid equation must possess identical dimensional formulas.' },
+        { label: 'Percentage Error', formula: '\\% \\text{ Error} = \\left| \\frac{x_{\\text{meas}} - x_{\\text{true}}}{x_{\\text{true}}} \\right| \\times 100\\%', explanation: 'Quantifies deviation of experimental result from standard accepted value.' },
+        { label: 'Fractional Error in Power Law', formula: 'z = x^a y^b \\implies \\frac{\\Delta z}{z} = a\\frac{\\Delta x}{x} + b\\frac{\\Delta y}{y}', explanation: 'Maximum uncertainty propagation in products and powers of measured variables.' }
       ],
       realWorldApplications: [
-        'Aerospace Engineering: Dimensional scaling in wind tunnel aerodynamic model testing',
         'Precision Metrology: Optical atomic clocks calibrated to cesium-133 hyperfine transitions',
-        'Sensor Calibration: Error tolerance modeling in industrial IoT instrumentation',
-        'Astrophysics: Order-of-magnitude Fermi estimations for stellar distances'
+        'Aerospace Engineering: Dimensional scaling in wind tunnel aerodynamic model testing',
+        'Sensor Calibration: Error tolerance and resolution profiling in industrial IoT sensors',
+        'Astrophysics: Order-of-magnitude Fermi calculations for astronomical scales'
       ],
       keyTheorems: [
-        { title: 'Buckingham $\\pi$ Theorem', statement: 'If an equation involving $n$ physical variables has $k$ fundamental physical dimensions, it can be written in terms of $p = n - k$ dimensionless parameters.', importance: 'Forms the universal foundation for fluid and aerodynamic dimensional scaling.' }
+        { title: 'Principle of Dimensional Homogeneity', statement: 'In every valid physical equation, every term added, subtracted, or equated must possess identical dimensional exponents of base quantities.', importance: 'Serves as an essential mathematical sanity check for physical derivations.' }
       ]
     }
   },
@@ -52,43 +53,44 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     id: 'el-phy11-ch2',
     class: 11,
     track: 'Elementary Physics',
-    name: 'Motion in a Straight Line',
-    description: 'Kinematics in 1D: position, instantaneous velocity $v = \\frac{dx}{dt}$, acceleration $a = \\frac{dv}{dt}$, kinematic equations under constant acceleration, and graphical analysis.',
+    name: 'Kinematics',
+    description: 'Rectilinear motion, displacement vs distance, speed and instantaneous velocity, uniform and non-uniform acceleration, kinematic equations of motion, and graphical analysis ($x-t, v-t$).',
     category: 'Mechanics & Kinematics',
-    questionCount: 0,
+    questionCount: 70,
     difficulty: 'Mixed',
     keyTopics: [
-      'Position-Time $(x-t)$ and Velocity-Time $(v-t)$ Graphs',
+      'Displacement, Speed, and Velocity Vectors',
+      'Acceleration: Average, Instantaneous, and Free Fall ($g = 9.8\\text{ m/s}^2$)',
       'Kinematic Equations: $v = u + at, \\; s = ut + \\frac{1}{2}at^2, \\; v^2 = u^2 + 2as$',
-      'Free Fall Acceleration under Gravity ($g = 9.8 \\text{ m/s}^2$)',
-      'Relative Velocity in 1D: $v_{AB} = v_A - v_B$'
+      'Distance in the $n^{\\text{th}}$ Second: $s_n = u + \\frac{a}{2}(2n - 1)$',
+      'Graphical Interpretation of Motion ($x-t$ slope is velocity, $v-t$ area is displacement)'
     ],
     color: 'indigo',
     icon: 'TrendingUp',
     artTheme: 'calculus',
-    formulaHighlight: 'v = \\frac{dx}{dt}, \\quad a = \\frac{dv}{dt} = v\\frac{dv}{dx}, \\quad s = ut + \\frac{1}{2}at^2',
+    formulaHighlight: 'v = u + at, \\quad s = ut + \\frac{1}{2}at^2, \\quad v^2 = u^2 + 2as, \\quad s_n = u + \\frac{a}{2}(2n-1)',
     overview: {
-      summary: '1D kinematics mathematically models the motion of point particles along a linear axis without considering the forces causing the motion, using differential calculus and algebraic equations of motion.',
-      historicalContext: 'Galileo Galilei formulated the law of falling bodies and constant acceleration in 1638 at the University of Pisa, disproving Aristotelian mechanics.',
+      summary: 'Kinematics describes the geometry of motion in space and time without referencing the forces causing it, employing differential calculus and uniformly accelerated equations of motion.',
+      historicalContext: 'Galileo Galilei formulated the laws of uniform acceleration and free falling bodies in 1638 at the University of Pisa, disproving Aristotelian mechanics.',
       learningOutcomes: [
-        'Calculate instantaneous velocity and acceleration using derivatives of position functions',
-        'Derive and apply kinematic equations for uniformly accelerated rectilinear motion',
-        'Analyze velocity-time graphs to determine instantaneous acceleration and net displacement',
-        'Solve vertical free-fall and relative linear velocity problems'
+        'Compute instantaneous velocity and acceleration using derivatives and differences',
+        'Solve multi-stage rectilinear acceleration and vertical free-fall problems',
+        'Calculate distance traversed in the n-th second for accelerated particles',
+        'Extract velocity from position-time graphs and displacement/acceleration from velocity-time graphs'
       ],
       coreFormulas: [
         { label: 'First Kinematic Equation', formula: 'v = u + at', explanation: 'Relates final velocity to initial velocity, uniform acceleration, and elapsed time.' },
-        { label: 'Second Kinematic Equation', formula: 's = ut + \\frac{1}{2}at^2', explanation: 'Displacement as a quadratic function of time under constant acceleration.' },
+        { label: 'Second Kinematic Equation', formula: 's = ut + \\frac{1}{2}at^2', explanation: 'Displacement as a quadratic function of time under uniform acceleration.' },
         { label: 'Third Kinematic Equation', formula: 'v^2 = u^2 + 2as', explanation: 'Relates velocities directly to displacement independent of time.' }
       ],
       realWorldApplications: [
-        'Automotive Safety: Anti-lock braking system (ABS) stopping distance calculations',
-        'High-Speed Rail: Acceleration profile planning for smooth passenger comfort',
-        'Elevator Control: Jerk-free motion profiling in skyscraper vertical transit',
-        'Rocketry: First-stage linear boost phase trajectory modeling'
+        'Automotive Safety: Stopping distance calculations and anti-lock braking systems (ABS)',
+        'Railway Engineering: Smooth acceleration and braking profiles for high-speed transit',
+        'Elevator Design: Jerk-free motion profiling in high-rise building vertical transport',
+        'Aviation: Runway takeoff and landing ground roll distance calculations'
       ],
       keyTheorems: [
-        { title: 'Mean Speed Theorem', statement: 'A body undergoing uniform acceleration traverses the same distance in time $t$ as a body moving at constant speed equal to the average of its initial and final velocities: $\\bar{v} = \\frac{u+v}{2}$.', importance: 'The foundational Merton College rule unifying linear kinematics.' }
+        { title: 'Mean Speed Theorem (Merton Rule)', statement: 'A uniformly accelerated body travels the same distance in time $t$ as a body moving at constant speed equal to the average of its initial and final velocities: $\\bar{v} = \\frac{u+v}{2}$.', importance: 'Unifies rectilinear motion under constant acceleration.' }
       ]
     }
   },
@@ -96,43 +98,44 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     id: 'el-phy11-ch3',
     class: 11,
     track: 'Elementary Physics',
-    name: 'Motion in a Plane & Vectors',
-    description: '2D kinematics: vector resolution, dot and cross products, projectile motion under gravity, trajectories, and uniform circular motion with centripetal acceleration $a_c = \\frac{v^2}{r}$.',
-    category: 'Mechanics & Kinematics',
-    questionCount: 0,
+    name: 'Dynamics',
+    description: 'Newton\'s laws of motion, linear momentum $\\mathbf{p} = m\\mathbf{v}$, impulse $\\mathbf{J} = \\Delta\\mathbf{p}$, law of conservation of momentum, friction (static and kinetic), connected bodies, and Atwood machines.',
+    category: 'Laws of Motion & Gravitation',
+    questionCount: 70,
     difficulty: 'Mixed',
     keyTopics: [
-      'Vector Components: $\\mathbf{A} = A_x\\mathbf{i} + A_y\\mathbf{j}$',
-      'Projectile Trajectory: $y = x\\tan\\theta - \\frac{g x^2}{2u^2\\cos^2\\theta}$',
-      'Maximum Height $H = \\frac{u^2\\sin^2\\theta}{2g}$ & Range $R = \\frac{u^2\\sin 2\\theta}{g}$',
-      'Centripetal Acceleration: $\\mathbf{a}_c = -\\frac{v^2}{r}\\hat{\\mathbf{r}} = -\\omega^2\\mathbf{r}$'
+      'Newton\'s Three Laws of Motion & Inertial Reference Frames',
+      'Linear Momentum & Conservation of Momentum in Collisions',
+      'Impulse and Force-Time Graphs ($\\mathbf{J} = \\int \\mathbf{F}\\,dt = \\Delta\\mathbf{p}$)',
+      'Static ($f_s \\le \\mu_s N$) and Kinetic ($f_k = \\mu_k N$) Friction',
+      'Connected Bodies, Pulleys, and Tension in Strings'
     ],
     color: 'emerald',
-    icon: 'Navigation',
-    artTheme: 'vector',
-    formulaHighlight: 'R = \\frac{u^2\\sin 2\\theta}{g}, \\quad H_{\\max} = \\frac{u^2\\sin^2\\theta}{2g}, \\quad a_c = \\frac{v^2}{r} = \\omega^2 r',
+    icon: 'Sliders',
+    artTheme: 'differential',
+    formulaHighlight: '\\mathbf{F} = m\\mathbf{a} = \\frac{d\\mathbf{p}}{dt}, \\quad \\mathbf{J} = \\Delta\\mathbf{p}, \\quad f_s \\le \\mu_s N, \\quad f_k = \\mu_k N',
     overview: {
-      summary: 'Planar motion decomposes 2D trajectories into independent orthogonal 1D components using vectors, modeling parabolic projectile flight and orbital circular paths.',
-      historicalContext: 'Galileo proved that projectile paths are parabolas in his 1638 Discourses, and Christiaan Huygens derived the centripetal acceleration formula in 1659.',
+      summary: 'Dynamics investigates the causes of motion through forces and interactions. Newton\'s laws govern momentum exchange, resistive friction forces, and the equilibrium of multi-body coupled systems.',
+      historicalContext: 'Sir Isaac Newton published the three fundamental laws of motion in Philosophiæ Naturalis Principia Mathematica in 1687, forming the foundation of classical mechanics.',
       learningOutcomes: [
-        'Resolve velocity and displacement vectors into Cartesian components',
-        'Compute flight time, maximum height, and horizontal range of projectiles',
-        'Derive the parabolic trajectory equation for arbitrary projection angles',
-        'Analyze uniform circular motion parameters including angular velocity $\\omega$ and centripetal acceleration'
+        'Construct comprehensive Free Body Diagrams (FBDs) for complex coupled systems',
+        'Apply Newton\'s second law to pulleys, inclined planes, and accelerating elevators',
+        'Calculate limiting static friction, kinetic friction, and coefficients of friction',
+        'Solve momentum conservation problems in elastic and inelastic collisions'
       ],
       coreFormulas: [
-        { label: 'Time of Flight', formula: 'T = \\frac{2u\\sin\\theta}{g}', explanation: 'Total duration a projectile remains in flight over level ground.' },
-        { label: 'Horizontal Range', formula: 'R = \\frac{u^2\\sin 2\\theta}{g}', explanation: 'Maximum range occurs at projection angle $\\theta = 45^\\circ$.' },
-        { label: 'Centripetal Acceleration', formula: 'a_c = \\frac{v^2}{r} = \\omega^2 r', explanation: 'Inward radial acceleration required to sustain circular motion.' }
+        { label: 'Newton\'s Second Law', formula: '\\mathbf{F}_{\\text{net}} = m\\mathbf{a} = \\frac{d\\mathbf{p}}{dt}', explanation: 'Net external force equals time rate of change of linear momentum.' },
+        { label: 'Impulse-Momentum Relation', formula: '\\mathbf{J} = \\int \\mathbf{F}\\,dt = \\Delta\\mathbf{p}', explanation: 'The impulse of a force equals the change in momentum it produces.' },
+        { label: 'Limiting Static Friction', formula: 'f_{s,\\max} = \\mu_s N', explanation: 'Maximum resistive force before impending motion occurs.' }
       ],
       realWorldApplications: [
-        'Ballistics & Defense: Artillery shell trajectory and windage compensation',
-        'Satellite Orbits: Circular low Earth orbit orbital velocity $v = \\sqrt{gr}$',
-        'Sports Analytics: Optimal launch angles and spin rates in golf and football',
-        'Amusement Park Rides: G-force calculations on roller coaster loops'
+        'Vehicle Crashworthiness: Crumple zones extending collision duration to reduce impact force',
+        'Aerospace Propulsion: Rocket thrust generation via high-speed exhaust momentum ejection',
+        'Elevator Safety: Counterweight balancing and cable tension load limits',
+        'Tire Engineering: Tread pattern design and rubber compounding for optimal friction coefficients'
       ],
       keyTheorems: [
-        { title: 'Principle of Independence of Orthogonal Motions', statement: 'Motion along orthogonal axes (such as horizontal $x$ and vertical $y$) proceeds completely independently without cross-axis interference.', importance: 'Enables separation of complex 2D and 3D vector equations into solvable 1D systems.' }
+        { title: 'Newton\'s Third Law', statement: 'Whenever one body exerts a force on a second body, the second body exerts an equal and opposite force on the first body.', importance: 'Establishes force as an interaction and proves universal conservation of momentum.' }
       ]
     }
   },
@@ -140,43 +143,45 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     id: 'el-phy11-ch4',
     class: 11,
     track: 'Elementary Physics',
-    name: 'Laws of Motion & Friction',
-    description: 'Newton\'s three laws of motion, momentum $\\mathbf{p} = m\\mathbf{v}$, impulse $\\mathbf{J} = \\Delta\\mathbf{p}$, static & kinetic friction ($f_s \\le \\mu_s N$), free body diagrams, and banked roads.',
+    name: 'Rotational and Circular Motion',
+    description: 'Angular displacement, angular velocity $\\omega$, angular acceleration $\\alpha$, centripetal acceleration $a_c = \\frac{v^2}{r}$, torque $\\tau = r F \\sin\\theta$, moment of inertia $I = \\sum m r^2$, angular momentum $L = I\\omega$, and banking of roads.',
     category: 'Laws of Motion & Gravitation',
-    questionCount: 0,
+    questionCount: 70,
     difficulty: 'Mixed',
     keyTopics: [
-      'Newton\'s Second Law: $\\mathbf{F}_{\\text{net}} = \\frac{d\\mathbf{p}}{dt} = m\\mathbf{a}$',
-      'Law of Conservation of Linear Momentum',
-      'Static ($f_s \\le \\mu_s N$) and Kinetic ($f_k = \\mu_k N$) Friction',
-      'Circular Banking of Roads: $\\tan\\theta = \\frac{v^2}{rg}$'
+      'Uniform Circular Motion: Centripetal Acceleration & Centripetal Force ($F_c = \\frac{mv^2}{r}$)',
+      'Angular Kinematics: $\\omega = \\omega_0 + \\alpha t, \\; \\theta = \\omega_0 t + \\frac{1}{2}\\alpha t^2$',
+      'Torque and Rotational Equilibrium ($\\tau = I\\alpha$)',
+      'Moment of Inertia of Standard Bodies and Radius of Gyration ($k$)',
+      'Banking of Curved Tracks: $\\tan\\theta = \\frac{v^2}{rg}$',
+      'Conservation of Angular Momentum ($L_1 = L_2$)'
     ],
-    color: 'rose',
-    icon: 'Sliders',
-    artTheme: 'differential',
-    formulaHighlight: '\\mathbf{F} = \\frac{d\\mathbf{p}}{dt} = m\\mathbf{a}, \\quad f_s \\le \\mu_s N, \\quad \\tan\\theta = \\frac{v^2}{rg}',
+    color: 'violet',
+    icon: 'Compass',
+    artTheme: 'vector',
+    formulaHighlight: 'a_c = \\frac{v^2}{r} = \\omega^2 r, \\quad \\tau = I\\alpha, \\quad L = I\\omega, \\quad \\tan\\theta = \\frac{v^2}{rg}',
     overview: {
-      summary: 'Dynamics studies the causes of motion. Newton\'s laws of motion establish the concepts of mass, inertia, and force, while frictional laws govern interfacial resistive dynamics and safe vehicle banking.',
-      historicalContext: 'Published by Sir Isaac Newton in Philosophiæ Naturalis Principia Mathematica in 1687, laying the cornerstone of classical physics.',
+      summary: 'Rotational dynamics analyzes bodies rotating about fixed axes or undergoing circular trajectories. Angular momentum conservation, torque, and moment of inertia mirror translational mechanical laws in rotational coordinates.',
+      historicalContext: 'Christiaan Huygens derived centripetal acceleration in 1659; Leonhard Euler developed rigid body mechanics in 1765.',
       learningOutcomes: [
-        'Draw comprehensive Free Body Diagrams (FBDs) for connected mechanical bodies',
-        'Apply Newton\'s second law to pulleys, inclined planes, and coupled masses',
-        'Calculate limiting static friction and kinetic friction forces',
-        'Derive safe velocity ranges for banked curves with and without friction'
+        'Relate linear kinematic quantities to angular kinematic counterparts ($v = r\\omega, a_t = r\\alpha$)',
+        'Calculate centripetal acceleration and required banking angle for friction-free turns',
+        'Determine moments of inertia for rods, disks, rings, and solid/hollow spheres',
+        'Apply the principle of conservation of angular momentum to rotating mechanical systems'
       ],
       coreFormulas: [
-        { label: 'Newton\'s Second Law', formula: '\\mathbf{F}_{\\text{net}} = m\\mathbf{a}', explanation: 'Net external force equals rate of change of linear momentum.' },
-        { label: 'Impulse-Momentum Theorem', formula: '\\mathbf{J} = \\int \\mathbf{F}\\,dt = \\Delta\\mathbf{p}', explanation: 'Impulse delivered by a force equals the change in momentum.' },
-        { label: 'Optimum Banking Angle', formula: '\\tan\\theta = \\frac{v^2}{rg}', explanation: 'Banking angle where centripetal force is provided solely by the normal force without friction.' }
+        { label: 'Centripetal Force', formula: 'F_c = \\frac{m v^2}{r} = m \\omega^2 r', explanation: 'Net inward radial force maintaining circular motion.' },
+        { label: 'Rotational Second Law', formula: '\\tau_{\\text{net}} = I\\alpha', explanation: 'Net torque equals moment of inertia times angular acceleration.' },
+        { label: 'Optimum Road Banking', formula: '\\tan\\theta = \\frac{v^2}{rg}', explanation: 'Banking angle where normal force supplies required centripetal acceleration.' }
       ],
       realWorldApplications: [
-        'Automotive Engineering: Crash testing and vehicle crumple zone impulse reduction',
-        'Civil Engineering: Highway and high-speed railway super-elevation banking design',
-        'Aerospace: Rocket thrust-to-weight ratio and stage separation dynamics',
-        'Robotics: Friction coefficient estimation for tactile robotic grippers'
+        'Automotive Engineering: Super-elevation banking on expressways and racetrack turns',
+        'Space Station Artificial Gravity: Rotating habitats generating centripetal acceleration',
+        'Flywheel Energy Storage: High-speed carbon-fiber rotors storing kinetic rotational energy',
+        'Aerospace Gyroscopes: Inertial navigation and attitude stabilization in satellites'
       ],
       keyTheorems: [
-        { title: 'Law of Action and Reaction', statement: 'When one body exerts a force on a second body, the second body simultaneously exerts a force equal in magnitude and opposite in direction on the first body.', importance: 'Establishes force as an interaction between pairs of bodies and proves momentum conservation.' }
+        { title: 'Law of Conservation of Angular Momentum', statement: 'When the net external torque acting on a system is zero, the total angular momentum remains constant: $\\tau_{\\text{ext}} = 0 \\implies I_1\\omega_1 = I_2\\omega_2$.', importance: 'Explains spin acceleration in figure skaters, neutron stars, and planetary orbital conservation.' }
       ]
     }
   },
@@ -184,43 +189,45 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     id: 'el-phy11-ch5',
     class: 11,
     track: 'Elementary Physics',
-    name: 'Work, Energy & Power',
-    description: 'Work done by constant and variable forces $W = \\int \\mathbf{F} \\cdot d\\mathbf{r}$, kinetic and potential energy, Work-Energy Theorem ($W_{\\text{net}} = \\Delta K$), conservative forces, elastic/inelastic collisions, and power.',
-    category: 'Mechanics & Kinematics',
-    questionCount: 0,
+    name: 'Work, Energy and Power',
+    description: 'Work done by constant & variable forces $W = \\int \\mathbf{F} \\cdot d\\mathbf{r}$, kinetic energy $K = \\frac{1}{2}mv^2$, potential energy, Work-Energy Theorem ($W_{\\text{net}} = \\Delta K$), conservative vs non-conservative forces, elastic/inelastic collisions, and power $P = \\mathbf{F}\\cdot\\mathbf{v}$.',
+    category: 'Laws of Motion & Gravitation',
+    questionCount: 70,
     difficulty: 'Mixed',
     keyTopics: [
-      'Work Done: $W = \\mathbf{F} \\cdot \\mathbf{d} = F d \\cos\\theta = \\int F_x dx$',
-      'Work-Energy Theorem: $W_{\\text{net}} = \\Delta K = \\frac{1}{2}m v_f^2 - \\frac{1}{2}m v_i^2$',
-      'Conservative Forces & Potential Energy: $F(x) = -\\frac{dU}{dx}$',
+      'Work Done: $W = F d \\cos\\theta = \\mathbf{F} \\cdot \\mathbf{d}$',
+      'Work-Energy Theorem: $W_{\\text{net}} = \\Delta K = \\frac{1}{2}m(v^2 - u^2)$',
+      'Gravitational & Elastic Spring Potential Energy ($U = \\frac{1}{2}kx^2$)',
+      'Conservation of Total Mechanical Energy: $E = K + U = \\text{constant}$',
+      'Power & Efficiency: $P = \\frac{dW}{dt} = \\mathbf{F} \\cdot \\mathbf{v}$',
       '1D Elastic Collisions & Coefficient of Restitution $e = \\frac{v_2 - v_1}{u_1 - u_2}$'
     ],
     color: 'amber',
     icon: 'Activity',
     artTheme: 'integral',
-    formulaHighlight: 'W_{\\text{net}} = \\Delta K, \\quad U_s = \\frac{1}{2}kx^2, \\quad P = \\frac{dW}{dt} = \\mathbf{F} \\cdot \\mathbf{v}',
+    formulaHighlight: 'W = \\mathbf{F}\\cdot\\mathbf{d}, \\quad W_{\\text{net}} = \\Delta K, \\quad U_s = \\frac{1}{2}kx^2, \\quad P = \\mathbf{F}\\cdot\\mathbf{v}',
     overview: {
-      summary: 'Work and energy provide scalar formulations of mechanical principles. The conservation of mechanical energy relates work performed by conservative and non-conservative forces to kinematic states and collision outcomes.',
-      historicalContext: 'Conceptualized by Thomas Young in 1807, with the Work-Energy theorem formalized by Gaspard-Gustave de Coriolis in 1829.',
+      summary: 'Work and energy provide scalar formulations of physical dynamics. The Work-Energy Theorem and universal energy conservation unify mechanical, gravitational, and elastic processes.',
+      historicalContext: 'Thomas Young coined the term energy in 1807; Gaspard-Gustave de Coriolis formalized kinetic energy and work in 1829.',
       learningOutcomes: [
-        'Calculate work done by constant and spatially variable force fields',
-        'Apply the Work-Energy Theorem to complex mechanical systems',
-        'Determine potential energy curves, equilibrium points, and stability ($d^2U/dx^2 > 0$)',
-        'Solve 1D and 2D elastic and inelastic collision problems using momentum and energy conservation'
+        'Calculate work done by constant forces and variable force fields',
+        'Apply the Work-Energy Theorem to determine velocities and stopping distances',
+        'Analyze conservative potential energy functions ($F = -dU/dx$)',
+        'Compute power delivery, engine efficiency, and post-collision velocities'
       ],
       coreFormulas: [
-        { label: 'Work by Variable Force', formula: 'W = \\int_{x_1}^{x_2} F(x)\\,dx', explanation: 'Area under the force-displacement curve.' },
-        { label: 'Spring Potential Energy', formula: 'U_s = \\frac{1}{2}kx^2', explanation: 'Elastic potential energy stored in an ideal Hookean spring.' },
-        { label: 'Instantaneous Power', formula: 'P = \\mathbf{F} \\cdot \\mathbf{v} = \\frac{dW}{dt}', explanation: 'Rate of energy transfer or work performed per unit time.' }
+        { label: 'Work-Energy Theorem', formula: 'W_{\\text{net}} = K_f - K_i = \\Delta K', explanation: 'Net work done on a particle equals change in its kinetic energy.' },
+        { label: 'Spring Potential Energy', formula: 'U = \\frac{1}{2}k x^2', explanation: 'Elastic energy stored in a spring deformed by displacement $x$.' },
+        { label: 'Instantaneous Power', formula: 'P = \\mathbf{F} \\cdot \\mathbf{v} = \\frac{dW}{dt}', explanation: 'Rate of doing work or transferring energy.' }
       ],
       realWorldApplications: [
-        'Hydroelectric Power: Gravitational potential energy $U = mgh$ converted to electric power',
-        'Vehicle Regenerative Braking: Kinetic energy recovery systems (KERS) in electric vehicles',
-        'Renewable Wind Turbines: Betz limit aerodynamic kinetic power extraction $P = \\frac{1}{2}\\rho A v^3$',
-        'Materials Testing: Charpy impact testing for fracture toughness and energy absorption'
+        'Hydroelectric Power: Gravitational potential energy $mgh$ converted into electrical power',
+        'Electric Vehicle Braking: Regenerative braking capturing kinetic energy into battery storage',
+        'Wind Turbine Energy: Betz limit aerodynamic kinetic power extraction',
+        'Charpy Impact Testing: Energy absorption measurement in structural metallurgy'
       ],
       keyTheorems: [
-        { title: 'Work-Energy Theorem', statement: 'The net work done by all forces (conservative and non-conservative) on a particle equals the change in its kinetic energy: $W_{\\text{total}} = K_f - K_i$.', importance: 'Unifies kinematics with dynamics in a single scalar equation.' }
+        { title: 'Law of Conservation of Mechanical Energy', statement: 'In an isolated system subject only to conservative forces, total mechanical energy ($E = K + U$) remains strictly constant.', importance: 'Universal principle for analyzing oscillating and conservative dynamical systems.' }
       ]
     }
   },
@@ -228,44 +235,44 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     id: 'el-phy11-ch6',
     class: 11,
     track: 'Elementary Physics',
-    name: 'System of Particles & Rotational Motion',
-    description: 'Center of mass, torque $\\boldsymbol{\\tau} = \\mathbf{r} \\times \\mathbf{F}$, angular momentum $\\mathbf{L} = I\\boldsymbol{\\omega}$, moment of inertia $I = \\int r^2 dm$, parallel and perpendicular axis theorems, and rolling motion without slipping.',
-    category: 'Mechanics & Kinematics',
-    questionCount: 0,
+    name: 'Fluid Statics',
+    description: 'Fluids at rest, density $\\rho$, hydrostatic pressure $P = \\rho gh$, Pascal\'s principle & hydraulic press, atmospheric pressure, Archimedes\' principle & buoyancy $F_B = \\rho_f V g$, surface tension, and capillary action.',
+    category: 'Fluids & Material Properties',
+    questionCount: 70,
     difficulty: 'Mixed',
     keyTopics: [
-      'Center of Mass: $\\mathbf{R}_{\\text{cm}} = \\frac{\\sum m_i \\mathbf{r}_i}{\\sum m_i}$',
-      'Torque $\\boldsymbol{\\tau} = \\mathbf{r} \\times \\mathbf{F} = I\\boldsymbol{\\alpha}$',
-      'Moment of Inertia & Radius of Gyration: $I = M k^2$',
-      'Parallel ($I = I_{\\text{cm}} + M d^2$) and Perpendicular ($I_z = I_x + I_y$) Axis Theorems',
-      'Rolling Motion: $K_{\\text{total}} = \\frac{1}{2}M v_{\\text{cm}}^2 + \\frac{1}{2}I_{\\text{cm}}\\omega^2$'
+      'Fluid Pressure and Hydrostatic Law: $P = P_0 + \\rho gh$',
+      'Pascal\'s Law and Hydraulic Multiplication of Force: $\\frac{F_1}{A_1} = \\frac{F_2}{A_2}$',
+      'Archimedes\' Principle, Upthrust, and Law of Floatation',
+      'Surface Tension ($T = \\frac{F}{L}$), Surface Energy, and Excess Pressure in Drops/Bubbles',
+      'Capillarity and Jurin\'s Law: $h = \\frac{2T\\cos\\theta}{\\rho g r}$'
     ],
-    color: 'violet',
-    icon: 'Compass',
-    artTheme: 'vector',
-    formulaHighlight: '\\boldsymbol{\\tau} = \\frac{d\\mathbf{L}}{dt} = I\\boldsymbol{\\alpha}, \\quad I = \\int r^2 dm, \\quad K_{\\text{roll}} = \\frac{1}{2}M v^2\\left(1 + \\frac{k^2}{R^2}\\right)',
+    color: 'teal',
+    icon: 'Layers',
+    artTheme: 'calculus',
+    formulaHighlight: 'P = \\rho gh, \\quad \\frac{F_1}{A_1} = \\frac{F_2}{A_2}, \\quad F_B = \\rho_f V_{\\text{disp}} g, \\quad \\Delta P_{\\text{bubble}} = \\frac{4T}{r}, \\quad h = \\frac{2T\\cos\\theta}{\\rho g r}',
     overview: {
-      summary: 'Rigid body dynamics extends translational mechanics into the rotational domain. Torque acts as rotational force, moment of inertia represents rotational mass, and angular momentum is conserved in the absence of external net torque.',
-      historicalContext: 'Formulated by Leonhard Euler in his 1765 treatise on the mechanics of rigid bodies, introducing Euler\'s laws of rotational motion.',
+      summary: 'Fluid statics deals with fluids in static equilibrium. Hydrostatic pressure, Pascal\'s hydraulic transmission, Archimedes\' buoyancy principle, and intermolecular surface tension govern static fluid behavior.',
+      historicalContext: 'Archimedes discovered the buoyancy principle in Syracuse around 250 BCE; Blaise Pascal formulated hydraulic transmission in 1653.',
       learningOutcomes: [
-        'Determine the center of mass for discrete and continuous mass distributions',
-        'Calculate moments of inertia for standard geometric bodies (rods, disks, rings, spheres)',
-        'Apply parallel and perpendicular axis theorems to evaluate shifted moments of inertia',
-        'Analyze rolling without slipping down inclined planes using energy conservation'
+        'Calculate hydrostatic pressure at varying liquid depths and determine gauge vs absolute pressure',
+        'Apply Pascal\'s law to compute force and displacement ratios in hydraulic lifts',
+        'Determine buoyant forces, apparent weights, and floatation stability of submerged bodies',
+        'Compute surface tension, excess pressure in soap bubbles/droplets, and capillary rise heights'
       ],
       coreFormulas: [
-        { label: 'Rotational Dynamics', formula: '\\tau_{\\text{net}} = I\\alpha', explanation: 'Rotational analog to Newton\'s second law ($F=ma$).' },
-        { label: 'Parallel Axis Theorem', formula: 'I = I_{\\text{cm}} + M d^2', explanation: 'Moment of inertia about any parallel axis displaced by distance $d$.' },
-        { label: 'Rolling Acceleration on Incline', formula: 'a = \\frac{g\\sin\\theta}{1 + I_{\\text{cm}}/(MR^2)}', explanation: 'Translational acceleration of a rolling cylinder or sphere down an incline.' }
+        { label: 'Hydrostatic Pressure', formula: 'P = P_0 + \\rho g h', explanation: 'Total pressure at depth $h$ below the free surface of a static liquid.' },
+        { label: 'Archimedes\' Upthrust', formula: 'F_B = \\rho_f V_{\\text{disp}} g', explanation: 'Buoyant force equals weight of fluid displaced by submerged volume.' },
+        { label: 'Capillary Rise (Jurin\'s Law)', formula: 'h = \\frac{2 T \\cos\\theta}{\\rho g r}', explanation: 'Equilibrium height of liquid column in a capillary tube of radius $r$.' }
       ],
       realWorldApplications: [
-        'Flywheel Energy Storage: High-speed composite rotors storing kinetic grid energy',
-        'Aerospace Gyroscopes: Inertial guidance systems for spacecraft attitude stabilization',
-        'Automotive Differentials: Torque distribution across vehicle drive axles during cornering',
-        'Planetary Precession: Earth\'s axial rotational precession and tidal torque interactions'
+        'Hydraulic Heavy Machinery: Multi-ton force generation in excavator rams and car lifts',
+        'Marine Architecture: Submarine ballast tanks and ship hull displacement buoyancy design',
+        'Barometry & Altimetry: Torricelli mercury barometers and aircraft altimeter pressure sensors',
+        'Botanical Xylem Transport: Capillary action and surface tension driving sap ascent in trees'
       ],
       keyTheorems: [
-        { title: 'Conservation of Angular Momentum', statement: 'If the net external torque acting on a system is zero, its total angular momentum $\\mathbf{L}$ remains constant: $\\boldsymbol{\\tau}_{\\text{ext}} = 0 \\implies \\mathbf{L} = \\text{constant}$.', importance: 'Explains spinning figure skaters, pulsar spin rates, and planetary orbit stability.' }
+        { title: 'Pascal\'s Principle', statement: 'Any pressure applied to an enclosed, incompressible static fluid is transmitted undiminished throughout every portion of the fluid and to the container walls.', importance: 'The fundamental engineering basis for all hydraulic multiplication mechanisms.' }
       ]
     }
   },
@@ -273,44 +280,45 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     id: 'el-phy11-ch7',
     class: 11,
     track: 'Elementary Physics',
-    name: 'Gravitation & Planetary Orbits',
-    description: 'Newton\'s universal law of gravitation, gravitational field and potential $V = -\\frac{GM}{r}$, acceleration due to gravity $g(h, d)$, Kepler\'s three planetary laws, orbital speed $v_o = \\sqrt{\\frac{GM}{r}}$, and escape speed $v_e = \\sqrt{\\frac{2GM}{R}}$.',
-    category: 'Laws of Motion & Gravitation',
-    questionCount: 0,
+    name: 'Fluid Dynamics',
+    description: 'Steady vs turbulent flow, equation of continuity $A_1 v_1 = A_2 v_2$, Bernoulli\'s theorem $P + \\frac{1}{2}\\rho v^2 + \\rho gh = \\text{const}$, Torricelli\'s theorem $v = \\sqrt{2gh}$, Venturi meter, viscosity $\\eta$, and Stokes\' law $F = 6\\pi\\eta r v$.',
+    category: 'Fluids & Material Properties',
+    questionCount: 70,
     difficulty: 'Mixed',
     keyTopics: [
-      'Universal Gravitation: $F = G\\frac{m_1 m_2}{r^2}$ with $G = 6.674 \\times 10^{-11} \\text{ N m}^2/\\text{kg}^2$',
-      'Variation of $g$ with Altitude $h$ and Depth $d$',
-      'Gravitational Potential Energy: $U(r) = -\\frac{GMm}{r}$',
-      'Kepler\'s Three Laws of Planetary Motion ($T^2 \\propto a^3$)',
-      'Escape Velocity $v_e = \\sqrt{2 g R} = \\sqrt{\\frac{2GM}{R}} \\approx 11.2 \\text{ km/s}$'
+      'Streamline vs Turbulent Flow & Reynolds Number ($Re$)',
+      'Equation of Continuity: $A_1 v_1 = A_2 v_2$ (Conservation of Mass)',
+      'Bernoulli\'s Equation: $P + \\frac{1}{2}\\rho v^2 + \\rho gh = \\text{constant}$',
+      'Applications: Torricelli\'s Law of Efflux ($v = \\sqrt{2gh}$), Venturi Meter, and Aerodynamic Lift',
+      'Viscosity, Velocity Gradient, and Newton\'s Law of Viscosity ($F = \\eta A \\frac{dv}{dx}$)',
+      'Stokes\' Law ($F = 6\\pi\\eta r v$) and Terminal Velocity ($v_t = \\frac{2r^2(\\rho-\\sigma)g}{9\\eta}$)'
     ],
-    color: 'teal',
-    icon: 'Globe',
-    artTheme: 'conic',
-    formulaHighlight: 'F = G\\frac{m_1 m_2}{r^2}, \\quad v_e = \\sqrt{\\frac{2GM}{R}}, \\quad T^2 = \\frac{4\\pi^2}{GM}a^3',
+    color: 'cyan',
+    icon: 'Activity',
+    artTheme: 'calculus',
+    formulaHighlight: 'A_1 v_1 = A_2 v_2, \\quad P + \\frac{1}{2}\\rho v^2 + \\rho gh = \\text{const}, \\quad v = \\sqrt{2gh}, \\quad F = 6\\pi\\eta r v, \\quad v_t = \\frac{2r^2(\\rho-\\sigma)g}{9\\eta}',
     overview: {
-      summary: 'Gravitation is the fundamental attractive force governing cosmic structures. Newton\'s inverse-square law unifies terrestrial falling objects with planetary and satellite orbits governed by Kepler\'s laws.',
-      historicalContext: 'Johannes Kepler derived planetary laws empirically between 1609 and 1619; Newton unified them mathematically with inverse-square gravitation in 1687.',
+      summary: 'Fluid dynamics examines fluids in motion. Mass conservation (continuity) and mechanical energy conservation (Bernoulli) describe inviscid flows, while viscous shearing and Stokes drag govern real fluid resistance.',
+      historicalContext: 'Daniel Bernoulli published Hydrodynamica in 1738; Sir George Gabriel Stokes derived the viscous drag law on spheres in 1851.',
       learningOutcomes: [
-        'Calculate gravitational force and potential between planetary masses',
-        'Determine gravitational acceleration variation at heights above and depths below Earth\'s surface',
-        'Derive Kepler\'s Third Law from circular orbital mechanics ($T^2 \\propto r^3$)',
-        'Compute orbital speeds, orbital periods, and escape velocities for artificial satellites'
+        'Apply the continuity equation to calculate fluid speeds in contracting conduits',
+        'Employ Bernoulli\'s equation to calculate dynamic pressure drops and flow rates',
+        'Determine efflux speeds from open and pressurized orifices using Torricelli\'s theorem',
+        'Calculate viscous drag and terminal velocity for falling spherical particles'
       ],
       coreFormulas: [
-        { label: 'Gravitational Force', formula: 'F = G\\frac{M m}{r^2}', explanation: 'Inverse square law between two point masses.' },
-        { label: 'Orbital Velocity', formula: 'v_o = \\sqrt{\\frac{GM}{r}}', explanation: 'Velocity required for a circular orbit at radius $r$.' },
-        { label: 'Escape Velocity', formula: 'v_e = \\sqrt{\\frac{2GM}{R}} = \\sqrt{2} v_o', explanation: 'Minimum speed required to escape a body\'s gravitational field entirely.' }
+        { label: 'Equation of Continuity', formula: 'A_1 v_1 = A_2 v_2', explanation: 'Conservation of mass for incompressible fluid along a streamline.' },
+        { label: 'Bernoulli\'s Equation', formula: 'P + \\frac{1}{2}\\rho v^2 + \\rho g h = \\text{constant}', explanation: 'Conservation of total mechanical energy per unit volume along a streamline.' },
+        { label: 'Stokes\' Terminal Velocity', formula: 'v_t = \\frac{2 r^2 (\\rho - \\sigma) g}{9 \\eta}', explanation: 'Steady-state falling speed where gravity is balanced by buoyancy and viscous drag.' }
       ],
       realWorldApplications: [
-        'GPS & Geostationary Satellites: Satellite orbital synchronization at $h \\approx 35,786\\text{ km}$',
-        'Interplanetary Space Flight: Gravitational slingshot (gravity assist) trajectories',
-        'Tidal Energy: Lunar and solar gravitational gradient tides generating marine power',
-        'Exoplanet Detection: Radial velocity Doppler wobbles and transit timing variations'
+        'Aerospace: Cambered wing aerodynamic lift generation and aircraft airspeed pitot tubes',
+        'Medical: Sphygmomanometer blood flow dynamics and cardiovascular catheterization',
+        'Meteorology: Atmospheric pressure gradients, cyclonic winds, and raindrop terminal speeds',
+        'Chemical Engineering: Pipeline flow optimization and Venturi mixing injectors'
       ],
       keyTheorems: [
-        { title: 'Newton\'s Shell Theorem', statement: 'A spherically symmetric mass shell exerts no net gravitational force on any particle inside it, and attracts any particle outside as if all its mass were concentrated at the center.', importance: 'Enables treating planets as point masses for orbital calculations.' }
+        { title: 'Bernoulli\'s Principle', statement: 'An increase in the speed of a fluid occurs simultaneously with a decrease in static pressure or a decrease in the fluid\'s potential energy.', importance: 'Central theorem governing aerodynamic lift, carburetors, and aspirators.' }
       ]
     }
   },
@@ -318,43 +326,45 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     id: 'el-phy11-ch8',
     class: 11,
     track: 'Elementary Physics',
-    name: 'Mechanical Properties of Solids',
-    description: 'Elastic behavior of matter, stress (tensile, compressive, shear), strain, Hooke\'s Law ($\\sigma = E \\epsilon$), Young\'s modulus $Y$, bulk modulus $B$, shear modulus $\\eta$, Poisson\'s ratio $\\nu$, and strain energy density.',
-    category: 'Fluids & Material Properties',
-    questionCount: 0,
+    name: 'Electric Fields',
+    description: 'Coulomb\'s Law $F = \\frac{k q_1 q_2}{r^2}$, electric field intensity $\\mathbf{E} = \\frac{\\mathbf{F}}{q_0}$, field lines, electric dipole and dipole moment $\\mathbf{p} = q(2\\mathbf{a})$, electric flux $\\Phi_E = \\mathbf{E}\\cdot\\mathbf{A}$, Gauss\'s Law $\\oint \\mathbf{E}\\cdot d\\mathbf{A} = \\frac{q_{\\text{enc}}}{\\varepsilon_0}$, and electric potential $V$.',
+    category: 'Electrostatics & Current Electricity',
+    questionCount: 70,
     difficulty: 'Mixed',
     keyTopics: [
-      'Stress ($\\sigma = F/A$) and Strain ($\\epsilon = \\Delta L/L$)',
-      'Hooke\'s Law & Stress-Strain Curve (Proportional limit, Yield point, Fracture)',
-      'Elastic Moduli: Young\'s Modulus $Y$, Bulk Modulus $B$, Shear Modulus $\\eta$',
-      'Poisson\'s Ratio $\\nu = -\\frac{\\Delta d/d}{\\Delta L/L}$ and Elastic Potential Energy Density $u = \\frac{1}{2}\\sigma\\epsilon$'
+      'Coulomb\'s Law in Vacuum and Dielectric Media ($F = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q_1 q_2}{r^2}$)',
+      'Electric Field Intensity $\\mathbf{E}$ of Point Charges and Continuous Distributions',
+      'Electric Dipole: Torque ($\\boldsymbol{\\tau} = \\mathbf{p} \\times \\mathbf{E}$) and Potential Energy ($U = -\\mathbf{p}\\cdot\\mathbf{E}$)',
+      'Electric Flux and Gauss\'s Law: $\\Phi_E = \\oint \\mathbf{E}\\cdot d\\mathbf{A} = \\frac{q_{\\text{in}}}{\\varepsilon_0}$',
+      'Applications of Gauss\'s Law (Infinite wire, Sheet of charge, Spherical shell)',
+      'Electric Potential $V = \\frac{k q}{r}$ and Potential Gradient ($E = -\\frac{dV}{dr}$)'
     ],
-    color: 'rose',
-    icon: 'Layers',
-    artTheme: 'differential',
-    formulaHighlight: 'Y = \\frac{\\sigma}{\\epsilon} = \\frac{F L}{A \\Delta L}, \\quad B = -V\\frac{\\Delta P}{\\Delta V}, \\quad u = \\frac{1}{2}\\times\\text{stress}\\times\\text{strain}',
+    color: 'amber',
+    icon: 'Sun',
+    artTheme: 'vector',
+    formulaHighlight: 'F = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q_1 q_2}{r^2}, \\quad \\mathbf{E} = \\frac{\\mathbf{F}}{q}, \\quad \\Phi_E = \\frac{q_{\\text{enc}}}{\\varepsilon_0}, \\quad V = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q}{r}, \\quad E = -\\frac{dV}{dr}',
     overview: {
-      summary: 'Solid mechanics analyzes deformation of materials under external loads. Hooke\'s law and elastic moduli characterize structural stiffness, tensile strength, and resilience under mechanical stress.',
-      historicalContext: 'Robert Hooke discovered the linear law of elasticity in 1660 (ceiiinosssttuv: Ut tensio, sic vis), with Thomas Young formalizing the modulus of elasticity in 1807.',
+      summary: 'Electrostatics studies static electric charges and electric fields. Coulomb\'s inverse-square law, Gauss\'s law, and electric potential describe fundamental interactions between charges in space and dielectrics.',
+      historicalContext: 'Charles-Augustin de Coulomb verified the electrostatic force law in 1785; Carl Friedrich Gauss formalized the flux divergence law in 1835.',
       learningOutcomes: [
-        'Interpret the stress-strain curve from the elastic region to plastic yield and fracture',
-        'Calculate elongation, compression, and shear in structural cables and beams',
-        'Determine bulk modulus and compressibility for solids subjected to uniform hydrostatic pressure',
-        'Compute elastic strain energy stored in deformed structures'
+        'Calculate electrostatic forces between discrete configurations of point charges',
+        'Determine electric field intensity and direction for individual charges and dipoles',
+        'Apply Gauss\'s law to compute electric fields around symmetric charge geometries',
+        'Relate electric potential scalar fields to electric field vector gradients ($E = -\\nabla V$)'
       ],
       coreFormulas: [
-        { label: 'Young\'s Modulus', formula: 'Y = \\frac{F/A}{\\Delta L/L} = \\frac{F L}{A \\Delta L}', explanation: 'Ratio of tensile stress to tensile strain.' },
-        { label: 'Bulk Modulus', formula: 'B = -V \\frac{\\Delta P}{\\Delta V}', explanation: 'Resistance of a substance to uniform volumetric compression.' },
-        { label: 'Elastic Energy Density', formula: 'u = \\frac{1}{2} Y \\epsilon^2 = \\frac{1}{2} \\sigma \\epsilon', explanation: 'Strain energy stored per unit volume of an elastic material.' }
+        { label: 'Coulomb\'s Law', formula: 'F = \\frac{1}{4\\pi\\varepsilon_0} \\frac{|q_1 q_2|}{r^2}', explanation: 'Inverse square electrostatic force between two stationary point charges.' },
+        { label: 'Gauss\'s Law', formula: '\\Phi_E = \\oint \\mathbf{E} \\cdot d\\mathbf{A} = \\frac{Q_{\\text{enc}}}{\\varepsilon_0}', explanation: 'Total electric flux through any closed surface equals enclosed charge divided by permittivity.' },
+        { label: 'Electric Potential Gradient', formula: 'E = -\\frac{dV}{dr}', explanation: 'Electric field is the negative spatial rate of change of electric potential.' }
       ],
       realWorldApplications: [
-        'Structural Civil Engineering: Steel girder deflection and load-bearing bridge design',
-        'Biomedical Implants: Titanium alloy elasticity matched to human cortical bone',
-        'Aeronautics: Carbon-fiber reinforced polymer stress-strain resilience in aircraft wings',
-        'Seismic Engineering: Earthquake-resistant base isolation elastomer pads'
+        'Electrostatic Precipitators: Industrial pollution filtration removing particulate soot',
+        'Laser Printing & Photocopying: Photoconductive drum electrostatic toner attraction',
+        'Semiconductor Devices: Electric field control in field-effect transistors (MOSFETs)',
+        'Lightning Protection: Faraday cages and electrostatic shielding in aircraft'
       ],
       keyTheorems: [
-        { title: 'Hooke\'s Law of Elasticity', statement: 'Within the elastic proportional limit, strain in a body is directly proportional to the applied stress: $\\sigma = E \\epsilon$.', importance: 'The fundamental constitutive equation of linear elasticity.' }
+        { title: 'Gauss\'s Law of Electrostatics', statement: 'The total electric flux through any closed Gaussian surface in free space is equal to $\\frac{1}{\\varepsilon_0}$ times the total charge enclosed within that surface.', importance: 'One of Maxwell\'s four foundational electromagnetic equations.' }
       ]
     }
   },
@@ -362,44 +372,45 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     id: 'el-phy11-ch9',
     class: 11,
     track: 'Elementary Physics',
-    name: 'Mechanical Properties of Fluids',
-    description: 'Hydrostatic pressure $P = \\rho gh$, Pascal\'s law, Archimedes\' principle, surface tension, continuity equation ($A_1 v_1 = A_2 v_2$), Bernoulli\'s principle, viscosity, and Stokes\' law $F = 6\\pi\\eta r v$.',
-    category: 'Fluids & Material Properties',
-    questionCount: 0,
+    name: 'Capacitors',
+    description: 'Capacitance definition $C = \\frac{Q}{V}$, parallel plate capacitor $C = \\frac{\\varepsilon_0 A}{d}$, effect of dielectrics ($C = \\kappa C_0$), series ($1/C_{\\text{eq}} = \\sum 1/C_i$) and parallel ($C_{\\text{eq}} = \\sum C_i$) combinations, energy stored $U = \\frac{1}{2}CV^2$, and energy density $u = \\frac{1}{2}\\varepsilon_0 E^2$.',
+    category: 'Electrostatics & Current Electricity',
+    questionCount: 70,
     difficulty: 'Mixed',
     keyTopics: [
-      'Hydrostatic Pressure: $P = P_0 + \\rho gh$ & Pascal\'s Hydraulic Principle',
-      'Archimedes\' Principle & Buoyancy Force $F_b = \\rho_f V_{\\text{disp}} g$',
-      'Equation of Continuity: $A_1 v_1 = A_2 v_2$',
-      'Bernoulli\'s Equation: $P + \\frac{1}{2}\\rho v^2 + \\rho gh = \\text{constant}$',
-      'Viscosity, Stokes\' Law ($F = 6\\pi\\eta r v$) & Terminal Velocity $v_t = \\frac{2r^2(\\rho-\\sigma)g}{9\\eta}$'
+      'Capacitance Definition: $C = \\frac{Q}{V}$ (SI Unit: Farad, F)',
+      'Parallel Plate Capacitor with Vacuum ($C_0 = \\frac{\\varepsilon_0 A}{d}$) and Dielectric ($C = \\frac{\\kappa \\varepsilon_0 A}{d}$)',
+      'Capacitors in Series ($\\frac{1}{C_s} = \\frac{1}{C_1} + \\frac{1}{C_2}$) and Parallel ($C_p = C_1 + C_2$)',
+      'Electrostatic Energy Stored: $U = \\frac{1}{2}CV^2 = \\frac{1}{2}QV = \\frac{Q^2}{2C}$',
+      'Energy Density in Electric Field: $u_E = \\frac{1}{2}\\varepsilon_0 E^2$',
+      'Dielectric Breakdown, Polarization, and Dielectric Constant $\\kappa$'
     ],
-    color: 'cyan',
-    icon: 'Activity',
-    artTheme: 'calculus',
-    formulaHighlight: 'P + \\frac{1}{2}\\rho v^2 + \\rho gh = \\text{const}, \\quad A_1 v_1 = A_2 v_2, \\quad F = 6\\pi\\eta r v',
+    color: 'rose',
+    icon: 'Zap',
+    artTheme: 'algebra',
+    formulaHighlight: 'C = \\frac{Q}{V}, \\quad C = \\frac{\\kappa\\varepsilon_0 A}{d}, \\quad U = \\frac{1}{2}CV^2, \\quad u_E = \\frac{1}{2}\\varepsilon_0 E^2, \\quad C_p = \\sum C_i, \\quad \\frac{1}{C_s} = \\sum \\frac{1}{C_i}',
     overview: {
-      summary: 'Fluid mechanics investigates liquids and gases at rest (hydrostatics) and in motion (hydrodynamics). Pascal\'s principle explains hydraulic amplification, while Bernoulli\'s theorem models dynamic pressure in streamlined flow.',
-      historicalContext: 'Archimedes formulated buoyancy in 250 BCE; Blaise Pascal discovered hydraulic transmission in 1653, and Daniel Bernoulli published Hydrodynamica in 1738.',
+      summary: 'Capacitors are two-conductor devices that store electric charge and electrostatic potential energy within an electric field. Dielectric materials enhance capacitance by polarization, mitigating electric fields.',
+      historicalContext: 'Ewald Georg von Kleist and Pieter van Musschenbroek invented the Leyden jar in 1745; Michael Faraday pioneered dielectric investigations in 1837.',
       learningOutcomes: [
-        'Calculate hydrostatic pressure variations and hydraulic lift mechanical advantage',
-        'Apply Archimedes\' principle to determine buoyant forces and floating equilibrium',
-        'Use the continuity equation to compute fluid velocities in tapering pipes',
-        'Apply Bernoulli\'s principle to venturi meters, atomizers, and aerodynamic lift'
+        'Calculate capacitance for parallel plate, spherical, and cylindrical geometries',
+        'Determine equivalent capacitance and charge distributions for complex series-parallel networks',
+        'Analyze dielectric insertion effects on voltage, charge, field strength, and stored energy',
+        'Compute electrostatic energy stored in capacitors and volumetric energy densities'
       ],
       coreFormulas: [
-        { label: 'Hydrostatic Pressure', formula: 'P = P_0 + \\rho g h', explanation: 'Total pressure at depth $h$ in a fluid of density $\\rho$.' },
-        { label: 'Bernoulli\'s Equation', formula: 'P + \\frac{1}{2}\\rho v^2 + \\rho g h = \\text{constant}', explanation: 'Conservation of mechanical energy for an incompressible, non-viscous fluid.' },
-        { label: 'Stokes\' Terminal Velocity', formula: 'v_t = \\frac{2 r^2 (\\rho - \\sigma) g}{9 \\eta}', explanation: 'Terminal falling speed of a sphere of density $\\rho$ in a fluid of density $\\sigma$ and viscosity $\\eta$.' }
+        { label: 'Parallel Plate Capacitance', formula: 'C = \\frac{\\kappa \\varepsilon_0 A}{d}', explanation: 'Capacitance with dielectric constant $\\kappa$, plate area $A$, and separation $d$.' },
+        { label: 'Energy Stored in Capacitor', formula: 'U = \\frac{1}{2} C V^2 = \\frac{Q^2}{2C}', explanation: 'Total electrostatic potential energy stored in the electric field.' },
+        { label: 'Electric Energy Density', formula: 'u_E = \\frac{1}{2} \\varepsilon_0 E^2', explanation: 'Energy stored per unit volume of the electrostatic field.' }
       ],
       realWorldApplications: [
-        'Aerodynamic Lift: Airfoil camber creating pressure differentials via Bernoulli and flow turning',
-        'Hydraulic Heavy Machinery: Excavator hydraulic cylinders multiplying pedal forces',
-        'Medicine: Sphygmomanometer blood pressure and cardiovascular fluid dynamics',
-        'Civil Water Infrastructure: Venturi flow meters and water distribution networks'
+        'Defibrillators: Rapid high-energy discharge restoring cardiac sinus rhythm',
+        'Power Grid Decoupling: Power factor correction capacitor banks smoothing AC grids',
+        'Touchscreen Digitizers: Projected capacitive touch sensors in modern smartphones',
+        'Camera Flash Units: High-voltage pulsed discharge triggering xenon flash tubes'
       ],
       keyTheorems: [
-        { title: 'Pascal\'s Principle', statement: 'A pressure change applied to an enclosed incompressible fluid is transmitted undiminished to every portion of the fluid and to the walls of its container.', importance: 'The working principle behind all hydraulic lifts, brakes, and presses.' }
+        { title: 'Principle of Capacitance Enhancement', statement: 'Introducing a dielectric medium of constant $\\kappa$ between capacitor plates reduces the interior electric field by $\\frac{1}{\\kappa}$ for a given charge, increasing capacitance by factor $\\kappa$.', importance: 'Fundamental mechanism for compact high-density charge storage.' }
       ]
     }
   },
@@ -407,43 +418,45 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     id: 'el-phy11-ch10',
     class: 11,
     track: 'Elementary Physics',
-    name: 'Thermal Properties of Matter',
-    description: 'Temperature scales, thermal expansion (linear $\\alpha$, superficial $\\beta$, volumetric $\\gamma$), specific heat capacity $Q = mc\\Delta T$, calorimetry, latent heat, and heat transfer mechanisms (conduction, convection, radiation, Stefan-Boltzmann law $E = \\sigma e A T^4$).',
-    category: 'Thermodynamics & Heat',
-    questionCount: 0,
+    name: 'D.C. Circuits',
+    description: 'Electric current $I = \\frac{dQ}{dt}$, drift velocity $v_d$, Ohm\'s Law ($V = IR$), resistivity $\\rho$ and conductivity $\\sigma$, temperature dependence of resistance, EMF vs terminal potential difference, Kirchhoff\'s laws (KCL & KVL), Wheatstone bridge, and potentiometer.',
+    category: 'Electrostatics & Current Electricity',
+    questionCount: 70,
     difficulty: 'Mixed',
     keyTopics: [
-      'Thermal Expansion: $\\Delta L = \\alpha L_0 \\Delta T, \\; \\Delta V = \\gamma V_0 \\Delta T$ ($\\gamma \\approx 3\\alpha$)',
-      'Heat Capacity & Calorimetry: $Q = m c \\Delta T$ and Latent Heat $Q = m L$',
-      'Thermal Conduction: $\\frac{dQ}{dt} = -k A \\frac{dT}{dx}$ (Fourier\'s Law)',
-      'Radiation Laws: Stefan-Boltzmann Law ($P = \\sigma e A T^4$) and Wien\'s Displacement Law ($\\lambda_{\\max} T = b$)'
+      'Electric Current, Current Density $\\mathbf{J}$, and Drift Velocity: $I = n e A v_d$',
+      'Ohm\'s Law, Resistivity $\\rho = \\frac{R A}{L}$, and Temperature Coefficient $\\alpha$',
+      'Resistors in Series ($R_s = R_1 + R_2$) and Parallel ($\\frac{1}{R_p} = \\frac{1}{R_1} + \\frac{1}{R_2}$)',
+      'Electromotive Force (EMF $\\mathcal{E}$), Internal Resistance ($r$), and Terminal Voltage ($V = \\mathcal{E} - Ir$)',
+      'Kirchhoff\'s Junction Law (KCL: $\\sum I = 0$) and Loop Law (KVL: $\\sum V = 0$)',
+      'Wheatstone Bridge Balanced Condition ($\\frac{P}{Q} = \\frac{R}{S}$) and Potentiometer Principle'
     ],
-    color: 'amber',
-    icon: 'Sun',
+    color: 'emerald',
+    icon: 'Cpu',
     artTheme: 'differential',
-    formulaHighlight: 'Q = m c \\Delta T, \\quad \\frac{dQ}{dt} = -k A \\frac{dT}{dx}, \\quad P = \\sigma e A (T^4 - T_0^4), \\quad \\lambda_{\\max}T = b',
+    formulaHighlight: 'I = n e A v_d, \\quad V = IR, \\quad R = \\rho\\frac{L}{A}, \\quad V = \\mathcal{E} - Ir, \\quad \\sum I = 0, \\quad \\sum \\Delta V = 0, \\quad \\frac{P}{Q} = \\frac{R}{S}',
     overview: {
-      summary: 'Thermal physics studies heat transfer and thermal matter expansion. Temperature governs internal energy states, while conduction, convection, and radiation dictate energy dissipation across thermodynamic gradients.',
-      historicalContext: 'Joseph Black introduced latent and specific heat in the 1760s; Joseph Fourier formulated the law of heat conduction in 1822, and Josef Stefan discovered radiative cooling in 1879.',
+      summary: 'Direct Current (D.C.) circuits investigate steady electron flow driven by constant voltage sources. Kirchhoff\'s conservation laws, Ohm\'s microscopic transport relations, and bridge topologies govern resistive networks.',
+      historicalContext: 'Georg Simon Ohm published Ohm\'s law in 1827; Gustav Kirchhoff formulated junction and loop circuit laws in 1845.',
       learningOutcomes: [
-        'Calculate linear, areal, and volumetric thermal expansion in engineering materials',
-        'Solve calorimetry equilibrium equations for multi-phase mixtures (ice-water-steam)',
-        'Compute rate of thermal conduction through composite walls using Fourier\'s law',
-        'Apply the Stefan-Boltzmann law and Wien\'s law to blackbody radiation calculations'
+        'Relate microscopic electron drift velocity to macroscopic electric current and conductivity',
+        'Solve complex multi-loop circuit networks using Kirchhoff\'s Current and Voltage Laws',
+        'Calculate internal resistance, terminal voltage, and maximum power transfer condition ($R = r$)',
+        'Analyze Wheatstone bridge circuits for precise unknown resistance measurement'
       ],
       coreFormulas: [
-        { label: 'Thermal Conduction Rate', formula: '\\frac{dQ}{dt} = \\frac{k A (T_1 - T_2)}{L}', explanation: 'Heat flow per second through a thermal conductor of area $A$ and length $L$.' },
-        { label: 'Stefan-Boltzmann Radiation', formula: 'P_{\\text{net}} = e \\sigma A (T^4 - T_0^4)', explanation: 'Net radiative thermal power emitted to surroundings at temperature $T_0$.' },
-        { label: 'Wien\'s Displacement Law', formula: '\\lambda_{\\max} T = 2.898 \\times 10^{-3} \\text{ m}\\cdot\\text{K}', explanation: 'Peak emission wavelength shifts inversely with absolute temperature.' }
+        { label: 'Microscopic Current Equation', formula: 'I = n e A v_d', explanation: 'Current in terms of free electron density $n$, charge $e$, area $A$, and drift speed $v_d$.' },
+        { label: 'Terminal Potential Difference', formula: 'V = \\mathcal{E} - I r', explanation: 'Voltage across battery terminals delivering current $I$ with internal resistance $r$.' },
+        { label: 'Balanced Wheatstone Condition', formula: '\\frac{R_1}{R_2} = \\frac{R_3}{R_4}', explanation: 'Null deflection condition in the galvanometer branch of a Wheatstone bridge.' }
       ],
       realWorldApplications: [
-        'Building Architecture: Double-glazed thermal window insulation ratings (U-values)',
-        'Railway Engineering: Thermal expansion gaps and continuous welded rail pre-stressing',
-        'Astrophysics: Stellar surface temperature determination from emission spectral peaks',
-        'Electronics Cooling: Heat pipe and heat sink thermal resistance optimization'
+        'Battery Management Systems: Internal resistance tracking and state-of-charge calculation in EVs',
+        'Strain Gauge Sensors: Wheatstone bridge transducers measuring micro-strain in aerospace structures',
+        'Precision Metrology: Potentiometric zero-current EMF calibration instruments',
+        'Printed Circuit Board Design: Trace resistance and Joule heating power dissipation thermal budgets'
       ],
       keyTheorems: [
-        { title: 'Fourier\'s Law of Heat Conduction', statement: 'The time rate of heat transfer through a material is proportional to the negative gradient in the temperature and to the area through which the heat flows.', importance: 'The foundational differential equation of thermal transport.' }
+        { title: 'Kirchhoff\'s Laws', statement: 'KCL (Conservation of Charge): Algebraic sum of currents meeting at any junction is zero ($\\sum I = 0$). KVL (Conservation of Energy): Algebraic sum of potential changes around any closed loop is zero ($\\sum \\Delta V = 0$).', importance: 'The fundamental analytical framework for all electrical network theory.' }
       ]
     }
   },
@@ -451,44 +464,44 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     id: 'el-phy11-ch11',
     class: 11,
     track: 'Elementary Physics',
-    name: 'Thermodynamics & Heat Engines',
-    description: 'Thermodynamic systems, Zeroth Law, First Law ($\\Delta Q = \\Delta U + W$), isobaric, isochoric, isothermal ($PV = \\text{const}$), and adiabatic ($PV^\\gamma = \\text{const}$) processes, Second Law, Carnot engine efficiency $\\eta = 1 - \\frac{T_C}{T_H}$, and entropy.',
-    category: 'Thermodynamics & Heat',
-    questionCount: 0,
+    name: 'Oscillations',
+    description: 'Periodic & simple harmonic motion (SHM) $\\frac{d^2x}{dt^2} + \\omega^2 x = 0$, displacement $x(t) = A\\cos(\\omega t + \\phi)$, velocity, acceleration, energy in SHM ($E = \\frac{1}{2}kA^2$), simple pendulum $T = 2\\pi\\sqrt{\\frac{L}{g}}$, spring-mass system $T = 2\\pi\\sqrt{\\frac{m}{k}}$, damped oscillations, and resonance.',
+    category: 'Oscillations & Waves',
+    questionCount: 70,
     difficulty: 'Mixed',
     keyTopics: [
-      'First Law of Thermodynamics: $\\Delta Q = \\Delta U + W$ (with $W = \\int P dV$)',
-      'Thermodynamic Processes: Isothermal ($\\Delta U = 0$), Adiabatic ($Q = 0, PV^\\gamma = \\text{const}$)',
-      'Molar Heat Capacities: $C_p - C_v = R$ (Mayer\'s Relation)',
-      'Second Law: Clausius and Kelvin-Planck Statements & Entropy $dS = \\frac{dQ_{\\text{rev}}}{T}$',
-      'Carnot Heat Engine Efficiency: $\\eta = 1 - \\frac{T_C}{T_H}$'
+      'Simple Harmonic Motion (SHM) Definition & Differential Equation: $\\frac{d^2x}{dt^2} + \\omega^2 x = 0$',
+      'Kinematics of SHM: $x(t) = A\\sin(\\omega t + \\phi), \\; v(t) = \\omega\\sqrt{A^2 - x^2}, \\; a(t) = -\\omega^2 x$',
+      'Energy in SHM: Kinetic ($K = \\frac{1}{2}m\\omega^2(A^2 - x^2)$), Potential ($U = \\frac{1}{2}kx^2$), Total ($E = \\frac{1}{2}kA^2$)',
+      'Simple Pendulum ($T = 2\\pi\\sqrt{\\frac{L}{g}}$) and Horizontal/Vertical Spring Oscillators ($T = 2\\pi\\sqrt{\\frac{m}{k}}$)',
+      'Free, Damped, and Forced Oscillations, Resonance, and Quality Factor ($Q$)'
     ],
     color: 'rose',
-    icon: 'Flame',
-    artTheme: 'integral',
-    formulaHighlight: '\\Delta Q = \\Delta U + W, \\quad PV^\\gamma = \\text{const}, \\quad \\eta_{\\text{Carnot}} = 1 - \\frac{T_C}{T_H}, \\quad \\Delta S = \\int \\frac{dQ_{\\text{rev}}}{T}',
+    icon: 'Radio',
+    artTheme: 'calculus',
+    formulaHighlight: '\\frac{d^2x}{dt^2} + \\omega^2 x = 0, \\quad T = 2\\pi\\sqrt{\\frac{L}{g}}, \\quad T = 2\\pi\\sqrt{\\frac{m}{k}}, \\quad E = \\frac{1}{2}k A^2, \\quad v = \\omega\\sqrt{A^2 - x^2}',
     overview: {
-      summary: 'Thermodynamics governs energy transformations and the fundamental efficiency limits of heat engines. The First Law enforces energy conservation, while the Second Law dictates entropy growth and the irreversibility of natural processes.',
-      historicalContext: 'Sadi Carnot published Reflections on the Motive Power of Fire in 1824, establishing the theoretical efficiency limit of all thermodynamic heat engines.',
+      summary: 'Simple Harmonic Motion describes systems where a linear restoring force produces sinusoidal oscillations. Kinetic and potential energies interconvert continuously, maintaining a constant total mechanical energy.',
+      historicalContext: 'Galileo Galilei observed the isochronism of the pendulum in 1581; Christiaan Huygens invented the pendulum-regulated clock in 1656.',
       learningOutcomes: [
-        'Calculate work done, internal energy changes, and heat exchanged in cyclic processes',
-        'Derive Mayer\'s relation ($C_p - C_v = R$) for ideal monoatomic and diatomic gases',
-        'Analyze $P-V$ indicator diagrams for Otto, Diesel, and Carnot thermodynamic cycles',
-        'Compute maximum theoretical thermal efficiency and refrigerator coefficient of performance'
+        'Formulate and solve the differential equation of linear simple harmonic oscillators',
+        'Calculate phase, displacement, velocity, and acceleration at any position or time instant',
+        'Derive time periods for simple pendulums, compound pendulums, and loaded spring combinations',
+        'Analyze energy exchanges between potential and kinetic modes across the oscillation cycle'
       ],
       coreFormulas: [
-        { label: 'First Law of Thermodynamics', formula: '\\Delta U = Q - W', explanation: 'Internal energy change equals net heat added minus work done by system.' },
-        { label: 'Adiabatic Process Relation', formula: 'P V^\\gamma = \\text{constant} \\quad \\left(\\gamma = \\frac{C_p}{C_v}\\right)', explanation: 'Pressure-volume relation during reversible insulated expansion/compression.' },
-        { label: 'Carnot Engine Efficiency', formula: '\\eta = 1 - \\frac{T_L}{T_H} = \\frac{W_{\\text{out}}}{Q_{\\text{in}}}', explanation: 'Maximum possible efficiency of any heat engine operating between $T_H$ and $T_L$.' }
+        { label: 'SHM Restoring Force', formula: 'F = -k x = -m \\omega^2 x', explanation: 'Linear restoring force directed toward the central equilibrium position.' },
+        { label: 'Simple Pendulum Period', formula: 'T = 2\\pi \\sqrt{\\frac{L}{g}}', explanation: 'Oscillation period for small angular displacements independent of pendulum bob mass.' },
+        { label: 'Spring Oscillator Period', formula: 'T = 2\\pi \\sqrt{\\frac{m}{k}}', explanation: 'Period of mass $m$ attached to an ideal spring of stiffness constant $k$.' }
       ],
       realWorldApplications: [
-        'Thermal Power Plants: Steam Rankine and gas turbine Brayton cycle power generation',
-        'HVAC & Refrigeration: Vapor-compression heat pumps and COP optimization',
-        'Automotive Powertrains: Internal combustion engine compression ratio efficiency limits',
-        'Cryogenics: Joule-Thomson expansion gas liquefaction systems'
+        'Tuned Mass Dampers: High-rise building oscillation suppression during typhoons/earthquakes (Taipei 101)',
+        'Quartz Crystal Resonators: Ultra-stable piezoelectric clock frequency references in microprocessors',
+        'Vehicle Suspension: Shock absorbers damping spring oscillations for smooth vehicle ride',
+        'Atomic Force Microscopy: Micro-cantilever resonance frequency detection for nanoscale surface mapping'
       ],
       keyTheorems: [
-        { title: 'Carnot\'s Theorem', statement: 'No heat engine operating between two thermal reservoirs can be more efficient than a reversible Carnot engine operating between the same two temperatures.', importance: 'Establishes the absolute theoretical ceiling on mechanical energy conversion from heat.' }
+        { title: 'Isochronism Principle of SHM', statement: 'The period of simple harmonic oscillation is strictly independent of the amplitude of vibration for small displacements.', importance: 'The fundamental mathematical property enabling precise mechanical timekeeping.' }
       ]
     }
   },
@@ -496,44 +509,45 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     id: 'el-phy11-ch12',
     class: 11,
     track: 'Elementary Physics',
-    name: 'Kinetic Theory of Gases',
-    description: 'Molecular model of an ideal gas, kinetic derivation of pressure $P = \\frac{1}{3}\\rho v_{\\text{rms}}^2$, temperature as molecular kinetic energy, Maxwell-Boltzmann distribution, degrees of freedom, law of equipartition of energy, and mean free path $\\lambda = \\frac{1}{\\sqrt{2}\\pi n d^2}$.',
-    category: 'Thermodynamics & Heat',
-    questionCount: 0,
+    name: 'Acoustics',
+    description: 'Mechanical waves, longitudinal vs transverse waves, speed of sound in media ($v = \\sqrt{\\frac{B}{\\rho}}$, Newton-Laplace formula $v = \\sqrt{\\frac{\\gamma P}{\\rho}}$), intensity level (decibels $\\beta = 10\\log_{10}\\frac{I}{I_0}$), standing acoustic waves in organ pipes, beats $f_b = |f_1 - f_2|$, and the Doppler effect.',
+    category: 'Oscillations & Waves',
+    questionCount: 70,
     difficulty: 'Mixed',
     keyTopics: [
-      'Kinetic Pressure Equation: $P = \\frac{1}{3}\\frac{N m}{V} v_{\\text{rms}}^2 = \\frac{1}{3}\\rho v_{\\text{rms}}^2$',
-      'RMS, Average, and Most Probable Speeds: $v_{\\text{rms}} = \\sqrt{\\frac{3k_B T}{m}}$',
-      'Law of Equipartition of Energy: $E = \\frac{f}{2}k_B T$ per Molecule',
-      'Molar Specific Heats of Monoatomic ($f=3$), Diatomic ($f=5$), and Polyatomic Gases',
-      'Mean Free Path: $\\lambda = \\frac{1}{\\sqrt{2} n \\pi d^2}$'
+      'Nature of Sound: Longitudinal Pressure Waves & Speed of Sound ($v = \\sqrt{\\frac{\\gamma P}{\\rho}}$)',
+      'Factors Affecting Speed of Sound: Temperature ($v \\propto \\sqrt{T}$), Humidity, and Pressure',
+      'Sound Intensity ($I = \\frac{P}{4\\pi r^2}$) and Loudness in Decibels ($\\beta = 10\\log_{10}\\frac{I}{I_0}$ with $I_0 = 10^{-12}\\text{ W/m}^2$)',
+      'Stationary Waves in Open ($f_n = \\frac{n v}{2L}$) and Closed ($f_n = \\frac{(2n-1)v}{4L}$) Organ Pipes',
+      'Beats Phenomenon ($f_{\\text{beat}} = |f_1 - f_2|$) and Musical Tuning',
+      'Doppler Effect for Sound: $f\' = f\\left(\\frac{v \\pm v_o}{v \\mp v_s}\\right)$'
     ],
-    color: 'indigo',
-    icon: 'Atom',
-    artTheme: 'algebra',
-    formulaHighlight: 'P = \\frac{1}{3}\\rho v_{\\text{rms}}^2, \\quad v_{\\text{rms}} = \\sqrt{\\frac{3RT}{M}}, \\quad E_{\\text{avg}} = \\frac{3}{2}k_B T, \\quad \\lambda = \\frac{1}{\\sqrt{2}\\pi n d^2}',
+    color: 'blue',
+    icon: 'Radio',
+    artTheme: 'trigonometry',
+    formulaHighlight: 'v = \\sqrt{\\frac{\\gamma P}{\\rho}}, \\quad \\beta = 10\\log_{10}\\left(\\frac{I}{I_0}\\right), \\quad f_{\\text{beat}} = |f_1 - f_2|, \\quad f\' = f\\left(\\frac{v \\pm v_o}{v \\mp v_s}\\right)',
     overview: {
-      summary: 'Kinetic theory bridges microscopic molecular collisions with macroscopic thermodynamic observables (pressure, temperature, volume), proving that temperature is a direct measure of average molecular kinetic energy.',
-      historicalContext: 'Developed by Daniel Bernoulli, James Clerk Maxwell, and Ludwig Boltzmann in the 19th century, founding modern statistical mechanics.',
+      summary: 'Acoustics investigates the physics of sound generation, propagation, and reception. Newton and Laplace established speed-of-sound thermodynamics, while wave superposition explains pipe resonance, beats, and Doppler frequency shifts.',
+      historicalContext: 'Sir Isaac Newton estimated sound speed in 1686; Pierre-Simon Laplace corrected it for adiabatic compressions in 1816; Christian Doppler published the Doppler shift in 1842.',
       learningOutcomes: [
-        'Derive the kinetic expression for ideal gas pressure from momentum transfer',
-        'Calculate root-mean-square, mean, and most probable molecular speeds',
-        'Determine degrees of freedom and predict molar specific heat capacities ($C_v, C_p, \\gamma$)',
-        'Compute the mean free path and collision frequency of gas molecules under varied pressures'
+        'Calculate speed of sound under varying temperature, pressure, and gas molecular weight',
+        'Determine acoustic intensity levels in decibels and solve inverse-square sound propagation problems',
+        'Compute fundamental and harmonic frequencies for open and closed acoustic resonating tubes',
+        'Calculate perceived Doppler frequency shifts for moving sound sources, observers, and reflecting targets'
       ],
       coreFormulas: [
-        { label: 'RMS Velocity', formula: 'v_{\\text{rms}} = \\sqrt{\\frac{3 k_B T}{m}} = \\sqrt{\\frac{3 R T}{M}}', explanation: 'Root-mean-square velocity of gas molecules at absolute temperature $T$.' },
-        { label: 'Translational Kinetic Energy', formula: 'K_{\\text{avg}} = \\frac{3}{2} k_B T', explanation: 'Average kinetic energy of an ideal gas molecule depends strictly on temperature.' },
-        { label: 'Mean Free Path', formula: '\\lambda = \\frac{1}{\\sqrt{2}\\pi n d^2}', explanation: 'Average distance traversed by a molecule between successive collisions.' }
+        { label: 'Laplace Sound Speed', formula: 'v = \\sqrt{\\frac{\\gamma P}{\\rho}} = \\sqrt{\\frac{\\gamma R T}{M}}', explanation: 'Speed of sound in an ideal gas under adiabatic pressure fluctuations.' },
+        { label: 'Sound Intensity Level', formula: '\\beta = 10 \\log_{10}\\left(\\frac{I}{I_0}\\right) \\text{ dB}', explanation: 'Decibel scale relative to threshold of human hearing ($I_0 = 10^{-12} \\text{ W/m}^2$).' },
+        { label: 'Doppler Frequency Shift', formula: 'f\' = f \\left( \\frac{v \\pm v_o}{v \\mp v_s} \\right)', explanation: 'Observed frequency when sound source and observer move along line of sight.' }
       ],
       realWorldApplications: [
-        'Vacuum Technology: High-vacuum chamber pumping speeds in semiconductor fabrication',
-        'Uranium Enrichment: Gaseous diffusion isotope separation rates based on Graham\'s law',
-        'Atmospheric Physics: Planetary atmospheric retention and thermal Jeans escape modeling',
-        'Aerosol Science: Brownian diffusion and air filtration particulate trapping'
+        'Medical Ultrasound: Pulse-echo diagnostic sonography and fetal Doppler flowmetry',
+        'SONAR: Marine depth sounding, submarine acoustic detection, and bathymetric mapping',
+        'Architectural Acoustics: Concert hall reverberation time (Sabine formula) and noise cancellation',
+        'Aviation & Traffic Radar: Doppler speed measurement guns and sonic boom shockwave prediction'
       ],
       keyTheorems: [
-        { title: 'Law of Equipartition of Energy', statement: 'For any dynamic system in thermal equilibrium, the total energy is distributed equally among all degrees of freedom, each possessing an average energy of $\\frac{1}{2}k_B T$.', importance: 'Predicts specific heats of gases and solids across broad temperature regimes.' }
+        { title: 'Laplace\'s Adiabatic Correction', statement: 'Sound propagation in gases is an adiabatic process, not isothermal, because rapid pressure oscillations leave insufficient time for heat exchange ($\\gamma = C_p/C_v$).', importance: 'Resolved Newton\'s theoretical underestimation of sound speed by 15%.' }
       ]
     }
   },
@@ -541,44 +555,46 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     id: 'el-phy11-ch13',
     class: 11,
     track: 'Elementary Physics',
-    name: 'Oscillations & Simple Harmonic Motion (SHM)',
-    description: 'Periodic and oscillatory motion, Simple Harmonic Motion (SHM) differential equation $\\frac{d^2x}{dt^2} + \\omega^2 x = 0$, displacement $x(t) = A\\cos(\\omega t + \\phi)$, simple pendulum $T = 2\\pi\\sqrt{\\frac{L}{g}}$, spring-mass systems, energy in SHM, and damped/forced resonance.',
-    category: 'Oscillations & Waves',
-    questionCount: 0,
+    name: 'Physical Optics',
+    description: 'Wave theory of light, Huygens\' principle, wave fronts, Young\'s double slit interference ($y_n = \\frac{n\\lambda D}{d}$), thin film interference, diffraction at a single slit, diffraction grating ($d\\sin\\theta = n\\lambda$), and polarization (Brewster\'s law $\\tan\\theta_p = \\mu$, Malus\'s law $I = I_0\\cos^2\\theta$).',
+    category: 'Optics & Wave Theory',
+    questionCount: 70,
     difficulty: 'Mixed',
     keyTopics: [
-      'SHM Differential Equation: $\\frac{d^2x}{dt^2} + \\omega^2 x = 0$',
-      'Kinematic Equations of SHM: $x(t) = A\\sin(\\omega t + \\phi), \\; v(t) = \\omega\\sqrt{A^2 - x^2}, \\; a(t) = -\\omega^2 x$',
-      'Simple Pendulum: $T = 2\\pi\\sqrt{\\frac{L}{g}}$ & Spring-Mass System: $T = 2\\pi\\sqrt{\\frac{m}{k}}$',
-      'Total Mechanical Energy: $E = \\frac{1}{2}m\\omega^2 A^2 = \\text{constant}$',
-      'Damped & Forced Oscillations, Sharpness of Resonance & Q-Factor'
+      'Huygens\' Wave Theory, Wavefronts (Spherical, Plane), and Secondary Wavelets',
+      'Interference of Light: Coherent Sources, Path Difference ($\\Delta x = n\\lambda$ for constructive)',
+      'Young\'s Double Slit Experiment (YDSE): Fringe Width ($\\beta = \\frac{\\lambda D}{d}$)',
+      'Diffraction of Light: Single Slit Diffraction Minima ($a\\sin\\theta = n\\lambda$) & Resolving Power',
+      'Diffraction Grating: Principal Maxima Condition ($d\\sin\\theta = n\\lambda$)',
+      'Polarization of Light: Brewster\'s Angle ($\\tan\\theta_B = \\mu$) and Malus\'s Law ($I = I_0\\cos^2\\theta$)'
     ],
-    color: 'emerald',
-    icon: 'Radio',
-    artTheme: 'calculus',
-    formulaHighlight: '\\frac{d^2x}{dt^2} + \\omega^2 x = 0, \\quad T = 2\\pi\\sqrt{\\frac{m}{k}}, \\quad T = 2\\pi\\sqrt{\\frac{L}{g}}, \\quad E = \\frac{1}{2}k A^2',
+    color: 'violet',
+    icon: 'Eye',
+    artTheme: 'trigonometry',
+    formulaHighlight: '\\beta = \\frac{\\lambda D}{d}, \\quad d\\sin\\theta = n\\lambda, \\quad a\\sin\\theta = m\\lambda, \\quad \\tan\\theta_B = \\mu, \\quad I = I_0\\cos^2\\theta',
     overview: {
-      summary: 'Simple Harmonic Motion describes systems where a restoring force is directly proportional to displacement. Energy oscillates continuously between kinetic and potential forms with a constant period independent of amplitude.',
-      historicalContext: 'Galileo discovered the isochronism of the pendulum in 1581; Christiaan Huygens invented the pendulum clock in 1656.',
+      summary: 'Physical optics treats light as an electromagnetic wave, explaining phenomena that ray optics cannot: wave interference, diffraction around aperture boundaries, and transverse polarization.',
+      historicalContext: 'Christiaan Huygens proposed wave theory in 1678; Thomas Young demonstrated double-slit interference in 1801; Augustin-Jean Fresnel unified wave diffraction in 1818.',
       learningOutcomes: [
-        'Formulate and solve the differential equation of linear simple harmonic motion',
-        'Calculate phase, displacement, velocity, and acceleration at any time instant',
-        'Derive oscillation periods for simple pendulums, loaded springs, and torsional balances',
-        'Analyze energy exchanges between potential and kinetic modes across the oscillation cycle'
+        'Apply Huygens\' principle to derive the laws of reflection and refraction',
+        'Calculate fringe widths and bright/dark fringe locations in Young\'s double-slit experiment',
+        'Determine angular diffraction widths and grating spectral resolution lines',
+        'Apply Brewster\'s law and Malus\'s law to compute transmitted intensities through polarizing filters'
       ],
       coreFormulas: [
-        { label: 'SHM Restoring Force', formula: 'F = -k x = -m \\omega^2 x', explanation: 'Linear restoring force directed toward the equilibrium point.' },
-        { label: 'Simple Pendulum Period', formula: 'T = 2\\pi \\sqrt{\\frac{L}{g}}', explanation: 'Period for small angular oscillations independent of mass.' },
-        { label: 'Total Energy in SHM', formula: 'E = \\frac{1}{2} k A^2 = \\frac{1}{2} m \\omega^2 A^2', explanation: 'Total mechanical energy proportional to the square of amplitude.' }
+        { label: 'Double Slit Fringe Width', formula: '\\beta = \\frac{\\lambda D}{d}', explanation: 'Separation between adjacent bright or dark interference fringes.' },
+        { label: 'Diffraction Grating Formula', formula: 'd \\sin\\theta = n \\lambda', explanation: 'Condition for $n^{\\text{th}}$ order principal interference maximum with grating spacing $d$.' },
+        { label: 'Brewster\'s Polarization Law', formula: '\\tan\\theta_B = \\mu', explanation: 'Polarizing angle where reflected ray is 100% linearly polarized perpendicular to plane of incidence.' },
+        { label: 'Malus\'s Law', formula: 'I = I_0 \\cos^2\\theta', explanation: 'Intensity of polarized light transmitted through an analyzer rotated by angle $\\theta$.' }
       ],
       realWorldApplications: [
-        'Structural Vibration Isolation: Tuned mass dampers in tall skyscrapers (e.g. Taipei 101)',
-        'Quartz Crystal Resonators: Piezoelectric frequency standards in computers and wristwatches',
-        'Automotive Suspension: Vehicle shock absorber damping coefficient tuning',
-        'Atomic Force Microscopy: Micro-cantilever resonance frequency surface topography mapping'
+        'Anti-Reflective Coatings: Destructive thin-film interference on camera lenses and eyeglasses',
+        'Optical Spectrometers: Diffraction gratings dispersing atomic spectral emission lines',
+        'Polarized Sunglasses: Glare reduction by filtering horizontally polarized surface reflections',
+        'LCD Displays: Liquid crystal polarization rotation controlling pixel optical transmissions'
       ],
       keyTheorems: [
-        { title: 'Isochronism Principle', statement: 'The period of simple harmonic oscillation is strictly independent of the amplitude of vibration for small displacements.', importance: 'The fundamental mathematical property enabling precise timekeeping.' }
+        { title: 'Huygens-Fresnel Superposition Principle', statement: 'Every unobstructed point of a wavefront acts as a source of secondary spherical wavelets; the resultant wavefront at any later time is the envelope of these wavelets with mutual phase interference.', importance: 'The foundational mathematical basis for all wave propagation and diffraction.' }
       ]
     }
   },
@@ -586,44 +602,45 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     id: 'el-phy11-ch14',
     class: 11,
     track: 'Elementary Physics',
-    name: 'Waves & Acoustics',
-    description: 'Transverse and longitudinal mechanical waves, wave speed $v = \\nu\\lambda = \\sqrt{\\frac{T}{\\mu}}$, principle of superposition, standing waves on strings and organ pipes, beats $f_b = |f_1 - f_2|$, and the Doppler effect $f\' = f\\left(\\frac{v \\pm v_o}{v \\mp v_s}\\right)$.',
-    category: 'Oscillations & Waves',
-    questionCount: 0,
+    name: 'Communication',
+    description: 'Basics of communication systems (transmitter, channel, receiver), electromagnetic wave spectrum, modulation types (Amplitude Modulation AM, Frequency Modulation FM), digital modulation (PCM, ASK, FSK), bandwidth, fiber optic total internal reflection, satellite orbits, and wireless telemetry.',
+    category: 'Semiconductors & Electronics',
+    questionCount: 70,
     difficulty: 'Mixed',
     keyTopics: [
-      'Progressive Wave Equation: $y(x,t) = A\\sin(kx - \\omega t + \\phi)$ with $k = \\frac{2\\pi}{\\lambda}, \\; \\omega = 2\\pi\\nu$',
-      'Speed of Waves: Transverse String ($v = \\sqrt{\\frac{T}{\\mu}}$), Longitudinal in Fluid ($v = \\sqrt{\\frac{B}{\\rho}}$)',
-      'Superposition & Standing Waves: Nodes ($y=0$) and Antinodes ($y=\\pm 2A$)',
-      'Acoustic Resonance in Open & Closed Organ Pipes',
-      'Beats ($f_{\\text{beat}} = |f_1 - f_2|$) & Doppler Effect for Sound: $f\' = f\\left(\\frac{v \\pm v_o}{v \\mp v_s}\\right)$'
+      'Basic Elements of Communication: Transmitter, Transmission Channel, and Receiver',
+      'Electromagnetic Wave Propagation: Ground wave, Sky wave (ionospheric reflection), and Space wave (line of sight)',
+      'Amplitude Modulation (AM): Modulation Index ($m = \\frac{A_m}{A_c}$), Sideband Frequencies ($f_c \\pm f_m$), and Bandwidth ($2f_m$)',
+      'Frequency Modulation (FM): Advantages over AM and Frequency Deviation ($\\Delta f$)',
+      'Fiber Optic Communication: Numerical Aperture ($NA = \\sqrt{n_1^2 - n_2^2}$), Total Internal Reflection, and Attenuation',
+      'Satellite Communication: Geostationary Orbits ($h \\approx 35,786\\text{ km}$) and Uplink/Downlink Frequencies'
     ],
-    color: 'blue',
-    icon: 'Activity',
-    artTheme: 'trigonometry',
-    formulaHighlight: 'y(x,t) = A\\sin(kx - \\omega t), \\quad v = \\sqrt{\\frac{T}{\\mu}}, \\quad f_{\\text{beat}} = |f_1 - f_2|, \\quad f\' = f\\left(\\frac{v \\pm v_o}{v \\mp v_s}\\right)',
+    color: 'indigo',
+    icon: 'Radio',
+    artTheme: 'algebra',
+    formulaHighlight: 'm = \\frac{A_m}{A_c}, \\quad \\text{BW}_{\\text{AM}} = 2f_m, \\quad NA = \\sqrt{n_1^2 - n_2^2}, \\quad d = \\sqrt{2Rh_T} + \\sqrt{2Rh_R}',
     overview: {
-      summary: 'Wave mechanics investigates the propagation of energy and momentum through media without permanent mass transport. Superposition explains interference, standing waves, beats, and frequency shifts via the Doppler effect.',
-      historicalContext: 'Jean-Baptiste le Rond d\'Alembert discovered the 1D wave partial differential equation in 1747; Christian Doppler discovered frequency shifts in 1842.',
+      summary: 'Communication physics explores the transmission of information via electromagnetic signals. Carrier modulation, ionospheric propagation, optical fiber waveguiding, and orbital satellites enable modern global telecommunications.',
+      historicalContext: 'Heinrich Hertz generated radio waves in 1887; Guglielmo Marconi demonstrated transatlantic wireless telegraphy in 1901; Charles Kao pioneered optical fiber communications in 1966.',
       learningOutcomes: [
-        'Write mathematical wave equations and extract wavelength, frequency, wave speed, and phase',
-        'Compute fundamental and harmonic frequencies for vibrating strings and air columns',
-        'Analyze standing wave formation and determine node/antinode spatial locations',
-        'Calculate perceived Doppler frequency shifts for moving sources and observers'
+        'Identify core components of electronic communication systems and noise sources',
+        'Calculate modulation index, sideband spectrum, and bandwidth for AM and FM signals',
+        'Determine line-of-sight space wave horizon distances based on antenna heights ($d = \\sqrt{2Rh}$)',
+        'Compute critical angles, numerical aperture, and acceptance angles in optical fiber cables'
       ],
       coreFormulas: [
-        { label: 'Wave Speed Relation', formula: 'v = \\nu \\lambda = \\frac{\\omega}{k}', explanation: 'Relates propagation speed to frequency, wavelength, and wavenumber.' },
-        { label: 'Doppler Frequency Shift', formula: 'f\' = f \\left( \\frac{v \\pm v_o}{v \\mp v_s} \\right)', explanation: 'Observed frequency when sound source and observer are in relative motion.' },
-        { label: 'Vibrating String Harmonics', formula: 'f_n = n \\frac{v}{2L} = \\frac{n}{2L} \\sqrt{\\frac{T}{\\mu}} \\quad (n=1,2,3,\\dots)', explanation: 'Harmonic frequencies produced by a string fixed at both ends.' }
+        { label: 'AM Modulation Index', formula: 'm = \\frac{A_m}{A_c} = \\frac{V_{\\max} - V_{\\min}}{V_{\\max} + V_{\\min}}', explanation: 'Ratio of modulating message amplitude to carrier amplitude.' },
+        { label: 'Line of Sight Transmission Range', formula: 'd_{\\max} = \\sqrt{2 R h_T} + \\sqrt{2 R h_R}', explanation: 'Maximum space wave transmission distance between transmitter and receiver towers.' },
+        { label: 'Fiber Numerical Aperture', formula: 'NA = \\sin\\theta_a = \\sqrt{n_1^2 - n_2^2}', explanation: 'Light-gathering capacity of an optical fiber of core index $n_1$ and cladding index $n_2$.' }
       ],
       realWorldApplications: [
-        'Medical Ultrasound Imaging: High-frequency acoustic echo and Doppler blood flow imaging',
-        'Sonar Systems: Submarine navigation and bathymetric ocean depth mapping',
-        'Radar Speed Traps: Microwave Doppler frequency shifts measuring vehicle velocities',
-        'Architectural Acoustics: Concert hall reverberation time and destructive interference reduction'
+        'Cellular 5G Networks: Millimeter-wave beamforming and high-bandwidth wireless backhauls',
+        'Transoceanic Fiber Optics: High-capacity wavelength-division multiplexing subsea internet cables',
+        'GPS Navigation: Satellite constellation time-of-flight trilateration positioning',
+        'Deep Space Telemetry: NASA Deep Space Network parabolic dish transceiver links'
       ],
       keyTheorems: [
-        { title: 'Principle of Superposition of Waves', statement: 'When two or more propagating waves overlap in a linear medium, the resultant displacement at any point is the vector sum of the displacements of the individual waves.', importance: 'The foundational principle governing interference, diffraction, and standing waves.' }
+        { title: 'Nyquist-Shannon Sampling Theorem', statement: 'To be completely reconstructed without distortion or aliasing, a continuous bandlimited signal of maximum frequency $f_{\\max}$ must be sampled at a rate $f_s \\ge 2 f_{\\max}$.', importance: 'The mathematical bridge transforming analog continuous physics into digital communication.' }
       ]
     }
   }

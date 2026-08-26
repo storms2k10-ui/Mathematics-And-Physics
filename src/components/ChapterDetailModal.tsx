@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   X, 
   Play, 
@@ -22,20 +22,15 @@ interface ChapterDetailModalProps {
   onStartTest: (chapter: Chapter) => void;
 }
 
-type OverviewTab = 'overview' | 'formulas' | 'outcomes' | 'applications';
-
 export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
   chapter,
   isOpen,
   onClose,
   onStartTest,
 }) => {
-  const [activeTab, setActiveTab] = useState<OverviewTab>('overview');
-
   if (!isOpen || !chapter) return null;
 
-  const hasOverview = Boolean(chapter.overview);
-  const isMcqAvailable = (chapter.questionCount || 0) > 0;
+  const subjectSuffix = chapter.track?.includes('Physics') ? 'Physics' : 'Mathematics';
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm animate-fade-in">
@@ -54,14 +49,12 @@ export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
           {/* Track & Class Badge */}
           <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
             <span className="px-3 py-1 rounded-full text-xs font-black bg-slate-900/80 backdrop-blur-md text-white border border-white/20 shadow-md">
-              {chapter.track || 'Mathematics'} • Class {chapter.class}
+              {chapter.track || 'Elementary Physics'} • Class {chapter.class} {subjectSuffix}
             </span>
-            {chapter.track === 'Advanced Mathematics' && (
-              <span className="px-2.5 py-1 rounded-full text-xs font-black bg-indigo-600/90 text-white shadow-md flex items-center gap-1">
-                <Sparkles className="w-3 h-3" />
-                Practice Chapter
-              </span>
-            )}
+            <span className="px-2.5 py-1 rounded-full text-xs font-black bg-indigo-600/90 text-white shadow-md flex items-center gap-1">
+              <Sparkles className="w-3 h-3" />
+              Overview
+            </span>
           </div>
 
           {/* Close button */}
@@ -74,169 +67,117 @@ export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
           </button>
         </div>
 
-        {/* Dynamic Navigation Tabs (if rich overview exists) */}
-        {hasOverview && (
-          <div className="flex border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50 px-4 pt-2 gap-1 sm:gap-2 overflow-x-auto">
-            <button
-              onClick={() => setActiveTab('overview')}
-              className={`px-3.5 py-2 text-xs font-bold rounded-t-xl transition-colors flex items-center gap-1.5 cursor-pointer whitespace-nowrap border-b-2 ${
-                activeTab === 'overview'
-                  ? 'border-indigo-600 text-indigo-600 dark:text-indigo-400 bg-white dark:bg-slate-900 shadow-2xs'
-                  : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
-              }`}
-            >
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>Overview</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('formulas')}
-              className={`px-3.5 py-2 text-xs font-bold rounded-t-xl transition-colors flex items-center gap-1.5 cursor-pointer whitespace-nowrap border-b-2 ${
-                activeTab === 'formulas'
-                  ? 'border-indigo-600 text-indigo-600 dark:text-indigo-400 bg-white dark:bg-slate-900 shadow-2xs'
-                  : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
-              }`}
-            >
-              <Calculator className="w-3.5 h-3.5" />
-              <span>Core Formulas</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('outcomes')}
-              className={`px-3.5 py-2 text-xs font-bold rounded-t-xl transition-colors flex items-center gap-1.5 cursor-pointer whitespace-nowrap border-b-2 ${
-                activeTab === 'outcomes'
-                  ? 'border-indigo-600 text-indigo-600 dark:text-indigo-400 bg-white dark:bg-slate-900 shadow-2xs'
-                  : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
-              }`}
-            >
-              <Award className="w-3.5 h-3.5" />
-              <span>Learning Outcomes</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('applications')}
-              className={`px-3.5 py-2 text-xs font-bold rounded-t-xl transition-colors flex items-center gap-1.5 cursor-pointer whitespace-nowrap border-b-2 ${
-                activeTab === 'applications'
-                  ? 'border-indigo-600 text-indigo-600 dark:text-indigo-400 bg-white dark:bg-slate-900 shadow-2xs'
-                  : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
-              }`}
-            >
-              <Globe className="w-3.5 h-3.5" />
-              <span>Applications</span>
-            </button>
-          </div>
-        )}
-
-        {/* Modal Body Content */}
+        {/* Modal Body Content - All merged in Single Comprehensive Overview Section */}
         <div className="p-6 space-y-6 overflow-y-auto">
           
-          {/* TAB 1: DYNAMIC OVERVIEW & CONCEPTS */}
-          {(!hasOverview || activeTab === 'overview') && (
-            <div className="space-y-5 animate-fade-in">
-              {/* Formula Highlight Banner */}
-              {chapter.formulaHighlight && (
-                <div className="p-4 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800/80 shadow-2xs">
-                  <div className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-1.5 flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>Master Formula &amp; Identity</span>
-                  </div>
-                  <div className="text-sm font-mono text-indigo-950 dark:text-indigo-100 overflow-x-auto py-1">
-                    <MathText text={`$$${chapter.formulaHighlight}$$`} />
-                  </div>
-                </div>
-              )}
-
-              {/* Dynamic Summary */}
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-1.5">
-                  <BookOpen className="w-3.5 h-3.5 text-indigo-500" />
-                  <span>Comprehensive Chapter Summary</span>
-                </h4>
-                <div className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed bg-slate-50 dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
-                  <MathText text={chapter.overview?.summary || chapter.description} />
-                </div>
+          {/* Master Formula / Highlight Banner */}
+          {chapter.formulaHighlight && (
+            <div className="p-4 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800/80 shadow-2xs">
+              <div className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-1.5 flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Master Formula &amp; Highlight</span>
               </div>
-
-              {/* Historical Context if available */}
-              {chapter.overview?.historicalContext && (
-                <div className="p-4 rounded-2xl bg-amber-50/60 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-800/50 space-y-1.5">
-                  <h5 className="text-xs font-bold text-amber-800 dark:text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
-                    <History className="w-3.5 h-3.5 text-amber-500" />
-                    <span>Historical Evolution &amp; Origin</span>
-                  </h5>
-                  <div className="text-xs text-amber-900/80 dark:text-amber-200/90 leading-relaxed">
-                    <MathText text={chapter.overview.historicalContext} />
-                  </div>
-                </div>
-              )}
-
-              {/* Key Topics List */}
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5 flex items-center gap-1.5">
-                  <Layers className="w-3.5 h-3.5 text-indigo-500" />
-                  <span>Core Syllabus Topics:</span>
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {chapter.keyTopics.map((topic, i) => (
-                    <div
-                      key={i}
-                      className="flex items-start gap-2 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-300"
-                    >
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                      <div>
-                        <MathText text={topic} />
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              <div className="text-sm font-mono text-indigo-950 dark:text-indigo-100 overflow-x-auto py-1">
+                <MathText text={`$$${chapter.formulaHighlight}$$`} />
               </div>
-
-              {/* Key Theorems */}
-              {chapter.overview?.keyTheorems && chapter.overview.keyTheorems.length > 0 && (
-                <div className="space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                    <Award className="w-3.5 h-3.5 text-indigo-500" />
-                    <span>Key Mathematical Theorems</span>
-                  </h4>
-                  {chapter.overview.keyTheorems.map((thm, i) => (
-                    <div
-                      key={i}
-                      className="p-3.5 rounded-2xl bg-indigo-50/40 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/50 space-y-1"
-                    >
-                      <div className="text-xs font-bold text-indigo-700 dark:text-indigo-300">
-                        {thm.title}
-                      </div>
-                      <div className="text-xs text-slate-700 dark:text-slate-300 italic">
-                        <MathText text={thm.statement} />
-                      </div>
-                      <div className="text-[11px] text-slate-500 dark:text-slate-400 pt-0.5">
-                        <span className="font-semibold text-indigo-600 dark:text-indigo-400">Significance:</span> <MathText text={thm.importance} />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
             </div>
           )}
 
-          {/* TAB 2: CORE FORMULAS */}
-          {hasOverview && activeTab === 'formulas' && (
-            <div className="space-y-4 animate-fade-in">
+          {/* Comprehensive Chapter Summary */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-1.5">
+              <BookOpen className="w-3.5 h-3.5 text-indigo-500" />
+              <span>Comprehensive Chapter Summary</span>
+            </h4>
+            <div className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed bg-slate-50 dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+              <MathText text={chapter.overview?.summary || chapter.description} />
+            </div>
+          </div>
+
+          {/* Historical Context if available */}
+          {chapter.overview?.historicalContext && (
+            <div className="p-4 rounded-2xl bg-amber-50/60 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-800/50 space-y-1.5">
+              <h5 className="text-xs font-bold text-amber-800 dark:text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
+                <History className="w-3.5 h-3.5 text-amber-500" />
+                <span>Historical Evolution &amp; Origin</span>
+              </h5>
+              <div className="text-xs text-amber-900/80 dark:text-amber-200/90 leading-relaxed">
+                <MathText text={chapter.overview.historicalContext} />
+              </div>
+            </div>
+          )}
+
+          {/* Core Syllabus Topics */}
+          {chapter.keyTopics && chapter.keyTopics.length > 0 && (
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5 flex items-center gap-1.5">
+                <Layers className="w-3.5 h-3.5 text-indigo-500" />
+                <span>Core Syllabus Topics</span>
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {chapter.keyTopics.map((topic, i) => (
+                  <div
+                    key={i}
+                    className="flex items-start gap-2 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-300"
+                  >
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <div>
+                      <MathText text={topic} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Key Theorems / Physical Laws */}
+          {chapter.overview?.keyTheorems && chapter.overview.keyTheorems.length > 0 && (
+            <div className="space-y-2">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                <Award className="w-3.5 h-3.5 text-indigo-500" />
+                <span>Fundamental Principles &amp; Laws</span>
+              </h4>
+              <div className="grid grid-cols-1 gap-2.5">
+                {chapter.overview.keyTheorems.map((thm, i) => (
+                  <div
+                    key={i}
+                    className="p-3.5 rounded-2xl bg-indigo-50/40 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/50 space-y-1"
+                  >
+                    <div className="text-xs font-bold text-indigo-700 dark:text-indigo-300">
+                      {thm.title}
+                    </div>
+                    <div className="text-xs text-slate-700 dark:text-slate-300 italic">
+                      <MathText text={thm.statement} />
+                    </div>
+                    {thm.importance && (
+                      <div className="text-[11px] text-slate-500 dark:text-slate-400 pt-0.5">
+                        <span className="font-semibold text-indigo-600 dark:text-indigo-400">Significance:</span> <MathText text={thm.importance} />
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Essential Formulas & Equations (Merged into Overview) */}
+          {chapter.overview?.coreFormulas && chapter.overview.coreFormulas.length > 0 && (
+            <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                  <Calculator className="w-4 h-4 text-indigo-500" />
+                  <Calculator className="w-3.5 h-3.5 text-indigo-500" />
                   <span>Essential Formulas &amp; Equations</span>
                 </h4>
                 <span className="text-[11px] font-semibold text-slate-400">
-                  {chapter.overview?.coreFormulas.length} Core Equations
+                  {chapter.overview.coreFormulas.length} Core Equations
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 gap-3">
-                {chapter.overview?.coreFormulas.map((f, i) => (
+              <div className="grid grid-cols-1 gap-2.5">
+                {chapter.overview.coreFormulas.map((f, i) => (
                   <div
                     key={i}
-                    className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-600 transition-colors space-y-2"
+                    className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 space-y-1.5"
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-bold text-slate-900 dark:text-white">
@@ -262,21 +203,21 @@ export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
             </div>
           )}
 
-          {/* TAB 3: LEARNING OUTCOMES */}
-          {hasOverview && activeTab === 'outcomes' && (
-            <div className="space-y-4 animate-fade-in">
+          {/* Chapter Mastery & Learning Outcomes (Merged into Overview) */}
+          {chapter.overview?.learningOutcomes && chapter.overview.learningOutcomes.length > 0 && (
+            <div className="space-y-3">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                <Award className="w-4 h-4 text-emerald-500" />
-                <span>Chapter Mastery Objectives</span>
+                <Award className="w-3.5 h-3.5 text-emerald-500" />
+                <span>Learning Outcomes &amp; Mastery Objectives</span>
               </h4>
 
-              <div className="space-y-2.5">
-                {chapter.overview?.learningOutcomes.map((outcome, i) => (
+              <div className="space-y-2">
+                {chapter.overview.learningOutcomes.map((outcome, i) => (
                   <div
                     key={i}
-                    className="flex items-start gap-3 p-3.5 rounded-2xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-800/40 text-xs text-slate-700 dark:text-slate-300"
+                    className="flex items-start gap-2.5 p-3 rounded-2xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-800/40 text-xs text-slate-700 dark:text-slate-300"
                   >
-                    <div className="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">
+                    <div className="w-4 h-4 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5">
                       {i + 1}
                     </div>
                     <div className="leading-relaxed">
@@ -288,21 +229,21 @@ export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
             </div>
           )}
 
-          {/* TAB 4: REAL-WORLD APPLICATIONS */}
-          {hasOverview && activeTab === 'applications' && (
-            <div className="space-y-4 animate-fade-in">
+          {/* Engineering & Scientific Applications (Merged into Overview) */}
+          {chapter.overview?.realWorldApplications && chapter.overview.realWorldApplications.length > 0 && (
+            <div className="space-y-3">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                <Globe className="w-4 h-4 text-cyan-500" />
+                <Globe className="w-3.5 h-3.5 text-cyan-500" />
                 <span>Engineering &amp; Scientific Applications</span>
               </h4>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {chapter.overview?.realWorldApplications.map((app, i) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {chapter.overview.realWorldApplications.map((app, i) => (
                   <div
                     key={i}
-                    className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 space-y-1.5"
+                    className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 space-y-1"
                   >
-                    <div className="w-6 h-6 rounded-lg bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-300 flex items-center justify-center text-xs font-bold">
+                    <div className="w-5 h-5 rounded-lg bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-300 flex items-center justify-center text-[10px] font-bold">
                       {i + 1}
                     </div>
                     <div className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
@@ -331,7 +272,7 @@ export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
               className="flex-2 py-3 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <Play className="w-4 h-4 fill-white" />
-              <span>Start Practice Session</span>
+              <span>Start Practice</span>
             </button>
           </div>
 

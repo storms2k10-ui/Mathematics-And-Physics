@@ -21,6 +21,9 @@ function sanitizeLatex(str: string): string {
   // Normalize degree symbols
   s = s.replace(/(\d+)\^\\circ/g, '$1^{\\circ}');
   s = s.replace(/(\d+)\^\{\\circ\}/g, '$1^{\\circ}');
+  s = s.replace(/(\d+)°/g, '$1^{\\circ}');
+  // Normalize unbraced scientific exponents (e.g. 10^-19 -> 10^{-19}, 10^9 -> 10^{9})
+  s = s.replace(/10\^(-?\d+)/g, '10^{$1}');
   // Normalize unbraced limits (e.g. \lim_x\to 0 -> \lim_{x \to 0})
   s = s.replace(/\\lim_([a-zA-Z0-9]+)\\to([a-zA-Z0-9\\infty]+)/g, '\\lim_{$1 \\to $2}');
   // Normalize unbraced integrals (e.g. \int_0^1 -> \int_{0}^{1})

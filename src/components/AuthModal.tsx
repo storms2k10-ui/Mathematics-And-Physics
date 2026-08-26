@@ -223,16 +223,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               )}
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-wider uppercase bg-white/20 text-cyan-200 border border-white/20 shadow-xs">
-                  Mathematics Portal
-                </span>
-                <span className="text-[11px] text-white/80 font-semibold">
-                  {mode === 'signup' ? 'New Scholar' : mode === 'forgot' ? 'Recovery' : 'Scholar Portal'}
-                </span>
-              </div>
-              <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white mt-0.5 drop-shadow-sm">
-                {customTitle || (mode === 'signup' ? 'Create Account' : mode === 'forgot' ? 'Reset Password' : 'Sign In to Account')}
+              <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white drop-shadow-sm">
+                {customTitle || (mode === 'signup' ? 'Create New Account' : mode === 'forgot' ? 'Reset Password' : 'Sign In')}
               </h2>
             </div>
           </div>
@@ -304,7 +296,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] transition-colors flex items-center gap-1.5 shadow-sm cursor-pointer"
                   >
                     <UserPlus className="w-3.5 h-3.5" />
-                    <span>Create Account with {email || 'this email'}</span>
+                    <span>Create New Account with {email || 'this email'}</span>
                   </button>
                 </div>
               )}
@@ -444,7 +436,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <span>Please wait...</span>
               ) : mode === 'signup' ? (
                 <>
-                  <span>Create Account</span>
+                  <span>Create New Account</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               ) : mode === 'forgot' ? (

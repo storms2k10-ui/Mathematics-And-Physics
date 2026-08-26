@@ -114,10 +114,10 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
             </div>
             <div>
               <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-wider uppercase bg-white/20 text-indigo-100">
-                Mathematics Practice
+                {selectedTrack}
               </span>
               <h2 className="text-xl font-bold tracking-tight text-white">
-                Start Practice Session
+                Start Practice
               </h2>
             </div>
           </div>
@@ -125,7 +125,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
           {chapterTitle && (
             <div className="mt-3 pt-3 border-t border-white/15 flex items-center gap-2 text-xs text-indigo-100">
               <BookOpen className="w-3.5 h-3.5 shrink-0" />
-              <span className="truncate">Chapter: <strong className="text-white">{chapterTitle}</strong> (Class {defaultClass})</span>
+              <span className="truncate">Chapter: <strong className="text-white">{chapterTitle}</strong> (Class {defaultClass} {selectedTrack.includes('Physics') ? 'Physics' : 'Mathematics'})</span>
             </div>
           )}
         </div>
@@ -205,10 +205,10 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
 
             <div className="p-3.5 rounded-2xl bg-indigo-50/70 dark:bg-slate-800 border-2 border-indigo-300/80 dark:border-indigo-700/60 flex flex-col items-center justify-center text-center shadow-xs">
               <span className="font-extrabold text-base text-slate-900 dark:text-white block">
-                Class {defaultClass}
+                Class {defaultClass} {selectedTrack.includes('Physics') ? 'Physics' : 'Mathematics'}
               </span>
               <span className="text-xs text-slate-600 dark:text-slate-400 font-medium block mt-0.5">
-                {chapterTitle ? `Assigned Chapter: ${chapterTitle}` : `Class ${defaultClass} Curriculum`}
+                {chapterTitle ? `Assigned Chapter: ${chapterTitle}` : `Class ${defaultClass} ${selectedTrack.includes('Physics') ? 'Physics' : 'Mathematics'} Curriculum`}
               </span>
             </div>
           </div>
@@ -265,7 +265,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
               type="submit"
               className="w-full py-3 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.01] active:scale-[0.99]"
             >
-              <span>Practice Class {defaultClass} ({questionCount} MCQs)</span>
+              <span>Start Practice ({questionCount} MCQs)</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
