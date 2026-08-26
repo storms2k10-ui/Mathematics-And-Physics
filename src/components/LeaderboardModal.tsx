@@ -18,8 +18,7 @@ import {
   BookOpen,
   Calendar,
   Layers,
-  GraduationCap,
-  RefreshCw
+  GraduationCap
 } from 'lucide-react';
 import { LeaderboardEntry, ClassLevel, CandidateRankingProfile } from '../types';
 import { MathService } from '../services/mathService';
@@ -52,8 +51,6 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
   const [selectedTrack, setSelectedTrack] = useState<LeaderboardTrack>(initialTrack);
   const [selectedCandidate, setSelectedCandidate] = useState<CandidateRankingProfile | null>(null);
   const [copiedShare, setCopiedShare] = useState<boolean>(false);
-  const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
-  const [refreshToast, setRefreshToast] = useState<string | null>(null);
   const [now, setNow] = useState<number>(() => Date.now());
 
   // Real-time live timestamp ticker to sync submission relative time
@@ -64,23 +61,6 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
     }, 5000);
     return () => clearInterval(ticker);
   }, [isOpen]);
-
-  const handleManualRefresh = async () => {
-    setIsRefreshing(true);
-    try {
-      const freshEntries = await FirestoreLeaderboardService.refreshRankingHistory(selectedTrack);
-      if (Array.isArray(freshEntries)) {
-        setAllEntries(freshEntries);
-      }
-      setRefreshToast('Rankings refreshed from cloud server. Profile history preserved.');
-      setTimeout(() => setRefreshToast(null), 3500);
-    } catch {
-      setRefreshToast('Refreshed latest rankings.');
-      setTimeout(() => setRefreshToast(null), 2500);
-    } finally {
-      setIsRefreshing(false);
-    }
-  };
 
   const formatLiveTime = useCallback((timestamp?: number) => {
     if (!timestamp) return 'Just now';
@@ -357,61 +337,36 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-4xl overflow-hidden flex flex-col max-h-[92vh]">
         
-        {/* Academic Ranking Modal Header */}
-        <div className="bg-gradient-to-r from-amber-600 via-indigo-700 to-purple-800 p-5 sm:p-6 text-white relative flex items-center justify-between">
-          <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-xs flex items-center justify-center text-white border border-white/30 shadow-inner">
-              <Trophy className="w-6 h-6 text-amber-300 fill-amber-300 stroke-[2]" />
+        {/* Academic Ranking Modal Header — Light Green Dynamic View */}
+        <div className="bg-gradient-to-r from-emerald-500 via-teal-600 to-green-600 p-4.5 sm:p-5.5 text-white relative flex items-center justify-between shadow-lg shadow-emerald-900/20">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white/25 backdrop-blur-xs flex items-center justify-center text-white border border-white/40 shadow-inner shrink-0 ring-2 ring-emerald-300/40">
+              <Trophy className="w-5.5 h-5.5 text-amber-200 fill-amber-300 stroke-[2]" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-wider uppercase bg-amber-400/30 text-amber-200 border border-amber-300/30">
-                  Global Academic Ranking
-                </span>
-                <span className="text-[11px] text-white/80 font-medium hidden sm:inline">
-                  Overall Accuracy &amp; Candidate Track Records ⚡
-                </span>
-              </div>
-              <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white">
-                Academic Ranking
-              </h2>
+              <span className="text-base sm:text-xl font-black uppercase tracking-wider bg-gradient-to-r from-white via-emerald-100 to-lime-200 bg-clip-text text-transparent flex items-center gap-2 drop-shadow-sm transition-all">
+                <span className="w-2 h-2 rounded-full bg-lime-300 animate-ping shrink-0 inline-block" />
+                <span>ACADEMIC RANKING</span>
+              </span>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
             <button
-              onClick={handleManualRefresh}
-              disabled={isRefreshing}
-              className="px-3 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 active:scale-95 text-white text-xs font-bold transition-all flex items-center gap-1.5 border border-white/30 cursor-pointer disabled:opacity-60"
-              title="Refresh ranking history from Firebase server"
-            >
-              <RefreshCw className={`w-3.5 h-3.5 text-amber-300 ${isRefreshing ? 'animate-spin' : ''}`} />
-              <span className="hidden sm:inline">{isRefreshing ? 'Refreshing...' : 'Refresh Ranking'}</span>
-            </button>
-
-            <button
               onClick={onClose}
-              className="p-2 rounded-full text-white/80 hover:text-white hover:bg-white/20 transition-colors cursor-pointer"
+              className="p-1.5 sm:p-2 rounded-full text-white/85 hover:text-white hover:bg-white/20 transition-all active:scale-95 cursor-pointer"
               aria-label="Close modal"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </div>
         </div>
 
-        {/* Transient Refresh Notification */}
-        {refreshToast && (
-          <div className="bg-emerald-600 text-white px-4 py-2 text-xs font-bold text-center flex items-center justify-center gap-2 animate-fade-in">
-            <CheckCircle2 className="w-4 h-4 text-emerald-200" />
-            <span>{refreshToast}</span>
-          </div>
-        )}
-
-        {/* Controls Bar: Track Selector + Class Switcher */}
-        <div className="p-4 sm:p-5 bg-slate-50 dark:bg-slate-950/60 border-b border-slate-200 dark:border-slate-800 space-y-3">
+        {/* Controls Bar: Track Selector + Class Switcher with dynamic text-fitted buttons */}
+        <div className="p-2.5 sm:p-3 bg-slate-50 dark:bg-slate-950/60 border-b border-slate-200 dark:border-slate-800 space-y-2">
           
-          {/* 4 Track Options */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-200/80 dark:bg-slate-800/80 rounded-2xl">
+          {/* 4 Track Options — Content-Fitted Dynamic Width */}
+          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-200/60 dark:bg-slate-800/60 rounded-xl">
             {([
               { id: 'Elementary Mathematics', label: 'Elementary Mathematics', icon: Sigma },
               { id: 'Advanced Mathematics', label: 'Advanced Mathematics', icon: Sparkles },
@@ -426,21 +381,21 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                     setSelectedTrack(tr.id);
                     setSelectedCandidate(null);
                   }}
-                  className={`flex-1 min-w-[140px] px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                  className={`w-auto px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap ${
                     selectedTrack === tr.id
-                      ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      ? 'bg-emerald-600 text-white shadow-xs scale-[1.02]'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50'
                   }`}
                 >
-                  <Icon className="w-3.5 h-3.5" />
+                  <Icon className="w-3 h-3 shrink-0" />
                   <span>{tr.label}</span>
                 </button>
               );
             })}
           </div>
 
-          {/* Class Switcher Tabs (Class 9, 10, 11, 12 only) */}
-          <div className="flex flex-wrap items-center p-1 rounded-2xl bg-slate-200/80 dark:bg-slate-800/80 w-full gap-1">
+          {/* Class Switcher Tabs — Content-Fitted Dynamic Width */}
+          <div className="flex flex-wrap items-center p-1 rounded-xl bg-slate-200/60 dark:bg-slate-800/60 gap-1.5">
             {([9, 10, 11, 12] as ClassLevel[]).map((lvl) => {
               const count = safeEntries.filter(e => {
                 if (!e) return false;
@@ -454,36 +409,19 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                     setSelectedClass(lvl);
                     setSelectedCandidate(null);
                   }}
-                  className={`flex-1 px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+                  className={`w-auto px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
                     selectedClass === lvl
-                      ? 'bg-indigo-600 text-white shadow-xs'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      ? 'bg-teal-600 text-white shadow-xs scale-[1.02]'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50'
                   }`}
                 >
                   <span>Class {lvl}</span>
-                  <span className={`text-[10px] px-2 py-0.5 rounded-md font-bold ${selectedClass === lvl ? 'bg-indigo-700 text-white' : 'bg-slate-300 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}`}>
-                    {count} submissions
+                  <span className={`text-[9.5px] px-1.5 py-0.5 rounded font-semibold ${selectedClass === lvl ? 'bg-teal-700 text-white' : 'bg-slate-300/80 dark:bg-slate-700/80 text-slate-600 dark:text-slate-300'}`}>
+                    {count}
                   </span>
                 </button>
               );
             })}
-          </div>
-
-          {/* Live Submissions & Real-Time Sync Status Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2 rounded-xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200/60 dark:border-indigo-800/50 text-[11px]">
-            <div className="flex items-center gap-2 text-indigo-900 dark:text-indigo-200 font-semibold">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              <span>
-                <strong>{classLiveSubmissions} Live Submissions</strong> in Class {selectedClass} ({trackLiveSubmissions} total in {selectedTrack})
-              </span>
-            </div>
-            <div className="flex items-center gap-1 text-slate-500 dark:text-slate-400 font-medium">
-              <Clock className="w-3.5 h-3.5 text-indigo-500" />
-              <span>Real-time Live Sync Active</span>
-            </div>
           </div>
 
         </div>
@@ -504,11 +442,6 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
             </div>
           ) : (
             <div className="space-y-3">
-              <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center justify-between pb-1 px-1">
-                <span>Ranked by <strong>Overall Accuracy</strong> across all mastered chapters</span>
-                <span>Click any scholar to inspect their track record &amp; share progress</span>
-              </div>
-
               {rankedCandidateProfiles.map((candidate, index) => {
                 const rating = calculateRating(candidate);
 

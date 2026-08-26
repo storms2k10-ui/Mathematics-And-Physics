@@ -625,7 +625,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                             {ch.name}
                           </h4>
                           <span className="text-[10px] text-slate-500 dark:text-slate-400 block truncate">
-                            {ch.questionCount} MCQs • {ch.category}
+                            {ch.category}
                           </span>
                         </div>
                       </div>
