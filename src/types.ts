@@ -2,6 +2,8 @@ export type ClassLevel = 9 | 10 | 11 | 12;
 
 export type DifficultyLevel = 'Easy' | 'Medium' | 'Hard';
 
+export type PracticeDifficulty = 'Normal' | 'Advanced';
+
 export type MathCategory = 
   | 'Number Systems & Logarithms'
   | 'Algebra & Polynomials'
@@ -73,6 +75,7 @@ export interface Question {
   correct_answer: 'A' | 'B' | 'C' | 'D';
   explanation: string;
   difficulty?: DifficultyLevel;
+  difficulty_tier?: PracticeDifficulty;
   formula?: string;
 }
 
@@ -96,6 +99,7 @@ export interface TestSessionConfig {
   mode: 'practice' | 'exam'; // 'practice' = immediate step-by-step feedback; 'exam' = timed mock exam
   timeLimitMinutes?: number;
   questionCount?: number;
+  difficultyTier?: PracticeDifficulty;
 }
 
 export interface FilterState {

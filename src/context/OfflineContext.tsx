@@ -1,10 +1,18 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { offlineSyncService } from '../services/offlineSyncService';
+import { offlineSyncService, ConnectionStatus } from '../services/offlineSyncService';
 import { LeaderboardEntry, UserTestHistory } from '../types';
 
 interface OfflineContextType {
   isOnline: boolean;
   isOffline: boolean;
+  connectionStatus: ConnectionStatus;
+  isConnectionStable: boolean;
+  isConnectionUnstable: boolean;
+  /** 'green' when connection is stable; 'yellow' when unstable or offline */
+  indicatorColor: 'green' | 'yellow';
+  indicatorBadgeClass: string;
+  indicatorDotClass: string;
+  statusLabel: string;
   isManualOffline: boolean;
   isSyncing: boolean;
   pendingSyncCount: number;
@@ -27,6 +35,7 @@ const OfflineContext = createContext<OfflineContextType | undefined>(undefined);
 
 export const OfflineProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isOnline, setIsOnline] = useState<boolean>(offlineSyncService.isOnline());
+  const [connectionStatus, setConnectionStatus] = useState<ConnectionStatus>(offlineSyncService.getConnectionStatus());
   const [isManualOffline, setIsManualOffline] = useState<boolean>(offlineSyncService.isManualOfflineEnabled());
   const [isSyncing, setIsSyncing] = useState<boolean>(false);
   const [pendingSyncCount, setPendingSyncCount] = useState<number>(offlineSyncService.getPendingCount());
@@ -36,6 +45,7 @@ export const OfflineProvider: React.FC<{ children: ReactNode }> = ({ children })
   useEffect(() => {
     const unsubscribe = offlineSyncService.subscribe((status) => {
       setIsOnline(status.isOnline);
+      setConnectionStatus(status.connectionStatus);
       setIsManualOffline(offlineSyncService.isManualOfflineEnabled());
       setIsSyncing(status.isSyncing);
       setPendingSyncCount(status.pendingCount);
@@ -63,12 +73,14 @@ export const OfflineProvider: React.FC<{ children: ReactNode }> = ({ children })
     offlineSyncService.setManualOffline(nextState);
     setIsManualOffline(nextState);
     setIsOnline(offlineSyncService.isOnline());
+    setConnectionStatus(offlineSyncService.getConnectionStatus());
   };
 
   const setManualOffline = (enabled: boolean) => {
     offlineSyncService.setManualOffline(enabled);
     setIsManualOffline(enabled);
     setIsOnline(offlineSyncService.isOnline());
+    setConnectionStatus(offlineSyncService.getConnectionStatus());
   };
 
   const triggerManualSync = async (): Promise<number> => {
@@ -100,11 +112,41 @@ export const OfflineProvider: React.FC<{ children: ReactNode }> = ({ children })
     setSyncMessage(null);
   };
 
+  // Connection Indicator logic:
+  // When stable -> Green
+  // When unstable OR offline / no internet -> Yellow
+  const isConnectionStable = isOnline && connectionStatus === 'stable';
+  const isConnectionUnstable = isOnline && connectionStatus === 'unstable';
+  const isOffline = !isOnline || connectionStatus === 'offline';
+
+  const indicatorColor: 'green' | 'yellow' = isConnectionStable ? 'green' : 'yellow';
+
+  const indicatorDotClass = isConnectionStable
+    ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.85)]'
+    : 'bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.9)]';
+
+  const indicatorBadgeClass = isConnectionStable
+    ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-300 border-emerald-400/40'
+    : 'bg-yellow-500/15 text-yellow-700 dark:text-yellow-300 border-yellow-400/40';
+
+  const statusLabel = isConnectionStable
+    ? 'Online (Stable)'
+    : isConnectionUnstable
+    ? 'Unstable Connection'
+    : 'Offline';
+
   return (
     <OfflineContext.Provider
       value={{
         isOnline,
-        isOffline: !isOnline,
+        isOffline,
+        connectionStatus,
+        isConnectionStable,
+        isConnectionUnstable,
+        indicatorColor,
+        indicatorBadgeClass,
+        indicatorDotClass,
+        statusLabel,
         isManualOffline,
         isSyncing,
         pendingSyncCount,

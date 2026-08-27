@@ -6,10 +6,14 @@ import {
   BookOpen,
   Sparkles,
   Zap,
-  Target
+  Target,
+  Lock,
+  CheckCircle2,
+  AlertCircle
 } from 'lucide-react';
-import { ClassLevel, TestSessionConfig } from '../types';
+import { ClassLevel, TestSessionConfig, PracticeDifficulty } from '../types';
 import { useAuth } from '../context/AuthContext';
+import { MathService } from '../services/mathService';
 
 interface StudentEntryModalProps {
   isOpen: boolean;
@@ -17,6 +21,7 @@ interface StudentEntryModalProps {
   defaultClass: ClassLevel;
   chapterTitle?: string;
   defaultTrack?: 'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics';
+  defaultDifficulty?: PracticeDifficulty;
   onStartTest: (config: TestSessionConfig & { track?: string }) => void;
   onOpenAuth?: () => void;
 }
@@ -27,6 +32,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
   defaultClass,
   chapterTitle,
   defaultTrack = 'Elementary Mathematics',
+  defaultDifficulty = 'Normal',
   onStartTest,
   onOpenAuth,
 }) => {
@@ -34,6 +40,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
   const [name, setName] = useState('');
   const [selectedClass, setSelectedClass] = useState<ClassLevel>(defaultClass);
   const [selectedTrack, setSelectedTrack] = useState<'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics'>(defaultTrack);
+  const [difficultyTier, setDifficultyTier] = useState<PracticeDifficulty>(defaultDifficulty);
   const [questionCount, setQuestionCount] = useState<number>(15);
   const [error, setError] = useState<string | null>(null);
 
@@ -59,11 +66,29 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
     }
   }, [defaultTrack]);
 
+  useEffect(() => {
+    if (defaultClass === 9 || defaultClass === 10) {
+      setDifficultyTier('Normal');
+    } else if (defaultDifficulty) {
+      setDifficultyTier(defaultDifficulty);
+    }
+  }, [defaultClass, defaultDifficulty]);
+
   if (!isOpen) return null;
 
+  const isClass11or12 = defaultClass === 11 || defaultClass === 12;
+  const effectiveDifficultyTier = isClass11or12 ? difficultyTier : 'Normal';
   const availableQuestionCounts = [15, 20, 25];
-
   const isUserSignedIn = Boolean(currentUser || (userProfile && userProfile.email && userProfile.email.includes('@')));
+
+  // Check how many questions exist for the chosen difficulty tier
+  const availableQuestionsCount = MathService.getQuestionCountByDifficulty(
+    defaultClass, 
+    undefined, 
+    effectiveDifficultyTier, 
+    selectedTrack
+  );
+  const isAdvancedLocked = isClass11or12 && effectiveDifficultyTier === 'Advanced' && availableQuestionsCount === 0;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -75,6 +100,11 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
         onOpenAuth();
         return;
       }
+    }
+
+    if (isAdvancedLocked) {
+      setError('Questions for Advanced difficulty are not available yet. Please select Normal difficulty to start practice.');
+      return;
     }
 
     const finalName = name.trim() || userProfile?.displayName || 'Student Candidate';
@@ -91,6 +121,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
       mode: 'practice',
       questionCount,
       track: selectedTrack,
+      difficultyTier: effectiveDifficultyTier,
     });
   };
 
@@ -121,13 +152,6 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
               </h2>
             </div>
           </div>
-
-          {chapterTitle && (
-            <div className="mt-3 pt-3 border-t border-white/15 flex items-center gap-2 text-xs text-indigo-100">
-              <BookOpen className="w-3.5 h-3.5 shrink-0" />
-              <span className="truncate">Chapter: <strong className="text-white">{chapterTitle}</strong> (Class {defaultClass} {selectedTrack.includes('Physics') ? 'Physics' : 'Mathematics'})</span>
-            </div>
-          )}
         </div>
 
         {/* Auth prompt banner if not logged in */}
@@ -218,65 +242,178 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
             </div>
           </div>
 
-          {/* Dynamic Question Count Selector: 15, 20, and 25 MCQs */}
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-                Number of MCQs
-              </label>
-              <span className="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400">
-                Select test duration
-              </span>
-            </div>
-            
-            <div className="grid grid-cols-3 gap-2 sm:gap-2.5">
-              {availableQuestionCounts.map((count) => {
-                const isSelected = questionCount === count;
+          {/* Difficulty Level Selector: Normal and Advanced (Strictly for Class 11 and Class 12) */}
+          {isClass11or12 && (
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                  Difficulty Level
+                </label>
+                <span className="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400">
+                  {difficultyTier === 'Normal' ? 'Standard Curriculum' : 'Advanced Difficulty'}
+                </span>
+              </div>
 
-                return (
-                  <button
-                    type="button"
-                    key={count}
-                    onClick={() => setQuestionCount(count)}
-                    className={`relative p-3 rounded-2xl border transition-all text-left cursor-pointer flex flex-col justify-between ${
-                      isSelected
-                        ? 'bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-700 border-indigo-500 text-white shadow-lg shadow-indigo-600/30 scale-[1.02] ring-2 ring-indigo-400/80'
-                        : 'bg-slate-50 dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-300 dark:hover:border-indigo-600 hover:bg-indigo-50/40 dark:hover:bg-slate-800'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <div className="flex items-center gap-1.5">
-                        {count === 15 ? (
-                          <Zap className={`w-3.5 h-3.5 ${isSelected ? 'text-amber-300 fill-amber-300' : 'text-indigo-500 dark:text-indigo-400'}`} />
-                        ) : count === 20 ? (
-                          <Sparkles className={`w-3.5 h-3.5 ${isSelected ? 'text-yellow-300 fill-yellow-300' : 'text-amber-500 dark:text-amber-400'}`} />
-                        ) : (
-                          <Target className={`w-3.5 h-3.5 ${isSelected ? 'text-cyan-300' : 'text-purple-500 dark:text-purple-400'}`} />
-                        )}
-                        <span className="font-black text-xs sm:text-sm tracking-tight whitespace-nowrap">
-                          {count} MCQs
-                        </span>
+              <div className="grid grid-cols-2 gap-3">
+                {/* Normal Difficulty Button */}
+                <button
+                  type="button"
+                  id="difficulty-normal-btn"
+                  onClick={() => {
+                    setDifficultyTier('Normal');
+                    if (error) setError(null);
+                  }}
+                  className={`p-3.5 rounded-2xl border transition-all text-left cursor-pointer flex flex-col justify-between ${
+                    difficultyTier === 'Normal'
+                      ? 'bg-gradient-to-br from-indigo-600 to-indigo-700 border-indigo-500 text-white shadow-md shadow-indigo-600/30 ring-2 ring-indigo-400/80 scale-[1.01]'
+                      : 'bg-slate-50 dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-300 dark:hover:border-indigo-600'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="font-extrabold text-xs sm:text-sm tracking-tight flex items-center gap-1.5">
+                      <CheckCircle2 className={`w-4 h-4 shrink-0 ${difficultyTier === 'Normal' ? 'text-emerald-300' : 'text-slate-400'}`} />
+                      Normal
+                    </span>
+                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${
+                      difficultyTier === 'Normal' ? 'bg-white/20 text-white' : 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300'
+                    }`}>
+                      Active
+                    </span>
+                  </div>
+                  <p className={`text-[10px] sm:text-[11px] leading-tight ${difficultyTier === 'Normal' ? 'text-indigo-100' : 'text-slate-500 dark:text-slate-400'}`}>
+                    Standard curriculum exercises &amp; MCQs
+                  </p>
+                </button>
+
+                {/* Advanced Difficulty Button */}
+                <button
+                  type="button"
+                  id="difficulty-advanced-btn"
+                  onClick={() => {
+                    setDifficultyTier('Advanced');
+                    if (error) setError(null);
+                  }}
+                  className={`p-3.5 rounded-2xl border transition-all text-left cursor-pointer flex flex-col justify-between ${
+                    difficultyTier === 'Advanced'
+                      ? 'bg-gradient-to-br from-purple-700 to-indigo-900 border-purple-500 text-white shadow-md shadow-purple-600/30 ring-2 ring-purple-400/80 scale-[1.01]'
+                      : 'bg-slate-50 dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-purple-300 dark:hover:border-purple-600'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="font-extrabold text-xs sm:text-sm tracking-tight flex items-center gap-1.5">
+                      <Lock className={`w-4 h-4 shrink-0 ${difficultyTier === 'Advanced' ? 'text-amber-300' : 'text-slate-400'}`} />
+                      Advanced
+                    </span>
+                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${
+                      difficultyTier === 'Advanced' ? 'bg-amber-400/30 text-amber-200 border border-amber-300/40' : 'bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300'
+                    }`}>
+                      Locked
+                    </span>
+                  </div>
+                  <p className={`text-[10px] sm:text-[11px] leading-tight ${difficultyTier === 'Advanced' ? 'text-purple-200' : 'text-slate-500 dark:text-slate-400'}`}>
+                    Competitive &amp; higher level concepts
+                  </p>
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Advanced Difficulty Locked Notice (Only for Class 11 and 12 when Advanced is active) */}
+          {isClass11or12 && isAdvancedLocked && (
+            <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 space-y-2 text-center animate-fade-in">
+              <div className="flex items-center justify-center gap-1.5 text-amber-800 dark:text-amber-300 font-bold text-xs">
+                <Lock className="w-4 h-4 shrink-0" />
+                <span>Advanced Difficulty Questions Coming Soon</span>
+              </div>
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                Questions for <strong>Advanced difficulty</strong> in Class {defaultClass} {selectedTrack.includes('Physics') ? 'Physics' : 'Mathematics'} are currently being prepared. Start Practice is locked until Advanced questions are added.
+              </p>
+              <button
+                type="button"
+                onClick={() => setDifficultyTier('Normal')}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition-colors shadow-xs cursor-pointer"
+              >
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>Select Normal Difficulty to Start Practice</span>
+              </button>
+            </div>
+          )}
+
+          {/* Dynamic Question Count Selector: 15, 20, and 25 MCQs (Only active when questions exist) */}
+          {!isAdvancedLocked && (
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                  Number of MCQs
+                </label>
+                <span className="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400">
+                  Select test duration
+                </span>
+              </div>
+              
+              <div className="grid grid-cols-3 gap-2 sm:gap-2.5">
+                {availableQuestionCounts.map((count) => {
+                  const isSelected = questionCount === count;
+
+                  return (
+                    <button
+                      type="button"
+                      key={count}
+                      onClick={() => setQuestionCount(count)}
+                      className={`relative p-3 rounded-2xl border transition-all text-left cursor-pointer flex flex-col justify-between ${
+                        isSelected
+                          ? 'bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-700 border-indigo-500 text-white shadow-lg shadow-indigo-600/30 scale-[1.02] ring-2 ring-indigo-400/80'
+                          : 'bg-slate-50 dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-300 dark:hover:border-indigo-600 hover:bg-indigo-50/40 dark:hover:bg-slate-800'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="flex items-center gap-1.5">
+                          {count === 15 ? (
+                            <Zap className={`w-3.5 h-3.5 ${isSelected ? 'text-amber-300 fill-amber-300' : 'text-indigo-500 dark:text-indigo-400'}`} />
+                          ) : count === 20 ? (
+                            <Sparkles className={`w-3.5 h-3.5 ${isSelected ? 'text-yellow-300 fill-yellow-300' : 'text-amber-500 dark:text-amber-400'}`} />
+                          ) : (
+                            <Target className={`w-3.5 h-3.5 ${isSelected ? 'text-cyan-300' : 'text-purple-500 dark:text-purple-400'}`} />
+                          )}
+                          <span className="font-black text-xs sm:text-sm tracking-tight whitespace-nowrap">
+                            {count} MCQs
+                          </span>
+                        </div>
+                        <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300 animate-ping' : 'bg-slate-300 dark:bg-slate-600'}`} />
                       </div>
-                      <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300 animate-ping' : 'bg-slate-300 dark:bg-slate-600'}`} />
-                    </div>
 
-                    <p className={`text-[10px] leading-tight ${isSelected ? 'text-indigo-100' : 'text-slate-500 dark:text-slate-400'}`}>
-                      {count === 15 ? 'Quick • 15 Mins' : count === 20 ? 'Standard • 20 Mins' : 'Full Set • 25 Mins'}
-                    </p>
-                  </button>
-                );
-              })}
+                      <p className={`text-[10px] leading-tight ${isSelected ? 'text-indigo-100' : 'text-slate-500 dark:text-slate-400'}`}>
+                        {count === 15 ? 'Quick • 15 Mins' : count === 20 ? 'Standard • 20 Mins' : 'Full Set • 25 Mins'}
+                      </p>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Action Button */}
           <div className="pt-2">
             <button
               type="submit"
-              className="w-full py-3 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.01] active:scale-[0.99]"
+              disabled={isAdvancedLocked}
+              className={`w-full py-3 px-6 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 ${
+                isAdvancedLocked
+                  ? 'bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500 cursor-not-allowed border border-slate-300 dark:border-slate-700'
+                  : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-600/30 cursor-pointer hover:scale-[1.01] active:scale-[0.99]'
+              }`}
             >
-              <span>Start Practice ({questionCount} MCQs)</span>
-              <ArrowRight className="w-4 h-4" />
+              {isAdvancedLocked ? (
+                <>
+                  <Lock className="w-4 h-4" />
+                  <span>Start Practice Unavailable (Select Normal Difficulty)</span>
+                </>
+              ) : (
+                <>
+                  <span>Start Practice ({questionCount} MCQs)</span>
+                  <ArrowRight className="w-4 h-4" />
+                </>
+              )}
             </button>
           </div>
         </form>

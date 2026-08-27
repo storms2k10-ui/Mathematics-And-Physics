@@ -1,5 +1,5 @@
 import { CHAPTERS_DATA, ADVANCED_MATH_11_CHAPTERS, CLASS_INFO_DATA, QUESTIONS_DATA } from '../data/mockData';
-import { Chapter, ClassInfo, ClassLevel, FilterState, Question, DifficultyLevel, LeaderboardEntry, TestAttemptRecord } from '../types';
+import { Chapter, ClassInfo, ClassLevel, FilterState, Question, DifficultyLevel, PracticeDifficulty, LeaderboardEntry, TestAttemptRecord } from '../types';
 import { FirestoreLeaderboardService } from './firestoreLeaderboard';
 import { safeFetchJson } from '../lib/apiHelper';
 
@@ -23,11 +23,11 @@ export function shuffleArray<T>(array: T[]): T[] {
 
 /**
  * Math Data Service Layer
- * Supports Classes 9 and 11 Mathematics
+ * Supports Classes 9, 10, 11, and 12 Mathematics & Physics
  */
 export class MathService {
   /**
-   * Retrieves summary info for active classes (9, 11)
+   * Retrieves summary info for active classes (9, 10, 11, 12)
    */
   static async getClasses(): Promise<ClassInfo[]> {
     await new Promise((resolve) => setTimeout(resolve, 20));
@@ -72,15 +72,63 @@ export class MathService {
   }
 
   /**
+   * Retrieves available questions matching class/chapter, track, and difficulty tier ('Normal' | 'Advanced')
+   */
+  static getAvailableQuestions(
+    chapterId?: string,
+    classLevel?: ClassLevel,
+    difficultyTier: PracticeDifficulty = 'Normal',
+    track: string = 'Elementary Mathematics'
+  ): Question[] {
+    const isPhysics = track.toLowerCase().includes('physics');
+    let pool: Question[] = [];
+
+    if (chapterId) {
+      pool = QUESTIONS_DATA.filter((q) => q.chapter_id === chapterId);
+    } else if (classLevel) {
+      pool = QUESTIONS_DATA.filter((q) => {
+        if (q.class !== classLevel) return false;
+        if (isPhysics) {
+          return q.subject === 'Physics' || q.chapter_id.startsWith('el-phy');
+        }
+        return q.subject !== 'Physics';
+      });
+    } else {
+      pool = isPhysics 
+        ? QUESTIONS_DATA.filter((q) => q.subject === 'Physics' || q.chapter_id.startsWith('el-phy'))
+        : QUESTIONS_DATA.filter((q) => q.subject !== 'Physics');
+    }
+
+    if (difficultyTier === 'Advanced') {
+      return pool.filter((q) => q.difficulty_tier === 'Advanced');
+    }
+    // Normal difficulty includes all standard curriculum questions linked to Normal or without explicit tier
+    return pool.filter((q) => !q.difficulty_tier || q.difficulty_tier === 'Normal');
+  }
+
+  /**
+   * Helper to get count of questions available for a given difficulty tier
+   */
+  static getQuestionCountByDifficulty(
+    classLevel: ClassLevel,
+    chapterId?: string,
+    difficultyTier: PracticeDifficulty = 'Normal',
+    track: string = 'Elementary Mathematics'
+  ): number {
+    return this.getAvailableQuestions(chapterId, classLevel, difficultyTier, track).length;
+  }
+
+  /**
    * Retrieves questions for a specific chapter
    */
   static async getQuestionsByChapter(
     chapterId: string, 
     difficultyFilter?: DifficultyLevel | 'all',
-    track: string = 'Elementary Mathematics'
+    track: string = 'Elementary Mathematics',
+    difficultyTier: PracticeDifficulty = 'Normal'
   ): Promise<Question[]> {
     await new Promise((resolve) => setTimeout(resolve, 20));
-    const fullSet = QUESTIONS_DATA.filter((q) => q.chapter_id === chapterId);
+    let fullSet = this.getAvailableQuestions(chapterId, undefined, difficultyTier, track);
     if (difficultyFilter && difficultyFilter !== 'all') {
       return fullSet.filter((q) => q.difficulty === difficultyFilter);
     }
@@ -92,28 +140,28 @@ export class MathService {
    */
   static async getQuestionsByClass(
     classLevel: ClassLevel,
-    track: string = 'Elementary Mathematics'
+    track: string = 'Elementary Mathematics',
+    difficultyTier: PracticeDifficulty = 'Normal'
   ): Promise<Question[]> {
     await new Promise((resolve) => setTimeout(resolve, 20));
-    const isPhysics = track.toLowerCase().includes('physics');
-    return QUESTIONS_DATA.filter((q) => {
-      if (q.class !== classLevel) return false;
-      if (isPhysics) {
-        return q.subject === 'Physics' || q.chapter_id.startsWith('el-phy');
-      }
-      return q.subject !== 'Physics';
-    });
+    return this.getAvailableQuestions(undefined, classLevel, difficultyTier, track);
   }
 
   /**
    * Helpers for tracking attempted question history to prevent repeats
    */
-  static getAttemptHistoryKey(userIdentifier?: string, classLevel?: ClassLevel, chapterId?: string, track?: string): string {
+  static getAttemptHistoryKey(
+    userIdentifier?: string, 
+    classLevel?: ClassLevel, 
+    chapterId?: string, 
+    track?: string,
+    difficultyTier: PracticeDifficulty = 'Normal'
+  ): string {
     const user = userIdentifier ? userIdentifier.trim().toLowerCase() : 'guest';
     const tr = track || 'Elementary Mathematics';
     const cl = classLevel !== undefined ? classLevel : 'all';
     const ch = chapterId || 'all';
-    return `attempted_q_${user}_${tr}_cls${cl}_ch${ch}`;
+    return `attempted_q_${user}_${tr}_cls${cl}_ch${ch}_${difficultyTier}`;
   }
 
   static getAttemptedQuestionIds(scopeKey: string): string[] {
@@ -145,26 +193,10 @@ export class MathService {
     requestedCount?: number,
     difficultyFilter?: DifficultyLevel | 'all',
     userIdentifier?: string,
-    track: string = 'Elementary Mathematics'
+    track: string = 'Elementary Mathematics',
+    difficultyTier: PracticeDifficulty = 'Normal'
   ): Promise<Question[]> {
-    let pool: Question[] = [];
-    const isPhysics = track.toLowerCase().includes('physics');
-
-    if (chapterId) {
-      pool = QUESTIONS_DATA.filter((q) => q.chapter_id === chapterId);
-    } else if (classLevel) {
-      pool = QUESTIONS_DATA.filter((q) => {
-        if (q.class !== classLevel) return false;
-        if (isPhysics) {
-          return q.subject === 'Physics' || q.chapter_id.startsWith('el-phy');
-        }
-        return q.subject !== 'Physics';
-      });
-    } else {
-      pool = isPhysics 
-        ? QUESTIONS_DATA.filter(q => q.subject === 'Physics' || q.chapter_id.startsWith('el-phy'))
-        : QUESTIONS_DATA.filter(q => q.subject !== 'Physics');
-    }
+    let pool = this.getAvailableQuestions(chapterId, classLevel, difficultyTier, track);
 
     if (difficultyFilter && difficultyFilter !== 'all') {
       const filtered = pool.filter((q) => q.difficulty === difficultyFilter);
@@ -175,7 +207,7 @@ export class MathService {
 
     if (pool.length === 0) return [];
 
-    const scopeKey = MathService.getAttemptHistoryKey(userIdentifier, classLevel, chapterId, track);
+    const scopeKey = MathService.getAttemptHistoryKey(userIdentifier, classLevel, chapterId, track, difficultyTier);
     const attemptedIds = new Set(MathService.getAttemptedQuestionIds(scopeKey));
 
     // Split into unattempted and already attempted

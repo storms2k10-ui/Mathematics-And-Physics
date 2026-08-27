@@ -902,7 +902,7 @@ const C11_CH1_QUESTIONS: Question[] = [
   },
 ];
 
-export const ALL_QUESTIONS: Question[] = [
+const RAW_ALL_QUESTIONS: Question[] = [
   ...C9_CH1_QUESTIONS,
   ...C9_CH2_QUESTIONS,
   ...C9_CH3_QUESTIONS,
@@ -987,3 +987,9 @@ export const ALL_QUESTIONS: Question[] = [
   ...EL_PHY12_CH13_QUESTIONS,
   ...EL_PHY12_CH14_QUESTIONS,
 ];
+
+// Explicitly ensure all existing questions are linked to 'Normal' difficulty level
+export const ALL_QUESTIONS: Question[] = RAW_ALL_QUESTIONS.map((q) => ({
+  ...q,
+  difficulty_tier: q.difficulty_tier || 'Normal',
+}));

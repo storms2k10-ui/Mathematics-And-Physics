@@ -91,7 +91,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
 }) => {
   const { userProfile, isAuthenticated } = useAuth();
   const { isDarkMode, toggleTheme } = useTheme();
-  const { isOnline, isOffline } = useOffline();
+  const { isOnline, isOffline, isConnectionStable, indicatorDotClass, statusLabel } = useOffline();
   const [mobileTab, setMobileTab] = useState<MobileTab>('studio');
   const [selectedStyleId, setSelectedStyleId] = useState<string>('elem-math');
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -448,12 +448,8 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
               </div>
               <span 
                 id="mobile-user-status-indicator"
-                className={`absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-slate-900 transition-colors duration-300 ${
-                  isOnline 
-                    ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]' 
-                    : 'bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.8)]'
-                }`}
-                title={isOnline ? 'Online - Cloud Sync Active' : 'Offline - Local Mode Active'}
+                className={`absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-slate-900 transition-colors duration-300 ${indicatorDotClass}`}
+                title={`Connection: ${statusLabel}`}
               />
             </button>
 
@@ -1909,14 +1905,19 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
         <button
           id="mobile-bottom-profile-nav-btn"
           onClick={isAuthenticated ? onOpenProfile : onOpenAuth}
-          className={`p-2.5 rounded-full transition-all duration-300 cursor-pointer hover:scale-110 active:scale-95 ${
+          className={`p-2.5 rounded-full transition-all duration-300 cursor-pointer hover:scale-110 active:scale-95 relative ${
             isAuthenticated
               ? 'text-purple-600 dark:text-purple-400 hover:bg-purple-100 dark:hover:bg-purple-950/60'
               : 'text-slate-400 hover:text-purple-600'
           }`}
-          title={isAuthenticated ? 'Scholar Profile' : 'Sign In'}
+          title={isAuthenticated ? `Scholar Profile (${statusLabel})` : `Sign In (${statusLabel})`}
         >
-          <User className="w-5 h-5" />
+          <div className="relative">
+            <User className="w-5 h-5" />
+            <span
+              className={`absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full ring-1.5 ring-white dark:ring-slate-900 transition-colors duration-300 ${indicatorDotClass}`}
+            />
+          </div>
         </button>
 
       </nav>

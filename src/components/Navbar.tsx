@@ -76,7 +76,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const { isDarkMode, toggleTheme } = useTheme();
   const { currentUser, userProfile } = useAuth();
-  const { isOnline } = useOffline();
+  const { isOnline, isConnectionStable, indicatorDotClass, statusLabel } = useOffline();
 
   // Dynamic Chapter Auto-Counting per Class
   const chapterCounts = useMemo(() => {
@@ -675,7 +675,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </div>
 
                     <div className="p-2 space-y-1">
-                      {/* 1. Profile / Auth Button with Green/Yellow Online Status */}
+                      {/* 1. Profile / Auth Button with Green (Stable) / Yellow (Unstable or Offline) Status */}
                       {currentUser || userProfile ? (
                         <button
                           id="settings-profile-btn"
@@ -689,9 +689,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                             <span className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 flex items-center justify-center text-xs font-bold group-hover:scale-105 transition-transform">
                               <User className="w-4 h-4" />
                             </span>
-                            <span className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full ring-2 ring-white dark:ring-slate-900 ${
-                              isOnline ? 'bg-emerald-500' : 'bg-yellow-400'
-                            }`} />
+                            <span 
+                              className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full ring-2 ring-white dark:ring-slate-900 transition-colors duration-300 ${indicatorDotClass}`} 
+                              title={`Connection: ${statusLabel}`}
+                            />
                           </div>
                           <div className="flex-1 min-w-0">
                             <span className="font-bold block truncate text-xs sm:text-sm text-indigo-950 dark:text-indigo-200">
@@ -700,8 +701,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                             <span className="text-[10px] text-slate-400 block truncate flex items-center gap-1">
                               <span>View Profile &amp; Stats</span>
                               <span>•</span>
-                              <span className={isOnline ? 'text-emerald-600 dark:text-emerald-400 font-semibold' : 'text-yellow-600 dark:text-yellow-400 font-semibold'}>
-                                {isOnline ? 'Online' : 'Offline'}
+                              <span className={isConnectionStable ? 'text-emerald-600 dark:text-emerald-400 font-semibold' : 'text-yellow-600 dark:text-yellow-400 font-semibold'}>
+                                {statusLabel}
                               </span>
                             </span>
                           </div>
@@ -720,16 +721,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                             <span className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 flex items-center justify-center text-xs font-bold group-hover:scale-105 transition-transform">
                               <LogIn className="w-4 h-4" />
                             </span>
-                            <span className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full ring-2 ring-white dark:ring-slate-900 ${
-                              isOnline ? 'bg-emerald-500' : 'bg-yellow-400'
-                            }`} />
+                            <span 
+                              className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full ring-2 ring-white dark:ring-slate-900 transition-colors duration-300 ${indicatorDotClass}`} 
+                              title={`Connection: ${statusLabel}`}
+                            />
                           </div>
                           <div className="flex-1 min-w-0">
                             <span className="font-bold block text-xs sm:text-sm text-indigo-950 dark:text-indigo-200">
                               Sign In / Register
                             </span>
-                            <span className="text-[10px] text-slate-400 block">
-                              Sync scores &amp; progress ({isOnline ? 'Online' : 'Offline'})
+                            <span className="text-[10px] text-slate-400 block truncate">
+                              Sync scores &amp; progress ({statusLabel})
                             </span>
                           </div>
                           <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
@@ -840,9 +842,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <div className="relative shrink-0">
                 <User className="w-3.5 h-3.5" />
-                <span className={`absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full ring-1.5 ring-white dark:ring-slate-900 ${
-                  isOnline ? 'bg-emerald-500 shadow-[0_0_4px_rgba(16,185,129,0.8)]' : 'bg-yellow-400 shadow-[0_0_4px_rgba(250,204,21,0.8)]'
-                }`} />
+                <span className={`absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full ring-1.5 ring-white dark:ring-slate-900 transition-colors duration-300 ${indicatorDotClass}`} />
               </div>
               <span className="truncate">{userProfile?.displayName || (currentUser ? 'Profile' : 'Sign In')}</span>
             </button>

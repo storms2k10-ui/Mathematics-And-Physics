@@ -2,6 +2,8 @@ import { FirestoreLeaderboardService } from './firestoreLeaderboard';
 import { safeFetchJson } from '../lib/apiHelper';
 import { LeaderboardEntry, UserTestHistory, UserProfile } from '../types';
 
+export type ConnectionStatus = 'stable' | 'unstable' | 'offline';
+
 export interface PendingOfflineAttempt {
   id: string;
   historyItem: UserTestHistory;
@@ -20,6 +22,10 @@ const OFFLINE_LAST_SYNC_KEY = 'math_physics_offline_last_sync_timestamp';
 
 type SyncListener = (status: {
   isOnline: boolean;
+  connectionStatus: ConnectionStatus;
+  isStable: boolean;
+  isUnstable: boolean;
+  isOffline: boolean;
   isSyncing: boolean;
   pendingCount: number;
   lastSyncTime: number | null;
@@ -30,11 +36,31 @@ class OfflineSyncManager {
   private isSyncing = false;
   private listeners: Set<SyncListener> = new Set();
   private syncIntervalId: any = null;
+  private pingIntervalId: any = null;
+  private currentConnectionStatus: ConnectionStatus = 'stable';
+  private consecutiveFailures = 0;
 
   constructor() {
     if (typeof window !== 'undefined') {
+      this.currentConnectionStatus = this.computeInitialStatus();
+
       window.addEventListener('online', this.handleOnlineEvent);
       window.addEventListener('offline', this.handleOfflineEvent);
+      window.addEventListener('focus', this.handleFocusEvent);
+
+      // Listen to Network Information API changes if available
+      const navConn = (navigator as any)?.connection || (navigator as any)?.mozConnection || (navigator as any)?.webkitConnection;
+      if (navConn && typeof navConn.addEventListener === 'function') {
+        navConn.addEventListener('change', this.handleNetworkChange);
+      }
+
+      // Initial ping check
+      this.checkConnectionHealth();
+
+      // Periodic check: ping connection every 10 seconds for real-time stability
+      this.pingIntervalId = setInterval(() => {
+        this.checkConnectionHealth();
+      }, 10000);
 
       // Periodic check: if online and queue has items, trigger auto-sync
       this.syncIntervalId = setInterval(() => {
@@ -45,6 +71,13 @@ class OfflineSyncManager {
     }
   }
 
+  private computeInitialStatus(): ConnectionStatus {
+    if (typeof window === 'undefined') return 'stable';
+    if (this.isManualOfflineEnabled()) return 'offline';
+    if (typeof navigator !== 'undefined' && !navigator.onLine) return 'offline';
+    return 'stable';
+  }
+
   /**
    * Returns true if browser is online and manual offline override is disabled
    */
@@ -52,6 +85,89 @@ class OfflineSyncManager {
     if (typeof window === 'undefined') return true;
     if (this.isManualOfflineEnabled()) return false;
     return typeof navigator !== 'undefined' ? navigator.onLine : true;
+  }
+
+  /**
+   * Returns current connection status ('stable' | 'unstable' | 'offline')
+   */
+  public getConnectionStatus(): ConnectionStatus {
+    if (!this.isOnline()) return 'offline';
+    return this.currentConnectionStatus;
+  }
+
+  /**
+   * Returns true if connection is online and stable
+   */
+  public isConnectionStable(): boolean {
+    return this.getConnectionStatus() === 'stable';
+  }
+
+  /**
+   * Active Ping / Latency Health Check to detect Unstable Connection
+   */
+  public async checkConnectionHealth(): Promise<ConnectionStatus> {
+    if (typeof window === 'undefined') return 'stable';
+
+    if (!this.isOnline()) {
+      const prev = this.currentConnectionStatus;
+      this.currentConnectionStatus = 'offline';
+      if (prev !== 'offline') this.notifyListeners();
+      return 'offline';
+    }
+
+    // Check Network Information API effective type
+    const navConn = (navigator as any)?.connection || (navigator as any)?.mozConnection || (navigator as any)?.webkitConnection;
+    if (navConn) {
+      if (navConn.effectiveType === 'slow-2g' || navConn.effectiveType === '2g' || (navConn.rtt && navConn.rtt > 800)) {
+        const prev = this.currentConnectionStatus;
+        this.currentConnectionStatus = 'unstable';
+        if (prev !== 'unstable') this.notifyListeners();
+        return 'unstable';
+      }
+    }
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 3000);
+    const startTime = performance.now();
+
+    try {
+      // Ping health endpoint or favicon to measure real round-trip latency
+      const response = await fetch(`/api/health?_t=${Date.now()}`, {
+        method: 'GET',
+        cache: 'no-store',
+        signal: controller.signal,
+      });
+
+      clearTimeout(timeoutId);
+      const latency = performance.now() - startTime;
+
+      if (!response.ok) {
+        // Non-200 response -> unstable
+        this.consecutiveFailures++;
+        this.currentConnectionStatus = this.consecutiveFailures >= 2 ? 'unstable' : this.currentConnectionStatus;
+      } else if (latency > 1200) {
+        // High latency (>1.2s) -> unstable connection
+        this.currentConnectionStatus = 'unstable';
+        this.consecutiveFailures = 0;
+      } else {
+        // Fast & healthy response -> stable connection
+        this.currentConnectionStatus = 'stable';
+        this.consecutiveFailures = 0;
+      }
+    } catch (err: any) {
+      clearTimeout(timeoutId);
+      this.consecutiveFailures++;
+
+      if (typeof navigator !== 'undefined' && !navigator.onLine) {
+        this.currentConnectionStatus = 'offline';
+      } else {
+        // Request failed or aborted -> unstable connection
+        this.currentConnectionStatus = 'unstable';
+      }
+    }
+
+    this.notifyListeners();
+    return this.currentConnectionStatus;
   }
 
   /**
@@ -324,14 +440,29 @@ class OfflineSyncManager {
    * Event listener callbacks
    */
   private handleOnlineEvent = () => {
-    this.notifyListeners('Internet reconnected. Synchronizing offline progress...');
-    if (this.isOnline() && this.getPendingCount() > 0) {
-      this.syncPendingData().catch(() => {});
-    }
+    this.checkConnectionHealth().then((status) => {
+      if (status === 'stable') {
+        this.notifyListeners('Internet reconnected. Connection is stable.');
+      } else {
+        this.notifyListeners('Internet reconnected, but connection may be unstable.');
+      }
+      if (this.isOnline() && this.getPendingCount() > 0) {
+        this.syncPendingData().catch(() => {});
+      }
+    });
   };
 
   private handleOfflineEvent = () => {
+    this.currentConnectionStatus = 'offline';
     this.notifyListeners('You are offline. Offline practice mode is active.');
+  };
+
+  private handleFocusEvent = () => {
+    this.checkConnectionHealth();
+  };
+
+  private handleNetworkChange = () => {
+    this.checkConnectionHealth();
   };
 
   /**
@@ -340,8 +471,14 @@ class OfflineSyncManager {
   public subscribe(listener: SyncListener): () => void {
     this.listeners.add(listener);
     // Initial emission
+    const isOnline = this.isOnline();
+    const connStatus = this.getConnectionStatus();
     listener({
-      isOnline: this.isOnline(),
+      isOnline,
+      connectionStatus: connStatus,
+      isStable: isOnline && connStatus === 'stable',
+      isUnstable: isOnline && connStatus === 'unstable',
+      isOffline: !isOnline || connStatus === 'offline',
       isSyncing: this.isSyncing,
       pendingCount: this.getPendingCount(),
       lastSyncTime: this.getLastSyncTime(),
@@ -353,8 +490,18 @@ class OfflineSyncManager {
   }
 
   private notifyListeners(message?: string): void {
+    const isOnline = this.isOnline();
+    const connStatus = this.getConnectionStatus();
+    const isStable = isOnline && connStatus === 'stable';
+    const isUnstable = isOnline && connStatus === 'unstable';
+    const isOffline = !isOnline || connStatus === 'offline';
+
     const status = {
-      isOnline: this.isOnline(),
+      isOnline,
+      connectionStatus: connStatus,
+      isStable,
+      isUnstable,
+      isOffline,
       isSyncing: this.isSyncing,
       pendingCount: this.getPendingCount(),
       lastSyncTime: this.getLastSyncTime(),
@@ -373,7 +520,15 @@ class OfflineSyncManager {
     if (typeof window !== 'undefined') {
       window.removeEventListener('online', this.handleOnlineEvent);
       window.removeEventListener('offline', this.handleOfflineEvent);
+      window.removeEventListener('focus', this.handleFocusEvent);
+
+      const navConn = (navigator as any)?.connection || (navigator as any)?.mozConnection || (navigator as any)?.webkitConnection;
+      if (navConn && typeof navConn.removeEventListener === 'function') {
+        navConn.removeEventListener('change', this.handleNetworkChange);
+      }
+
       if (this.syncIntervalId) clearInterval(this.syncIntervalId);
+      if (this.pingIntervalId) clearInterval(this.pingIntervalId);
     }
   }
 }

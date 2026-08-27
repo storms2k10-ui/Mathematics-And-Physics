@@ -1,35 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   X, 
   Play, 
   Layers, 
   CheckCircle2, 
-  Sparkles,
-  Calculator,
-  BookOpen,
-  History,
-  Globe,
-  Award
+  Sparkles, 
+  Calculator, 
+  BookOpen, 
+  History, 
+  Globe, 
+  Award,
+  Lock
 } from 'lucide-react';
-import { Chapter } from '../types';
+import { Chapter, PracticeDifficulty } from '../types';
 import { ChapterArtwork } from './ChapterArtwork';
 import { MathText } from './MathText';
 
 interface ChapterDetailModalProps {
   chapter: Chapter | null;
   isOpen: boolean;
+  defaultDifficulty?: PracticeDifficulty;
   onClose: () => void;
-  onStartTest: (chapter: Chapter) => void;
+  onStartTest: (chapter: Chapter, difficulty?: PracticeDifficulty) => void;
 }
 
 export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
   chapter,
   isOpen,
+  defaultDifficulty = 'Normal',
   onClose,
   onStartTest,
 }) => {
+  const [selectedDifficulty, setSelectedDifficulty] = useState<PracticeDifficulty>(defaultDifficulty);
+
   if (!isOpen || !chapter) return null;
 
+  const isClass11or12 = chapter.class === 11 || chapter.class === 12;
+  const effectiveDifficulty = isClass11or12 ? selectedDifficulty : 'Normal';
   const subjectSuffix = chapter.track?.includes('Physics') ? 'Physics' : 'Mathematics';
 
   return (
@@ -255,6 +262,48 @@ export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
             </div>
           )}
 
+          {/* Difficulty Tier Selector (Normal / Advanced) - Strictly for Class 11 & 12 */}
+          {isClass11or12 && (
+            <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div>
+                <span className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                  Difficulty Level
+                </span>
+                <span className="block text-[11px] text-slate-500 dark:text-slate-400">
+                  {selectedDifficulty === 'Normal' ? 'Standard textbook curriculum' : 'Advanced & competitive problems'}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-1.5 bg-slate-200/70 dark:bg-slate-900/80 p-1 rounded-xl w-full sm:w-auto">
+                <button
+                  type="button"
+                  onClick={() => setSelectedDifficulty('Normal')}
+                  className={`flex-1 sm:flex-initial px-3 py-1 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1 cursor-pointer ${
+                    selectedDifficulty === 'Normal'
+                      ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-xs'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                >
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+                  <span>Normal</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setSelectedDifficulty('Advanced')}
+                  className={`flex-1 sm:flex-initial px-3 py-1 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1 cursor-pointer ${
+                    selectedDifficulty === 'Advanced'
+                      ? 'bg-white dark:bg-slate-800 text-purple-600 dark:text-purple-400 shadow-xs'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                >
+                  <Lock className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Advanced</span>
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Action Buttons */}
           <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3">
             <button
@@ -267,12 +316,12 @@ export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
             <button
               onClick={() => {
                 onClose();
-                onStartTest(chapter);
+                onStartTest(chapter, effectiveDifficulty);
               }}
               className="flex-2 py-3 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <Play className="w-4 h-4 fill-white" />
-              <span>Start Practice</span>
+              <span>Start Practice {isClass11or12 ? `(${effectiveDifficulty})` : ''}</span>
             </button>
           </div>
 

@@ -23,7 +23,7 @@ import { UserProfileModal } from './components/UserProfileModal';
 import { OfflineBanner } from './components/OfflineBanner';
 import { MathService, shuffleArray } from './services/mathService';
 import { MobileAppView } from './components/MobileAppView';
-import { Chapter, ClassInfo, ClassLevel, Question, StudentProfile, LeaderboardEntry, TestSessionConfig, UserTestHistory } from './types';
+import { Chapter, ClassInfo, ClassLevel, Question, StudentProfile, LeaderboardEntry, TestSessionConfig, UserTestHistory, PracticeDifficulty } from './types';
 import { useAuth } from './context/AuthContext';
 import { useOffline } from './context/OfflineContext';
 import { Atom, ArrowLeft, Smartphone, Monitor } from 'lucide-react';
@@ -57,6 +57,7 @@ export default function App() {
   const [pendingQuizQuestions, setPendingQuizQuestions] = useState<Question[] | null>(null);
   const [pendingQuizTitle, setPendingQuizTitle] = useState<string>('');
   const [pendingQuizClass, setPendingQuizClass] = useState<ClassLevel>(9);
+  const [pendingDifficultyTier, setPendingDifficultyTier] = useState<PracticeDifficulty>('Normal');
 
   // Active Student & Quiz Session State
   const [activeStudent, setActiveStudent] = useState<StudentProfile | undefined>(undefined);
@@ -180,16 +181,22 @@ export default function App() {
   };
 
   // Open chapter details modal
-  const handleOpenChapterDetails = (chapter: Chapter) => {
+  const handleOpenChapterDetails = (chapter: Chapter, difficultyTier?: PracticeDifficulty) => {
     setTargetChapter(chapter);
+    if (difficultyTier) {
+      setPendingDifficultyTier(difficultyTier);
+    }
     setIsChapterModalOpen(true);
   };
 
   // Trigger test for a specific chapter
-  const handlePrepareChapterTest = async (chapter: Chapter) => {
+  const handlePrepareChapterTest = async (chapter: Chapter, difficultyTier?: PracticeDifficulty) => {
     setTargetChapter(chapter);
     setPendingQuizTitle(chapter.name);
     setPendingQuizClass(chapter.class);
+    if (difficultyTier) {
+      setPendingDifficultyTier(difficultyTier);
+    }
     if (chapter.track) {
       setActiveTrack(chapter.track);
     }
@@ -198,11 +205,14 @@ export default function App() {
   };
 
   // Trigger practice for a class
-  const handlePrepareClassPractice = async (lvl: ClassLevel) => {
+  const handlePrepareClassPractice = async (lvl: ClassLevel, difficultyTier?: PracticeDifficulty) => {
     setTargetChapter(null);
     const subjectName = activeTrack.includes('Physics') ? 'Physics' : 'Mathematics';
     setPendingQuizTitle(`Class ${lvl} ${subjectName} Practice`);
     setPendingQuizClass(lvl);
+    if (difficultyTier) {
+      setPendingDifficultyTier(difficultyTier);
+    }
     setPendingQuizQuestions(null);
     setIsStudentModalOpen(true);
   };
@@ -217,6 +227,7 @@ export default function App() {
 
     const userIdentifier = currentUser?.email || userProfile?.email || config.student.name;
     const trackToUse = config.track || activeTrack || 'Elementary Mathematics';
+    const difficultyTierToUse = config.difficultyTier || pendingDifficultyTier || 'Normal';
 
     if (pendingQuizQuestions && pendingQuizQuestions.length > 0) {
       rawQuestions = pendingQuizQuestions;
@@ -227,7 +238,8 @@ export default function App() {
         config.questionCount || 15,
         'all',
         userIdentifier,
-        trackToUse
+        trackToUse,
+        difficultyTierToUse
       );
     } else {
       rawQuestions = await MathService.prepareQuizQuestions(
@@ -236,7 +248,8 @@ export default function App() {
         config.questionCount || 15,
         'all',
         userIdentifier,
-        trackToUse
+        trackToUse,
+        difficultyTierToUse
       );
     }
 
@@ -684,10 +697,11 @@ export default function App() {
       <ChapterDetailModal
         chapter={targetChapter}
         isOpen={isChapterModalOpen}
+        defaultDifficulty={pendingDifficultyTier}
         onClose={() => setIsChapterModalOpen(false)}
-        onStartTest={(chapter) => {
+        onStartTest={(chapter, difficulty) => {
           setIsChapterModalOpen(false);
-          handlePrepareChapterTest(chapter);
+          handlePrepareChapterTest(chapter, difficulty);
         }}
       />
 
@@ -698,6 +712,7 @@ export default function App() {
         defaultClass={pendingQuizClass}
         chapterTitle={pendingQuizTitle}
         defaultTrack={targetChapter?.track || activeTrack}
+        defaultDifficulty={pendingDifficultyTier}
         onStartTest={handleStartConfirmedTest}
         onOpenAuth={() => setIsAuthModalOpen(true)}
       />

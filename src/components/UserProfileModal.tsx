@@ -56,7 +56,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   onSelectChapter,
 }) => {
   const { userProfile: authProfile, signOut, syncWithServer } = useAuth();
-  const { isOnline, isOffline } = useOffline();
+  const { isOnline, isOffline, isConnectionStable, indicatorDotClass, indicatorBadgeClass, statusLabel } = useOffline();
   const [copiedShare, setCopiedShare] = useState(false);
   const [now, setNow] = useState<number>(() => Date.now());
 
@@ -315,12 +315,8 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
               </div>
               <span 
                 id="profile-modal-status-indicator"
-                className={`absolute -bottom-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 border-slate-900 transition-colors duration-300 ${
-                  isOnline 
-                    ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]' 
-                    : 'bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.8)]'
-                }`}
-                title={isOnline ? 'Online - Cloud Sync Active' : 'Offline - Local Mode Active'}
+                className={`absolute -bottom-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 border-slate-900 transition-colors duration-300 ${indicatorDotClass}`}
+                title={`Connection: ${statusLabel}`}
               />
             </div>
             
@@ -329,12 +325,8 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                 <h2 className="text-base sm:text-xl font-black tracking-tight text-white truncate">
                   {userProfile.displayName}
                 </h2>
-                <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold border uppercase tracking-wider ${
-                  isOnline 
-                    ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/40' 
-                    : 'bg-yellow-500/20 text-yellow-300 border-yellow-400/40'
-                }`}>
-                  {isOnline ? 'Online' : 'Offline'}
+                <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold border uppercase tracking-wider ${indicatorBadgeClass}`}>
+                  {statusLabel}
                 </span>
               </div>
               <p className="text-[10px] sm:text-xs text-white/80 flex items-center gap-1 mt-0.5 font-medium truncate">
