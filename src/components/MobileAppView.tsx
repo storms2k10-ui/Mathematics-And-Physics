@@ -328,7 +328,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
     {
       id: 'elem-math',
       trackName: 'Elementary Mathematics' as const,
-      label: 'Elem Math',
+      label: 'Mathematics',
       badge: 'Core',
       icon: Sigma,
       bgGradient: 'from-pink-400/20 via-purple-400/20 to-indigo-400/20',
@@ -352,7 +352,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
     {
       id: 'elem-phys',
       trackName: 'Elementary Physics' as const,
-      label: 'Elem Physics',
+      label: 'Physics',
       badge: 'Physics',
       icon: Atom,
       bgGradient: 'from-sky-400/20 via-cyan-400/20 to-teal-400/20',
@@ -380,7 +380,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
     {
       id: 'elem-math',
       track: 'Elementary Mathematics' as const,
-      title: 'Elem Math',
+      title: 'Mathematics',
       subtitle: 'Core Foundation',
       icon: Sigma,
       gradient: 'from-rose-100 to-pink-200 dark:from-rose-950/40 dark:to-pink-900/40',
@@ -398,7 +398,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
     {
       id: 'elem-phys',
       track: 'Elementary Physics' as const,
-      title: 'Elem Physics',
+      title: 'Physics',
       subtitle: 'Mechanics & Heat',
       icon: Atom,
       gradient: 'from-sky-100 to-cyan-200 dark:from-sky-950/40 dark:to-cyan-900/40',
@@ -549,7 +549,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                   Choose Track &amp; Study Mode
                 </span>
                 <span className="text-[11px] text-pink-600 dark:text-pink-400 font-bold bg-pink-50 dark:bg-pink-950/60 px-2 py-0.5 rounded-full border border-pink-200/50 dark:border-pink-800/50">
-                  {activeTrack}
+                  {activeTrack === 'Elementary Mathematics' ? 'Mathematics' : activeTrack === 'Elementary Physics' ? 'Physics' : activeTrack}
                 </span>
               </div>
 
@@ -600,7 +600,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                     Class {selectedClass} Chapters
                   </span>
                   <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-                    {activeTrack} • {chapters.length} Modules
+                    {activeTrack === 'Elementary Mathematics' ? 'Mathematics' : activeTrack === 'Elementary Physics' ? 'Physics' : activeTrack} • {chapters.length} Modules
                   </span>
                 </div>
                 <span className="text-[11px] font-extrabold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2.5 py-1 rounded-full border border-indigo-200/50 dark:border-indigo-800/50">
@@ -646,7 +646,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                 <div className="py-6 px-4 text-center space-y-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-dashed border-slate-300 dark:border-slate-700">
                   <BookOpen className="w-8 h-8 mx-auto text-slate-400" />
                   <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                    {activeTrack} is available in Intermediate Classes (11 & 12).
+                    {activeTrack === 'Elementary Mathematics' ? 'Mathematics' : activeTrack === 'Elementary Physics' ? 'Physics' : activeTrack} is available in Intermediate Classes (11 & 12).
                   </p>
                   <button
                     onClick={() => onSelectClass(11, activeTrack)}

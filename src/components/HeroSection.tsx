@@ -44,7 +44,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   }[] = [
     {
       id: 'Elementary Mathematics',
-      title: 'Elementary Mathematics',
+      title: 'Mathematics',
       subtitle: 'Classes 9, 10, 11, 12',
       description: 'Standard school curriculum covering Algebra, Coordinate Geometry, Matrices, Trigonometry, and introductory Calculus with interactive KaTeX solutions.',
       classes: [9, 10, 11, 12],
@@ -72,7 +72,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     },
     {
       id: 'Elementary Physics',
-      title: 'Elementary Physics',
+      title: 'Physics',
       subtitle: 'Classes 11 & 12',
       description: 'Foundational physics principles: kinematics, Newtonian mechanics, work & energy, gravitation, wave theory, electrostatics, optics, and thermodynamics.',
       classes: [11, 12],

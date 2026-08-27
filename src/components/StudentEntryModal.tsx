@@ -61,7 +61,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
 
   if (!isOpen) return null;
 
-  const availableQuestionCounts = [15, 25];
+  const availableQuestionCounts = [15, 20, 25];
 
   const isUserSignedIn = Boolean(currentUser || (userProfile && userProfile.email && userProfile.email.includes('@')));
 
@@ -207,7 +207,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
             </label>
             <div className="p-3 rounded-2xl bg-indigo-50/90 dark:bg-indigo-950/70 border-2 border-indigo-500/80 text-center shadow-xs">
               <span className="block font-black text-sm text-indigo-700 dark:text-indigo-300">
-                {selectedTrack}
+                {selectedTrack === 'Elementary Mathematics' ? 'Mathematics' : selectedTrack === 'Elementary Physics' ? 'Physics' : selectedTrack}
               </span>
               <span className="block text-[11px] font-medium text-indigo-600/80 dark:text-indigo-400/80 mt-0.5">
                 {selectedTrack === 'Elementary Mathematics' && 'Standard School Curriculum & Conceptual Foundation'}
@@ -218,7 +218,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
             </div>
           </div>
 
-          {/* Dynamic Question Count Selector: 15 MCQs and 25 MCQs */}
+          {/* Dynamic Question Count Selector: 15, 20, and 25 MCQs */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
@@ -229,38 +229,39 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
               </span>
             </div>
             
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-3 gap-2 sm:gap-2.5">
               {availableQuestionCounts.map((count) => {
                 const isSelected = questionCount === count;
-                const isFifteen = count === 15;
 
                 return (
                   <button
                     type="button"
                     key={count}
                     onClick={() => setQuestionCount(count)}
-                    className={`relative p-3.5 rounded-2xl border transition-all text-left cursor-pointer flex flex-col justify-between ${
+                    className={`relative p-3 rounded-2xl border transition-all text-left cursor-pointer flex flex-col justify-between ${
                       isSelected
                         ? 'bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-700 border-indigo-500 text-white shadow-lg shadow-indigo-600/30 scale-[1.02] ring-2 ring-indigo-400/80'
                         : 'bg-slate-50 dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-300 dark:hover:border-indigo-600 hover:bg-indigo-50/40 dark:hover:bg-slate-800'
                     }`}
                   >
-                    <div className="flex items-center justify-between mb-1.5">
+                    <div className="flex items-center justify-between mb-1">
                       <div className="flex items-center gap-1.5">
-                        {isFifteen ? (
-                          <Zap className={`w-4 h-4 ${isSelected ? 'text-amber-300 fill-amber-300' : 'text-indigo-500 dark:text-indigo-400'}`} />
+                        {count === 15 ? (
+                          <Zap className={`w-3.5 h-3.5 ${isSelected ? 'text-amber-300 fill-amber-300' : 'text-indigo-500 dark:text-indigo-400'}`} />
+                        ) : count === 20 ? (
+                          <Sparkles className={`w-3.5 h-3.5 ${isSelected ? 'text-yellow-300 fill-yellow-300' : 'text-amber-500 dark:text-amber-400'}`} />
                         ) : (
-                          <Target className={`w-4 h-4 ${isSelected ? 'text-cyan-300' : 'text-purple-500 dark:text-purple-400'}`} />
+                          <Target className={`w-3.5 h-3.5 ${isSelected ? 'text-cyan-300' : 'text-purple-500 dark:text-purple-400'}`} />
                         )}
-                        <span className="font-black text-sm tracking-tight">
+                        <span className="font-black text-xs sm:text-sm tracking-tight whitespace-nowrap">
                           {count} MCQs
                         </span>
                       </div>
-                      <span className={`w-2 h-2 rounded-full ${isSelected ? 'bg-amber-300 animate-ping' : 'bg-slate-300 dark:bg-slate-600'}`} />
+                      <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300 animate-ping' : 'bg-slate-300 dark:bg-slate-600'}`} />
                     </div>
 
-                    <p className={`text-[10.5px] leading-tight ${isSelected ? 'text-indigo-100' : 'text-slate-500 dark:text-slate-400'}`}>
-                      {isFifteen ? 'Quick Practice • 15 Mins' : 'Comprehensive Set • 25 Mins'}
+                    <p className={`text-[10px] leading-tight ${isSelected ? 'text-indigo-100' : 'text-slate-500 dark:text-slate-400'}`}>
+                      {count === 15 ? 'Quick • 15 Mins' : count === 20 ? 'Standard • 20 Mins' : 'Full Set • 25 Mins'}
                     </p>
                   </button>
                 );

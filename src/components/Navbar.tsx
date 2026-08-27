@@ -255,7 +255,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                           <span className="w-7 h-7 rounded-lg bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 flex items-center justify-center text-xs font-bold shrink-0">
                             <Sigma className="w-4 h-4" />
                           </span>
-                          <span>Elementary Mathematics</span>
+                          <span>Mathematics</span>
                         </span>
                         <div className="flex items-center gap-1.5 text-xs text-slate-400">
                           <span className="text-[10px] font-bold">4 Classes</span>
@@ -333,7 +333,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                     <div className="border-t border-slate-100 dark:border-slate-800 my-1"></div>
 
-                    {/* 3. ELEMENTARY PHYSICS (Click to expand Class 11 & 12) */}
+                    {/* 3. PHYSICS (Click to expand Class 11 & 12) */}
                     <div>
                       <button
                         type="button"
@@ -347,7 +347,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                           <span className="w-7 h-7 rounded-lg bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-300 flex items-center justify-center text-xs font-bold shrink-0">
                             <Atom className="w-4 h-4" />
                           </span>
-                          <span>Elementary Physics</span>
+                          <span>Physics</span>
                         </span>
                         <div className="flex items-center gap-1.5 text-xs text-slate-400">
                           <span className="text-[10px] font-bold">2 Classes</span>
@@ -904,14 +904,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               </span>
             </div>
 
-            {/* 1. Elementary Mathematics */}
+            {/* 1. Mathematics */}
             <div className="rounded-xl border border-indigo-200/80 dark:border-indigo-900/50 bg-indigo-50/40 dark:bg-indigo-950/20 p-2.5 space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="w-6 h-6 rounded-lg bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 flex items-center justify-center text-xs">
                     <Sigma className="w-3.5 h-3.5" />
                   </span>
-                  <span className="text-xs font-bold text-indigo-950 dark:text-indigo-200">Elementary Mathematics</span>
+                  <span className="text-xs font-bold text-indigo-950 dark:text-indigo-200">Mathematics</span>
                 </div>
                 <span className="text-[10px] font-bold text-indigo-600 dark:text-indigo-400">Classes 9-12</span>
               </div>
@@ -968,14 +968,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             </div>
 
-            {/* 3. Elementary Physics */}
+            {/* 3. Physics */}
             <div className="rounded-xl border border-cyan-200/80 dark:border-cyan-900/50 bg-cyan-50/40 dark:bg-cyan-950/20 p-2.5 space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="w-6 h-6 rounded-lg bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-300 flex items-center justify-center text-xs">
                     <Atom className="w-3.5 h-3.5" />
                   </span>
-                  <span className="text-xs font-bold text-cyan-950 dark:text-cyan-200">Elementary Physics</span>
+                  <span className="text-xs font-bold text-cyan-950 dark:text-cyan-200">Physics</span>
                 </div>
                 <span className="text-[10px] font-bold text-cyan-600 dark:text-cyan-400">Classes 11 &amp; 12</span>
               </div>

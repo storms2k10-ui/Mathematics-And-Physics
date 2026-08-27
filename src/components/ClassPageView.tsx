@@ -30,6 +30,8 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
   onBackToHome,
 }) => {
 
+  const displayTrack = track === 'Elementary Mathematics' ? 'Mathematics' : track === 'Elementary Physics' ? 'Physics' : track;
+
   return (
     <div id="class-page-view" className="py-6 sm:py-8 bg-slate-50 dark:bg-slate-950 min-h-[calc(100vh-100px)] animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
@@ -46,7 +48,7 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
           
           <div className="flex items-center gap-2">
             <span className="text-xs font-black text-slate-900 dark:text-white">
-              {track} — Class {currentClass} {track.includes('Physics') ? 'Physics' : 'Mathematics'}
+              {displayTrack} — Class {currentClass}
             </span>
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">
               {chapters.length} Chapters
@@ -62,10 +64,10 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
             </div>
             <div className="space-y-1.5">
               <h3 className="text-lg font-black text-slate-900 dark:text-white">
-                {track} — Class {currentClass}
+                {displayTrack} — Class {currentClass}
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
-                This section is currently empty. Questions and chapters will be added later. Practice sessions and scores will automatically connect to the <strong>{track}</strong> Academic Ranking.
+                This section is currently empty. Questions and chapters will be added later. Practice sessions and scores will automatically connect to the <strong>{displayTrack}</strong> Academic Ranking.
               </p>
             </div>
           </div>

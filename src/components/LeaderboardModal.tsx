@@ -368,9 +368,9 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
           {/* 4 Track Options — Content-Fitted Dynamic Width (Compact) */}
           <div className="flex flex-wrap items-center gap-1 p-0.5 bg-slate-200/60 dark:bg-slate-800/60 rounded-lg">
             {([
-              { id: 'Elementary Mathematics', label: 'Elementary Mathematics', icon: Sigma },
+              { id: 'Elementary Mathematics', label: 'Mathematics', icon: Sigma },
               { id: 'Advanced Mathematics', label: 'Advanced Mathematics', icon: Sparkles },
-              { id: 'Elementary Physics', label: 'Elementary Physics', icon: Atom },
+              { id: 'Elementary Physics', label: 'Physics', icon: Atom },
               { id: 'Advanced Physics', label: 'Advanced Physics', icon: Zap },
             ] as { id: LeaderboardTrack; label: string; icon: any }[]).map((tr) => {
               const Icon = tr.icon;
