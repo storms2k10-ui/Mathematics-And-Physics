@@ -32,6 +32,7 @@ import { MathService } from '../services/mathService';
 import { MathText } from './MathText';
 import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
+import { useOffline } from '../context/OfflineContext';
 import { UserTestHistory } from '../types';
 
 interface ScoreViewProps {
@@ -76,6 +77,7 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
 }) => {
   const { isDarkMode, toggleTheme } = useTheme();
   const { currentUser, userProfile, recordTestAttempt } = useAuth();
+  const { isOffline, pendingSyncCount } = useOffline();
   const [filterType, setFilterType] = useState<'all' | 'correct' | 'incorrect' | 'skipped'>('all');
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
@@ -196,38 +198,23 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
         colors: ['#ffd700', '#ffae00', '#ffffff', '#ff4500'],
       });
     }, 350);
+
+    return () => clearInterval(interval);
   };
 
+  // Fireworks celebration automatically triggered ONCE only when 100% score is achieved
   useEffect(() => {
+    let cleanupFireworks: (() => void) | undefined;
+    
+    // STRICT RULE: Only auto launch fireworks when user achieves 100% correct score
     if (isPerfectScore) {
-      launchFireworks();
-    } else if (percentage >= 80) {
-      confetti({
-        particleCount: 80,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#6366f1', '#10b981', '#f59e0b', '#ec4899'],
-      });
-    } else if (percentage >= 50) {
-      confetti({
-        particleCount: 50,
-        spread: 60,
-        origin: { y: 0.65 },
-        colors: ['#6366f1', '#10b981', '#38bdf8', '#fbbf24'],
-        scalar: 0.9,
-      });
-    } else {
-      // Subtle encouraging sparkle animation on completion
-      confetti({
-        particleCount: 30,
-        spread: 45,
-        origin: { y: 0.7 },
-        colors: ['#818cf8', '#a78bfa', '#cbd5e1'],
-        scalar: 0.8,
-        ticks: 60,
-      });
+      cleanupFireworks = launchFireworks();
     }
-  }, [percentage, isPerfectScore]);
+
+    return () => {
+      if (cleanupFireworks) cleanupFireworks();
+    };
+  }, [isPerfectScore]);
 
   // Performance Assessment with Dynamic Theme Colors
   const getPerformanceFeedback = () => {
@@ -330,6 +317,17 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
           </div>
 
           <div className="flex items-center gap-2">
+            {isOffline ? (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-[11px] font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-700/60 shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+                <span>Offline Saved</span>
+              </span>
+            ) : (
+              <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-[11px] font-bold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-800/50">
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                <span>Cloud Synced</span>
+              </span>
+            )}
             <span className="hidden md:inline text-xs font-semibold text-slate-500 dark:text-slate-400">
               Class {classLevel} Performance Scorecard
             </span>
@@ -343,168 +341,130 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
           </div>
         </div>
 
-        {/* 100% Perfect Score Fireworks Celebration Hero Banner */}
-        {isPerfectScore && (
-          <div className="p-6 rounded-3xl bg-gradient-to-r from-amber-500 via-rose-500 to-indigo-600 text-white shadow-2xl space-y-4 animate-slide-fade relative overflow-hidden">
-            <div className="absolute inset-0 bg-radial from-white/20 to-transparent pointer-events-none" />
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10">
-              <div className="flex items-center gap-4 text-center sm:text-left">
-                <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center shrink-0 shadow-lg text-3xl">
-                  🎆
-                </div>
-                <div>
-                  <div className="flex items-center justify-center sm:justify-start gap-1.5 text-xs font-black uppercase tracking-wider text-amber-200">
-                    <Sparkles className="w-4 h-4 text-amber-300" />
-                    <span>Flawless 100% Accuracy Masterclass</span>
-                  </div>
-                  <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white drop-shadow-md">
-                    Fireworks Celebration Unlocked!
-                  </h2>
-                  <p className="text-xs sm:text-sm text-white/90 font-medium">
-                    You answered all {totalQuestions} questions with 100% mathematical precision!
-                  </p>
-                </div>
-              </div>
-
-              <button
-                onClick={launchFireworks}
-                className="px-5 py-3 rounded-2xl bg-white text-slate-900 hover:bg-amber-100 font-extrabold text-xs sm:text-sm shadow-xl transition-all flex items-center gap-2 cursor-pointer shrink-0 hover:scale-105 active:scale-95"
-              >
-                <span>🎆 Launch Fireworks Again</span>
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Main Scorecard Header with Dynamic Theme Colors & Centered Metrics */}
-        <div className={`rounded-3xl p-6 sm:p-8 border ${feedback.borderGlow} ${feedback.cardBg} shadow-2xl space-y-6 relative overflow-hidden backdrop-blur-sm`}>
+        {/* Main Scorecard Header with Light Background & Centered Metrics (Compact & Clean) */}
+        <div className="max-w-2xl mx-auto rounded-3xl p-4 sm:p-5 bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-xl space-y-3.5 sm:space-y-4 relative overflow-hidden">
           
-          <div className="flex flex-col items-center justify-between gap-6 text-center">
+          <div className="flex flex-col items-center justify-between gap-3 text-center">
             
-            {/* Top: Candidate & Chapter Info */}
-            <div className="space-y-3 text-center max-w-2xl mx-auto">
-              <div className="flex flex-wrap items-center justify-center gap-2">
-                <span className={`px-3.5 py-1 rounded-full text-xs font-black ${feedback.badgeColor} shadow-sm`}>
+            {/* Top: Chapter Info & Feedback Title */}
+            <div className="space-y-1.5 text-center max-w-xl mx-auto">
+              <div className="flex flex-wrap items-center justify-center gap-1.5">
+                <span className={`px-3 py-0.5 rounded-full text-[11px] font-black ${feedback.badgeColor} shadow-xs`}>
                   {feedback.badge}
                 </span>
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/70 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700">
+                <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
                   Class {classLevel} • {chapterTitle}
                 </span>
               </div>
 
-              <h1 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+              <h1 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
                 {feedback.title}
               </h1>
 
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed">
+              <p className="text-xs text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed">
                 {feedback.subtitle}
               </p>
-
-              {/* Candidate Info with Fixed Name & Academic Ranking Live Sync */}
-              <div className="p-3.5 rounded-2xl bg-white/60 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 space-y-2 max-w-lg mx-auto shadow-xs">
-                <div className="flex flex-wrap items-center justify-center sm:justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 flex items-center justify-center">
-                      <User className="w-4 h-4" />
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs text-slate-600 dark:text-slate-300">
-                        Candidate: <strong className="text-slate-900 dark:text-white text-sm font-black">{studentName}</strong>
-                      </span>
-                      <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
-                        Fixed Name
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Academic Ranking Live-Sync Status Badge */}
-                  <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-[11px] font-bold text-emerald-800 dark:text-emerald-300">
-                    <span className={`w-2 h-2 rounded-full ${isSyncing ? 'bg-amber-500 animate-ping' : 'bg-emerald-500 animate-pulse'}`} />
-                    <span>{isSyncing ? 'Syncing...' : syncStatus}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Overall Accuracy Highlight Pill */}
-              <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-xs">
-                <span>Overall Accuracy on Attempted Questions:</span>
-                <span className="text-sm font-black text-indigo-600 dark:text-indigo-400">{overallAccuracy}%</span>
-              </div>
             </div>
 
-            {/* Center Aligned Circles: Correct Accuracy, Error Rate & Skipped Questions in the Center */}
-            <div className="w-full flex flex-wrap items-center justify-center gap-4 my-2">
-              {/* Dynamic Light Green Circle: Correct Accuracy - Aligned in Centre */}
-              <div className="w-full sm:w-48 flex flex-col items-center justify-center p-4 rounded-2xl bg-emerald-50/90 dark:bg-emerald-950/50 border-2 border-emerald-300 dark:border-emerald-700 shadow-md shadow-emerald-500/10 text-center">
-                <div className="w-24 h-24 rounded-full border-4 border-emerald-500 dark:border-emerald-400 flex flex-col items-center justify-center bg-white dark:bg-emerald-950 shadow-inner">
-                  <span className="text-2xl font-black text-emerald-600 dark:text-emerald-300 tracking-tight">
+            {/* Center Aligned Circles: Correct Accuracy, Error Rate & Skipped Questions with Color-Matched Typography & Modern Aesthetic */}
+            <div className="w-full flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 my-1">
+              
+              {/* 1. Correct Card (#059669) */}
+              <div
+                id="score-metric-correct-card"
+                className="flex-1 min-w-[110px] max-w-[155px] sm:min-w-[125px] sm:max-w-[165px] flex flex-col items-center justify-center p-3 rounded-2xl bg-[#059669] text-[#FFFFFF] shadow-lg shadow-[#059669]/25 border border-[rgba(255,255,255,0.20)] text-center transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#059669]/35 group cursor-default"
+              >
+                {/* Circular Badge with border rgba(255,255,255,0.30) */}
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-[rgba(255,255,255,0.30)] flex flex-col items-center justify-center bg-white/10 backdrop-blur-xs shadow-inner ring-2 ring-white/10 transition-transform duration-300 group-hover:scale-105 p-1">
+                  <span className="text-base sm:text-lg font-black text-[#FFFFFF] tracking-tight leading-none drop-shadow-xs">
                     {percentage}%
                   </span>
-                  <span className="text-[9px] font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mt-0.5">
-                    Correct
-                  </span>
+                  <div className="flex items-center justify-center gap-0.5 mt-1 text-white/85 leading-none">
+                    <CheckCircle2 className="w-2.5 h-2.5 shrink-0" />
+                    <span className="text-[8px] sm:text-[8.5px] font-black uppercase tracking-wider">
+                      Correct
+                    </span>
+                  </div>
                 </div>
-                <div className="mt-2.5 text-center">
-                  <span className="text-xs font-black text-emerald-800 dark:text-emerald-200 block">
+                {/* Primary & Secondary Typography */}
+                <div className="mt-2 text-center space-y-0.5">
+                  <span className="text-[11px] sm:text-xs font-black text-[#FFFFFF] block leading-tight">
                     {correctCount} / {totalQuestions} Correct
                   </span>
-                  <span className="text-[11px] text-emerald-700/80 dark:text-emerald-400 font-medium">
+                  <span className="text-[9px] sm:text-[9.5px] text-[#D1FAE5] font-medium block leading-tight">
                     Validated Answers
                   </span>
                 </div>
               </div>
 
-              {/* Dynamic Light Blue/Rose Circle: Percentage of Wrong Questions / Error Rate - Aligned in Centre */}
-              <div className="w-full sm:w-48 flex flex-col items-center justify-center p-4 rounded-2xl bg-rose-50/90 dark:bg-rose-950/50 border-2 border-rose-300 dark:border-rose-700 shadow-md shadow-rose-500/10 text-center">
-                <div className="w-24 h-24 rounded-full border-4 border-rose-500 dark:border-rose-400 flex flex-col items-center justify-center bg-white dark:bg-rose-950 shadow-inner">
-                  <span className="text-2xl font-black text-rose-600 dark:text-rose-300 tracking-tight">
+              {/* 2. Incorrect Card (#DC2626) */}
+              <div
+                id="score-metric-incorrect-card"
+                className="flex-1 min-w-[110px] max-w-[155px] sm:min-w-[125px] sm:max-w-[165px] flex flex-col items-center justify-center p-3 rounded-2xl bg-[#DC2626] text-[#FFFFFF] shadow-lg shadow-[#DC2626]/25 border border-[rgba(255,255,255,0.20)] text-center transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#DC2626]/35 group cursor-default"
+              >
+                {/* Circular Badge with border rgba(255,255,255,0.30) */}
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-[rgba(255,255,255,0.30)] flex flex-col items-center justify-center bg-white/10 backdrop-blur-xs shadow-inner ring-2 ring-white/10 transition-transform duration-300 group-hover:scale-105 p-1">
+                  <span className="text-base sm:text-lg font-black text-[#FFFFFF] tracking-tight leading-none drop-shadow-xs">
                     {totalQuestions > 0 ? Math.round((incorrectCount / totalQuestions) * 100) : 0}%
                   </span>
-                  <span className="text-[9px] font-black uppercase tracking-wider text-rose-700 dark:text-rose-400 mt-0.5">
-                    Incorrect
-                  </span>
+                  <div className="flex items-center justify-center gap-0.5 mt-1 text-white/85 leading-none">
+                    <XCircle className="w-2.5 h-2.5 shrink-0" />
+                    <span className="text-[8px] sm:text-[8.5px] font-black uppercase tracking-wider">
+                      Incorrect
+                    </span>
+                  </div>
                 </div>
-                <div className="mt-2.5 text-center">
-                  <span className="text-xs font-black text-rose-800 dark:text-rose-200 block">
+                {/* Primary & Secondary Typography */}
+                <div className="mt-2 text-center space-y-0.5">
+                  <span className="text-[11px] sm:text-xs font-black text-[#FFFFFF] block leading-tight">
                     {incorrectCount} / {totalQuestions} Wrong
                   </span>
-                  <span className="text-[11px] text-rose-700/80 dark:text-rose-400 font-medium">
+                  <span className="text-[9px] sm:text-[9.5px] text-[#FEE2E2] font-medium block leading-tight">
                     Mistakes to Review
                   </span>
                 </div>
               </div>
 
-              {/* Subtle Light Black / Dark Gray Card: Skipped Questions */}
-              <div className="w-full sm:w-48 flex flex-col items-center justify-center p-4 rounded-2xl bg-slate-100/90 dark:bg-slate-900/90 border-2 border-slate-300 dark:border-slate-700 shadow-md text-center">
-                <div className="w-24 h-24 rounded-full border-4 border-slate-700 dark:border-slate-600 flex flex-col items-center justify-center bg-slate-800 dark:bg-slate-950 shadow-inner">
-                  <span className="text-2xl font-black text-slate-100 dark:text-slate-200 tracking-tight">
+              {/* 3. Skipped Card (#263A5B) */}
+              <div
+                id="score-metric-skipped-card"
+                className="flex-1 min-w-[110px] max-w-[155px] sm:min-w-[125px] sm:max-w-[165px] flex flex-col items-center justify-center p-3 rounded-2xl bg-[#263A5B] text-[#FFFFFF] shadow-lg shadow-[#263A5B]/25 border border-[rgba(255,255,255,0.20)] text-center transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#263A5B]/35 group cursor-default"
+              >
+                {/* Circular Badge with border rgba(255,255,255,0.30) */}
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-[rgba(255,255,255,0.30)] flex flex-col items-center justify-center bg-white/10 backdrop-blur-xs shadow-inner ring-2 ring-white/10 transition-transform duration-300 group-hover:scale-105 p-1">
+                  <span className="text-base sm:text-lg font-black text-[#FFFFFF] tracking-tight leading-none drop-shadow-xs">
                     {totalQuestions > 0 ? Math.round((skippedCount / totalQuestions) * 100) : 0}%
                   </span>
-                  <span className="text-[9px] font-black uppercase tracking-wider text-slate-300 dark:text-slate-400 mt-0.5">
-                    Skipped
-                  </span>
+                  <div className="flex items-center justify-center gap-0.5 mt-1 text-white/85 leading-none">
+                    <SkipForward className="w-2.5 h-2.5 shrink-0" />
+                    <span className="text-[8px] sm:text-[8.5px] font-black uppercase tracking-wider">
+                      Skipped
+                    </span>
+                  </div>
                 </div>
-                <div className="mt-2.5 text-center">
-                  <span className="text-xs font-black text-slate-800 dark:text-slate-200 block">
+                {/* Primary & Secondary Typography */}
+                <div className="mt-2 text-center space-y-0.5">
+                  <span className="text-[11px] sm:text-xs font-black text-[#FFFFFF] block leading-tight">
                     {skippedCount} / {totalQuestions} Skipped
                   </span>
-                  <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+                  <span className="text-[9px] sm:text-[9.5px] text-[#DCE6F5] font-medium block leading-tight">
                     Unattempted
                   </span>
                 </div>
               </div>
+
             </div>
 
           </div>
 
-          {/* Primary Action Buttons - Center Aligned in Middle */}
-          <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-center gap-4 max-w-lg mx-auto w-full">
+          {/* Primary Action Buttons - Center Aligned in Middle (Compact) */}
+          <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-center gap-3 max-w-md mx-auto w-full">
             <button
               id="score-practice-again-btn"
               onClick={onRestartQuiz}
-              className="flex-1 min-w-[160px] py-3.5 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold text-xs shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-105 active:scale-95 border border-indigo-400/20"
+              className="flex-1 min-w-[140px] py-2.5 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold text-xs shadow-md shadow-indigo-600/25 transition-all flex items-center justify-center gap-1.5 cursor-pointer hover:scale-105 active:scale-95 border border-indigo-400/20"
             >
-              <RotateCcw className="w-4 h-4" />
+              <RotateCcw className="w-3.5 h-3.5" />
               <span>Practice Again</span>
             </button>
 
@@ -512,9 +472,9 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
               <button
                 id="score-academic-ranking-btn"
                 onClick={() => onOpenLeaderboard(track)}
-                className="flex-1 min-w-[160px] py-3.5 px-6 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-xs shadow-lg shadow-amber-500/30 transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-105 active:scale-95 border border-amber-300/30"
+                className="flex-1 min-w-[140px] py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-xs shadow-md shadow-amber-500/25 transition-all flex items-center justify-center gap-1.5 cursor-pointer hover:scale-105 active:scale-95 border border-amber-300/30"
               >
-                <Trophy className="w-4 h-4 text-amber-100" />
+                <Trophy className="w-3.5 h-3.5 text-amber-100" />
                 <span>View Ranking</span>
               </button>
             )}

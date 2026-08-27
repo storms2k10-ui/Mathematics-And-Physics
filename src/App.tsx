@@ -20,14 +20,17 @@ import { ChapterDetailModal } from './components/ChapterDetailModal';
 import { LeaderboardModal } from './components/LeaderboardModal';
 import { AuthModal } from './components/AuthModal';
 import { UserProfileModal } from './components/UserProfileModal';
+import { OfflineBanner } from './components/OfflineBanner';
 import { MathService, shuffleArray } from './services/mathService';
 import { MobileAppView } from './components/MobileAppView';
 import { Chapter, ClassInfo, ClassLevel, Question, StudentProfile, LeaderboardEntry, TestSessionConfig, UserTestHistory } from './types';
 import { useAuth } from './context/AuthContext';
+import { useOffline } from './context/OfflineContext';
 import { Atom, ArrowLeft, Smartphone, Monitor } from 'lucide-react';
 
 export default function App() {
   const { recordTestAttempt, currentUser, userProfile, syncWithServer } = useAuth();
+  const { isOffline, queueOfflineAttempt } = useOffline();
   // Navigation / View state
   const [activeTab, setActiveTab] = useState<NavTab>('home');
   const [activeTrack, setActiveTrack] = useState<'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics'>('Elementary Mathematics');
@@ -330,20 +333,27 @@ export default function App() {
     ]).catch(() => {});
   };
 
-  // Handler when quiz is completed (restricts results until signed in)
+  // Handler when quiz is completed (restricts results until signed in, but allows seamless offline review)
   const handleCompleteQuiz = (results: {
     questions: Question[];
     userAnswers: Record<number, {
       questionId: string;
-      selectedOption: 'A' | 'B' | 'C' | 'D';
+      selectedOption: 'A' | 'B' | 'C' | 'D' | null;
       isCorrect: boolean;
+      isSkipped?: boolean;
       timeSpentSeconds: number;
     }>;
     totalTimeSeconds: number;
     studentProfile?: StudentProfile;
     mode?: 'practice' | 'exam';
   }) => {
-    // RESTRICT ACCESS: If user is not authenticated, prompt sign in before showing results or syncing
+    // If offline, allow student to view score results immediately with offline caching & auto-sync queue
+    if (isOffline) {
+      processTestSubmission(results);
+      return;
+    }
+
+    // RESTRICT ACCESS: If user is not authenticated and online, prompt sign in before showing results or syncing
     if (!isAuthenticated) {
       setPendingCompletionResults(results);
       setAuthModalCustomTitle('Sign In Required for Test Results');
@@ -414,6 +424,9 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
       
+      {/* Global Offline Mode Status Banner and Auto-Sync Notification */}
+      <OfflineBanner />
+
       {/* Top Header Banner: MATHEMATICS AND PHYSICS - Hidden in Quiz, Results, and Mobile App Home View */}
       {!['quiz', 'results'].includes(currentView) && !forceMobileDemo && (
         <div className="hidden md:block">

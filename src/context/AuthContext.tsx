@@ -23,9 +23,10 @@ import {
   serverTimestamp 
 } from 'firebase/firestore';
 import { auth, db } from '../lib/firebase';
-import { UserProfile, UserTestHistory, ClassLevel } from '../types';
+import { UserProfile, UserTestHistory, ClassLevel, LeaderboardEntry } from '../types';
 import { FirestoreLeaderboardService } from '../services/firestoreLeaderboard';
 import { safeFetchJson } from '../lib/apiHelper';
+import { offlineSyncService } from '../services/offlineSyncService';
 
 interface AuthContextType {
   currentUser: FirebaseUser | null;
@@ -91,16 +92,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
-  // Authoritative fetch of user profile and history from Cloud Firestore
+  // Authoritative fetch of user profile and history from Cloud Firestore with offline fallback
   const fetchCloudUserProfile = async (user: FirebaseUser): Promise<UserProfile> => {
     try {
       const userRef = docRefForUser(user.uid);
       const [userSnap, cloudHistory] = await Promise.all([
-        getDoc(userRef),
+        getDoc(userRef).catch(() => null),
         FirestoreLeaderboardService.fetchUserTestHistory(user.uid).catch(() => [] as UserTestHistory[]),
       ]);
 
-      if (userSnap.exists()) {
+      if (userSnap && userSnap.exists()) {
         const data = userSnap.data() as Partial<UserProfile>;
         
         // Merge history from cloud test_results and user doc
@@ -130,8 +131,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         };
 
         setUserProfile(profile);
+        offlineSyncService.cacheUserProfile(profile);
         return profile;
       } else {
+        // Check offline cache first if cloud doc didn't respond
+        const cached = offlineSyncService.getCachedUserProfile();
+        if (cached && cached.uid === user.uid) {
+          setUserProfile(cached);
+          return cached;
+        }
+
         // Create initial cloud user profile in Firestore
         const cleanName = user.displayName || user.email?.split('@')[0] || 'Student Candidate';
         const newProfile: UserProfile = {
@@ -148,17 +157,28 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           history: [],
         };
 
-        await setDoc(userRef, {
-          ...newProfile,
-          createdAt: serverTimestamp(),
-          updatedAt: serverTimestamp(),
-        }, { merge: true });
+        try {
+          await setDoc(userRef, {
+            ...newProfile,
+            createdAt: serverTimestamp(),
+            updatedAt: serverTimestamp(),
+          }, { merge: true });
+        } catch (e) {
+          console.warn('Could not write initial profile to cloud (offline):', e);
+        }
 
         setUserProfile(newProfile);
+        offlineSyncService.cacheUserProfile(newProfile);
         return newProfile;
       }
     } catch (error) {
-      console.error('Failed to load user profile from Firestore:', error);
+      console.error('Failed to load user profile from Firestore, using offline fallback:', error);
+      const cached = offlineSyncService.getCachedUserProfile();
+      if (cached) {
+        setUserProfile(cached);
+        return cached;
+      }
+
       const fallback: UserProfile = {
         uid: user.uid,
         email: user.email || '',
@@ -173,6 +193,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         history: [],
       };
       setUserProfile(fallback);
+      offlineSyncService.cacheUserProfile(fallback);
       return fallback;
     }
   };
@@ -371,37 +392,32 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setLoading(false);
   };
 
-  // Record a completed test result directly to Cloud Firestore
+  // Record a completed test result directly to Cloud Firestore with automatic offline fallback
   const recordTestAttempt = async (historyItem: UserTestHistory): Promise<UserProfile> => {
     const current = userProfile;
     const uid = currentUser?.uid || current?.uid || `usr_${Date.now()}`;
     const email = currentUser?.email || current?.email || '';
     const displayName = current?.displayName || currentUser?.displayName || 'Student Candidate';
 
-    // 1. Save directly into Firestore 'test_results' and 'leaderboard'
-    try {
-      await FirestoreLeaderboardService.saveTestResultRecord({
-        id: historyItem.id,
-        studentName: displayName,
-        classLevel: historyItem.classLevel,
-        chapterId: historyItem.chapterId,
-        chapterName: historyItem.chapterName,
-        mode: 'practice',
-        track: historyItem.track,
-        correctCount: historyItem.correctCount,
-        totalQuestions: historyItem.totalQuestions,
-        skippedCount: historyItem.skippedCount || 0,
-        scorePercentage: historyItem.scorePercentage,
-        timeSpentSeconds: historyItem.timeSpentSeconds,
-        formattedTime: historyItem.formattedTime,
-        timestamp: historyItem.timestamp,
-        formattedDate: historyItem.formattedDate,
-      }, uid);
-    } catch (e) {
-      console.error('Error recording test result to Firestore test_results:', e);
-    }
+    const leaderboardEntryRecord: LeaderboardEntry = {
+      id: historyItem.id,
+      studentName: displayName,
+      classLevel: historyItem.classLevel,
+      chapterId: historyItem.chapterId,
+      chapterName: historyItem.chapterName,
+      mode: 'practice',
+      track: historyItem.track,
+      correctCount: historyItem.correctCount,
+      totalQuestions: historyItem.totalQuestions,
+      skippedCount: historyItem.skippedCount || 0,
+      scorePercentage: historyItem.scorePercentage,
+      timeSpentSeconds: historyItem.timeSpentSeconds,
+      formattedTime: historyItem.formattedTime,
+      timestamp: historyItem.timestamp,
+      formattedDate: historyItem.formattedDate,
+    };
 
-    // 2. Fetch or calculate updated aggregate history from Firestore
+    // 1. Calculate updated aggregate profile immediately
     const baseHistory = Array.isArray(current?.history) ? current.history : [];
     const filteredHistory = baseHistory.filter((h) => h.id !== historyItem.id);
     const updatedHistory = [historyItem, ...filteredHistory].slice(0, 100);
@@ -427,39 +443,65 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       history: updatedHistory,
     };
 
-    // 3. Update Cloud Firestore 'users/{uid}' document
-    if (currentUser?.uid) {
-      try {
-        const userRef = docRefForUser(currentUser.uid);
-        await setDoc(userRef, {
-          testsAttempted: updatedProfile.testsAttempted,
-          totalQuestionsAnswered: updatedProfile.totalQuestionsAnswered,
-          totalCorrect: updatedProfile.totalCorrect,
-          totalWrong: updatedProfile.totalWrong,
-          accuracy: updatedProfile.accuracy,
-          classLevel: updatedProfile.classLevel,
-          updatedAt: serverTimestamp(),
-          history: updatedHistory,
-        }, { merge: true });
-      } catch (err) {
-        console.error('Firestore user profile update error:', err);
-      }
+    // Cache updated profile locally in offline storage
+    setUserProfile(updatedProfile);
+    offlineSyncService.cacheUserProfile(updatedProfile);
+
+    // If offline, queue for auto-sync as soon as user is online
+    if (!offlineSyncService.isOnline()) {
+      offlineSyncService.queueAttempt(historyItem, leaderboardEntryRecord, uid, email, displayName);
+      return updatedProfile;
     }
 
-    // 4. Background broadcast to server
-    safeFetchJson('/api/auth/sync', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        uid,
-        email,
-        displayName,
-        classLevel: historyItem.classLevel || current?.classLevel || 9,
-        historyItem,
-      }),
-    }).catch(() => {});
+    // 2. If online, save to Firestore & Server; if any fail, queue for auto-sync
+    try {
+      await Promise.all([
+        FirestoreLeaderboardService.saveTestResultRecord(leaderboardEntryRecord, uid).catch((e) => {
+          console.warn('Firestore test_results write failed, queueing offline:', e);
+          offlineSyncService.queueAttempt(historyItem, leaderboardEntryRecord, uid, email, displayName);
+        }),
+        FirestoreLeaderboardService.saveEntry(leaderboardEntryRecord, uid).catch((e) => {
+          console.warn('Firestore leaderboard write failed, queueing offline:', e);
+        }),
+      ]);
 
-    setUserProfile(updatedProfile);
+      // 3. Update Cloud Firestore 'users/{uid}' document
+      if (currentUser?.uid) {
+        try {
+          const userRef = docRefForUser(currentUser.uid);
+          await setDoc(userRef, {
+            testsAttempted: updatedProfile.testsAttempted,
+            totalQuestionsAnswered: updatedProfile.totalQuestionsAnswered,
+            totalCorrect: updatedProfile.totalCorrect,
+            totalWrong: updatedProfile.totalWrong,
+            totalSkipped: updatedProfile.totalSkipped,
+            accuracy: updatedProfile.accuracy,
+            classLevel: updatedProfile.classLevel,
+            updatedAt: serverTimestamp(),
+            history: updatedHistory,
+          }, { merge: true });
+        } catch (err) {
+          console.warn('Firestore user profile doc update notice (cached locally):', err);
+        }
+      }
+
+      // 4. Background broadcast to server
+      safeFetchJson('/api/auth/sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          uid,
+          email,
+          displayName,
+          classLevel: historyItem.classLevel || current?.classLevel || 9,
+          historyItem,
+        }),
+      }).catch(() => {});
+    } catch (e) {
+      console.warn('Network sync exception, queueing attempt for auto-sync:', e);
+      offlineSyncService.queueAttempt(historyItem, leaderboardEntryRecord, uid, email, displayName);
+    }
+
     return updatedProfile;
   };
 
