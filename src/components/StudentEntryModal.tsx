@@ -20,7 +20,7 @@ interface StudentEntryModalProps {
   onClose: () => void;
   defaultClass: ClassLevel;
   chapterTitle?: string;
-  defaultTrack?: 'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics';
+  defaultTrack?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics';
   defaultDifficulty?: PracticeDifficulty;
   onStartTest: (config: TestSessionConfig & { track?: string }) => void;
   onOpenAuth?: () => void;
@@ -39,7 +39,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
   const { currentUser, userProfile } = useAuth();
   const [name, setName] = useState('');
   const [selectedClass, setSelectedClass] = useState<ClassLevel>(defaultClass);
-  const [selectedTrack, setSelectedTrack] = useState<'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics'>(defaultTrack);
+  const [selectedTrack, setSelectedTrack] = useState<'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics'>(defaultTrack);
   const [difficultyTier, setDifficultyTier] = useState<PracticeDifficulty>(defaultDifficulty);
   const [questionCount, setQuestionCount] = useState<number>(15);
   const [error, setError] = useState<string | null>(null);
@@ -235,7 +235,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
               </span>
               <span className="block text-[11px] font-medium text-indigo-600/80 dark:text-indigo-400/80 mt-0.5">
                 {selectedTrack === 'Elementary Mathematics' && 'Standard School Curriculum & Conceptual Foundation'}
-                {selectedTrack === 'Advanced Mathematics' && 'Pre-Engineering & Advanced Mathematical Methods'}
+                {selectedTrack === 'Chemistry' && 'Physical, Organic & Inorganic Chemistry Curriculum'}
                 {selectedTrack === 'Elementary Physics' && 'Foundational Physics, Mechanics & Laboratory Concepts'}
                 {selectedTrack === 'Advanced Physics' && 'Theoretical Physics, Electrodynamics & Quantum Systems'}
               </span>

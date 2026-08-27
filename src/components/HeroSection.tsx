@@ -8,6 +8,7 @@ import {
   Sparkles, 
   Atom, 
   Zap,
+  FlaskConical,
   BookOpen,
   Layers
 } from 'lucide-react';
@@ -16,9 +17,9 @@ import { MathText } from './MathText';
 
 export type SubjectTrack = 
   | 'Elementary Mathematics' 
-  | 'Advanced Mathematics' 
+  | 'Chemistry' 
   | 'Elementary Physics' 
-  | 'Advanced Physics';
+  | 'Pre Calculas';
 
 interface HeroSectionProps {
   onSelectClass: (classLevel: ClassLevel, track?: SubjectTrack) => void;
@@ -57,18 +58,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       features: ['Real & Complex Numbers', 'Algebra & Polynomials', 'Trigonometry & Graphs', 'Differential Calculus'],
     },
     {
-      id: 'Advanced Mathematics',
-      title: 'Advanced Mathematics',
-      subtitle: 'Classes 11 & 12',
-      description: 'Deep pre-engineering mathematical methods: Euler\'s identities, De Moivre\'s theorem, complex analysis, vector spaces, and advanced matrices.',
-      classes: [11, 12],
-      icon: Sparkles,
-      accentColor: 'purple',
-      badgeBg: 'bg-purple-50 dark:bg-purple-950/70',
-      badgeText: 'text-purple-700 dark:text-purple-300',
-      badgeBorder: 'border-purple-200 dark:border-purple-800',
-      buttonBg: 'bg-purple-600 hover:bg-purple-700 shadow-purple-600/25',
-      features: ['Euler Form & Polar Roots', 'Argand Plane Topology', 'Matrix Inversion & Rank', 'Higher-Order Systems'],
+      id: 'Chemistry',
+      title: 'Chemistry',
+      subtitle: 'Classes 9, 10, 11, 12',
+      description: 'Comprehensive Chemistry curriculum covering Physical, Organic, and Inorganic Chemistry across Classes 9, 10, 11, and 12.',
+      classes: [9, 10, 11, 12],
+      icon: FlaskConical,
+      accentColor: 'emerald',
+      badgeBg: 'bg-emerald-50 dark:bg-emerald-950/70',
+      badgeText: 'text-emerald-700 dark:text-emerald-300',
+      badgeBorder: 'border-emerald-200 dark:border-emerald-800',
+      buttonBg: 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/25',
+      features: ['Atomic Structure & Bonding', 'Chemical Reactions & Stoichiometry', 'Organic Chemistry & Hydrocarbons', 'Thermodynamics & Equilibrium'],
     },
     {
       id: 'Elementary Physics',
@@ -85,18 +86,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       features: ['Kinematics & Dynamics', 'Work, Energy & Power', 'Electrostatics & Optics', 'Thermodynamics & Waves'],
     },
     {
-      id: 'Advanced Physics',
-      title: 'Advanced Physics',
-      subtitle: 'Classes 11 & 12',
-      description: 'Theoretical physics curriculum: Maxwell\'s electrodynamics, relativistic mechanics, atomic & nuclear structures, and quantum wave-particle duality.',
-      classes: [11, 12],
-      icon: Zap,
-      accentColor: 'blue',
-      badgeBg: 'bg-blue-50 dark:bg-blue-950/70',
-      badgeText: 'text-blue-700 dark:text-blue-300',
-      badgeBorder: 'border-blue-200 dark:border-blue-800',
-      buttonBg: 'bg-blue-600 hover:bg-blue-700 shadow-blue-600/25',
-      features: ['Electromagnetism & Waves', 'Special Relativity', 'Quantum Dual Nature', 'Nuclear & Particle Physics'],
+      id: 'Pre Calculas',
+      title: 'Pre Calculas',
+      subtitle: 'Class 11',
+      description: 'Pre-calculus foundations: polynomial & rational functions, trigonometry, analytic geometry, sequences, series, and introductory analysis.',
+      classes: [11],
+      icon: Calculator,
+      accentColor: 'violet',
+      badgeBg: 'bg-violet-50 dark:bg-violet-950/70',
+      badgeText: 'text-violet-700 dark:text-violet-300',
+      badgeBorder: 'border-violet-200 dark:border-violet-800',
+      buttonBg: 'bg-violet-600 hover:bg-violet-700 shadow-violet-600/25',
+      features: ['Functions & Relations', 'Trigonometric Identities', 'Analytic Geometry', 'Mathematical Induction'],
     },
   ];
 

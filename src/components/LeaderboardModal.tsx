@@ -7,6 +7,7 @@ import {
   Atom,
   Sigma,
   Zap,
+  FlaskConical,
   Star,
   CheckCircle2,
   XCircle,
@@ -27,7 +28,7 @@ import { MathText } from './MathText';
 
 export type LeaderboardTrack = 
   | 'Elementary Mathematics' 
-  | 'Advanced Mathematics' 
+  | 'Chemistry' 
   | 'Elementary Physics' 
   | 'Advanced Physics';
 
@@ -369,7 +370,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
           <div className="flex flex-wrap items-center gap-1 p-0.5 bg-slate-200/60 dark:bg-slate-800/60 rounded-lg">
             {([
               { id: 'Elementary Mathematics', label: 'Mathematics', icon: Sigma },
-              { id: 'Advanced Mathematics', label: 'Advanced Mathematics', icon: Sparkles },
+              { id: 'Chemistry', label: 'Chemistry', icon: FlaskConical },
               { id: 'Elementary Physics', label: 'Physics', icon: Atom },
               { id: 'Advanced Physics', label: 'Advanced Physics', icon: Zap },
             ] as { id: LeaderboardTrack; label: string; icon: any }[]).map((tr) => {

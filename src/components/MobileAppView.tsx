@@ -41,14 +41,14 @@ import {
   Phone,
   Mail,
   Building2,
-  CheckCircle
+  CheckCircle,
+  FlaskConical
 } from 'lucide-react';
 import { ClassLevel, Chapter } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { useOffline } from '../context/OfflineContext';
 import { ALL_CHAPTERS } from '../data/chaptersData';
-import { ADVANCED_MATH_11_CHAPTERS } from '../data/mockData';
 import { ALL_FORMULAS } from '../data/formulasData';
 import { ALL_THEOREMS } from '../data/theoremsData';
 import { ALL_DEFINITIONS } from '../data/definitionsData';
@@ -65,10 +65,10 @@ import { MathText } from './MathText';
 export type MobileTab = 'philosophers' | 'studio' | 'modules' | 'rankings' | 'profile';
 
 interface MobileAppViewProps {
-  activeTrack: 'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics';
+  activeTrack: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics';
   selectedClass: ClassLevel;
-  onSelectTrack: (track: 'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics') => void;
-  onSelectClass: (lvl: ClassLevel, track?: 'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics') => void;
+  onSelectTrack: (track: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics') => void;
+  onSelectClass: (lvl: ClassLevel, track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics') => void;
   onStartChapterPractice: (chapter: Chapter) => void;
   onStartClassPractice: (lvl: ClassLevel) => void;
   onOpenLeaderboard: () => void;
@@ -123,11 +123,8 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
 
   // Chapters for current selected class and track
   const chapters = useMemo(() => {
-    if (activeTrack === 'Advanced Mathematics') {
-      if (selectedClass === 11) {
-        return ADVANCED_MATH_11_CHAPTERS;
-      }
-      return ALL_CHAPTERS.filter((ch) => ch.class === selectedClass && ch.track === 'Advanced Mathematics');
+    if (activeTrack === 'Chemistry') {
+      return ALL_CHAPTERS.filter((ch) => ch.class === selectedClass && ch.track === 'Chemistry');
     }
     if (activeTrack === 'Elementary Physics') {
       return ALL_CHAPTERS.filter((ch) => ch.class === selectedClass && ch.track === 'Elementary Physics');
@@ -340,16 +337,16 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
       sampleTopic: 'Algebra, Trigonometry & Matrices',
     },
     {
-      id: 'adv-math',
-      trackName: 'Advanced Mathematics' as const,
-      label: 'Adv Math',
-      badge: 'Higher',
-      icon: Sparkles,
-      bgGradient: 'from-purple-400/20 via-indigo-400/20 to-sky-400/20',
-      activeRing: 'border-purple-500 shadow-purple-500/30',
-      iconColor: 'text-purple-600 dark:text-purple-400',
-      description: 'Classes 11 & 12 Pre-Engineering',
-      sampleTopic: 'Calculus, Vectors & Analytic Geometry',
+      id: 'chemistry',
+      trackName: 'Chemistry' as const,
+      label: 'Chemistry',
+      badge: 'Core',
+      icon: FlaskConical,
+      bgGradient: 'from-emerald-400/20 via-teal-400/20 to-green-400/20',
+      activeRing: 'border-emerald-500 shadow-emerald-500/30',
+      iconColor: 'text-emerald-600 dark:text-emerald-400',
+      description: 'Classes 9-12 Chemistry Curriculum',
+      sampleTopic: 'Atomic Structure, Bonding & Reactions',
     },
     {
       id: 'elem-phys',
@@ -389,13 +386,13 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
       action: () => onSelectTrack('Elementary Mathematics'),
     },
     {
-      id: 'adv-math',
-      track: 'Advanced Mathematics' as const,
-      title: 'Adv Math',
-      subtitle: 'Higher Calculus',
-      icon: Sparkles,
-      gradient: 'from-violet-100 to-purple-200 dark:from-violet-950/40 dark:to-purple-900/40',
-      action: () => onSelectTrack('Advanced Mathematics'),
+      id: 'chemistry',
+      track: 'Chemistry' as const,
+      title: 'Chemistry',
+      subtitle: 'Classes 9-12',
+      icon: FlaskConical,
+      gradient: 'from-emerald-100 to-teal-200 dark:from-emerald-950/40 dark:to-teal-900/40',
+      action: () => onSelectTrack('Chemistry'),
     },
     {
       id: 'elem-phys',

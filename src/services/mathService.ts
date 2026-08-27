@@ -1,4 +1,4 @@
-import { CHAPTERS_DATA, ADVANCED_MATH_11_CHAPTERS, CLASS_INFO_DATA, QUESTIONS_DATA } from '../data/mockData';
+import { CHAPTERS_DATA, CLASS_INFO_DATA, QUESTIONS_DATA } from '../data/mockData';
 import { Chapter, ClassInfo, ClassLevel, FilterState, Question, DifficultyLevel, PracticeDifficulty, LeaderboardEntry, TestAttemptRecord } from '../types';
 import { FirestoreLeaderboardService } from './firestoreLeaderboard';
 import { safeFetchJson } from '../lib/apiHelper';
@@ -46,14 +46,14 @@ export class MathService {
    */
   static async getChapters(classLevel?: ClassLevel, track: string = 'Elementary Mathematics'): Promise<Chapter[]> {
     await new Promise((resolve) => setTimeout(resolve, 20));
+    if (track === 'Pre Calculas') {
+      return CHAPTERS_DATA.filter((ch) => ch.track === 'Pre Calculas' && (!classLevel || ch.class === classLevel));
+    }
     if (track === 'Elementary Physics') {
       return CHAPTERS_DATA.filter((ch) => ch.track === 'Elementary Physics' && (!classLevel || ch.class === classLevel));
     }
-    if (track === 'Advanced Mathematics') {
-      if (classLevel === 11) {
-        return ADVANCED_MATH_11_CHAPTERS;
-      }
-      return CHAPTERS_DATA.filter((ch) => ch.track === 'Advanced Mathematics' && (!classLevel || ch.class === classLevel));
+    if (track === 'Chemistry') {
+      return CHAPTERS_DATA.filter((ch) => ch.track === 'Chemistry' && (!classLevel || ch.class === classLevel));
     }
     if (track.startsWith('Advanced')) {
       return CHAPTERS_DATA.filter((ch) => ch.track === track && (!classLevel || ch.class === classLevel));
@@ -81,6 +81,7 @@ export class MathService {
     track: string = 'Elementary Mathematics'
   ): Question[] {
     const isPhysics = track.toLowerCase().includes('physics');
+    const isChemistry = track.toLowerCase().includes('chemistry');
     let pool: Question[] = [];
 
     if (chapterId) {
@@ -91,12 +92,17 @@ export class MathService {
         if (isPhysics) {
           return q.subject === 'Physics' || q.chapter_id.startsWith('el-phy');
         }
-        return q.subject !== 'Physics';
+        if (isChemistry) {
+          return q.subject === 'Chemistry' || q.chapter_id.startsWith('chem');
+        }
+        return q.subject !== 'Physics' && q.subject !== 'Chemistry';
       });
     } else {
       pool = isPhysics 
         ? QUESTIONS_DATA.filter((q) => q.subject === 'Physics' || q.chapter_id.startsWith('el-phy'))
-        : QUESTIONS_DATA.filter((q) => q.subject !== 'Physics');
+        : isChemistry
+        ? QUESTIONS_DATA.filter((q) => q.subject === 'Chemistry' || q.chapter_id.startsWith('chem'))
+        : QUESTIONS_DATA.filter((q) => q.subject !== 'Physics' && q.subject !== 'Chemistry');
     }
 
     if (difficultyTier === 'Advanced') {

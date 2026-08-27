@@ -41,7 +41,7 @@ export interface ChapterOverview {
 export interface Chapter {
   id: string;
   class: ClassLevel;
-  track?: 'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics';
+  track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas';
   name: string;
   description: string;
   category: MathCategory;
@@ -208,7 +208,7 @@ export interface LeaderboardEntry {
   chapterId?: string;
   chapterName: string;
   mode: 'practice' | 'exam';
-  track?: 'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics' | string;
+  track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | string;
   correctCount: number;
   totalQuestions: number;
   skippedCount?: number;

@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { ClassLevel } from '../types';
 import { AuthorSpotlight } from './AuthorSpotlight';
+import { ELEMENTARY_CHAPTERS } from '../data/chaptersData';
 
 interface AboutViewProps {
   onSelectClass: (classLevel: ClassLevel) => void;
@@ -215,12 +216,7 @@ export const AboutView: React.FC<AboutViewProps> = ({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {([9, 10, 11, 12] as ClassLevel[]).map((lvl) => {
-              const chapterCountMap: Record<number, string> = {
-                9: '17 Structured Units',
-                10: '15 Structured Chapters',
-                11: '12 Structured Chapters',
-                12: '11 Structured Chapters',
-              };
+              const count = ELEMENTARY_CHAPTERS.filter((c) => c.class === lvl && (!c.track || c.track === 'Elementary Mathematics')).length;
               return (
                 <button
                   key={lvl}
@@ -237,7 +233,7 @@ export const AboutView: React.FC<AboutViewProps> = ({
                     Class {lvl} Mathematics
                   </h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                    {chapterCountMap[lvl]}
+                    {count} Structured Chapters
                   </p>
                 </button>
               );

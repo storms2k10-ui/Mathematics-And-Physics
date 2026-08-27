@@ -33,7 +33,7 @@ export default function App() {
   const { isOffline, queueOfflineAttempt } = useOffline();
   // Navigation / View state
   const [activeTab, setActiveTab] = useState<NavTab>('home');
-  const [activeTrack, setActiveTrack] = useState<'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics'>('Elementary Mathematics');
+  const [activeTrack, setActiveTrack] = useState<'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas'>('Elementary Mathematics');
   const [selectedClass, setSelectedClass] = useState<ClassLevel>(9);
   const [activeContentSection, setActiveContentSection] = useState<ContentSection>('definitions');
   const [activeContentSubject, setActiveContentSubject] = useState<ContentSubject>('mathematics');
@@ -130,7 +130,7 @@ export default function App() {
   const handleNavigate = (
     tab: NavTab, 
     classLevel?: ClassLevel, 
-    track?: 'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics'
+    track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas'
   ) => {
     setActiveTab(tab);
     if (track) {
@@ -169,7 +169,7 @@ export default function App() {
   // Handler to select a class from subject dropdown or hero
   const handleSelectClass = (
     lvl: ClassLevel,
-    track?: 'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics'
+    track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas'
   ) => {
     setSelectedClass(lvl);
     if (track) {
@@ -424,8 +424,8 @@ export default function App() {
   // Current class info object
   const currentClassInfo = classesInfo.find((c) => c.level === selectedClass) || {
     level: selectedClass,
-    title: `Class ${selectedClass} Mathematics`,
-    subtitle: 'Elementary & Advanced Mathematics Curriculum',
+    title: `Class ${selectedClass} ${activeTrack === 'Elementary Mathematics' ? 'Mathematics' : activeTrack === 'Elementary Physics' ? 'Physics' : activeTrack}`,
+    subtitle: `${activeTrack} Curriculum`,
     description: 'Comprehensive practice for school and board examinations.',
     totalChapters: currentChapters.length,
     totalQuestions: currentChapters.reduce((acc, c) => acc + c.questionCount, 0),
@@ -607,9 +607,6 @@ export default function App() {
                     selectedClass={selectedClass}
                     onSelectTrack={(track) => {
                       setActiveTrack(track);
-                      if (track === 'Advanced Mathematics' && selectedClass < 11) {
-                        setSelectedClass(11);
-                      }
                     }}
                     onSelectClass={(lvl, track) => {
                       setSelectedClass(lvl);

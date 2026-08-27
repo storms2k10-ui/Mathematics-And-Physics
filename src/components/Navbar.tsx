@@ -21,6 +21,7 @@ import {
   GraduationCap,
   Sparkles,
   Zap,
+  FlaskConical,
   Settings
 } from 'lucide-react';
 import { ClassLevel } from '../types';
@@ -37,11 +38,11 @@ interface NavbarProps {
   selectedClass: ClassLevel | null;
   activeContentSection?: ContentSection;
   activePhilosopherType?: 'mathematicians' | 'physicists';
-  activeTrack?: 'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics';
-  onNavigate: (tab: NavTab, classLevel?: ClassLevel, track?: 'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics') => void;
+  activeTrack?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics';
+  onNavigate: (tab: NavTab, classLevel?: ClassLevel, track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics') => void;
   onNavigateContentSection?: (section: ContentSection, subject?: ContentSubject) => void;
   onSelectPhilosopherType?: (type: 'mathematicians' | 'physicists') => void;
-  onOpenLeaderboard?: (track?: 'Elementary Mathematics' | 'Advanced Mathematics' | 'Elementary Physics' | 'Advanced Physics') => void;
+  onOpenLeaderboard?: (track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics') => void;
   onOpenAuth?: () => void;
   onOpenProfile?: () => void;
 }
@@ -67,7 +68,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   // Strictly default to false - NEVER expand any section until clicked
   const [isMathExpandedInSubject, setIsMathExpandedInSubject] = useState(false);
-  const [isAdvMathExpandedInSubject, setIsAdvMathExpandedInSubject] = useState(false);
+  const [isChemistryExpandedInSubject, setIsChemistryExpandedInSubject] = useState(false);
   const [isPhysicsExpandedInSubject, setIsPhysicsExpandedInSubject] = useState(false);
   const [isAdvPhysicsExpandedInSubject, setIsAdvPhysicsExpandedInSubject] = useState(false);
 
@@ -78,17 +79,33 @@ export const Navbar: React.FC<NavbarProps> = ({
   const { currentUser, userProfile } = useAuth();
   const { isOnline, isConnectionStable, indicatorDotClass, statusLabel } = useOffline();
 
-  // Dynamic Chapter Auto-Counting per Class
-  const chapterCounts = useMemo(() => {
+  // Dynamic Chapter Auto-Counting per Class and Track
+  const mathChapterCounts = useMemo(() => {
     return {
-      9: ALL_CHAPTERS.filter((c) => c.class === 9).length,
-      10: ALL_CHAPTERS.filter((c) => c.class === 10).length,
-      11: ALL_CHAPTERS.filter((c) => c.class === 11).length,
-      12: ALL_CHAPTERS.filter((c) => c.class === 12).length,
+      9: ALL_CHAPTERS.filter((c) => c.class === 9 && (!c.track || c.track === 'Elementary Mathematics')).length,
+      10: ALL_CHAPTERS.filter((c) => c.class === 10 && (!c.track || c.track === 'Elementary Mathematics')).length,
+      11: ALL_CHAPTERS.filter((c) => c.class === 11 && (!c.track || c.track === 'Elementary Mathematics')).length,
+      12: ALL_CHAPTERS.filter((c) => c.class === 12 && (!c.track || c.track === 'Elementary Mathematics')).length,
     };
   }, []);
 
-  const handleClassSelect = (lvl: ClassLevel, track: 'Elementary Mathematics' | 'Advanced Mathematics' = 'Elementary Mathematics') => {
+  const chemistryChapterCounts = useMemo(() => {
+    return {
+      9: ALL_CHAPTERS.filter((c) => c.class === 9 && c.track === 'Chemistry').length,
+      10: ALL_CHAPTERS.filter((c) => c.class === 10 && c.track === 'Chemistry').length,
+      11: ALL_CHAPTERS.filter((c) => c.class === 11 && c.track === 'Chemistry').length,
+      12: ALL_CHAPTERS.filter((c) => c.class === 12 && c.track === 'Chemistry').length,
+    };
+  }, []);
+
+  const physicsChapterCounts = useMemo(() => {
+    return {
+      11: ALL_CHAPTERS.filter((c) => c.class === 11 && c.track === 'Elementary Physics').length,
+      12: ALL_CHAPTERS.filter((c) => c.class === 12 && c.track === 'Elementary Physics').length,
+    };
+  }, []);
+
+  const handleClassSelect = (lvl: ClassLevel, track: 'Elementary Mathematics' | 'Chemistry' = 'Elementary Mathematics') => {
     onNavigate('classes', lvl, track);
     setSubjectDropdownOpen(false);
     setContentDropdownOpen(false);
@@ -279,7 +296,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                             >
                               <span className="font-semibold">Class {lvl} Mathematics</span>
                               <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-500 font-semibold">
-                                {chapterCounts[lvl]} Ch
+                                {mathChapterCounts[lvl]} Ch
                               </span>
                             </button>
                           ))}
@@ -287,48 +304,42 @@ export const Navbar: React.FC<NavbarProps> = ({
                       )}
                     </div>
 
-                    {/* 2. ADVANCED MATHEMATICS (Click to expand Class 11 & Class 12) */}
+                    {/* 2. CHEMISTRY (Click to expand Class 9, 10, 11 & 12) */}
                     <div>
                       <button
                         type="button"
                         onClick={(e) => {
                           e.stopPropagation();
-                          setIsAdvMathExpandedInSubject(!isAdvMathExpandedInSubject);
+                          setIsChemistryExpandedInSubject(!isChemistryExpandedInSubject);
                         }}
-                        className="w-full text-left px-3 py-2.5 rounded-xl text-xs sm:text-sm flex items-center justify-between hover:bg-purple-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-800 dark:text-slate-100"
+                        className="w-full text-left px-3 py-2.5 rounded-xl text-xs sm:text-sm flex items-center justify-between hover:bg-emerald-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-800 dark:text-slate-100"
                       >
-                        <span className="flex items-center gap-2 font-bold text-purple-700 dark:text-purple-300">
-                          <span className="w-7 h-7 rounded-lg bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 flex items-center justify-center text-xs font-bold shrink-0">
-                            <Sparkles className="w-4 h-4" />
+                        <span className="flex items-center gap-2 font-bold text-emerald-700 dark:text-emerald-300">
+                          <span className="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 flex items-center justify-center text-xs font-bold shrink-0">
+                            <FlaskConical className="w-4 h-4" />
                           </span>
-                          <span>Advanced Mathematics</span>
+                          <span>Chemistry</span>
                         </span>
                         <div className="flex items-center gap-1.5 text-xs text-slate-400">
-                          <span className="text-[10px] font-bold">2 Classes</span>
-                          <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isAdvMathExpandedInSubject ? 'rotate-180' : ''}`} />
+                          <span className="text-[10px] font-bold">4 Classes</span>
+                          <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isChemistryExpandedInSubject ? 'rotate-180' : ''}`} />
                         </div>
                       </button>
 
-                      {isAdvMathExpandedInSubject && (
-                        <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-purple-200 dark:border-purple-800 ml-4 animate-in fade-in duration-150">
-                          <button
-                            onClick={() => handleClassSelect(11, 'Advanced Mathematics')}
-                            className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs flex items-center justify-between hover:bg-purple-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
-                          >
-                            <span className="font-semibold">Class 11 Advanced Mathematics</span>
-                            <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 font-bold">
-                              Advanced
-                            </span>
-                          </button>
-                          <button
-                            onClick={() => handleClassSelect(12, 'Advanced Mathematics')}
-                            className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs flex items-center justify-between hover:bg-purple-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
-                          >
-                            <span className="font-semibold">Class 12 Advanced Mathematics</span>
-                            <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 font-bold">
-                              Advanced
-                            </span>
-                          </button>
+                      {isChemistryExpandedInSubject && (
+                        <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-emerald-200 dark:border-emerald-800 ml-4 animate-in fade-in duration-150">
+                          {([9, 10, 11, 12] as ClassLevel[]).map((lvl) => (
+                            <button
+                              key={lvl}
+                              onClick={() => handleClassSelect(lvl, 'Chemistry')}
+                              className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs flex items-center justify-between hover:bg-emerald-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
+                            >
+                              <span className="font-semibold">Class {lvl} Chemistry</span>
+                              <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-bold">
+                                {chemistryChapterCounts[lvl]} Ch
+                              </span>
+                            </button>
+                          ))}
                         </div>
                       )}
                     </div>
@@ -367,7 +378,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                             >
                               <span className="font-semibold">Class {lvl} Physics</span>
                               <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-cyan-50 dark:bg-cyan-950/80 text-cyan-700 dark:text-cyan-300 font-bold">
-                                14 Chapters
+                                {physicsChapterCounts[lvl]} Ch
                               </span>
                             </button>
                           ))}
@@ -958,44 +969,37 @@ export const Navbar: React.FC<NavbarProps> = ({
                     }`}
                   >
                     <div>Class {lvl}</div>
-                    <div className="text-[8px] opacity-70 font-normal">{chapterCounts[lvl]} Ch</div>
+                    <div className="text-[8px] opacity-70 font-normal">{mathChapterCounts[lvl]} Ch</div>
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* 2. Advanced Mathematics */}
-            <div className="rounded-xl border border-purple-200/80 dark:border-purple-900/50 bg-purple-50/40 dark:bg-purple-950/20 p-2.5 space-y-2">
+            {/* 2. Chemistry */}
+            <div className="rounded-xl border border-emerald-200/80 dark:border-emerald-900/50 bg-emerald-50/40 dark:bg-emerald-950/20 p-2.5 space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-lg bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 flex items-center justify-center text-xs">
-                    <Sparkles className="w-3.5 h-3.5" />
+                  <span className="w-6 h-6 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 flex items-center justify-center text-xs">
+                    <FlaskConical className="w-3.5 h-3.5" />
                   </span>
-                  <span className="text-xs font-bold text-purple-950 dark:text-purple-200">Advanced Mathematics</span>
+                  <span className="text-xs font-bold text-emerald-950 dark:text-emerald-200">Chemistry</span>
                 </div>
-                <span className="text-[10px] font-bold text-purple-600 dark:text-purple-400">Classes 11 &amp; 12</span>
+                <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">Classes 9, 10, 11 &amp; 12</span>
               </div>
               <div className="grid grid-cols-2 gap-2">
-                <button
-                  onClick={() => handleClassSelect(11, 'Advanced Mathematics')}
-                  className={`py-2 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${
-                    activeTab === 'classes' && selectedClass === 11 && activeTrack === 'Advanced Mathematics'
-                      ? 'bg-purple-600 text-white shadow-sm'
-                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-purple-50'
-                  }`}
-                >
-                  Class 11 Advanced Math
-                </button>
-                <button
-                  onClick={() => handleClassSelect(12, 'Advanced Mathematics')}
-                  className={`py-2 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${
-                    activeTab === 'classes' && selectedClass === 12 && activeTrack === 'Advanced Mathematics'
-                      ? 'bg-purple-600 text-white shadow-sm'
-                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-purple-50'
-                  }`}
-                >
-                  Class 12 Advanced Math
-                </button>
+                {([9, 10, 11, 12] as ClassLevel[]).map((lvl) => (
+                  <button
+                    key={lvl}
+                    onClick={() => handleClassSelect(lvl, 'Chemistry')}
+                    className={`py-2 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${
+                      activeTab === 'classes' && selectedClass === lvl && activeTrack === 'Chemistry'
+                        ? 'bg-emerald-600 text-white shadow-sm'
+                        : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-emerald-50'
+                    }`}
+                  >
+                    Class {lvl} Chemistry ({chemistryChapterCounts[lvl]} Ch)
+                  </button>
+                ))}
               </div>
             </div>
 
@@ -1021,7 +1025,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-cyan-50'
                     }`}
                   >
-                    Class {lvl} Physics (14 Ch)
+                    Class {lvl} Physics ({physicsChapterCounts[lvl]} Ch)
                   </button>
                 ))}
               </div>
