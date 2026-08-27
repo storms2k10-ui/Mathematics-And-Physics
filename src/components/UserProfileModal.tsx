@@ -38,6 +38,7 @@ import {
   ReferenceLine,
 } from 'recharts';
 import { useAuth } from '../context/AuthContext';
+import { useOffline } from '../context/OfflineContext';
 import { ClassLevel, Chapter } from '../types';
 import { MathText } from './MathText';
 
@@ -55,6 +56,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   onSelectChapter,
 }) => {
   const { userProfile: authProfile, signOut, syncWithServer } = useAuth();
+  const { isOnline, isOffline } = useOffline();
   const [copiedShare, setCopiedShare] = useState(false);
   const [now, setNow] = useState<number>(() => Date.now());
 
@@ -305,16 +307,36 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
             </button>
           </div>
 
-          {/* Candidate Profile Details & Avatar */}
+          {/* Candidate Profile Details & Avatar with Status Indicator */}
           <div className="flex items-center gap-2.5 sm:gap-3.5 relative z-10">
-            <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl ${theme.avatarBg} flex items-center justify-center border-2 shadow-lg text-lg sm:text-2xl shrink-0`}>
-              {userProfile.displayName?.charAt(0).toUpperCase() || 'S'}
+            <div className="relative shrink-0">
+              <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl ${theme.avatarBg} flex items-center justify-center border-2 shadow-lg text-lg sm:text-2xl`}>
+                {userProfile.displayName?.charAt(0).toUpperCase() || 'S'}
+              </div>
+              <span 
+                id="profile-modal-status-indicator"
+                className={`absolute -bottom-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 border-slate-900 transition-colors duration-300 ${
+                  isOnline 
+                    ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]' 
+                    : 'bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.8)]'
+                }`}
+                title={isOnline ? 'Online - Cloud Sync Active' : 'Offline - Local Mode Active'}
+              />
             </div>
             
             <div className="min-w-0">
-              <h2 className="text-base sm:text-xl font-black tracking-tight text-white truncate">
-                {userProfile.displayName}
-              </h2>
+              <div className="flex items-center gap-2">
+                <h2 className="text-base sm:text-xl font-black tracking-tight text-white truncate">
+                  {userProfile.displayName}
+                </h2>
+                <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold border uppercase tracking-wider ${
+                  isOnline 
+                    ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/40' 
+                    : 'bg-yellow-500/20 text-yellow-300 border-yellow-400/40'
+                }`}>
+                  {isOnline ? 'Online' : 'Offline'}
+                </span>
+              </div>
               <p className="text-[10px] sm:text-xs text-white/80 flex items-center gap-1 mt-0.5 font-medium truncate">
                 <Mail className="w-3 h-3 shrink-0" />
                 <span className="truncate">{userProfile.email || 'Registered Scholar'}</span>

@@ -21,11 +21,7 @@ import {
   GraduationCap,
   Sparkles,
   Zap,
-  Settings,
-  Wifi,
-  WifiOff,
-  RefreshCw,
-  Database
+  Settings
 } from 'lucide-react';
 import { ClassLevel } from '../types';
 import { useTheme } from '../context/ThemeContext';
@@ -80,7 +76,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const { isDarkMode, toggleTheme } = useTheme();
   const { currentUser, userProfile } = useAuth();
-  const { isOnline, isOffline, isManualOffline, isSyncing, pendingSyncCount, toggleManualOffline, triggerManualSync } = useOffline();
+  const { isOnline } = useOffline();
 
   // Dynamic Chapter Auto-Counting per Class
   const chapterCounts = useMemo(() => {
@@ -633,35 +629,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
           </div>
 
-          {/* Right Actions: Settings 3-Line Button with Profile, Night/Day, Offline Mode, and About Me */}
+          {/* Right Actions: Settings Menu, etc. */}
           <div className="flex items-center gap-2">
-            
-            {/* Connection Status Indicator Pill */}
-            {isOffline ? (
-              <button
-                onClick={toggleManualOffline}
-                className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-[11px] font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-700/60 hover:bg-amber-100 dark:hover:bg-amber-900/60 transition-colors cursor-pointer shadow-2xs"
-                title="Offline Mode Active — Click to switch online or sync"
-              >
-                <WifiOff className="w-3 h-3 text-amber-500 animate-pulse" />
-                <span>Offline</span>
-                {pendingSyncCount > 0 && (
-                  <span className="bg-amber-600 text-white rounded-full px-1.5 py-0.2 text-[9px] font-extrabold">
-                    {pendingSyncCount}
-                  </span>
-                )}
-              </button>
-            ) : isSyncing ? (
-              <div className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-[11px] font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60">
-                <RefreshCw className="w-3 h-3 text-indigo-600 animate-spin" />
-                <span>Syncing</span>
-              </div>
-            ) : (
-              <div className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-[11px] font-bold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-800/50" title="Connected to Cloud Firestore & Server">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>Online</span>
-              </div>
-            )}
 
             {/* Settings 3-Line Menu Dropdown */}
             <div className="relative">
@@ -673,7 +642,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     ? 'bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-600 dark:border-indigo-500 shadow-md'
                     : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700'
                 }`}
-                title="Settings: Profile, Theme, Offline Mode, About"
+                title="Settings: Profile, Theme, About"
                 aria-label="Settings Menu"
                 aria-expanded={settingsDropdownOpen}
               >
@@ -706,7 +675,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </div>
 
                     <div className="p-2 space-y-1">
-                      {/* 1. Profile / Auth Button */}
+                      {/* 1. Profile / Auth Button with Green/Yellow Online Status */}
                       {currentUser || userProfile ? (
                         <button
                           id="settings-profile-btn"
@@ -716,15 +685,24 @@ export const Navbar: React.FC<NavbarProps> = ({
                           }}
                           className="w-full text-left px-3 py-2.5 rounded-xl text-xs sm:text-sm flex items-center gap-2.5 hover:bg-indigo-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-800 dark:text-slate-100 group"
                         >
-                          <span className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 flex items-center justify-center text-xs font-bold shrink-0 group-hover:scale-105 transition-transform">
-                            <User className="w-4 h-4" />
-                          </span>
+                          <div className="relative shrink-0">
+                            <span className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 flex items-center justify-center text-xs font-bold group-hover:scale-105 transition-transform">
+                              <User className="w-4 h-4" />
+                            </span>
+                            <span className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full ring-2 ring-white dark:ring-slate-900 ${
+                              isOnline ? 'bg-emerald-500' : 'bg-yellow-400'
+                            }`} />
+                          </div>
                           <div className="flex-1 min-w-0">
                             <span className="font-bold block truncate text-xs sm:text-sm text-indigo-950 dark:text-indigo-200">
                               {userProfile?.displayName || currentUser?.email?.split('@')[0] || 'Profile'}
                             </span>
-                            <span className="text-[10px] text-slate-400 block truncate">
-                              View Profile &amp; Stats
+                            <span className="text-[10px] text-slate-400 block truncate flex items-center gap-1">
+                              <span>View Profile &amp; Stats</span>
+                              <span>•</span>
+                              <span className={isOnline ? 'text-emerald-600 dark:text-emerald-400 font-semibold' : 'text-yellow-600 dark:text-yellow-400 font-semibold'}>
+                                {isOnline ? 'Online' : 'Offline'}
+                              </span>
                             </span>
                           </div>
                           <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
@@ -738,78 +716,27 @@ export const Navbar: React.FC<NavbarProps> = ({
                           }}
                           className="w-full text-left px-3 py-2.5 rounded-xl text-xs sm:text-sm flex items-center gap-2.5 hover:bg-indigo-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-800 dark:text-slate-100 group"
                         >
-                          <span className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 flex items-center justify-center text-xs font-bold shrink-0 group-hover:scale-105 transition-transform">
-                            <LogIn className="w-4 h-4" />
-                          </span>
+                          <div className="relative shrink-0">
+                            <span className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 flex items-center justify-center text-xs font-bold group-hover:scale-105 transition-transform">
+                              <LogIn className="w-4 h-4" />
+                            </span>
+                            <span className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full ring-2 ring-white dark:ring-slate-900 ${
+                              isOnline ? 'bg-emerald-500' : 'bg-yellow-400'
+                            }`} />
+                          </div>
                           <div className="flex-1 min-w-0">
                             <span className="font-bold block text-xs sm:text-sm text-indigo-950 dark:text-indigo-200">
                               Sign In / Register
                             </span>
                             <span className="text-[10px] text-slate-400 block">
-                              Sync scores &amp; progress
+                              Sync scores &amp; progress ({isOnline ? 'Online' : 'Offline'})
                             </span>
                           </div>
                           <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                         </button>
                       )}
 
-                      {/* 2. Offline Mode Toggle */}
-                      <button
-                        id="settings-offline-mode-btn"
-                        onClick={() => {
-                          toggleManualOffline();
-                        }}
-                        className="w-full text-left px-3 py-2.5 rounded-xl text-xs sm:text-sm flex items-center justify-between hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-800 dark:text-slate-100 group"
-                      >
-                        <div className="flex items-center gap-2.5">
-                          <span className={`w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold shrink-0 transition-transform group-hover:scale-105 ${
-                            isOffline
-                              ? 'bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-300'
-                              : 'bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-300'
-                          }`}>
-                            {isOffline ? <WifiOff className="w-4 h-4" /> : <Wifi className="w-4 h-4" />}
-                          </span>
-                          <div>
-                            <span className="font-bold block text-xs sm:text-sm">
-                              Offline Mode
-                            </span>
-                            <span className="text-[10px] text-slate-400 block">
-                              {isOffline ? 'Offline cache & auto-sync enabled' : 'Connected to Cloud DB'}
-                            </span>
-                          </div>
-                        </div>
-                        <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
-                          isOffline
-                            ? 'bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800'
-                            : 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800'
-                        }`}>
-                          {isOffline ? 'Offline' : 'Online'}
-                        </span>
-                      </button>
-
-                      {/* Pending sync quick button inside settings if items exist */}
-                      {pendingSyncCount > 0 && (
-                        <div className="px-3 py-2 bg-amber-50 dark:bg-amber-950/40 rounded-xl border border-amber-200 dark:border-amber-800/50 flex items-center justify-between gap-2 text-xs">
-                          <span className="text-amber-800 dark:text-amber-300 font-bold text-[11px] flex items-center gap-1">
-                            <Database className="w-3 h-3" />
-                            <span>{pendingSyncCount} tests cached offline</span>
-                          </span>
-                          {navigator.onLine && (
-                            <button
-                              onClick={async () => {
-                                await triggerManualSync();
-                              }}
-                              disabled={isSyncing}
-                              className="px-2 py-1 bg-amber-600 text-white rounded-lg text-[10px] font-bold hover:bg-amber-700 transition-colors flex items-center gap-1 cursor-pointer"
-                            >
-                              <RefreshCw className={`w-3 h-3 ${isSyncing ? 'animate-spin' : ''}`} />
-                              <span>{isSyncing ? 'Syncing...' : 'Sync Now'}</span>
-                            </button>
-                          )}
-                        </div>
-                      )}
-
-                      {/* 3. Night / Day Mode Toggle Button */}
+                      {/* 2. Night / Day Mode Toggle Button */}
                       <button
                         id="settings-theme-toggle-btn"
                         onClick={() => {
@@ -847,7 +774,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         </span>
                       </button>
 
-                      {/* 4. About Me Button */}
+                      {/* 3. About Me Button */}
                       <button
                         id="settings-about-btn"
                         onClick={() => {
@@ -900,6 +827,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Top Quick Actions Grid */}
           <div className="grid grid-cols-2 gap-2">
             <button
+              id="mobile-nav-profile-btn"
               onClick={() => {
                 if (currentUser || userProfile) {
                   if (onOpenProfile) onOpenProfile();
@@ -908,9 +836,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }
                 setMobileMenuOpen(false);
               }}
-              className="p-2.5 rounded-xl text-xs font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 flex items-center justify-center gap-1.5 cursor-pointer"
+              className="p-2.5 rounded-xl text-xs font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 flex items-center justify-center gap-2 cursor-pointer"
             >
-              <User className="w-3.5 h-3.5" />
+              <div className="relative shrink-0">
+                <User className="w-3.5 h-3.5" />
+                <span className={`absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full ring-1.5 ring-white dark:ring-slate-900 ${
+                  isOnline ? 'bg-emerald-500 shadow-[0_0_4px_rgba(16,185,129,0.8)]' : 'bg-yellow-400 shadow-[0_0_4px_rgba(250,204,21,0.8)]'
+                }`} />
+              </div>
               <span className="truncate">{userProfile?.displayName || (currentUser ? 'Profile' : 'Sign In')}</span>
             </button>
             <button
@@ -923,86 +856,59 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>{isDarkMode ? 'Day Mode' : 'Night Mode'}</span>
             </button>
 
-            {/* Offline Mode Button Mobile */}
             <button
               onClick={() => {
-                toggleManualOffline();
+                handleContentSectionSelect('definitions');
               }}
-              className={`p-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer border ${
-                isOffline
-                  ? 'bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-700'
-                  : 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+              className={`p-2.5 rounded-xl text-xs font-bold cursor-pointer transition-colors flex items-center justify-center gap-1.5 ${
+                activeTab === 'dictionary'
+                  ? 'bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400'
+                  : 'text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/60 hover:bg-slate-100'
               }`}
             >
-              {isOffline ? <WifiOff className="w-3.5 h-3.5 text-amber-500" /> : <Wifi className="w-3.5 h-3.5 text-emerald-500" />}
-              <span>{isOffline ? 'Offline Mode' : 'Online Mode'}</span>
-              {pendingSyncCount > 0 && (
-                <span className="bg-amber-600 text-white rounded-full px-1.5 text-[9px] font-bold">
-                  {pendingSyncCount}
-                </span>
-              )}
+              <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
+              <span>Content Hub</span>
             </button>
-
-            {/* If offline items exist, show Sync button, else Content Hub */}
-            {pendingSyncCount > 0 && navigator.onLine ? (
-              <button
-                onClick={async () => {
-                  await triggerManualSync();
-                }}
-                disabled={isSyncing}
-                className="p-2.5 rounded-xl text-xs font-bold bg-amber-600 text-white flex items-center justify-center gap-1.5 cursor-pointer"
-              >
-                <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin' : ''}`} />
-                <span>{isSyncing ? 'Syncing...' : 'Sync Now'}</span>
-              </button>
-            ) : (
-              <button
-                onClick={() => {
-                  handleContentSectionSelect('definitions');
-                }}
-                className={`p-2.5 rounded-xl text-xs font-bold cursor-pointer transition-colors ${
-                  activeTab === 'dictionary'
-                    ? 'bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400'
-                    : 'text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/60 hover:bg-slate-100'
-                }`}
-              >
-                Content Hub
-              </button>
-            )}
 
             <button
               onClick={() => handlePhilosophySelect('mathematicians')}
-              className={`p-2.5 rounded-xl text-xs font-bold cursor-pointer transition-colors ${
+              className={`p-2.5 rounded-xl text-xs font-bold cursor-pointer transition-colors flex items-center justify-center gap-1.5 ${
                 activeTab === 'philosophy' && activePhilosopherType === 'mathematicians'
                   ? 'bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400'
                   : 'text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/60 hover:bg-slate-100'
               }`}
             >
-              Mathematicians
+              <Atom className="w-3.5 h-3.5 text-purple-500" />
+              <span>Thinkers</span>
             </button>
+
             <button
               onClick={() => handlePhilosophySelect('physicists')}
-              className={`p-2.5 rounded-xl text-xs font-bold cursor-pointer transition-colors ${
+              className={`p-2.5 rounded-xl text-xs font-bold cursor-pointer transition-colors flex items-center justify-center gap-1.5 ${
                 activeTab === 'philosophy' && activePhilosopherType === 'physicists'
                   ? 'bg-cyan-50 dark:bg-cyan-950 text-cyan-600 dark:text-cyan-400'
                   : 'text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/60 hover:bg-slate-100'
               }`}
             >
-              Physicists
+              <Atom className="w-3.5 h-3.5 text-cyan-500" />
+              <span>Physicists</span>
             </button>
+
             <button
               onClick={() => {
                 onNavigate('about');
                 setMobileMenuOpen(false);
               }}
-              className={`p-2.5 rounded-xl text-xs font-bold cursor-pointer transition-colors ${
+              className={`p-2.5 rounded-xl text-xs font-bold cursor-pointer transition-colors flex items-center justify-center gap-1.5 ${
                 activeTab === 'about'
                   ? 'bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400'
                   : 'text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/60 hover:bg-slate-100'
               }`}
             >
-              About Me
+              <GraduationCap className="w-3.5 h-3.5 text-indigo-500" />
+              <span>About Me</span>
             </button>
+
             {onOpenLeaderboard && (
               <button
                 onClick={() => {

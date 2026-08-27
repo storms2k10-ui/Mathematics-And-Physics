@@ -46,6 +46,7 @@ import {
 import { ClassLevel, Chapter } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
+import { useOffline } from '../context/OfflineContext';
 import { ALL_CHAPTERS } from '../data/chaptersData';
 import { ADVANCED_MATH_11_CHAPTERS } from '../data/mockData';
 import { ALL_FORMULAS } from '../data/formulasData';
@@ -90,6 +91,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
 }) => {
   const { userProfile, isAuthenticated } = useAuth();
   const { isDarkMode, toggleTheme } = useTheme();
+  const { isOnline, isOffline } = useOffline();
   const [mobileTab, setMobileTab] = useState<MobileTab>('studio');
   const [selectedStyleId, setSelectedStyleId] = useState<string>('elem-math');
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -444,9 +446,15 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                   )}
                 </div>
               </div>
-              <span className={`absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-slate-900 ${
-                isAuthenticated ? 'bg-emerald-500 animate-pulse' : 'bg-amber-400'
-              }`} />
+              <span 
+                id="mobile-user-status-indicator"
+                className={`absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-slate-900 transition-colors duration-300 ${
+                  isOnline 
+                    ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]' 
+                    : 'bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.8)]'
+                }`}
+                title={isOnline ? 'Online - Cloud Sync Active' : 'Offline - Local Mode Active'}
+              />
             </button>
 
             {/* Greeting & Subtitle (Positioned near top-left) */}
