@@ -42,7 +42,8 @@ import {
   Mail,
   Building2,
   CheckCircle,
-  FlaskConical
+  FlaskConical,
+  Compass
 } from 'lucide-react';
 import { ClassLevel, Chapter } from '../types';
 import { useAuth } from '../context/AuthContext';
@@ -65,10 +66,10 @@ import { MathText } from './MathText';
 export type MobileTab = 'philosophers' | 'studio' | 'modules' | 'rankings' | 'profile';
 
 interface MobileAppViewProps {
-  activeTrack: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics';
+  activeTrack: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas';
   selectedClass: ClassLevel;
-  onSelectTrack: (track: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics') => void;
-  onSelectClass: (lvl: ClassLevel, track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics') => void;
+  onSelectTrack: (track: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas') => void;
+  onSelectClass: (lvl: ClassLevel, track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas') => void;
   onStartChapterPractice: (chapter: Chapter) => void;
   onStartClassPractice: (lvl: ClassLevel) => void;
   onOpenLeaderboard: () => void;
@@ -129,8 +130,8 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
     if (activeTrack === 'Elementary Physics') {
       return ALL_CHAPTERS.filter((ch) => ch.class === selectedClass && ch.track === 'Elementary Physics');
     }
-    if (activeTrack === 'Advanced Physics') {
-      return ALL_CHAPTERS.filter((ch) => ch.class === selectedClass && ch.track === 'Advanced Physics');
+    if (activeTrack === 'Pre Calculas') {
+      return ALL_CHAPTERS.filter((ch) => ch.class === selectedClass && ch.track === 'Pre Calculas');
     }
     // Elementary Mathematics (Standard)
     return ALL_CHAPTERS.filter((ch) => {
@@ -361,16 +362,16 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
       sampleTopic: 'Mechanics, Heat, Optics & Electricity',
     },
     {
-      id: 'adv-phys',
-      trackName: 'Advanced Physics' as const,
-      label: 'Adv Physics',
-      badge: 'Pro',
-      icon: Flame,
-      bgGradient: 'from-amber-400/20 via-orange-400/20 to-rose-400/20',
-      activeRing: 'border-amber-500 shadow-amber-500/30',
-      iconColor: 'text-amber-600 dark:text-amber-400',
-      description: 'Advanced Waves & Electromagnetism',
-      sampleTopic: 'Fields, Waves & Modern Quantum Physics',
+      id: 'pre-calculas',
+      trackName: 'Pre Calculas' as const,
+      label: 'Pre Calculas',
+      badge: 'Prep',
+      icon: Calculator,
+      bgGradient: 'from-violet-400/20 via-purple-400/20 to-indigo-400/20',
+      activeRing: 'border-violet-500 shadow-violet-500/30',
+      iconColor: 'text-violet-600 dark:text-violet-400',
+      description: 'Class 11 Pre-Calculus Foundations',
+      sampleTopic: 'Functions, Trigonometry & Geometry',
     },
   ];
 
@@ -404,13 +405,13 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
       action: () => onSelectTrack('Elementary Physics'),
     },
     {
-      id: 'adv-phys',
-      track: 'Advanced Physics' as const,
-      title: 'Adv Physics',
-      subtitle: 'Waves & Quantum',
-      icon: Flame,
-      gradient: 'from-amber-100 to-orange-200 dark:from-amber-950/40 dark:to-orange-900/40',
-      action: () => onSelectTrack('Advanced Physics'),
+      id: 'pre-calculas',
+      track: 'Pre Calculas' as const,
+      title: 'Pre Calculas',
+      subtitle: 'Class 11 Foundation',
+      icon: Calculator,
+      gradient: 'from-violet-100 to-purple-200 dark:from-violet-950/40 dark:to-purple-900/40',
+      action: () => onSelectTrack('Pre Calculas'),
     },
   ];
 
@@ -430,7 +431,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
               id="mobile-user-avatar-btn"
               onClick={isAuthenticated ? onOpenProfile : onOpenAuth}
               className="relative group cursor-pointer focus:outline-hidden transform active:scale-95 hover:scale-105 transition-all duration-300 shrink-0"
-              title={isAuthenticated ? 'View Scholar Profile' : 'Sign In / Register'}
+              title={isAuthenticated ? 'View Profile' : 'Sign In / Register'}
             >
               <div className="w-10 h-10 rounded-full p-0.5 bg-gradient-to-tr from-pink-500 via-purple-500 to-amber-400 shadow-md group-hover:shadow-lg group-hover:shadow-pink-500/30 transition-all">
                 <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center overflow-hidden">
@@ -505,7 +506,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
           <div className="space-y-3.5 animate-fade-in">
 
             {/* 1. CLASS LEVEL SELECTION CARD */}
-            <div className="p-4 rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 shadow-xl shadow-purple-500/5 space-y-2.5">
+            <div className="p-3 sm:p-3.5 rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 shadow-lg shadow-purple-500/5 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300">
                   Select Class Level
@@ -516,7 +517,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
               </div>
 
               {/* Class Chips with Dynamic Connected State */}
-              <div className="grid grid-cols-4 gap-2">
+              <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
                 {([9, 10, 11, 12] as ClassLevel[]).map((lvl) => {
                   const isSelected = selectedClass === lvl;
                   return (
@@ -524,16 +525,13 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                       key={lvl}
                       id={`mobile-class-select-${lvl}`}
                       onClick={() => onSelectClass(lvl, activeTrack)}
-                      className={`py-2.5 px-1 rounded-2xl font-extrabold transition-all duration-300 flex flex-col items-center justify-center gap-0.5 cursor-pointer relative overflow-hidden group ${
+                      className={`py-2 px-1 rounded-xl font-extrabold transition-all duration-300 flex items-center justify-center cursor-pointer relative overflow-hidden group ${
                         isSelected
-                          ? 'bg-gradient-to-tr from-purple-600 via-pink-600 to-rose-500 text-white shadow-lg shadow-pink-500/30 scale-102 border-2 border-white/80 ring-2 ring-pink-400/50'
-                          : 'bg-slate-100/90 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-white hover:text-purple-600 hover:shadow-md hover:border-purple-300 dark:hover:border-purple-600 border border-slate-200/60 dark:border-slate-700/60 hover:scale-105 active:scale-95'
+                          ? 'bg-gradient-to-tr from-purple-600 via-pink-600 to-rose-500 text-white shadow-md shadow-pink-500/30 scale-102 border-2 border-white/80 ring-2 ring-pink-400/50'
+                          : 'bg-slate-100/90 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-white hover:text-purple-600 hover:shadow-sm hover:border-purple-300 dark:hover:border-purple-600 border border-slate-200/60 dark:border-slate-700/60 hover:scale-105 active:scale-95'
                       }`}
                     >
                       <span className="text-xs sm:text-sm font-black group-hover:tracking-wider transition-all duration-300">Class {lvl}</span>
-                      <span className={`text-[10px] font-medium transition-colors ${isSelected ? 'text-pink-100' : 'text-slate-500 dark:text-slate-400 group-hover:text-purple-500'}`}>
-                        {lvl <= 10 ? 'Secondary' : 'Inter'}
-                      </span>
                       {isSelected && (
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full duration-1000 transition-transform" />
                       )}
@@ -544,7 +542,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
             </div>
 
             {/* 2. CHOOSE TRACK & STUDY MODE 4-TRACK GRID */}
-            <div className="p-4 rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 shadow-xl shadow-purple-500/5 space-y-3">
+            <div className="p-3 sm:p-3.5 rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 shadow-lg shadow-purple-500/5 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300">
                   Choose Track &amp; Study Mode
@@ -555,7 +553,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
               </div>
 
               {/* 2x2 Grid of the 4 Main Academic Tracks connected to Chapter List */}
-              <div className="grid grid-cols-2 gap-2.5">
+              <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
                 {styleGridItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = activeTrack === item.track;
@@ -568,23 +566,20 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                         setSelectedStyleId(item.id);
                         item.action();
                       }}
-                      className={`p-3 rounded-2xl transition-all duration-300 flex items-center gap-2.5 text-left cursor-pointer relative group ${
+                      className={`p-2 rounded-xl transition-all duration-300 flex items-center gap-1.5 sm:gap-2 text-left cursor-pointer relative group ${
                         isActive
-                          ? 'ring-2 ring-pink-500 ring-offset-2 dark:ring-offset-slate-900 shadow-lg shadow-pink-500/25 scale-[1.02] bg-pink-50/70 dark:bg-pink-950/30 border border-pink-300 dark:border-pink-800'
-                          : 'bg-slate-50/90 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 hover:scale-[1.02] active:scale-[0.98] hover:bg-white dark:hover:bg-slate-800 hover:shadow-md'
+                          ? 'ring-2 ring-pink-500 ring-offset-1 dark:ring-offset-slate-900 shadow-xs shadow-pink-500/25 scale-[1.01] bg-pink-50/70 dark:bg-pink-950/30 border border-pink-300 dark:border-pink-800'
+                          : 'bg-slate-50/90 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 hover:scale-[1.01] active:scale-[0.98] hover:bg-white dark:hover:bg-slate-800 hover:shadow-xs'
                       }`}
                     >
                       {/* Gradient Square Thumbnail */}
-                      <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${item.gradient} border border-white/60 dark:border-slate-700 flex items-center justify-center shrink-0 shadow-xs transition-all duration-300 group-hover:scale-110 ${isActive ? 'shadow-pink-500/30 ring-1 ring-pink-400' : ''}`}>
-                        <Icon className={`w-5 h-5 text-slate-800 dark:text-slate-200 stroke-[2.2] transition-transform duration-300 group-hover:rotate-6 ${isActive ? 'text-pink-600 dark:text-pink-300 scale-110' : ''}`} />
+                      <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br ${item.gradient} border border-white/60 dark:border-slate-700 flex items-center justify-center shrink-0 shadow-xs transition-all duration-300 group-hover:scale-105 ${isActive ? 'shadow-pink-500/30 ring-1 ring-pink-400' : ''}`}>
+                        <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-800 dark:text-slate-200 stroke-[2.2] transition-transform duration-300 group-hover:rotate-6 ${isActive ? 'text-pink-600 dark:text-pink-300 scale-110' : ''}`} />
                       </div>
                       
-                      <div className="min-w-0">
+                      <div className="min-w-0 flex-1">
                         <span className={`text-xs font-black block truncate transition-colors ${isActive ? 'text-pink-600 dark:text-pink-300' : 'text-slate-800 dark:text-slate-200 group-hover:text-purple-600'}`}>
                           {item.title}
-                        </span>
-                        <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium block truncate">
-                          {item.subtitle}
                         </span>
                       </div>
                     </button>
@@ -594,47 +589,38 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
             </div>
 
             {/* 3. DYNAMICALLY CONNECTED CHAPTERS OF THAT CLASS & TRACK */}
-            <div className="p-4 rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 shadow-xl shadow-purple-500/5 space-y-3">
+            <div className="p-3.5 sm:p-4 rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 shadow-xl shadow-purple-500/5 space-y-2.5">
               <div className="flex items-center justify-between">
                 <div>
                   <span className="text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300 block">
-                    Class {selectedClass} Chapters
-                  </span>
-                  <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-                    {activeTrack === 'Elementary Mathematics' ? 'Mathematics' : activeTrack === 'Elementary Physics' ? 'Physics' : activeTrack} • {chapters.length} Modules
+                    Select Chapter
                   </span>
                 </div>
-                <span className="text-[11px] font-extrabold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2.5 py-1 rounded-full border border-indigo-200/50 dark:border-indigo-800/50">
-                  {chapters.length} Ready
-                </span>
               </div>
 
               {/* Chapters list connected to Class Level & Track */}
               {chapters.length > 0 ? (
-                <div className="space-y-2 max-h-72 overflow-y-auto pr-1">
+                <div className="space-y-2 max-h-[520px] sm:max-h-[600px] overflow-y-auto pr-1">
                   {chapters.map((ch, idx) => (
                     <div
                       key={ch.id}
-                      className="p-3 rounded-2xl bg-slate-50/80 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 flex items-center justify-between gap-3 hover:border-purple-300 dark:hover:border-purple-600 hover:bg-white dark:hover:bg-slate-800 hover:shadow-md transition-all duration-300 group"
+                      className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-50/80 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 flex items-center justify-between gap-2.5 hover:border-purple-300 dark:hover:border-purple-600 hover:bg-white dark:hover:bg-slate-800 hover:shadow-md transition-all duration-300 group"
                     >
                       <div className="flex items-center gap-2.5 min-w-0">
-                        <div className="w-8 h-8 rounded-xl bg-purple-100 dark:bg-purple-950/70 text-purple-600 dark:text-purple-400 font-black text-xs flex items-center justify-center shrink-0 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-purple-100 dark:bg-purple-950/70 text-purple-600 dark:text-purple-400 font-black text-xs flex items-center justify-center shrink-0 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
                           {idx + 1}
                         </div>
                         <div className="min-w-0">
-                          <h4 className="text-xs font-extrabold text-slate-900 dark:text-white truncate group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                          <h4 className="text-xs font-extrabold text-slate-900 dark:text-white line-clamp-2 leading-snug break-words group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                             {ch.name}
                           </h4>
-                          <span className="text-[10px] text-slate-500 dark:text-slate-400 block truncate">
-                            {ch.category}
-                          </span>
                         </div>
                       </div>
 
                       <button
                         id={`mobile-start-ch-${ch.id}`}
                         onClick={() => onStartChapterPractice(ch)}
-                        className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-extrabold text-xs shadow-xs hover:shadow-md hover:scale-105 active:scale-95 flex items-center gap-1.5 shrink-0 cursor-pointer transition-all duration-200"
+                        className="px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-extrabold text-xs shadow-xs hover:shadow-md hover:scale-105 active:scale-95 flex items-center gap-1.5 shrink-0 cursor-pointer transition-all duration-200"
                         title={`Start ${ch.name}`}
                       >
                         <Play className="w-3 h-3 fill-white" />
@@ -1628,26 +1614,26 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
       </div>
 
       {/* ========================================================= */}
-      {/* ⚙️ SETTINGS, THEME & ABOUT ME MODAL (Triggered by 3-Lines Menu) */}
+      {/* ⚙️ SETTINGS, THEME & ABOUT ME MODAL (Proper Centered Modal) */}
       {/* ========================================================= */}
       {isSettingsOpen && (
         <div 
-          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-md animate-fade-in"
           onClick={() => setIsSettingsOpen(false)}
         >
           <div 
-            className="w-full max-w-lg max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 border-t sm:border border-slate-200 dark:border-slate-800 rounded-t-3xl sm:rounded-3xl shadow-2xl p-5 sm:p-6 space-y-5 text-slate-900 dark:text-white animate-scale-up"
+            className="w-full max-w-md max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-2xl p-5 sm:p-6 space-y-4 text-slate-900 dark:text-white animate-scale-up"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between pb-3.5 border-b border-slate-100 dark:border-slate-800">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-xl bg-purple-100 dark:bg-purple-950/80 text-purple-600 dark:text-purple-300 flex items-center justify-center">
                   <Settings className="w-4 h-4" />
                 </div>
                 <div>
                   <h3 className="text-base font-black tracking-tight">App Settings &amp; Preferences</h3>
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Customize appearance and learn about the author</p>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Appearance, study preferences &amp; profile</p>
                 </div>
               </div>
 
@@ -1661,7 +1647,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
             </div>
 
             {/* SECTION 1: APPEARANCE & THEME SWITCHER */}
-            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 space-y-3">
+            <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 space-y-2.5">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-300 flex items-center justify-center">
@@ -1679,7 +1665,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                 <button
                   id="settings-theme-toggle-btn"
                   onClick={toggleTheme}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs font-extrabold shadow-xs hover:border-purple-400 transition-all cursor-pointer"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs font-extrabold shadow-xs hover:border-purple-400 transition-all cursor-pointer"
                 >
                   {isDarkMode ? (
                     <>
@@ -1697,9 +1683,9 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
             </div>
 
             {/* SECTION 2: 🎓 ABOUT ME COMPACT ROW */}
-            <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 flex items-center justify-between gap-3">
+            <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3 min-w-0">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-cyan-400 p-0.5 shadow-sm shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 p-0.5 shadow-xs shrink-0">
                   <div className="w-full h-full rounded-[10px] bg-slate-900 flex items-center justify-center text-white font-black text-xs">
                     MA
                   </div>
@@ -1707,7 +1693,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                 <div className="min-w-0">
                   <div className="flex items-center gap-1.5">
                     <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">About Me</h4>
-                    <span className="px-1.5 py-0.5 rounded-md bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-[9px] font-black shrink-0">
+                    <span className="px-1.5 py-0.5 rounded-md bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 text-[9px] font-black shrink-0">
                       Author
                     </span>
                   </div>
@@ -1721,7 +1707,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                   setIsSettingsOpen(false);
                   setIsAboutMeOpen(true);
                 }}
-                className="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center gap-1 transition-all cursor-pointer shadow-xs shrink-0"
+                className="px-3.5 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold flex items-center gap-1 transition-all cursor-pointer shadow-xs shrink-0"
               >
                 <span>View</span>
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -1731,7 +1717,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
             {/* SECTION 3: ACCOUNT & FAST ACTIONS */}
             <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
               <span className="text-slate-500 dark:text-slate-400 font-medium truncate">
-                {isAuthenticated ? `Signed in as ${userProfile?.name || 'Scholar'}` : 'Guest Student Mode'}
+                {isAuthenticated ? (userProfile?.displayName ? `Signed in as ${userProfile.displayName}` : 'Signed in') : 'Guest Student Mode'}
               </span>
               <button
                 onClick={() => {
@@ -1742,7 +1728,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                     onOpenAuth();
                   }
                 }}
-                className="font-bold text-purple-600 dark:text-purple-400 hover:underline shrink-0 ml-2"
+                className="font-bold text-purple-600 dark:text-purple-400 hover:underline shrink-0 ml-2 cursor-pointer"
               >
                 {isAuthenticated ? 'View Full Profile' : 'Sign In / Register'}
               </button>
@@ -1853,68 +1839,73 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
       )}
 
       {/* ========================================================= */}
-      {/* FLOATING GLASS ISLAND / DOCK BOTTOM NAVIGATION */}
+      {/* 🧭 LABELED DOCK BOTTOM NAVIGATION (Explore | Practice | Library | Profile) */}
       {/* ========================================================= */}
-      <nav className="fixed bottom-3 inset-x-0 z-40 max-w-xs mx-auto px-3 py-2 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border border-white/60 dark:border-slate-700/60 shadow-2xl shadow-purple-900/20 flex items-center justify-between">
+      <nav className="fixed bottom-3 inset-x-0 z-40 max-w-sm sm:max-w-md mx-auto px-2 py-1.5 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-xl shadow-purple-950/15 flex items-center justify-around">
         
-        {/* Tab 1: Philosophers / Thinkers */}
+        {/* Tab 1: Explore */}
         <button
-          id="mobile-nav-philosophers-btn"
+          id="mobile-nav-explore-btn"
           onClick={() => setMobileTab('philosophers')}
-          className={`p-2.5 rounded-full transition-all duration-300 cursor-pointer hover:scale-110 active:scale-95 ${
+          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all duration-200 cursor-pointer ${
             mobileTab === 'philosophers'
-              ? 'bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-300 shadow-sm'
-              : 'text-slate-400 hover:text-slate-600'
+              ? 'bg-purple-100 dark:bg-purple-950/80 text-purple-600 dark:text-purple-300 font-bold shadow-xs'
+              : 'text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'
           }`}
-          title="Philosophers & Thinkers"
+          title="Explore & Thinkers"
         >
-          <Brain className="w-5 h-5" />
+          <Compass className="w-5 h-5 mb-0.5" />
+          <span className="text-[10px] tracking-tight">Explore</span>
         </button>
 
-        {/* Tab 2: Start Quiz (Class & Chapter Selection) */}
+        {/* Tab 2: Practice */}
         <button
+          id="mobile-nav-practice-btn"
           onClick={() => setMobileTab('studio')}
-          className={`p-2.5 rounded-full transition-all duration-300 cursor-pointer hover:scale-110 active:scale-95 ${
+          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all duration-200 cursor-pointer ${
             mobileTab === 'studio'
-              ? 'bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-300 shadow-sm'
-              : 'text-slate-400 hover:text-slate-600'
+              ? 'bg-purple-100 dark:bg-purple-950/80 text-purple-600 dark:text-purple-300 font-bold shadow-xs'
+              : 'text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'
           }`}
-          title="Start Quiz"
-          aria-label="Start Quiz"
+          title="Practice Questions & Tests"
         >
-          <Layers className="w-5 h-5" />
+          <Layers className="w-5 h-5 mb-0.5" />
+          <span className="text-[10px] tracking-tight">Practice</span>
         </button>
 
-        {/* Tab 3: Modules / Effect Preview */}
+        {/* Tab 3: Library */}
         <button
+          id="mobile-nav-library-btn"
           onClick={() => setMobileTab('modules')}
-          className={`p-2.5 rounded-full transition-all duration-300 cursor-pointer hover:scale-110 active:scale-95 ${
+          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all duration-200 cursor-pointer ${
             mobileTab === 'modules'
-              ? 'bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-300 shadow-sm'
-              : 'text-slate-400 hover:text-slate-600'
+              ? 'bg-purple-100 dark:bg-purple-950/80 text-purple-600 dark:text-purple-300 font-bold shadow-xs'
+              : 'text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'
           }`}
-          title="Study Modules"
+          title="Library & Formulas"
         >
-          <BookOpen className="w-5 h-5" />
+          <BookOpen className="w-5 h-5 mb-0.5" />
+          <span className="text-[10px] tracking-tight">Library</span>
         </button>
 
-        {/* Tab 4: Scholar Profile */}
+        {/* Tab 4: Profile */}
         <button
           id="mobile-bottom-profile-nav-btn"
           onClick={isAuthenticated ? onOpenProfile : onOpenAuth}
-          className={`p-2.5 rounded-full transition-all duration-300 cursor-pointer hover:scale-110 active:scale-95 relative ${
+          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all duration-200 cursor-pointer relative ${
             isAuthenticated
-              ? 'text-purple-600 dark:text-purple-400 hover:bg-purple-100 dark:hover:bg-purple-950/60'
-              : 'text-slate-400 hover:text-purple-600'
+              ? 'text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-950/50'
+              : 'text-slate-500 hover:text-purple-600 dark:text-slate-400 dark:hover:text-purple-300'
           }`}
-          title={isAuthenticated ? `Scholar Profile (${statusLabel})` : `Sign In (${statusLabel})`}
+          title={isAuthenticated ? `Profile (${statusLabel})` : `Sign In (${statusLabel})`}
         >
-          <div className="relative">
+          <div className="relative mb-0.5">
             <User className="w-5 h-5" />
             <span
               className={`absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full ring-1.5 ring-white dark:ring-slate-900 transition-colors duration-300 ${indicatorDotClass}`}
             />
           </div>
+          <span className="text-[10px] tracking-tight">Profile</span>
         </button>
 
       </nav>

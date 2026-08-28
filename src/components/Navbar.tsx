@@ -38,11 +38,11 @@ interface NavbarProps {
   selectedClass: ClassLevel | null;
   activeContentSection?: ContentSection;
   activePhilosopherType?: 'mathematicians' | 'physicists';
-  activeTrack?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics';
-  onNavigate: (tab: NavTab, classLevel?: ClassLevel, track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics') => void;
+  activeTrack?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas';
+  onNavigate: (tab: NavTab, classLevel?: ClassLevel, track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas') => void;
   onNavigateContentSection?: (section: ContentSection, subject?: ContentSubject) => void;
   onSelectPhilosopherType?: (type: 'mathematicians' | 'physicists') => void;
-  onOpenLeaderboard?: (track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics') => void;
+  onOpenLeaderboard?: (track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas') => void;
   onOpenAuth?: () => void;
   onOpenProfile?: () => void;
 }
@@ -70,7 +70,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [isMathExpandedInSubject, setIsMathExpandedInSubject] = useState(false);
   const [isChemistryExpandedInSubject, setIsChemistryExpandedInSubject] = useState(false);
   const [isPhysicsExpandedInSubject, setIsPhysicsExpandedInSubject] = useState(false);
-  const [isAdvPhysicsExpandedInSubject, setIsAdvPhysicsExpandedInSubject] = useState(false);
+  const [isPreCalculasExpandedInSubject, setIsPreCalculasExpandedInSubject] = useState(false);
 
   const [isMathExpandedInContent, setIsMathExpandedInContent] = useState(false);
   const [isPhysicsExpandedInContent, setIsPhysicsExpandedInContent] = useState(false);
@@ -105,6 +105,12 @@ export const Navbar: React.FC<NavbarProps> = ({
     };
   }, []);
 
+  const preCalculasChapterCounts = useMemo(() => {
+    return {
+      11: ALL_CHAPTERS.filter((c) => c.class === 11 && c.track === 'Pre Calculas').length,
+    };
+  }, []);
+
   const handleClassSelect = (lvl: ClassLevel, track: 'Elementary Mathematics' | 'Chemistry' = 'Elementary Mathematics') => {
     onNavigate('classes', lvl, track);
     setSubjectDropdownOpen(false);
@@ -112,8 +118,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     setMobileMenuOpen(false);
   };
 
-  const handleSubjectSelect = (_subject: 'physics', track: 'Elementary Physics' | 'Advanced Physics' = 'Elementary Physics', lvl?: ClassLevel) => {
-    onNavigate('classes', lvl || 9, track);
+  const handleSubjectSelect = (_subject: 'physics' | 'precalculas', track: 'Elementary Physics' | 'Pre Calculas' = 'Elementary Physics', lvl?: ClassLevel) => {
+    onNavigate('classes', lvl || 11, track);
     setSubjectDropdownOpen(false);
     setContentDropdownOpen(false);
     setMobileMenuOpen(false);
@@ -386,46 +392,37 @@ export const Navbar: React.FC<NavbarProps> = ({
                       )}
                     </div>
 
-                    {/* 4. ADVANCED PHYSICS (Click to expand Class 11 & 12) */}
+                    {/* 4. PRE CALCULAS (Click to expand Class 11) */}
                     <div>
                       <button
                         type="button"
                         onClick={(e) => {
                           e.stopPropagation();
-                          setIsAdvPhysicsExpandedInSubject(!isAdvPhysicsExpandedInSubject);
+                          setIsPreCalculasExpandedInSubject(!isPreCalculasExpandedInSubject);
                         }}
-                        className="w-full text-left px-3 py-2.5 rounded-xl text-xs sm:text-sm flex items-center justify-between hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-800 dark:text-slate-100"
+                        className="w-full text-left px-3 py-2.5 rounded-xl text-xs sm:text-sm flex items-center justify-between hover:bg-violet-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-800 dark:text-slate-100"
                       >
-                        <span className="flex items-center gap-2 font-bold text-blue-700 dark:text-blue-300">
-                          <span className="w-7 h-7 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 flex items-center justify-center text-xs font-bold shrink-0">
-                            <Zap className="w-4 h-4" />
+                        <span className="flex items-center gap-2 font-bold text-violet-700 dark:text-violet-300">
+                          <span className="w-7 h-7 rounded-lg bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 flex items-center justify-center text-xs font-bold shrink-0">
+                            <Calculator className="w-4 h-4" />
                           </span>
-                          <span>Advanced Physics</span>
+                          <span>Pre Calculas</span>
                         </span>
                         <div className="flex items-center gap-1.5 text-xs text-slate-400">
-                          <span className="text-[10px] font-bold">2 Classes</span>
-                          <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isAdvPhysicsExpandedInSubject ? 'rotate-180' : ''}`} />
+                          <span className="text-[10px] font-bold">1 Class</span>
+                          <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isPreCalculasExpandedInSubject ? 'rotate-180' : ''}`} />
                         </div>
                       </button>
 
-                      {isAdvPhysicsExpandedInSubject && (
-                        <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-blue-200 dark:border-blue-800 ml-4 animate-in fade-in duration-150">
+                      {isPreCalculasExpandedInSubject && (
+                        <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-violet-200 dark:border-violet-800 ml-4 animate-in fade-in duration-150">
                           <button
-                            onClick={() => handleSubjectSelect('physics', 'Advanced Physics', 11)}
-                            className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs flex items-center justify-between hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
+                            onClick={() => handleSubjectSelect('precalculas', 'Pre Calculas', 11)}
+                            className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs flex items-center justify-between hover:bg-violet-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
                           >
-                            <span className="font-semibold">Class 11 Advanced Physics</span>
-                            <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-bold">
-                              Advanced
-                            </span>
-                          </button>
-                          <button
-                            onClick={() => handleSubjectSelect('physics', 'Advanced Physics', 12)}
-                            className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs flex items-center justify-between hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
-                          >
-                            <span className="font-semibold">Class 12 Advanced Physics</span>
-                            <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-bold">
-                              Advanced
+                            <span className="font-semibold">Class 11 Pre Calculas</span>
+                            <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 font-bold">
+                              {preCalculasChapterCounts[11]} Ch
                             </span>
                           </button>
                         </div>
@@ -1031,37 +1028,27 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             </div>
 
-            {/* 4. Advanced Physics */}
-            <div className="rounded-xl border border-blue-200/80 dark:border-blue-900/50 bg-blue-50/40 dark:bg-blue-950/20 p-2.5 space-y-2">
+            {/* 4. Pre Calculas */}
+            <div className="rounded-xl border border-violet-200/80 dark:border-violet-900/50 bg-violet-50/40 dark:bg-violet-950/20 p-2.5 space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 flex items-center justify-center text-xs">
-                    <Zap className="w-3.5 h-3.5" />
+                  <span className="w-6 h-6 rounded-lg bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 flex items-center justify-center text-xs">
+                    <Calculator className="w-3.5 h-3.5" />
                   </span>
-                  <span className="text-xs font-bold text-blue-950 dark:text-blue-200">Advanced Physics</span>
+                  <span className="text-xs font-bold text-violet-950 dark:text-violet-200">Pre Calculas</span>
                 </div>
-                <span className="text-[10px] font-bold text-blue-600 dark:text-blue-400">Classes 11 &amp; 12</span>
+                <span className="text-[10px] font-bold text-violet-600 dark:text-violet-400">Class 11</span>
               </div>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 gap-2">
                 <button
-                  onClick={() => handleSubjectSelect('physics', 'Advanced Physics', 11)}
+                  onClick={() => handleSubjectSelect('precalculas', 'Pre Calculas', 11)}
                   className={`py-2 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${
-                    activeTab === 'classes' && selectedClass === 11 && activeTrack === 'Advanced Physics'
-                      ? 'bg-blue-600 text-white shadow-sm'
-                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-blue-50'
+                    activeTab === 'classes' && selectedClass === 11 && activeTrack === 'Pre Calculas'
+                      ? 'bg-violet-600 text-white shadow-sm'
+                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-violet-50'
                   }`}
                 >
-                  Class 11 Adv Physics
-                </button>
-                <button
-                  onClick={() => handleSubjectSelect('physics', 'Advanced Physics', 12)}
-                  className={`py-2 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${
-                    activeTab === 'classes' && selectedClass === 12 && activeTrack === 'Advanced Physics'
-                      ? 'bg-blue-600 text-white shadow-sm'
-                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-blue-50'
-                  }`}
-                >
-                  Class 12 Adv Physics
+                  Class 11 Pre Calculas ({preCalculasChapterCounts[11]} Ch)
                 </button>
               </div>
             </div>

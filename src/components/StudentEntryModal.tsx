@@ -20,7 +20,7 @@ interface StudentEntryModalProps {
   onClose: () => void;
   defaultClass: ClassLevel;
   chapterTitle?: string;
-  defaultTrack?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics';
+  defaultTrack?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas';
   defaultDifficulty?: PracticeDifficulty;
   onStartTest: (config: TestSessionConfig & { track?: string }) => void;
   onOpenAuth?: () => void;
@@ -39,7 +39,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
   const { currentUser, userProfile } = useAuth();
   const [name, setName] = useState('');
   const [selectedClass, setSelectedClass] = useState<ClassLevel>(defaultClass);
-  const [selectedTrack, setSelectedTrack] = useState<'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Advanced Physics'>(defaultTrack);
+  const [selectedTrack, setSelectedTrack] = useState<'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas'>(defaultTrack);
   const [difficultyTier, setDifficultyTier] = useState<PracticeDifficulty>(defaultDifficulty);
   const [questionCount, setQuestionCount] = useState<number>(15);
   const [error, setError] = useState<string | null>(null);
@@ -237,7 +237,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
                 {selectedTrack === 'Elementary Mathematics' && 'Standard School Curriculum & Conceptual Foundation'}
                 {selectedTrack === 'Chemistry' && 'Physical, Organic & Inorganic Chemistry Curriculum'}
                 {selectedTrack === 'Elementary Physics' && 'Foundational Physics, Mechanics & Laboratory Concepts'}
-                {selectedTrack === 'Advanced Physics' && 'Theoretical Physics, Electrodynamics & Quantum Systems'}
+                {selectedTrack === 'Pre Calculas' && 'Pre-calculus Foundations, Trigonometry & Analytic Geometry'}
               </span>
             </div>
           </div>

@@ -7,6 +7,7 @@ import {
   Atom,
   Sigma,
   Zap,
+  Calculator,
   FlaskConical,
   Star,
   CheckCircle2,
@@ -30,7 +31,7 @@ export type LeaderboardTrack =
   | 'Elementary Mathematics' 
   | 'Chemistry' 
   | 'Elementary Physics' 
-  | 'Advanced Physics';
+  | 'Pre Calculas';
 
 interface LeaderboardModalProps {
   isOpen: boolean;
@@ -265,13 +266,13 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
       return { score: ratingScore, title: 'Grandmaster', stars: 5, color: 'text-amber-500 bg-amber-50 dark:bg-amber-950/60 border-amber-300 dark:border-amber-700' };
     }
     if (ratingScore >= 1800 || accuracy >= 75) {
-      return { score: ratingScore, title: 'Master Scholar', stars: 4, color: 'text-emerald-600 bg-emerald-50 dark:bg-emerald-950/60 border-emerald-300 dark:border-emerald-700' };
+      return { score: ratingScore, title: 'Master Problem Solver', stars: 4, color: 'text-emerald-600 bg-emerald-50 dark:bg-emerald-950/60 border-emerald-300 dark:border-emerald-700' };
     }
     if (ratingScore >= 1400 || accuracy >= 60) {
-      return { score: ratingScore, title: 'Expert Analyst', stars: 3, color: 'text-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 border-indigo-300 dark:border-indigo-700' };
+      return { score: ratingScore, title: 'Expert Analyst', stars: 3, color: 'text-violet-600 bg-violet-50 dark:bg-violet-950/60 border-violet-300 dark:border-violet-700' };
     }
     if (ratingScore >= 1000 || accuracy >= 45) {
-      return { score: ratingScore, title: 'Active Scholar', stars: 2, color: 'text-cyan-600 bg-cyan-50 dark:bg-cyan-950/60 border-cyan-300 dark:border-cyan-700' };
+      return { score: ratingScore, title: 'Active Student', stars: 2, color: 'text-violet-600 bg-violet-50 dark:bg-violet-950/60 border-violet-300 dark:border-violet-700' };
     }
     return { score: ratingScore, title: 'Apprentice', stars: 1, color: 'text-slate-600 bg-slate-50 dark:bg-slate-800 border-slate-300 dark:border-slate-700' };
   };
@@ -372,7 +373,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
               { id: 'Elementary Mathematics', label: 'Mathematics', icon: Sigma },
               { id: 'Chemistry', label: 'Chemistry', icon: FlaskConical },
               { id: 'Elementary Physics', label: 'Physics', icon: Atom },
-              { id: 'Advanced Physics', label: 'Advanced Physics', icon: Zap },
+              { id: 'Pre Calculas', label: 'Pre Calculas', icon: Calculator },
             ] as { id: LeaderboardTrack; label: string; icon: any }[]).map((tr) => {
               const Icon = tr.icon;
               return (
@@ -380,6 +381,9 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                   key={tr.id}
                   onClick={() => {
                     setSelectedTrack(tr.id);
+                    if (tr.id === 'Pre Calculas') {
+                      setSelectedClass(11);
+                    }
                     setSelectedCandidate(null);
                   }}
                   className={`w-auto px-2 py-1 rounded-md text-[10.5px] font-bold transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap ${
@@ -548,8 +552,8 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-400/30 text-amber-200 border border-amber-300/30">
-                          Class {selectedCandidate.classLevel} Scholar
+                        <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-violet-400/30 text-violet-200 border border-violet-300/30">
+                          Class {selectedCandidate.classLevel} Student
                         </span>
                         <span className="text-xs text-white/80">
                           {selectedCandidate.track}

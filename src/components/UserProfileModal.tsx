@@ -211,7 +211,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
         levelName: 'Master Problem Solver',
         headerGradient: 'from-emerald-600 via-teal-600 to-indigo-700',
         badgeBg: 'bg-emerald-400/30 text-emerald-100 border-emerald-300/40',
-        badgeText: '💎 Master Scholar / Grade A+',
+        badgeText: '💎 Master Level / Grade A+',
         cardGlow: 'shadow-emerald-500/15 border-emerald-500/30',
         avatarBg: 'bg-gradient-to-br from-emerald-400 to-teal-700 border-emerald-200 text-white font-black',
         accentRing: 'ring-emerald-400/50',
@@ -221,25 +221,25 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
     }
     if (correctPct >= 50) {
       return {
-        levelName: 'Active Mathematical Scholar',
-        headerGradient: 'from-indigo-600 via-indigo-700 to-purple-700',
-        badgeBg: 'bg-indigo-400/30 text-indigo-100 border-indigo-300/40',
-        badgeText: '⚡ Active Scholar / Grade A',
-        cardGlow: 'shadow-indigo-500/15 border-indigo-500/30',
-        avatarBg: 'bg-gradient-to-br from-indigo-500 to-purple-700 border-indigo-200 text-white font-black',
-        accentRing: 'ring-indigo-400/50',
+        levelName: 'Active Problem Solver',
+        headerGradient: 'from-violet-600 via-purple-700 to-indigo-800',
+        badgeBg: 'bg-violet-400/30 text-violet-100 border-violet-300/40',
+        badgeText: '⚡ Active Level / Grade A',
+        cardGlow: 'shadow-violet-500/15 border-violet-500/30',
+        avatarBg: 'bg-gradient-to-br from-violet-500 to-purple-700 border-violet-200 text-white font-black',
+        accentRing: 'ring-violet-400/50',
         quote: '$$a^2 + b^2 = c^2 \\quad \\text{and} \\quad \\sum_{k=1}^n k = \\frac{n(n+1)}{2}$$',
         quoteTitle: 'Pythagorean & Arithmetic Series Theorems',
       };
     }
     return {
       levelName: 'Developing Candidate',
-      headerGradient: 'from-slate-800 via-indigo-900 to-rose-800',
-      badgeBg: 'bg-rose-400/30 text-rose-100 border-rose-300/40',
-      badgeText: '🌱 Developing Scholar / Grade B',
+      headerGradient: 'from-slate-800 via-violet-950 to-slate-900',
+      badgeBg: 'bg-slate-400/30 text-slate-100 border-slate-300/40',
+      badgeText: '🌱 Developing Level / Grade B',
       cardGlow: 'shadow-purple-500/15 border-purple-500/30',
-      avatarBg: 'bg-gradient-to-br from-rose-500 to-purple-800 border-rose-200 text-white font-black',
-      accentRing: 'ring-rose-400/50',
+      avatarBg: 'bg-gradient-to-br from-slate-600 to-violet-800 border-violet-200 text-white font-black',
+      accentRing: 'ring-violet-400/50',
       quote: '$$\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1 \\quad \\text{and} \\quad (a+b)^2 = a^2 + 2ab + b^2$$',
       quoteTitle: 'Fundamental Limits & Algebraic Expansion',
     };
@@ -325,16 +325,13 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                 <h2 className="text-base sm:text-xl font-black tracking-tight text-white truncate">
                   {userProfile.displayName}
                 </h2>
-                <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold border uppercase tracking-wider ${indicatorBadgeClass}`}>
-                  {statusLabel}
-                </span>
               </div>
               <p className="text-[10px] sm:text-xs text-white/80 flex items-center gap-1 mt-0.5 font-medium truncate">
                 <Mail className="w-3 h-3 shrink-0" />
-                <span className="truncate">{userProfile.email || 'Registered Scholar'}</span>
+                <span className="truncate">{userProfile.email || 'Registered Student'}</span>
               </p>
-              <div className="text-[9px] sm:text-[10px] font-bold text-amber-200 mt-0.5 flex items-center gap-1">
-                <Sparkles className="w-3 h-3 text-amber-300 shrink-0" />
+              <div className="text-[9px] sm:text-[10px] font-bold text-violet-200 mt-0.5 flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-pink-300 shrink-0" />
                 <span className="truncate">{theme.levelName}</span>
               </div>
             </div>
@@ -342,7 +339,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
 
           {/* Dynamic Mathematical Script Display Box with KaTeX */}
           <div className="p-2 sm:p-2.5 rounded-xl bg-black/25 backdrop-blur-md border border-white/20 relative z-10 space-y-0.5 text-center sm:text-left">
-            <div className="flex items-center justify-between text-[9px] font-black uppercase tracking-wider text-amber-200/90">
+            <div className="flex items-center justify-between text-[9px] font-black uppercase tracking-wider text-pink-200/90">
               <span>Mathematical Identity</span>
               <span className="text-white/70 truncate ml-2">{theme.quoteTitle}</span>
             </div>
@@ -357,13 +354,13 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
         <div className="p-3 sm:p-5 space-y-3.5 sm:space-y-5 overflow-y-auto flex-1">
 
           {/* Real-time Live Submissions Count & Time & Date Sync Status Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl sm:rounded-2xl bg-indigo-50/80 dark:bg-indigo-950/40 border border-indigo-200/70 dark:border-indigo-800/60 shadow-2xs">
+          <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl sm:rounded-2xl bg-violet-50/80 dark:bg-violet-950/40 border border-violet-200/70 dark:border-violet-800/60 shadow-2xs">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              <div className="text-[11px] sm:text-xs font-bold text-indigo-950 dark:text-indigo-200">
+              <div className="text-[11px] sm:text-xs font-bold text-violet-950 dark:text-violet-200">
                 <span>{historyList.length} Live Submissions</span>
                 <span className="text-slate-400 font-normal ml-1 hidden sm:inline">
                   • Synced
@@ -372,21 +369,21 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
             </div>
 
             <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-              <Clock className="w-3 h-3 text-indigo-500 shrink-0" />
+              <Clock className="w-3 h-3 text-violet-500 shrink-0" />
               <span>
-                Synced <strong className="text-indigo-600 dark:text-indigo-400">{formatLiveTime(latestTimestamp)}</strong>
+                Synced <strong className="text-violet-600 dark:text-violet-400">{formatLiveTime(latestTimestamp)}</strong>
               </span>
             </div>
           </div>
           
           {/* Accuracy & Error Rates Section: Correct Accuracy, Error Rate & Skipped Questions */}
           <div className="space-y-2 sm:space-y-2.5">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between flex-wrap gap-1">
               <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Performance Analytics
               </h4>
-              <span className="text-[10px] sm:text-xs font-bold text-indigo-600 dark:text-indigo-400">
-                Accuracy: {overallAccuracy}% • {testsAttempted} Tests
+              <span className="text-[10.5px] sm:text-xs font-bold text-violet-700 dark:text-violet-300 bg-violet-100/80 dark:bg-violet-950/80 px-2.5 py-0.5 rounded-full border border-violet-200 dark:border-violet-800">
+                Answered Accuracy: {overallAccuracy}% • {testsAttempted} Tests
               </span>
             </div>
             
@@ -417,62 +414,67 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                 </div>
               </div>
 
-              {/* Dynamic Light Blue / Rose Card: Error Rate / Missed Questions */}
-              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-sky-50/80 dark:bg-sky-950/40 border border-sky-300 dark:border-sky-700/80 flex flex-col items-center justify-center text-center gap-1.5 shadow-2xs">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 sm:border-3 border-sky-500 dark:border-sky-400 bg-white dark:bg-sky-900/50 flex flex-col items-center justify-center shadow-inner">
-                  <span className="text-sm sm:text-lg font-black text-sky-600 dark:text-sky-300">
+              {/* Rose / Red Card: Error Rate / Missed Questions */}
+              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-rose-50/80 dark:bg-rose-950/40 border border-rose-300 dark:border-rose-700/80 flex flex-col items-center justify-center text-center gap-1.5 shadow-2xs">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 sm:border-3 border-rose-500 dark:border-rose-400 bg-white dark:bg-rose-900/50 flex flex-col items-center justify-center shadow-inner">
+                  <span className="text-sm sm:text-lg font-black text-rose-600 dark:text-rose-300">
                     {wrongPct}%
                   </span>
-                  <span className="text-[7px] sm:text-[8px] font-black uppercase text-sky-700 dark:text-sky-400 tracking-wider">
+                  <span className="text-[7px] sm:text-[8px] font-black uppercase text-rose-700 dark:text-rose-400 tracking-wider">
                     Incorrect
                   </span>
                 </div>
 
                 <div className="space-y-0.5 text-center">
-                  <p className="text-xs sm:text-sm font-black text-sky-900 dark:text-sky-100">
+                  <p className="text-xs sm:text-sm font-black text-rose-900 dark:text-rose-100">
                     {totalWrong}{' '}
-                    <span className="text-[9px] sm:text-[10px] font-normal text-sky-700/80 dark:text-sky-400">
+                    <span className="text-[9px] sm:text-[10px] font-normal text-rose-700/80 dark:text-rose-400">
                       / {totalQuestions}
                     </span>
                   </p>
-                  <p className="text-[9px] text-sky-700 dark:text-sky-400 hidden sm:block">
+                  <p className="text-[9px] text-rose-700 dark:text-rose-400 hidden sm:block">
                     Errors
                   </p>
                 </div>
               </div>
 
-              {/* Subtle Dark Gray / Light Black Card: Skipped Questions */}
-              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-slate-100/90 dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-1.5 shadow-2xs">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 sm:border-3 border-slate-600 bg-slate-800 dark:bg-slate-950 flex flex-col items-center justify-center shadow-inner">
-                  <span className="text-sm sm:text-lg font-black text-slate-100 dark:text-slate-200">
+              {/* Amber / Orange Card: Skipped Questions */}
+              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-700/80 flex flex-col items-center justify-center text-center gap-1.5 shadow-2xs">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 sm:border-3 border-amber-500 dark:border-amber-400 bg-white dark:bg-amber-900/50 flex flex-col items-center justify-center shadow-inner">
+                  <span className="text-sm sm:text-lg font-black text-amber-600 dark:text-amber-300">
                     {skippedPct}%
                   </span>
-                  <span className="text-[7px] sm:text-[8px] font-black uppercase text-slate-300 dark:text-slate-400 tracking-wider">
+                  <span className="text-[7px] sm:text-[8px] font-black uppercase text-amber-700 dark:text-amber-400 tracking-wider">
                     Skipped
                   </span>
                 </div>
 
                 <div className="space-y-0.5 text-center">
-                  <p className="text-xs sm:text-sm font-black text-slate-900 dark:text-slate-100">
+                  <p className="text-xs sm:text-sm font-black text-amber-900 dark:text-amber-100">
                     {totalSkipped}{' '}
-                    <span className="text-[9px] sm:text-[10px] font-normal text-slate-500 dark:text-slate-400">
+                    <span className="text-[9px] sm:text-[10px] font-normal text-amber-700/80 dark:text-amber-400">
                       / {totalQuestions}
                     </span>
                   </p>
-                  <p className="text-[9px] text-slate-500 dark:text-slate-400 hidden sm:block">
+                  <p className="text-[9px] text-amber-700 dark:text-amber-400 hidden sm:block">
                     Unanswered
                   </p>
                 </div>
               </div>
 
             </div>
+
+            {/* Explanatory metric note to eliminate calculation confusion */}
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 text-center">
+              * <strong>Answered Accuracy ({overallAccuracy}%)</strong> is based on attempted questions ({totalCorrect}/{attemptedQuestions}). Cards show distribution across all {totalQuestions} total questions.
+            </p>
           </div>
 
           {/* 📊 RECHARTS VISUAL REPRESENTATION OF CHAPTER PERFORMANCE & STRUGGLE IDENTIFICATION */}
           <div className="space-y-3 pt-1">
             <div className="flex items-center justify-between">
               <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                <BarChart3 className="w-3.5 h-3.5 text-indigo-500" />
+                <BarChart3 className="w-3.5 h-3.5 text-violet-500" />
                 <span>Chapter-by-Chapter Performance</span>
               </h4>
               <span className="text-[10px] text-slate-400 font-medium">

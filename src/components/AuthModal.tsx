@@ -114,7 +114,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         }
 
         await signUp(email, password, name, classLevel);
-        setSuccessMsg('Scholar account created successfully!');
+        setSuccessMsg('Account created successfully!');
         setLoading(false);
         setTimeout(() => {
           onClose();
@@ -238,41 +238,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           </p>
         </div>
 
-        {/* Tab Switcher with Attractive Gradient Styling */}
-        <div className="flex border-b border-white/10 bg-slate-950/80 p-2 gap-2">
-          <button
-            type="button"
-            onClick={() => {
-              setMode('signup');
-              setError(null);
-              setSuccessMsg(null);
-            }}
-            className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
-              mode === 'signup'
-                ? 'bg-gradient-to-r from-indigo-600 to-emerald-600 text-white shadow-lg shadow-emerald-600/30 border border-emerald-400/30'
-                : 'text-slate-400 hover:text-white hover:bg-white/5'
-            }`}
-          >
-            <UserPlus className="w-3.5 h-3.5" />
-            <span>Sign Up</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setMode('signin');
-              setError(null);
-              setSuccessMsg(null);
-            }}
-            className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
-              mode === 'signin'
-                ? 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-lg shadow-indigo-600/30 border border-cyan-400/30'
-                : 'text-slate-400 hover:text-white hover:bg-white/5'
-            }`}
-          >
-            <LogIn className="w-3.5 h-3.5" />
-            <span>Sign In</span>
-          </button>
-        </div>
+
 
         {/* Form Body */}
         <form onSubmit={handleSubmit} className="p-6 space-y-4 overflow-y-auto">
