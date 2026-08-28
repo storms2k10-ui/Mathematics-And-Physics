@@ -1,4 +1,5 @@
 import { Question } from '../types';
+import { CHEMISTRY_11_QUESTIONS } from './chemistry11QuestionsData';
 import { C9_CH1_QUESTIONS } from './c9_chapter1_data';
 import { C9_CH2_QUESTIONS } from './c9_chapter2_data';
 import { C9_CH3_QUESTIONS } from './c9_chapter3_data';
@@ -986,6 +987,7 @@ const RAW_ALL_QUESTIONS: Question[] = [
   ...EL_PHY12_CH12_QUESTIONS,
   ...EL_PHY12_CH13_QUESTIONS,
   ...EL_PHY12_CH14_QUESTIONS,
+  ...CHEMISTRY_11_QUESTIONS,
 ];
 
 // Explicitly ensure all existing questions are linked to 'Normal' difficulty level

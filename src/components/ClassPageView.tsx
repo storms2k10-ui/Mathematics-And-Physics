@@ -42,6 +42,7 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
   const advancedQuestionsCount = MathService.getQuestionCountByDifficulty(currentClass, undefined, 'Advanced', track);
 
   const isClass11or12 = currentClass === 11 || currentClass === 12;
+  const isSelectedTierUnlocked = selectedDifficulty === 'Advanced' ? advancedQuestionsCount > 0 : normalQuestionsCount > 0;
 
   return (
     <div id="class-page-view" className="py-6 sm:py-8 bg-slate-50 dark:bg-slate-950 min-h-[calc(100vh-100px)] animate-fade-in">
@@ -83,13 +84,17 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
                     Class {currentClass} {displayTrack}
                   </span>
                   <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
-                    Dual Tier
+                    Dynamic Unlocking
                   </span>
                 </div>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                   {selectedDifficulty === 'Normal'
-                    ? `Normal difficulty is active with all standard questions (${normalQuestionsCount} MCQs linked).`
-                    : `Advanced difficulty is currently locked. Practice will open once Advanced questions are added.`}
+                    ? normalQuestionsCount > 0
+                      ? `Normal difficulty is active with ${normalQuestionsCount} MCQs linked across chapters.`
+                      : 'Normal difficulty questions will unlock automatically once questions are added.'
+                    : advancedQuestionsCount > 0
+                    ? `Advanced difficulty is active with ${advancedQuestionsCount} MCQs linked across unlocked chapters.`
+                    : 'Advanced difficulty is locked (0 questions added yet). Chapters unlock automatically as questions are added.'}
                 </p>
               </div>
             </div>
@@ -107,10 +112,18 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
-                <CheckCircle2 className={`w-3.5 h-3.5 ${selectedDifficulty === 'Normal' ? 'text-emerald-500' : 'text-slate-400'}`} />
+                {normalQuestionsCount > 0 ? (
+                  <CheckCircle2 className={`w-3.5 h-3.5 ${selectedDifficulty === 'Normal' ? 'text-emerald-500' : 'text-slate-400'}`} />
+                ) : (
+                  <Lock className="w-3.5 h-3.5 text-amber-500" />
+                )}
                 <span>Normal</span>
-                <span className="px-1.5 py-0.2 text-[9px] font-extrabold rounded-md bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">
-                  Ready
+                <span className={`px-1.5 py-0.2 text-[9px] font-extrabold rounded-md ${
+                  normalQuestionsCount > 0
+                    ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300'
+                    : 'bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300'
+                }`}>
+                  {normalQuestionsCount > 0 ? `Ready (${normalQuestionsCount})` : 'Locked (0)'}
                 </span>
               </button>
 
@@ -125,32 +138,42 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
-                <Lock className={`w-3.5 h-3.5 ${selectedDifficulty === 'Advanced' ? 'text-amber-500' : 'text-slate-400'}`} />
+                {advancedQuestionsCount > 0 ? (
+                  <CheckCircle2 className={`w-3.5 h-3.5 ${selectedDifficulty === 'Advanced' ? 'text-purple-500' : 'text-slate-400'}`} />
+                ) : (
+                  <Lock className={`w-3.5 h-3.5 ${selectedDifficulty === 'Advanced' ? 'text-amber-500' : 'text-slate-400'}`} />
+                )}
                 <span>Advanced</span>
-                <span className="px-1.5 py-0.2 text-[9px] font-extrabold rounded-md bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300">
-                  Locked
+                <span className={`px-1.5 py-0.2 text-[9px] font-extrabold rounded-md ${
+                  advancedQuestionsCount > 0
+                    ? 'bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300'
+                    : 'bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300'
+                }`}>
+                  {advancedQuestionsCount > 0 ? `Ready (${advancedQuestionsCount})` : 'Locked (0)'}
                 </span>
               </button>
             </div>
           </div>
         )}
 
-        {/* Warning Notification when Advanced is Selected */}
-        {isClass11or12 && selectedDifficulty === 'Advanced' && (
+        {/* Informative Status Notification when 0 Questions exist in class for selected difficulty */}
+        {isClass11or12 && !isSelectedTierUnlocked && (
           <div className="p-4 rounded-2xl bg-amber-500/10 dark:bg-amber-950/40 border border-amber-500/30 dark:border-amber-700/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-amber-800 dark:text-amber-300 animate-fade-in">
             <div className="flex items-center gap-2.5">
               <AlertCircle className="w-5 h-5 shrink-0 text-amber-600 dark:text-amber-400" />
               <span>
-                <strong>Advanced difficulty</strong> questions for Class {currentClass} {displayTrack} are currently in development. You can review chapter outlines or switch back to <strong>Normal</strong> difficulty to begin practice immediately.
+                <strong>{selectedDifficulty} difficulty</strong> questions for Class {currentClass} {displayTrack} are not available yet. Each chapter automatically unlocks as soon as its questions are added.
               </span>
             </div>
-            <button
-              type="button"
-              onClick={() => setSelectedDifficulty('Normal')}
-              className="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shrink-0 cursor-pointer shadow-xs transition-colors"
-            >
-              Switch to Normal
-            </button>
+            {selectedDifficulty === 'Advanced' && normalQuestionsCount > 0 && (
+              <button
+                type="button"
+                onClick={() => setSelectedDifficulty('Normal')}
+                className="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shrink-0 cursor-pointer shadow-xs transition-colors"
+              >
+                Switch to Normal
+              </button>
+            )}
           </div>
         )}
 
@@ -171,101 +194,112 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {chapters.map((chapter, idx) => (
-              <div
-                key={chapter.id}
-                className="group bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 hover:border-indigo-500/60 dark:hover:border-indigo-500/60 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden"
-              >
-                {/* Background Artwork Banner */}
-                <div 
-                  onClick={() => onOpenChapterDetails(chapter, selectedDifficulty)}
-                  className="cursor-pointer relative group-hover:scale-[1.01] transition-transform duration-300"
+            {chapters.map((chapter, idx) => {
+              const chapterNormalCount = MathService.getQuestionCountByDifficulty(chapter.class, chapter.id, 'Normal', track);
+              const chapterAdvancedCount = MathService.getQuestionCountByDifficulty(chapter.class, chapter.id, 'Advanced', track);
+              const isChapterUnlocked = selectedDifficulty === 'Advanced' ? chapterAdvancedCount > 0 : chapterNormalCount > 0;
+              const currentTierCount = selectedDifficulty === 'Advanced' ? chapterAdvancedCount : chapterNormalCount;
+
+              return (
+                <div
+                  key={chapter.id}
+                  className="group bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 hover:border-indigo-500/60 dark:hover:border-indigo-500/60 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden"
                 >
-                  <ChapterArtwork
-                    theme={chapter.artTheme}
-                    title={chapter.name}
-                    category={chapter.category}
-                    size="card"
-                    className="rounded-b-none border-x-0 border-t-0"
-                  />
+                  {/* Background Artwork Banner */}
+                  <div 
+                    onClick={() => onOpenChapterDetails(chapter, selectedDifficulty)}
+                    className="cursor-pointer relative group-hover:scale-[1.01] transition-transform duration-300"
+                  >
+                    <ChapterArtwork
+                      theme={chapter.artTheme}
+                      title={chapter.name}
+                      category={chapter.category}
+                      size="card"
+                      className="rounded-b-none border-x-0 border-t-0"
+                    />
 
-                  <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5">
-                    <span className="w-6 h-6 rounded-full bg-black/50 backdrop-blur-md text-white font-mono font-bold text-[11px] flex items-center justify-center border border-white/20">
-                      {idx + 1}
-                    </span>
-                    {isClass11or12 && (
-                      <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold backdrop-blur-md border ${
-                        selectedDifficulty === 'Normal'
-                          ? 'bg-emerald-950/80 text-emerald-300 border-emerald-500/40'
-                          : 'bg-amber-950/80 text-amber-300 border-amber-500/40'
-                      }`}>
-                        {selectedDifficulty}
+                    <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5">
+                      <span className="w-6 h-6 rounded-full bg-black/50 backdrop-blur-md text-white font-mono font-bold text-[11px] flex items-center justify-center border border-white/20">
+                        {idx + 1}
                       </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Card Content Details */}
-                <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                  
-                  <div className="space-y-2.5">
-                    <div className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
-                      <MathText text={chapter.description} />
-                    </div>
-
-                    {/* Key Topics Tag Clouds */}
-                    <div className="flex flex-wrap gap-1.5 pt-1">
-                      {chapter.keyTopics.slice(0, 3).map((topic, i) => (
-                        <span
-                          key={i}
-                          className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[10px] font-medium"
-                        >
-                          <MathText text={topic} />
-                        </span>
-                      ))}
-                      {chapter.keyTopics.length > 3 && (
-                        <span className="px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-400 text-[10px] font-medium">
-                          +{chapter.keyTopics.length - 3} more
+                      {isClass11or12 && (
+                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold backdrop-blur-md border ${
+                          isChapterUnlocked
+                            ? selectedDifficulty === 'Normal'
+                              ? 'bg-emerald-950/80 text-emerald-300 border-emerald-500/40'
+                              : 'bg-purple-950/80 text-purple-300 border-purple-500/40'
+                            : 'bg-slate-900/80 text-amber-300 border-amber-500/40'
+                        }`}>
+                          {selectedDifficulty} {isChapterUnlocked ? '' : '• Locked'}
                         </span>
                       )}
                     </div>
                   </div>
 
-                  {/* Dual Action Buttons */}
-                  <div className="pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-2">
-                    <button
-                      onClick={() => onOpenChapterDetails(chapter, isClass11or12 ? selectedDifficulty : 'Normal')}
-                      className="flex-1 py-2 px-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer"
-                    >
-                      <Eye className="w-3.5 h-3.5" />
-                      <span>Overview</span>
-                    </button>
+                  {/* Card Content Details */}
+                  <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                    
+                    <div className="space-y-2.5">
+                      <div className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                        <MathText text={chapter.description} />
+                      </div>
 
-                    <button
-                      onClick={() => onSelectChapter(chapter, isClass11or12 ? selectedDifficulty : 'Normal')}
-                      className={`flex-2 py-2 px-3 rounded-xl font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
-                        isClass11or12 && selectedDifficulty === 'Advanced'
-                          ? 'bg-purple-700 hover:bg-purple-800 text-white shadow-purple-700/20'
-                          : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-600/20'
-                      }`}
-                    >
-                      {isClass11or12 && selectedDifficulty === 'Advanced' ? (
-                        <>
-                          <Lock className="w-3.5 h-3.5 text-amber-300" />
-                          <span>Advanced Practice</span>
-                        </>
-                      ) : (
-                        <>
+                      {/* Key Topics Tag Clouds */}
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {chapter.keyTopics.slice(0, 3).map((topic, i) => (
+                          <span
+                            key={i}
+                            className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[10px] font-medium"
+                          >
+                            <MathText text={topic} />
+                          </span>
+                        ))}
+                        {chapter.keyTopics.length > 3 && (
+                          <span className="px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-400 text-[10px] font-medium">
+                            +{chapter.keyTopics.length - 3} more
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Dual Action Buttons */}
+                    <div className="pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-2">
+                      <button
+                        onClick={() => onOpenChapterDetails(chapter, isClass11or12 ? selectedDifficulty : 'Normal')}
+                        className="flex-1 py-2 px-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>Overview</span>
+                      </button>
+
+                      {isChapterUnlocked ? (
+                        <button
+                          onClick={() => onSelectChapter(chapter, isClass11or12 ? selectedDifficulty : 'Normal')}
+                          className={`flex-2 py-2 px-3 rounded-xl font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                            isClass11or12 && selectedDifficulty === 'Advanced'
+                              ? 'bg-purple-700 hover:bg-purple-800 text-white shadow-purple-700/20'
+                              : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-600/20'
+                          }`}
+                        >
                           <Play className="w-3.5 h-3.5 fill-white" />
                           <span>Start Practice</span>
-                        </>
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => onOpenChapterDetails(chapter, isClass11or12 ? selectedDifficulty : 'Normal')}
+                          title={`Questions for this chapter in ${selectedDifficulty} difficulty will unlock as soon as added.`}
+                          className="flex-2 py-2 px-3 rounded-xl font-bold text-xs border border-slate-200 dark:border-slate-700/80 bg-slate-100 dark:bg-slate-800/60 text-slate-500 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                        >
+                          <Lock className="w-3.5 h-3.5 text-amber-500" />
+                          <span>Locked</span>
+                        </button>
                       )}
-                    </button>
-                  </div>
+                    </div>
 
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
 

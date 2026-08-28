@@ -195,6 +195,23 @@ export const ChapterArtwork: React.FC<ChapterArtworkProps> = ({
           </svg>
         );
 
+      case 'chemistry':
+        return (
+          <svg className="absolute inset-0 w-full h-full opacity-35" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice" fill="none">
+            {/* Molecular Hexagonal Ring & Orbital Bonds */}
+            <polygon points="300,70 360,105 360,175 300,210 240,175 240,105" stroke="currentColor" strokeWidth="3" fill="currentColor" fillOpacity="0.08" />
+            <circle cx="300" cy="140" r="30" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
+            <line x1="360" y1="105" x2="420" y2="70" stroke="currentColor" strokeWidth="2.5" />
+            <circle cx="420" cy="70" r="8" fill="currentColor" />
+            <line x1="240" y1="105" x2="180" y2="70" stroke="currentColor" strokeWidth="2.5" />
+            <circle cx="180" cy="70" r="8" fill="currentColor" />
+            <line x1="300" y1="210" x2="300" y2="260" stroke="currentColor" strokeWidth="2.5" />
+            <circle cx="300" cy="260" r="8" fill="currentColor" />
+            <text x="60" y="55" fill="currentColor" fontSize="20" fontFamily="monospace" opacity="0.7">PV = nRT • ΔG° = -RT ln K</text>
+            <text x="370" y="250" fill="currentColor" fontSize="18" fontFamily="monospace" opacity="0.6">pH = -log[H⁺]</text>
+          </svg>
+        );
+
       default:
         return (
           <svg className="absolute inset-0 w-full h-full opacity-35" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice" fill="none">
@@ -216,6 +233,8 @@ export const ChapterArtwork: React.FC<ChapterArtworkProps> = ({
         return 'from-indigo-900 via-indigo-950 to-slate-950 text-indigo-400';
       case 'trigonometry':
         return 'from-cyan-900 via-slate-900 to-indigo-950 text-cyan-400';
+      case 'chemistry':
+        return 'from-emerald-950 via-teal-950 to-slate-950 text-emerald-300';
       case 'matrix':
       case 'vector':
         return 'from-emerald-950 via-slate-900 to-teal-950 text-emerald-400';

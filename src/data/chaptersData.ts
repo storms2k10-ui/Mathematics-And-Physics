@@ -837,23 +837,17 @@ export const ELEMENTARY_CHAPTERS: Chapter[] = [
   },
 ];
 
-// ============================================================================
-// 🧪 CHEMISTRY CURRICULUM (Class 9, 10, 11, 12 Sections - Empty as requested)
-// ============================================================================
-export const CHEMISTRY_CHAPTERS: Chapter[] = [];
-
-// ============================================================================
-// 📐 PRE CALCULAS CURRICULUM (Class 11 Section - Empty as requested)
-// ============================================================================
 export const PRE_CALCULAS_CHAPTERS: Chapter[] = [];
 
+import { CHEMISTRY_CHAPTERS } from "./chemistryChaptersData";
 import { ELEMENTARY_PHYSICS_11_CHAPTERS, ELEMENTARY_PHYSICS_12_CHAPTERS } from "./elementaryPhysicsChaptersData";
 
-export { ELEMENTARY_PHYSICS_11_CHAPTERS, ELEMENTARY_PHYSICS_12_CHAPTERS };
+export { CHEMISTRY_CHAPTERS, ELEMENTARY_PHYSICS_11_CHAPTERS, ELEMENTARY_PHYSICS_12_CHAPTERS };
 
 // Master Chapters List covering Mathematics, Physics, Chemistry, and Pre Calculas tracks
 export const ALL_CHAPTERS: Chapter[] = [
   ...ELEMENTARY_CHAPTERS,
+  ...CHEMISTRY_CHAPTERS,
   ...ELEMENTARY_PHYSICS_11_CHAPTERS,
   ...ELEMENTARY_PHYSICS_12_CHAPTERS,
   ...PRE_CALCULAS_CHAPTERS,

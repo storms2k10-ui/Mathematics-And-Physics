@@ -27,7 +27,16 @@ export type MathCategory =
   | 'Magnetism & Induction'
   | 'Optics & Wave Theory'
   | 'Modern Physics & Quantum Theory'
-  | 'Semiconductors & Electronics';
+  | 'Semiconductors & Electronics'
+  | 'Physical Chemistry'
+  | 'Inorganic Chemistry'
+  | 'Organic Chemistry'
+  | 'Stoichiometry & Atomic Structure'
+  | 'Chemical Bonding & Molecular Shapes'
+  | 'States of Matter'
+  | 'Chemical Equilibrium & Kinetics'
+  | 'Acids, Bases & Solutions'
+  | 'Thermochemistry & Electrochemistry';
 
 export interface ChapterOverview {
   summary: string;
@@ -50,7 +59,7 @@ export interface Chapter {
   keyTopics: string[];
   color: 'indigo' | 'emerald' | 'amber' | 'rose' | 'cyan' | 'violet' | 'teal' | 'fuchsia' | 'blue' | 'purple' | 'sky';
   icon: string;
-  artTheme: 'logarithm' | 'algebra' | 'triangle' | 'circle' | 'trigonometry' | 'matrix' | 'vector' | 'calculus' | 'integral' | 'conic' | 'coordinate' | 'probability' | 'series' | 'differential';
+  artTheme: 'logarithm' | 'algebra' | 'triangle' | 'circle' | 'trigonometry' | 'matrix' | 'vector' | 'calculus' | 'integral' | 'conic' | 'coordinate' | 'probability' | 'series' | 'differential' | 'chemistry';
   formulaHighlight?: string;
   overview?: ChapterOverview;
 }

@@ -614,6 +614,7 @@ export default function App() {
                     }}
                     onStartChapterPractice={handlePrepareChapterTest}
                     onStartClassPractice={handlePrepareClassPractice}
+                    onOpenChapterDetails={handleOpenChapterDetails}
                     onOpenLeaderboard={() => setIsLeaderboardModalOpen(true)}
                     onOpenAuth={() => setIsAuthModalOpen(true)}
                     onOpenProfile={handleOpenProfile}
@@ -707,6 +708,7 @@ export default function App() {
         isOpen={isStudentModalOpen}
         onClose={() => setIsStudentModalOpen(false)}
         defaultClass={pendingQuizClass}
+        chapterId={targetChapter?.id}
         chapterTitle={pendingQuizTitle}
         defaultTrack={targetChapter?.track || activeTrack}
         defaultDifficulty={pendingDifficultyTier}

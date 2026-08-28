@@ -72,6 +72,7 @@ interface MobileAppViewProps {
   onSelectClass: (lvl: ClassLevel, track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas') => void;
   onStartChapterPractice: (chapter: Chapter) => void;
   onStartClassPractice: (lvl: ClassLevel) => void;
+  onOpenChapterDetails?: (chapter: Chapter) => void;
   onOpenLeaderboard: () => void;
   onOpenAuth: () => void;
   onOpenProfile: () => void;
@@ -85,6 +86,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
   onSelectClass,
   onStartChapterPractice,
   onStartClassPractice,
+  onOpenChapterDetails,
   onOpenLeaderboard,
   onOpenAuth,
   onOpenProfile,
@@ -606,11 +608,14 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                       key={ch.id}
                       className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-50/80 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 flex items-center justify-between gap-2.5 hover:border-purple-300 dark:hover:border-purple-600 hover:bg-white dark:hover:bg-slate-800 hover:shadow-md transition-all duration-300 group"
                     >
-                      <div className="flex items-center gap-2.5 min-w-0">
+                      <div 
+                        onClick={() => onOpenChapterDetails ? onOpenChapterDetails(ch) : onStartChapterPractice(ch)}
+                        className="flex items-center gap-2.5 min-w-0 flex-1 cursor-pointer"
+                      >
                         <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-purple-100 dark:bg-purple-950/70 text-purple-600 dark:text-purple-400 font-black text-xs flex items-center justify-center shrink-0 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
                           {idx + 1}
                         </div>
-                        <div className="min-w-0">
+                        <div className="min-w-0 flex-1">
                           <h4 className="text-xs font-extrabold text-slate-900 dark:text-white line-clamp-2 leading-snug break-words group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                             {ch.name}
                           </h4>
