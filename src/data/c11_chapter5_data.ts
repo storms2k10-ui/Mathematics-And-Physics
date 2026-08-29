@@ -1,11 +1,22 @@
 import { Question } from '../types';
+import { C11_CH5_ADVANCED_PART1 } from './c11_ch5_advanced_part1';
+import { C11_CH5_ADVANCED_PART2 } from './c11_ch5_advanced_part2';
+import { C11_CH5_ADVANCED_PART3 } from './c11_ch5_advanced_part3';
+import { C11_CH5_ADVANCED_PART4 } from './c11_ch5_advanced_part4';
+
+export const C11_CH5_ADVANCED_QUESTIONS: Question[] = [
+  ...C11_CH5_ADVANCED_PART1,
+  ...C11_CH5_ADVANCED_PART2,
+  ...C11_CH5_ADVANCED_PART3,
+  ...C11_CH5_ADVANCED_PART4,
+];
 
 // =========================================================================
 // CLASS 11 — CHAPTER 5: MISCELLANEOUS SERIES (50 MCQs)
 // 10 Easy (Q1-Q10) • 10 Medium-Hard (Q11-Q20) • 15 Hard (Q21-Q35) • 15 HOTS (Q36-Q50)
 // Fully formatted in KaTeX / LaTeX mathematical notation
 // =========================================================================
-export const C11_CH5_QUESTIONS: Question[] = [
+export const C11_CH5_NORMAL_QUESTIONS: Question[] = [
   // -------------------------------------------------------------------------
   // 10 EASY MCQs (Q1 - Q10)
   // -------------------------------------------------------------------------
@@ -819,3 +830,9 @@ export const C11_CH5_QUESTIONS: Question[] = [
     formula: '\\frac{1}{r(r+1)(r+2)} = \\frac{1}{2}\\left[\\frac{1}{r(r+1)} - \\frac{1}{(r+1)(r+2)}\right]',
   },
 ];
+
+export const C11_CH5_QUESTIONS: Question[] = [
+  ...C11_CH5_NORMAL_QUESTIONS,
+  ...C11_CH5_ADVANCED_QUESTIONS,
+];
+
