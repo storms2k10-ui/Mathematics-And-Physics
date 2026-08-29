@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { 
   X, 
   Trophy, 
-  Sparkles,
+  Sparkles, 
   Clock, 
   Atom,
   Sigma,
@@ -20,11 +20,13 @@ import {
   BookOpen,
   Calendar,
   Layers,
-  GraduationCap
+  GraduationCap,
+  RefreshCw
 } from 'lucide-react';
-import { LeaderboardEntry, ClassLevel, CandidateRankingProfile } from '../types';
+import { LeaderboardEntry, ClassLevel, CandidateRankingProfile, UserTestHistory } from '../types';
 import { MathService } from '../services/mathService';
 import { FirestoreLeaderboardService } from '../services/firestoreLeaderboard';
+import { useAuth } from '../context/AuthContext';
 import { MathText } from './MathText';
 
 export type LeaderboardTrack = 
@@ -46,12 +48,15 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
   initialClass = 'all',
   initialTrack = 'Elementary Mathematics',
 }) => {
+  const { currentUser, userProfile } = useAuth();
   const [allEntries, setAllEntries] = useState<LeaderboardEntry[]>([]);
   const [selectedClass, setSelectedClass] = useState<ClassLevel>(() => {
     return initialClass && initialClass !== 'all' ? initialClass : 9;
   });
   const [selectedTrack, setSelectedTrack] = useState<LeaderboardTrack>(initialTrack);
   const [selectedCandidate, setSelectedCandidate] = useState<CandidateRankingProfile | null>(null);
+  const [candidateAttemptsList, setCandidateAttemptsList] = useState<LeaderboardEntry[]>([]);
+  const [isSyncingCandidateAttempts, setIsSyncingCandidateAttempts] = useState<boolean>(false);
   const [copiedShare, setCopiedShare] = useState<boolean>(false);
   const [now, setNow] = useState<number>(() => Date.now());
 
@@ -144,8 +149,134 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
     };
   }, [isOpen, selectedTrack, loadLeaderboardData]);
 
-  // Safe entries array helper
-  const safeEntries = useMemo(() => Array.isArray(allEntries) ? allEntries : [], [allEntries]);
+  // Safe entries array helper - merges live cloud leaderboard with active user profile test history
+  const safeEntries = useMemo(() => {
+    const map = new Map<string, LeaderboardEntry>();
+
+    // 1. Add all cloud / server leaderboard entries
+    if (Array.isArray(allEntries)) {
+      for (const entry of allEntries) {
+        if (entry && entry.id) {
+          map.set(entry.id, entry);
+        }
+      }
+    }
+
+    // 2. Merge logged-in user's local / cloud profile test history immediately
+    if (userProfile && Array.isArray(userProfile.history)) {
+      for (const h of userProfile.history) {
+        if (h && h.id) {
+          const entryRecord: LeaderboardEntry = {
+            id: h.id,
+            uid: userProfile.uid,
+            email: userProfile.email,
+            studentName: userProfile.displayName || currentUser?.displayName || 'Student Candidate',
+            classLevel: h.classLevel || userProfile.classLevel || 9,
+            track: h.track || 'Elementary Mathematics',
+            chapterId: h.chapterId,
+            chapterName: h.chapterName,
+            mode: 'practice',
+            correctCount: Number(h.correctCount) || 0,
+            totalQuestions: Number(h.totalQuestions) || 0,
+            skippedCount: Number(h.skippedCount) || 0,
+            scorePercentage: Number(h.scorePercentage) || 0,
+            timeSpentSeconds: Number(h.timeSpentSeconds) || 0,
+            formattedTime: h.formattedTime || '0m 00s',
+            timestamp: Number(h.timestamp) || Date.now(),
+            formattedDate: h.formattedDate || 'Recent',
+          };
+          map.set(h.id, entryRecord);
+        }
+      }
+    }
+
+    return Array.from(map.values());
+  }, [allEntries, userProfile, currentUser]);
+
+  // Synchronize full candidate test attempts when a candidate is selected
+  useEffect(() => {
+    if (!selectedCandidate) {
+      setCandidateAttemptsList([]);
+      return;
+    }
+
+    // Initialize with existing attempts from ranking
+    const initialAttempts = selectedCandidate.chapterAttempts || [];
+    setCandidateAttemptsList(initialAttempts);
+    setIsSyncingCandidateAttempts(true);
+
+    let isMounted = true;
+    const syncAttempts = async () => {
+      try {
+        const cloudAttempts = await FirestoreLeaderboardService.fetchCandidateTestHistory(
+          selectedCandidate.studentName,
+          selectedCandidate.uid,
+          selectedCandidate.email,
+          selectedCandidate.classLevel,
+          selectedCandidate.track
+        );
+
+        if (!isMounted) return;
+
+        // Merge initial attempts, cloud test_results, and active user profile history if matching
+        const mergedMap = new Map<string, LeaderboardEntry>();
+
+        for (const a of initialAttempts) {
+          if (a && a.id) mergedMap.set(a.id, a);
+        }
+        for (const a of cloudAttempts) {
+          if (a && a.id) mergedMap.set(a.id, a);
+        }
+
+        const isMe = (userProfile?.uid && userProfile.uid === selectedCandidate.uid) ||
+          (userProfile?.displayName && userProfile.displayName.trim().toLowerCase() === selectedCandidate.studentName.trim().toLowerCase());
+
+        if (isMe && userProfile?.history) {
+          for (const h of userProfile.history) {
+            if (h && h.id) {
+              mergedMap.set(h.id, {
+                id: h.id,
+                uid: userProfile.uid,
+                email: userProfile.email,
+                studentName: selectedCandidate.studentName,
+                classLevel: h.classLevel || selectedCandidate.classLevel,
+                track: h.track || selectedCandidate.track,
+                chapterId: h.chapterId,
+                chapterName: h.chapterName,
+                mode: 'practice',
+                correctCount: Number(h.correctCount) || 0,
+                totalQuestions: Number(h.totalQuestions) || 0,
+                skippedCount: Number(h.skippedCount) || 0,
+                scorePercentage: Number(h.scorePercentage) || 0,
+                timeSpentSeconds: Number(h.timeSpentSeconds) || 0,
+                formattedTime: h.formattedTime || '0m 00s',
+                timestamp: Number(h.timestamp) || Date.now(),
+                formattedDate: h.formattedDate || 'Recent',
+              });
+            }
+          }
+        }
+
+        const finalAttempts = Array.from(mergedMap.values()).sort(
+          (a, b) => (Number(b.timestamp) || 0) - (Number(a.timestamp) || 0)
+        );
+
+        setCandidateAttemptsList(finalAttempts);
+      } catch (err) {
+        console.warn('Candidate attempts sync notice:', err);
+      } finally {
+        if (isMounted) {
+          setIsSyncingCandidateAttempts(false);
+        }
+      }
+    };
+
+    syncAttempts();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [selectedCandidate, userProfile]);
 
   // Filter live submissions for track and active class
   const classLiveSubmissions = useMemo(() => {
@@ -594,63 +725,103 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                 </div>
 
                 {/* Overall Accuracy Bar */}
-                <div className="grid grid-cols-3 gap-2 mt-4 p-3 rounded-2xl bg-black/25 backdrop-blur-md border border-white/10 text-center text-white">
-                  <div>
-                    <span className="text-[10px] uppercase text-white/70 block">Overall Correct Accuracy</span>
-                    <span className="text-lg font-black text-emerald-300">{selectedCandidate.overallAccuracy}%</span>
-                  </div>
-                  <div>
-                    <span className="text-[10px] uppercase text-white/70 block">Questions Solved</span>
-                    <span className="text-lg font-black text-white">{selectedCandidate.totalCorrect}/{selectedCandidate.totalQuestions}</span>
-                  </div>
-                  <div>
-                    <span className="text-[10px] uppercase text-white/70 block">Total Submissions</span>
-                    <span className="text-lg font-black text-amber-300">{selectedCandidate.testsAttempted}</span>
-                  </div>
-                </div>
+                {(() => {
+                  const drawerAttempts = candidateAttemptsList.length > 0 ? candidateAttemptsList : (selectedCandidate.chapterAttempts || []);
+                  const drawerTotalQ = drawerAttempts.reduce((sum, item) => sum + (Number(item.totalQuestions) || 0), 0);
+                  const drawerTotalC = drawerAttempts.reduce((sum, item) => sum + (Number(item.correctCount) || 0), 0);
+                  const drawerAccuracy = drawerTotalQ > 0 ? Math.round((drawerTotalC / drawerTotalQ) * 100) : selectedCandidate.overallAccuracy;
+
+                  return (
+                    <div className="grid grid-cols-3 gap-2 mt-4 p-3 rounded-2xl bg-black/25 backdrop-blur-md border border-white/10 text-center text-white">
+                      <div>
+                        <span className="text-[10px] uppercase text-white/70 block">Overall Correct Accuracy</span>
+                        <span className="text-lg font-black text-emerald-300">{drawerAccuracy}%</span>
+                      </div>
+                      <div>
+                        <span className="text-[10px] uppercase text-white/70 block">Questions Solved</span>
+                        <span className="text-lg font-black text-white">{drawerTotalC}/{drawerTotalQ || selectedCandidate.totalQuestions}</span>
+                      </div>
+                      <div>
+                        <span className="text-[10px] uppercase text-white/70 block flex items-center justify-center gap-1">
+                          <span>Total Submissions</span>
+                          {isSyncingCandidateAttempts && <RefreshCw className="w-2.5 h-2.5 animate-spin text-white/80" />}
+                        </span>
+                        <span className="text-lg font-black text-amber-300">{drawerAttempts.length || selectedCandidate.testsAttempted}</span>
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
 
               {/* Drawer Body: All Submissions Practice History */}
               <div className="p-6 space-y-4 overflow-y-auto">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center justify-between">
-                  <span>Saved Practice History &amp; All Submissions</span>
-                  <span>{(selectedCandidate.chapterAttempts || []).length} Submissions</span>
-                </h4>
+                {(() => {
+                  const drawerAttempts = candidateAttemptsList.length > 0 ? candidateAttemptsList : (selectedCandidate.chapterAttempts || []);
 
-                <div className="space-y-2 max-h-72 overflow-y-auto pr-1">
-                  {(selectedCandidate.chapterAttempts || []).map((ch, idx) => (
-                    <div
-                      key={ch.id || idx}
-                      className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex items-center justify-between gap-3 text-xs"
-                    >
-                      <div className="space-y-1 min-w-0">
-                        <div className="font-bold text-slate-900 dark:text-white truncate">
-                          {ch.chapterName}
-                        </div>
-                        <div className="flex items-center gap-2 text-[11px] text-slate-500">
-                          <span>{ch.formattedTime || `${ch.timeSpentSeconds}s`}</span>
-                          <span>•</span>
-                          <span>{ch.timestamp ? formatLiveTime(ch.timestamp) : (ch.formattedDate || 'Recent')}</span>
-                        </div>
-                      </div>
-
-                      <div className="text-right shrink-0">
-                        <div className={`text-base font-black ${
-                          ch.scorePercentage >= 80 ? 'text-emerald-600 dark:text-emerald-400' :
-                          ch.scorePercentage >= 50 ? 'text-indigo-600 dark:text-indigo-400' : 'text-rose-600 dark:text-rose-400'
-                        }`}>
-                          {ch.scorePercentage}%
-                        </div>
-                        <div className="text-[10px] text-slate-400">
-                          <span>{ch.correctCount}/{ch.totalQuestions} Correct</span>
-                          {(ch.skippedCount ?? 0) > 0 && (
-                            <span className="ml-1 text-slate-500 font-semibold">• {ch.skippedCount} Skipped</span>
+                  return (
+                    <>
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center justify-between">
+                        <span className="flex items-center gap-1.5">
+                          <Clock className="w-3.5 h-3.5 text-indigo-500" />
+                          <span>Saved Practice History &amp; All Submissions</span>
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                          {isSyncingCandidateAttempts && (
+                            <span className="text-[10px] text-indigo-500 font-semibold flex items-center gap-1">
+                              <RefreshCw className="w-2.5 h-2.5 animate-spin" />
+                              <span>Syncing...</span>
+                            </span>
                           )}
+                          <span>{drawerAttempts.length} Submissions</span>
+                        </span>
+                      </h4>
+
+                      {drawerAttempts.length === 0 ? (
+                        <div className="p-8 text-center rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-2">
+                          <BookOpen className="w-8 h-8 text-slate-400 mx-auto" />
+                          <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                            {isSyncingCandidateAttempts ? 'Syncing test attempt records...' : 'No test submissions found for this candidate.'}
+                          </p>
                         </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                      ) : (
+                        <div className="space-y-2 max-h-72 overflow-y-auto pr-1">
+                          {drawerAttempts.map((ch, idx) => (
+                            <div
+                              key={ch.id || idx}
+                              className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex items-center justify-between gap-3 text-xs"
+                            >
+                              <div className="space-y-1 min-w-0">
+                                <div className="font-bold text-slate-900 dark:text-white truncate">
+                                  {ch.chapterName}
+                                </div>
+                                <div className="flex items-center gap-2 text-[11px] text-slate-500">
+                                  <span>{ch.formattedTime || `${ch.timeSpentSeconds}s`}</span>
+                                  <span>•</span>
+                                  <span>{ch.timestamp ? formatLiveTime(ch.timestamp) : (ch.formattedDate || 'Recent')}</span>
+                                </div>
+                              </div>
+
+                              <div className="text-right shrink-0">
+                                <div className={`text-base font-black ${
+                                  ch.scorePercentage >= 80 ? 'text-emerald-600 dark:text-emerald-400' :
+                                  ch.scorePercentage >= 50 ? 'text-indigo-600 dark:text-indigo-400' : 'text-rose-600 dark:text-rose-400'
+                                }`}>
+                                  {ch.scorePercentage}%
+                                </div>
+                                <div className="text-[10px] text-slate-400">
+                                  <span>{ch.correctCount}/{ch.totalQuestions} Correct</span>
+                                  {(ch.skippedCount ?? 0) > 0 && (
+                                    <span className="ml-1 text-slate-500 font-semibold">• {ch.skippedCount} Skipped</span>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  );
+                })()}
 
                 <div className="pt-2 flex justify-end">
                   <button

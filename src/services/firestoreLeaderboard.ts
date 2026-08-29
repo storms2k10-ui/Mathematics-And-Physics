@@ -126,6 +126,93 @@ export class FirestoreLeaderboardService {
   }
 
   /**
+   * Fetches all test attempts for a specific candidate across Firestore 'leaderboard' and 'test_results' collections
+   */
+  static async fetchCandidateTestHistory(
+    studentName: string,
+    uid?: string,
+    email?: string,
+    classLevel?: ClassLevel,
+    track?: string
+  ): Promise<LeaderboardEntry[]> {
+    const attemptsMap = new Map<string, LeaderboardEntry>();
+
+    try {
+      // 1. If UID exists, query test_results by UID
+      if (uid) {
+        try {
+          const trRef = collection(db, TEST_RESULTS_COLLECTION);
+          const qUid = query(trRef, where('uid', '==', uid));
+          const snapUid = await getDocs(qUid);
+          snapUid.forEach((docSnap) => {
+            const data = docSnap.data() as LeaderboardEntry;
+            if (data && (data.id || docSnap.id)) {
+              attemptsMap.set(data.id || docSnap.id, {
+                ...data,
+                id: data.id || docSnap.id,
+              });
+            }
+          });
+        } catch (e) {
+          console.warn('Query test_results by uid notice:', e);
+        }
+      }
+
+      // 2. Query leaderboard collection by studentName or email
+      if (studentName) {
+        try {
+          const lbRef = collection(db, LEADERBOARD_COLLECTION);
+          const qName = query(lbRef, where('studentName', '==', studentName.trim()));
+          const snapName = await getDocs(qName);
+          snapName.forEach((docSnap) => {
+            const data = docSnap.data() as LeaderboardEntry;
+            if (data && (data.id || docSnap.id)) {
+              attemptsMap.set(data.id || docSnap.id, {
+                ...data,
+                id: data.id || docSnap.id,
+              });
+            }
+          });
+        } catch (e) {
+          console.warn('Query leaderboard by name notice:', e);
+        }
+      }
+
+      // 3. If email exists, query leaderboard by email
+      if (email) {
+        try {
+          const lbRef = collection(db, LEADERBOARD_COLLECTION);
+          const qEmail = query(lbRef, where('email', '==', email.trim().toLowerCase()));
+          const snapEmail = await getDocs(qEmail);
+          snapEmail.forEach((docSnap) => {
+            const data = docSnap.data() as LeaderboardEntry;
+            if (data && (data.id || docSnap.id)) {
+              attemptsMap.set(data.id || docSnap.id, {
+                ...data,
+                id: data.id || docSnap.id,
+              });
+            }
+          });
+        } catch (e) {
+          console.warn('Query leaderboard by email notice:', e);
+        }
+      }
+    } catch (err) {
+      console.warn('fetchCandidateTestHistory error:', err);
+    }
+
+    const allAttempts = Array.from(attemptsMap.values());
+    return allAttempts
+      .filter((item) => {
+        if (!item) return false;
+        if (classLevel && Number(item.classLevel) !== Number(classLevel)) return false;
+        if (track && item.track && item.track !== track) return false;
+        return true;
+      })
+      .sort((a, b) => (Number(b.timestamp) || 0) - (Number(a.timestamp) || 0));
+  }
+
+  /**
    * Fetches the ranked leaderboard from Firestore cloud database with strict class separation.
    */
   static async fetchRanked(
@@ -195,8 +282,8 @@ export class FirestoreLeaderboardService {
   ): Unsubscribe {
     const colRef = collection(db, LEADERBOARD_COLLECTION);
     const q = classLevel && classLevel !== 'all'
-      ? query(colRef, where('classLevel', '==', Number(classLevel)), limit(100))
-      : query(colRef, limit(100));
+      ? query(colRef, where('classLevel', '==', Number(classLevel)), limit(1000))
+      : query(colRef, limit(1000));
 
     return onSnapshot(q, (snap) => {
       const entries: LeaderboardEntry[] = [];
