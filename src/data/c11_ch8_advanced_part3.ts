@@ -248,7 +248,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$-1,0$"
     },
     "correct_answer": "A",
-    "explanation": "$|x|\\ge0$ with equality uniquely at $x=0$, giving the vertex (corner point) at $0,0$.",
+    "explanation": "$|x|\\g \ne 0$ with equality uniquely at $x=0$, giving the vertex (corner point) at $0,0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -284,7 +284,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$y\\le-1$"
     },
     "correct_answer": "B",
-    "explanation": "Since $-|x+1|\\le0$, $y=-|x+1|+4\\le4$. Thus the range is $(-\\infty,4]$.",
+    "explanation": "Since $-|x+1|\\l \ne 0$, $y=-|x+1|+4\\le4$. Thus the range is $(-\\infty,4]$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -392,7 +392,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "A",
-    "explanation": "Since $\\sqrt{x-4}\\ge0$, $y=\\sqrt{x-4}+3\\ge3$. Thus the range is $[3,\\infty)$.",
+    "explanation": "Since $\\sqrt{x-4}\\g \ne 0$, $y=\\sqrt{x-4}+3\\ge3$. Thus the range is $[3,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -410,7 +410,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$x<5$"
     },
     "correct_answer": "B",
-    "explanation": "$5-2x\\ge0 \\implies 2x\\le5 \\implies x\\le\\dfrac{5}{2}$, or $\\left(-\\infty, \\dfrac{5}{2}\\right]$.",
+    "explanation": "$5-2x\\g \ne 0 \\implies 2x\\le5 \\implies x\\le\\dfrac{5}{2}$, or $\\left(-\\infty, \\dfrac{5}{2}\\right]$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -806,7 +806,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$[1,\\infty)$"
     },
     "correct_answer": "A",
-    "explanation": "For $x\\le0$, f(x)$=-x$, which is a line with negative slope (decreasing).",
+    "explanation": "For $x\\l \ne 0$, f(x)$=-x$, which is a line with negative slope (decreasing).",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"

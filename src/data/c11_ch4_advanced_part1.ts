@@ -27,7 +27,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_a": "$2,4,8,16,\\ldots$",
     "option_b": "$1,4,9,16,\\ldots$",
     "option_c": "$3,7,11,15,\\ldots$",
-    "option_d": "$1,\\frac12,\\frac14,\\ldots$",
+    "option_d": "$1,\\frac{1}{2},\\frac{1}{4},\\ldots$",
     "correct_answer": "C",
     "explanation": "Consecutive terms differ by the constant $4$.",
     "difficulty": "Hard",

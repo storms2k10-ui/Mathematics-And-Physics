@@ -171,12 +171,12 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
     "question": "If f(x)$=x^2$ and g(x)$=\\sqrt{x}$, then $f\\circ g$x$=x$ holds for:",
     "options": {
       "A": "$x\\in\\mathbb{R}$",
-      "B": "$x\\ge0$",
-      "C": "$x\\le0$",
-      "D": "$x\\ne0$"
+      "B": "$x\\g \ne 0$",
+      "C": "$x\\l \ne 0$",
+      "D": "$x\\n \ne 0$"
     },
     "correct_answer": "B",
-    "explanation": "$f\\circ g$x$=$\\sqrt{x}$^2=x$, but $\\sqrt{x}$ is only defined for real numbers when $x\\ge0$.",
+    "explanation": "$f\\circ g$x$=$\\sqrt{x}$^2=x$, but $\\sqrt{x}$ is only defined for real numbers when $x\\g \ne 0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -518,7 +518,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$[-2,1]$"
     },
     "correct_answer": "B",
-    "explanation": "The radicand must be non-negative $\\dfrac{x-1}{x+2}\\ge0$ and denominator non-zero $x\\ne-2$. Sign chart gives $(-\\infty,-2)\\cup[1,\\infty)$.",
+    "explanation": "The radicand must be non-negative $\\dfrac{x-1}{x+2}\\g \ne 0$ and denominator non-zero $x\\ne-2$. Sign chart gives $(-\\infty,-2)\\cup[1,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Dom}(f) = \\{x \\in \\mathbb{R} : f(x) \\in \\mathbb{R}\\}"
@@ -554,7 +554,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$[5,\\infty)$"
     },
     "correct_answer": "A",
-    "explanation": "$x-1\\ge0 \\implies x\\ge1$ and $5-x\\ge0 \\implies x\\le5$. The intersection is $[1,5]$.",
+    "explanation": "$x-1\\g \ne 0 \\implies x\\ge1$ and $5-x\\g \ne 0 \\implies x\\le5$. The intersection is $[1,5]$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Dom}(f) = \\{x \\in \\mathbb{R} : f(x) \\in \\mathbb{R}\\}"
@@ -626,7 +626,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "A",
-    "explanation": "Completing the square: f(x)$=$(x-2)^2+3$. Since $$(x-2)^2\\ge0$, f(x)$\\ge3$. Thus range is $[3,\\infty)$.",
+    "explanation": "Completing the square: f(x)$=$(x-2)^2+3$. Since $$(x-2)^2\\g \ne 0$, f(x)$\\ge3$. Thus range is $[3,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Range}(f) = \\{f(x) : x \\in \\text{Dom}(f)\\}"
@@ -716,7 +716,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$\\mathbb{R}\\setminus\\{-3,3\\}$"
     },
     "correct_answer": "B",
-    "explanation": "$f\\circ g$x$=\\sqrt{x^2-9}$, which requires $x^2-9\\ge0 \\implies |x|\\ge3 \\implies x\\le-3$ or $x\\ge3$.",
+    "explanation": "$f\\circ g$x$=\\sqrt{x^2-9}$, which requires $x^2-9\\g \ne 0 \\implies |x|\\ge3 \\implies x\\le-3$ or $x\\ge3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
@@ -734,7 +734,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "Neither $0$ nor $1$"
     },
     "correct_answer": "C",
-    "explanation": "$g(x)$ requires $x\\ne0$. Furthermore, $g(x)$ cannot equal $1$, so $1/x\\ne1 \\implies x\\ne1$. Thus both $0$ and $1$ are excluded.",
+    "explanation": "$g(x)$ requires $x\\n \ne 0$. Furthermore, $g(x)$ cannot equal $1$, so $1/x\\ne1 \\implies x\\ne1$. Thus both $0$ and $1$ are excluded.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
@@ -836,13 +836,13 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
     "chapter_id": "c11-ch8",
     "question": "A quadratic function has vertex $2,-3$ and passes through $0,5$. Its equation is:",
     "options": {
-      "A": "$y=2$(x-2)^2-3$",
-      "B": "$y=$(x-2)^2-3$",
+      "A": "$y=2(x-2)^2-3$",
+      "B": "$y=(x-2)^2-3$",
       "C": "$y=2$x+2$^2-3$",
-      "D": "$y=$(x-2)^2+3$"
+      "D": "$y=(x-2)^2+3$"
     },
     "correct_answer": "A",
-    "explanation": "In vertex form: $y=a$(x-2)^2-3$. Using $0,5$: $5=a$0-2$^2-3 \\implies 5=4a-3 \\implies 4a=8 \\implies a=2$.",
+    "explanation": "In vertex form: $y=a(x-2)^2-3$. Using $(0,5)$: $5=a(0-2)^2-3 \\implies 5=4a-3 \\implies 4a=8 \\implies a=2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -860,7 +860,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$y=x^2-5$"
     },
     "correct_answer": "A",
-    "explanation": "Let $y=a$x-1$x-5$. Using $0,5$: $5=a$-1$$-5$ \\implies 5=5a \\implies a=1$. Thus $y=$x-1$x-5$.",
+    "explanation": "Let $y=a$x-1$x-5$. Using $(0,5)$: $5=a$-1$$-5$ \\implies 5=5a \\implies a=1$. Thus $y=$x-1$x-5$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"

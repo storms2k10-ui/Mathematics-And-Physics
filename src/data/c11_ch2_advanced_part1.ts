@@ -717,7 +717,7 @@ export const C11_CH2_ADVANCED_PART1: Question[] = [
     chapter_id: "c11-ch2",
     chapter: "Matrices and Determinants",
     question: "For a scalar $k$, $(kA)^T$ equals:",
-    option_a: "^T\\) equals:\n\nA) $A^T+k$",
+    option_a: "$A^T+k$",
     option_b: "$kA$",
     option_c: "$A^T/k$",
     option_d: "$kA^T$",

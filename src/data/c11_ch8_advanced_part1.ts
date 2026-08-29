@@ -68,7 +68,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "$x>3$"
     },
     "correct_answer": "C",
-    "explanation": "The denominator cannot be zero. Hence $x-3\\ne0$, so $x\\ne3$, giving domain $\\mathbb{R}\\setminus\\{3\\}$.",
+    "explanation": "The denominator cannot be zero. Hence $x-3\\n \ne 0$, so $x\\ne3$, giving domain $\\mathbb{R}\\setminus\\{3\\}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Dom}(f) = \\{x \\in \\mathbb{R} : f(x) \\in \\mathbb{R}\\}"
@@ -86,7 +86,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "B",
-    "explanation": "For a real square root, the radicand must be non-negative: $x-5\\ge0 \\implies x\\ge5$, i.e. $[5,\\infty)$.",
+    "explanation": "For a real square root, the radicand must be non-negative: $x-5\\g \ne 0 \\implies x\\ge5$, i.e. $[5,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Dom}(f) = \\{x \\in \\mathbb{R} : f(x) \\in \\mathbb{R}\\}"
@@ -248,7 +248,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "$\\mathbb{R}\\setminus\\{-3,3\\}$"
     },
     "correct_answer": "A",
-    "explanation": "$9-x^2\\ge0 \\implies x^2\\le9 \\implies -3\\le x\\le3$, which is $[-3,3]$.",
+    "explanation": "$9-x^2\\g \ne 0 \\implies x^2\\le9 \\implies -3\\le x\\le3$, which is $[-3,3]$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Dom}(f) = \\{x \\in \\mathbb{R} : f(x) \\in \\mathbb{R}\\}"
@@ -266,7 +266,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "C",
-    "explanation": "Since $x^2\\ge0$, $x^2+4\\ge4$. The minimum value $4$ occurs at $x=0$, so the range is $[4,\\infty)$.",
+    "explanation": "Since $x^2\\g \ne 0$, $x^2+4\\ge4$. The minimum value $4$ occurs at $x=0$, so the range is $[4,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Range}(f) = \\{f(x) : x \\in \\text{Dom}(f)\\}"
@@ -284,7 +284,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "No maximum"
     },
     "correct_answer": "C",
-    "explanation": "Since $-x^2\\le0$, $2-x^2\\le2$. The maximum value is $2$, occurring at $x=0$.",
+    "explanation": "Since $-x^2\\l \ne 0$, $2-x^2\\le2$. The maximum value is $2$, occurring at $x=0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Range}(f) = \\{f(x) : x \\in \\text{Dom}(f)\\}"
@@ -492,7 +492,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The range of f(x)$=\\dfrac{1}{x}$, $x\\ne0$, is:",
+    "question": "The range of f(x)$=\\dfrac{1}{x}$, $x\\n \ne 0$, is:",
     "options": {
       "A": "$\\mathbb{R}$",
       "B": "$[0,\\infty)$",
@@ -518,7 +518,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "$x>4$"
     },
     "correct_answer": "B",
-    "explanation": "$4-x\\ge0 \\implies x\\le4$, which in interval notation is $(-\\infty,4]$.",
+    "explanation": "$4-x\\g \ne 0 \\implies x\\le4$, which in interval notation is $(-\\infty,4]$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Dom}(f) = \\{x \\in \\mathbb{R} : f(x) \\in \\mathbb{R}\\}"
@@ -536,7 +536,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "$[2,\\infty)$"
     },
     "correct_answer": "B",
-    "explanation": "$x^2-4\\ge0 \\implies x^2\\ge4 \\implies x\\le-2$ or $x\\ge2$, i.e. $(-\\infty,-2]\\cup[2,\\infty)$.",
+    "explanation": "$x^2-4\\g \ne 0 \\implies x^2\\ge4 \\implies x\\le-2$ or $x\\ge2$, i.e. $(-\\infty,-2]\\cup[2,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Dom}(f) = \\{x \\in \\mathbb{R} : f(x) \\in \\mathbb{R}\\}"
@@ -662,7 +662,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "$\\mathbb{R}\\setminus\\{0\\}$"
     },
     "correct_answer": "B",
-    "explanation": "On $[0,\\infty)$, f(x)$=x^2$ is strictly increasing, so $x_1^2=x_2^2 \\implies x_1=x_2$ for $x_1,x_2\\ge0$.",
+    "explanation": "On $[0,\\infty)$, f(x)$=x^2$ is strictly increasing, so $x_1^2=x_2^2 \\implies x_1=x_2$ for $x_1,x_2\\g \ne 0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"

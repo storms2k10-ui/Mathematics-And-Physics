@@ -62,13 +62,13 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch8",
     "question": "If f(x)$=\\sqrt{x}$ and g(x)$=x-4$, the domain of $f\\circ g$ is:",
     "options": {
-      "A": "$x\\ge0$",
+      "A": "$x\\g \ne 0$",
       "B": "$x>4$",
       "C": "$x\\ge4$",
       "D": "$x\\le4$"
     },
     "correct_answer": "C",
-    "explanation": "$f\\circ g$x$=f$1$=\\sqrt{x-4}$, which requires $x-4\\ge0 \\implies x\\ge4$, i.e. $[4,\\infty)$.",
+    "explanation": "$f\\circ g$x$=f$1$=\\sqrt{x-4}$, which requires $x-4\\g \ne 0 \\implies x\\ge4$, i.e. $[4,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
@@ -104,7 +104,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$x<2$"
     },
     "correct_answer": "B",
-    "explanation": "The denominator cannot be zero: $x-2\\ne0 \\implies x\\ne2$, so the domain is $\\mathbb{R}\\setminus\\{2\\}$.",
+    "explanation": "The denominator cannot be zero: $x-2\\n \ne 0 \\implies x\\ne2$, so the domain is $\\mathbb{R}\\setminus\\{2\\}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
@@ -276,7 +276,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=\\dfrac{1}{x}$, $x\\ne0$, then $f^{-1}$x$=$:",
+    "question": "If f(x)$=\\dfrac{1}{x}$, $x\\n \ne 0$, then $f^{-1}$x$=$:",
     "options": {
       "A": "$x$",
       "B": "$-x$",
@@ -374,7 +374,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$f^{-1}$x$=\\dfrac{1}{x^2}$"
     },
     "correct_answer": "B",
-    "explanation": "For $x\\ge0$, $y=x^2 \\implies x=\\sqrt{y}$ (the principal square root). Thus $f^{-1}$x$=\\sqrt{x}$.",
+    "explanation": "For $x\\g \ne 0$, $y=x^2 \\implies x=\\sqrt{y}$ (the principal square root). Thus $f^{-1}$x$=\\sqrt{x}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -392,7 +392,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$-x^2$"
     },
     "correct_answer": "B",
-    "explanation": "For $x\\le0$, $y=x^2 \\implies x=-\\sqrt{y}$. Thus $f^{-1}$x$=-\\sqrt{x}$ for $x\\ge0$.",
+    "explanation": "For $x\\l \ne 0$, $y=x^2 \\implies x=-\\sqrt{y}$. Thus $f^{-1}$x$=-\\sqrt{x}$ for $x\\g \ne 0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -438,7 +438,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=ax+b$, $a\\ne0$, then $f^{-1}$x$=$:",
+    "question": "If f(x)$=ax+b$, $a\\n \ne 0$, then $f^{-1}$x$=$:",
     "options": {
       "A": "$\\dfrac{x+b}{a}$",
       "B": "$\\dfrac{x-b}{a}$",
@@ -528,7 +528,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=\\dfrac{3}{x}$, $x\\ne0$, then $f\\circ f$x$=$:",
+    "question": "If f(x)$=\\dfrac{3}{x}$, $x\\n \ne 0$, then $f\\circ f$x$=$:",
     "options": {
       "A": "$3x$",
       "B": "$x$",
@@ -744,7 +744,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The minimum value of $y=$(x-2)^2-5$ is:",
+    "question": "The minimum value of $y=(x-2)^2-5$ is:",
     "options": {
       "A": "$-5$",
       "B": "$-2$",
@@ -770,7 +770,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "No maximum"
     },
     "correct_answer": "C",
-    "explanation": "Since $-2$x+1$^2\\le0$, the expression attains its maximum value $7$ at $x=-1$.",
+    "explanation": "Since $-2$x+1$^2\\l \ne 0$, the expression attains its maximum value $7$ at $x=-1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "y = a(x-h)^2 + k, \\quad \\text{Vertex: } (h,k)"
@@ -842,7 +842,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "B",
-    "explanation": "$$x+2$^2\\ge0 \\implies y=$x+2$^2+1\\ge1$. Thus the range is $[1,\\infty)$.",
+    "explanation": "$$x+2$^2\\g \ne 0 \\implies y=$x+2$^2+1\\ge1$. Thus the range is $[1,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Range}(f) = \\{f(x) : x \\in \\text{Dom}(f)\\}"
@@ -860,7 +860,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "B",
-    "explanation": "$-3$x-1$^2\\le0 \\implies y\\le4$. Hence the range is $(-\\infty,4]$.",
+    "explanation": "$-3$x-1$^2\\l \ne 0 \\implies y\\le4$. Hence the range is $(-\\infty,4]$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Range}(f) = \\{f(x) : x \\in \\text{Dom}(f)\\}"
