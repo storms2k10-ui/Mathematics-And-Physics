@@ -784,7 +784,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         </span>
                       </button>
 
-                      {/* 3. About Me Button */}
+                      {/* 3. About Developer Button */}
                       <button
                         id="settings-about-btn"
                         onClick={() => {
@@ -802,7 +802,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         </span>
                         <div className="flex-1 min-w-0">
                           <span className="font-bold block text-xs sm:text-sm">
-                            About Me
+                            About Developer
                           </span>
                           <span className="text-[10px] text-slate-400 block">
                             Author &amp; philosophy
@@ -914,7 +914,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <GraduationCap className="w-3.5 h-3.5 text-indigo-500" />
-              <span>About Me</span>
+              <span>About Developer</span>
             </button>
 
             {onOpenLeaderboard && (

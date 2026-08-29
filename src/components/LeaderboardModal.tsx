@@ -45,7 +45,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
     return initialClass && initialClass !== 'all' ? initialClass : 9;
   });
   const [selectedTrack, setSelectedTrack] = useState<LeaderboardTrack>(initialTrack);
-  const [selectedDifficulty, setSelectedDifficulty] = useState<'all' | 'Normal' | 'Advanced'>('all');
+  const [selectedDifficulty, setSelectedDifficulty] = useState<'Normal' | 'Advanced'>('Normal');
   const [selectedCandidate, setSelectedCandidate] = useState<CandidateRankingProfile | null>(null);
   const [candidateAttemptsList, setCandidateAttemptsList] = useState<LeaderboardEntry[]>([]);
   const [copiedShare, setCopiedShare] = useState<boolean>(false);
@@ -327,7 +327,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
       if (Number(norm.classLevel) !== Number(selectedClass)) continue;
 
       const entryDifficulty = entry.difficultyTier || (entry.chapterName && entry.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
-      if (selectedDifficulty !== 'all' && entryDifficulty !== selectedDifficulty) continue;
+      if (entryDifficulty !== selectedDifficulty) continue;
 
       const cleanName = (entry.studentName || 'Anonymous Student').trim();
       const candidateKey = `${cleanName}_c${norm.classLevel}_${norm.track}`.toLowerCase();
@@ -513,13 +513,13 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                     }
                     setSelectedCandidate(null);
                   }}
-                  className={`w-auto px-2 py-1 rounded-md text-[10.5px] font-bold transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap ${
+                  className={`w-auto px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md text-[9px] sm:text-[10.5px] font-bold transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap ${
                     selectedTrack === tr.id
                       ? 'bg-emerald-600 text-white shadow-xs'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50'
                   }`}
                 >
-                  <Icon className="w-2.5 h-2.5 shrink-0" />
+                  <Icon className="w-2 h-2 sm:w-2.5 sm:h-2.5 shrink-0" />
                   <span>{tr.label}</span>
                 </button>
               );
@@ -534,7 +534,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                   if (!e) return false;
                   const norm = normalizeTrackAndClass(e);
                   const entryDiff = e.difficultyTier || (e.chapterName && e.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
-                  const diffMatch = selectedDifficulty === 'all' || entryDiff === selectedDifficulty;
+                  const diffMatch = entryDiff === selectedDifficulty;
                   return norm.track === selectedTrack && Number(norm.classLevel) === lvl && diffMatch && (!e.id || !e.id.startsWith('lead-seed-'));
                 }).length;
 
@@ -545,14 +545,14 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                       setSelectedClass(lvl);
                       setSelectedCandidate(null);
                     }}
-                    className={`w-auto px-2 py-1 rounded-md text-[10.5px] font-bold transition-all cursor-pointer flex items-center gap-1 whitespace-nowrap ${
+                    className={`w-auto px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md text-[9.5px] sm:text-[10.5px] font-bold transition-all cursor-pointer flex items-center gap-1 whitespace-nowrap ${
                       selectedClass === lvl
                         ? 'bg-teal-600 text-white shadow-xs'
                         : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50'
                     }`}
                   >
                     <span>Class {lvl}</span>
-                    <span className={`text-[9px] px-1 py-0.2 rounded font-semibold ${selectedClass === lvl ? 'bg-teal-700 text-white' : 'bg-slate-300/80 dark:bg-slate-700/80 text-slate-600 dark:text-slate-300'}`}>
+                    <span className={`text-[8.5px] sm:text-[9px] px-1 py-0.2 rounded font-semibold ${selectedClass === lvl ? 'bg-teal-700 text-white' : 'bg-slate-300/80 dark:bg-slate-700/80 text-slate-600 dark:text-slate-300'}`}>
                       {count}
                     </span>
                   </button>
@@ -563,23 +563,20 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
             {/* Difficulty Tier Filter Tabs */}
             <div className="flex flex-wrap items-center p-0.5 rounded-lg bg-slate-200/60 dark:bg-slate-800/60 gap-1">
               {([
-                { id: 'all', label: 'All Difficulties' },
                 { id: 'Normal', label: '✓ Normal' },
                 { id: 'Advanced', label: '⚡ Advanced' },
-              ] as { id: 'all' | 'Normal' | 'Advanced'; label: string }[]).map((dif) => (
+              ] as { id: 'Normal' | 'Advanced'; label: string }[]).map((dif) => (
                 <button
                   key={dif.id}
                   onClick={() => {
                     setSelectedDifficulty(dif.id);
                     setSelectedCandidate(null);
                   }}
-                  className={`w-auto px-2 py-1 rounded-md text-[10.5px] font-bold transition-all cursor-pointer flex items-center gap-1 whitespace-nowrap ${
+                  className={`w-auto px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-md text-[9.5px] sm:text-[10.5px] font-bold transition-all cursor-pointer flex items-center gap-1 whitespace-nowrap ${
                     selectedDifficulty === dif.id
                       ? dif.id === 'Advanced'
                         ? 'bg-purple-600 text-white shadow-xs'
-                        : dif.id === 'Normal'
-                        ? 'bg-emerald-600 text-white shadow-xs'
-                        : 'bg-indigo-600 text-white shadow-xs'
+                        : 'bg-emerald-600 text-white shadow-xs'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50'
                   }`}
                 >

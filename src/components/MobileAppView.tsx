@@ -493,7 +493,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
               id="mobile-settings-menu-btn"
               onClick={() => setIsSettingsOpen(true)}
               className="w-8.5 h-8.5 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-white/60 dark:border-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-200 shadow-xs hover:shadow-md hover:bg-purple-50 dark:hover:bg-slate-800 hover:text-purple-600 dark:hover:text-purple-400 hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
-              title="Settings, Theme & About Me"
+              title="Settings, Theme & About Developer"
               aria-label="Open Settings"
             >
               <Menu className="w-4.5 h-4.5" />
@@ -1687,7 +1687,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
               </div>
             </div>
 
-            {/* SECTION 2: 🎓 ABOUT ME COMPACT ROW */}
+            {/* SECTION 2: 🎓 ABOUT DEVELOPER COMPACT ROW */}
             <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3 min-w-0">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 p-0.5 shadow-xs shrink-0">
@@ -1697,7 +1697,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-1.5">
-                    <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">About Me</h4>
+                    <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">About Developer</h4>
                     <span className="px-1.5 py-0.5 rounded-md bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 text-[9px] font-black shrink-0">
                       Author
                     </span>
@@ -1787,7 +1787,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
               <button
                 onClick={() => setIsAboutMeOpen(false)}
                 className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-colors cursor-pointer"
-                aria-label="Close About Me"
+                aria-label="Close About Developer"
               >
                 <X className="w-4 h-4" />
               </button>
