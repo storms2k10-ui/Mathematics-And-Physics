@@ -22,8 +22,9 @@ import { AuthModal } from './components/AuthModal';
 import { UserProfileModal } from './components/UserProfileModal';
 import { OfflineBanner } from './components/OfflineBanner';
 import { MathService, shuffleArray } from './services/mathService';
+import { TestAttemptService } from './services/testAttemptService';
 import { MobileAppView } from './components/MobileAppView';
-import { Chapter, ClassInfo, ClassLevel, Question, StudentProfile, LeaderboardEntry, TestSessionConfig, UserTestHistory, PracticeDifficulty } from './types';
+import { Chapter, ClassInfo, ClassLevel, Question, StudentProfile, LeaderboardEntry, TestSessionConfig, UserTestHistory, PracticeDifficulty, UserAnswer } from './types';
 import { useAuth } from './context/AuthContext';
 import { useOffline } from './context/OfflineContext';
 import { Atom, ArrowLeft, Smartphone, Monitor } from 'lucide-react';
@@ -60,12 +61,16 @@ export default function App() {
   const [pendingDifficultyTier, setPendingDifficultyTier] = useState<PracticeDifficulty>('Normal');
 
   // Active Student & Quiz Session State
+  const [activeAttemptId, setActiveAttemptId] = useState<string | undefined>(undefined);
   const [activeStudent, setActiveStudent] = useState<StudentProfile | undefined>(undefined);
   const [activeTestMode, setActiveTestMode] = useState<'practice' | 'exam'>('practice');
   const [activeQuizQuestions, setActiveQuizQuestions] = useState<Question[]>([]);
   const [activeQuizTitle, setActiveQuizTitle] = useState<string>('');
   const [activeQuizClass, setActiveQuizClass] = useState<ClassLevel>(9);
   const [activeChapterId, setActiveChapterId] = useState<string | undefined>(undefined);
+  const [activeInitialAnswers, setActiveInitialAnswers] = useState<Record<number, UserAnswer>>({});
+  const [activeInitialTime, setActiveInitialTime] = useState<number>(0);
+  const [activeInitialIndex, setActiveInitialIndex] = useState<number>(0);
   const [forceMobileDemo, setForceMobileDemo] = useState(false);
 
   // Pending Quiz Results (held when not signed in yet)
@@ -80,6 +85,7 @@ export default function App() {
     totalTimeSeconds: number;
     studentProfile?: StudentProfile;
     mode?: 'practice' | 'exam';
+    difficultyTier?: PracticeDifficulty;
   } | null>(null);
 
   // Quiz Results State
@@ -95,6 +101,7 @@ export default function App() {
     totalTimeSeconds: number;
     studentProfile?: StudentProfile;
     mode?: 'practice' | 'exam';
+    difficultyTier?: PracticeDifficulty;
     leaderboardEntryId?: string;
   } | null>(null);
 
@@ -113,6 +120,31 @@ export default function App() {
 
       // Preload global leaderboard from Firestore in background
       MathService.fetchServerLeaderboard('all', 'practice').catch(() => {});
+
+      // Auto-resume active test attempt if user refreshed mid-test
+      try {
+        const activeId = TestAttemptService.getActiveAttemptId();
+        if (activeId) {
+          const attempt = await TestAttemptService.getAttempt(activeId);
+          if (attempt && attempt.status === 'in_progress' && attempt.questions?.length > 0) {
+            const questionsForQuiz = TestAttemptService.convertToStandardQuestions(attempt.questions);
+            setActiveAttemptId(attempt.id);
+            setActiveQuizQuestions(questionsForQuiz);
+            setActiveQuizTitle(attempt.chapterName);
+            setActiveQuizClass(attempt.classLevel);
+            setActiveChapterId(attempt.chapterId || undefined);
+            setActiveTrack(attempt.track as any);
+            setActiveTestMode(attempt.mode);
+            setActiveStudent({ name: attempt.studentName, classLevel: attempt.classLevel });
+            setActiveInitialAnswers(attempt.userAnswers || {});
+            setActiveInitialTime(attempt.timeSpentSeconds || 0);
+            setActiveInitialIndex(attempt.currentQuestionIndex || 0);
+            setCurrentView('quiz');
+          }
+        }
+      } catch (err) {
+        console.warn('Attempt resume notice:', err);
+      }
     };
     loadData();
   }, []);
@@ -223,47 +255,43 @@ export default function App() {
     setIsChapterModalOpen(false);
     setLoading(true);
 
-    let rawQuestions: Question[] = [];
-
-    const userIdentifier = currentUser?.email || userProfile?.email || config.student.name;
     const trackToUse = config.track || activeTrack || 'Elementary Mathematics';
     const difficultyTierToUse = config.difficultyTier || pendingDifficultyTier || 'Normal';
+    setPendingDifficultyTier(difficultyTierToUse);
+    const chTitle = pendingQuizTitle || (targetChapter ? targetChapter.name : `Class ${config.student.classLevel} Practice`);
 
-    if (pendingQuizQuestions && pendingQuizQuestions.length > 0) {
-      rawQuestions = pendingQuizQuestions;
-    } else if (targetChapter) {
-      rawQuestions = await MathService.prepareQuizQuestions(
-        targetChapter.id,
-        targetChapter.class,
-        config.questionCount || 15,
-        'all',
-        userIdentifier,
-        trackToUse,
-        difficultyTierToUse
-      );
-    } else {
-      rawQuestions = await MathService.prepareQuizQuestions(
-        undefined,
-        config.student.classLevel,
-        config.questionCount || 15,
-        'all',
-        userIdentifier,
-        trackToUse,
-        difficultyTierToUse
-      );
+    try {
+      const { attempt, questionsForQuiz } = await TestAttemptService.createAttempt({
+        chapterId: targetChapter?.id,
+        chapterName: chTitle,
+        classLevel: config.student.classLevel,
+        track: trackToUse,
+        mode: config.mode,
+        difficultyTier: difficultyTierToUse,
+        questionCount: config.questionCount || 15,
+        student: config.student,
+        userId: currentUser?.uid || userProfile?.uid,
+        userEmail: currentUser?.email || userProfile?.email,
+        seedQuestions: pendingQuizQuestions && pendingQuizQuestions.length > 0 ? pendingQuizQuestions : undefined,
+      });
+
+      setActiveAttemptId(attempt.id);
+      setActiveStudent(config.student);
+      setActiveTestMode(config.mode);
+      setActiveQuizQuestions(questionsForQuiz);
+      setActiveQuizTitle(chTitle);
+      setActiveQuizClass(config.student.classLevel);
+      setActiveChapterId(targetChapter?.id);
+      setActiveInitialAnswers({});
+      setActiveInitialTime(0);
+      setActiveInitialIndex(0);
+      setCurrentView('quiz');
+    } catch (err) {
+      console.error('Failed to create test attempt:', err);
+    } finally {
+      setLoading(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
-    const questionsToUse = rawQuestions;
-
-    setActiveStudent(config.student);
-    setActiveTestMode(config.mode);
-    setActiveQuizQuestions(questionsToUse);
-    setActiveQuizTitle(pendingQuizTitle || (targetChapter ? targetChapter.name : `Class ${config.student.classLevel} Mathematics Test`));
-    setActiveQuizClass(config.student.classLevel);
-    setActiveChapterId(targetChapter?.id);
-    setCurrentView('quiz');
-    setLoading(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Process confirmed test submission with immediate server live sync
@@ -271,13 +299,16 @@ export default function App() {
     questions: Question[];
     userAnswers: Record<number, {
       questionId: string;
-      selectedOption: 'A' | 'B' | 'C' | 'D';
+      selectedOption: 'A' | 'B' | 'C' | 'D' | null;
       isCorrect: boolean;
+      isSkipped?: boolean;
       timeSpentSeconds: number;
+      timedOut?: boolean;
     }>;
     totalTimeSeconds: number;
     studentProfile?: StudentProfile;
     mode?: 'practice' | 'exam';
+    difficultyTier?: PracticeDifficulty;
   }) => {
     const student = results.studentProfile || activeStudent;
     const totalQ = results.questions.length;
@@ -293,6 +324,8 @@ export default function App() {
     const userEmail = currentUser?.email || userProfile?.email || undefined;
     const userUid = currentUser?.uid || userProfile?.uid || undefined;
 
+    const activeTier = results.difficultyTier || pendingDifficultyTier || (results.questions && results.questions[0]?.difficulty_tier) || 'Normal';
+
     const leaderboardEntry: LeaderboardEntry = {
       id: attemptId,
       uid: userUid,
@@ -304,6 +337,7 @@ export default function App() {
       chapterName: activeQuizTitle || `Class ${activeQuizClass} Mathematics`,
       mode: results.mode || activeTestMode || 'practice',
       track: activeTrack || 'Elementary Mathematics',
+      difficultyTier: activeTier,
       correctCount,
       totalQuestions: totalQ,
       scorePercentage: scorePct,
@@ -321,6 +355,7 @@ export default function App() {
       chapterName: activeQuizTitle || `Class ${activeQuizClass} Mathematics`,
       classLevel: student?.classLevel || activeQuizClass || 9,
       track: activeTrack || 'Elementary Mathematics',
+      difficultyTier: activeTier,
       correctCount,
       totalQuestions: totalQ,
       scorePercentage: scorePct,
@@ -332,6 +367,7 @@ export default function App() {
 
     setQuizResults({
       ...results,
+      difficultyTier: activeTier,
       leaderboardEntryId: attemptId,
     });
 
@@ -352,10 +388,12 @@ export default function App() {
       isCorrect: boolean;
       isSkipped?: boolean;
       timeSpentSeconds: number;
+      timedOut?: boolean;
     }>;
     totalTimeSeconds: number;
     studentProfile?: StudentProfile;
     mode?: 'practice' | 'exam';
+    difficultyTier?: PracticeDifficulty;
   }) => {
     // If offline, allow student to view score results immediately with offline caching & auto-sync queue
     if (isOffline) {
@@ -398,10 +436,42 @@ export default function App() {
     }
   };
 
-  // Handler to retry the current quiz
-  const handleRestartQuiz = () => {
-    setCurrentView('quiz');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Handler to retry the current quiz with a completely new randomized question set & option order
+  const handleRestartQuiz = async () => {
+    setLoading(true);
+    const trackToUse = activeTrack || 'Elementary Mathematics';
+    const difficultyTierToUse = pendingDifficultyTier || 'Normal';
+    const student = activeStudent || {
+      name: userProfile?.displayName || currentUser?.displayName || 'Student Candidate',
+      classLevel: activeQuizClass,
+    };
+
+    try {
+      const { attempt, questionsForQuiz } = await TestAttemptService.createAttempt({
+        chapterId: activeChapterId,
+        chapterName: activeQuizTitle,
+        classLevel: activeQuizClass,
+        track: trackToUse,
+        mode: activeTestMode,
+        difficultyTier: difficultyTierToUse,
+        questionCount: 15,
+        student,
+        userId: currentUser?.uid || userProfile?.uid,
+        userEmail: currentUser?.email || userProfile?.email,
+      });
+
+      setActiveAttemptId(attempt.id);
+      setActiveQuizQuestions(questionsForQuiz);
+      setActiveInitialAnswers({});
+      setActiveInitialTime(0);
+      setActiveInitialIndex(0);
+      setCurrentView('quiz');
+    } catch (err) {
+      console.error('Failed to restart quiz attempt:', err);
+    } finally {
+      setLoading(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   // Handler to practice another chapter
@@ -506,8 +576,20 @@ export default function App() {
             questions={activeQuizQuestions}
             studentProfile={activeStudent}
             mode={activeTestMode}
+            difficultyTier={pendingDifficultyTier}
+            attemptId={activeAttemptId}
+            initialAnswers={activeInitialAnswers}
+            initialTimeSeconds={activeInitialTime}
+            initialQuestionIndex={activeInitialIndex}
             onCompleteQuiz={handleCompleteQuiz}
             onExitQuiz={() => {
+              if (activeAttemptId) {
+                TestAttemptService.abandonAttempt(activeAttemptId);
+              }
+              setActiveAttemptId(undefined);
+              setActiveInitialAnswers({});
+              setActiveInitialTime(0);
+              setActiveInitialIndex(0);
               if (activeTab === 'classes') {
                 setCurrentView('class-page');
               } else {
@@ -528,6 +610,7 @@ export default function App() {
               totalTimeSeconds={quizResults.totalTimeSeconds}
               studentProfile={quizResults.studentProfile || activeStudent}
               mode={quizResults.mode || activeTestMode}
+              difficultyTier={quizResults.difficultyTier || pendingDifficultyTier}
               leaderboardEntryId={quizResults.leaderboardEntryId}
               onRestartQuiz={handleRestartQuiz}
               onSelectAnotherChapter={handleSelectAnotherChapter}

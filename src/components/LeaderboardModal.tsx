@@ -45,6 +45,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
     return initialClass && initialClass !== 'all' ? initialClass : 9;
   });
   const [selectedTrack, setSelectedTrack] = useState<LeaderboardTrack>(initialTrack);
+  const [selectedDifficulty, setSelectedDifficulty] = useState<'all' | 'Normal' | 'Advanced'>('all');
   const [selectedCandidate, setSelectedCandidate] = useState<CandidateRankingProfile | null>(null);
   const [candidateAttemptsList, setCandidateAttemptsList] = useState<LeaderboardEntry[]>([]);
   const [copiedShare, setCopiedShare] = useState<boolean>(false);
@@ -325,6 +326,9 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
       if (norm.track !== selectedTrack) continue;
       if (Number(norm.classLevel) !== Number(selectedClass)) continue;
 
+      const entryDifficulty = entry.difficultyTier || (entry.chapterName && entry.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
+      if (selectedDifficulty !== 'all' && entryDifficulty !== selectedDifficulty) continue;
+
       const cleanName = (entry.studentName || 'Anonymous Student').trim();
       const candidateKey = `${cleanName}_c${norm.classLevel}_${norm.track}`.toLowerCase();
 
@@ -397,7 +401,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
       }
       return (Number(b.latestAttemptTimestamp) || 0) - (Number(a.latestAttemptTimestamp) || 0);
     });
-  }, [safeEntries, selectedClass, selectedTrack]);
+  }, [safeEntries, selectedClass, selectedTrack, selectedDifficulty]);
 
   if (!isOpen) return null;
 
@@ -543,35 +547,67 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
             })}
           </div>
 
-          {/* Class Switcher Tabs — Content-Fitted Dynamic Width (Compact) */}
-          <div className="flex flex-wrap items-center p-0.5 rounded-lg bg-slate-200/60 dark:bg-slate-800/60 gap-1">
-            {([9, 10, 11, 12] as ClassLevel[]).map((lvl) => {
-              const count = safeEntries.filter(e => {
-                if (!e) return false;
-                const norm = normalizeTrackAndClass(e);
-                return norm.track === selectedTrack && Number(norm.classLevel) === lvl && (!e.id || !e.id.startsWith('lead-seed-'));
-              }).length;
+          {/* Class Switcher Tabs & Difficulty Switcher — Content-Fitted Dynamic Width (Compact) */}
+          <div className="flex flex-wrap items-center justify-between gap-1.5">
+            <div className="flex flex-wrap items-center p-0.5 rounded-lg bg-slate-200/60 dark:bg-slate-800/60 gap-1">
+              {([9, 10, 11, 12] as ClassLevel[]).map((lvl) => {
+                const count = safeEntries.filter(e => {
+                  if (!e) return false;
+                  const norm = normalizeTrackAndClass(e);
+                  const entryDiff = e.difficultyTier || (e.chapterName && e.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
+                  const diffMatch = selectedDifficulty === 'all' || entryDiff === selectedDifficulty;
+                  return norm.track === selectedTrack && Number(norm.classLevel) === lvl && diffMatch && (!e.id || !e.id.startsWith('lead-seed-'));
+                }).length;
 
-              return (
+                return (
+                  <button
+                    key={lvl}
+                    onClick={() => {
+                      setSelectedClass(lvl);
+                      setSelectedCandidate(null);
+                    }}
+                    className={`w-auto px-2 py-1 rounded-md text-[10.5px] font-bold transition-all cursor-pointer flex items-center gap-1 whitespace-nowrap ${
+                      selectedClass === lvl
+                        ? 'bg-teal-600 text-white shadow-xs'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50'
+                    }`}
+                  >
+                    <span>Class {lvl}</span>
+                    <span className={`text-[9px] px-1 py-0.2 rounded font-semibold ${selectedClass === lvl ? 'bg-teal-700 text-white' : 'bg-slate-300/80 dark:bg-slate-700/80 text-slate-600 dark:text-slate-300'}`}>
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Difficulty Tier Filter Tabs */}
+            <div className="flex flex-wrap items-center p-0.5 rounded-lg bg-slate-200/60 dark:bg-slate-800/60 gap-1">
+              {([
+                { id: 'all', label: 'All Difficulties' },
+                { id: 'Normal', label: '✓ Normal' },
+                { id: 'Advanced', label: '⚡ Advanced' },
+              ] as { id: 'all' | 'Normal' | 'Advanced'; label: string }[]).map((dif) => (
                 <button
-                  key={lvl}
+                  key={dif.id}
                   onClick={() => {
-                    setSelectedClass(lvl);
+                    setSelectedDifficulty(dif.id);
                     setSelectedCandidate(null);
                   }}
                   className={`w-auto px-2 py-1 rounded-md text-[10.5px] font-bold transition-all cursor-pointer flex items-center gap-1 whitespace-nowrap ${
-                    selectedClass === lvl
-                      ? 'bg-teal-600 text-white shadow-xs'
+                    selectedDifficulty === dif.id
+                      ? dif.id === 'Advanced'
+                        ? 'bg-purple-600 text-white shadow-xs'
+                        : dif.id === 'Normal'
+                        ? 'bg-emerald-600 text-white shadow-xs'
+                        : 'bg-indigo-600 text-white shadow-xs'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50'
                   }`}
                 >
-                  <span>Class {lvl}</span>
-                  <span className={`text-[9px] px-1 py-0.2 rounded font-semibold ${selectedClass === lvl ? 'bg-teal-700 text-white' : 'bg-slate-300/80 dark:bg-slate-700/80 text-slate-600 dark:text-slate-300'}`}>
-                    {count}
-                  </span>
+                  <span>{dif.label}</span>
                 </button>
-              );
-            })}
+              ))}
+            </div>
           </div>
 
         </div>
@@ -584,7 +620,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                 <Trophy className="w-8 h-8 stroke-[1.5]" />
               </div>
               <h3 className="text-base font-bold text-slate-800 dark:text-slate-200">
-                No Academic Rankings for {selectedTrack} (Class {selectedClass})
+                No Academic Rankings for {selectedTrack} (Class {selectedClass}{selectedDifficulty !== 'all' ? ` • ${selectedDifficulty}` : ''})
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
                 Complete practice tests across chapters to establish overall accuracy and get ranked in the Academic Hall of Fame.
@@ -594,6 +630,8 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
             <div className="space-y-3">
               {rankedCandidateProfiles.map((candidate, index) => {
                 const rating = calculateRating(candidate);
+                const hasAdvanced = (candidate.chapterAttempts || []).some(a => a.difficultyTier === 'Advanced' || (a.chapterName && a.chapterName.toLowerCase().includes('advanced')));
+                const hasNormal = (candidate.chapterAttempts || []).some(a => a.difficultyTier === 'Normal' || (a.chapterName && !a.chapterName.toLowerCase().includes('advanced')));
 
                 return (
                   <div
@@ -616,6 +654,18 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                           <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 shrink-0">
                             Class {candidate.classLevel}
                           </span>
+
+                          {/* Difficulty Tier Badges */}
+                          {hasAdvanced && (
+                            <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800 shrink-0 flex items-center gap-0.5">
+                              ⚡ Advanced
+                            </span>
+                          )}
+                          {hasNormal && (
+                            <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shrink-0 flex items-center gap-0.5">
+                              ✓ Normal
+                            </span>
+                          )}
 
                           {/* Skill Rating Badge */}
                           <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold border flex items-center gap-1 ${rating.color}`}>
@@ -788,38 +838,51 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                         </div>
                       ) : (
                         <div className="space-y-2 max-h-72 overflow-y-auto pr-1">
-                          {drawerAttempts.map((ch, idx) => (
-                            <div
-                              key={ch.id || idx}
-                              className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex items-center justify-between gap-3 text-xs"
-                            >
-                              <div className="space-y-1 min-w-0">
-                                <div className="font-bold text-slate-900 dark:text-white truncate">
-                                  {ch.chapterName}
-                                </div>
-                                <div className="flex items-center gap-2 text-[11px] text-slate-500">
-                                  <span>{ch.formattedTime || `${ch.timeSpentSeconds}s`}</span>
-                                  <span>•</span>
-                                  <span>{ch.timestamp ? formatLiveTime(ch.timestamp) : (ch.formattedDate || 'Recent')}</span>
-                                </div>
-                              </div>
+                          {drawerAttempts.map((ch, idx) => {
+                            const itemDifficulty = ch.difficultyTier || (ch.chapterName && ch.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
 
-                              <div className="text-right shrink-0">
-                                <div className={`text-base font-black ${
-                                  ch.scorePercentage >= 80 ? 'text-emerald-600 dark:text-emerald-400' :
-                                  ch.scorePercentage >= 50 ? 'text-indigo-600 dark:text-indigo-400' : 'text-rose-600 dark:text-rose-400'
-                                }`}>
-                                  {ch.scorePercentage}%
+                            return (
+                              <div
+                                key={ch.id || idx}
+                                className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex items-center justify-between gap-3 text-xs"
+                              >
+                                <div className="space-y-1 min-w-0">
+                                  <div className="flex flex-wrap items-center gap-1.5">
+                                    <span className="font-bold text-slate-900 dark:text-white truncate">
+                                      {ch.chapterName}
+                                    </span>
+                                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold shrink-0 border ${
+                                      itemDifficulty === 'Advanced'
+                                        ? 'bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800'
+                                        : 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+                                    }`}>
+                                      {itemDifficulty === 'Advanced' ? '⚡ Advanced' : '✓ Normal'}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2 text-[11px] text-slate-500">
+                                    <span>{ch.formattedTime || `${ch.timeSpentSeconds}s`}</span>
+                                    <span>•</span>
+                                    <span>{ch.timestamp ? formatLiveTime(ch.timestamp) : (ch.formattedDate || 'Recent')}</span>
+                                  </div>
                                 </div>
-                                <div className="text-[10px] text-slate-400">
-                                  <span>{ch.correctCount}/{ch.totalQuestions} Correct</span>
-                                  {(ch.skippedCount ?? 0) > 0 && (
-                                    <span className="ml-1 text-slate-500 font-semibold">• {ch.skippedCount} Skipped</span>
-                                  )}
+
+                                <div className="text-right shrink-0">
+                                  <div className={`text-base font-black ${
+                                    ch.scorePercentage >= 80 ? 'text-emerald-600 dark:text-emerald-400' :
+                                    ch.scorePercentage >= 50 ? 'text-indigo-600 dark:text-indigo-400' : 'text-rose-600 dark:text-rose-400'
+                                  }`}>
+                                    {ch.scorePercentage}%
+                                  </div>
+                                  <div className="text-[10px] text-slate-400">
+                                    <span>{ch.correctCount}/{ch.totalQuestions} Correct</span>
+                                    {(ch.skippedCount ?? 0) > 0 && (
+                                      <span className="ml-1 text-slate-500 font-semibold">• {ch.skippedCount} Skipped</span>
+                                    )}
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          ))}
+                            );
+                          })}
                         </div>
                       )}
                     </>

@@ -97,6 +97,55 @@ export interface UserAnswer {
   timedOut?: boolean;
 }
 
+export interface AttemptQuestion {
+  id: string;
+  orderIndex: number;
+  originalQuestionId: string;
+  class: ClassLevel;
+  chapterId: string;
+  chapterName: string;
+  subject?: string;
+  question: string;
+  options: {
+    A: string;
+    B: string;
+    C: string;
+    D: string;
+  };
+  correctAnswer: 'A' | 'B' | 'C' | 'D';
+  explanation: string;
+  difficulty?: DifficultyLevel;
+  difficultyTier?: PracticeDifficulty;
+  formula?: string;
+  userAnswer?: UserAnswer | null;
+}
+
+export interface TestAttempt {
+  id: string;
+  userId?: string | null;
+  userEmail?: string | null;
+  studentName: string;
+  classLevel: ClassLevel;
+  chapterId?: string | null;
+  chapterName: string;
+  track: string;
+  mode: 'practice' | 'exam';
+  difficultyTier: PracticeDifficulty;
+  status: 'in_progress' | 'completed' | 'abandoned';
+  totalQuestions: number;
+  currentQuestionIndex: number;
+  questions: AttemptQuestion[];
+  userAnswers: Record<number, UserAnswer>;
+  correctCount: number;
+  skippedCount: number;
+  scorePercentage: number;
+  timeSpentSeconds: number;
+  createdAt: number;
+  updatedAt: number;
+  completedAt?: number;
+  seed?: string;
+}
+
 export interface StudentProfile {
   name: string;
   classLevel: ClassLevel;
@@ -218,6 +267,7 @@ export interface LeaderboardEntry {
   chapterName: string;
   mode: 'practice' | 'exam';
   track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | string;
+  difficultyTier?: PracticeDifficulty;
   correctCount: number;
   totalQuestions: number;
   skippedCount?: number;
@@ -236,6 +286,7 @@ export interface UserTestHistory {
   chapterName: string;
   classLevel: ClassLevel;
   track: string;
+  difficultyTier?: PracticeDifficulty;
   scorePercentage: number;
   correctCount: number;
   totalQuestions: number;
@@ -281,6 +332,7 @@ export interface CandidateRankingProfile {
   studentName: string;
   classLevel: ClassLevel;
   track: string;
+  difficultyTier?: PracticeDifficulty;
   overallAccuracy: number;
   averageAccuracy?: number;
   totalCorrect: number;

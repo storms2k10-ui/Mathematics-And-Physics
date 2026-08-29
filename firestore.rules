@@ -32,6 +32,20 @@ service cloud.firestore {
       allow update: if isAuthenticated() && (resource.data.uid == request.auth.uid);
       allow delete: if isAuthenticated() && (resource.data.uid == request.auth.uid);
     }
+
+    // Dynamic Test Attempts collection: testAttempts/{attemptId}
+    match /testAttempts/{attemptId} {
+      allow read: if true;
+      allow create, update: if true;
+      allow delete: if isAuthenticated() && (resource.data.userId == request.auth.uid || resource.data.uid == request.auth.uid);
+
+      // Question subcollection for attempt
+      match /questions/{questionId} {
+        allow read: if true;
+        allow create, update: if true;
+        allow delete: if isAuthenticated();
+      }
+    }
   }
 }
 

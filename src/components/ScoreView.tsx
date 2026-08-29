@@ -51,6 +51,7 @@ interface ScoreViewProps {
   studentProfile?: StudentProfile;
   mode?: 'practice' | 'exam';
   track?: string;
+  difficultyTier?: 'Normal' | 'Advanced';
   leaderboardEntryId?: string;
   onRestartQuiz: () => void;
   onSelectAnotherChapter: () => void;
@@ -68,6 +69,7 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
   studentProfile,
   mode = 'practice',
   track = 'Elementary Mathematics',
+  difficultyTier,
   leaderboardEntryId,
   onRestartQuiz,
   onSelectAnotherChapter,
@@ -80,6 +82,8 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
   const { isOffline, pendingSyncCount } = useOffline();
   const [filterType, setFilterType] = useState<'all' | 'correct' | 'incorrect' | 'skipped'>('all');
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const effectiveDifficultyTier: 'Normal' | 'Advanced' = difficultyTier || (questions && questions[0]?.difficulty_tier) || 'Normal';
 
   // Maintain consistent entry ID for server updates
   const [attemptEntryId] = useState<string>(() => {
@@ -127,6 +131,7 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
           chapterName: chapterTitle,
           classLevel: classLevel,
           track: track || 'Elementary Mathematics',
+          difficultyTier: effectiveDifficultyTier,
           correctCount,
           totalQuestions,
           skippedCount,
@@ -141,7 +146,7 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
       }
     };
     syncCurrentAttempt();
-  }, [attemptEntryId, classLevel, chapterTitle, questions, correctCount, totalQuestions, skippedCount, percentage, totalTimeSeconds, track, recordTestAttempt]);
+  }, [attemptEntryId, classLevel, chapterTitle, questions, correctCount, totalQuestions, skippedCount, percentage, totalTimeSeconds, track, effectiveDifficultyTier, recordTestAttempt]);
 
   // Multi-stage firework celebration launcher
   const launchFireworks = () => {
@@ -341,6 +346,26 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                 </span>
                 <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
                   Class {classLevel} • {chapterTitle}
+                </span>
+                <span
+                  id="score-difficulty-tier-badge"
+                  className={`px-2.5 py-0.5 rounded-full text-[11px] font-black flex items-center gap-1 shadow-2xs border ${
+                    effectiveDifficultyTier === 'Advanced'
+                      ? 'bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border-purple-300 dark:border-purple-800'
+                      : 'bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800'
+                  }`}
+                >
+                  {effectiveDifficultyTier === 'Advanced' ? (
+                    <>
+                      <Zap className="w-3 h-3 text-purple-600 dark:text-purple-400" />
+                      <span>Advanced Difficulty</span>
+                    </>
+                  ) : (
+                    <>
+                      <CheckCircle2 className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                      <span>Normal Difficulty</span>
+                    </>
+                  )}
                 </span>
               </div>
 

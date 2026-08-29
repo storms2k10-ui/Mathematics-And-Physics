@@ -737,51 +737,61 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
               </div>
             ) : (
               <div className="space-y-2 max-h-64 overflow-y-auto pr-1">
-                {historyList.map((item, idx) => (
-                  <div
-                    key={item.id || idx}
-                    className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3 text-xs"
-                  >
-                    <div className="space-y-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <span className="font-bold text-slate-900 dark:text-white truncate">
-                          {item.chapterName}
-                        </span>
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 shrink-0">
-                          Class {item.classLevel}
-                        </span>
+                {historyList.map((item, idx) => {
+                  const itemDifficulty = item.difficultyTier || (item.chapterName && item.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
+                  return (
+                    <div
+                      key={item.id || idx}
+                      className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3 text-xs"
+                    >
+                      <div className="space-y-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-1.5">
+                          <span className="font-bold text-slate-900 dark:text-white truncate">
+                            {item.chapterName}
+                          </span>
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 shrink-0">
+                            Class {item.classLevel}
+                          </span>
+                          <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold shrink-0 border ${
+                            itemDifficulty === 'Advanced'
+                              ? 'bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800'
+                              : 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+                          }`}>
+                            {itemDifficulty === 'Advanced' ? '⚡ Advanced' : '✓ Normal'}
+                          </span>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-2.5 text-[11px] text-slate-500">
+                          <span>{item.track || 'Elementary Mathematics'}</span>
+                          <span>•</span>
+                          <span>{item.formattedTime || `${item.timeSpentSeconds}s`}</span>
+                          <span>•</span>
+                          <span className="text-indigo-600 dark:text-indigo-400 font-medium flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            <span>{formatLiveTime(item.timestamp)}</span>
+                          </span>
+                          <span className="text-slate-400 text-[10px] hidden sm:inline">
+                            ({formatExactDateTime(item.timestamp, item.formattedDate)})
+                          </span>
+                        </div>
                       </div>
-                      <div className="flex flex-wrap items-center gap-2.5 text-[11px] text-slate-500">
-                        <span>{item.track || 'Elementary Mathematics'}</span>
-                        <span>•</span>
-                        <span>{item.formattedTime || `${item.timeSpentSeconds}s`}</span>
-                        <span>•</span>
-                        <span className="text-indigo-600 dark:text-indigo-400 font-medium flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          <span>{formatLiveTime(item.timestamp)}</span>
-                        </span>
-                        <span className="text-slate-400 text-[10px] hidden sm:inline">
-                          ({formatExactDateTime(item.timestamp, item.formattedDate)})
-                        </span>
-                      </div>
-                    </div>
 
-                    <div className="text-right shrink-0">
-                      <div className={`text-sm font-black ${
-                        item.scorePercentage >= 80 ? 'text-emerald-600 dark:text-emerald-400' :
-                        item.scorePercentage >= 50 ? 'text-indigo-600 dark:text-indigo-400' : 'text-rose-600 dark:text-rose-400'
-                      }`}>
-                        {item.scorePercentage}%
-                      </div>
-                      <div className="text-[10px] text-slate-400 font-medium">
-                        <span>{item.correctCount}/{item.totalQuestions} Correct</span>
-                        {(item.skippedCount ?? 0) > 0 && (
-                          <span className="ml-1 text-slate-500 font-semibold">• {item.skippedCount} Skipped</span>
-                        )}
+                      <div className="text-right shrink-0">
+                        <div className={`text-sm font-black ${
+                          item.scorePercentage >= 80 ? 'text-emerald-600 dark:text-emerald-400' :
+                          item.scorePercentage >= 50 ? 'text-indigo-600 dark:text-indigo-400' : 'text-rose-600 dark:text-rose-400'
+                        }`}>
+                          {item.scorePercentage}%
+                        </div>
+                        <div className="text-[10px] text-slate-400 font-medium">
+                          <span>{item.correctCount}/{item.totalQuestions} Correct</span>
+                          {(item.skippedCount ?? 0) > 0 && (
+                            <span className="ml-1 text-slate-500 font-semibold">• {item.skippedCount} Skipped</span>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>

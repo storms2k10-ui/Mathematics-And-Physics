@@ -24,6 +24,7 @@ import { Question, ClassLevel, StudentProfile } from '../types';
 import { MathText } from './MathText';
 import { useTheme } from '../context/ThemeContext';
 import { evaluateAnswer } from '../lib/answerValidation';
+import { TestAttemptService } from '../services/testAttemptService';
 
 interface QuizViewProps {
   classLevel: ClassLevel;
@@ -31,6 +32,18 @@ interface QuizViewProps {
   questions: Question[];
   studentProfile?: StudentProfile;
   mode?: 'practice' | 'exam';
+  difficultyTier?: 'Normal' | 'Advanced';
+  attemptId?: string;
+  initialAnswers?: Record<number, {
+    questionId: string;
+    selectedOption: 'A' | 'B' | 'C' | 'D' | null;
+    isCorrect: boolean;
+    isSkipped?: boolean;
+    timeSpentSeconds: number;
+    timedOut?: boolean;
+  }>;
+  initialTimeSeconds?: number;
+  initialQuestionIndex?: number;
   onCompleteQuiz: (results: {
     questions: Question[];
     userAnswers: Record<number, {
@@ -44,6 +57,7 @@ interface QuizViewProps {
     totalTimeSeconds: number;
     studentProfile?: StudentProfile;
     mode?: 'practice' | 'exam';
+    attemptId?: string;
   }) => void;
   onExitQuiz: () => void;
 }
@@ -54,11 +68,19 @@ export const QuizView: React.FC<QuizViewProps> = ({
   questions,
   studentProfile,
   mode = 'practice',
+  difficultyTier,
+  attemptId,
+  initialAnswers = {},
+  initialTimeSeconds = 0,
+  initialQuestionIndex = 0,
   onCompleteQuiz,
   onExitQuiz,
 }) => {
   const { isDarkMode, toggleTheme } = useTheme();
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(initialQuestionIndex || 0);
+
+  // Derive active difficulty tier (either passed prop, or question difficulty_tier, or 'Normal')
+  const activeDifficultyTier = difficultyTier || questions[0]?.difficulty_tier || 'Normal';
   const [selectedOption, setSelectedOption] = useState<'A' | 'B' | 'C' | 'D' | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isFeedbackDelay, setIsFeedbackDelay] = useState(false);
@@ -70,12 +92,12 @@ export const QuizView: React.FC<QuizViewProps> = ({
     isSkipped?: boolean;
     timeSpentSeconds: number;
     timedOut?: boolean;
-  }>>({});
+  }>>(initialAnswers || {});
   
   const QUESTION_TIMEOUT = 60; // 1 minute per question exact
   const [questionTimeLeft, setQuestionTimeLeft] = useState(QUESTION_TIMEOUT);
   const [questionTimer, setQuestionTimer] = useState(0);
-  const [totalTimer, setTotalTimer] = useState(0);
+  const [totalTimer, setTotalTimer] = useState(initialTimeSeconds || 0);
   
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [showSubmitModal, setShowSubmitModal] = useState(false);
@@ -170,6 +192,15 @@ export const QuizView: React.FC<QuizViewProps> = ({
     };
     setUserAnswers(updatedAnswers);
 
+    if (attemptId) {
+      TestAttemptService.recordQuestionAnswer(
+        attemptId,
+        currentIndex,
+        updatedAnswers[currentIndex],
+        totalTimer
+      ).catch(() => {});
+    }
+
     // Pre-render reset
     setSelectedOption(null);
     setIsSubmitted(false);
@@ -200,12 +231,18 @@ export const QuizView: React.FC<QuizViewProps> = ({
         };
       }
     });
+
+    if (attemptId) {
+      TestAttemptService.completeAttempt(attemptId, finalAnswers, totalTimer).catch(() => {});
+    }
+
     onCompleteQuiz({
       questions,
       userAnswers: finalAnswers,
       totalTimeSeconds: totalTimer,
       studentProfile,
       mode,
+      attemptId,
     });
   };
 
@@ -254,6 +291,15 @@ export const QuizView: React.FC<QuizViewProps> = ({
       },
     };
     setUserAnswers(updatedAnswers);
+
+    if (attemptId) {
+      TestAttemptService.recordQuestionAnswer(
+        attemptId,
+        currentIndex,
+        updatedAnswers[currentIndex],
+        totalTimer
+      ).catch(() => {});
+    }
     
     // Immediately show evaluated feedback highlight
     setSelectedOption(opt);
@@ -299,6 +345,16 @@ export const QuizView: React.FC<QuizViewProps> = ({
       },
     };
     setUserAnswers(updatedAnswers);
+
+    if (attemptId) {
+      TestAttemptService.recordQuestionAnswer(
+        attemptId,
+        currentIndex,
+        updatedAnswers[currentIndex],
+        totalTimer
+      ).catch(() => {});
+    }
+
     setSelectedOption(null);
     setIsSubmitted(false);
     setIsFeedbackDelay(false);
@@ -355,38 +411,100 @@ export const QuizView: React.FC<QuizViewProps> = ({
   const isCurrentCorrect = userAnswers[currentIndex]?.isCorrect;
 
   return (
-    <div id="quiz-view-container" className="py-4 sm:py-10 bg-slate-50 dark:bg-slate-950 min-h-[calc(100vh-120px)] animate-fade-in">
+    <div id="quiz-view-container" className="py-4 sm:py-8 bg-slate-50 dark:bg-slate-950 min-h-[calc(100vh-120px)] animate-fade-in">
       <div className="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 space-y-4 sm:space-y-6">
         
-        {/* Top Header Card: Title, Time & Candidate Info */}
-        <div className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3 sm:space-y-4">
-          
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
-            
-            <div className="space-y-1">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
-                  Class {classLevel} {currentQuestion.subject || 'Physics'}
-                </span>
-                <span className="text-xs text-slate-500 font-medium">
-                  {chapterTitle}
-                </span>
-              </div>
-              
-              {studentProfile?.name && (
-                <div className="text-xs text-slate-600 dark:text-slate-400">
-                  Candidate: <strong className="text-slate-900 dark:text-white">{studentProfile.name}</strong>
-                </div>
-              )}
+        {/* Main Question Card with Smooth Transition Animation (key on currentIndex) */}
+        <div 
+          key={currentIndex} 
+          className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xl shadow-indigo-950/5 dark:shadow-indigo-950/30 space-y-4 sm:space-y-6 relative overflow-hidden animate-slide-fade"
+        >
+          {/* Header Bar: Question Counter, Centered Dynamic Circle Timer, Difficulty Badge & Controls */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 relative z-10 pb-3 border-b border-slate-100 dark:border-slate-800">
+            {/* Left: Question info */}
+            <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-start">
+              <span className="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
+                Question {currentIndex + 1} of {totalQuestions}
+              </span>
+              <span className="text-xs text-slate-500 font-medium truncate max-w-[160px] sm:max-w-[200px]">
+                {chapterTitle}
+              </span>
             </div>
 
-            {/* Test Timer, Theme Toggle & Exit Action */}
-            <div className="flex items-center gap-2 self-end sm:self-center">
+            {/* Center: Dynamic Circle Timer showing only seconds */}
+            <div className="flex items-center justify-center py-1">
+              <div 
+                id="dynamic-circle-timer"
+                className="relative flex items-center justify-center w-12 h-12"
+                title={`${questionTimeLeft}s auto-advance`}
+              >
+                <svg className="w-12 h-12 -rotate-90 transform" viewBox="0 0 44 44">
+                  {/* Background track circle */}
+                  <circle
+                    cx="22"
+                    cy="22"
+                    r="18"
+                    className="stroke-slate-200 dark:stroke-slate-800"
+                    strokeWidth="3.5"
+                    fill="transparent"
+                  />
+                  {/* Dynamic countdown animated stroke */}
+                  <circle
+                    cx="22"
+                    cy="22"
+                    r="18"
+                    className={`transition-all duration-1000 ease-linear ${
+                      questionTimeLeft > 20
+                        ? 'stroke-indigo-600 dark:stroke-indigo-400'
+                        : questionTimeLeft > 8
+                        ? 'stroke-amber-500'
+                        : 'stroke-rose-500 animate-pulse'
+                    }`}
+                    strokeWidth="3.5"
+                    strokeDasharray={113.1}
+                    strokeDashoffset={113.1 - (113.1 * Math.max(0, questionTimeLeft)) / 60}
+                    strokeLinecap="round"
+                    fill="transparent"
+                  />
+                </svg>
+                <span className={`absolute font-mono font-black text-xs ${
+                  questionTimeLeft > 20
+                    ? 'text-indigo-700 dark:text-indigo-300'
+                    : questionTimeLeft > 8
+                    ? 'text-amber-600 dark:text-amber-400'
+                    : 'text-rose-600 dark:text-rose-400'
+                }`}>
+                  {questionTimeLeft}s
+                </span>
+              </div>
+            </div>
+
+            {/* Right: Difficulty Tier Badge, Total Time, Theme Toggle & Exit Button */}
+            <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+              {/* Connected Difficulty Tier Badge */}
+              <span 
+                id="quiz-difficulty-tier-badge"
+                className={`inline-flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-black tracking-wider uppercase border shadow-2xs ${
+                  activeDifficultyTier === 'Advanced'
+                    ? 'bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800'
+                    : 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+                }`}
+              >
+                <Sparkles className="w-3 h-3" />
+                <span>{activeDifficultyTier === 'Advanced' ? 'Advanced' : 'Normal'}</span>
+              </span>
+
+              {/* Total Test Time Counter */}
+              <div className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-mono font-bold">
+                <Clock className="w-3.5 h-3.5 text-indigo-500" />
+                <span>{formatTime(totalTimer)}</span>
+              </div>
+
               {/* Day / Night Mode Toggle */}
               <button
                 id="quiz-theme-toggle"
                 onClick={toggleTheme}
-                className="p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors cursor-pointer flex items-center justify-center shadow-xs"
+                className="p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors cursor-pointer flex items-center justify-center shadow-2xs"
                 title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
                 aria-label="Toggle Theme"
               >
@@ -397,86 +515,24 @@ export const QuizView: React.FC<QuizViewProps> = ({
                 )}
               </button>
 
-              <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-mono font-bold">
-                <Clock className="w-4 h-4 text-indigo-500" />
-                <span>{formatTime(totalTimer)}</span>
-              </div>
-
+              {/* Exit Test */}
               <button
                 onClick={() => setShowExitConfirm(true)}
                 className="p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer"
                 title="Exit Test"
+                aria-label="Exit Test"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               </button>
             </div>
-
           </div>
 
-          {/* Progress Bar & Question Counters */}
-          <div className="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
-            <div className="flex items-center justify-between text-xs font-bold">
-              <span className="text-slate-500 dark:text-slate-400">
-                Question <strong className="text-slate-900 dark:text-white">{currentIndex + 1}</strong> of {totalQuestions}
-              </span>
-              <span className="text-indigo-600 dark:text-indigo-400 font-mono">
-                {progressPercent}% Answered
-              </span>
-            </div>
-            
-            <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-indigo-600 dark:bg-indigo-500 rounded-full transition-all duration-300"
-                style={{ width: `${progressPercent}%` }}
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Main Question Card with Smooth Transition Animation (key on currentIndex) */}
-        <div 
-          key={currentIndex} 
-          className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xl shadow-indigo-950/5 dark:shadow-indigo-950/30 space-y-4 sm:space-y-6 relative overflow-hidden animate-slide-fade"
-        >
-          {/* Question Header with 1-Minute Countdown Timer and Mode */}
-          <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 relative z-10">
-            <div className="flex items-center gap-2">
-              <span className="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
-                Question {currentIndex + 1} of {totalQuestions}
-              </span>
-              {currentQuestion.difficulty && (
-                <span className={`px-2.5 py-1 rounded-xl text-[11px] font-bold ${
-                  currentQuestion.difficulty === 'Easy' 
-                    ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800'
-                    : currentQuestion.difficulty === 'Hard'
-                    ? 'bg-purple-50 text-purple-700 dark:bg-purple-950/60 dark:text-purple-300 border border-purple-200 dark:border-purple-800'
-                    : 'bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-800'
-                }`}>
-                  {currentQuestion.difficulty}
-                </span>
-              )}
-            </div>
-
-            {/* 1 Minute Question Countdown Indicator */}
-            <div className="flex items-center gap-2">
-              <div className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl border text-xs font-mono font-bold transition-all shadow-xs ${
-                questionTimeLeft > 20 
-                  ? 'bg-indigo-50 dark:bg-indigo-950/70 border-indigo-300 dark:border-indigo-700 text-indigo-700 dark:text-indigo-300'
-                  : questionTimeLeft > 8
-                  ? 'bg-amber-50 dark:bg-amber-950/70 border-amber-400 dark:border-amber-600 text-amber-700 dark:text-amber-300 animate-pulse'
-                  : 'bg-rose-50 dark:bg-rose-950/70 border-rose-500 dark:border-rose-600 text-rose-700 dark:text-rose-300 animate-bounce'
-              }`}>
-                <Clock className="w-3.5 h-3.5 shrink-0" />
-                <span>
-                  {questionTimeLeft > 0 ? `${questionTimeLeft}s auto-advance (1m)` : "Advancing (1m)..."}
-                </span>
-              </div>
-
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black bg-indigo-600 text-white shadow-sm shadow-indigo-600/30 tracking-wider uppercase">
-                <Sparkles className="w-3 h-3" />
-                Practice
-              </span>
-            </div>
+          {/* Sleek Progress Line */}
+          <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-indigo-600 dark:bg-indigo-500 rounded-full transition-all duration-300"
+              style={{ width: `${progressPercent}%` }}
+            />
           </div>
 
           {/* Permanently Skipped Question Indicator Banner (when reviewing via navigation) */}
