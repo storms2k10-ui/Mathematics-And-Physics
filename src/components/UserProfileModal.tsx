@@ -270,7 +270,6 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   const getDynamicTheme = () => {
     if (correctPct >= 85) {
       return {
-        levelName: 'Grandmaster Mathematician',
         headerGradient: 'from-amber-600 via-yellow-500 to-emerald-600',
         badgeBg: 'bg-amber-400/30 text-amber-100 border-amber-300/40',
         badgeText: '🏆 Distinction / Gold Tier',
@@ -283,10 +282,9 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
     }
     if (correctPct >= 70) {
       return {
-        levelName: 'Master Problem Solver',
         headerGradient: 'from-emerald-600 via-teal-600 to-indigo-700',
         badgeBg: 'bg-emerald-400/30 text-emerald-100 border-emerald-300/40',
-        badgeText: '💎 Master Level / Grade A+',
+        badgeText: '💎 Grade A+',
         cardGlow: 'shadow-emerald-500/15 border-emerald-500/30',
         avatarBg: 'bg-gradient-to-br from-emerald-400 to-teal-700 border-emerald-200 text-white font-black',
         accentRing: 'ring-emerald-400/50',
@@ -296,10 +294,9 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
     }
     if (correctPct >= 50) {
       return {
-        levelName: 'Active Problem Solver',
         headerGradient: 'from-violet-600 via-purple-700 to-indigo-800',
         badgeBg: 'bg-violet-400/30 text-violet-100 border-violet-300/40',
-        badgeText: '⚡ Active Level / Grade A',
+        badgeText: '⚡ Grade A',
         cardGlow: 'shadow-violet-500/15 border-violet-500/30',
         avatarBg: 'bg-gradient-to-br from-violet-500 to-purple-700 border-violet-200 text-white font-black',
         accentRing: 'ring-violet-400/50',
@@ -308,10 +305,9 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
       };
     }
     return {
-      levelName: 'Developing Candidate',
       headerGradient: 'from-slate-800 via-violet-950 to-slate-900',
       badgeBg: 'bg-slate-400/30 text-slate-100 border-slate-300/40',
-      badgeText: '🌱 Developing Level / Grade B',
+      badgeText: '🌱 Grade B',
       cardGlow: 'shadow-purple-500/15 border-purple-500/30',
       avatarBg: 'bg-gradient-to-br from-slate-600 to-violet-800 border-violet-200 text-white font-black',
       accentRing: 'ring-violet-400/50',
@@ -324,7 +320,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
 
   // Share track record / progress handler
   const handleShareTrackRecord = async () => {
-    const shareText = `🎓 Academic Ranking Profile: ${userProfile.displayName}\n📚 Class: Class ${userProfile.classLevel} Mathematics & Physics\n🎯 Overall Accuracy: ${correctPct}%\n✅ Correct Answers: ${totalCorrect}/${totalQuestions} Questions\n📝 Practice Tests Completed: ${testsAttempted}\n⭐ Academic Rating: ${theme.levelName} (${theme.badgeText})\n🔗 View Academic Rankings: ${window.location.origin}`;
+    const shareText = `🎓 Academic Ranking Profile: ${userProfile.displayName}\n📚 Class: Class ${userProfile.classLevel} Mathematics & Physics\n🎯 Overall Accuracy: ${correctPct}%\n✅ Correct Answers: ${totalCorrect}/${totalQuestions} Questions\n📝 Practice Tests Completed: ${testsAttempted}\n🔗 View Academic Rankings: ${window.location.origin}`;
 
     if (navigator.share) {
       try {
@@ -406,10 +402,6 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                 <span className="truncate">{userProfile.email || 'Registered Student'}</span>
               </p>
               <div className="flex flex-wrap items-center gap-1.5 mt-0.5">
-                <div className="text-[9px] sm:text-[10px] font-bold text-violet-200 flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-pink-300 shrink-0" />
-                  <span className="truncate">{theme.levelName}</span>
-                </div>
                 {classRank && (
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black bg-amber-400 text-slate-950 shadow-xs">
                     <Trophy className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-amber-950" />

@@ -419,111 +419,109 @@ export const QuizView: React.FC<QuizViewProps> = ({
           key={currentIndex} 
           className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xl shadow-indigo-950/5 dark:shadow-indigo-950/30 space-y-4 sm:space-y-6 relative overflow-hidden animate-slide-fade"
         >
-          {/* Header Bar: Question Counter, Centered Dynamic Circle Timer, Difficulty Badge & Controls */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 relative z-10 pb-3 border-b border-slate-100 dark:border-slate-800">
-            {/* Left: Question info */}
-            <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-start">
-              <span className="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
-                Question {currentIndex + 1} of {totalQuestions}
-              </span>
-              <span className="text-xs text-slate-500 font-medium truncate max-w-[160px] sm:max-w-[200px]">
-                {chapterTitle}
-              </span>
-            </div>
-
-            {/* Center: Dynamic Circle Timer showing only seconds */}
-            <div className="flex items-center justify-center py-1">
-              <div 
-                id="dynamic-circle-timer"
-                className="relative flex items-center justify-center w-12 h-12"
-                title={`${questionTimeLeft}s auto-advance`}
-              >
-                <svg className="w-12 h-12 -rotate-90 transform" viewBox="0 0 44 44">
-                  {/* Background track circle */}
-                  <circle
-                    cx="22"
-                    cy="22"
-                    r="18"
-                    className="stroke-slate-200 dark:stroke-slate-800"
-                    strokeWidth="3.5"
-                    fill="transparent"
-                  />
-                  {/* Dynamic countdown animated stroke */}
-                  <circle
-                    cx="22"
-                    cy="22"
-                    r="18"
-                    className={`transition-all duration-1000 ease-linear ${
-                      questionTimeLeft > 20
-                        ? 'stroke-indigo-600 dark:stroke-indigo-400'
-                        : questionTimeLeft > 8
-                        ? 'stroke-amber-500'
-                        : 'stroke-rose-500 animate-pulse'
-                    }`}
-                    strokeWidth="3.5"
-                    strokeDasharray={113.1}
-                    strokeDashoffset={113.1 - (113.1 * Math.max(0, questionTimeLeft)) / 60}
-                    strokeLinecap="round"
-                    fill="transparent"
-                  />
-                </svg>
-                <span className={`absolute font-mono font-black text-xs ${
-                  questionTimeLeft > 20
-                    ? 'text-indigo-700 dark:text-indigo-300'
-                    : questionTimeLeft > 8
-                    ? 'text-amber-600 dark:text-amber-400'
-                    : 'text-rose-600 dark:text-rose-400'
-                }`}>
-                  {questionTimeLeft}s
+          {/* Dynamic Header Bar: Question Counter, Centered Dynamic Circle Timer, Difficulty Badge & Controls */}
+          <div className="relative z-10 p-2.5 sm:p-3.5 rounded-2xl bg-gradient-to-r from-slate-50/90 via-indigo-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-indigo-950/30 dark:to-slate-900/90 border border-slate-200/80 dark:border-slate-800/80 shadow-xs backdrop-blur-xs">
+            <div className="flex items-center justify-between gap-2 sm:gap-4">
+              
+              {/* Left Zone: Question Counter & Chapter */}
+              <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0">
+                <span className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl text-xs font-black bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 border border-slate-200 dark:border-slate-700 shadow-2xs shrink-0">
+                  <span className="sm:hidden">Q{currentIndex + 1}/{totalQuestions}</span>
+                  <span className="hidden sm:inline">Question {currentIndex + 1} of {totalQuestions}</span>
+                </span>
+                <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium truncate max-w-[90px] sm:max-w-[200px] hidden xs:inline-block">
+                  {chapterTitle}
                 </span>
               </div>
-            </div>
 
-            {/* Right: Difficulty Tier Badge, Total Time, Theme Toggle & Exit Button */}
-            <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-              {/* Connected Difficulty Tier Badge */}
-              <span 
-                id="quiz-difficulty-tier-badge"
-                className={`inline-flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-black tracking-wider uppercase border shadow-2xs ${
-                  activeDifficultyTier === 'Advanced'
-                    ? 'bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800'
-                    : 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
-                }`}
-              >
-                <Sparkles className="w-3 h-3" />
-                <span>{activeDifficultyTier === 'Advanced' ? 'Advanced' : 'Normal'}</span>
-              </span>
-
-              {/* Total Test Time Counter */}
-              <div className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-mono font-bold">
-                <Clock className="w-3.5 h-3.5 text-indigo-500" />
-                <span>{formatTime(totalTimer)}</span>
+              {/* Center Zone: Dynamic Circle Timer showing only seconds */}
+              <div className="flex items-center justify-center shrink-0">
+                <div 
+                  id="dynamic-circle-timer"
+                  className="relative flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12"
+                  title={`${questionTimeLeft}s auto-advance`}
+                >
+                  <svg className="w-11 h-11 sm:w-12 sm:h-12 -rotate-90 transform" viewBox="0 0 44 44">
+                    {/* Background track circle */}
+                    <circle
+                      cx="22"
+                      cy="22"
+                      r="18"
+                      className="stroke-slate-200 dark:stroke-slate-800"
+                      strokeWidth="3.5"
+                      fill="transparent"
+                    />
+                    {/* Dynamic countdown animated stroke */}
+                    <circle
+                      cx="22"
+                      cy="22"
+                      r="18"
+                      className={`transition-all duration-1000 ease-linear ${
+                        questionTimeLeft > 20
+                          ? 'stroke-indigo-600 dark:stroke-indigo-400'
+                          : questionTimeLeft > 8
+                          ? 'stroke-amber-500'
+                          : 'stroke-rose-500 animate-pulse'
+                      }`}
+                      strokeWidth="3.5"
+                      strokeDasharray={113.1}
+                      strokeDashoffset={113.1 - (113.1 * Math.max(0, questionTimeLeft)) / 60}
+                      strokeLinecap="round"
+                      fill="transparent"
+                    />
+                  </svg>
+                  <span className={`absolute font-mono font-black text-[11px] sm:text-xs ${
+                    questionTimeLeft > 20
+                      ? 'text-indigo-700 dark:text-indigo-300'
+                      : questionTimeLeft > 8
+                      ? 'text-amber-600 dark:text-amber-400'
+                      : 'text-rose-600 dark:text-rose-400'
+                  }`}>
+                    {questionTimeLeft}s
+                  </span>
+                </div>
               </div>
 
-              {/* Day / Night Mode Toggle */}
-              <button
-                id="quiz-theme-toggle"
-                onClick={toggleTheme}
-                className="p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors cursor-pointer flex items-center justify-center shadow-2xs"
-                title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-                aria-label="Toggle Theme"
-              >
-                {isDarkMode ? (
-                  <Sun className="w-4 h-4 text-amber-400" />
-                ) : (
-                  <Moon className="w-4 h-4 text-slate-700" />
-                )}
-              </button>
+              {/* Right Zone: Connected Difficulty Tier Badge, Theme Toggle & Exit Button */}
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                {/* Connected Difficulty Tier Badge */}
+                <span 
+                  id="quiz-difficulty-tier-badge"
+                  className={`inline-flex items-center gap-1 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl text-[10px] sm:text-xs font-black tracking-wider uppercase border shadow-2xs ${
+                    activeDifficultyTier === 'Advanced'
+                      ? 'bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800'
+                      : 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+                  }`}
+                >
+                  <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                  <span>{activeDifficultyTier === 'Advanced' ? 'Advanced' : 'Normal'}</span>
+                </span>
 
-              {/* Exit Test */}
-              <button
-                onClick={() => setShowExitConfirm(true)}
-                className="p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer"
-                title="Exit Test"
-                aria-label="Exit Test"
-              >
-                <X className="w-4 h-4" />
-              </button>
+                {/* Day / Night Mode Toggle */}
+                <button
+                  id="quiz-theme-toggle"
+                  onClick={toggleTheme}
+                  className="p-1.5 sm:p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors cursor-pointer flex items-center justify-center border border-slate-200/80 dark:border-slate-700/80 shadow-2xs"
+                  title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                  aria-label="Toggle Theme"
+                >
+                  {isDarkMode ? (
+                    <Sun className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
+                  ) : (
+                    <Moon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-700" />
+                  )}
+                </button>
+
+                {/* Exit Test */}
+                <button
+                  onClick={() => setShowExitConfirm(true)}
+                  className="p-1.5 sm:p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer"
+                  title="Exit Test"
+                  aria-label="Exit Test"
+                >
+                  <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                </button>
+              </div>
             </div>
           </div>
 

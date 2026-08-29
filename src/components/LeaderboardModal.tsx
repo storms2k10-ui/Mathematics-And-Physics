@@ -405,26 +405,6 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
   if (!isOpen) return null;
 
-  const calculateRating = (profile: CandidateRankingProfile) => {
-    const accuracy = profile.overallAccuracy || 0;
-    const correct = profile.totalCorrect || 0;
-    const ratingScore = Math.round((accuracy * 20) + (correct * 12));
-
-    if (ratingScore >= 2200 || accuracy >= 90) {
-      return { score: ratingScore, title: 'Grandmaster', stars: 5, color: 'text-amber-500 bg-amber-50 dark:bg-amber-950/60 border-amber-300 dark:border-amber-700' };
-    }
-    if (ratingScore >= 1800 || accuracy >= 75) {
-      return { score: ratingScore, title: 'Master Problem Solver', stars: 4, color: 'text-emerald-600 bg-emerald-50 dark:bg-emerald-950/60 border-emerald-300 dark:border-emerald-700' };
-    }
-    if (ratingScore >= 1400 || accuracy >= 60) {
-      return { score: ratingScore, title: 'Expert Analyst', stars: 3, color: 'text-violet-600 bg-violet-50 dark:bg-violet-950/60 border-violet-300 dark:border-violet-700' };
-    }
-    if (ratingScore >= 1000 || accuracy >= 45) {
-      return { score: ratingScore, title: 'Active Student', stars: 2, color: 'text-violet-600 bg-violet-50 dark:bg-violet-950/60 border-violet-300 dark:border-violet-700' };
-    }
-    return { score: ratingScore, title: 'Apprentice', stars: 1, color: 'text-slate-600 bg-slate-50 dark:bg-slate-800 border-slate-300 dark:border-slate-700' };
-  };
-
   const getRankBadge = (rank: number) => {
     switch (rank) {
       case 1:
@@ -456,8 +436,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
   // Share specific candidate's track record and progress
   const handleShareCandidateProgress = async (candidate: CandidateRankingProfile, rankIndex: number) => {
-    const rating = calculateRating(candidate);
-    const text = `🏆 Academic Ranking Track Record\n👤 Candidate: ${candidate.studentName}\n🏅 Academic Rank: #${rankIndex + 1} (${selectedTrack})\n🎯 Overall Accuracy: ${candidate.overallAccuracy}%\n📚 Class: Class ${candidate.classLevel}\n✅ Correct Questions: ${candidate.totalCorrect}/${candidate.totalQuestions}\n📝 Chapters Mastered: ${candidate.testsAttempted} Chapters\n⭐ Academic Title: ${rating.title} (${rating.score} pts)\n🔗 View Live Rankings: ${window.location.origin}`;
+    const text = `🏆 Academic Ranking Track Record\n👤 Candidate: ${candidate.studentName}\n🏅 Academic Rank: #${rankIndex + 1} (${selectedTrack})\n🎯 Overall Accuracy: ${candidate.overallAccuracy}%\n📚 Class: Class ${candidate.classLevel}\n✅ Correct Questions: ${candidate.totalCorrect}/${candidate.totalQuestions}\n📝 Chapters Mastered: ${candidate.testsAttempted} Chapters\n🔗 View Live Rankings: ${window.location.origin}`;
 
     if (navigator.share) {
       try {
@@ -485,16 +464,16 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
-      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-4xl overflow-hidden flex flex-col max-h-[92vh]">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-3xl overflow-hidden flex flex-col max-h-[85vh]">
         
         {/* Academic Ranking Modal Header — Light Green Dynamic View */}
-        <div className="bg-gradient-to-r from-emerald-500 via-teal-600 to-green-600 p-4.5 sm:p-5.5 text-white relative flex items-center justify-between shadow-lg shadow-emerald-900/20">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white/25 backdrop-blur-xs flex items-center justify-center text-white border border-white/40 shadow-inner shrink-0 ring-2 ring-emerald-300/40">
-              <Trophy className="w-5.5 h-5.5 text-amber-200 fill-amber-300 stroke-[2]" />
+        <div className="bg-gradient-to-r from-emerald-500 via-teal-600 to-green-600 p-3.5 sm:p-4.5 text-white relative flex items-center justify-between shadow-md shadow-emerald-900/20">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/25 backdrop-blur-xs flex items-center justify-center text-white border border-white/40 shadow-inner shrink-0 ring-2 ring-emerald-300/40">
+              <Trophy className="w-5 h-5 text-amber-200 fill-amber-300 stroke-[2]" />
             </div>
             <div>
-              <span className="text-base sm:text-xl font-black uppercase tracking-wider bg-gradient-to-r from-white via-emerald-100 to-lime-200 bg-clip-text text-transparent flex items-center gap-2 drop-shadow-sm transition-all">
+              <span className="text-base sm:text-lg font-black uppercase tracking-wider bg-gradient-to-r from-white via-emerald-100 to-lime-200 bg-clip-text text-transparent flex items-center gap-2 drop-shadow-sm transition-all">
                 <span className="w-2 h-2 rounded-full bg-lime-300 animate-ping shrink-0 inline-block" />
                 <span>ACADEMIC RANKING</span>
               </span>
@@ -507,7 +486,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
               className="p-1.5 sm:p-2 rounded-full text-white/85 hover:text-white hover:bg-white/20 transition-all active:scale-95 cursor-pointer"
               aria-label="Close modal"
             >
-              <X className="w-5 h-5 sm:w-6 sm:h-6" />
+              <X className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -627,9 +606,8 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
               </p>
             </div>
           ) : (
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               {rankedCandidateProfiles.map((candidate, index) => {
-                const rating = calculateRating(candidate);
                 const hasAdvanced = (candidate.chapterAttempts || []).some(a => a.difficultyTier === 'Advanced' || (a.chapterName && a.chapterName.toLowerCase().includes('advanced')));
                 const hasNormal = (candidate.chapterAttempts || []).some(a => a.difficultyTier === 'Normal' || (a.chapterName && !a.chapterName.toLowerCase().includes('advanced')));
 
@@ -637,21 +615,21 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                   <div
                     key={candidate.candidateId || index}
                     onClick={() => setSelectedCandidate(candidate)}
-                    className={`p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:scale-[1.005] ${
+                    className={`p-3 sm:p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 hover:scale-[1.002] ${
                       index === 0
-                        ? 'bg-amber-50/60 dark:bg-amber-950/20 border-amber-300 dark:border-amber-800/80 shadow-md ring-1 ring-amber-400/30'
-                        : 'bg-white dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-600 shadow-xs'
+                        ? 'bg-amber-50/60 dark:bg-amber-950/20 border-amber-300 dark:border-amber-800/80 shadow-sm ring-1 ring-amber-400/30'
+                        : 'bg-white dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-600 shadow-2xs'
                     }`}
                   >
-                    <div className="flex items-center gap-3.5 min-w-0">
+                    <div className="flex items-center gap-3 min-w-0">
                       {getRankBadge(index + 1)}
 
                       <div className="min-w-0 space-y-1">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <h4 className="text-sm sm:text-base font-black text-slate-900 dark:text-white truncate">
+                        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                          <h4 className="text-xs sm:text-sm font-black text-slate-900 dark:text-white truncate">
                             {candidate.studentName}
                           </h4>
-                          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 shrink-0">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 shrink-0">
                             Class {candidate.classLevel}
                           </span>
 
@@ -666,26 +644,9 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                               ✓ Normal
                             </span>
                           )}
-
-                          {/* Skill Rating Badge */}
-                          <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold border flex items-center gap-1 ${rating.color}`}>
-                            <Award className="w-3 h-3" />
-                            <span>{rating.title} ({rating.score})</span>
-                          </span>
                         </div>
 
-                        <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
-                          <span className="font-semibold text-slate-700 dark:text-slate-300">
-                            {candidate.testsAttempted} {candidate.testsAttempted === 1 ? 'Submission' : 'Submissions'}
-                          </span>
-                          <span>•</span>
-                          <span className="flex items-center gap-1">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                            <span>{candidate.totalCorrect}/{candidate.totalQuestions} Correct</span>
-                          </span>
-                          <span>•</span>
-                          <span>Total Time: {Math.floor(candidate.totalTimeSpentSeconds / 60)}m {candidate.totalTimeSpentSeconds % 60}s</span>
-                          <span>•</span>
+                        <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
                           <span className="text-indigo-600 dark:text-indigo-400 font-medium flex items-center gap-1">
                             <Clock className="w-3 h-3" />
                             <span>{formatLiveTime(candidate.latestAttemptTimestamp)}</span>
@@ -694,36 +655,23 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                       </div>
                     </div>
 
-                    {/* Right Side: Overall Accuracy & View Details Button */}
-                    <div className="flex items-center gap-4 self-end sm:self-center shrink-0">
+                    {/* Right Side: Overall Accuracy & Chevron */}
+                    <div className="flex items-center gap-3 shrink-0">
                       
                       {/* Overall Accuracy Block */}
-                      <div className="text-right pr-2">
-                        <div className={`text-xl sm:text-2xl font-black ${
+                      <div className="text-right">
+                        <div className={`text-base sm:text-lg font-black ${
                           candidate.overallAccuracy >= 85 ? 'text-emerald-600 dark:text-emerald-400' :
                           candidate.overallAccuracy >= 65 ? 'text-indigo-600 dark:text-indigo-400' : 'text-rose-600 dark:text-rose-400'
                         }`}>
                           {candidate.overallAccuracy}%
                         </div>
-                        <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                        <div className="text-[9.5px] text-slate-400 font-bold uppercase tracking-wider">
                           Overall Accuracy
                         </div>
                       </div>
 
-                      {/* Share Progress Button */}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleShareCandidateProgress(candidate, index);
-                        }}
-                        className="p-2.5 rounded-xl bg-slate-100 hover:bg-indigo-50 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition-all cursor-pointer flex items-center justify-center border border-slate-200 dark:border-slate-700 shadow-2xs"
-                        title="Share Track Record & Progress"
-                      >
-                        <Share2 className="w-4 h-4" />
-                      </button>
-
-                      <ChevronRight className="w-5 h-5 text-slate-400 hidden sm:block" />
+                      <ChevronRight className="w-4 h-4 text-slate-400 hidden sm:block" />
 
                     </div>
                   </div>
