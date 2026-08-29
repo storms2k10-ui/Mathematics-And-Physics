@@ -14,6 +14,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { LeaderboardEntry, ClassLevel, UserTestHistory } from '../types';
+import { normalizeTrackAndClass } from '../utils/trackUtils';
 
 const LEADERBOARD_COLLECTION = 'leaderboard';
 const TEST_RESULTS_COLLECTION = 'test_results';
@@ -28,24 +29,29 @@ export class FirestoreLeaderboardService {
       const entryId = entry.id || `lead_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
       const docRef = doc(db, LEADERBOARD_COLLECTION, entryId);
       
-      const cleanTrack = entry.track || 'Elementary Mathematics';
+      const normalized = normalizeTrackAndClass(entry);
       const cleanStudentName = (entry.studentName || 'Student Candidate').trim();
 
-      // Save every submission to leaderboard collection with unique ID
+      // Save every submission to leaderboard collection with unique ID and strictly verified track/class
       await setDoc(docRef, {
         ...entry,
         id: entryId,
         uid: uid || entry.uid || null,
         email: entry.email || null,
         studentName: cleanStudentName,
-        classLevel: Number(entry.classLevel) || 9,
-        track: cleanTrack,
+        classLevel: normalized.classLevel,
+        track: normalized.track,
         timestamp: entry.timestamp || Date.now(),
         updatedAt: serverTimestamp(),
       }, { merge: true });
 
       // Also save in test_results collection
-      await this.saveTestResultRecord({ ...entry, id: entryId }, uid);
+      await this.saveTestResultRecord({
+        ...entry,
+        id: entryId,
+        track: normalized.track,
+        classLevel: normalized.classLevel,
+      }, uid);
     } catch (error) {
       console.error('Firestore saveEntry error:', error);
       throw error;
@@ -59,14 +65,15 @@ export class FirestoreLeaderboardService {
     try {
       const resultDocId = entry.id || `result_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
       const resultDocRef = doc(db, TEST_RESULTS_COLLECTION, resultDocId);
+      const normalized = normalizeTrackAndClass(entry);
       
       await setDoc(resultDocRef, {
         id: resultDocId,
         uid: uid || entry.uid || null,
         email: entry.email || null,
         studentName: entry.studentName,
-        classLevel: Number(entry.classLevel),
-        track: entry.track || 'Elementary Mathematics',
+        classLevel: normalized.classLevel,
+        track: normalized.track,
         chapterId: entry.chapterId || 'general_quiz',
         chapterName: entry.chapterName,
         mode: entry.mode || 'practice',
@@ -99,12 +106,19 @@ export class FirestoreLeaderboardService {
 
       snap.forEach((docSnap) => {
         const data = docSnap.data();
+        const normalized = normalizeTrackAndClass({
+          chapterId: data.chapterId,
+          chapterName: data.chapterName,
+          track: data.track,
+          classLevel: data.classLevel,
+        });
+
         results.push({
           id: data.id || docSnap.id,
           chapterId: data.chapterId,
           chapterName: data.chapterName,
-          classLevel: Number(data.classLevel) as ClassLevel,
-          track: data.track || 'Elementary Mathematics',
+          classLevel: normalized.classLevel,
+          track: normalized.track,
           scorePercentage: Number(data.scorePercentage) || 0,
           correctCount: Number(data.correctCount) || 0,
           totalQuestions: Number(data.totalQuestions) || 0,
@@ -127,6 +141,7 @@ export class FirestoreLeaderboardService {
 
   /**
    * Fetches all test attempts for a specific candidate across Firestore 'leaderboard' and 'test_results' collections
+   * with strict class and subject track isolation.
    */
   static async fetchCandidateTestHistory(
     studentName: string,
@@ -158,7 +173,7 @@ export class FirestoreLeaderboardService {
         }
       }
 
-      // 2. Query leaderboard collection by studentName or email
+      // 2. Query leaderboard collection by studentName
       if (studentName) {
         try {
           const lbRef = collection(db, LEADERBOARD_COLLECTION);
@@ -203,17 +218,27 @@ export class FirestoreLeaderboardService {
 
     const allAttempts = Array.from(attemptsMap.values());
     return allAttempts
+      .map((item) => {
+        const normalized = normalizeTrackAndClass(item);
+        return {
+          ...item,
+          track: normalized.track,
+          classLevel: normalized.classLevel,
+        };
+      })
       .filter((item) => {
         if (!item) return false;
+        // Strict Class Isolation
         if (classLevel && Number(item.classLevel) !== Number(classLevel)) return false;
-        if (track && item.track && item.track !== track) return false;
+        // Strict Subject Track Isolation
+        if (track && item.track !== track) return false;
         return true;
       })
       .sort((a, b) => (Number(b.timestamp) || 0) - (Number(a.timestamp) || 0));
   }
 
   /**
-   * Fetches the ranked leaderboard from Firestore cloud database with strict class separation.
+   * Fetches the ranked leaderboard from Firestore cloud database with strict class and track separation.
    */
   static async fetchRanked(
     classLevel?: ClassLevel | 'all',
@@ -222,17 +247,18 @@ export class FirestoreLeaderboardService {
   ): Promise<LeaderboardEntry[]> {
     try {
       const colRef = collection(db, LEADERBOARD_COLLECTION);
-      let q = query(colRef);
-
-      if (classLevel && classLevel !== 'all') {
-        q = query(colRef, where('classLevel', '==', Number(classLevel)));
-      }
-
-      const snap = await getDocs(q);
+      const snap = await getDocs(colRef);
       const entries: LeaderboardEntry[] = [];
       
       snap.forEach((d) => {
-        const data = d.data() as LeaderboardEntry;
+        const rawData = d.data() as LeaderboardEntry;
+        const normalized = normalizeTrackAndClass(rawData);
+        const data: LeaderboardEntry = {
+          ...rawData,
+          track: normalized.track,
+          classLevel: normalized.classLevel,
+        };
+
         // Strict class isolation check
         if (classLevel && classLevel !== 'all' && Number(data.classLevel) !== Number(classLevel)) {
           return;
@@ -244,8 +270,8 @@ export class FirestoreLeaderboardService {
         if (mode !== 'all' && data.mode && data.mode !== mode) {
           return;
         }
-        const entryTrack = data.track || 'Elementary Mathematics';
-        if (track && track !== 'all' && entryTrack !== track) {
+        // Strict Subject Track isolation check
+        if (track && track !== 'all' && data.track !== track) {
           return;
         }
         entries.push(data);
@@ -262,7 +288,7 @@ export class FirestoreLeaderboardService {
         if (a.timeSpentSeconds !== b.timeSpentSeconds) {
           return a.timeSpentSeconds - b.timeSpentSeconds;
         }
-        return b.timestamp - a.timestamp;
+        return (Number(b.timestamp) || 0) - (Number(a.timestamp) || 0);
       });
 
       return entries;
@@ -281,19 +307,23 @@ export class FirestoreLeaderboardService {
     track?: string | 'all'
   ): Unsubscribe {
     const colRef = collection(db, LEADERBOARD_COLLECTION);
-    const q = classLevel && classLevel !== 'all'
-      ? query(colRef, where('classLevel', '==', Number(classLevel)), limit(1000))
-      : query(colRef, limit(1000));
+    const q = query(colRef, limit(1000));
 
     return onSnapshot(q, (snap) => {
       const entries: LeaderboardEntry[] = [];
       snap.forEach((d) => {
-        const data = d.data() as LeaderboardEntry;
+        const rawData = d.data() as LeaderboardEntry;
+        const normalized = normalizeTrackAndClass(rawData);
+        const data: LeaderboardEntry = {
+          ...rawData,
+          track: normalized.track,
+          classLevel: normalized.classLevel,
+        };
+
         if (classLevel && classLevel !== 'all' && Number(data.classLevel) !== Number(classLevel)) {
           return;
         }
-        const entryTrack = data.track || 'Elementary Mathematics';
-        if (track && track !== 'all' && entryTrack !== track) {
+        if (track && track !== 'all' && data.track !== track) {
           return;
         }
         entries.push(data);
@@ -309,7 +339,7 @@ export class FirestoreLeaderboardService {
         if (a.timeSpentSeconds !== b.timeSpentSeconds) {
           return a.timeSpentSeconds - b.timeSpentSeconds;
         }
-        return b.timestamp - a.timestamp;
+        return (Number(b.timestamp) || 0) - (Number(a.timestamp) || 0);
       });
 
       onUpdate(entries);
@@ -324,13 +354,11 @@ export class FirestoreLeaderboardService {
    */
   static async refreshRankingHistory(track?: string | 'all'): Promise<LeaderboardEntry[]> {
     try {
-      // 1. Notify server endpoint to refresh server ranking cache
       await fetch('/api/leaderboard/refresh', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       }).catch(() => {});
 
-      // 2. Fetch fresh rankings from Firebase Firestore
       const freshCloudEntries = await this.fetchRanked('all', 'practice', track);
       return freshCloudEntries;
     } catch (err) {

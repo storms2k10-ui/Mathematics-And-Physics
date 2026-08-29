@@ -1,33 +1,24 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { 
   X, 
   Trophy, 
-  Sparkles, 
   Clock, 
   Atom,
   Sigma,
-  Zap,
   Calculator,
   FlaskConical,
-  Star,
   CheckCircle2,
-  XCircle,
   Award,
   Share2,
   Check,
-  User,
   ChevronRight,
-  BookOpen,
-  Calendar,
-  Layers,
-  GraduationCap,
-  RefreshCw
+  BookOpen
 } from 'lucide-react';
-import { LeaderboardEntry, ClassLevel, CandidateRankingProfile, UserTestHistory } from '../types';
+import { LeaderboardEntry, ClassLevel, CandidateRankingProfile } from '../types';
 import { MathService } from '../services/mathService';
 import { FirestoreLeaderboardService } from '../services/firestoreLeaderboard';
 import { useAuth } from '../context/AuthContext';
-import { MathText } from './MathText';
+import { normalizeTrackAndClass } from '../utils/trackUtils';
 
 export type LeaderboardTrack = 
   | 'Elementary Mathematics' 
@@ -56,11 +47,13 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
   const [selectedTrack, setSelectedTrack] = useState<LeaderboardTrack>(initialTrack);
   const [selectedCandidate, setSelectedCandidate] = useState<CandidateRankingProfile | null>(null);
   const [candidateAttemptsList, setCandidateAttemptsList] = useState<LeaderboardEntry[]>([]);
-  const [isSyncingCandidateAttempts, setIsSyncingCandidateAttempts] = useState<boolean>(false);
   const [copiedShare, setCopiedShare] = useState<boolean>(false);
   const [now, setNow] = useState<number>(() => Date.now());
 
-  // Real-time live timestamp ticker to sync submission relative time
+  // In-memory cache map to ensure once candidate attempts are fetched, they never re-load or flash spinners
+  const candidateAttemptsCacheRef = useRef<Map<string, LeaderboardEntry[]>>(new Map());
+
+  // Real-time live timestamp ticker
   useEffect(() => {
     if (!isOpen) return;
     const ticker = setInterval(() => {
@@ -70,7 +63,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
   }, [isOpen]);
 
   const formatLiveTime = useCallback((timestamp?: number) => {
-    if (!timestamp) return 'Just now';
+    if (!timestamp) return 'Recent';
     const diffSec = Math.max(0, Math.floor((now - timestamp) / 1000));
     if (diffSec < 10) return 'Just now';
     if (diffSec < 60) return `${diffSec}s ago`;
@@ -84,16 +77,20 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
   }, [now]);
 
   useEffect(() => {
-    if (isOpen && initialTrack) {
-      setSelectedTrack(initialTrack);
-    }
-  }, [isOpen, initialTrack]);
-
-  useEffect(() => {
     if (isOpen) {
-      setSelectedClass(9);
+      if (initialTrack) {
+        setSelectedTrack(initialTrack);
+      }
+      if (initialClass && initialClass !== 'all') {
+        setSelectedClass(initialClass);
+      } else if (initialTrack === 'Pre Calculas' || initialTrack === 'Chemistry') {
+        setSelectedClass(11);
+      } else {
+        setSelectedClass(9);
+      }
+      setSelectedCandidate(null);
     }
-  }, [isOpen]);
+  }, [isOpen, initialTrack, initialClass]);
 
   const loadLeaderboardData = useCallback(async () => {
     try {
@@ -141,7 +138,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
     const interval = setInterval(() => {
       loadLeaderboardData();
-    }, 5000);
+    }, 8000);
 
     return () => {
       if (unsubscribe) unsubscribe();
@@ -150,29 +147,36 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
   }, [isOpen, selectedTrack, loadLeaderboardData]);
 
   // Safe entries array helper - merges live cloud leaderboard with active user profile test history
+  // Strictly normalizes all records so Chemistry only counts for Chemistry, Physics for Physics, etc.
   const safeEntries = useMemo(() => {
     const map = new Map<string, LeaderboardEntry>();
 
-    // 1. Add all cloud / server leaderboard entries
+    // 1. Add all cloud / server leaderboard entries with strict normalization
     if (Array.isArray(allEntries)) {
       for (const entry of allEntries) {
         if (entry && entry.id) {
-          map.set(entry.id, entry);
+          const norm = normalizeTrackAndClass(entry);
+          map.set(entry.id, {
+            ...entry,
+            track: norm.track,
+            classLevel: norm.classLevel,
+          });
         }
       }
     }
 
-    // 2. Merge logged-in user's local / cloud profile test history immediately
+    // 2. Merge logged-in user's local / cloud profile test history immediately with strict normalization
     if (userProfile && Array.isArray(userProfile.history)) {
       for (const h of userProfile.history) {
         if (h && h.id) {
+          const norm = normalizeTrackAndClass(h);
           const entryRecord: LeaderboardEntry = {
             id: h.id,
             uid: userProfile.uid,
             email: userProfile.email,
             studentName: userProfile.displayName || currentUser?.displayName || 'Student Candidate',
-            classLevel: h.classLevel || userProfile.classLevel || 9,
-            track: h.track || 'Elementary Mathematics',
+            classLevel: norm.classLevel,
+            track: norm.track,
             chapterId: h.chapterId,
             chapterName: h.chapterName,
             mode: 'practice',
@@ -193,17 +197,28 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
     return Array.from(map.values());
   }, [allEntries, userProfile, currentUser]);
 
-  // Synchronize full candidate test attempts when a candidate is selected
+  // Candidate attempts synchronization with zero-flicker caching
   useEffect(() => {
     if (!selectedCandidate) {
       setCandidateAttemptsList([]);
       return;
     }
 
-    // Initialize with existing attempts from ranking
-    const initialAttempts = selectedCandidate.chapterAttempts || [];
+    const candidateKey = `${selectedCandidate.studentName}_c${selectedCandidate.classLevel}_${selectedCandidate.track}`.toLowerCase();
+
+    // 1. Filter initial attempts strictly for selected subject & class
+    const initialAttempts = (selectedCandidate.chapterAttempts || []).filter((a) => {
+      const norm = normalizeTrackAndClass(a);
+      return norm.track === selectedCandidate.track && Number(norm.classLevel) === Number(selectedCandidate.classLevel);
+    });
+
+    // 2. If cached, use it immediately
+    if (candidateAttemptsCacheRef.current.has(candidateKey)) {
+      setCandidateAttemptsList(candidateAttemptsCacheRef.current.get(candidateKey)!);
+      return;
+    }
+
     setCandidateAttemptsList(initialAttempts);
-    setIsSyncingCandidateAttempts(true);
 
     let isMounted = true;
     const syncAttempts = async () => {
@@ -218,14 +233,24 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
         if (!isMounted) return;
 
-        // Merge initial attempts, cloud test_results, and active user profile history if matching
         const mergedMap = new Map<string, LeaderboardEntry>();
 
         for (const a of initialAttempts) {
-          if (a && a.id) mergedMap.set(a.id, a);
+          if (a && a.id) {
+            const norm = normalizeTrackAndClass(a);
+            if (norm.track === selectedCandidate.track && Number(norm.classLevel) === Number(selectedCandidate.classLevel)) {
+              mergedMap.set(a.id, { ...a, track: norm.track, classLevel: norm.classLevel });
+            }
+          }
         }
+
         for (const a of cloudAttempts) {
-          if (a && a.id) mergedMap.set(a.id, a);
+          if (a && a.id) {
+            const norm = normalizeTrackAndClass(a);
+            if (norm.track === selectedCandidate.track && Number(norm.classLevel) === Number(selectedCandidate.classLevel)) {
+              mergedMap.set(a.id, { ...a, track: norm.track, classLevel: norm.classLevel });
+            }
+          }
         }
 
         const isMe = (userProfile?.uid && userProfile.uid === selectedCandidate.uid) ||
@@ -234,25 +259,28 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
         if (isMe && userProfile?.history) {
           for (const h of userProfile.history) {
             if (h && h.id) {
-              mergedMap.set(h.id, {
-                id: h.id,
-                uid: userProfile.uid,
-                email: userProfile.email,
-                studentName: selectedCandidate.studentName,
-                classLevel: h.classLevel || selectedCandidate.classLevel,
-                track: h.track || selectedCandidate.track,
-                chapterId: h.chapterId,
-                chapterName: h.chapterName,
-                mode: 'practice',
-                correctCount: Number(h.correctCount) || 0,
-                totalQuestions: Number(h.totalQuestions) || 0,
-                skippedCount: Number(h.skippedCount) || 0,
-                scorePercentage: Number(h.scorePercentage) || 0,
-                timeSpentSeconds: Number(h.timeSpentSeconds) || 0,
-                formattedTime: h.formattedTime || '0m 00s',
-                timestamp: Number(h.timestamp) || Date.now(),
-                formattedDate: h.formattedDate || 'Recent',
-              });
+              const norm = normalizeTrackAndClass(h);
+              if (norm.track === selectedCandidate.track && Number(norm.classLevel) === Number(selectedCandidate.classLevel)) {
+                mergedMap.set(h.id, {
+                  id: h.id,
+                  uid: userProfile.uid,
+                  email: userProfile.email,
+                  studentName: selectedCandidate.studentName,
+                  classLevel: norm.classLevel,
+                  track: norm.track,
+                  chapterId: h.chapterId,
+                  chapterName: h.chapterName,
+                  mode: 'practice',
+                  correctCount: Number(h.correctCount) || 0,
+                  totalQuestions: Number(h.totalQuestions) || 0,
+                  skippedCount: Number(h.skippedCount) || 0,
+                  scorePercentage: Number(h.scorePercentage) || 0,
+                  timeSpentSeconds: Number(h.timeSpentSeconds) || 0,
+                  formattedTime: h.formattedTime || '0m 00s',
+                  timestamp: Number(h.timestamp) || Date.now(),
+                  formattedDate: h.formattedDate || 'Recent',
+                });
+              }
             }
           }
         }
@@ -261,13 +289,12 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
           (a, b) => (Number(b.timestamp) || 0) - (Number(a.timestamp) || 0)
         );
 
-        setCandidateAttemptsList(finalAttempts);
+        if (isMounted) {
+          setCandidateAttemptsList(finalAttempts);
+          candidateAttemptsCacheRef.current.set(candidateKey, finalAttempts);
+        }
       } catch (err) {
         console.warn('Candidate attempts sync notice:', err);
-      } finally {
-        if (isMounted) {
-          setIsSyncingCandidateAttempts(false);
-        }
       }
     };
 
@@ -278,30 +305,14 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
     };
   }, [selectedCandidate, userProfile]);
 
-  // Filter live submissions for track and active class
-  const classLiveSubmissions = useMemo(() => {
-    return safeEntries.filter((e) => {
-      if (!e) return false;
-      const entryTrack = e.track || 'Elementary Mathematics';
-      return entryTrack === selectedTrack && Number(e.classLevel) === Number(selectedClass) && (!e.id || !e.id.startsWith('lead-seed-'));
-    }).length;
-  }, [safeEntries, selectedTrack, selectedClass]);
-
-  const trackLiveSubmissions = useMemo(() => {
-    return safeEntries.filter((e) => {
-      if (!e) return false;
-      const entryTrack = e.track || 'Elementary Mathematics';
-      return entryTrack === selectedTrack && (!e.id || !e.id.startsWith('lead-seed-'));
-    }).length;
-  }, [safeEntries, selectedTrack]);
-
   // Aggregate and Rank Candidate Profiles by Overall Correct Accuracy across ALL submissions
+  // Strict Subject and Class Isolation
   const rankedCandidateProfiles: CandidateRankingProfile[] = useMemo(() => {
     const candidateMap = new Map<string, {
       studentName: string;
       classLevel: ClassLevel;
       track: string;
-      allSubmissions: LeaderboardEntry[]; // Store all submissions made by student
+      allSubmissions: LeaderboardEntry[];
       latestTimestamp: number;
     }>();
 
@@ -310,26 +321,29 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
       if (entry.mode === 'exam' || (entry.chapterName && entry.chapterName.toLowerCase().includes('mock'))) continue;
       if (entry.id && entry.id.startsWith('lead-seed-')) continue;
 
-      const entryTrack = entry.track || 'Elementary Mathematics';
-      if (entryTrack !== selectedTrack) continue;
-
-      if (Number(entry.classLevel) !== Number(selectedClass)) continue;
+      const norm = normalizeTrackAndClass(entry);
+      if (norm.track !== selectedTrack) continue;
+      if (Number(norm.classLevel) !== Number(selectedClass)) continue;
 
       const cleanName = (entry.studentName || 'Anonymous Student').trim();
-      const candidateKey = `${cleanName}_c${entry.classLevel}_${entryTrack}`;
+      const candidateKey = `${cleanName}_c${norm.classLevel}_${norm.track}`.toLowerCase();
 
       if (!candidateMap.has(candidateKey)) {
         candidateMap.set(candidateKey, {
           studentName: cleanName,
-          classLevel: entry.classLevel,
-          track: entryTrack,
+          classLevel: norm.classLevel,
+          track: norm.track,
           allSubmissions: [],
           latestTimestamp: entry.timestamp || Date.now(),
         });
       }
 
       const cand = candidateMap.get(candidateKey)!;
-      cand.allSubmissions.push(entry);
+      cand.allSubmissions.push({
+        ...entry,
+        track: norm.track,
+        classLevel: norm.classLevel,
+      });
 
       if (entry.timestamp && entry.timestamp > cand.latestTimestamp) {
         cand.latestTimestamp = entry.timestamp;
@@ -341,13 +355,12 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
     for (const [_, cand] of candidateMap.entries()) {
       const submissions = cand.allSubmissions;
-      const totalQuestions = submissions.reduce((sum, item) => sum + (item.totalQuestions || 0), 0);
-      const totalCorrect = submissions.reduce((sum, item) => sum + (item.correctCount || 0), 0);
-      const totalSkipped = submissions.reduce((sum, item) => sum + (item.skippedCount || 0), 0);
+      const totalQuestions = submissions.reduce((sum, item) => sum + (Number(item.totalQuestions) || 0), 0);
+      const totalCorrect = submissions.reduce((sum, item) => sum + (Number(item.correctCount) || 0), 0);
+      const totalSkipped = submissions.reduce((sum, item) => sum + (Number(item.skippedCount) || 0), 0);
       const totalWrong = Math.max(0, totalQuestions - totalCorrect - totalSkipped);
-      const totalTimeSpentSeconds = submissions.reduce((sum, item) => sum + (item.timeSpentSeconds || 0), 0);
+      const totalTimeSpentSeconds = submissions.reduce((sum, item) => sum + (Number(item.timeSpentSeconds) || 0), 0);
       
-      // Calculate overall correct accuracy across ALL submitted questions
       const overallAccuracy = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
 
       candidateProfiles.push({
@@ -364,7 +377,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
         totalTestsAttempted: submissions.length,
         totalTimeSpentSeconds,
         latestAttemptTimestamp: cand.latestTimestamp,
-        chapterAttempts: [...submissions].sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0)),
+        chapterAttempts: [...submissions].sort((a, b) => (Number(b.timestamp) || 0) - (Number(a.timestamp) || 0)),
       });
     }
 
@@ -382,7 +395,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
       if (a.totalTimeSpentSeconds !== b.totalTimeSpentSeconds) {
         return a.totalTimeSpentSeconds - b.totalTimeSpentSeconds;
       }
-      return (b.latestAttemptTimestamp || 0) - (a.latestAttemptTimestamp || 0);
+      return (Number(b.latestAttemptTimestamp) || 0) - (Number(a.latestAttemptTimestamp) || 0);
     });
   }, [safeEntries, selectedClass, selectedTrack]);
 
@@ -512,7 +525,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                   key={tr.id}
                   onClick={() => {
                     setSelectedTrack(tr.id);
-                    if (tr.id === 'Pre Calculas') {
+                    if (tr.id === 'Pre Calculas' || tr.id === 'Chemistry') {
                       setSelectedClass(11);
                     }
                     setSelectedCandidate(null);
@@ -535,9 +548,10 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
             {([9, 10, 11, 12] as ClassLevel[]).map((lvl) => {
               const count = safeEntries.filter(e => {
                 if (!e) return false;
-                const entryTrack = e.track || 'Elementary Mathematics';
-                return entryTrack === selectedTrack && Number(e.classLevel) === lvl && (!e.id || !e.id.startsWith('lead-seed-'));
+                const norm = normalizeTrackAndClass(e);
+                return norm.track === selectedTrack && Number(norm.classLevel) === lvl && (!e.id || !e.id.startsWith('lead-seed-'));
               }).length;
+
               return (
                 <button
                   key={lvl}
@@ -624,7 +638,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                           <span>•</span>
                           <span className="text-indigo-600 dark:text-indigo-400 font-medium flex items-center gap-1">
                             <Clock className="w-3 h-3" />
-                            <span>Synced {formatLiveTime(candidate.latestAttemptTimestamp)}</span>
+                            <span>{formatLiveTime(candidate.latestAttemptTimestamp)}</span>
                           </span>
                         </div>
                       </div>
@@ -724,7 +738,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                   </div>
                 </div>
 
-                {/* Overall Accuracy Bar */}
+                {/* Overall Accuracy Bar for this exact subject and class */}
                 {(() => {
                   const drawerAttempts = candidateAttemptsList.length > 0 ? candidateAttemptsList : (selectedCandidate.chapterAttempts || []);
                   const drawerTotalQ = drawerAttempts.reduce((sum, item) => sum + (Number(item.totalQuestions) || 0), 0);
@@ -742,10 +756,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                         <span className="text-lg font-black text-white">{drawerTotalC}/{drawerTotalQ || selectedCandidate.totalQuestions}</span>
                       </div>
                       <div>
-                        <span className="text-[10px] uppercase text-white/70 block flex items-center justify-center gap-1">
-                          <span>Total Submissions</span>
-                          {isSyncingCandidateAttempts && <RefreshCw className="w-2.5 h-2.5 animate-spin text-white/80" />}
-                        </span>
+                        <span className="text-[10px] uppercase text-white/70 block">Total Submissions</span>
                         <span className="text-lg font-black text-amber-300">{drawerAttempts.length || selectedCandidate.testsAttempted}</span>
                       </div>
                     </div>
@@ -753,7 +764,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                 })()}
               </div>
 
-              {/* Drawer Body: All Submissions Practice History */}
+              {/* Drawer Body: All Submissions Practice History for this Subject & Class */}
               <div className="p-6 space-y-4 overflow-y-auto">
                 {(() => {
                   const drawerAttempts = candidateAttemptsList.length > 0 ? candidateAttemptsList : (selectedCandidate.chapterAttempts || []);
@@ -763,24 +774,16 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                       <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center justify-between">
                         <span className="flex items-center gap-1.5">
                           <Clock className="w-3.5 h-3.5 text-indigo-500" />
-                          <span>Saved Practice History &amp; All Submissions</span>
+                          <span>{selectedCandidate.track} Practice History</span>
                         </span>
-                        <span className="flex items-center gap-1.5">
-                          {isSyncingCandidateAttempts && (
-                            <span className="text-[10px] text-indigo-500 font-semibold flex items-center gap-1">
-                              <RefreshCw className="w-2.5 h-2.5 animate-spin" />
-                              <span>Syncing...</span>
-                            </span>
-                          )}
-                          <span>{drawerAttempts.length} Submissions</span>
-                        </span>
+                        <span>{drawerAttempts.length} Submissions</span>
                       </h4>
 
                       {drawerAttempts.length === 0 ? (
                         <div className="p-8 text-center rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-2">
                           <BookOpen className="w-8 h-8 text-slate-400 mx-auto" />
                           <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                            {isSyncingCandidateAttempts ? 'Syncing test attempt records...' : 'No test submissions found for this candidate.'}
+                            No test submissions found for {selectedCandidate.track} (Class {selectedCandidate.classLevel}).
                           </p>
                         </div>
                       ) : (

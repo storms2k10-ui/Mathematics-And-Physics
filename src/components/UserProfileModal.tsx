@@ -25,7 +25,6 @@ import {
   BarChart3, 
   TrendingDown, 
   TrendingUp,
-  RefreshCw,
   Trophy
 } from 'lucide-react';
 import {
@@ -62,22 +61,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   const { isOnline, isOffline, isConnectionStable, indicatorDotClass, indicatorBadgeClass, statusLabel } = useOffline();
   const [copiedShare, setCopiedShare] = useState(false);
   const [now, setNow] = useState<number>(() => Date.now());
-  const [isSyncingHistory, setIsSyncingHistory] = useState(false);
   const [classRank, setClassRank] = useState<{ rank: number; totalStudents: number } | null>(null);
-
-  const handleManualSync = async () => {
-    if (isSyncingHistory) return;
-    setIsSyncingHistory(true);
-    try {
-      await syncWithServer();
-    } catch (e) {
-      console.warn('Manual history sync note:', e);
-    } finally {
-      setTimeout(() => {
-        setIsSyncingHistory(false);
-      }, 500);
-    }
-  };
 
   // Real-time ticker for live timestamps
   useEffect(() => {

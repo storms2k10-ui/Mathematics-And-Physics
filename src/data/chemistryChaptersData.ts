@@ -337,7 +337,7 @@ export const CHEMISTRY_CHAPTERS: Chapter[] = [
     name: 'Acids, Bases and Salts',
     description: 'Acid-base theories (Arrhenius, Brønsted-Lowry, Lewis), auto-ionization of water and ionic product ($K_w = 1.0 \\times 10^{-14}$), pH and pOH scale, ionization constants ($K_a, K_b$), Henderson-Hasselbalch equation for buffer solutions, solubility product ($K_{sp}$), and common ion effect.',
     category: 'Acids, Bases & Solutions',
-    questionCount: 50,
+    questionCount: 200,
     difficulty: 'Mixed',
     keyTopics: [
       'Acid-Base Theories: Arrhenius ($H^+/OH^-$), Brønsted-Lowry (Proton Donor/Acceptor), Lewis (Electron Pair)',
@@ -384,7 +384,7 @@ export const CHEMISTRY_CHAPTERS: Chapter[] = [
     name: 'Chemical Kinetics',
     description: 'Rates of chemical reactions, rate laws and rate constant ($k$), reaction order (zero, 1st, 2nd, fractional) and molecularity, integrated rate equations, half-life periods ($t_{1/2}$), collision theory, activation energy ($E_a$), Arrhenius equation, and catalysis.',
     category: 'Chemical Equilibrium & Kinetics',
-    questionCount: 50,
+    questionCount: 200,
     difficulty: 'Mixed',
     keyTopics: [
       'Reaction Rates: Average vs. Instantaneous Rates ($r = -\\frac{1}{a}\\frac{d[A]}{dt} = \\frac{1}{b}\\frac{d[B]}{dt}$)',
@@ -431,7 +431,7 @@ export const CHEMISTRY_CHAPTERS: Chapter[] = [
     name: 'Solutions',
     description: 'Types of solutions, concentration units (molarity $M$, molality $m$, mole fraction $X$, ppm), Raoult’s Law for ideal and non-ideal solutions (azeotropic mixtures), colligative properties (boiling point elevation $\\Delta T_b$, freezing point depression $\\Delta T_f$, osmotic pressure $\\pi$), and Van ’t Hoff factor ($i$).',
     category: 'Acids, Bases & Solutions',
-    questionCount: 50,
+    questionCount: 200,
     difficulty: 'Mixed',
     keyTopics: [
       'Concentration Expressions: Molarity ($M$), Molality ($m$), Mole Fraction ($X$), Mass Percentage, ppm',
@@ -478,7 +478,7 @@ export const CHEMISTRY_CHAPTERS: Chapter[] = [
     name: 'ThermoChemistry',
     description: 'Thermodynamic systems, state functions, First Law of Thermodynamics ($\\Delta U = q + w$), enthalpy ($\\Delta H$), standard enthalpy changes (formation, combustion, neutralization), calorimetry (bomb calorimeter), Hess’s Law of Constant Heat Summation, and bond enthalpies.',
     category: 'Thermochemistry & Electrochemistry',
-    questionCount: 50,
+    questionCount: 200,
     difficulty: 'Mixed',
     keyTopics: [
       'Thermodynamic Systems (Open, Closed, Isolated), Surroundings, and State Functions',
@@ -525,7 +525,7 @@ export const CHEMISTRY_CHAPTERS: Chapter[] = [
     name: 'ElectroChemistry',
     description: 'Oxidation-reduction (redox) reactions and oxidation states, balancing redox equations (ion-electron and oxidation number methods), electrolytic conduction, Faraday’s Laws of Electrolysis, galvanic/voltaic cells, standard electrode potentials ($E^\\circ$), Standard Hydrogen Electrode (SHE), electrochemical series, Nernst equation, and batteries.',
     category: 'Thermochemistry & Electrochemistry',
-    questionCount: 50,
+    questionCount: 200,
     difficulty: 'Mixed',
     keyTopics: [
       'Oxidation Numbers, Redox Balancing (Ion-Electron & Oxidation State Methods in Acidic/Basic Media)',
