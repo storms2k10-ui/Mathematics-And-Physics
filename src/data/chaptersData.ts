@@ -335,7 +335,7 @@ export const ELEMENTARY_CHAPTERS: Chapter[] = [
     name: 'Mathematical Induction and Binomial Theorem',
     description: 'Principle of mathematical induction, Binomial Theorem for positive integer index (a+b)ⁿ, general term T_{r+1}, and binomial theorem for any rational index.',
     category: 'Sequences & Induction',
-    questionCount: 50,
+    questionCount: 250,
     difficulty: 'Mixed',
     keyTopics: ['Principle of Mathematical Induction', 'Binomial Expansion (a+b)ⁿ = \\sum ^nC_r a^{n-r} b^r', 'General Term: T_{r+1} = ^nC_r a^{n-r} b^r', 'Middle Terms & Binomial Approximations'],
     color: 'rose',
