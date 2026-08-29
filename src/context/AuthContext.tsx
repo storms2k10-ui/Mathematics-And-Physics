@@ -104,10 +104,37 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       if (userSnap && userSnap.exists()) {
         const data = userSnap.data() as Partial<UserProfile>;
         
-        // Merge history from cloud test_results and user doc
-        const combinedHistory = cloudHistory && cloudHistory.length > 0
-          ? cloudHistory
-          : Array.isArray(data.history) ? data.history : [];
+        // Merge history from cloud test_results and user doc with strict deduplication
+        const historyMap = new Map<string, UserTestHistory>();
+        
+        if (Array.isArray(data.history)) {
+          data.history.forEach((h) => {
+            if (h && h.id) {
+              historyMap.set(h.id, h);
+            }
+          });
+        }
+        if (Array.isArray(cloudHistory)) {
+          cloudHistory.forEach((h) => {
+            if (h && h.id) {
+              historyMap.set(h.id, h);
+            }
+          });
+        }
+
+        // Deduplicate any close duplicates by (chapterId + classLevel + track + timestamp rounded to 5s)
+        const seenSignatures = new Set<string>();
+        const combinedHistory: UserTestHistory[] = [];
+        
+        const sortedRaw = Array.from(historyMap.values()).sort((a, b) => (Number(b.timestamp) || 0) - (Number(a.timestamp) || 0));
+        for (const item of sortedRaw) {
+          const approxTime = Math.floor((Number(item.timestamp) || 0) / 5000);
+          const sig = `${item.chapterId}_${item.classLevel}_${item.track || 'gen'}_${item.scorePercentage}_${approxTime}`;
+          if (!seenSignatures.has(sig)) {
+            seenSignatures.add(sig);
+            combinedHistory.push(item);
+          }
+        }
 
         const totalQ = combinedHistory.reduce((acc, h) => acc + (Number(h.totalQuestions) || 0), 0);
         const totalC = combinedHistory.reduce((acc, h) => acc + (Number(h.correctCount) || 0), 0);
@@ -486,24 +513,17 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }
 
       // 4. Background broadcast to server
-      Promise.all([
-        safeFetchJson('/api/auth/sync', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            uid,
-            email,
-            displayName,
-            classLevel: historyItem.classLevel || current?.classLevel || 9,
-            historyItem,
-          }),
-        }).catch(() => {}),
-        safeFetchJson('/api/leaderboard', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(leaderboardEntryRecord),
-        }).catch(() => {}),
-      ]).catch(() => {});
+      safeFetchJson('/api/auth/sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          uid,
+          email,
+          displayName,
+          classLevel: historyItem.classLevel || current?.classLevel || 9,
+          historyItem,
+        }),
+      }).catch(() => {});
     } catch (e) {
       console.warn('Network sync exception, queueing attempt for auto-sync:', e);
       offlineSyncService.queueAttempt(historyItem, leaderboardEntryRecord, uid, email, displayName);

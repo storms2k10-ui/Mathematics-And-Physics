@@ -9,22 +9,23 @@ import {
   XCircle, 
   LogOut, 
   Sparkles, 
-  BookOpen,
-  Award,
-  Flame,
-  Zap,
-  Target,
-  Share2,
-  Check,
-  Calculator,
-  Compass,
-  Sigma,
-  Layers,
-  ChevronRight,
-  AlertTriangle,
-  BarChart3,
-  TrendingDown,
-  TrendingUp
+  BookOpen, 
+  Award, 
+  Flame, 
+  Zap, 
+  Target, 
+  Share2, 
+  Check, 
+  Calculator, 
+  Compass, 
+  Sigma, 
+  Layers, 
+  ChevronRight, 
+  AlertTriangle, 
+  BarChart3, 
+  TrendingDown, 
+  TrendingUp,
+  RefreshCw
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -59,6 +60,21 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   const { isOnline, isOffline, isConnectionStable, indicatorDotClass, indicatorBadgeClass, statusLabel } = useOffline();
   const [copiedShare, setCopiedShare] = useState(false);
   const [now, setNow] = useState<number>(() => Date.now());
+  const [isSyncingHistory, setIsSyncingHistory] = useState(false);
+
+  const handleManualSync = async () => {
+    if (isSyncingHistory) return;
+    setIsSyncingHistory(true);
+    try {
+      await syncWithServer();
+    } catch (e) {
+      console.warn('Manual history sync note:', e);
+    } finally {
+      setTimeout(() => {
+        setIsSyncingHistory(false);
+      }, 500);
+    }
+  };
 
   // Real-time ticker for live timestamps
   useEffect(() => {
@@ -632,14 +648,26 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
 
           {/* Test Attempt Practice History */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-indigo-500" />
                 <span>Saved Practice History &amp; Test Results</span>
               </h4>
-              <span className="text-xs text-slate-400 font-medium">
-                {historyList.length} attempts saved
-              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleManualSync}
+                  disabled={isSyncingHistory}
+                  className="px-2.5 py-1 rounded-lg text-[11px] font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50/80 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 border border-indigo-200/80 dark:border-indigo-800/60 transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 disabled:opacity-50"
+                  title="Sync practice history with Cloud Firestore & Server"
+                >
+                  <RefreshCw className={`w-3 h-3 ${isSyncingHistory ? 'animate-spin' : ''}`} />
+                  <span>{isSyncingHistory ? 'Syncing...' : 'Sync History'}</span>
+                </button>
+                <span className="text-xs text-slate-400 font-medium">
+                  {historyList.length} attempts saved
+                </span>
+              </div>
             </div>
 
             {historyList.length === 0 ? (

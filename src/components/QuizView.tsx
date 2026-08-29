@@ -63,7 +63,6 @@ export const QuizView: React.FC<QuizViewProps> = ({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isFeedbackDelay, setIsFeedbackDelay] = useState(false);
   const advanceTimerRef = useRef<NodeJS.Timeout | null>(null);
-  const hasCompletedRef = useRef(false);
   const [userAnswers, setUserAnswers] = useState<Record<number, {
     questionId: string;
     selectedOption: 'A' | 'B' | 'C' | 'D' | null;
@@ -188,9 +187,6 @@ export const QuizView: React.FC<QuizViewProps> = ({
     if (advanceTimerRef.current) {
       clearTimeout(advanceTimerRef.current);
     }
-    if (hasCompletedRef.current) return;
-    hasCompletedRef.current = true;
-
     const finalAnswers = { ...(customAnswers || userAnswers) };
     questions.forEach((q, idx) => {
       if (!finalAnswers[idx]) {

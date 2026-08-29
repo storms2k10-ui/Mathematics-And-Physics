@@ -339,7 +339,7 @@ export default function App() {
     setCurrentView('results');
     window.scrollTo({ top: 0, behavior: 'instant' });
 
-    // 2. Perform single live sync to Firestore cloud database, user history & leaderboard in background
+    // 2. Perform live sync to Firestore cloud database, user history & leaderboard in background
     recordTestAttempt(historyItem).catch((e) => console.warn('Record attempt async sync:', e));
   };
 
