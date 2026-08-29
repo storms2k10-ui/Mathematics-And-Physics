@@ -276,24 +276,34 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
                     setDifficultyTier('Normal');
                     if (error) setError(null);
                   }}
-                  className={`p-2.5 rounded-xl border transition-all text-left cursor-pointer flex flex-col justify-between ${
+                  className={`group relative overflow-hidden p-2.5 rounded-xl border transition-all duration-300 text-left cursor-pointer flex flex-col justify-between hover:scale-[1.02] active:scale-[0.98] ${
                     difficultyTier === 'Normal'
-                      ? 'bg-gradient-to-br from-indigo-600 to-indigo-700 border-indigo-500 text-white shadow-xs ring-1.5 ring-indigo-400/80'
-                      : 'bg-slate-50 dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-300 dark:hover:border-indigo-600'
+                      ? 'bg-gradient-to-br from-indigo-600 via-indigo-700 to-blue-700 border-indigo-500 text-white shadow-md shadow-indigo-500/20 ring-2 ring-indigo-400/90'
+                      : 'bg-slate-50 dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-400 dark:hover:border-indigo-500 hover:bg-indigo-50/50 dark:hover:bg-indigo-950/30'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
                     <span className="font-extrabold text-xs tracking-tight flex items-center gap-1.5">
                       {isNormalUnlocked ? (
-                        <CheckCircle2 className={`w-3.5 h-3.5 shrink-0 ${difficultyTier === 'Normal' ? 'text-emerald-300' : 'text-slate-400'}`} />
+                        <CheckCircle2 className={`w-3.5 h-3.5 shrink-0 transition-transform duration-300 group-hover:scale-110 ${difficultyTier === 'Normal' ? 'text-emerald-300 animate-pulse' : 'text-slate-400'}`} />
                       ) : (
                         <Lock className={`w-3.5 h-3.5 shrink-0 ${difficultyTier === 'Normal' ? 'text-amber-300' : 'text-slate-400'}`} />
                       )}
                       Normal
                     </span>
+                    {difficultyTier === 'Normal' && (
+                      <span className="flex h-2 w-2 relative">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-300 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                      </span>
+                    )}
                   </div>
-                  <p className={`text-[10px] leading-tight ${difficultyTier === 'Normal' ? 'text-indigo-100' : 'text-slate-500 dark:text-slate-400'}`}>
-                    Standard curriculum exercises
+                  <p className={`text-[10px] font-medium leading-tight transition-colors duration-200 ${
+                    difficultyTier === 'Normal'
+                      ? 'text-indigo-100 font-semibold'
+                      : 'text-slate-500 dark:text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300'
+                  }`}>
+                    Academic &amp; Foundation
                   </p>
                 </button>
 
@@ -305,24 +315,34 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
                     setDifficultyTier('Advanced');
                     if (error) setError(null);
                   }}
-                  className={`p-2.5 rounded-xl border transition-all text-left cursor-pointer flex flex-col justify-between ${
+                  className={`group relative overflow-hidden p-2.5 rounded-xl border transition-all duration-300 text-left cursor-pointer flex flex-col justify-between hover:scale-[1.02] active:scale-[0.98] ${
                     difficultyTier === 'Advanced'
-                      ? 'bg-gradient-to-br from-purple-700 to-indigo-900 border-purple-500 text-white shadow-xs ring-1.5 ring-purple-400/80'
-                      : 'bg-slate-50 dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-purple-300 dark:hover:border-purple-600'
+                      ? 'bg-gradient-to-br from-purple-700 via-purple-800 to-indigo-950 border-purple-500 text-white shadow-md shadow-purple-500/20 ring-2 ring-purple-400/90'
+                      : 'bg-slate-50 dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-purple-400 dark:hover:border-purple-500 hover:bg-purple-50/50 dark:hover:bg-purple-950/30'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
                     <span className="font-extrabold text-xs tracking-tight flex items-center gap-1.5">
                       {isAdvancedUnlocked ? (
-                        <CheckCircle2 className={`w-3.5 h-3.5 shrink-0 ${difficultyTier === 'Advanced' ? 'text-purple-300' : 'text-slate-400'}`} />
+                        <CheckCircle2 className={`w-3.5 h-3.5 shrink-0 transition-transform duration-300 group-hover:scale-110 ${difficultyTier === 'Advanced' ? 'text-purple-300 animate-pulse' : 'text-slate-400'}`} />
                       ) : (
                         <Lock className={`w-3.5 h-3.5 shrink-0 ${difficultyTier === 'Advanced' ? 'text-amber-300' : 'text-slate-400'}`} />
                       )}
                       Advanced
                     </span>
+                    {difficultyTier === 'Advanced' && (
+                      <span className="flex h-2 w-2 relative">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-300 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-300"></span>
+                      </span>
+                    )}
                   </div>
-                  <p className={`text-[10px] leading-tight ${difficultyTier === 'Advanced' ? 'text-purple-200' : 'text-slate-500 dark:text-slate-400'}`}>
-                    Competitive &amp; higher level concepts
+                  <p className={`text-[10px] font-medium leading-tight transition-colors duration-200 ${
+                    difficultyTier === 'Advanced'
+                      ? 'text-purple-200 font-semibold'
+                      : 'text-slate-500 dark:text-slate-400 group-hover:text-purple-600 dark:group-hover:text-purple-300'
+                  }`}>
+                    Competitive &amp; Entry Test Preparation
                   </p>
                 </button>
               </div>

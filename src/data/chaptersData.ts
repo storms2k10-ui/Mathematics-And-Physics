@@ -349,7 +349,7 @@ export const ELEMENTARY_CHAPTERS: Chapter[] = [
     name: 'Functions and Graphs',
     description: 'Domain and range of real-valued functions, odd/even functions, inverse functions f⁻¹(x), composition (f ∘ g)(x), and graphs of basic functions.',
     category: 'Algebra & Polynomials',
-    questionCount: 50,
+    questionCount: 250,
     difficulty: 'Mixed',
     keyTopics: ['Domain & Range Analysis', 'Composition of Functions (f ∘ g)(x)', 'Inverse Functions & Invertibility Criteria', 'Even (f(-x)=f(x)) & Odd (f(-x)=-f(x)) Functions'],
     color: 'indigo',
