@@ -25,6 +25,7 @@ import {
 import { auth, db } from '../lib/firebase';
 import { UserProfile, UserTestHistory, ClassLevel, LeaderboardEntry } from '../types';
 import { FirestoreLeaderboardService } from '../services/firestoreLeaderboard';
+import { MathService } from '../services/mathService';
 import { safeFetchJson } from '../lib/apiHelper';
 import { offlineSyncService } from '../services/offlineSyncService';
 
@@ -489,6 +490,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }),
         FirestoreLeaderboardService.saveEntry(leaderboardEntryRecord, uid).catch((e) => {
           console.warn('Firestore leaderboard write failed, queueing offline:', e);
+        }),
+        MathService.saveLeaderboardEntry(leaderboardEntryRecord, uid).catch((e) => {
+          console.warn('MathService saveLeaderboardEntry note:', e);
         }),
       ]);
 

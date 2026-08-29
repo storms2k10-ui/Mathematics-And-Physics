@@ -21,48 +21,31 @@ const TEST_RESULTS_COLLECTION = 'test_results';
 export class FirestoreLeaderboardService {
   /**
    * Saves a practice or exam score directly to Firestore cloud database.
-   * Enforces chapter deduplication per student per class per track: only updates if accuracy improves.
+   * Every test submission is saved as an authoritative record to accumulate candidate's total correct answers and overall accuracy.
    */
   static async saveEntry(entry: LeaderboardEntry, uid?: string): Promise<void> {
     try {
-      const cleanTrack = (entry.track || 'Elementary Mathematics').toLowerCase().replace(/[^a-z0-9]/g, '_');
-      const userKey = entry.email ? entry.email.toLowerCase().replace(/[^a-z0-9]/g, '_') : (entry.studentName || 'student').toLowerCase().replace(/[^a-z0-9]/g, '_');
-      const chapterDocId = `rank_${userKey}_c${entry.classLevel}_${entry.chapterId || 'gen'}_${cleanTrack}`;
+      const entryId = entry.id || `lead_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
+      const docRef = doc(db, LEADERBOARD_COLLECTION, entryId);
       
-      const docRef = doc(db, LEADERBOARD_COLLECTION, chapterDocId);
-      
-      // Check if candidate already has a better attempt for this chapter
-      try {
-        const existingSnap = await getDoc(docRef);
-        if (existingSnap.exists()) {
-          const oldData = existingSnap.data() as LeaderboardEntry;
-          if (
-            oldData.scorePercentage > entry.scorePercentage ||
-            (oldData.scorePercentage === entry.scorePercentage && oldData.timeSpentSeconds <= entry.timeSpentSeconds)
-          ) {
-            // Keep existing best in leaderboard, but still save this attempt in test_results collection
-            await this.saveTestResultRecord(entry, uid);
-            return;
-          }
-        }
-      } catch {
-        // Continue if getDoc fails
-      }
+      const cleanTrack = entry.track || 'Elementary Mathematics';
+      const cleanStudentName = (entry.studentName || 'Student Candidate').trim();
 
-      // Save / Update best score in leaderboard collection
+      // Save every submission to leaderboard collection with unique ID
       await setDoc(docRef, {
         ...entry,
-        id: chapterDocId,
+        id: entryId,
         uid: uid || entry.uid || null,
         email: entry.email || null,
-        classLevel: Number(entry.classLevel),
-        track: entry.track || 'Elementary Mathematics',
-        timestamp: Date.now(),
+        studentName: cleanStudentName,
+        classLevel: Number(entry.classLevel) || 9,
+        track: cleanTrack,
+        timestamp: entry.timestamp || Date.now(),
         updatedAt: serverTimestamp(),
       }, { merge: true });
 
-      // Save individual attempt in test_results collection
-      await this.saveTestResultRecord(entry, uid);
+      // Also save in test_results collection
+      await this.saveTestResultRecord({ ...entry, id: entryId }, uid);
     } catch (error) {
       console.error('Firestore saveEntry error:', error);
       throw error;

@@ -553,34 +553,18 @@ app.post('/api/leaderboard', (req, res) => {
 
     let entries = loadLeaderboardFromFile();
 
-    // Deduplication rule: If user re-attempts the same chapter, update if accuracy improved or equal with faster time
-    const existingIndex = entries.findIndex((e) => 
-      e.studentName.toLowerCase() === validatedEntry.studentName.toLowerCase() &&
-      e.chapterId === validatedEntry.chapterId &&
-      Number(e.classLevel) === Number(validatedEntry.classLevel) &&
-      (e.track || 'Elementary Mathematics') === (validatedEntry.track || 'Elementary Mathematics')
-    );
+    // Store each test submission; if exact submission ID exists, update it, otherwise prepend
+    const existingIndex = entries.findIndex((e) => e.id === validatedEntry.id);
 
     if (existingIndex !== -1) {
-      const existing = entries[existingIndex];
-      // Only overwrite if accuracy improved or equal accuracy with faster completion time
-      if (
-        validatedEntry.scorePercentage > existing.scorePercentage ||
-        (validatedEntry.scorePercentage === existing.scorePercentage && validatedEntry.timeSpentSeconds < existing.timeSpentSeconds)
-      ) {
-        entries[existingIndex] = {
-          ...validatedEntry,
-          id: existing.id || validatedEntry.id,
-        };
-      }
+      entries[existingIndex] = validatedEntry;
     } else {
-      // First attempt for this chapter by this student
       entries.unshift(validatedEntry);
     }
 
-    // Keep store capped at 2000 latest records
-    if (entries.length > 2000) {
-      entries = entries.slice(0, 2000);
+    // Keep store capped at 5000 latest records
+    if (entries.length > 5000) {
+      entries = entries.slice(0, 5000);
     }
 
     saveLeaderboardToFile(entries);

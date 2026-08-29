@@ -25,7 +25,8 @@ import {
   BarChart3, 
   TrendingDown, 
   TrendingUp,
-  RefreshCw
+  RefreshCw,
+  Trophy
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -42,6 +43,7 @@ import { useAuth } from '../context/AuthContext';
 import { useOffline } from '../context/OfflineContext';
 import { ClassLevel, Chapter } from '../types';
 import { MathText } from './MathText';
+import { FirestoreLeaderboardService } from '../services/firestoreLeaderboard';
 
 interface UserProfileModalProps {
   isOpen: boolean;
@@ -56,11 +58,12 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   onSelectClass,
   onSelectChapter,
 }) => {
-  const { userProfile: authProfile, signOut, syncWithServer } = useAuth();
+  const { currentUser, userProfile: authProfile, signOut, syncWithServer } = useAuth();
   const { isOnline, isOffline, isConnectionStable, indicatorDotClass, indicatorBadgeClass, statusLabel } = useOffline();
   const [copiedShare, setCopiedShare] = useState(false);
   const [now, setNow] = useState<number>(() => Date.now());
   const [isSyncingHistory, setIsSyncingHistory] = useState(false);
+  const [classRank, setClassRank] = useState<{ rank: number; totalStudents: number } | null>(null);
 
   const handleManualSync = async () => {
     if (isSyncingHistory) return;
@@ -78,12 +81,84 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
 
   // Real-time ticker for live timestamps
   useEffect(() => {
-    if (!isOpen) return;
-    const ticker = setInterval(() => {
+    const timer = setInterval(() => {
       setNow(Date.now());
     }, 5000);
-    return () => clearInterval(ticker);
-  }, [isOpen]);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Compute live Academic Rank in user's class based on Overall Accuracy
+  useEffect(() => {
+    if (!isOpen) return;
+
+    let isMounted = true;
+    const fetchAndComputeRank = async () => {
+      try {
+        const classLvl = authProfile?.classLevel || 9;
+        const entries = await FirestoreLeaderboardService.fetchRanked(classLvl, 'practice');
+        if (!isMounted || !entries) return;
+
+        // Group submissions by candidate and rank by Overall Accuracy -> Total Correct
+        const candidateMap = new Map<string, {
+          name: string;
+          uid?: string;
+          email?: string;
+          totalCorrect: number;
+          totalQuestions: number;
+        }>();
+
+        for (const e of entries) {
+          if (!e || e.mode === 'exam') continue;
+          const cleanName = (e.studentName || 'Student').trim();
+          const key = e.uid || (e.email ? e.email.toLowerCase() : cleanName.toLowerCase());
+          if (!candidateMap.has(key)) {
+            candidateMap.set(key, {
+              name: cleanName,
+              uid: e.uid,
+              email: e.email,
+              totalCorrect: 0,
+              totalQuestions: 0,
+            });
+          }
+          const cand = candidateMap.get(key)!;
+          cand.totalCorrect += (e.correctCount || 0);
+          cand.totalQuestions += (e.totalQuestions || 0);
+        }
+
+        const rankedList = Array.from(candidateMap.values()).map((c) => ({
+          ...c,
+          overallAccuracy: c.totalQuestions > 0 ? Math.round((c.totalCorrect / c.totalQuestions) * 100) : 0,
+        })).sort((a, b) => {
+          if (b.overallAccuracy !== a.overallAccuracy) return b.overallAccuracy - a.overallAccuracy;
+          return b.totalCorrect - a.totalCorrect;
+        });
+
+        const myUid = currentUser?.uid || authProfile?.uid;
+        const myEmail = (currentUser?.email || authProfile?.email || '').toLowerCase();
+        const myName = (authProfile?.displayName || '').toLowerCase();
+
+        const myIndex = rankedList.findIndex((c) => 
+          (myUid && c.uid === myUid) || 
+          (myEmail && c.email && c.email.toLowerCase() === myEmail) || 
+          (myName && c.name.toLowerCase() === myName)
+        );
+
+        if (myIndex !== -1 && isMounted) {
+          setClassRank({
+            rank: myIndex + 1,
+            totalStudents: Math.max(rankedList.length, 1),
+          });
+        }
+      } catch (err) {
+        console.warn('Rank computation notice:', err);
+      }
+    };
+
+    fetchAndComputeRank();
+    return () => {
+      isMounted = false;
+    };
+  }, [isOpen, authProfile?.classLevel, authProfile?.uid, authProfile?.email, authProfile?.displayName, currentUser]);
 
   // Trigger live sync with server upon opening modal to guarantee latest history
   useEffect(() => {
@@ -346,9 +421,17 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                 <Mail className="w-3 h-3 shrink-0" />
                 <span className="truncate">{userProfile.email || 'Registered Student'}</span>
               </p>
-              <div className="text-[9px] sm:text-[10px] font-bold text-violet-200 mt-0.5 flex items-center gap-1">
-                <Sparkles className="w-3 h-3 text-pink-300 shrink-0" />
-                <span className="truncate">{theme.levelName}</span>
+              <div className="flex flex-wrap items-center gap-1.5 mt-0.5">
+                <div className="text-[9px] sm:text-[10px] font-bold text-violet-200 flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-pink-300 shrink-0" />
+                  <span className="truncate">{theme.levelName}</span>
+                </div>
+                {classRank && (
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black bg-amber-400 text-slate-950 shadow-xs">
+                    <Trophy className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-amber-950" />
+                    <span>Class {userProfile.classLevel} Rank #{classRank.rank}</span>
+                  </span>
+                )}
               </div>
             </div>
           </div>
