@@ -321,7 +321,7 @@ export const ELEMENTARY_CHAPTERS: Chapter[] = [
     name: 'Permutation and Combination and Probability',
     description: 'Fundamental principle of counting, Permutations ⁿPᵣ, Combinations ⁿCᵣ, sample space, classical probability, addition and multiplication theorems.',
     category: 'Probability & Combinatorics',
-    questionCount: 50,
+    questionCount: 250,
     difficulty: 'Mixed',
     keyTopics: ['Permutations: ^nP_r = \\frac{n!}{(n-r)!}', 'Combinations: ^nC_r = \\frac{n!}{r!(n-r)!}', 'Probability P(E) = n(E)/n(S)', 'Conditional Probability & Independent Events'],
     color: 'teal',

@@ -1,6 +1,17 @@
 import { Question } from '../types';
+import { C11_CH6_ADVANCED_PART1 } from './c11_ch6_advanced_part1';
+import { C11_CH6_ADVANCED_PART2 } from './c11_ch6_advanced_part2';
+import { C11_CH6_ADVANCED_PART3 } from './c11_ch6_advanced_part3';
+import { C11_CH6_ADVANCED_PART4 } from './c11_ch6_advanced_part4';
 
-export const C11_CH6_QUESTIONS: Question[] = [
+export const C11_CH6_ADVANCED_QUESTIONS: Question[] = [
+  ...C11_CH6_ADVANCED_PART1,
+  ...C11_CH6_ADVANCED_PART2,
+  ...C11_CH6_ADVANCED_PART3,
+  ...C11_CH6_ADVANCED_PART4,
+];
+
+export const C11_CH6_NORMAL_QUESTIONS: Question[] = [
   // =========================================================================
   // CLASS 11 — CHAPTER 6: PERMUTATION, COMBINATION AND PROBABILITY (50 MCQs)
   // =========================================================================
@@ -863,3 +874,9 @@ export const C11_CH6_QUESTIONS: Question[] = [
     formula: 'P(E) = \\frac{b}{a+b} = \\frac{3}{10}',
   },
 ];
+
+export const C11_CH6_QUESTIONS: Question[] = [
+  ...C11_CH6_NORMAL_QUESTIONS,
+  ...C11_CH6_ADVANCED_QUESTIONS,
+];
+
