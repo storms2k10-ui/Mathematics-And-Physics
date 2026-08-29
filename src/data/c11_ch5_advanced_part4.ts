@@ -14,7 +14,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$2k$",
     "correct_answer": "A",
     "explanation": "$(k+1)^2-k^2 = k^2+2k+1-k^2 = 2k+1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q152",
@@ -29,7 +30,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$3k+1$",
     "correct_answer": "B",
     "explanation": "$(k+1)^3-k^3 = 3k^2+3k+1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q153",
@@ -44,7 +46,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{k}+\\frac{1}{k+1}$",
     "correct_answer": "C",
     "explanation": "$\\frac{1}{k} - \\frac{1}{k+1} = \\frac{k+1-k}{k(k+1)} = \\frac{1}{k(k+1)}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q154",
@@ -59,7 +62,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{2k+1}{k^2(k+1)^2}$",
     "correct_answer": "D",
     "explanation": "$\\frac{1}{k^2} - \\frac{1}{(k+1)^2} = \\frac{(k+1)^2-k^2}{k^2(k+1)^2} = \\frac{2k+1}{k^2(k+1)^2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q155",
@@ -74,7 +78,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$4n^3$",
     "correct_answer": "A",
     "explanation": "Since $4k^3+6k^2+4k+1 = (k+1)^4-k^4$, the sum telescopes to $(n+1)^4-1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q156",
@@ -89,7 +94,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$1240$",
     "correct_answer": "B",
     "explanation": "$(5+1)^4 - 1 = 6^4 - 1 = 1296 - 1 = 1295$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q157",
@@ -104,7 +110,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$n^3$",
     "correct_answer": "C",
     "explanation": "Telescopes to $n^4 - 0^4 = n^4$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q158",
@@ -119,7 +126,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$10000$",
     "correct_answer": "D",
     "explanation": "$10^4 = 10000$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q159",
@@ -134,7 +142,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$6k$",
     "correct_answer": "A",
     "explanation": "$k(k+1)(k+2) - (k-1)k(k+1) = k(k+1)[(k+2)-(k-1)] = 3k(k+1)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q160",
@@ -149,7 +158,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$n(n+1)$",
     "correct_answer": "B",
     "explanation": "$\\sum_{k=1}^n 3k(k+1) = u_n - u_0 = n(n+1)(n+2) \\implies \\sum_{k=1}^n k(k+1) = \\frac{n(n+1)(n+2)}{3}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q161",
@@ -164,7 +174,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$3k^2$",
     "correct_answer": "C",
     "explanation": "$k(k+1)(2k+1) - (k-1)k(2k-1) = (2k^3+3k^2+k) - (2k^3-3k^2+k) = 6k^2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q162",
@@ -179,7 +190,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{n(n+1)(2n+1)}{6}$",
     "correct_answer": "D",
     "explanation": "$\\sum_{k=1}^n 6k^2 = u_n - u_0 = n(n+1)(2n+1) \\implies \\sum_{k=1}^n k^2 = \\frac{n(n+1)(2n+1)}{6}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q163",
@@ -194,7 +206,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$4k^2$",
     "correct_answer": "A",
     "explanation": "$k^2(k+1)^2 - (k-1)^2 k^2 = k^2[(k+1)^2-(k-1)^2] = k^2(4k) = 4k^3$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q164",
@@ -209,7 +222,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{n(n+1)(n+2)}{3}$",
     "correct_answer": "B",
     "explanation": "$\\sum_{k=1}^n 4k^3 = u_n - u_0 = n^2(n+1)^2 \\implies \\sum_{k=1}^n k^3 = \\frac{n^2(n+1)^2}{4}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q165",
@@ -224,7 +238,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$1-\\frac{1}{3n+1}$",
     "correct_answer": "C",
     "explanation": "Since $\\frac{1}{(3k-2)(3k+1)} = \\frac{1}{3}\\left(\\frac{1}{3k-2}-\\frac{1}{3k+1}\\right)$, the sum is $\\frac{1}{3}\\left(1-\\frac{1}{3n+1}\\right)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q166",
@@ -239,7 +254,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{n+1}{3n+1}$",
     "correct_answer": "A",
     "explanation": "$\\frac{1}{3}\\left(\\frac{3n+1-1}{3n+1}\\right) = \\frac{1}{3}\\left(\\frac{3n}{3n+1}\\right) = \\frac{n}{3n+1}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q167",
@@ -254,7 +270,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$3$",
     "correct_answer": "B",
     "explanation": "$\\lim_{n\\to\\infty} \\frac{n}{3n+1} = \\frac{1}{3}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q168",
@@ -269,7 +286,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{4(n+1)}$",
     "correct_answer": "C",
     "explanation": "$\\frac{1}{4}\\sum_{k=1}^n \\frac{1}{k(k+1)} = \\frac{1}{4}\\frac{n}{n+1} = \\frac{n}{4(n+1)}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q169",
@@ -284,7 +302,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{8}$",
     "correct_answer": "A",
     "explanation": "$\\lim_{n\\to\\infty} \\frac{n}{4(n+1)} = \\frac{1}{4}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q170",
@@ -299,7 +318,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$2-\\frac{1}{2n+1}$",
     "correct_answer": "B",
     "explanation": "$4\\sum_{k=1}^n \\frac{1}{2}\\left(\\frac{1}{2k-1}-\\frac{1}{2k+1}\\right) = 2\\left(1-\\frac{1}{2n+1}\\right) = \\frac{4n}{2n+1}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q171",
@@ -314,7 +334,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{2}$",
     "correct_answer": "C",
     "explanation": "$\\lim_{n\\to\\infty} \\frac{4n}{2n+1} = 2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q172",
@@ -329,7 +350,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$f(1)$",
     "correct_answer": "D",
     "explanation": "Since $S_n = f(1)-f(n+1)$, adding $f(n+1)$ leaves $f(1)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q173",
@@ -344,7 +366,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$101$",
     "correct_answer": "A",
     "explanation": "$f(n+1)-f(1) = 99 \\implies f(n+1)-1 = 99 \\implies f(n+1) = 100$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q174",
@@ -359,7 +382,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{n}$",
     "correct_answer": "B",
     "explanation": "$1-f(n+1) = \\frac{n}{n+1} \\implies f(n+1) = 1 - \\frac{n}{n+1} = \\frac{1}{n+1}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q175",
@@ -374,7 +398,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$n$",
     "correct_answer": "C",
     "explanation": "$\\frac{n}{n+1} + \\frac{1}{n+1} = \\frac{n+1}{n+1} = 1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q176",
@@ -389,7 +414,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{(n+1)(n+2)}$",
     "correct_answer": "D",
     "explanation": "$\\frac{n+1}{n+2} - \\frac{n}{n+1} = \\frac{(n+1)^2-n(n+2)}{(n+1)(n+2)} = \\frac{1}{(n+1)(n+2)}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q177",
@@ -404,7 +430,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{(n+1)^2}$",
     "correct_answer": "C",
     "explanation": "$a_n = S_n - S_{n-1} = \\left(1-\\frac{1}{(n+1)^2}\\right) - \\left(1-\\frac{1}{n^2}\\right) = \\frac{1}{n^2} - \\frac{1}{(n+1)^2} = \\frac{2n+1}{n^2(n+1)^2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q178",
@@ -419,7 +446,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{n(n+1)}$",
     "correct_answer": "D",
     "explanation": "$a_n = S_n - S_{n-1} = \\frac{1}{n} - \\frac{1}{n+1} = \\frac{1}{n(n+1)}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q179",
@@ -434,7 +462,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{n+1}$",
     "correct_answer": "A",
     "explanation": "Since $\\frac{k}{(k+1)!} = \\frac{(k+1)-1}{(k+1)!} = \\frac{1}{k!} - \\frac{1}{(k+1)!}$, the sum telescopes to $1 - \\frac{1}{(n+1)!}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q180",
@@ -449,7 +478,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$e-1$",
     "correct_answer": "B",
     "explanation": "$\\lim_{n\\to\\infty} \\left(1 - \\frac{1}{(n+1)!}\\right) = 1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q181",
@@ -464,7 +494,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{k+1}{k!}$",
     "correct_answer": "C",
     "explanation": "$\\frac{1}{k!} - \\frac{1}{(k+1)!} = \\frac{k+1-1}{(k+1)!} = \\frac{k}{(k+1)!}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q182",
@@ -479,7 +510,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\displaystyle\\sum_{j=0}^{n-1}\\frac{1}{j!}$",
     "correct_answer": "D",
     "explanation": "$\\frac{k}{k!} = \\frac{1}{(k-1)!}$, so the sum is $\\sum_{k=1}^n \\frac{1}{(k-1)!} = \\sum_{j=0}^{n-1}\\frac{1}{j!}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q183",
@@ -494,7 +526,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$n-1$",
     "correct_answer": "A",
     "explanation": "$\\frac{k-1}{k!} = \\frac{k}{k!} - \\frac{1}{k!} = \\frac{1}{(k-1)!} - \\frac{1}{k!}$, which telescopes to $\\frac{1}{1!} - \\frac{1}{n!} = 1 - \\frac{1}{n!}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q184",
@@ -509,7 +542,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$e$",
     "correct_answer": "B",
     "explanation": "$\\lim_{n\\to\\infty} \\left(1 - \\frac{1}{n!}\\right) = 1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q185",
@@ -524,7 +558,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$24$",
     "correct_answer": "C",
     "explanation": "$\\frac{x}{1-1/2} = 2x = 12 \\implies x = 6$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q186",
@@ -539,7 +574,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$2$",
     "correct_answer": "C",
     "explanation": "$2\\sum_{k=1}^\\infty \\frac{k}{2^k} - \\sum_{k=1}^\\infty \\frac{1}{2^k} = 2(2) - 1 = 4 - 1 = 3$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q187",
@@ -554,7 +590,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$6$",
     "correct_answer": "A",
     "explanation": "$2\\sum_{k=1}^\\infty \\frac{k}{2^k} + \\sum_{k=1}^\\infty \\frac{1}{2^k} = 2(2) + 1 = 5$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q188",
@@ -569,7 +606,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{7}{2}$",
     "correct_answer": "A",
     "explanation": "$3\\sum_{k=1}^\\infty \\frac{k}{3^k} + 2\\sum_{k=1}^\\infty \\frac{1}{3^k} = 3\\left(\\frac{3}{4}\\right) + 2\\left(\\frac{1}{2}\\right) = \\frac{9}{4} + 1 = \\frac{13}{4}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q189",
@@ -584,7 +622,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$6r^2-12r+1=0$",
     "correct_answer": "A",
     "explanation": "$\\frac{r}{(1-r)^2} = 6 \\implies r = 6(1-2r+r^2) = 6 - 12r + 6r^2 \\implies 6r^2 - 13r + 6 = 0$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q190",
@@ -599,7 +638,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{2}$",
     "correct_answer": "B",
     "explanation": "$6r^2-13r+6 = (2r-3)(3r-2) = 0 \\implies r = \\frac{3}{2}$ or $r = \\frac{2}{3}$. Since $0<r<1$, $r = \\frac{2}{3}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q191",
@@ -614,7 +654,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{n}{n+3}$",
     "correct_answer": "A",
     "explanation": "Since $\\frac{1}{(k+1)(k+3)} = \\frac{1}{2}\\left(\\frac{1}{k+1}-\\frac{1}{k+3}\\right)$, the sum is $\\frac{1}{2}\\left(\\frac{1}{2}+\\frac{1}{3}-\\frac{1}{n+2}-\\frac{1}{n+3}\\right)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q192",
@@ -629,7 +670,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{7}{12}$",
     "correct_answer": "B",
     "explanation": "$\\frac{1}{2}\\left(\\frac{1}{2}+\\frac{1}{3}\\right) = \\frac{1}{2}\\left(\\frac{5}{6}\\right) = \\frac{5}{12}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q193",
@@ -644,7 +686,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{3}\\left(\\frac{1}{2}+\\frac{1}{3n+2}\\right)$",
     "correct_answer": "A",
     "explanation": "$\\frac{1}{(3k-1)(3k+2)} = \\frac{1}{3}\\left(\\frac{1}{3k-1}-\\frac{1}{3k+2}\\right)$, which telescopes to $\\frac{1}{3}\\left(\\frac{1}{2}-\\frac{1}{3n+2}\\right)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q194",
@@ -659,7 +702,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{9}$",
     "correct_answer": "C",
     "explanation": "$\\lim_{n\\to\\infty} \\frac{1}{3}\\left(\\frac{1}{2}-\\frac{1}{3n+2}\\right) = \\frac{1}{3}\\cdot\\frac{1}{2} = \\frac{1}{6}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q195",
@@ -674,7 +718,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{3}$",
     "correct_answer": "D",
     "explanation": "$\\frac{1}{k+1}-\\frac{1}{k+4} = \\frac{3}{(k+1)(k+4)}$, so $A = \\frac{1}{3}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q196",
@@ -689,7 +734,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{4}$",
     "correct_answer": "A",
     "explanation": "$\\frac{1}{3}\\left(\\frac{1}{2}+\\frac{1}{3}+\\frac{1}{4}\\right) = \\frac{1}{3}\\left(\\frac{6+4+3}{12}\\right) = \\frac{1}{3}\\left(\\frac{13}{12}\\right) = \\frac{13}{36}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q197",
@@ -704,7 +750,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{n+2}$",
     "correct_answer": "B",
     "explanation": "Telescopes to $\\frac{1}{1(2)} - \\frac{1}{(n+1)(n+2)} = \\frac{1}{2} - \\frac{1}{(n+1)(n+2)}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q198",
@@ -719,7 +766,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$0$",
     "correct_answer": "C",
     "explanation": "As $n\\to\\infty$, the sum is $\\frac{1}{2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q199",
@@ -734,7 +782,8 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{n+1}{n}$",
     "correct_answer": "D",
     "explanation": "$S_n = \\frac{n}{n+1}$, so $\\frac{1}{S_n} = \\frac{n+1}{n}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q200",
@@ -749,6 +798,7 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{1}{2}$",
     "correct_answer": "A",
     "explanation": "$\\sum_{k=1}^\\infty \\frac{1}{k(k+1)} + \\sum_{k=1}^\\infty \\frac{1}{(k+1)(k+2)} = 1 + \\frac{1}{2} = \\frac{3}{2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   }
 ];

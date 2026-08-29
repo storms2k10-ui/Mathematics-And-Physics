@@ -14,7 +14,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$3k+1$",
     "correct_answer": "C",
     "explanation": "$(k+1)^3 - k^3 = k^3+3k^2+3k+1 - k^3 = 3k^2+3k+1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q102",
@@ -29,7 +30,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$(n+1)^3-1$",
     "correct_answer": "D",
     "explanation": "Since $3k^2+3k+1 = (k+1)^3-k^3$, the sum telescopes to $(n+1)^3-1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q103",
@@ -44,7 +46,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$n(n-1)$",
     "correct_answer": "A",
     "explanation": "By telescoping, $n(n+1) - 0(1) = n(n+1)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q104",
@@ -59,7 +62,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$n(n-1)$",
     "correct_answer": "B",
     "explanation": "$\\sum_{k=1}^n 2k = n(n+1)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q105",
@@ -74,7 +78,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$2n$",
     "correct_answer": "C",
     "explanation": "Telescopes to $(n+1)(n+2) - 1(2) = (n+1)(n+2)-2 = n(n+3)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q106",
@@ -89,7 +94,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$n(n+3)$",
     "correct_answer": "D",
     "explanation": "$2\\frac{n(n+1)}{2} + 2n = n(n+1)+2n = n(n+3)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q107",
@@ -104,7 +110,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$1$",
     "correct_answer": "A",
     "explanation": "$\\frac{1}{k(k+1)} = \\frac{1}{k} - \\frac{1}{k+1}$, which telescopes to $1 - \\frac{1}{n+1} = \\frac{n}{n+1}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q108",
@@ -119,7 +126,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{6}$",
     "correct_answer": "B",
     "explanation": "$\\frac{n}{n+1} = \\frac{5}{6}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q109",
@@ -134,7 +142,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{11}{10}$",
     "correct_answer": "C",
     "explanation": "$\\frac{10}{10+1} = \\frac{10}{11}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q110",
@@ -149,7 +158,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$1$",
     "correct_answer": "D",
     "explanation": "$\\lim_{n\\to\\infty} \\frac{n}{n+1} = 1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q111",
@@ -164,7 +174,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{2}{k}-\\frac{1}{k+1}$",
     "correct_answer": "A",
     "explanation": "$\\frac{1}{k} - \\frac{1}{k+1} = \\frac{k+1-k}{k(k+1)} = \\frac{1}{k(k+1)}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q112",
@@ -179,7 +190,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{n+2}$",
     "correct_answer": "B",
     "explanation": "$\\sum_{k=1}^n \\left(\\frac{1}{k+1}-\\frac{1}{k+2}\\right) = \\frac{1}{2} - \\frac{1}{n+2} = \\frac{n}{2(n+2)}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q113",
@@ -194,7 +206,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{2}{5}$",
     "correct_answer": "C",
     "explanation": "$\\frac{1}{2} - \\frac{1}{6} = \\frac{2}{6} = \\frac{1}{3}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q114",
@@ -209,7 +222,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{2}$",
     "correct_answer": "D",
     "explanation": "$\\lim_{n\\to\\infty} \\left(\\frac{1}{2} - \\frac{1}{n+2}\\right) = \\frac{1}{2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q115",
@@ -224,7 +238,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{k+1}-\\frac{1}{k+2}$",
     "correct_answer": "A",
     "explanation": "$\\frac{1}{k}-\\frac{1}{k+2} = \\frac{2}{k(k+2)}$, so multiplying by $\\frac{1}{2}$ gives $\\frac{1}{k(k+2)}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q116",
@@ -239,7 +254,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{n}{n+2}$",
     "correct_answer": "B",
     "explanation": "Telescoping $\\frac{1}{2}\\sum_{k=1}^n \\left(\\frac{1}{k}-\\frac{1}{k+2}\\right) = \\frac{1}{2}\\left(1+\\frac{1}{2}-\\frac{1}{n+1}-\\frac{1}{n+2}\\right) = \\frac{3}{4} - \\frac{1}{2(n+1)} - \\frac{1}{2(n+2)}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q117",
@@ -254,7 +270,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{4}$",
     "correct_answer": "C",
     "explanation": "As $n\\to\\infty$, the sum converges to $\\frac{3}{4}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q118",
@@ -269,7 +286,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{2}\\left(\\frac{1}{2k-1}-\\frac{1}{2k+1}\\right)$",
     "correct_answer": "D",
     "explanation": "$\\frac{1}{2k-1}-\\frac{1}{2k+1} = \\frac{2}{(2k-1)(2k+1)}$, so multiplying by $\\frac{1}{2}$ gives the expression.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q119",
@@ -284,7 +302,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{2n+1}$",
     "correct_answer": "A",
     "explanation": "$\\frac{1}{2}\\sum_{k=1}^n \\left(\\frac{1}{2k-1}-\\frac{1}{2k+1}\\right) = \\frac{1}{2}\\left(1-\\frac{1}{2n+1}\\right) = \\frac{n}{2n+1}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q120",
@@ -299,7 +318,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$2$",
     "correct_answer": "B",
     "explanation": "$\\lim_{n\\to\\infty} \\frac{n}{2n+1} = \\frac{1}{2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q121",
@@ -314,7 +334,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$1+\\frac{1}{n+1}$",
     "correct_answer": "C",
     "explanation": "The series telescopes directly to $1 - \\frac{1}{n+1}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q122",
@@ -329,7 +350,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{20}{21}$",
     "correct_answer": "D",
     "explanation": "$1 - \\frac{1}{21} = \\frac{20}{21}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q123",
@@ -344,7 +366,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{n}{n+1}$",
     "correct_answer": "A",
     "explanation": "Telescopes to $\\frac{1}{2} - \\frac{1}{n+2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q124",
@@ -359,7 +382,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{12}$",
     "correct_answer": "B",
     "explanation": "$\\frac{1}{2} - \\frac{1}{12} = \\frac{5}{12}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q125",
@@ -374,7 +398,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{2n+1}$",
     "correct_answer": "C",
     "explanation": "Telescopes to $1 - \\frac{1}{2n+1} = \\frac{2n}{2n+1}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q126",
@@ -389,7 +414,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$1$",
     "correct_answer": "D",
     "explanation": "$\\lim_{n\\to\\infty} \\left(1 - \\frac{1}{2n+1}\\right) = 1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q127",
@@ -404,7 +430,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{2}\\left(\\frac{1}{k}-\\frac{1}{k+1}\\right)$",
     "correct_answer": "A",
     "explanation": "$\\frac{1}{k(k+1)} - \\frac{1}{(k+1)(k+2)} = \\frac{2}{k(k+1)(k+2)}$, so multiply by $\\frac{1}{2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q128",
@@ -419,7 +446,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{2n}$",
     "correct_answer": "B",
     "explanation": "$\\frac{1}{2}\\left[\\frac{1}{1(2)} - \\frac{1}{(n+1)(n+2)}\\right] = \\frac{1}{4} - \\frac{1}{2(n+1)(n+2)}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q129",
@@ -434,7 +462,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{8}$",
     "correct_answer": "C",
     "explanation": "As $n\\to\\infty$, the sum is $\\frac{1}{4}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q130",
@@ -449,7 +478,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{9}{40}$",
     "correct_answer": "D",
     "explanation": "$\\frac{1}{4} - \\frac{1}{2(4)(5)} = \\frac{1}{4} - \\frac{1}{40} = \\frac{9}{40}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q131",
@@ -464,7 +494,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{k+1}-\\frac{1}{k+3}$",
     "correct_answer": "A",
     "explanation": "$\\frac{1}{k}-\\frac{1}{k+3} = \\frac{3}{k(k+3)}$, so multiply by $\\frac{1}{3}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q132",
@@ -479,7 +510,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{2}{3}$",
     "correct_answer": "B",
     "explanation": "$\\frac{1}{3}\\left(1+\\frac{1}{2}+\\frac{1}{3}\\right) = \\frac{1}{3}\\left(\\frac{11}{6}\\right) = \\frac{11}{18}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q133",
@@ -494,7 +526,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{k+3}-\\frac{1}{k+5}$",
     "correct_answer": "C",
     "explanation": "The difference between factors is $3$, so $\\frac{1}{3}\\left(\\frac{1}{k+2}-\\frac{1}{k+5}\\right)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q134",
@@ -509,7 +542,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{47}{180}$",
     "correct_answer": "D",
     "explanation": "$\\frac{1}{3}\\left(\\frac{1}{3}+\\frac{1}{4}+\\frac{1}{5}\\right) = \\frac{1}{3}\\left(\\frac{20+15+12}{60}\\right) = \\frac{1}{3}\\left(\\frac{47}{60}\\right) = \\frac{47}{180}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q135",
@@ -524,7 +558,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{n+a+1}$",
     "correct_answer": "A",
     "explanation": "$\\frac{1}{k+a}-\\frac{1}{k+a+1}$ telescopes to $\\frac{1}{a+1} - \\frac{1}{n+a+1}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q136",
@@ -539,7 +574,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$1$",
     "correct_answer": "B",
     "explanation": "$\\sum_{k=1}^\\infty \\left(\\frac{1}{k+4}-\\frac{1}{k+5}\\right) = \\frac{1}{5}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q137",
@@ -554,7 +590,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$0$",
     "correct_answer": "C",
     "explanation": "Since $S_n = 1 - \\frac{1}{n+1}$, we have $1 - S_n = \\frac{1}{n+1}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q138",
@@ -569,7 +606,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$9$",
     "correct_answer": "D",
     "explanation": "$\\frac{n}{n+1} = \\frac{9}{10} \\implies 10n = 9n+9 \\implies n = 9$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q139",
@@ -584,7 +622,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$10$",
     "correct_answer": "A",
     "explanation": "$\\frac{n}{n+1} = \\frac{20}{21} \\implies n = 20$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q140",
@@ -599,7 +638,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$10$",
     "correct_answer": "B",
     "explanation": "The sum is $\\frac{n}{2n+1}$. Setting $\\frac{n}{2n+1} = \\frac{5}{11} \\implies 11n = 10n+5 \\implies n = 5$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q141",
@@ -614,7 +654,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{2}{n+1}$",
     "correct_answer": "C",
     "explanation": "$2\\sum_{k=1}^n \\frac{1}{k(k+1)} = \\frac{2n}{n+1}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q142",
@@ -629,7 +670,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$2$",
     "correct_answer": "D",
     "explanation": "$2(1) = 2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q143",
@@ -644,7 +686,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{n}$",
     "correct_answer": "A",
     "explanation": "The numerator simplifies to $1$, so $\\sum_{k=1}^n \\frac{1}{k(k+1)} = \\frac{n}{n+1}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q144",
@@ -659,7 +702,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$1-\\frac{1}{n+1}$",
     "correct_answer": "B",
     "explanation": "$\\frac{2k+1}{k^2(k+1)^2} = \\frac{(k+1)^2-k^2}{k^2(k+1)^2} = \\frac{1}{k^2} - \\frac{1}{(k+1)^2}$, which telescopes to $1 - \\frac{1}{(n+1)^2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q145",
@@ -674,7 +718,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$2$",
     "correct_answer": "C",
     "explanation": "$\\lim_{n\\to\\infty} \\left(1 - \\frac{1}{(n+1)^2}\\right) = 1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q146",
@@ -689,7 +734,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$1-\\frac{1}{(n+1)^3}$",
     "correct_answer": "D",
     "explanation": "$\\frac{3k^2+3k+1}{k^3(k+1)^3} = \\frac{(k+1)^3-k^3}{k^3(k+1)^3} = \\frac{1}{k^3} - \\frac{1}{(k+1)^3}$, which telescopes to $1 - \\frac{1}{(n+1)^3}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q147",
@@ -704,7 +750,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$0$",
     "correct_answer": "A",
     "explanation": "$\\lim_{n\\to\\infty} \\left(1 - \\frac{1}{(n+1)^3}\\right) = 1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q148",
@@ -719,7 +766,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{1}{n+1}$",
     "correct_answer": "B",
     "explanation": "Telescopes to $\\frac{2}{1} - \\frac{n+2}{n+1} = 2 - \\frac{n+2}{n+1}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q149",
@@ -734,7 +782,8 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{n+2}{n+1}$",
     "correct_answer": "C",
     "explanation": "$\\frac{2(n+1)-(n+2)}{n+1} = \\frac{2n+2-n-2}{n+1} = \\frac{n}{n+1}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q150",
@@ -749,6 +798,7 @@ export const C11_CH5_ADVANCED_PART3: Question[] = [
     "option_d": "$1$",
     "correct_answer": "D",
     "explanation": "$\\lim_{n\\to\\infty} \\frac{n}{n+1} = 1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   }
 ];

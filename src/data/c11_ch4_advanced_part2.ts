@@ -14,7 +14,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$10$",
     "correct_answer": "C",
     "explanation": "The arithmetic mean is $(8+20)/2=14$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q52",
@@ -29,7 +30,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$5,8$",
     "correct_answer": "D",
     "explanation": "The AP $2,5,8,11$ has common difference $3$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q53",
@@ -44,7 +46,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$5,10,15$",
     "correct_answer": "A",
     "explanation": "Five terms from $4$ to $20$ give $d=(20-4)/4=4$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q54",
@@ -59,7 +62,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{2ab}{a+b}$",
     "correct_answer": "B",
     "explanation": "The arithmetic mean is their sum divided by the number of values.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q55",
@@ -74,7 +78,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$10$",
     "correct_answer": "C",
     "explanation": "$(x+14)/2=10$ gives $x=6$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q56",
@@ -89,7 +94,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$2b=a+c$",
     "correct_answer": "D",
     "explanation": "The middle term of an AP is the arithmetic mean of its neighbours.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q57",
@@ -104,7 +110,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$x=5$",
     "correct_answer": "D",
     "explanation": "$2(x+1)=(x-2)+(2x-1)$ gives $2x+2=3x-3$, so $x=5$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q58",
@@ -119,7 +126,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$3$",
     "correct_answer": "B",
     "explanation": "$2(3x+1)=2x+(5x-2)$ gives $6x+2=7x-2$, hence $x=4$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q59",
@@ -134,7 +142,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{a(1-r^n)}{1-r}$",
     "correct_answer": "A",
     "explanation": "This formula results by adding the series forward and backward.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q60",
@@ -149,7 +158,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$S_n=\\frac{a+l}{n}$",
     "correct_answer": "B",
     "explanation": "Here $a$ and $l$ are the first and last terms.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q61",
@@ -164,7 +174,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$190$",
     "correct_answer": "C",
     "explanation": "$\\frac{20(21)}2=210$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q62",
@@ -179,7 +190,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$5050$",
     "correct_answer": "D",
     "explanation": "$\\frac{100(101)}2=5050$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q63",
@@ -194,7 +206,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$380$",
     "correct_answer": "A",
     "explanation": "The sum of the first $n$ odd numbers is $n^2$, so $20^2=400$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q64",
@@ -209,7 +222,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$120$",
     "correct_answer": "B",
     "explanation": "$2+4+\\cdots+30=2(1+2+\\cdots+15)=15(16)=240$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q65",
@@ -224,7 +238,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$180$",
     "correct_answer": "C",
     "explanation": "$S_{10}=\\frac{10}{2}[2(3)+9(4)]=5(42)=210$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q66",
@@ -239,7 +254,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$258$",
     "correct_answer": "D",
     "explanation": "$S_{12}=6[10+33]=6(43)=258$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q67",
@@ -254,7 +270,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$-80$",
     "correct_answer": "A",
     "explanation": "There are $16$ terms, so $S=\\frac{16}{2}(20-25)=8(-5)=-40$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q68",
@@ -269,7 +286,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$1100$",
     "correct_answer": "B",
     "explanation": "There are $20$ terms, so $S=\\frac{20}{2}(5+100)=1050$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q69",
@@ -284,7 +302,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$435$",
     "correct_answer": "C",
     "explanation": "$49=7+14(3)$, so there are $15$ terms and $S=\\frac{15}{2}(56)=420$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q70",
@@ -299,7 +318,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$n(n+1)$",
     "correct_answer": "D",
     "explanation": "$2(1+2+\\cdots+n)=2\\cdot\\frac{n(n+1)}2=n(n+1)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q71",
@@ -314,7 +334,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$n^2+n$",
     "correct_answer": "A",
     "explanation": "$1+3+\\cdots+(2n-1)=n^2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q72",
@@ -329,7 +350,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$6n+2$",
     "correct_answer": "B",
     "explanation": "$a_n=S_n-S_{n-1}=3n^2+2n-[3(n-1)^2+2(n-1)]=6n-1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q73",
@@ -344,7 +366,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$n+1$",
     "correct_answer": "C",
     "explanation": "$a_n=n^2-(n-1)^2=2n-1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q74",
@@ -359,7 +382,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$2n$",
     "correct_answer": "D",
     "explanation": "$a_n=S_n-S_{n-1}=n(n+1)-(n-1)n=2n$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q75",
@@ -374,7 +398,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$7$",
     "correct_answer": "A",
     "explanation": "$a_1=S_1=2(1)^2+3(1)=5$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q76",
@@ -389,7 +414,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$14$",
     "correct_answer": "B",
     "explanation": "$\\frac{n(n+1)}2=78$ gives $n(n+1)=156=12(13)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q77",
@@ -404,7 +430,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$25$",
     "correct_answer": "C",
     "explanation": "The sum is $n^2$, so $n=\\sqrt{225}=15$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q78",
@@ -419,7 +446,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$20$",
     "correct_answer": "D",
     "explanation": "$n(n+1)=420=20(21)$, so $n=20$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q79",
@@ -434,7 +462,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$4$",
     "correct_answer": "A",
     "explanation": "$100=5[2+9d]$ gives $20=2+9d$, hence $d=2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q80",
@@ -449,7 +478,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$5$",
     "correct_answer": "B",
     "explanation": "$120=4[2+7d]$, so $30=2+7d$ and $d=4$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q81",
@@ -464,7 +494,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$4,15,26,\\ldots$",
     "correct_answer": "C",
     "explanation": "$a_n=S_n-S_{n-1}=8n-5$, giving $3,11,19,\\ldots$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q82",
@@ -479,7 +510,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$n(7-2n)$",
     "correct_answer": "C",
     "explanation": "The first term is $5$, $d=-2$, so $S_n=\\frac n2[10-2(n-1)]=n(6-n)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q83",
@@ -494,7 +526,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$1050$",
     "correct_answer": "A",
     "explanation": "There are $30$ terms, so the sum is $\\frac{30}{2}(21+50)=1065$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q84",
@@ -509,7 +542,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$1632$",
     "correct_answer": "A",
     "explanation": "There are $33$ terms, so $S=\\frac{33}{2}(3+99)=1683$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q85",
@@ -524,7 +558,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$1050$",
     "correct_answer": "C",
     "explanation": "The terms are $5$ to $95$, with $19$ terms; $S=\\frac{19}{2}(100)=950$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q86",
@@ -539,7 +574,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$1350$",
     "correct_answer": "B",
     "explanation": "The terms are $4,8,\\ldots,100$; their sum is $4(1+\\cdots+25)=4(325)=1300$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q87",
@@ -554,7 +590,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "Rs $750$",
     "correct_answer": "A",
     "explanation": "$a_{12}=100+11(50)=650$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q88",
@@ -569,7 +606,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "Rs $4,800$",
     "correct_answer": "B",
     "explanation": "$S_{12}=6[200+550]=6(750)=4500$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q89",
@@ -584,7 +622,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$52$",
     "correct_answer": "C",
     "explanation": "$a_{15}=20+14(2)=48$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q90",
@@ -599,7 +638,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$510$",
     "correct_answer": "D",
     "explanation": "$S_{15}=\\frac{15}{2}(20+48)=510$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q91",
@@ -614,7 +654,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$35$ m",
     "correct_answer": "A",
     "explanation": "$a_6=50+5(-5)=25$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q92",
@@ -629,7 +670,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$1250$",
     "correct_answer": "B",
     "explanation": "There are $25$ terms, so $S=\\frac{25}{2}(98)=1225$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q93",
@@ -644,7 +686,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$1$",
     "correct_answer": "C",
     "explanation": "Solving the term equations gives $d=-1$ and $a=p+q-1$, so $a_{p+q}=0$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q94",
@@ -659,7 +702,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$0$",
     "correct_answer": "D",
     "explanation": "The same subtraction method gives $d=-1$, producing zero at position $m+n$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q95",
@@ -674,7 +718,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$p+q$",
     "correct_answer": "A",
     "explanation": "Since $a_{p+q}=0$ and $d=-1$, the following term is $-1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q96",
@@ -689,7 +734,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$2a$",
     "correct_answer": "B",
     "explanation": "Equal differences give $b-a=c-b$, so $a+c=2b$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q97",
@@ -704,7 +750,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$a+c=b+d$",
     "correct_answer": "A",
     "explanation": "Writing the terms as $a,a+r,a+2r,a+3r$ makes both sums $2a+3r$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q98",
@@ -719,7 +766,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$4,10,16$",
     "correct_answer": "C",
     "explanation": "Write them as $10-d,10,10+d$; the product equation gives $d=2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q99",
@@ -734,7 +782,8 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$5,7,9$",
     "correct_answer": "D",
     "explanation": "The middle term is $7$, and $(7-d)(7+d)=45$ gives $d=2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q100",
@@ -749,6 +798,7 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_d": "$1$",
     "correct_answer": "A",
     "explanation": "$a_n=S_n-S_{n-1}=4n-1$, whose consecutive difference is $4$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   }
 ];

@@ -14,7 +14,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$1+5$",
     "correct_answer": "A",
     "explanation": "Sigma notation instructs us to substitute $k=1,2,3,4,5$ and add the resulting terms: $\\sum_{k=1}^5 k = 1+2+3+4+5$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q2",
@@ -29,7 +30,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$16$",
     "correct_answer": "B",
     "explanation": "$\\sum_{k=1}^4 k = 1+2+3+4 = 10$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q3",
@@ -44,7 +46,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$25$",
     "correct_answer": "C",
     "explanation": "$\\sum_{k=1}^5 2k = 2(1+2+3+4+5) = 2(15) = 30$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q4",
@@ -59,7 +62,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$3+5+7+9$",
     "correct_answer": "D",
     "explanation": "Substituting $k=1,2,3,4$ gives $2(1)+1=3$, $2(2)+1=5$, $2(3)+1=7$, $2(4)+1=9$, so $3+5+7+9$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q5",
@@ -74,7 +78,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$6$",
     "correct_answer": "A",
     "explanation": "The terms are $3, 4, 5$, whose sum is $3+4+5=12$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q6",
@@ -89,7 +94,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$0$",
     "correct_answer": "B",
     "explanation": "The index takes five values: $k = 0, 1, 2, 3, 4$, so the sum is $1+1+1+1+1=5$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q7",
@@ -104,7 +110,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$16$",
     "correct_answer": "C",
     "explanation": "A constant $3$ is added four times, giving $4 \\times 3 = 12$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q8",
@@ -119,7 +126,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$\\sum c a_k = c \\sum a_k$",
     "correct_answer": "D",
     "explanation": "A constant factor can be factored out of a summation: $\\sum c a_k = c \\sum a_k$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q9",
@@ -134,7 +142,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$\\sum (a_k+b_k) = 0$",
     "correct_answer": "A",
     "explanation": "The summation operator is linear and distributes over addition: $\\sum (a_k+b_k) = \\sum a_k + \\sum b_k$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q10",
@@ -149,7 +158,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$3$",
     "correct_answer": "B",
     "explanation": "The terms are $1, 3, 5$, whose sum is $1+3+5=9=3^2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q11",
@@ -164,7 +174,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$\\sum_{k=0}^n 2k$",
     "correct_answer": "C",
     "explanation": "Substituting $k=1,2,\\ldots,n$ in $2k$ produces the first $n$ positive even integers.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q12",
@@ -179,7 +190,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$\\sum_{k=1}^n (2k-1)$",
     "correct_answer": "D",
     "explanation": "The expression $2k-1$ for $k=1,2,\\ldots,n$ generates the first $n$ positive odd integers.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q13",
@@ -194,7 +206,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$25$",
     "correct_answer": "A",
     "explanation": "$1^2+2^2+3^2+4^2 = 1+4+9+16 = 30$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q14",
@@ -209,7 +222,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$9$",
     "correct_answer": "B",
     "explanation": "$1^3+2^3+3^3 = 1+8+27 = 36 = 6^2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q15",
@@ -224,7 +238,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$15$",
     "correct_answer": "C",
     "explanation": "$2+3+4+5 = 14$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q16",
@@ -239,7 +254,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$15$",
     "correct_answer": "D",
     "explanation": "$2^0+2^1+2^2+2^3 = 1+2+4+8 = 15$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q17",
@@ -254,7 +270,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$4$",
     "correct_answer": "A",
     "explanation": "The terms are $-1, 1, -1, 1$, which sum to $0$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q18",
@@ -269,7 +286,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$5$",
     "correct_answer": "B",
     "explanation": "The terms are $1, -1, 1, -1, 1$, which sum to $1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q19",
@@ -284,7 +302,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$21$",
     "correct_answer": "C",
     "explanation": "Adding $1$ exactly $n$ times gives $n = 20$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q20",
@@ -299,7 +318,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$10$",
     "correct_answer": "D",
     "explanation": "Since $k-k+2 = 2$, we have $\\sum_{k=1}^5 2 = 5 \\times 2 = 10$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q21",
@@ -314,7 +334,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$n(n+1)$",
     "correct_answer": "A",
     "explanation": "$\\sum_{k=1}^n k = 1+2+\\cdots+n = \\frac{n(n+1)}{2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q22",
@@ -329,7 +350,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$190$",
     "correct_answer": "B",
     "explanation": "$\\frac{20(21)}{2} = 10 \\times 21 = 210$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q23",
@@ -344,7 +366,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$2550$",
     "correct_answer": "C",
     "explanation": "$\\frac{50(51)}{2} = 25 \\times 51 = 1275$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q24",
@@ -359,7 +382,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$5050$",
     "correct_answer": "D",
     "explanation": "$\\frac{100(101)}{2} = 50 \\times 101 = 5050$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q25",
@@ -374,7 +398,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$n^2(n+1)$",
     "correct_answer": "A",
     "explanation": "$\\sum_{k=1}^n k^2 = 1^2+2^2+\\cdots+n^2 = \\frac{n(n+1)(2n+1)}{6}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q26",
@@ -389,7 +414,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$55$",
     "correct_answer": "B",
     "explanation": "$\\frac{10(11)(21)}{6} = \\frac{2310}{6} = 385$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q27",
@@ -404,7 +430,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$15$",
     "correct_answer": "C",
     "explanation": "$\\frac{5(6)(11)}{6} = 55$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q28",
@@ -419,7 +446,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$\\left[\\frac{n(n+1)}{2}\\right]^2$",
     "correct_answer": "D",
     "explanation": "$\\sum_{k=1}^n k^3 = \\left[\\frac{n(n+1)}{2}\\right]^2 = \\left(\\sum_{k=1}^n k\\right)^2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q29",
@@ -434,7 +462,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$625$",
     "correct_answer": "A",
     "explanation": "$\\left[\\frac{5(6)}{2}\\right]^2 = 15^2 = 225$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q30",
@@ -449,7 +478,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$5050$",
     "correct_answer": "B",
     "explanation": "$\\left[\\frac{10(11)}{2}\\right]^2 = 55^2 = 3025$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q31",
@@ -464,7 +494,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$2n+1$",
     "correct_answer": "C",
     "explanation": "$2\\sum_{k=1}^n k = 2\\cdot\\frac{n(n+1)}{2} = n(n+1)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q32",
@@ -479,7 +510,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$n^2$",
     "correct_answer": "D",
     "explanation": "The sum of the first $n$ positive odd integers is $n^2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q33",
@@ -494,7 +526,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$210$",
     "correct_answer": "A",
     "explanation": "$\\sum_{k=1}^{20} 2k = 20(21) = 420$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q34",
@@ -509,7 +542,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$361$",
     "correct_answer": "B",
     "explanation": "There are $20$ terms, so the sum is $20^2 = 400$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q35",
@@ -524,7 +558,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$\\frac{n(n+1)}{2}+2$",
     "correct_answer": "C",
     "explanation": "$3\\sum_{k=1}^n k + 2\\sum_{k=1}^n 1 = \\frac{3n(n+1)}{2} + 2n$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q36",
@@ -539,7 +574,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$2n^2+2n$",
     "correct_answer": "A",
     "explanation": "$4\\frac{n(n+1)}{2} - n = 2n(n+1) - n = 2n^2 + 2n - n = 2n^2+n$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q37",
@@ -554,7 +590,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$90$",
     "correct_answer": "B",
     "explanation": "Sum of first 10 odd numbers is $10^2 = 100$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q38",
@@ -569,7 +606,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$121$",
     "correct_answer": "C",
     "explanation": "$2\\sum_{k=1}^{10} k + \\sum_{k=1}^{10} 1 = 2(55) + 10 = 110 + 10 = 120$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q39",
@@ -584,7 +622,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$\\frac{n(n+3)}{2}$",
     "correct_answer": "D",
     "explanation": "$\\sum_{k=1}^n k + \\sum_{k=1}^n 1 = \\frac{n(n+1)}{2} + n = \\frac{n(n+3)}{2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q40",
@@ -599,7 +638,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$\\frac{(n-1)(n-2)}{2}$",
     "correct_answer": "A",
     "explanation": "$\\sum_{k=1}^n k - \\sum_{k=1}^n 1 = \\frac{n(n+1)}{2} - n = \\frac{n(n-1)}{2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q41",
@@ -614,7 +654,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$n^2(n+1)$",
     "correct_answer": "A",
     "explanation": "$\\sum k^2 + \\sum k = \\frac{n(n+1)(2n+1)}{6} + \\frac{n(n+1)}{2} = \\frac{n(n+1)(2n+4)}{6} = \\frac{n(n+1)(n+2)}{3}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q42",
@@ -629,7 +670,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$n(n+1)$",
     "correct_answer": "B",
     "explanation": "$\\frac{n(n+1)(2n+1)}{6} - \\frac{n(n+1)}{2} = \\frac{n(n+1)(2n-2)}{6} = \\frac{n(n+1)(n-1)}{3}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q43",
@@ -644,7 +686,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$n(n+1)(n+2)$",
     "correct_answer": "C",
     "explanation": "$2\\frac{n(n+1)(2n+1)}{6} + 3\\frac{n(n+1)}{2} = \\frac{n(n+1)}{6}[2(2n+1)+9] = \\frac{n(n+1)(4n+11)}{6}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q44",
@@ -659,7 +702,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$220$",
     "correct_answer": "B",
     "explanation": "$\\sum_{k=1}^{10} k^2 - \\sum_{k=1}^{10} k = 385 - 55 = 330$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q45",
@@ -674,7 +718,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$450$",
     "correct_answer": "B",
     "explanation": "$385 + 55 = 440$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q46",
@@ -689,7 +734,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$130$",
     "correct_answer": "C",
     "explanation": "$3\\sum_{k=1}^5 k^2 - 2\\sum_{k=1}^5 k + \\sum_{k=1}^5 1 = 3(55) - 2(15) + 5 = 165 - 30 + 5 = 140$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q47",
@@ -704,7 +750,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$11$",
     "correct_answer": "A",
     "explanation": "$\\frac{n(n+1)}{2} = 45 \\implies n(n+1) = 90 = 9(10) \\implies n = 9$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q48",
@@ -719,7 +766,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$7$",
     "correct_answer": "B",
     "explanation": "$\\left[\\frac{n(n+1)}{2}\\right]^2 = 1296 \\implies \\frac{n(n+1)}{2} = 36 \\implies n(n+1) = 72 \\implies n = 8$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q49",
@@ -734,7 +782,8 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$15$",
     "correct_answer": "C",
     "explanation": "The sum equals $n^2 = 625 \\implies n = 25$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q50",
@@ -749,6 +798,7 @@ export const C11_CH5_ADVANCED_PART1: Question[] = [
     "option_d": "$12$",
     "correct_answer": "D",
     "explanation": "$n(n+1) = 156 = 12(13) \\implies n = 12$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   }
 ];

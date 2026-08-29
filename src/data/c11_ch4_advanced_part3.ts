@@ -14,7 +14,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "Mean",
     "correct_answer": "B",
     "explanation": "Dividing any nonzero term by its preceding term gives the common ratio.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q102",
@@ -29,7 +30,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$9$",
     "correct_answer": "C",
     "explanation": "$6/2=18/6=3$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q103",
@@ -44,7 +46,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac13$",
     "correct_answer": "D",
     "explanation": "Each term is one-third of the preceding term.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q104",
@@ -59,7 +62,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$4$",
     "correct_answer": "A",
     "explanation": "Each term is obtained by multiplying the preceding term by $-2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q105",
@@ -74,7 +78,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$a+(n-1)r$",
     "correct_answer": "B",
     "explanation": "Starting from $a$, the common ratio is applied $n-1$ times.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q106",
@@ -89,7 +94,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$324$",
     "correct_answer": "C",
     "explanation": "$a_6=2(3^5)=2(243)=486$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q107",
@@ -104,7 +110,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$128$",
     "correct_answer": "D",
     "explanation": "$a_8=1(2^7)=128$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q108",
@@ -119,7 +126,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$9$",
     "correct_answer": "A",
     "explanation": "The terms are $81,27,9,3,1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q109",
@@ -134,7 +142,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$6n$",
     "correct_answer": "B",
     "explanation": "The first term is $3$ and the common ratio is $2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q110",
@@ -149,7 +158,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$5(-2)^n$",
     "correct_answer": "C",
     "explanation": "The first term is $5$ and the common ratio is $-2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q111",
@@ -164,7 +174,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$192$",
     "correct_answer": "D",
     "explanation": "$a_7=3(2^6)=192$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q112",
@@ -179,7 +190,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$8$",
     "correct_answer": "A",
     "explanation": "$a_6=64(1/2)^5=64/32=2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q113",
@@ -194,7 +206,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "8th",
     "correct_answer": "B",
     "explanation": "$2(3^{n-1})=486$ gives $3^{n-1}=243=3^5$, so $n=6$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q114",
@@ -209,7 +222,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "10th",
     "correct_answer": "C",
     "explanation": "$256=2^8$, and the $n$th term is $2^{n-1}$, so $n=9$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q115",
@@ -224,7 +238,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "Yes, the 5th",
     "correct_answer": "D",
     "explanation": "$162=2(81)=2(3^4)$, so it is the fifth term.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q116",
@@ -239,7 +254,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$18$",
     "correct_answer": "A",
     "explanation": "$a(3^3)=54$, so $27a=54$ and $a=2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q117",
@@ -254,7 +270,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$5$",
     "correct_answer": "B",
     "explanation": "$5r^3=135$ gives $r^3=27$, so $r=3$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q118",
@@ -269,7 +286,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$16$",
     "correct_answer": "C",
     "explanation": "$a_5/a_3=r^2=48/12=4$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q119",
@@ -284,7 +302,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$2$",
     "correct_answer": "D",
     "explanation": "From $r^2=4$, positivity of the GP selects $r=2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q120",
@@ -299,7 +318,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$4$",
     "correct_answer": "A",
     "explanation": "$ar^2=12$, so $4a=12$ and $a=3$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q121",
@@ -314,7 +334,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$a,ar,ar^3$",
     "correct_answer": "B",
     "explanation": "Each term is obtained from the preceding term by multiplying by $r$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q122",
@@ -329,7 +350,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$9$",
     "correct_answer": "C",
     "explanation": "The middle term satisfies $x^2=2(18)=36$, and positivity gives $x=6$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q123",
@@ -344,7 +366,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$9$",
     "correct_answer": "D",
     "explanation": "$x^2=3(27)=81$, so $x=9$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q124",
@@ -359,7 +382,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$ab$",
     "correct_answer": "A",
     "explanation": "If $a,G,b$ are in GP, then $G^2=ab$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q125",
@@ -374,7 +398,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$5$",
     "correct_answer": "B",
     "explanation": "$\\sqrt{4(25)}=\\sqrt{100}=10$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q126",
@@ -389,7 +414,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$36$",
     "correct_answer": "C",
     "explanation": "$\\sqrt{3(12)}=\\sqrt{36}=6$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q127",
@@ -404,7 +430,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$4$",
     "correct_answer": "D",
     "explanation": "$\\sqrt{16x}=8$ gives $16x=64$, so $x=4$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q128",
@@ -419,7 +446,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$3,9$",
     "correct_answer": "A",
     "explanation": "$2,6,18,54$ is a GP with common ratio $3$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q129",
@@ -434,7 +462,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$1,4,8$",
     "correct_answer": "B",
     "explanation": "$1,2,4,8,16$ has common ratio $2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q130",
@@ -449,7 +478,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$a^2=bc$",
     "correct_answer": "C",
     "explanation": "Equal ratios give $b/a=c/b$, hence $b^2=ac$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q131",
@@ -464,7 +494,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{a(1-r^n)}{1-r}$",
     "correct_answer": "D",
     "explanation": "This is obtained by subtracting the original series from its multiple by $r$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q132",
@@ -479,7 +510,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$n(a+r)$",
     "correct_answer": "A",
     "explanation": "Multiplying numerator and denominator of the standard formula by $-1$ gives this form.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q133",
@@ -494,7 +526,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$254$",
     "correct_answer": "B",
     "explanation": "There are eight terms, so $S_8=(2^8-1)/(2-1)=255$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q134",
@@ -509,7 +542,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$195$",
     "correct_answer": "C",
     "explanation": "There are six terms, so $S_6=3(2^6-1)=189$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q135",
@@ -524,7 +558,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$728$",
     "correct_answer": "D",
     "explanation": "There are six terms and $S_6=2(3^6-1)/(3-1)=728$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q136",
@@ -539,7 +574,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$\\frac{31}{16}$",
     "correct_answer": "A",
     "explanation": "$S_4=\\frac{1-(1/2)^4}{1-1/2}=\\frac{15}{8}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q137",
@@ -554,7 +590,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$123$",
     "correct_answer": "B",
     "explanation": "Direct addition gives $81+27+9+3+1=121$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q138",
@@ -569,7 +606,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$512$",
     "correct_answer": "C",
     "explanation": "$S_8=2(2^8-1)=2(255)=510$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q139",
@@ -584,7 +622,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$200$",
     "correct_answer": "D",
     "explanation": "$S_4=5(3^4-1)/(3-1)=5(80)/2=200$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q140",
@@ -599,7 +638,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$120$",
     "correct_answer": "A",
     "explanation": "$S_6=64\\frac{1-(1/2)^6}{1-1/2}=126$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q141",
@@ -614,7 +654,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$12$",
     "correct_answer": "B",
     "explanation": "The sum is $2^n-1$, so $2^n=1024=2^{10}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q142",
@@ -629,7 +670,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$9$",
     "correct_answer": "C",
     "explanation": "$3(2^n-1)=381$ gives $2^n=128=2^7$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q143",
@@ -644,7 +686,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$2,4,8,\\ldots$",
     "correct_answer": "D",
     "explanation": "$a_n=S_n-S_{n-1}=2^n$, producing $2,4,8,\\ldots$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q144",
@@ -659,7 +702,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$1$",
     "correct_answer": "A",
     "explanation": "$S_1=3(2-1)=3$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q145",
@@ -674,7 +718,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$\\sqrt2$",
     "correct_answer": "B",
     "explanation": "$a_6/a_3=r^3=96/12=8$, so $r=2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q146",
@@ -689,7 +734,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$2$",
     "correct_answer": "C",
     "explanation": "$ar^2=12$ and $r=2$, so $4a=12$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q147",
@@ -704,7 +750,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$3$",
     "correct_answer": "D",
     "explanation": "$a_5/a_2=r^3=162/6=27$, so $r=3$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q148",
@@ -719,7 +766,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$1$",
     "correct_answer": "A",
     "explanation": "The second term is $ar=6$, so $a=6/3=2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q149",
@@ -734,7 +782,8 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$12$",
     "correct_answer": "B",
     "explanation": "For three GP terms, $xz=y^2$, so $xyz=y^3=216$, giving $y=6$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q150",
@@ -749,6 +798,7 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_d": "$20$",
     "correct_answer": "C",
     "explanation": "The product of three consecutive GP terms is the cube of the middle term.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   }
 ];

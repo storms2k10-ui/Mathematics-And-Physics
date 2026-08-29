@@ -14,7 +14,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$|r|<1$",
     "correct_answer": "D",
     "explanation": "Only then does $r^n\\to0$ as $n\\to\\infty$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q152",
@@ -29,7 +30,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$a(1-r)$",
     "correct_answer": "A",
     "explanation": "For $|r|<1$, the finite-sum formula approaches $a/(1-r)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q153",
@@ -44,7 +46,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$4$",
     "correct_answer": "B",
     "explanation": "$S_\\infty=1/(1-\\frac12)=2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q154",
@@ -59,7 +62,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$6$",
     "correct_answer": "C",
     "explanation": "$a=3,r=1/3$, so $S_\\infty=3/(1-\\frac13)=9/2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q155",
@@ -74,7 +78,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{16}{3}$",
     "correct_answer": "D",
     "explanation": "$a=8,r=-1/2$, so $S_\\infty=8/(1+\\frac12)=16/3$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q156",
@@ -89,7 +94,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$20$",
     "correct_answer": "A",
     "explanation": "$S_\\infty=5/(1-\\frac12)=10$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q157",
@@ -104,7 +110,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "Converges to infinity as a finite number",
     "correct_answer": "B",
     "explanation": "Its common ratio $2$ does not satisfy $|r|<1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q158",
@@ -119,7 +126,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$r>1$",
     "correct_answer": "C",
     "explanation": "The formula for an infinite GP requires strict inequality $|r|<1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q159",
@@ -134,7 +142,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac12$",
     "correct_answer": "D",
     "explanation": "$12=6/(1-r)$ gives $1-r=1/2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q160",
@@ -149,7 +158,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$15$",
     "correct_answer": "A",
     "explanation": "$a=S_\\infty(1-r)=15(1/3)=5$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q161",
@@ -164,7 +174,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac23$",
     "correct_answer": "B",
     "explanation": "$6=4/(1-r)$ gives $1-r=2/3$, so $r=1/3$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q162",
@@ -179,7 +190,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac14$",
     "correct_answer": "C",
     "explanation": "The remaining sum is $ar/(1-r)$; setting it equal to $a$ gives $r=1/2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q163",
@@ -194,7 +206,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$15$",
     "correct_answer": "D",
     "explanation": "Remove the first term from the total: $20-5=15$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q164",
@@ -209,7 +222,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac13$",
     "correct_answer": "A",
     "explanation": "The total is $3/2$, so the remaining sum is $3/2-1=1/2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q165",
@@ -224,7 +238,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac1{30}$",
     "correct_answer": "B",
     "explanation": "$0.3+0.03+\\cdots=\\frac{3/10}{1-1/10}=1/3$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q166",
@@ -239,7 +254,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac56$",
     "correct_answer": "C",
     "explanation": "$\\frac{6/10}{1-1/10}=\\frac{6}{9}=\\frac23$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q167",
@@ -254,7 +270,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac3{11}$",
     "correct_answer": "D",
     "explanation": "$0.27+0.0027+\\cdots=\\frac{27/100}{1-1/100}=27/99=3/11$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q168",
@@ -269,7 +286,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "Terms are factorials",
     "correct_answer": "A",
     "explanation": "This is the defining property of a harmonic progression.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q169",
@@ -284,7 +302,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$2,4,6,8,\\ldots$",
     "correct_answer": "B",
     "explanation": "Its reciprocals $1,2,3,4,\\ldots$ form an AP.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q170",
@@ -299,7 +318,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac18$",
     "correct_answer": "C",
     "explanation": "The denominators are consecutive natural numbers.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q171",
@@ -314,7 +334,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac1a,\\frac1H,\\frac1b$ are in GP",
     "correct_answer": "A",
     "explanation": "HP is defined through an arithmetic progression of reciprocals.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q172",
@@ -329,7 +350,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{ab}{2}$",
     "correct_answer": "B",
     "explanation": "It is the reciprocal of the arithmetic mean of $1/a$ and $1/b$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q173",
@@ -344,7 +366,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$3$",
     "correct_answer": "A",
     "explanation": "$H=\\frac{2(4)(12)}{4+12}=96/16=6$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q174",
@@ -359,7 +382,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$2$",
     "correct_answer": "C",
     "explanation": "$H=\\frac{2(3)(6)}{3+6}=36/9=4$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q175",
@@ -374,7 +398,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$6$",
     "correct_answer": "B",
     "explanation": "$\\frac{2(6)x}{x+6}=4 \\implies 12x=4x+24 \\implies 8x=24 \\implies x=3$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q176",
@@ -389,7 +414,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$A=G=H$ always",
     "correct_answer": "A",
     "explanation": "The arithmetic mean is greatest and the harmonic mean is smallest.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q177",
@@ -404,7 +430,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$H^2=AG$",
     "correct_answer": "B",
     "explanation": "Substituting $A=(a+b)/2,\\ G=\\sqrt{ab},\\ H=2ab/(a+b)$ gives $AH=ab=G^2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q178",
@@ -419,7 +446,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$A=5,G=4,H=2$",
     "correct_answer": "C",
     "explanation": "$A=5,\\ G=\\sqrt{16}=4,\\ H=32/10=16/5$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q179",
@@ -434,7 +462,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$\\frac{32}{5}$",
     "correct_answer": "D",
     "explanation": "From $G^2=AH$, $H=64/10=32/5$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q180",
@@ -449,7 +478,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$12$",
     "correct_answer": "A",
     "explanation": "$A=G^2/H=36/4=9$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q181",
@@ -464,7 +494,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "Their sum is one",
     "correct_answer": "B",
     "explanation": "All three standard means coincide only for equal positive numbers.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q182",
@@ -479,7 +510,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$a=-b$",
     "correct_answer": "C",
     "explanation": "Equality in the AM–GM inequality holds exactly when the numbers are equal.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q183",
@@ -494,7 +526,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$5,21$",
     "correct_answer": "B",
     "explanation": "Their sum is $26$ and product is $144$, giving roots $8,18$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q184",
@@ -509,7 +542,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$3,7$",
     "correct_answer": "A",
     "explanation": "Their sum is $10$ and product is $16$, so they are $2,8$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q185",
@@ -524,7 +558,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$6,7$",
     "correct_answer": "B",
     "explanation": "Their sum is $13$ and product is $36$, giving $4,9$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q186",
@@ -539,7 +574,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "They have ratio $2$",
     "correct_answer": "A",
     "explanation": "Both equal difference and equal ratio are possible for positive terms only when all terms coincide.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q187",
@@ -554,7 +590,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$b=0$",
     "correct_answer": "C",
     "explanation": "Equality of the arithmetic and harmonic means forces the adjacent positive values to be equal.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q188",
@@ -569,7 +606,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "AP",
     "correct_answer": "D",
     "explanation": "$y^2=xz$ implies $2\\log y=\\log x+\\log z$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q189",
@@ -584,7 +622,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "No fixed progression",
     "correct_answer": "A",
     "explanation": "$2y=x+z$ implies $(2^y)^2=2^x2^z$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q190",
@@ -599,7 +638,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$a^2,b^2,c^2$ are in AP",
     "correct_answer": "B",
     "explanation": "This is exactly the definition of a harmonic progression.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q191",
@@ -614,7 +654,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$6,400$",
     "correct_answer": "C",
     "explanation": "$100(2^8)=100(256)=25,600$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q192",
@@ -629,7 +670,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "Rs $64,800$",
     "correct_answer": "D",
     "explanation": "Each year retains $90\\%$, so $80,000(0.9)^2=64,800$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q193",
@@ -644,7 +686,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$0.5$ m",
     "correct_answer": "A",
     "explanation": "$16(1/2)^4=1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q194",
@@ -659,7 +702,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "Rs $36,000$",
     "correct_answer": "B",
     "explanation": "$a_6=30,000+5(2,000)=40,000$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q195",
@@ -674,7 +718,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "Rs $8,000$",
     "correct_answer": "C",
     "explanation": "$a_6=1000(2^5)=32,000$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q196",
@@ -689,7 +734,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "Rs $63,000$",
     "correct_answer": "D",
     "explanation": "$S_6=1000(2^6-1)=63,000$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q197",
@@ -704,7 +750,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$4$",
     "correct_answer": "A",
     "explanation": "For consecutive GP terms, $b^2=ac$, so $ac=16$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q198",
@@ -719,7 +766,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "Cannot be determined",
     "correct_answer": "B",
     "explanation": "Three consecutive AP terms have sum $3b$, so $b=10$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q199",
@@ -734,7 +782,8 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$8$",
     "correct_answer": "C",
     "explanation": "$G^2=AH=36$, so $G=6$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q200",
@@ -749,6 +798,7 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_d": "$8$",
     "correct_answer": "B",
     "explanation": "$S_\\infty=\\frac{a}{1-r}=18$ and $a(1+r)=16$. Multiplying yields $18(1-r^2)=16 \\implies 1-r^2=\\frac89 \\implies r=\\frac13$. Thus $a=18(1-\\frac13)=12$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   }
 ];

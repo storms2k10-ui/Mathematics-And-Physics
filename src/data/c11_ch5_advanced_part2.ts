@@ -14,7 +14,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$(a+b)n^2$",
     "correct_answer": "A",
     "explanation": "By linearity, $a\\sum_{k=1}^n k + b\\sum_{k=1}^n 1 = \\frac{an(n+1)}{2} + bn$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q52",
@@ -29,7 +30,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\sum k^2+9n$",
     "correct_answer": "B",
     "explanation": "$(k+3)^2 = k^2+6k+9$, so $\\sum_{k=1}^n (k+3)^2 = \\sum k^2 + 6\\sum k + 9n$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q53",
@@ -44,7 +46,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$n^4$",
     "correct_answer": "C",
     "explanation": "Expanding $4k^2-4k+1$ and summing gives $\\frac{n(4n^2-1)}{3} = \\frac{n(2n-1)(2n+1)}{3}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q54",
@@ -59,7 +62,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{2n(n+1)(2n+1)}{3}$",
     "correct_answer": "D",
     "explanation": "$\\sum_{k=1}^n (2k)^2 = 4\\sum_{k=1}^n k^2 = 4\\frac{n(n+1)(2n+1)}{6} = \\frac{2n(n+1)(2n+1)}{3}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q55",
@@ -74,7 +78,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$n^2(2n-1)$",
     "correct_answer": "A",
     "explanation": "The sum of the squares of the first $n$ odd natural numbers is $\\frac{n(4n^2-1)}{3}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q56",
@@ -89,7 +94,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$1000$",
     "correct_answer": "B",
     "explanation": "Here $2n-1 = 19 \\implies n = 10$. Sum = $\\frac{10(4(100)-1)}{3} = \\frac{10(399)}{3} = 1330$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q57",
@@ -104,7 +110,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$385$",
     "correct_answer": "C",
     "explanation": "$4(1^2+2^2+\\cdots+10^2) = 4(385) = 1540$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q58",
@@ -119,7 +126,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{n(n+1)(n+2)}{3}$",
     "correct_answer": "D",
     "explanation": "$\\sum_{k=1}^n (k^2+k) = \\frac{n(n+1)(n+2)}{3}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q59",
@@ -134,7 +142,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$n^2(n-1)$",
     "correct_answer": "A",
     "explanation": "$\\sum_{k=1}^n (k^2-k) = \\frac{n(n+1)(n-1)}{3}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q60",
@@ -149,7 +158,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$80$",
     "correct_answer": "B",
     "explanation": "$\\frac{5(6)(7)}{3} = 70$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q61",
@@ -164,7 +174,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "Taking reciprocals of an AP",
     "correct_answer": "C",
     "explanation": "Each term is the product of a term from an arithmetic progression and a term from a geometric progression.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q62",
@@ -179,7 +190,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$1+2x+3x^2+4x^3+\\cdots$",
     "correct_answer": "D",
     "explanation": "The coefficients $1,2,3,4,\\ldots$ form an AP and $1,x,x^2,x^3,\\ldots$ form a GP.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q63",
@@ -194,7 +206,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{1}{1+x}$",
     "correct_answer": "A",
     "explanation": "Differentiating $\\frac{1}{1-x} = 1+x+x^2+\\cdots$ gives $\\frac{1}{(1-x)^2} = 1+2x+3x^2+\\cdots$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q64",
@@ -209,7 +222,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{x^2}{(1-x)^2}$",
     "correct_answer": "B",
     "explanation": "Multiply $1+2x+3x^2+\\cdots = \\frac{1}{(1-x)^2}$ by $x$ to obtain $\\frac{x}{(1-x)^2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q65",
@@ -224,7 +238,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{1+r}{1-r}$",
     "correct_answer": "C",
     "explanation": "The sum of the infinite AGS with $a=1, d=1$ is $\\frac{1}{(1-r)^2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q66",
@@ -239,7 +254,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$4$",
     "correct_answer": "D",
     "explanation": "Substitute $r=\\frac12$ into $\\frac{1}{(1-r)^2} = \\frac{1}{(1/2)^2} = 4$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q67",
@@ -254,7 +270,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac12$",
     "correct_answer": "A",
     "explanation": "$\\sum_{k=1}^\\infty k r^k = \\frac{r}{(1-r)^2}$. For $r=\\frac12$, $\\frac{1/2}{(1/2)^2} = 2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q68",
@@ -269,7 +286,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{4}{3}$",
     "correct_answer": "B",
     "explanation": "$\\frac{1/3}{(1-1/3)^2} = \\frac{1/3}{4/9} = \\frac{3}{4}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q69",
@@ -284,7 +302,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{4}{3}$",
     "correct_answer": "C",
     "explanation": "$\\frac{1/4}{(1-1/4)^2} = \\frac{1/4}{9/16} = \\frac{4}{9}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q70",
@@ -299,7 +318,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{1}{(1+x)^2}$",
     "correct_answer": "D",
     "explanation": "Substitute $r = -x$ into $\\frac{1}{(1-r)^2}$ to get $\\frac{1}{(1+x)^2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q71",
@@ -314,7 +334,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$1$",
     "correct_answer": "A",
     "explanation": "Setting $x = \\frac12$ in $\\frac{1}{(1+x)^2}$ gives $\\frac{1}{(3/2)^2} = \\frac{4}{9}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q72",
@@ -329,7 +350,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{1-r^{n+1}}{(1-r)^2}$",
     "correct_answer": "B",
     "explanation": "Obtained by differentiating $\\sum_{k=0}^n r^k = \\frac{1-r^{n+1}}{1-r}$ with respect to $r$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q73",
@@ -344,7 +366,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{1}{(1-r)^2}$",
     "correct_answer": "C",
     "explanation": "This is the standard finite arithmetico-geometric series formula for $a=1, d=1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q74",
@@ -359,7 +382,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{13}{4}$",
     "correct_answer": "D",
     "explanation": "$1 + 1 + \\frac{3}{4} + \\frac{4}{8} = 2 + \\frac{3}{4} + \\frac{1}{2} = \\frac{13}{4}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q75",
@@ -374,7 +398,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$32$",
     "correct_answer": "A",
     "explanation": "$1 + 4 + 12 + 32 = 49$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q76",
@@ -389,7 +414,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{2}{1-x}$",
     "correct_answer": "B",
     "explanation": "$2(1+2x+3x^2+\\cdots) = \\frac{2}{(1-x)^2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q77",
@@ -404,7 +430,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{1}{(1-3x)^2}$",
     "correct_answer": "C",
     "explanation": "$3(1+2x+3x^2+\\cdots) = \\frac{3}{(1-x)^2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q78",
@@ -419,7 +446,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{1+x}{(1-x)^2}$",
     "correct_answer": "D",
     "explanation": "Here $a=1, d=2$. $S_\\infty = \\frac{a}{1-x} + \\frac{dx}{(1-x)^2} = \\frac{1}{1-x} + \\frac{2x}{(1-x)^2} = \\frac{1+x}{(1-x)^2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q79",
@@ -434,7 +462,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$3$",
     "correct_answer": "A",
     "explanation": "Substitute $x=\\frac12$ into $\\frac{1+x}{(1-x)^2} = \\frac{3/2}{1/4} = 6$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q80",
@@ -449,7 +478,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{2-x}{(1-x)^2}$",
     "correct_answer": "B",
     "explanation": "Here $a=2, d=3$. $S_\\infty = \\frac{2}{1-x} + \\frac{3x}{(1-x)^2} = \\frac{2(1-x)+3x}{(1-x)^2} = \\frac{2+x}{(1-x)^2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q81",
@@ -464,7 +494,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{ar+d}{1-r}$",
     "correct_answer": "A",
     "explanation": "This is the fundamental formula for the infinite arithmetico-geometric series: $S_\\infty = \\frac{a}{1-r} + \\frac{dr}{(1-r)^2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q82",
@@ -479,7 +510,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$12$",
     "correct_answer": "B",
     "explanation": "Using $\\frac{2+x}{(1-x)^2}$ with $x=\\frac12$: $\\frac{2+1/2}{(1/2)^2} = \\frac{5/2}{1/4} = 10$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q83",
@@ -494,7 +526,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{1-x}{(1+x)^2}$",
     "correct_answer": "C",
     "explanation": "$a=1, d=3$. $S_\\infty = \\frac{1}{1-x} + \\frac{3x}{(1-x)^2} = \\frac{1-x+3x}{(1-x)^2} = \\frac{1+2x}{(1-x)^2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q84",
@@ -509,7 +542,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$10$",
     "correct_answer": "A",
     "explanation": "Substitute $x=\\frac12$ into $\\frac{1+2x}{(1-x)^2} = \\frac{2}{1/4} = 8$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q85",
@@ -524,7 +558,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{3}{16}$",
     "correct_answer": "B",
     "explanation": "The sum is $\\frac{1}{(1+x)^2} = \\frac{1}{(4/3)^2} = \\frac{9}{16}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q86",
@@ -539,7 +574,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{1}{4}$",
     "correct_answer": "C",
     "explanation": "$\\sum_{k=1}^\\infty k r^{k-1} = \\frac{1}{(1-r)^2}$. For $r=-\\frac12$, $\\frac{1}{(3/2)^2} = \\frac{4}{9}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q87",
@@ -554,7 +590,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$-\\frac{4}{9}$",
     "correct_answer": "A",
     "explanation": "$\\sum_{k=1}^\\infty k r^k = \\frac{r}{(1-r)^2} = \\frac{-1/2}{(3/2)^2} = -\\frac{2}{9}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q88",
@@ -569,7 +606,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{x}{1-x}$",
     "correct_answer": "B",
     "explanation": "Differentiating $\\sum_{k=0}^\\infty x^k = \\frac{1}{1-x}$ gives $\\frac{1}{(1-x)^2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q89",
@@ -584,7 +622,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{x}{1-x}$",
     "correct_answer": "C",
     "explanation": "Multiplying $\\sum_{k=1}^\\infty k x^{k-1} = \\frac{1}{(1-x)^2}$ by $x$ yields $\\frac{x}{(1-x)^2}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q90",
@@ -599,7 +638,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$\\frac{2}{3}$",
     "correct_answer": "D",
     "explanation": "$\\frac{1}{(1-r)^2} = 9 \\implies 1-r = \\frac{1}{3} \\implies r = \\frac{2}{3}$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q91",
@@ -614,7 +654,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "The difference between any two terms is zero",
     "correct_answer": "A",
     "explanation": "In a telescoping series, partial sums collapse because intermediate terms cancel, leaving only the boundary terms.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q92",
@@ -629,7 +670,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$0$",
     "correct_answer": "B",
     "explanation": "Expanding $(f(2)-f(1)) + (f(3)-f(2)) + \\cdots + (f(n+1)-f(n)) = f(n+1)-f(1)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q93",
@@ -644,7 +686,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$f(1)+f(n)$",
     "correct_answer": "C",
     "explanation": "$(f(1)-f(2)) + (f(2)-f(3)) + \\cdots + (f(n)-f(n+1)) = f(1)-f(n+1)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q94",
@@ -659,7 +702,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$5$",
     "correct_answer": "D",
     "explanation": "Each term is $1$, so $1+1+1+1+1 = 5$ (or by telescoping: $(5+1)-1 = 5$).",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q95",
@@ -674,7 +718,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$2n+1$",
     "correct_answer": "A",
     "explanation": "By telescoping, the sum is $(n+1)^2 - 1^2 = (n+1)^2 - 1 = n(n+2)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q96",
@@ -689,7 +734,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$2n+1$",
     "correct_answer": "B",
     "explanation": "Since $2k+1 = (k+1)^2-k^2$, the sum telescopes to $(n+1)^2-1 = n^2+2n = n(n+2)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q97",
@@ -704,7 +750,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$(n+1)^2$",
     "correct_answer": "C",
     "explanation": "This is $\\sum_{k=1}^n (2k+1) = n(n+2)$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q98",
@@ -719,7 +766,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$n^3$",
     "correct_answer": "D",
     "explanation": "The sum telescopes to $n^3 - 0^3 = n^3$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q99",
@@ -734,7 +782,8 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$900$",
     "correct_answer": "A",
     "explanation": "By telescoping, $10^3 - 0^3 = 1000$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch5-adv-q100",
@@ -749,6 +798,7 @@ export const C11_CH5_ADVANCED_PART2: Question[] = [
     "option_d": "$3n^2+3n+1$",
     "correct_answer": "B",
     "explanation": "By telescoping, the sum equals $(n+1)^3 - 1^3 = (n+1)^3 - 1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   }
 ];

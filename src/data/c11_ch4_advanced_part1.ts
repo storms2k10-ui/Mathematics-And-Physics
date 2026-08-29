@@ -14,7 +14,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "Determinant",
     "correct_answer": "B",
     "explanation": "A sequence arranges terms in a specific order according to a given pattern or formula.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q2",
@@ -29,7 +30,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$1,\\frac12,\\frac14,\\ldots$",
     "correct_answer": "C",
     "explanation": "Consecutive terms differ by the constant $4$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q3",
@@ -44,7 +46,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$5,10,15,20,\\ldots$",
     "correct_answer": "A",
     "explanation": "Each term is obtained by multiplying the preceding term by $2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q4",
@@ -59,7 +62,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$5$",
     "correct_answer": "D",
     "explanation": "The first listed number of the sequence is $5$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q5",
@@ -74,7 +78,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$13$",
     "correct_answer": "B",
     "explanation": "The common difference is $3$, so the next term is $11+3=14$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q6",
@@ -89,7 +94,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$108$",
     "correct_answer": "A",
     "explanation": "Each term is multiplied by $3$, so $81(3)=243$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q7",
@@ -104,7 +110,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$49$",
     "correct_answer": "C",
     "explanation": "These are consecutive squares $1^2,2^2,\\ldots$, so the next term is $6^2=36$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q8",
@@ -119,7 +126,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$3,5,7,9,\\ldots$",
     "correct_answer": "D",
     "explanation": "Substituting $n=1,2,3,4$ gives $3,5,7,9$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q9",
@@ -134,7 +142,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$36$",
     "correct_answer": "B",
     "explanation": "$a_5=5^2+1=26$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q10",
@@ -149,7 +158,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$23$",
     "correct_answer": "A",
     "explanation": "$a_7=3(7)-2=19$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q11",
@@ -164,7 +174,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$a_n=n^2$",
     "correct_answer": "C",
     "explanation": "Substitution of $n=1,2,3,\\ldots$ produces the positive even integers.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q12",
@@ -179,7 +190,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$a_n=2n-1$",
     "correct_answer": "D",
     "explanation": "$2n-1$ gives consecutive positive odd integers.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q13",
@@ -194,7 +206,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$8$",
     "correct_answer": "A",
     "explanation": "$T_4=\\frac{4(5)}2=10$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q14",
@@ -209,7 +222,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$2n-1$",
     "correct_answer": "B",
     "explanation": "It equals the sum $1+2+\\cdots+n$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q15",
@@ -224,7 +238,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$28$",
     "correct_answer": "C",
     "explanation": "$T_6=\\frac{6(7)}2=21$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q16",
@@ -239,7 +254,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$120$",
     "correct_answer": "D",
     "explanation": "$5!=5\\cdot4\\cdot3\\cdot2\\cdot1=120$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q17",
@@ -254,7 +270,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "A",
     "explanation": "The factorial recurrence $1!=1(0!)$ requires $0!=1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q18",
@@ -269,7 +286,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$6$",
     "correct_answer": "B",
     "explanation": "$\\frac{6!}{4!}=6\\cdot5=30$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q19",
@@ -284,7 +302,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$n=6$",
     "correct_answer": "C",
     "explanation": "$4!=4\\cdot3\\cdot2\\cdot1=24$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q20",
@@ -299,7 +318,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$4$",
     "correct_answer": "D",
     "explanation": "$1+2+1=4=2^2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q21",
@@ -314,7 +334,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "Sum",
     "correct_answer": "A",
     "explanation": "Subtracting any term from the next gives the same common difference.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q22",
@@ -329,7 +350,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$11$",
     "correct_answer": "B",
     "explanation": "$11-7=15-11=4$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q23",
@@ -344,7 +366,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$12$",
     "correct_answer": "C",
     "explanation": "Each term is $4$ less than the preceding term.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q24",
@@ -359,7 +382,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$a+(n-1)d$",
     "correct_answer": "D",
     "explanation": "Starting from $a$, reaching the $n$th term requires $n-1$ additions of $d$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q25",
@@ -374,7 +398,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$35$",
     "correct_answer": "A",
     "explanation": "$a_{10}=3+9(4)=39$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q26",
@@ -389,7 +414,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$68$",
     "correct_answer": "B",
     "explanation": "$a_{20}=5+19(3)=62$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q27",
@@ -404,7 +430,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$22$",
     "correct_answer": "C",
     "explanation": "$a_{15}=20+14(-3)=20-42=-22$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q28",
@@ -419,7 +446,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$3n-1$",
     "correct_answer": "D",
     "explanation": "$a_n=2+(n-1)3=3n-1$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q29",
@@ -434,7 +462,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$3n+7$",
     "correct_answer": "A",
     "explanation": "$a_n=10+(n-1)(-3)=13-3n$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q30",
@@ -449,7 +478,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "15th",
     "correct_answer": "B",
     "explanation": "$4+(n-1)5=69$ gives $n-1=13$, so $n=14$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q31",
@@ -464,7 +494,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "14th",
     "correct_answer": "C",
     "explanation": "$3+4(n-1)=59$ gives $n=15$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q32",
@@ -479,7 +510,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "16th",
     "correct_answer": "D",
     "explanation": "$20-3(n-1)=-25$ gives $n-1=15$, so $n=16$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q33",
@@ -494,7 +526,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "Yes, the 26th term",
     "correct_answer": "A",
     "explanation": "$5+4(n-1)=101$ gives $n=25$, a positive integer.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q34",
@@ -509,7 +542,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "Yes, the 14th term",
     "correct_answer": "B",
     "explanation": "$3+4(n-1)=50$ gives $n=12.75$, not an integer.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q35",
@@ -524,7 +558,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$40$",
     "correct_answer": "C",
     "explanation": "$a_8=7+7(5)=42$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q36",
@@ -539,7 +574,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$-2$",
     "correct_answer": "D",
     "explanation": "$a_{12}=20+11(-2)=-2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q37",
@@ -554,7 +590,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$12$",
     "correct_answer": "A",
     "explanation": "$a+4(3)=18$, so $a=6$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q38",
@@ -569,7 +606,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$6$",
     "correct_answer": "B",
     "explanation": "$7+6d=31$, so $d=4$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q39",
@@ -584,7 +622,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$3$",
     "correct_answer": "C",
     "explanation": "Subtracting $a+3d=14$ from $a+8d=34$ gives $5d=20$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q40",
@@ -599,7 +638,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$2$",
     "correct_answer": "D",
     "explanation": "From $a+3(4)=14$, we obtain $a=2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q41",
@@ -614,7 +654,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$8$",
     "correct_answer": "A",
     "explanation": "The equations give $5d=20$, so $d=4$, and $a+2d=10$ gives $a=2$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q42",
@@ -629,7 +670,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$a_m+a_n=(m-n)d$",
     "correct_answer": "B",
     "explanation": "Subtracting the formulas cancels $a$ and leaves $(m-n)d$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q43",
@@ -644,7 +686,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$14$",
     "correct_answer": "C",
     "explanation": "By definition, $a_7=a+(7-1)d=a+6d$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q44",
@@ -659,7 +702,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$5$",
     "correct_answer": "D",
     "explanation": "$a_{n+1}-a_n=[5(n+1)-2]-(5n-2)=5$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q45",
@@ -674,7 +718,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$6$",
     "correct_answer": "A",
     "explanation": "Set $n=1$: $a_1=12-3=9$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q46",
@@ -689,7 +734,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$n$",
     "correct_answer": "B",
     "explanation": "Consecutive terms differ by the coefficient of $n$, which is $4$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q47",
@@ -704,7 +750,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "Cannot be found",
     "correct_answer": "C",
     "explanation": "Write them as $8-d,8,8+d$; their sum is $24$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q48",
@@ -719,7 +766,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$a-d,a,a+d$",
     "correct_answer": "D",
     "explanation": "Each adjacent pair differs by $d$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q49",
@@ -734,7 +782,8 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$2$",
     "correct_answer": "A",
     "explanation": "Equal differences give $10-x=16-10=6$, so $x=4$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch4-adv-q50",
@@ -749,6 +798,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_d": "$8$",
     "correct_answer": "B",
     "explanation": "The middle term is the average $(3+15)/2=9$.",
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   }
 ];
