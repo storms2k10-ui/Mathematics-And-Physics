@@ -40,8 +40,7 @@ export class FirestoreLeaderboardService {
             oldData.scorePercentage > entry.scorePercentage ||
             (oldData.scorePercentage === entry.scorePercentage && oldData.timeSpentSeconds <= entry.timeSpentSeconds)
           ) {
-            // Keep existing best in leaderboard, but still save this attempt in test_results collection
-            await this.saveTestResultRecord(entry, uid);
+            // Keep existing best score in leaderboard without overwriting with lower score
             return;
           }
         }
@@ -60,9 +59,6 @@ export class FirestoreLeaderboardService {
         timestamp: Date.now(),
         updatedAt: serverTimestamp(),
       }, { merge: true });
-
-      // Save individual attempt in test_results collection
-      await this.saveTestResultRecord(entry, uid);
     } catch (error) {
       console.error('Firestore saveEntry error:', error);
       throw error;

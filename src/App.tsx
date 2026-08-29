@@ -339,11 +339,8 @@ export default function App() {
     setCurrentView('results');
     window.scrollTo({ top: 0, behavior: 'instant' });
 
-    // 2. Perform live sync to Firestore cloud database, user history & leaderboard in background
-    Promise.all([
-      recordTestAttempt(historyItem).catch((e) => console.warn('Record attempt async sync:', e)),
-      MathService.saveLeaderboardEntry(leaderboardEntry, currentUser?.uid).catch((e) => console.warn('Leaderboard async sync:', e)),
-    ]).catch(() => {});
+    // 2. Perform single live sync to Firestore cloud database, user history & leaderboard in background
+    recordTestAttempt(historyItem).catch((e) => console.warn('Record attempt async sync:', e));
   };
 
   // Handler when quiz is completed (restricts results until signed in, but allows seamless offline review)

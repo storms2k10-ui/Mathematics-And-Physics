@@ -486,17 +486,24 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }
 
       // 4. Background broadcast to server
-      safeFetchJson('/api/auth/sync', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          uid,
-          email,
-          displayName,
-          classLevel: historyItem.classLevel || current?.classLevel || 9,
-          historyItem,
-        }),
-      }).catch(() => {});
+      Promise.all([
+        safeFetchJson('/api/auth/sync', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            uid,
+            email,
+            displayName,
+            classLevel: historyItem.classLevel || current?.classLevel || 9,
+            historyItem,
+          }),
+        }).catch(() => {}),
+        safeFetchJson('/api/leaderboard', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(leaderboardEntryRecord),
+        }).catch(() => {}),
+      ]).catch(() => {});
     } catch (e) {
       console.warn('Network sync exception, queueing attempt for auto-sync:', e);
       offlineSyncService.queueAttempt(historyItem, leaderboardEntryRecord, uid, email, displayName);

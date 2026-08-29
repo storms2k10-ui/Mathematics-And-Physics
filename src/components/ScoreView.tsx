@@ -88,8 +88,6 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
 
   // Student name is permanently fixed from candidate registration / user profile
   const studentName = userProfile?.displayName || currentUser?.displayName || studentProfile?.name || 'Student Candidate';
-  const [isSyncing, setIsSyncing] = useState(false);
-  const [syncStatus, setSyncStatus] = useState<string>('Saved & Synced to Academic Ranking');
 
   const totalQuestions = questions.length;
   const correctCount = Object.keys(userAnswers).reduce((acc, key) => {
@@ -105,56 +103,6 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
   const overallAccuracy = attemptedCount > 0 ? Math.round((correctCount / attemptedCount) * 100) : (totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0);
   const percentage = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
   const isPerfectScore = percentage === 100 && skippedCount === 0;
-
-  // Auto-sync score to Firestore cloud and server on mount
-  useEffect(() => {
-    const syncCurrentAttempt = async () => {
-      try {
-        const mins = Math.floor(totalTimeSeconds / 60);
-        const secs = totalTimeSeconds % 60;
-        const formattedTime = `${mins}m ${secs.toString().padStart(2, '0')}s`;
-
-        await MathService.saveLeaderboardEntry({
-          id: attemptEntryId,
-          uid: currentUser?.uid,
-          email: currentUser?.email || userProfile?.email,
-          studentName: studentName,
-          classLevel: classLevel,
-          section: studentProfile?.section || 'Standard',
-          chapterId: questions[0]?.chapter_id || 'general_quiz',
-          chapterName: chapterTitle,
-          mode: mode === 'exam' ? 'exam' : 'practice',
-          track: track || 'Elementary Mathematics',
-          correctCount,
-          totalQuestions,
-          skippedCount,
-          scorePercentage: percentage,
-          timeSpentSeconds: totalTimeSeconds,
-          formattedTime,
-          timestamp: Date.now(),
-          formattedDate: 'Just now',
-        }, currentUser?.uid);
-        await recordTestAttempt({
-          id: attemptEntryId,
-          chapterId: questions[0]?.chapter_id || 'general_quiz',
-          chapterName: chapterTitle,
-          classLevel: classLevel,
-          track: track || 'Elementary Mathematics',
-          correctCount,
-          totalQuestions,
-          skippedCount,
-          scorePercentage: percentage,
-          timeSpentSeconds: totalTimeSeconds,
-          formattedTime,
-          timestamp: Date.now(),
-          formattedDate: 'Just now',
-        });
-      } catch (err) {
-        console.warn('Auto-sync score attempt note:', err);
-      }
-    };
-    syncCurrentAttempt();
-  }, [attemptEntryId, studentName, classLevel, studentProfile, chapterTitle, questions, mode, correctCount, totalQuestions, skippedCount, percentage, totalTimeSeconds, currentUser, userProfile, track, recordTestAttempt]);
 
   // Multi-stage firework celebration launcher
   const launchFireworks = () => {
