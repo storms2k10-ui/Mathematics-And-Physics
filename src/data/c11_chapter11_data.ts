@@ -1,6 +1,17 @@
 import { Question } from '../types';
+import { C11_CH11_ADVANCED_PART1 } from './c11_ch11_advanced_part1';
+import { C11_CH11_ADVANCED_PART2 } from './c11_ch11_advanced_part2';
+import { C11_CH11_ADVANCED_PART3 } from './c11_ch11_advanced_part3';
+import { C11_CH11_ADVANCED_PART4 } from './c11_ch11_advanced_part4';
 
-export const C11_CH11_QUESTIONS: Question[] = [
+export const C11_CH11_ADVANCED_QUESTIONS: Question[] = [
+  ...C11_CH11_ADVANCED_PART1,
+  ...C11_CH11_ADVANCED_PART2,
+  ...C11_CH11_ADVANCED_PART3,
+  ...C11_CH11_ADVANCED_PART4,
+];
+
+export const C11_CH11_NORMAL_QUESTIONS: Question[] = [
   // =========================================================================
   // CLASS 11 — CHAPTER 11: APPLICATION OF TRIGONOMETRY (50 MCQs)
   // =========================================================================
@@ -863,3 +874,9 @@ export const C11_CH11_QUESTIONS: Question[] = [
     formula: '\\cos C = \\frac{4^2 + 5^2 - 6^2}{2(4)(5)} = \\frac{1}{8}',
   },
 ];
+
+export const C11_CH11_QUESTIONS: Question[] = [
+  ...C11_CH11_NORMAL_QUESTIONS,
+  ...C11_CH11_ADVANCED_QUESTIONS,
+];
+
