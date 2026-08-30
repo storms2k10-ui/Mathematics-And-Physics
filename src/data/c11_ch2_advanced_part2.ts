@@ -736,7 +736,7 @@ export const C11_CH2_ADVANCED_PART2: Question[] = [
     option_a: "$|A|=0$",
     option_b: "$A^{-1}$ does not exist",
     option_c: "$A=O$",
-    option_d: "$|A|\\n \ne 0$",
+    option_d: "$|A| \\neq 0$",
     correct_answer: "D",
     explanation: "A nonzero determinant is the condition for the existence of the inverse.",
     difficulty: "Hard",

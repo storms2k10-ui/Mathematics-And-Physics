@@ -15,7 +15,10 @@ function sanitizeLatex(str: string): string {
   if (!str) return '';
   let s = str.trim();
   // Fix escaped single quotes used for primes (e.g. f\'(x) -> f'(x), y\'\' -> y'')
-  s = s.replace(/\\+'/g, "'");
+  s = s.replace(/\\'/g, "'");
+  // Fix literal newlines that were meant to be \neq, \nu, \notin, \nabla
+  s = s.replace(/\neq\b/g, '\\neq ');
+  s = s.replace(/\notin\b/g, '\\notin ');
   // Fix double backslashes before common LaTeX keywords
   s = s.replace(/\\\\([a-zA-Z]+)/g, '\\$1');
   // Normalize degree symbols
