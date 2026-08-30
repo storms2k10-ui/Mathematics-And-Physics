@@ -1,9 +1,4 @@
-import { Question } from '../types';
-
-// ============================================================================
-// 📐 CLASS 11 MATHEMATICS — CHAPTER 1: COMPLEX NUMBERS
-// ADVANCED DIFFICULTY TIER — PART 1 (QUESTIONS 1 to 50)
-// ============================================================================
+import { Question } from "../types";
 
 export const C11_CH1_ADVANCED_PART1: Question[] = [
   {
@@ -12,21 +7,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find the sum $(3+4i) + (2-5i)$.",
-    "options": {
-      "A": "$5+i$",
-      "B": "$5-i$",
-      "C": "$1+9i$",
-      "D": "$1-i$"
-    },
     "option_a": "$5+i$",
     "option_b": "$5-i$",
     "option_c": "$1+9i$",
     "option_d": "$1-i$",
     "correct_answer": "B",
-    "explanation": "Add real and imaginary parts separately: $(3+2) + (4-5)i = 5-i$."
+    "explanation": "Add real and imaginary parts separately: $(3+2) + (4-5)i = 5-i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q2",
@@ -34,21 +23,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find the difference $(7-2i) - (4+3i)$.",
-    "options": {
-      "A": "$3-5i$",
-      "B": "$3+i$",
-      "C": "$11+i$",
-      "D": "$3+5i$"
-    },
     "option_a": "$3-5i$",
     "option_b": "$3+i$",
     "option_c": "$11+i$",
     "option_d": "$3+5i$",
     "correct_answer": "A",
-    "explanation": "Subtract real and imaginary parts: $(7-4) + (-2-3)i = 3-5i$."
+    "explanation": "Subtract real and imaginary parts: $(7-4) + (-2-3)i = 3-5i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q3",
@@ -56,21 +39,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find the product $(2+3i)(4-i)$.",
-    "options": {
-      "A": "$11+10i$",
-      "B": "$5+10i$",
-      "C": "$8-3i$",
-      "D": "$11-10i$"
-    },
     "option_a": "$11+10i$",
     "option_b": "$5+10i$",
     "option_c": "$8-3i$",
     "option_d": "$11-10i$",
     "correct_answer": "A",
-    "explanation": "Expand: $2(4) - 2i + 12i - 3i^2 = 8 + 10i - 3(-1) = 11+10i$."
+    "explanation": "Expand: $2(4) - 2i + 12i - 3i^2 = 8 + 10i - 3(-1) = 11+10i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q4",
@@ -78,21 +55,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Evaluate $i^{19}$.",
-    "options": {
-      "A": "$1$",
-      "B": "$-1$",
-      "C": "$i$",
-      "D": "$-i$"
-    },
     "option_a": "$1$",
     "option_b": "$-1$",
     "option_c": "$i$",
     "option_d": "$-i$",
     "correct_answer": "D",
-    "explanation": "Since $19 = 4(4) + 3$, we have $i^{19} = (i^4)^4 \\cdot i^3 = 1 \\cdot (-i) = -i$."
+    "explanation": "Since $19 = 4(4) + 3$, we have $i^{19} = (i^4)^4 \\cdot i^3 = 1 \\cdot (-i) = -i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q5",
@@ -100,21 +71,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Evaluate $i^{37}$.",
-    "options": {
-      "A": "$i$",
-      "B": "$-i$",
-      "C": "$1$",
-      "D": "$-1$"
-    },
     "option_a": "$i$",
     "option_b": "$-i$",
     "option_c": "$1$",
     "option_d": "$-1$",
     "correct_answer": "A",
-    "explanation": "Since $37 = 4(9) + 1$, we have $i^{37} = (i^4)^9 \\cdot i = 1 \\cdot i = i$."
+    "explanation": "Since $37 = 4(9) + 1$, we have $i^{37} = (i^4)^9 \\cdot i = 1 \\cdot i = i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q6",
@@ -122,21 +87,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Evaluate $i^{58}$.",
-    "options": {
-      "A": "$1$",
-      "B": "$-1$",
-      "C": "$i$",
-      "D": "$-i$"
-    },
     "option_a": "$1$",
     "option_b": "$-1$",
     "option_c": "$i$",
     "option_d": "$-i$",
     "correct_answer": "B",
-    "explanation": "Since $58 = 4(14) + 2$, we have $i^{58} = (i^4)^{14} \\cdot i^2 = 1 \\cdot (-1) = -1$."
+    "explanation": "Since $58 = 4(14) + 2$, we have $i^{58} = (i^4)^{14} \\cdot i^2 = 1 \\cdot (-1) = -1$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q7",
@@ -144,21 +103,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "If $x+iy = 5+2i$ where $x,y \\in \\mathbb{R}$, find $(x,y)$.",
-    "options": {
-      "A": "$(2,5)$",
-      "B": "$(-5,-2)$",
-      "C": "$(5,2)$",
-      "D": "$(-5,2)$"
-    },
     "option_a": "$(2,5)$",
     "option_b": "$(-5,-2)$",
     "option_c": "$(5,2)$",
     "option_d": "$(-5,2)$",
     "correct_answer": "C",
-    "explanation": "Equating real and imaginary parts: $x=5$ and $y=2$, so $(x,y)=(5,2)$."
+    "explanation": "Equating real and imaginary parts: $x=5$ and $y=2$, so $(x,y)=(5,2)$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q8",
@@ -166,21 +119,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find the real part of $(3+2i)^2$.",
-    "options": {
-      "A": "$13$",
-      "B": "$5$",
-      "C": "$12$",
-      "D": "$-5$"
-    },
     "option_a": "$13$",
     "option_b": "$5$",
     "option_c": "$12$",
     "option_d": "$-5$",
     "correct_answer": "B",
-    "explanation": "$(3+2i)^2 = 9 + 12i + 4i^2 = 9 + 12i - 4 = 5+12i$, so $\\operatorname{Re}((3+2i)^2) = 5$."
+    "explanation": "$(3+2i)^2 = 9 + 12i + 4i^2 = 9 + 12i - 4 = 5+12i$, so $\\operatorname{Re}((3+2i)^2) = 5$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q9",
@@ -188,21 +135,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find the imaginary part of $(1-3i)^2$.",
-    "options": {
-      "A": "$-6$",
-      "B": "$6$",
-      "C": "$-8$",
-      "D": "$8$"
-    },
     "option_a": "$-6$",
     "option_b": "$6$",
     "option_c": "$-8$",
     "option_d": "$8$",
     "correct_answer": "A",
-    "explanation": "$(1-3i)^2 = 1 - 6i + 9i^2 = 1 - 6i - 9 = -8-6i$, so $\\operatorname{Im}((1-3i)^2) = -6$."
+    "explanation": "$(1-3i)^2 = 1 - 6i + 9i^2 = 1 - 6i - 9 = -8-6i$, so $\\operatorname{Im}((1-3i)^2) = -6$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q10",
@@ -210,21 +151,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "If $z=2+3i$, find $z\\bar{z}$.",
-    "options": {
-      "A": "$5$",
-      "B": "$6$",
-      "C": "$13$",
-      "D": "$2-3i$"
-    },
     "option_a": "$5$",
     "option_b": "$6$",
     "option_c": "$13$",
     "option_d": "$2-3i$",
     "correct_answer": "C",
-    "explanation": "$z\\bar{z} = (2+3i)(2-3i) = 2^2 + 3^2 = 4 + 9 = 13$."
+    "explanation": "$z\\bar{z} = (2+3i)(2-3i) = 2^2 + 3^2 = 4 + 9 = 13$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q11",
@@ -232,21 +167,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find $|-5+12i|$.",
-    "options": {
-      "A": "$7$",
-      "B": "$17$",
-      "C": "$169$",
-      "D": "$13$"
-    },
     "option_a": "$7$",
     "option_b": "$17$",
     "option_c": "$169$",
     "option_d": "$13$",
     "correct_answer": "D",
-    "explanation": "$|-5+12i| = \\sqrt{(-5)^2 + 12^2} = \\sqrt{25+144} = \\sqrt{169} = 13$."
+    "explanation": "$|-5+12i| = \\sqrt{(-5)^2 + 12^2} = \\sqrt{25+144} = \\sqrt{169} = 13$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q12",
@@ -254,21 +183,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "If $z=3-4i$, find $\\dfrac{z}{|z|}$.",
-    "options": {
-      "A": "$\\frac{3}{5}-\\frac{4}{5}i$",
-      "B": "$\\frac{4}{5}-\\frac{3}{5}i$",
-      "C": "$3-4i$",
-      "D": "$\\frac{3}{25}-\\frac{4}{25}i$"
-    },
     "option_a": "$\\frac{3}{5}-\\frac{4}{5}i$",
     "option_b": "$\\frac{4}{5}-\\frac{3}{5}i$",
     "option_c": "$3-4i$",
     "option_d": "$\\frac{3}{25}-\\frac{4}{25}i$",
     "correct_answer": "A",
-    "explanation": "Since $|z| = \\sqrt{3^2+(-4)^2} = 5$, $\\dfrac{z}{|z|} = \\frac{3-4i}{5} = \\frac{3}{5}-\\frac{4}{5}i$."
+    "explanation": "Since $|z| = \\sqrt{3^2+(-4)^2} = 5$, $\\dfrac{z}{|z|} = \\frac{3-4i}{5} = \\frac{3}{5}-\\frac{4}{5}i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q13",
@@ -276,21 +199,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find the distance between $2+i$ and $-1+5i$ in the complex plane.",
-    "options": {
-      "A": "$3$",
-      "B": "$4$",
-      "C": "$5$",
-      "D": "$7$"
-    },
     "option_a": "$3$",
     "option_b": "$4$",
     "option_c": "$5$",
     "option_d": "$7$",
     "correct_answer": "C",
-    "explanation": "Distance $= |(2+i) - (-1+5i)| = |3-4i| = \\sqrt{3^2+(-4)^2} = 5$."
+    "explanation": "Distance $= |(2+i) - (-1+5i)| = |3-4i| = \\sqrt{3^2+(-4)^2} = 5$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q14",
@@ -298,21 +215,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find the midpoint of the segment joining $2+i$ and $-1+5i$.",
-    "options": {
-      "A": "$1+6i$",
-      "B": "$\\frac{1}{2}+3i$",
-      "C": "$\\frac{3}{2}+2i$",
-      "D": "$1+3i$"
-    },
     "option_a": "$1+6i$",
     "option_b": "$\\frac{1}{2}+3i$",
     "option_c": "$\\frac{3}{2}+2i$",
     "option_d": "$1+3i$",
     "correct_answer": "B",
-    "explanation": "Midpoint $= \\frac{(2+i)+(-1+5i)}{2} = \\frac{1+6i}{2} = \\frac{1}{2}+3i$."
+    "explanation": "Midpoint $= \\frac{(2+i)+(-1+5i)}{2} = \\frac{1+6i}{2} = \\frac{1}{2}+3i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q15",
@@ -320,21 +231,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find the principal argument of $1+i$.",
-    "options": {
-      "A": "$\\frac{\\pi}{2}$",
-      "B": "$-\\frac{\\pi}{4}$",
-      "C": "$\\frac{3\\pi}{4}$",
-      "D": "$\\frac{\\pi}{4}$"
-    },
     "option_a": "$\\frac{\\pi}{2}$",
     "option_b": "$-\\frac{\\pi}{4}$",
     "option_c": "$\\frac{3\\pi}{4}$",
     "option_d": "$\\frac{\\pi}{4}$",
     "correct_answer": "D",
-    "explanation": "The point $(1,1)$ lies in quadrant I with $\\tan\\theta = \\frac{1}{1} = 1$, so $\\operatorname{Arg}(1+i) = \\frac{\\pi}{4}$."
+    "explanation": "The point $(1,1)$ lies in quadrant I with $\\tan\\theta = \\frac{1}{1} = 1$, so $\\operatorname{Arg}(1+i) = \\frac{\\pi}{4}$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q16",
@@ -342,21 +247,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find the principal argument of $-1+\\sqrt{3}i$.",
-    "options": {
-      "A": "$\\frac{2\\pi}{3}$",
-      "B": "$\\frac{\\pi}{3}$",
-      "C": "$-\\frac{2\\pi}{3}$",
-      "D": "$\\frac{5\\pi}{3}$"
-    },
     "option_a": "$\\frac{2\\pi}{3}$",
     "option_b": "$\\frac{\\pi}{3}$",
     "option_c": "$-\\frac{2\\pi}{3}$",
     "option_d": "$\\frac{5\\pi}{3}$",
     "correct_answer": "A",
-    "explanation": "The point $(-1,\\sqrt{3})$ lies in quadrant II with reference angle $\\alpha = \\frac{\\pi}{3}$, so $\\theta = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}$."
+    "explanation": "The point $(-1,\\sqrt{3})$ lies in quadrant II with reference angle $\\alpha = \\frac{\\pi}{3}$, so $\\theta = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q17",
@@ -364,21 +263,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "In which quadrant does the complex number $-4-3i$ lie?",
-    "options": {
-      "A": "Quadrant I",
-      "B": "Quadrant II",
-      "C": "Quadrant III",
-      "D": "Quadrant IV"
-    },
     "option_a": "Quadrant I",
     "option_b": "Quadrant II",
     "option_c": "Quadrant III",
     "option_d": "Quadrant IV",
     "correct_answer": "C",
-    "explanation": "Both the real part ($-4 < 0$) and imaginary part ($-3 < 0$) are negative, placing it in Quadrant III."
+    "explanation": "Both the real part ($-4 < 0$) and imaginary part ($-3 < 0$) are negative, placing it in Quadrant III.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q18",
@@ -386,21 +279,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "What geometric figure does the equation $|z|=5$ represent in the complex plane?",
-    "options": {
-      "A": "A straight line",
-      "B": "A circle of radius $5$ centered at the origin",
-      "C": "A closed disk",
-      "D": "A parabola"
-    },
     "option_a": "A straight line",
     "option_b": "A circle of radius $5$ centered at the origin",
     "option_c": "A closed disk",
     "option_d": "A parabola",
     "correct_answer": "B",
-    "explanation": "For $z=x+iy$, $|z|=5 \\implies x^2+y^2=25$, which is a circle of radius $5$ centered at the origin $(0,0)$."
+    "explanation": "For $z=x+iy$, $|z|=5 \\implies x^2+y^2=25$, which is a circle of radius $5$ centered at the origin $(0,0)$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q19",
@@ -408,21 +295,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "What geometric figure does $|z-2|=3$ represent?",
-    "options": {
-      "A": "Centre $(0,2)$, radius $3$",
-      "B": "Centre $(-2,0)$, radius $3$",
-      "C": "Centre $(2,0)$, radius $3$",
-      "D": "Centre $(3,0)$, radius $2$"
-    },
     "option_a": "Centre $(0,2)$, radius $3$",
     "option_b": "Centre $(-2,0)$, radius $3$",
     "option_c": "Centre $(2,0)$, radius $3$",
     "option_d": "Centre $(3,0)$, radius $2$",
     "correct_answer": "C",
-    "explanation": "$|z-(2+0i)|=3$ represents a circle with centre at $(2,0)$ and radius $3$."
+    "explanation": "$|z-(2+0i)|=3$ represents a circle with centre at $(2,0)$ and radius $3$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q20",
@@ -430,21 +311,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "The locus given by $\\operatorname{Re}(z)=4$ is the line:",
-    "options": {
-      "A": "$x=4$",
-      "B": "$y=4$",
-      "C": "$x+y=4$",
-      "D": "$x^2+y^2=4$"
-    },
     "option_a": "$x=4$",
     "option_b": "$y=4$",
     "option_c": "$x+y=4$",
     "option_d": "$x^2+y^2=4$",
     "correct_answer": "A",
-    "explanation": "Let $z=x+iy$. Then $\\operatorname{Re}(z)=x=4$, which is a vertical line."
+    "explanation": "Let $z=x+iy$. Then $\\operatorname{Re}(z)=x=4$, which is a vertical line.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q21",
@@ -452,21 +327,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "The locus given by $\\operatorname{Im}(z)=-2$ is the line:",
-    "options": {
-      "A": "$x=-2$",
-      "B": "$x=2$",
-      "C": "$y=2$",
-      "D": "$y=-2$"
-    },
     "option_a": "$x=-2$",
     "option_b": "$x=2$",
     "option_c": "$y=2$",
     "option_d": "$y=-2$",
     "correct_answer": "D",
-    "explanation": "Let $z=x+iy$. Then $\\operatorname{Im}(z)=y=-2$, which is a horizontal line."
+    "explanation": "Let $z=x+iy$. Then $\\operatorname{Im}(z)=y=-2$, which is a horizontal line.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q22",
@@ -474,21 +343,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "If $z=3-7i$, find $z+\\bar{z}$.",
-    "options": {
-      "A": "$-14i$",
-      "B": "$6$",
-      "C": "$6-14i$",
-      "D": "$14i$"
-    },
     "option_a": "$-14i$",
     "option_b": "$6$",
     "option_c": "$6-14i$",
     "option_d": "$14i$",
     "correct_answer": "B",
-    "explanation": "$z+\\bar{z} = (3-7i) + (3+7i) = 2\\operatorname{Re}(z) = 6$."
+    "explanation": "$z+\\bar{z} = (3-7i) + (3+7i) = 2\\operatorname{Re}(z) = 6$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q23",
@@ -496,21 +359,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "If $z=3-7i$, find $z-\\bar{z}$.",
-    "options": {
-      "A": "$-14i$",
-      "B": "$6$",
-      "C": "$14i$",
-      "D": "$-6$"
-    },
     "option_a": "$-14i$",
     "option_b": "$6$",
     "option_c": "$14i$",
     "option_d": "$-6$",
     "correct_answer": "A",
-    "explanation": "$z-\\bar{z} = (3-7i) - (3+7i) = 2i\\operatorname{Im}(z) = 2i(-7) = -14i$."
+    "explanation": "$z-\\bar{z} = (3-7i) - (3+7i) = 2i\\operatorname{Im}(z) = 2i(-7) = -14i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q24",
@@ -518,21 +375,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "If $z+\\bar{z}=8$ and $z-\\bar{z}=6i$, find $z$.",
-    "options": {
-      "A": "$8+6i$",
-      "B": "$4+6i$",
-      "C": "$4+3i$",
-      "D": "$8+3i$"
-    },
     "option_a": "$8+6i$",
     "option_b": "$4+6i$",
     "option_c": "$4+3i$",
     "option_d": "$8+3i$",
     "correct_answer": "C",
-    "explanation": "Adding the two equations yields $2z = 8+6i \\implies z = 4+3i$."
+    "explanation": "Adding the two equations yields $2z = 8+6i \\implies z = 4+3i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q25",
@@ -540,21 +391,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find the reciprocal of $2+i$.",
-    "options": {
-      "A": "$\\frac{2}{5}+\\frac{1}{5}i$",
-      "B": "$2-i$",
-      "C": "$\\frac{1}{5}-\\frac{2}{5}i$",
-      "D": "$\\frac{2}{5}-\\frac{1}{5}i$"
-    },
     "option_a": "$\\frac{2}{5}+\\frac{1}{5}i$",
     "option_b": "$2-i$",
     "option_c": "$\\frac{1}{5}-\\frac{2}{5}i$",
     "option_d": "$\\frac{2}{5}-\\frac{1}{5}i$",
     "correct_answer": "D",
-    "explanation": "$\\dfrac{1}{2+i} = \\dfrac{2-i}{(2+i)(2-i)} = \\dfrac{2-i}{4+1} = \\frac{2}{5}-\\frac{1}{5}i$."
+    "explanation": "$\\dfrac{1}{2+i} = \\dfrac{2-i}{(2+i)(2-i)} = \\dfrac{2-i}{4+1} = \\frac{2}{5}-\\frac{1}{5}i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q26",
@@ -562,21 +407,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Solve $(1+i)z = 4$ for $z$.",
-    "options": {
-      "A": "$2-2i$",
-      "B": "$4-4i$",
-      "C": "$2+2i$",
-      "D": "$4+4i$"
-    },
     "option_a": "$2-2i$",
     "option_b": "$4-4i$",
     "option_c": "$2+2i$",
     "option_d": "$4+4i$",
     "correct_answer": "A",
-    "explanation": "$z = \\dfrac{4}{1+i} = \\dfrac{4(1-i)}{(1+i)(1-i)} = \\dfrac{4(1-i)}{2} = 2-2i$."
+    "explanation": "$z = \\dfrac{4}{1+i} = \\dfrac{4(1-i)}{(1+i)(1-i)} = \\dfrac{4(1-i)}{2} = 2-2i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q27",
@@ -584,21 +423,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Evaluate $\\dfrac{3+i}{1-i}$.",
-    "options": {
-      "A": "$2+i$",
-      "B": "$1+2i$",
-      "C": "$1-2i$",
-      "D": "$2-i$"
-    },
     "option_a": "$2+i$",
     "option_b": "$1+2i$",
     "option_c": "$1-2i$",
     "option_d": "$2-i$",
     "correct_answer": "B",
-    "explanation": "$\\dfrac{3+i}{1-i} = \\dfrac{(3+i)(1+i)}{(1-i)(1+i)} = \\dfrac{3+4i-1}{2} = \\dfrac{2+4i}{2} = 1+2i$."
+    "explanation": "$\\dfrac{3+i}{1-i} = \\dfrac{(3+i)(1+i)}{(1-i)(1+i)} = \\dfrac{3+4i-1}{2} = \\dfrac{2+4i}{2} = 1+2i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q28",
@@ -606,21 +439,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Evaluate $(1+i)^2$.",
-    "options": {
-      "A": "$2$",
-      "B": "$-2$",
-      "C": "$2i$",
-      "D": "$-2i$"
-    },
     "option_a": "$2$",
     "option_b": "$-2$",
     "option_c": "$2i$",
     "option_d": "$-2i$",
     "correct_answer": "C",
-    "explanation": "$(1+i)^2 = 1 + 2i + i^2 = 1 + 2i - 1 = 2i$."
+    "explanation": "$(1+i)^2 = 1 + 2i + i^2 = 1 + 2i - 1 = 2i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q29",
@@ -628,21 +455,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Evaluate $(1+i)^4$.",
-    "options": {
-      "A": "$-4$",
-      "B": "$4$",
-      "C": "$4i$",
-      "D": "$-4i$"
-    },
     "option_a": "$-4$",
     "option_b": "$4$",
     "option_c": "$4i$",
     "option_d": "$-4i$",
     "correct_answer": "A",
-    "explanation": "$(1+i)^4 = \\left((1+i)^2\\right)^2 = (2i)^2 = 4i^2 = -4$."
+    "explanation": "$(1+i)^4 = \\left((1+i)^2\\right)^2 = (2i)^2 = 4i^2 = -4$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q30",
@@ -650,21 +471,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find the square roots of $-9$.",
-    "options": {
-      "A": "$\\pm 9i$",
-      "B": "$\\pm 3$",
-      "C": "$3i$ only",
-      "D": "$\\pm 3i$"
-    },
     "option_a": "$\\pm 9i$",
     "option_b": "$\\pm 3$",
     "option_c": "$3i$ only",
     "option_d": "$\\pm 3i$",
     "correct_answer": "D",
-    "explanation": "$z^2 = -9 \\implies z = \\pm \\sqrt{-9} = \\pm 3i$."
+    "explanation": "$z^2 = -9 \\implies z = \\pm \\sqrt{-9} = \\pm 3i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q31",
@@ -672,21 +487,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Solve $z^2=8i$ for $z$.",
-    "options": {
-      "A": "$\\pm (4+i)$",
-      "B": "$\\pm (2+2i)$",
-      "C": "$\\pm (2-2i)$",
-      "D": "$\\pm 4i$"
-    },
     "option_a": "$\\pm (4+i)$",
     "option_b": "$\\pm (2+2i)$",
     "option_c": "$\\pm (2-2i)$",
     "option_d": "$\\pm 4i$",
     "correct_answer": "B",
-    "explanation": "Let $z=x+iy$. $(x+iy)^2 = x^2-y^2+2xyi = 8i \\implies x^2-y^2=0, 2xy=8 \\implies x=y=\\pm 2$. Thus $z=\\pm(2+2i)$."
+    "explanation": "Let $z=x+iy$. $(x+iy)^2 = x^2-y^2+2xyi = 8i \\implies x^2-y^2=0, 2xy=8 \\implies x=y=\\pm 2$. Thus $z=\\pm(2+2i)$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q32",
@@ -694,21 +503,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find the square roots of $3+4i$.",
-    "options": {
-      "A": "$\\pm (2+i)$",
-      "B": "$\\pm (1+2i)$",
-      "C": "$2\\pm i$",
-      "D": "$\\pm (3+i)$"
-    },
     "option_a": "$\\pm (2+i)$",
     "option_b": "$\\pm (1+2i)$",
     "option_c": "$2\\pm i$",
     "option_d": "$\\pm (3+i)$",
     "correct_answer": "A",
-    "explanation": "$(2+i)^2 = 4 + 4i + i^2 = 3+4i$, so the square roots are $\\pm(2+i)$."
+    "explanation": "$(2+i)^2 = 4 + 4i + i^2 = 3+4i$, so the square roots are $\\pm(2+i)$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q33",
@@ -716,21 +519,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Solve $x^2+4=0$.",
-    "options": {
-      "A": "$x=\\pm 4i$",
-      "B": "$x=\\pm 2$",
-      "C": "$x=\\pm 2i$",
-      "D": "$x=-4$"
-    },
     "option_a": "$x=\\pm 4i$",
     "option_b": "$x=\\pm 2$",
     "option_c": "$x=\\pm 2i$",
     "option_d": "$x=-4$",
     "correct_answer": "C",
-    "explanation": "$x^2 = -4 \\implies x = \\pm \\sqrt{-4} = \\pm 2i$."
+    "explanation": "$x^2 = -4 \\implies x = \\pm \\sqrt{-4} = \\pm 2i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q34",
@@ -738,21 +535,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find the roots of $x^2-6x+13=0$.",
-    "options": {
-      "A": "$3\\pm 2i$",
-      "B": "$-3\\pm 2i$",
-      "C": "$6\\pm i$",
-      "D": "$3\\pm 4i$"
-    },
     "option_a": "$3\\pm 2i$",
     "option_b": "$-3\\pm 2i$",
     "option_c": "$6\\pm i$",
     "option_d": "$3\\pm 4i$",
     "correct_answer": "A",
-    "explanation": "$x = \\dfrac{6\\pm \\sqrt{36-52}}{2} = \\dfrac{6\\pm \\sqrt{-16}}{2} = \\dfrac{6\\pm 4i}{2} = 3\\pm 2i$."
+    "explanation": "$x = \\dfrac{6\\pm \\sqrt{36-52}}{2} = \\dfrac{6\\pm \\sqrt{-16}}{2} = \\dfrac{6\\pm 4i}{2} = 3\\pm 2i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q35",
@@ -760,21 +551,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find the discriminant of $x^2+2x+5=0$.",
-    "options": {
-      "A": "$16$",
-      "B": "$-4$",
-      "C": "$24$",
-      "D": "$-16$"
-    },
     "option_a": "$16$",
     "option_b": "$-4$",
     "option_c": "$24$",
     "option_d": "$-16$",
     "correct_answer": "D",
-    "explanation": "$D = b^2-4ac = 2^2 - 4(1)(5) = 4 - 20 = -16$."
+    "explanation": "$D = b^2-4ac = 2^2 - 4(1)(5) = 4 - 20 = -16$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q36",
@@ -782,21 +567,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "A monic quadratic equation has sum of roots $4+2i$. Its coefficient of $x$ is:",
-    "options": {
-      "A": "$4+2i$",
-      "B": "$-4-2i$",
-      "C": "$-4+2i$",
-      "D": "$4-2i$"
-    },
     "option_a": "$4+2i$",
     "option_b": "$-4-2i$",
     "option_c": "$-4+2i$",
     "option_d": "$4-2i$",
     "correct_answer": "B",
-    "explanation": "In $x^2 - (\\text{sum})x + \\text{product} = 0$, the coefficient of $x$ is $-(4+2i) = -4-2i$."
+    "explanation": "In $x^2 - (\\text{sum})x + \\text{product} = 0$, the coefficient of $x$ is $-(4+2i) = -4-2i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q37",
@@ -804,21 +583,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "A monic quadratic equation has product of roots $5-i$. Its constant term is:",
-    "options": {
-      "A": "$5-i$",
-      "B": "$-5+i$",
-      "C": "$5+i$",
-      "D": "$-5-i$"
-    },
     "option_a": "$5-i$",
     "option_b": "$-5+i$",
     "option_c": "$5+i$",
     "option_d": "$-5-i$",
     "correct_answer": "A",
-    "explanation": "In $x^2 - Sx + P = 0$, the constant term is exactly the product $P = 5-i$."
+    "explanation": "In $x^2 - Sx + P = 0$, the constant term is exactly the product $P = 5-i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q38",
@@ -826,21 +599,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "If $z=2i$, evaluate $(z-1)(z+1)$.",
-    "options": {
-      "A": "$-3$",
-      "B": "$3$",
-      "C": "$-5$",
-      "D": "$5$"
-    },
     "option_a": "$-3$",
     "option_b": "$3$",
     "option_c": "$-5$",
     "option_d": "$5$",
     "correct_answer": "C",
-    "explanation": "$(z-1)(z+1) = z^2-1 = (2i)^2-1 = -4-1 = -5$."
+    "explanation": "$(z-1)(z+1) = z^2-1 = (2i)^2-1 = -4-1 = -5$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q39",
@@ -848,21 +615,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "If $|z_1|=3$ and $|z_2|=4$, find $|z_1z_2|$.",
-    "options": {
-      "A": "$7$",
-      "B": "$1$",
-      "C": "$64$",
-      "D": "$12$"
-    },
     "option_a": "$7$",
     "option_b": "$1$",
     "option_c": "$64$",
     "option_d": "$12$",
     "correct_answer": "D",
-    "explanation": "$|z_1z_2| = |z_1||z_2| = 3 \\times 4 = 12$."
+    "explanation": "$|z_1z_2| = |z_1||z_2| = 3 \\times 4 = 12$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q40",
@@ -870,21 +631,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "If $|z_1|=5$ and $|z_2|=2$, find $\\left|\\dfrac{z_1}{z_2}\\right|$.",
-    "options": {
-      "A": "$\\frac{5}{2}$",
-      "B": "$\\frac{2}{5}$",
-      "C": "$10$",
-      "D": "$3$"
-    },
     "option_a": "$\\frac{5}{2}$",
     "option_b": "$\\frac{2}{5}$",
     "option_c": "$10$",
     "option_d": "$3$",
     "correct_answer": "A",
-    "explanation": "$\\left|\\dfrac{z_1}{z_2}\\right| = \\dfrac{|z_1|}{|z_2|} = \\frac{5}{2}$."
+    "explanation": "$\\left|\\dfrac{z_1}{z_2}\\right| = \\dfrac{|z_1|}{|z_2|} = \\frac{5}{2}$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q41",
@@ -892,21 +647,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Evaluate $\\overline{\\left( \\dfrac{z_1}{z_2} \\right)}$.",
-    "options": {
-      "A": "$\\frac{z_1}{\\bar{z}_2}$",
-      "B": "$\\frac{\\bar{z}_1}{\\bar{z}_2}$",
-      "C": "$\\frac{\\bar{z}_2}{\\bar{z}_1}$",
-      "D": "$\\frac{z_2}{z_1}$"
-    },
     "option_a": "$\\frac{z_1}{\\bar{z}_2}$",
     "option_b": "$\\frac{\\bar{z}_1}{\\bar{z}_2}$",
     "option_c": "$\\frac{\\bar{z}_2}{\\bar{z}_1}$",
     "option_d": "$\\frac{z_2}{z_1}$",
     "correct_answer": "B",
-    "explanation": "The complex conjugate distributes over division: $\\overline{\\left(\\frac{z_1}{z_2}\\right)} = \\frac{\\bar{z}_1}{\\bar{z}_2}$."
+    "explanation": "The complex conjugate distributes over division: $\\overline{\\left(\\frac{z_1}{z_2}\\right)} = \\frac{\\bar{z}_1}{\\bar{z}_2}$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q42",
@@ -914,21 +663,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "If $|z|=1$, then $\\dfrac{1}{z}$ equals:",
-    "options": {
-      "A": "$-z$",
-      "B": "$z$",
-      "C": "$\\bar{z}$",
-      "D": "$-\\bar{z}$"
-    },
     "option_a": "$-z$",
     "option_b": "$z$",
     "option_c": "$\\bar{z}$",
     "option_d": "$-\\bar{z}$",
     "correct_answer": "C",
-    "explanation": "Since $z\\bar{z} = |z|^2 = 1$, dividing both sides by $z$ yields $\\bar{z} = \\frac{1}{z}$."
+    "explanation": "Since $z\\bar{z} = |z|^2 = 1$, dividing both sides by $z$ yields $\\bar{z} = \\frac{1}{z}$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q43",
@@ -936,21 +679,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "If $z=-3+4i$, find $|\\bar{z}|$.",
-    "options": {
-      "A": "$5$",
-      "B": "$1$",
-      "C": "$7$",
-      "D": "$25$"
-    },
     "option_a": "$5$",
     "option_b": "$1$",
     "option_c": "$7$",
     "option_d": "$25$",
     "correct_answer": "A",
-    "explanation": "$|\\bar{z}| = |z| = \\sqrt{(-3)^2 + 4^2} = \\sqrt{25} = 5$."
+    "explanation": "$|\\bar{z}| = |z| = \\sqrt{(-3)^2 + 4^2} = \\sqrt{25} = 5$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q44",
@@ -958,21 +695,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "If $z_1=1+2i$ and $z_2=2-i$, find $|z_1+z_2|$.",
-    "options": {
-      "A": "$\\sqrt{5}$",
-      "B": "$4$",
-      "C": "$10$",
-      "D": "$\\sqrt{10}$"
-    },
     "option_a": "$\\sqrt{5}$",
     "option_b": "$4$",
     "option_c": "$10$",
     "option_d": "$\\sqrt{10}$",
     "correct_answer": "D",
-    "explanation": "$z_1+z_2 = (1+2) + (2-1)i = 3+i$, so $|z_1+z_2| = \\sqrt{3^2+1^2} = \\sqrt{10}$."
+    "explanation": "$z_1+z_2 = (1+2) + (2-1)i = 3+i$, so $|z_1+z_2| = \\sqrt{3^2+1^2} = \\sqrt{10}$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q45",
@@ -980,21 +711,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find $|(3+4i)(1-i)|$.",
-    "options": {
-      "A": "$5$",
-      "B": "$5\\sqrt{2}$",
-      "C": "$10$",
-      "D": "$\\sqrt{2}$"
-    },
     "option_a": "$5$",
     "option_b": "$5\\sqrt{2}$",
     "option_c": "$10$",
     "option_d": "$\\sqrt{2}$",
     "correct_answer": "B",
-    "explanation": "$|(3+4i)(1-i)| = |3+4i| \\cdot |1-i| = 5 \\cdot \\sqrt{1^2+(-1)^2} = 5\\sqrt{2}$."
+    "explanation": "$|(3+4i)(1-i)| = |3+4i| \\cdot |1-i| = 5 \\cdot \\sqrt{1^2+(-1)^2} = 5\\sqrt{2}$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q46",
@@ -1002,21 +727,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "Find $\\overline{(2-3i)^2}$.",
-    "options": {
-      "A": "$-5-12i$",
-      "B": "$5+12i$",
-      "C": "$-5+12i$",
-      "D": "$5-12i$"
-    },
     "option_a": "$-5-12i$",
     "option_b": "$5+12i$",
     "option_c": "$-5+12i$",
     "option_d": "$5-12i$",
     "correct_answer": "C",
-    "explanation": "$(2-3i)^2 = 4 - 12i - 9 = -5-12i$. Taking the conjugate gives $-5+12i$."
+    "explanation": "$(2-3i)^2 = 4 - 12i - 9 = -5-12i$. Taking the conjugate gives $-5+12i$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q47",
@@ -1024,21 +743,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "If $z+\\bar{z}=0$, then $z$ is:",
-    "options": {
-      "A": "Purely imaginary",
-      "B": "Purely real",
-      "C": "Positive real",
-      "D": "Equal to $1$"
-    },
     "option_a": "Purely imaginary",
     "option_b": "Purely real",
     "option_c": "Positive real",
     "option_d": "Equal to $1$",
     "correct_answer": "A",
-    "explanation": "$z+\\bar{z} = 2\\operatorname{Re}(z) = 0 \\implies \\operatorname{Re}(z)=0$, so $z$ is purely imaginary (or zero)."
+    "explanation": "$z+\\bar{z} = 2\\operatorname{Re}(z) = 0 \\implies \\operatorname{Re}(z)=0$, so $z$ is purely imaginary (or zero).",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q48",
@@ -1046,21 +759,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "If $z-\\bar{z}=0$, then $z$ is:",
-    "options": {
-      "A": "Purely imaginary",
-      "B": "Nonreal",
-      "C": "Zero only",
-      "D": "Real"
-    },
     "option_a": "Purely imaginary",
     "option_b": "Nonreal",
     "option_c": "Zero only",
     "option_d": "Real",
     "correct_answer": "D",
-    "explanation": "$z-\\bar{z} = 2i\\operatorname{Im}(z) = 0 \\implies \\operatorname{Im}(z)=0$, so $z$ is real."
+    "explanation": "$z-\\bar{z} = 2i\\operatorname{Im}(z) = 0 \\implies \\operatorname{Im}(z)=0$, so $z$ is real.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q49",
@@ -1068,21 +775,15 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "For $z=4+3i$, evaluate $\\dfrac{z+\\bar{z}}{2}$.",
-    "options": {
-      "A": "$3$",
-      "B": "$4$",
-      "C": "$4+3i$",
-      "D": "$3i$"
-    },
     "option_a": "$3$",
     "option_b": "$4$",
     "option_c": "$4+3i$",
     "option_d": "$3i$",
     "correct_answer": "B",
-    "explanation": "$\\dfrac{z+\\bar{z}}{2} = \\operatorname{Re}(z) = 4$."
+    "explanation": "$\\dfrac{z+\\bar{z}}{2} = \\operatorname{Re}(z) = 4$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q50",
@@ -1090,20 +791,14 @@ export const C11_CH1_ADVANCED_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced",
     "question": "For $z=4+3i$, evaluate $\\dfrac{z-\\bar{z}}{2i}$.",
-    "options": {
-      "A": "$4$",
-      "B": "$3i$",
-      "C": "$3$",
-      "D": "$-3$"
-    },
     "option_a": "$4$",
     "option_b": "$3i$",
     "option_c": "$3$",
     "option_d": "$-3$",
     "correct_answer": "C",
-    "explanation": "$\\dfrac{z-\\bar{z}}{2i} = \\operatorname{Im}(z) = 3$."
+    "explanation": "$\\dfrac{z-\\bar{z}}{2i} = \\operatorname{Im}(z) = 3$.",
+    "difficulty": "Medium",
+    "difficulty_tier": "Advanced"
   }
 ];

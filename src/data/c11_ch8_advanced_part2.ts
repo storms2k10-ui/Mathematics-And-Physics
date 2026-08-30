@@ -6,18 +6,20 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "For the functions in Question 50, $g\\circ f$x$=$:",
+    "question": "If $f(x)=x^2$ and $g(x)=x+2$, find $(g\\circ f)(x)$.",
     "options": {
       "A": "$x^2+2$",
-      "B": "$$x+2$^2$",
-      "C": "$x^2+4x+2$",
-      "D": "$2x^2+2$"
+      "B": "$(x+2)^2$",
+      "C": "$x^2+4$",
+      "D": "$x+4$"
     },
-    "correct_answer": "A",
-    "explanation": "$g\\circ f$x$=g$1$=g$x^2$=x^2+2$.",
+    "correct_option": "A",
+    "answer": "$x^2+2$",
+    "hint": "(g o f)(x) = g(f(x)).",
+    "explanation": "$(g\\circ f)(x) = g(f(x)) = g(x^2) = x^2+2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
+    "formula": "(g\\circ f)(x) = g(f(x))"
   },
   {
     "id": "c11-ch8-adv-q52",
@@ -32,10 +34,10 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$25$"
     },
     "correct_answer": "C",
-    "explanation": "$g$2$=2$2$+4=8$. Then $f\\circ g$2$=f$1$=f$8$=3$8$-1=23$.",
+    "explanation": "$g$2$=2$2$+4=8$. Then $f\\circ g$2$=f(g(x))=f$8$=3$8$-1=23$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
+    "formula": "(f \\circ g)(x) = f(g(x)), \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
   },
   {
     "id": "c11-ch8-adv-q53",
@@ -53,7 +55,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "explanation": "$g\\circ f$x$=g$1$=g$x^2+1$=$x^2+1$-3=x^2-2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
+    "formula": "(f \\circ g)(x) = f(g(x)), \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
   },
   {
     "id": "c11-ch8-adv-q54",
@@ -62,16 +64,16 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch8",
     "question": "If f(x)$=\\sqrt{x}$ and g(x)$=x-4$, the domain of $f\\circ g$ is:",
     "options": {
-      "A": "$x\\g \ne 0$",
+      "A": "$x\\ge 0$",
       "B": "$x>4$",
       "C": "$x\\ge4$",
       "D": "$x\\le4$"
     },
     "correct_answer": "C",
-    "explanation": "$f\\circ g$x$=f$1$=\\sqrt{x-4}$, which requires $x-4\\g \ne 0 \\implies x\\ge4$, i.e. $[4,\\infty)$.",
+    "explanation": "$f\\circ g$x$=f(g(x))=\\sqrt{x-4}$, which requires $x-4\\ge 0 \\implies x\\ge4$, i.e. $[4,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
+    "formula": "(f \\circ g)(x) = f(g(x)), \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
   },
   {
     "id": "c11-ch8-adv-q55",
@@ -86,10 +88,10 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$x+2$"
     },
     "correct_answer": "B",
-    "explanation": "$f\\circ g$x$=f$1$=f$x-2$=\\dfrac{1}{x-2}$.",
+    "explanation": "$f\\circ g$x$=f(g(x))=f$x-2$=\\dfrac{1}{x-2}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
+    "formula": "(f \\circ g)(x) = f(g(x)), \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
   },
   {
     "id": "c11-ch8-adv-q56",
@@ -104,17 +106,17 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$x<2$"
     },
     "correct_answer": "B",
-    "explanation": "The denominator cannot be zero: $x-2\\n \ne 0 \\implies x\\ne2$, so the domain is $\\mathbb{R}\\setminus\\{2\\}$.",
+    "explanation": "The denominator cannot be zero: $x-2\\ne 0 \\implies x\\ne2$, so the domain is $\\mathbb{R}\\setminus\\{2\\}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
+    "formula": "(f \\circ g)(x) = f(g(x)), \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
   },
   {
     "id": "c11-ch8-adv-q57",
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=2x$, g(x)$=x+1$, and h(x)$=x^2$, then $h\\circ g\\circ f$1$=$:",
+    "question": "If f(x)$=2x$, g(x)$=x+1$, and h(x)$=x^2$, then $h\\circ g\\circ f(g(x))=$:",
     "options": {
       "A": "$4$",
       "B": "$6$",
@@ -122,10 +124,10 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$16$"
     },
     "correct_answer": "C",
-    "explanation": "$f$1$=2$1$=2$, $g$1$=g$2$=3$, and $h(g$1$)=h$3$=3^2=9$.",
+    "explanation": "$f(g(x))=2$1$=2$, $g$1$=g$2$=3$, and $h(g$1$)=h$3$=3^2=9$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
+    "formula": "(f \\circ g)(x) = f(g(x)), \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
   },
   {
     "id": "c11-ch8-adv-q58",
@@ -276,7 +278,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=\\dfrac{1}{x}$, $x\\n \ne 0$, then $f^{-1}$x$=$:",
+    "question": "If f(x)$=\\dfrac{1}{x}$, $x\\ne 0$, then $f^{-1}$x$=$:",
     "options": {
       "A": "$x$",
       "B": "$-x$",
@@ -374,7 +376,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$f^{-1}$x$=\\dfrac{1}{x^2}$"
     },
     "correct_answer": "B",
-    "explanation": "For $x\\g \ne 0$, $y=x^2 \\implies x=\\sqrt{y}$ (the principal square root). Thus $f^{-1}$x$=\\sqrt{x}$.",
+    "explanation": "For $x\\ge 0$, $y=x^2 \\implies x=\\sqrt{y}$ (the principal square root). Thus $f^{-1}$x$=\\sqrt{x}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -392,7 +394,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$-x^2$"
     },
     "correct_answer": "B",
-    "explanation": "For $x\\l \ne 0$, $y=x^2 \\implies x=-\\sqrt{y}$. Thus $f^{-1}$x$=-\\sqrt{x}$ for $x\\g \ne 0$.",
+    "explanation": "For $x\\le 0$, $y=x^2 \\implies x=-\\sqrt{y}$. Thus $f^{-1}$x$=-\\sqrt{x}$ for $x\\ge 0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -438,7 +440,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=ax+b$, $a\\n \ne 0$, then $f^{-1}$x$=$:",
+    "question": "If f(x)$=ax+b$, $a\\ne 0$, then $f^{-1}$x$=$:",
     "options": {
       "A": "$\\dfrac{x+b}{a}$",
       "B": "$\\dfrac{x-b}{a}$",
@@ -518,7 +520,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "f(x)$=x^3$"
     },
     "correct_answer": "C",
-    "explanation": "$f$1$=-$-x$=x$. Thus $f^{-1}$x$=f$x$=-x$.",
+    "explanation": "$f(g(x))=-$-x$=x$. Thus $f^{-1}$x$=f$x$=-x$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -528,7 +530,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=\\dfrac{3}{x}$, $x\\n \ne 0$, then $f\\circ f$x$=$:",
+    "question": "If f(x)$=\\dfrac{3}{x}$, $x\\ne 0$, then $f\\circ f$x$=$:",
     "options": {
       "A": "$3x$",
       "B": "$x$",
@@ -536,7 +538,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$\\dfrac{1}{x}$"
     },
     "correct_answer": "B",
-    "explanation": "$f$1$=\\dfrac{3}{3/x}=x$.",
+    "explanation": "$f(g(x))=\\dfrac{3}{3/x}=x$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -770,7 +772,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "No maximum"
     },
     "correct_answer": "C",
-    "explanation": "Since $-2$x+1$^2\\l \ne 0$, the expression attains its maximum value $7$ at $x=-1$.",
+    "explanation": "Since $-2$x+1$^2\\le 0$, the expression attains its maximum value $7$ at $x=-1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "y = a(x-h)^2 + k, \\quad \\text{Vertex: } (h,k)"
@@ -842,7 +844,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "B",
-    "explanation": "$$x+2$^2\\g \ne 0 \\implies y=$x+2$^2+1\\ge1$. Thus the range is $[1,\\infty)$.",
+    "explanation": "$$x+2$^2\\ge 0 \\implies y=$x+2$^2+1\\ge1$. Thus the range is $[1,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Range}(f) = \\{f(x) : x \\in \\text{Dom}(f)\\}"
@@ -860,7 +862,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "B",
-    "explanation": "$-3$x-1$^2\\l \ne 0 \\implies y\\le4$. Hence the range is $(-\\infty,4]$.",
+    "explanation": "$-3$x-1$^2\\le 0 \\implies y\\le4$. Hence the range is $(-\\infty,4]$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Range}(f) = \\{f(x) : x \\in \\text{Dom}(f)\\}"

@@ -1,10 +1,5 @@
 import { Question } from '../types';
 
-// ============================================================================
-// 🧭 CLASS 11 MATHEMATICS — CHAPTER 3: VECTORS
-// ADVANCED DIFFICULTY TIER — PART 2 (QUESTIONS 51 to 100)
-// ============================================================================
-
 export const C11_CH3_ADVANCED_PART2: Question[] = [
   {
     "id": "c11-ch3-adv-q51",
@@ -203,16 +198,20 @@ export const C11_CH3_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch3",
-    "chapter": "Vectors",
-    "question": "For the vectors in Question 62, find $\\mathbf{a}-\\mathbf{b}$.",
-    "option_a": "$(3,1,7)$",
-    "option_b": "$(1,-1,1)$",
-    "option_c": "$(-1,3,-1)$",
-    "option_d": "$(-1,1,-1)$",
-    "correct_answer": "C",
-    "explanation": "$(1-2,2-(-1),3-4)=(-1,3,-1)$.",
-    "difficulty": "Medium",
-    "difficulty_tier": "Advanced"
+    "question": "If $\\mathbf{a}=3\\mathbf{i}+4\\mathbf{j}$ and $\\mathbf{b}=\\mathbf{i}-2\\mathbf{j}$, find $|\\mathbf{a}-\\mathbf{b}|$.",
+    "options": {
+      "A": "$2\\sqrt{10}$",
+      "B": "$5$",
+      "C": "$\\sqrt{40}$",
+      "D": "$2\\sqrt{5}$"
+    },
+    "correct_option": "A",
+    "answer": "$2\\sqrt{10}$",
+    "hint": "Find a - b then take square root of sum of squares.",
+    "explanation": "$\\mathbf{a}-\\mathbf{b} = 2\\mathbf{i}+6\\mathbf{j}$. Magnitude is $\\sqrt{2^2+6^2} = \\sqrt{40} = 2\\sqrt{10}$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced",
+    "formula": "|\\mathbf{v}| = \\sqrt{v_1^2+v_2^2}"
   },
   {
     "id": "c11-ch3-adv-q64",

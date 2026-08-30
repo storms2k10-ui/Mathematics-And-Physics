@@ -310,16 +310,20 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch4",
-    "chapter": "Sequence and Series",
-    "question": "For the GP in Question 119, find $a$.",
-    "option_a": "$3$",
-    "option_b": "$6$",
-    "option_c": "$2$",
-    "option_d": "$4$",
-    "correct_answer": "A",
-    "explanation": "$ar^2=12$, so $4a=12$ and $a=3$.",
+    "question": "If the arithmetic mean between two numbers $a$ and $b$ is $10$ and their geometric mean is $8$, find their harmonic mean (HM).",
+    "options": {
+      "A": "$6.4$",
+      "B": "$8$",
+      "C": "$12.5$",
+      "D": "$5.6$"
+    },
+    "correct_option": "A",
+    "answer": "$6.4$",
+    "hint": "Use G^2 = A * H.",
+    "explanation": "$H = \\dfrac{G^2}{A} = \\dfrac{8^2}{10} = \\dfrac{64}{10} = 6.4$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "G^2 = A \\cdot H"
   },
   {
     "id": "c11-ch4-adv-q121",
@@ -726,16 +730,20 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch4",
-    "chapter": "Sequence and Series",
-    "question": "For the GP in Question 145, find the first term.",
-    "option_a": "$6$",
-    "option_b": "$12$",
-    "option_c": "$3$",
-    "option_d": "$2$",
-    "correct_answer": "C",
-    "explanation": "$ar^2=12$ and $r=2$, so $4a=12$.",
+    "question": "Find the infinite geometric sum $\\sum_{n=1}^\\infty \\left(\\dfrac{1}{3}\\right)^n$.",
+    "options": {
+      "A": "$\\dfrac{1}{2}$",
+      "B": "$\\dfrac{1}{3}$",
+      "C": "$1$",
+      "D": "$\\dfrac{2}{3}$"
+    },
+    "correct_option": "A",
+    "answer": "$\\dfrac{1}{2}$",
+    "hint": "S_infty = a / (1 - r) with a = 1/3, r = 1/3.",
+    "explanation": "$S_\\infty = \\dfrac{1/3}{1 - 1/3} = \\dfrac{1/3}{2/3} = \\dfrac{1}{2}$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "S_\\infty = \\dfrac{a}{1-r}"
   },
   {
     "id": "c11-ch4-adv-q147",
@@ -758,16 +766,20 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch4",
-    "chapter": "Sequence and Series",
-    "question": "For the GP in Question 147, find $a$.",
-    "option_a": "$2$",
-    "option_b": "$3$",
-    "option_c": "$6$",
-    "option_d": "$1$",
-    "correct_answer": "A",
-    "explanation": "The second term is $ar=6$, so $a=6/3=2$.",
+    "question": "Find the sum of the series $1 + \\dfrac{1}{2} + \\dfrac{1}{4} + \\dfrac{1}{8} + \\dots$.",
+    "options": {
+      "A": "$2$",
+      "B": "$1$",
+      "C": "$\\dfrac{3}{2}$",
+      "D": "$4$"
+    },
+    "correct_option": "A",
+    "answer": "$2$",
+    "hint": "Infinite GP with a=1, r=1/2.",
+    "explanation": "$S = \\dfrac{1}{1 - 1/2} = 2$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "S_\\infty = \\dfrac{a}{1-r}"
   },
   {
     "id": "c11-ch4-adv-q149",

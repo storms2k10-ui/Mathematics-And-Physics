@@ -68,7 +68,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "$x>3$"
     },
     "correct_answer": "C",
-    "explanation": "The denominator cannot be zero. Hence $x-3\\n \ne 0$, so $x\\ne3$, giving domain $\\mathbb{R}\\setminus\\{3\\}$.",
+    "explanation": "The denominator cannot be zero. Hence $x-3\\ne 0$, so $x\\ne3$, giving domain $\\mathbb{R}\\setminus\\{3\\}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Dom}(f) = \\{x \\in \\mathbb{R} : f(x) \\in \\mathbb{R}\\}"
@@ -86,7 +86,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "B",
-    "explanation": "For a real square root, the radicand must be non-negative: $x-5\\g \ne 0 \\implies x\\ge5$, i.e. $[5,\\infty)$.",
+    "explanation": "For a real square root, the radicand must be non-negative: $x-5\\ge 0 \\implies x\\ge5$, i.e. $[5,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Dom}(f) = \\{x \\in \\mathbb{R} : f(x) \\in \\mathbb{R}\\}"
@@ -248,7 +248,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "$\\mathbb{R}\\setminus\\{-3,3\\}$"
     },
     "correct_answer": "A",
-    "explanation": "$9-x^2\\g \ne 0 \\implies x^2\\le9 \\implies -3\\le x\\le3$, which is $[-3,3]$.",
+    "explanation": "$9-x^2\\ge 0 \\implies x^2\\le9 \\implies -3\\le x\\le3$, which is $[-3,3]$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Dom}(f) = \\{x \\in \\mathbb{R} : f(x) \\in \\mathbb{R}\\}"
@@ -266,7 +266,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "C",
-    "explanation": "Since $x^2\\g \ne 0$, $x^2+4\\ge4$. The minimum value $4$ occurs at $x=0$, so the range is $[4,\\infty)$.",
+    "explanation": "Since $x^2\\ge 0$, $x^2+4\\ge4$. The minimum value $4$ occurs at $x=0$, so the range is $[4,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Range}(f) = \\{f(x) : x \\in \\text{Dom}(f)\\}"
@@ -284,7 +284,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "No maximum"
     },
     "correct_answer": "C",
-    "explanation": "Since $-x^2\\l \ne 0$, $2-x^2\\le2$. The maximum value is $2$, occurring at $x=0$.",
+    "explanation": "Since $-x^2\\le 0$, $2-x^2\\le2$. The maximum value is $2$, occurring at $x=0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Range}(f) = \\{f(x) : x \\in \\text{Dom}(f)\\}"
@@ -464,7 +464,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "$\\{1,4\\}$"
     },
     "correct_answer": "B",
-    "explanation": "Evaluating $f$ at each element: $f$-2$=4, f$-1$=1, f$0$=0, f$1$=1, f$2$=4$. The set of distinct values is $\\{0,1,4\\}$.",
+    "explanation": "Evaluating $f$ at each element: $f$-2$=4, f$-1$=1, f$0$=0, f(g(x))=1, f$2$=4$. The set of distinct values is $\\{0,1,4\\}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -492,7 +492,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The range of f(x)$=\\dfrac{1}{x}$, $x\\n \ne 0$, is:",
+    "question": "The range of f(x)$=\\dfrac{1}{x}$, $x\\ne 0$, is:",
     "options": {
       "A": "$\\mathbb{R}$",
       "B": "$[0,\\infty)$",
@@ -518,7 +518,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "$x>4$"
     },
     "correct_answer": "B",
-    "explanation": "$4-x\\g \ne 0 \\implies x\\le4$, which in interval notation is $(-\\infty,4]$.",
+    "explanation": "$4-x\\ge 0 \\implies x\\le4$, which in interval notation is $(-\\infty,4]$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Dom}(f) = \\{x \\in \\mathbb{R} : f(x) \\in \\mathbb{R}\\}"
@@ -536,7 +536,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "$[2,\\infty)$"
     },
     "correct_answer": "B",
-    "explanation": "$x^2-4\\g \ne 0 \\implies x^2\\ge4 \\implies x\\le-2$ or $x\\ge2$, i.e. $(-\\infty,-2]\\cup[2,\\infty)$.",
+    "explanation": "$x^2-4\\ge 0 \\implies x^2\\ge4 \\implies x\\le-2$ or $x\\ge2$, i.e. $(-\\infty,-2]\\cup[2,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Dom}(f) = \\{x \\in \\mathbb{R} : f(x) \\in \\mathbb{R}\\}"
@@ -582,7 +582,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "For f(x)$=ax+b$, if $f$1$=5$ and $f$3$=11$, then $a=$:",
+    "question": "For f(x)$=ax+b$, if $f(g(x))=5$ and $f$3$=11$, then $a=$:",
     "options": {
       "A": "$2$",
       "B": "$3$",
@@ -600,18 +600,20 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "In Question 33, the value of $b$ is:",
+    "question": "If $f(x)=ax+b$, $f(1)=5$, and $f(3)=11$, find $a$.",
     "options": {
-      "A": "$1$",
+      "A": "$3$",
       "B": "$2$",
-      "C": "$3$",
-      "D": "$4$"
+      "C": "$4$",
+      "D": "$5$"
     },
-    "correct_answer": "B",
-    "explanation": "Using $f$1$=5 \\implies 3$1$+b=5 \\implies b=2$.",
+    "correct_option": "A",
+    "answer": "$3$",
+    "hint": "Subtract f(1) from f(3) to get 2a.",
+    "explanation": "$f(3)-f(1) = 2a = 11-5=6 \\implies a = 3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
+    "formula": "a = \\dfrac{f(x_2)-f(x_1)}{x_2-x_1}"
   },
   {
     "id": "c11-ch8-adv-q35",
@@ -662,7 +664,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "$\\mathbb{R}\\setminus\\{0\\}$"
     },
     "correct_answer": "B",
-    "explanation": "On $[0,\\infty)$, f(x)$=x^2$ is strictly increasing, so $x_1^2=x_2^2 \\implies x_1=x_2$ for $x_1,x_2\\g \ne 0$.",
+    "explanation": "On $[0,\\infty)$, f(x)$=x^2$ is strictly increasing, so $x_1^2=x_2^2 \\implies x_1=x_2$ for $x_1,x_2\\ge 0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -716,7 +718,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "Neither one-one nor onto"
     },
     "correct_answer": "D",
-    "explanation": "Not one-one since $f$-1$=f$1$=1$. Not onto $\\mathbb{R}$ since negative reals have no preimages.",
+    "explanation": "Not one-one since $f$-1$=f(g(x))=1$. Not onto $\\mathbb{R}$ since negative reals have no preimages.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -834,18 +836,20 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "For the functions in Question 46, $f-g$x$=$:",
+    "question": "If $f(x)=2x+3$ and $g(x)=x^2$, find $(f-g)(x)$.",
     "options": {
-      "A": "$x^2-2x-3$",
-      "B": "$2x+3-x^2$",
-      "C": "$2x^3+3$",
-      "D": "$x^2+2x+3$"
+      "A": "$-x^2+2x+3$",
+      "B": "$x^2+2x+3$",
+      "C": "$x^2-2x-3$",
+      "D": "$-x^2-2x-3$"
     },
-    "correct_answer": "B",
-    "explanation": "$f-g$x$=f$x$-g$x$=$2x+3$-x^2=2x+3-x^2$.",
+    "correct_option": "A",
+    "answer": "$-x^2+2x+3$",
+    "hint": "(f - g)(x) = f(x) - g(x).",
+    "explanation": "$(f-g)(x) = f(x)-g(x) = (2x+3)-x^2 = -x^2+2x+3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
+    "formula": "(f-g)(x) = f(x)-g(x)"
   },
   {
     "id": "c11-ch8-adv-q48",
@@ -870,18 +874,20 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "For the functions in Question 48, $\\left(\\dfrac{f}{g}\\right)$x$$ equals:",
+    "question": "If $f(x)=x+1$ and $g(x)=x-1$, evaluate $(fg)(2)$.",
     "options": {
-      "A": "$\\dfrac{x-1}{x+1}$",
-      "B": "$\\dfrac{x+1}{x-1}$, $x\\ne1$",
+      "A": "$3$",
+      "B": "$4$",
       "C": "$1$",
-      "D": "$x^2-1$"
+      "D": "$5$"
     },
-    "correct_answer": "B",
-    "explanation": "$\\left(\\dfrac{f}{g}\\right)(x)=\\dfrac{f(x)}{g(x)}=\\dfrac{x+1}{x-1}$.",
+    "correct_option": "A",
+    "answer": "$3$",
+    "hint": "(fg)(x) = x^2 - 1.",
+    "explanation": "$(fg)(2) = (2+1)(2-1) = (3)(1) = 3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
+    "formula": "(fg)(x) = f(x)g(x)"
   },
   {
     "id": "c11-ch8-adv-q50",
@@ -892,13 +898,13 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
     "options": {
       "A": "$x^2+2$",
       "B": "$x^2+4$",
-      "C": "$$x+2$^2$",
+      "C": "$(x+2)^2$",
       "D": "$2x^2$"
     },
     "correct_answer": "C",
-    "explanation": "$f\\circ g$x$=f$1$=f$x+2$=$x+2$^2$.",
+    "explanation": "$f\\circ g$x$=f(g(x))=f$x+2$=$x+2$^2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
+    "formula": "(f \\circ g)(x) = f(g(x)), \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
   }
 ];

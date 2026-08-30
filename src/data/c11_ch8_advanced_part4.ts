@@ -60,7 +60,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=x^2+2x$, then $f$1$=f$a$$ gives:",
+    "question": "If f(x)$=x^2+2x$, then $f(g(x))=f$a$$ gives:",
     "options": {
       "A": "$a=1$ only",
       "B": "$a=-3$ only",
@@ -68,7 +68,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$a=-1$ or $a=3$"
     },
     "correct_answer": "C",
-    "explanation": "$f$1$=1+2=3$. Then $a^2+2a=3 \\implies a^2+2a-3=0 \\implies $a-1$$a+3$=0 \\implies a=1$ or $a=-3$.",
+    "explanation": "$f(g(x))=1+2=3$. Then $a^2+2a=3 \\implies a^2+2a-3=0 \\implies $a-1$$a+3$=0 \\implies a=1$ or $a=-3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -150,7 +150,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=2x-1$ and $f$1$=6x+3$, then g(x)$=$:",
+    "question": "If f(x)$=2x-1$ and $f(g(x))=6x+3$, then g(x)$=$:",
     "options": {
       "A": "$3x+1$",
       "B": "$3x+2$",
@@ -158,7 +158,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$2x+3$"
     },
     "correct_answer": "B",
-    "explanation": "$f$1$=2g$x$-1=6x+3 \\implies 2g$x$=6x+4 \\implies g$x$=3x+2$.",
+    "explanation": "$f(g(x))=2g$x$-1=6x+3 \\implies 2g$x$=6x+4 \\implies g$x$=3x+2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -171,12 +171,12 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
     "question": "If f(x)$=x^2$ and g(x)$=\\sqrt{x}$, then $f\\circ g$x$=x$ holds for:",
     "options": {
       "A": "$x\\in\\mathbb{R}$",
-      "B": "$x\\g \ne 0$",
-      "C": "$x\\l \ne 0$",
-      "D": "$x\\n \ne 0$"
+      "B": "$x\\ge 0$",
+      "C": "$x\\le 0$",
+      "D": "$x\\ne 0$"
     },
     "correct_answer": "B",
-    "explanation": "$f\\circ g$x$=$\\sqrt{x}$^2=x$, but $\\sqrt{x}$ is only defined for real numbers when $x\\g \ne 0$.",
+    "explanation": "$f\\circ g$x$=$\\sqrt{x}$^2=x$, but $\\sqrt{x}$ is only defined for real numbers when $x\\ge 0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -186,18 +186,20 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "For the functions in Question 160, $g\\circ f$x$=$:",
+    "question": "If $f(x)=x^2$ and $g(x)=\\sqrt{x}$, then $(g\\circ f)(x)=x$ holds for which domain?",
     "options": {
-      "A": "$x$ for all $x\\in\\mathbb{R}$",
-      "B": "$x^2$",
-      "C": "$|x|$",
-      "D": "$-x$"
+      "A": "$x\\ge0$",
+      "B": "$\\mathbb{R}$",
+      "C": "$x\\le0$",
+      "D": "$x>1$"
     },
-    "correct_answer": "C",
-    "explanation": "$g\\circ f$x$=g$x^2$=\\sqrt{x^2}=|x|$ for all $x\\in\\mathbb{R}$.",
+    "correct_option": "A",
+    "answer": "$x\\ge0$",
+    "hint": "sqrt(x^2) = |x| = x only when x >= 0.",
+    "explanation": "$(g\\circ f)(x) = \\sqrt{x^2} = |x|$, which equals $x$ if and only if $x\\ge0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
+    "formula": "\\sqrt{x^2} = |x|"
   },
   {
     "id": "c11-ch8-adv-q162",
@@ -518,7 +520,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$[-2,1]$"
     },
     "correct_answer": "B",
-    "explanation": "The radicand must be non-negative $\\dfrac{x-1}{x+2}\\g \ne 0$ and denominator non-zero $x\\ne-2$. Sign chart gives $(-\\infty,-2)\\cup[1,\\infty)$.",
+    "explanation": "The radicand must be non-negative $\\dfrac{x-1}{x+2}\\ge 0$ and denominator non-zero $x\\ne-2$. Sign chart gives $(-\\infty,-2)\\cup[1,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Dom}(f) = \\{x \\in \\mathbb{R} : f(x) \\in \\mathbb{R}\\}"
@@ -554,7 +556,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$[5,\\infty)$"
     },
     "correct_answer": "A",
-    "explanation": "$x-1\\g \ne 0 \\implies x\\ge1$ and $5-x\\g \ne 0 \\implies x\\le5$. The intersection is $[1,5]$.",
+    "explanation": "$x-1\\ge 0 \\implies x\\ge1$ and $5-x\\ge 0 \\implies x\\le5$. The intersection is $[1,5]$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Dom}(f) = \\{x \\in \\mathbb{R} : f(x) \\in \\mathbb{R}\\}"
@@ -626,7 +628,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "A",
-    "explanation": "Completing the square: f(x)$=$(x-2)^2+3$. Since $$(x-2)^2\\g \ne 0$, f(x)$\\ge3$. Thus range is $[3,\\infty)$.",
+    "explanation": "Completing the square: f(x)$=$(x-2)^2+3$. Since $$(x-2)^2\\ge 0$, f(x)$\\ge3$. Thus range is $[3,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Range}(f) = \\{f(x) : x \\in \\text{Dom}(f)\\}"
@@ -716,10 +718,10 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$\\mathbb{R}\\setminus\\{-3,3\\}$"
     },
     "correct_answer": "B",
-    "explanation": "$f\\circ g$x$=\\sqrt{x^2-9}$, which requires $x^2-9\\g \ne 0 \\implies |x|\\ge3 \\implies x\\le-3$ or $x\\ge3$.",
+    "explanation": "$f\\circ g$x$=\\sqrt{x^2-9}$, which requires $x^2-9\\ge 0 \\implies |x|\\ge3 \\implies x\\le-3$ or $x\\ge3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
+    "formula": "(f \\circ g)(x) = f(g(x)), \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
   },
   {
     "id": "c11-ch8-adv-q191",
@@ -734,28 +736,30 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "Neither $0$ nor $1$"
     },
     "correct_answer": "C",
-    "explanation": "$g(x)$ requires $x\\n \ne 0$. Furthermore, $g(x)$ cannot equal $1$, so $1/x\\ne1 \\implies x\\ne1$. Thus both $0$ and $1$ are excluded.",
+    "explanation": "$g(x)$ requires $x\\ne 0$. Furthermore, $g(x)$ cannot equal $1$, so $1/x\\ne1 \\implies x\\ne1$. Thus both $0$ and $1$ are excluded.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
+    "formula": "(f \\circ g)(x) = f(g(x)), \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
   },
   {
     "id": "c11-ch8-adv-q192",
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "For the functions in Question 191, $f\\circ g$x$=$:",
+    "question": "If $f(x)=\\dfrac{1}{x-1}$ and $g(x)=\\dfrac{1}{x}$, the domain of $(g\\circ f)(x)$ excludes:",
     "options": {
-      "A": "$\\dfrac{1}{x-1}$",
-      "B": "$\\dfrac{x}{1-x}$",
-      "C": "$\\dfrac{x}{x-1}$",
-      "D": "$1-x$"
+      "A": "$x=1$",
+      "B": "$x=0$",
+      "C": "$x=-1$",
+      "D": "$x=2$"
     },
-    "correct_answer": "B",
-    "explanation": "$f\\circ g$x$=\\dfrac{1}{\\dfrac{1}{x}-1}=\\dfrac{1}{\\dfrac{1-x}{x}}=\\dfrac{x}{1-x}$.",
+    "correct_option": "A",
+    "answer": "$x=1$",
+    "hint": "f(x) is undefined at x=1.",
+    "explanation": "$(g\\circ f)(x) = g(f(x)) = \\dfrac{1}{1/(x-1)} = x-1$. However, $f(x)$ requires $x\\ne1$, so the domain excludes $x=1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
+    "formula": "D_{g\\circ f} = \\{x\\in D_f : f(x)\\in D_g\\}"
   },
   {
     "id": "c11-ch8-adv-q193",
@@ -773,7 +777,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
     "explanation": "$f\\circ g$x$=3x+2$ and $g\\circ f$x$=3$x+2$=3x+6$. Setting $3x+2=3x+6 \\implies 2=6$, which is impossible.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "(f \\circ g)(x) = f$1$, \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
+    "formula": "(f \\circ g)(x) = f(g(x)), \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
   },
   {
     "id": "c11-ch8-adv-q194",
@@ -788,7 +792,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$6$"
     },
     "correct_answer": "C",
-    "explanation": "$f$1$=a$ax+b$+b=a^2x+b$a+1$=4x+3$. Equating linear coefficients gives $a^2=4$.",
+    "explanation": "$f(g(x))=a$ax+b$+b=a^2x+b$a+1$=4x+3$. Equating linear coefficients gives $a^2=4$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -798,18 +802,20 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "In Question 194, if $a=2$, then $b=$:",
+    "question": "If $f(x)=ax+b$ and $(f\\circ f)(x)=4x+3$, find $a^2$.",
     "options": {
-      "A": "$1$",
+      "A": "$4$",
       "B": "$2$",
-      "C": "$3$",
-      "D": "$-1$"
+      "C": "$16$",
+      "D": "$9$"
     },
-    "correct_answer": "A",
-    "explanation": "$b$a+1$=3 \\implies b$2+1$=3 \\implies 3b=3 \\implies b=1$.",
+    "correct_option": "A",
+    "answer": "$4$",
+    "hint": "f(f(x)) = a(ax+b)+b = a^2 x + (ab+b).",
+    "explanation": "$f(f(x)) = a^2 x + b(a+1) = 4x+3 \\implies a^2=4$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
+    "formula": "(f\\circ f)(x) = a^2 x + b(a+1)"
   },
   {
     "id": "c11-ch8-adv-q196",
@@ -824,7 +830,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$a=b$"
     },
     "correct_answer": "B",
-    "explanation": "$f$1$=a^2x+b$a+1$=x \\implies a^2=1$. Since $a\\ne1$, we must have $a=-1$.",
+    "explanation": "$f(g(x))=a^2x+b$a+1$=x \\implies a^2=1$. Since $a\\ne1$, we must have $a=-1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -899,6 +905,6 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
     "explanation": "For domain: $-2\\le x-3\\le4 \\implies 1\\le x\\le7$. For range: $1\\le f$x-3$\\le7 \\implies 2$1$-5\\le 2f$x-3$-5\\le 2$7$-5 \\implies -3\\le y\\le9$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "y = A f$1$ + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
+    "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
   }
 ];

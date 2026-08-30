@@ -1,9 +1,4 @@
-import { Question } from '../types';
-
-// ============================================================================
-// 📐 CLASS 11 MATHEMATICS — CHAPTER 1: COMPLEX NUMBERS
-// ADVANCED DIFFICULTY TIER — PART 4 (QUESTIONS 151 to 200)
-// ============================================================================
+import { Question } from "../types";
 
 export const C11_CH1_ADVANCED_PART4: Question[] = [
   {
@@ -12,21 +7,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z+\\bar{z}=2$ and $z\\bar{z}=2$, find $z^4+\\bar{z}^4$.",
-    "options": {
-      "A": "$8$",
-      "B": "$-8$",
-      "C": "$-4$",
-      "D": "$4$"
-    },
     "option_a": "$8$",
     "option_b": "$-8$",
     "option_c": "$-4$",
     "option_d": "$4$",
     "correct_answer": "B",
-    "explanation": "$z$ satisfies $z^2-2z+2=0 \\implies z=1\\pm i$. Since $(1\\pm i)^2=\\pm 2i$, $(1\\pm i)^4 = (\\pm 2i)^2 = -4$. Thus $z^4+\\bar{z}^4 = -4 + (-4) = -8$."
+    "explanation": "$z$ satisfies $z^2-2z+2=0 \\implies z=1\\pm i$. Since $(1\\pm i)^2=\\pm 2i$, $(1\\pm i)^4 = (\\pm 2i)^2 = -4$. Thus $z^4+\\bar{z}^4 = -4 + (-4) = -8$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q152",
@@ -34,21 +23,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z=2+\\sqrt{3}i$, find $\\left|\\dfrac{z}{\\bar{z}}\\right|$.",
-    "options": {
-      "A": "$7$",
-      "B": "$\\sqrt{7}$",
-      "C": "$\\frac{1}{7}$",
-      "D": "$1$"
-    },
     "option_a": "$7$",
     "option_b": "$\\sqrt{7}$",
     "option_c": "$\\frac{1}{7}$",
     "option_d": "$1$",
     "correct_answer": "D",
-    "explanation": "$\\left|\\dfrac{z}{\\bar{z}}\\right| = \\dfrac{|z|}{|\\bar{z}|} = \\dfrac{|z|}{|z|} = 1$."
+    "explanation": "$\\left|\\dfrac{z}{\\bar{z}}\\right| = \\dfrac{|z|}{|\\bar{z}|} = \\dfrac{|z|}{|z|} = 1$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q153",
@@ -56,21 +39,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z+\\bar{z}=0$ and $z \\ne 0$, find $\\dfrac{z}{\\bar{z}}$.",
-    "options": {
-      "A": "$-1$",
-      "B": "$1$",
-      "C": "$i$",
-      "D": "$-i$"
-    },
     "option_a": "$-1$",
     "option_b": "$1$",
     "option_c": "$i$",
     "option_d": "$-i$",
     "correct_answer": "A",
-    "explanation": "$z+\\bar{z}=0 \\implies \\bar{z} = -z \\implies \\dfrac{z}{\\bar{z}} = \\dfrac{z}{-z} = -1$."
+    "explanation": "$z+\\bar{z}=0 \\implies \\bar{z} = -z \\implies \\dfrac{z}{\\bar{z}} = \\dfrac{z}{-z} = -1$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q154",
@@ -78,21 +55,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z-\\bar{z}=0$ and $z \\ne 0$, find $\\dfrac{z}{\\bar{z}}$.",
-    "options": {
-      "A": "$-1$",
-      "B": "$1$",
-      "C": "$i$",
-      "D": "Undefined"
-    },
     "option_a": "$-1$",
     "option_b": "$1$",
     "option_c": "$i$",
     "option_d": "Undefined",
     "correct_answer": "B",
-    "explanation": "$z-\\bar{z}=0 \\implies \\bar{z} = z \\implies \\dfrac{z}{\\bar{z}} = \\dfrac{z}{z} = 1$."
+    "explanation": "$z-\\bar{z}=0 \\implies \\bar{z} = z \\implies \\dfrac{z}{\\bar{z}} = \\dfrac{z}{z} = 1$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q155",
@@ -100,21 +71,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $\\bar{z}=iz$ and $z \\ne 0$, which is a possible principal argument of $z$?",
-    "options": {
-      "A": "$\\frac{\\pi}{4}$",
-      "B": "$\\frac{\\pi}{2}$",
-      "C": "$-\\frac{\\pi}{4}$",
-      "D": "$\\pi$"
-    },
     "option_a": "$\\frac{\\pi}{4}$",
     "option_b": "$\\frac{\\pi}{2}$",
     "option_c": "$-\\frac{\\pi}{4}$",
     "option_d": "$\\pi$",
     "correct_answer": "C",
-    "explanation": "Let $z=re^{i\\theta}$. $\\bar{z} = re^{-i\\theta}$ and $iz = re^{i(\\theta+\\pi/2)}$. Thus $-2\\theta = \\frac{\\pi}{2} + 2k\\pi \\implies \\theta = -\\frac{\\pi}{4} - k\\pi$. For $k=0$, $\\theta = -\\frac{\\pi}{4}$."
+    "explanation": "Let $z=re^{i\\theta}$. $\\bar{z} = re^{-i\\theta}$ and $iz = re^{i(\\theta+\\pi/2)}$. Thus $-2\\theta = \\frac{\\pi}{2} + 2k\\pi \\implies \\theta = -\\frac{\\pi}{4} - k\\pi$. For $k=0$, $\\theta = -\\frac{\\pi}{4}$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q156",
@@ -122,21 +87,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $\\bar{z}=-iz$ and $z \\ne 0$, which is a possible principal argument of $z$?",
-    "options": {
-      "A": "$-\\frac{\\pi}{4}$",
-      "B": "$\\frac{\\pi}{2}$",
-      "C": "$\\pi$",
-      "D": "$\\frac{\\pi}{4}$"
-    },
     "option_a": "$-\\frac{\\pi}{4}$",
     "option_b": "$\\frac{\\pi}{2}$",
     "option_c": "$\\pi$",
     "option_d": "$\\frac{\\pi}{4}$",
     "correct_answer": "D",
-    "explanation": "Let $z=re^{i\\theta}$. $\\bar{z} = re^{-i\\theta}$ and $-iz = re^{i(\\theta-\\pi/2)}$. Thus $-2\\theta = -\\frac{\\pi}{2} + 2k\\pi \\implies \\theta = \\frac{\\pi}{4} - k\\pi$. For $k=0$, $\\theta = \\frac{\\pi}{4}$."
+    "explanation": "Let $z=re^{i\\theta}$. $\\bar{z} = re^{-i\\theta}$ and $-iz = re^{i(\\theta-\\pi/2)}$. Thus $-2\\theta = -\\frac{\\pi}{2} + 2k\\pi \\implies \\theta = \\frac{\\pi}{4} - k\\pi$. For $k=0$, $\\theta = \\frac{\\pi}{4}$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q157",
@@ -144,21 +103,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z_1+z_2=6$ and $z_1-z_2=4i$, find $z_1z_2$.",
-    "options": {
-      "A": "$13$",
-      "B": "$5$",
-      "C": "$9+4i$",
-      "D": "$9-4i$"
-    },
     "option_a": "$13$",
     "option_b": "$5$",
     "option_c": "$9+4i$",
     "option_d": "$9-4i$",
     "correct_answer": "A",
-    "explanation": "Adding gives $2z_1 = 6+4i \\implies z_1 = 3+2i$, so $z_2 = 3-2i$. Their product is $z_1z_2 = (3+2i)(3-2i) = 9+4 = 13$."
+    "explanation": "Adding gives $2z_1 = 6+4i \\implies z_1 = 3+2i$, so $z_2 = 3-2i$. Their product is $z_1z_2 = (3+2i)(3-2i) = 9+4 = 13$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q158",
@@ -166,21 +119,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z_1+z_2=4$ and $z_1z_2=13$, find a possible value of $z_1-z_2$.",
-    "options": {
-      "A": "$4i$",
-      "B": "$6i$",
-      "C": "$3i$",
-      "D": "$2i$"
-    },
     "option_a": "$4i$",
     "option_b": "$6i$",
     "option_c": "$3i$",
     "option_d": "$2i$",
     "correct_answer": "B",
-    "explanation": "$(z_1-z_2)^2 = (z_1+z_2)^2 - 4z_1z_2 = 4^2 - 4(13) = 16 - 52 = -36 \\implies z_1-z_2 = \\pm 6i$."
+    "explanation": "$(z_1-z_2)^2 = (z_1+z_2)^2 - 4z_1z_2 = 4^2 - 4(13) = 16 - 52 = -36 \\implies z_1-z_2 = \\pm 6i$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q159",
@@ -188,21 +135,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z_1+z_2=2i$ and $z_1z_2=-5$, find a possible value of $z_1-z_2$.",
-    "options": {
-      "A": "$2$",
-      "B": "$2i$",
-      "C": "$4$",
-      "D": "$4i$"
-    },
     "option_a": "$2$",
     "option_b": "$2i$",
     "option_c": "$4$",
     "option_d": "$4i$",
     "correct_answer": "C",
-    "explanation": "$(z_1-z_2)^2 = (z_1+z_2)^2 - 4z_1z_2 = (2i)^2 - 4(-5) = -4 + 20 = 16 \\implies z_1-z_2 = \\pm 4$."
+    "explanation": "$(z_1-z_2)^2 = (z_1+z_2)^2 - 4z_1z_2 = (2i)^2 - 4(-5) = -4 + 20 = 16 \\implies z_1-z_2 = \\pm 4$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q160",
@@ -210,21 +151,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z_1, z_2$ are complex conjugates with $z_1+z_2=8$ and $z_1z_2=25$, find $|z_1-z_2|$.",
-    "options": {
-      "A": "$3$",
-      "B": "$4$",
-      "C": "$8$",
-      "D": "$6$"
-    },
     "option_a": "$3$",
     "option_b": "$4$",
     "option_c": "$8$",
     "option_d": "$6$",
     "correct_answer": "D",
-    "explanation": "$z_1, z_2$ are roots of $z^2-8z+25=0 \\implies z = 4\\pm 3i$. The difference is $(4+3i)-(4-3i)=6i$, so $|z_1-z_2|=6$."
+    "explanation": "$z_1, z_2$ are roots of $z^2-8z+25=0 \\implies z = 4\\pm 3i$. The difference is $(4+3i)-(4-3i)=6i$, so $|z_1-z_2|=6$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q161",
@@ -232,21 +167,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "One root of a quadratic equation with real coefficients is $3-5i$. Find the product of its roots.",
-    "options": {
-      "A": "$34$",
-      "B": "$16$",
-      "C": "$8$",
-      "D": "$25$"
-    },
     "option_a": "$34$",
     "option_b": "$16$",
     "option_c": "$8$",
     "option_d": "$25$",
     "correct_answer": "A",
-    "explanation": "With real coefficients, non-real roots occur in conjugate pairs: $3+5i$. Product $= 3^2+5^2 = 9+25 = 34$."
+    "explanation": "With real coefficients, non-real roots occur in conjugate pairs: $3+5i$. Product $= 3^2+5^2 = 9+25 = 34$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q162",
@@ -254,21 +183,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "Find the monic quadratic equation with real coefficients having $2+i$ as a root.",
-    "options": {
-      "A": "$x^2+4x+5=0$",
-      "B": "$x^2-4x+5=0$",
-      "C": "$x^2-2x+5=0$",
-      "D": "$x^2-4x+3=0$"
-    },
     "option_a": "$x^2+4x+5=0$",
     "option_b": "$x^2-4x+5=0$",
     "option_c": "$x^2-2x+5=0$",
     "option_d": "$x^2-4x+3=0$",
     "correct_answer": "B",
-    "explanation": "The conjugate root is $2-i$. Sum $= 4$, Product $= 2^2+1^2 = 5$. Equation is $x^2-4x+5=0$."
+    "explanation": "The conjugate root is $2-i$. Sum $= 4$, Product $= 2^2+1^2 = 5$. Equation is $x^2-4x+5=0$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q163",
@@ -276,21 +199,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $2+i$ is a root of $x^2+px+5=0$ where $p \\in \\mathbb{R}$, find $p$.",
-    "options": {
-      "A": "$4$",
-      "B": "$-2$",
-      "C": "$-4$",
-      "D": "$2$"
-    },
     "option_a": "$4$",
     "option_b": "$-2$",
     "option_c": "$-4$",
     "option_d": "$2$",
     "correct_answer": "C",
-    "explanation": "The other root is $2-i$. Sum of roots $= (2+i)+(2-i) = 4 = -p \\implies p = -4$."
+    "explanation": "The other root is $2-i$. Sum of roots $= (2+i)+(2-i) = 4 = -p \\implies p = -4$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q164",
@@ -298,21 +215,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $1+2i$ is a root of $x^2-2x+k=0$ where $k \\in \\mathbb{R}$, find $k$.",
-    "options": {
-      "A": "$2$",
-      "B": "$3$",
-      "C": "$4$",
-      "D": "$5$"
-    },
     "option_a": "$2$",
     "option_b": "$3$",
     "option_c": "$4$",
     "option_d": "$5$",
     "correct_answer": "D",
-    "explanation": "The other root is $1-2i$. Product of roots $= (1+2i)(1-2i) = 1^2+2^2 = 5 = k$."
+    "explanation": "The other root is $1-2i$. Product of roots $= (1+2i)(1-2i) = 1^2+2^2 = 5 = k$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q165",
@@ -320,21 +231,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "Find the roots of $x^2-2ax+(a^2+b^2)=0$, where $b \\ne 0$.",
-    "options": {
-      "A": "$a\\pm bi$",
-      "B": "$b\\pm ai$",
-      "C": "$-a\\pm bi$",
-      "D": "$a\\pm b$"
-    },
     "option_a": "$a\\pm bi$",
     "option_b": "$b\\pm ai$",
     "option_c": "$-a\\pm bi$",
     "option_d": "$a\\pm b$",
     "correct_answer": "A",
-    "explanation": "$x = \\dfrac{2a\\pm \\sqrt{4a^2-4(a^2+b^2)}}{2} = \\dfrac{2a\\pm \\sqrt{-4b^2}}{2} = a\\pm bi$."
+    "explanation": "$x = \\dfrac{2a\\pm \\sqrt{4a^2-4(a^2+b^2)}}{2} = \\dfrac{2a\\pm \\sqrt{-4b^2}}{2} = a\\pm bi$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q166",
@@ -342,21 +247,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "For the quadratic $x^2+px+q=0$ to have nonzero purely imaginary conjugate roots, the real parameters must satisfy:",
-    "options": {
-      "A": "$q<0$",
-      "B": "$p=0, q>0$",
-      "C": "$p>0, q=0$",
-      "D": "$p=q=0$"
-    },
     "option_a": "$q<0$",
     "option_b": "$p=0, q>0$",
     "option_c": "$p>0, q=0$",
     "option_d": "$p=q=0$",
     "correct_answer": "B",
-    "explanation": "Let roots be $\\pm bi$ ($b \\ne 0$). Sum $= 0 \\implies p=0$. Product $= b^2 > 0 \\implies q>0$."
+    "explanation": "Let roots be $\\pm bi$ ($b \\ne 0$). Sum $= 0 \\implies p=0$. Product $= b^2 > 0 \\implies q>0$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q167",
@@ -364,21 +263,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If the roots of $x^2-6x+k=0$ are $3\\pm 4i$, find $k$.",
-    "options": {
-      "A": "$16$",
-      "B": "$9$",
-      "C": "$25$",
-      "D": "$7$"
-    },
     "option_a": "$16$",
     "option_b": "$9$",
     "option_c": "$25$",
     "option_d": "$7$",
     "correct_answer": "C",
-    "explanation": "$k$ is the product of the roots: $(3+4i)(3-4i) = 3^2+4^2 = 25$."
+    "explanation": "$k$ is the product of the roots: $(3+4i)(3-4i) = 3^2+4^2 = 25$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q168",
@@ -386,21 +279,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If the roots of $x^2+4x+k=0$ differ by $6i$, find $k$.",
-    "options": {
-      "A": "$9$",
-      "B": "$4$",
-      "C": "$10$",
-      "D": "$13$"
-    },
     "option_a": "$9$",
     "option_b": "$4$",
     "option_c": "$10$",
     "option_d": "$13$",
     "correct_answer": "D",
-    "explanation": "Roots are $-2\\pm 3i$. Their product is $k = (-2)^2 + 3^2 = 4 + 9 = 13$."
+    "explanation": "Roots are $-2\\pm 3i$. Their product is $k = (-2)^2 + 3^2 = 4 + 9 = 13$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q169",
@@ -408,21 +295,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z^2-2z+5=0$, find $z+\\dfrac{5}{z}$.",
-    "options": {
-      "A": "$2$",
-      "B": "$5$",
-      "C": "$-2$",
-      "D": "$0$"
-    },
     "option_a": "$2$",
     "option_b": "$5$",
     "option_c": "$-2$",
     "option_d": "$0$",
     "correct_answer": "A",
-    "explanation": "Divide $z^2-2z+5=0$ by $z \\ne 0$: $z - 2 + \\frac{5}{z} = 0 \\implies z + \\frac{5}{z} = 2$."
+    "explanation": "Divide $z^2-2z+5=0$ by $z \\ne 0$: $z - 2 + \\frac{5}{z} = 0 \\implies z + \\frac{5}{z} = 2$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q170",
@@ -430,21 +311,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z^2+3z+1=0$, find $z+\\dfrac{1}{z}$.",
-    "options": {
-      "A": "$3$",
-      "B": "$-3$",
-      "C": "$1$",
-      "D": "$-1$"
-    },
     "option_a": "$3$",
     "option_b": "$-3$",
     "option_c": "$1$",
     "option_d": "$-1$",
     "correct_answer": "B",
-    "explanation": "Divide $z^2+3z+1=0$ by $z$: $z + 3 + \\frac{1}{z} = 0 \\implies z + \\frac{1}{z} = -3$."
+    "explanation": "Divide $z^2+3z+1=0$ by $z$: $z + 3 + \\frac{1}{z} = 0 \\implies z + \\frac{1}{z} = -3$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q171",
@@ -452,21 +327,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z^2-z+1=0$, find $z^3$.",
-    "options": {
-      "A": "$1$",
-      "B": "$i$",
-      "C": "$-1$",
-      "D": "$-i$"
-    },
     "option_a": "$1$",
     "option_b": "$i$",
     "option_c": "$-1$",
     "option_d": "$-i$",
     "correct_answer": "C",
-    "explanation": "Multiply by $(z+1)$: $(z+1)(z^2-z+1) = 0 \\implies z^3+1=0 \\implies z^3=-1$."
+    "explanation": "Multiply by $(z+1)$: $(z+1)(z^2-z+1) = 0 \\implies z^3+1=0 \\implies z^3=-1$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q172",
@@ -474,21 +343,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z^2+z+1=0$, find $z^3$.",
-    "options": {
-      "A": "$-1$",
-      "B": "$z$",
-      "C": "$0$",
-      "D": "$1$"
-    },
     "option_a": "$-1$",
     "option_b": "$z$",
     "option_c": "$0$",
     "option_d": "$1$",
     "correct_answer": "D",
-    "explanation": "Multiply by $(z-1)$: $(z-1)(z^2+z+1) = 0 \\implies z^3-1=0 \\implies z^3=1$."
+    "explanation": "Multiply by $(z-1)$: $(z-1)(z^2+z+1) = 0 \\implies z^3-1=0 \\implies z^3=1$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q173",
@@ -496,21 +359,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z^2+1=0$, evaluate $z^{2026}$.",
-    "options": {
-      "A": "$-1$",
-      "B": "$1$",
-      "C": "$i$",
-      "D": "It depends on the root"
-    },
     "option_a": "$-1$",
     "option_b": "$1$",
     "option_c": "$i$",
     "option_d": "It depends on the root",
     "correct_answer": "A",
-    "explanation": "Since $z^2=-1$, $z^{2026} = (z^2)^{1013} = (-1)^{1013} = -1$."
+    "explanation": "Since $z^2=-1$, $z^{2026} = (z^2)^{1013} = (-1)^{1013} = -1$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q174",
@@ -518,21 +375,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z^2-z+1=0$, evaluate $z^6$.",
-    "options": {
-      "A": "$-1$",
-      "B": "$1$",
-      "C": "$z$",
-      "D": "$0$"
-    },
     "option_a": "$-1$",
     "option_b": "$1$",
     "option_c": "$z$",
     "option_d": "$0$",
     "correct_answer": "B",
-    "explanation": "Since $z^3=-1$, $z^6 = (z^3)^2 = (-1)^2 = 1$."
+    "explanation": "Since $z^3=-1$, $z^6 = (z^3)^2 = (-1)^2 = 1$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q175",
@@ -540,21 +391,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z^2+z+1=0$, evaluate $1+z+z^2+\\cdots+z^{20}$.",
-    "options": {
-      "A": "$0$",
-      "B": "$3$",
-      "C": "$1$",
-      "D": "$-1$"
-    },
     "option_a": "$0$",
     "option_b": "$3$",
     "option_c": "$1$",
     "option_d": "$-1$",
     "correct_answer": "A",
-    "explanation": "Since $1+z+z^2=0$ and $z^3=1$, the sum of any $3$ consecutive powers is $0$. The $21$ terms group into $7$ triplets summing to $0$."
+    "explanation": "Since $1+z+z^2=0$ and $z^3=1$, the sum of any $3$ consecutive powers is $0$. The $21$ terms group into $7$ triplets summing to $0$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q176",
@@ -562,21 +407,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z^2-z+1=0$, find $1+z^2+z^4$.",
-    "options": {
-      "A": "$1$",
-      "B": "$z$",
-      "C": "$-1$",
-      "D": "$0$"
-    },
     "option_a": "$1$",
     "option_b": "$z$",
     "option_c": "$-1$",
     "option_d": "$0$",
     "correct_answer": "D",
-    "explanation": "From $z^2=z-1$ and $z^3=-1$, $1+z^2+z^4 = 1+(z-1)+(-z) = 0$."
+    "explanation": "From $z^2=z-1$ and $z^3=-1$, $1+z^2+z^4 = 1+(z-1)+(-z) = 0$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q177",
@@ -584,21 +423,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z+\\bar{z}=1$ and $z\\bar{z}=1$, find $z^3$.",
-    "options": {
-      "A": "$-1$",
-      "B": "$1$",
-      "C": "$i$",
-      "D": "$-i$"
-    },
     "option_a": "$-1$",
     "option_b": "$1$",
     "option_c": "$i$",
     "option_d": "$-i$",
     "correct_answer": "A",
-    "explanation": "$z$ satisfies $z^2 - (z+\\bar{z})z + z\\bar{z} = 0 \\implies z^2-z+1=0 \\implies z^3=-1$."
+    "explanation": "$z$ satisfies $z^2 - (z+\\bar{z})z + z\\bar{z} = 0 \\implies z^2-z+1=0 \\implies z^3=-1$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q178",
@@ -606,21 +439,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z+\\bar{z}=-1$ and $z\\bar{z}=1$, find $z^3$.",
-    "options": {
-      "A": "$-1$",
-      "B": "$1$",
-      "C": "$z$",
-      "D": "$\\bar{z}$"
-    },
     "option_a": "$-1$",
     "option_b": "$1$",
     "option_c": "$z$",
     "option_d": "$\\bar{z}$",
     "correct_answer": "B",
-    "explanation": "$z$ satisfies $z^2 - (z+\\bar{z})z + z\\bar{z} = 0 \\implies z^2+z+1=0 \\implies z^3=1$."
+    "explanation": "$z$ satisfies $z^2 - (z+\\bar{z})z + z\\bar{z} = 0 \\implies z^2+z+1=0 \\implies z^3=1$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q179",
@@ -628,21 +455,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z=\\cos\\theta+i\\sin\\theta$, find $z+\\dfrac{1}{z}$.",
-    "options": {
-      "A": "$2\\cos\\theta$",
-      "B": "$2i\\sin\\theta$",
-      "C": "$\\cos 2\\theta$",
-      "D": "$2\\sin\\theta$"
-    },
     "option_a": "$2\\cos\\theta$",
     "option_b": "$2i\\sin\\theta$",
     "option_c": "$\\cos 2\\theta$",
     "option_d": "$2\\sin\\theta$",
     "correct_answer": "A",
-    "explanation": "$\\dfrac{1}{z} = \\cos\\theta - i\\sin\\theta$. Adding gives $z+\\frac{1}{z} = 2\\cos\\theta$."
+    "explanation": "$\\dfrac{1}{z} = \\cos\\theta - i\\sin\\theta$. Adding gives $z+\\frac{1}{z} = 2\\cos\\theta$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q180",
@@ -650,21 +471,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z=\\cos\\theta+i\\sin\\theta$, find $z-\\dfrac{1}{z}$.",
-    "options": {
-      "A": "$2\\cos\\theta$",
-      "B": "$2i\\sin\\theta$",
-      "C": "$2\\sin\\theta$",
-      "D": "$i\\cos\\theta$"
-    },
     "option_a": "$2\\cos\\theta$",
     "option_b": "$2i\\sin\\theta$",
     "option_c": "$2\\sin\\theta$",
     "option_d": "$i\\cos\\theta$",
     "correct_answer": "B",
-    "explanation": "$z-\\frac{1}{z} = (\\cos\\theta+i\\sin\\theta) - (\\cos\\theta-i\\sin\\theta) = 2i\\sin\\theta$."
+    "explanation": "$z-\\frac{1}{z} = (\\cos\\theta+i\\sin\\theta) - (\\cos\\theta-i\\sin\\theta) = 2i\\sin\\theta$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q181",
@@ -672,21 +487,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z|=1$, then $z+\\bar{z}$ lies in the real interval:",
-    "options": {
-      "A": "$[0,2]$",
-      "B": "$[-1,1]$",
-      "C": "$[-2,2]$",
-      "D": "$(-\\infty,\\infty)$"
-    },
     "option_a": "$[0,2]$",
     "option_b": "$[-1,1]$",
     "option_c": "$[-2,2]$",
     "option_d": "$(-\\infty,\\infty)$",
     "correct_answer": "C",
-    "explanation": "Let $z=\\cos\\theta+i\\sin\\theta$. Then $z+\\bar{z} = 2\\cos\\theta$. Since $-1 \\le \\cos\\theta \\le 1$, $2\\cos\\theta \\in [-2,2]$."
+    "explanation": "Let $z=\\cos\\theta+i\\sin\\theta$. Then $z+\\bar{z} = 2\\cos\\theta$. Since $-1 \\le \\cos\\theta \\le 1$, $2\\cos\\theta \\in [-2,2]$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q182",
@@ -694,21 +503,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z|=1$, find the maximum possible value of $|z+1|$.",
-    "options": {
-      "A": "$1$",
-      "B": "$\\sqrt{2}$",
-      "C": "$4$",
-      "D": "$2$"
-    },
     "option_a": "$1$",
     "option_b": "$\\sqrt{2}$",
     "option_c": "$4$",
     "option_d": "$2$",
     "correct_answer": "D",
-    "explanation": "$|z+1| \\le |z| + 1 = 1+1 = 2$, attained when $z=1$."
+    "explanation": "$|z+1| \\le |z| + 1 = 1+1 = 2$, attained when $z=1$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q183",
@@ -716,21 +519,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z|=1$, find the minimum possible value of $|z+1|$.",
-    "options": {
-      "A": "$0$",
-      "B": "$1$",
-      "C": "$\\sqrt{2}$",
-      "D": "$2$"
-    },
     "option_a": "$0$",
     "option_b": "$1$",
     "option_c": "$\\sqrt{2}$",
     "option_d": "$2$",
     "correct_answer": "A",
-    "explanation": "$|z+1| \\ge ||z|-1| = |1-1| = 0$, attained when $z=-1$."
+    "explanation": "$|z+1| \\ge ||z|-1| = |1-1| = 0$, attained when $z=-1$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q184",
@@ -738,21 +535,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z|=1$ and $|z-1|=1$, find $\\operatorname{Re}(z)$.",
-    "options": {
-      "A": "$1$",
-      "B": "$\\frac{1}{2}$",
-      "C": "$0$",
-      "D": "$-\\frac{1}{2}$"
-    },
     "option_a": "$1$",
     "option_b": "$\\frac{1}{2}$",
     "option_c": "$0$",
     "option_d": "$-\\frac{1}{2}$",
     "correct_answer": "B",
-    "explanation": "$|z-1|^2 = |z|^2 - 2\\operatorname{Re}(z) + 1 = 1 - 2\\operatorname{Re}(z) + 1 = 1 \\implies 2\\operatorname{Re}(z) = 1 \\implies \\operatorname{Re}(z) = \\frac{1}{2}$."
+    "explanation": "$|z-1|^2 = |z|^2 - 2\\operatorname{Re}(z) + 1 = 1 - 2\\operatorname{Re}(z) + 1 = 1 \\implies 2\\operatorname{Re}(z) = 1 \\implies \\operatorname{Re}(z) = \\frac{1}{2}$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q185",
@@ -760,21 +551,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z|=1$ and $|z-i|=1$, find $\\operatorname{Im}(z)$.",
-    "options": {
-      "A": "$1$",
-      "B": "$0$",
-      "C": "$\\frac{1}{2}$",
-      "D": "$-\\frac{1}{2}$"
-    },
     "option_a": "$1$",
     "option_b": "$0$",
     "option_c": "$\\frac{1}{2}$",
     "option_d": "$-\\frac{1}{2}$",
     "correct_answer": "C",
-    "explanation": "$|z-i|^2 = x^2+(y-1)^2 = x^2+y^2-2y+1 = 1 - 2y + 1 = 1 \\implies 2y=1 \\implies y = \\operatorname{Im}(z) = \\frac{1}{2}$."
+    "explanation": "$|z-i|^2 = x^2+(y-1)^2 = x^2+y^2-2y+1 = 1 - 2y + 1 = 1 \\implies 2y=1 \\implies y = \\operatorname{Im}(z) = \\frac{1}{2}$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q186",
@@ -782,21 +567,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z|=1$ and $z+\\bar{z}=\\sqrt{2}$, find the possible principal arguments of $z$.",
-    "options": {
-      "A": "$\\pm \\frac{\\pi}{2}$",
-      "B": "$\\pm \\frac{\\pi}{3}$",
-      "C": "$\\pm \\frac{\\pi}{6}$",
-      "D": "$\\pm \\frac{\\pi}{4}$"
-    },
     "option_a": "$\\pm \\frac{\\pi}{2}$",
     "option_b": "$\\pm \\frac{\\pi}{3}$",
     "option_c": "$\\pm \\frac{\\pi}{6}$",
     "option_d": "$\\pm \\frac{\\pi}{4}$",
     "correct_answer": "D",
-    "explanation": "$z+\\bar{z} = 2\\cos\\theta = \\sqrt{2} \\implies \\cos\\theta = \\frac{1}{\\sqrt{2}} \\implies \\theta = \\pm \\frac{\\pi}{4}$."
+    "explanation": "$z+\\bar{z} = 2\\cos\\theta = \\sqrt{2} \\implies \\cos\\theta = \\frac{1}{\\sqrt{2}} \\implies \\theta = \\pm \\frac{\\pi}{4}$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q187",
@@ -804,21 +583,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z|=2$ and $z+\\bar{z}=2$, find the possible principal arguments of $z$.",
-    "options": {
-      "A": "$\\pm \\frac{\\pi}{3}$",
-      "B": "$\\pm \\frac{\\pi}{4}$",
-      "C": "$\\pm \\frac{\\pi}{6}$",
-      "D": "$\\pm \\frac{2\\pi}{3}$"
-    },
     "option_a": "$\\pm \\frac{\\pi}{3}$",
     "option_b": "$\\pm \\frac{\\pi}{4}$",
     "option_c": "$\\pm \\frac{\\pi}{6}$",
     "option_d": "$\\pm \\frac{2\\pi}{3}$",
     "correct_answer": "A",
-    "explanation": "$z+\\bar{z} = 2r\\cos\\theta = 2(2)\\cos\\theta = 4\\cos\\theta = 2 \\implies \\cos\\theta = \\frac{1}{2} \\implies \\theta = \\pm \\frac{\\pi}{3}$."
+    "explanation": "$z+\\bar{z} = 2r\\cos\\theta = 2(2)\\cos\\theta = 4\\cos\\theta = 2 \\implies \\cos\\theta = \\frac{1}{2} \\implies \\theta = \\pm \\frac{\\pi}{3}$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q188",
@@ -826,21 +599,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z_1|=|z_2|$ and $\\operatorname{Arg}(z_1)-\\operatorname{Arg}(z_2)=\\pi$, then:",
-    "options": {
-      "A": "$z_1=z_2$",
-      "B": "$z_1=-z_2$",
-      "C": "$z_1=\\bar{z}_2$",
-      "D": "$z_1z_2=1$"
-    },
     "option_a": "$z_1=z_2$",
     "option_b": "$z_1=-z_2$",
     "option_c": "$z_1=\\bar{z}_2$",
     "option_d": "$z_1z_2=1$",
     "correct_answer": "B",
-    "explanation": "Same magnitude with an argument difference of $\\pi$ means the vectors point in opposite directions: $z_1 = z_2 e^{i\\pi} = -z_2$."
+    "explanation": "Same magnitude with an argument difference of $\\pi$ means the vectors point in opposite directions: $z_1 = z_2 e^{i\\pi} = -z_2$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q189",
@@ -848,21 +615,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z_1+z_2|=0$, then:",
-    "options": {
-      "A": "$z_1=z_2$",
-      "B": "$z_1=\\bar{z}_2$",
-      "C": "$z_1=-z_2$",
-      "D": "$|z_1|=0$"
-    },
     "option_a": "$z_1=z_2$",
     "option_b": "$z_1=\\bar{z}_2$",
     "option_c": "$z_1=-z_2$",
     "option_d": "$|z_1|=0$",
     "correct_answer": "C",
-    "explanation": "$|z_1+z_2|=0 \\implies z_1+z_2=0 \\implies z_1 = -z_2$."
+    "explanation": "$|z_1+z_2|=0 \\implies z_1+z_2=0 \\implies z_1 = -z_2$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q190",
@@ -870,21 +631,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z_1+z_2|=|z_1-z_2|$ for nonzero $z_1, z_2$, then the vectors $z_1$ and $z_2$ in the Argand plane are:",
-    "options": {
-      "A": "Parallel",
-      "B": "Equal",
-      "C": "Opposite",
-      "D": "Perpendicular"
-    },
     "option_a": "Parallel",
     "option_b": "Equal",
     "option_c": "Opposite",
     "option_d": "Perpendicular",
     "correct_answer": "D",
-    "explanation": "Squaring gives $|z_1|^2+|z_2|^2+2\\operatorname{Re}(z_1\\bar{z}_2) = |z_1|^2+|z_2|^2-2\\operatorname{Re}(z_1\\bar{z}_2) \\implies \\operatorname{Re}(z_1\\bar{z}_2) = 0$, indicating perpendicularity."
+    "explanation": "Squaring gives $|z_1|^2+|z_2|^2+2\\operatorname{Re}(z_1\\bar{z}_2) = |z_1|^2+|z_2|^2-2\\operatorname{Re}(z_1\\bar{z}_2) \\implies \\operatorname{Re}(z_1\\bar{z}_2) = 0$, indicating perpendicularity.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q191",
@@ -892,21 +647,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z_1+z_2|^2+|z_1-z_2|^2=40$ and $|z_1|=2$, find $|z_2|$.",
-    "options": {
-      "A": "$4$",
-      "B": "$2$",
-      "C": "$\\sqrt{6}$",
-      "D": "$6$"
-    },
     "option_a": "$4$",
     "option_b": "$2$",
     "option_c": "$\\sqrt{6}$",
     "option_d": "$6$",
     "correct_answer": "A",
-    "explanation": "Parallelogram law: $|z_1+z_2|^2+|z_1-z_2|^2 = 2(|z_1|^2+|z_2|^2) \\implies 40 = 2(4+|z_2|^2) \\implies |z_2|^2 = 16 \\implies |z_2|=4$."
+    "explanation": "Parallelogram law: $|z_1+z_2|^2+|z_1-z_2|^2 = 2(|z_1|^2+|z_2|^2) \\implies 40 = 2(4+|z_2|^2) \\implies |z_2|^2 = 16 \\implies |z_2|=4$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q192",
@@ -914,21 +663,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z_1+z_2|=5$, $|z_1-z_2|=3$, and $|z_1|=2$, find $|z_2|$.",
-    "options": {
-      "A": "$\\sqrt{5}$",
-      "B": "$\\sqrt{13}$",
-      "C": "$3$",
-      "D": "$4$"
-    },
     "option_a": "$\\sqrt{5}$",
     "option_b": "$\\sqrt{13}$",
     "option_c": "$3$",
     "option_d": "$4$",
     "correct_answer": "B",
-    "explanation": "$5^2 + 3^2 = 2(2^2 + |z_2|^2) \\implies 34 = 2(4+|z_2|^2) \\implies 17 = 4+|z_2|^2 \\implies |z_2|^2 = 13 \\implies |z_2| = \\sqrt{13}$."
+    "explanation": "$5^2 + 3^2 = 2(2^2 + |z_2|^2) \\implies 34 = 2(4+|z_2|^2) \\implies 17 = 4+|z_2|^2 \\implies |z_2|^2 = 13 \\implies |z_2| = \\sqrt{13}$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q193",
@@ -936,21 +679,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z_1|=|z_2|=1$ and $z_1+z_2=0$, find $z_1\\bar{z}_2$.",
-    "options": {
-      "A": "$1$",
-      "B": "$i$",
-      "C": "$-1$",
-      "D": "$-i$"
-    },
     "option_a": "$1$",
     "option_b": "$i$",
     "option_c": "$-1$",
     "option_d": "$-i$",
     "correct_answer": "C",
-    "explanation": "$z_2 = -z_1 \\implies \\bar{z}_2 = -\\bar{z}_1$. Thus $z_1\\bar{z}_2 = z_1(-\\bar{z}_1) = -|z_1|^2 = -(1)^2 = -1$."
+    "explanation": "$z_2 = -z_1 \\implies \\bar{z}_2 = -\\bar{z}_1$. Thus $z_1\\bar{z}_2 = z_1(-\\bar{z}_1) = -|z_1|^2 = -(1)^2 = -1$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q194",
@@ -958,21 +695,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z_1|=|z_2|=1$ and $|z_1+z_2|=1$, find $|z_1-z_2|$.",
-    "options": {
-      "A": "$1$",
-      "B": "$\\sqrt{2}$",
-      "C": "$2$",
-      "D": "$\\sqrt{3}$"
-    },
     "option_a": "$1$",
     "option_b": "$\\sqrt{2}$",
     "option_c": "$2$",
     "option_d": "$\\sqrt{3}$",
     "correct_answer": "D",
-    "explanation": "Parallelogram law: $|z_1+z_2|^2+|z_1-z_2|^2 = 2(|z_1|^2+|z_2|^2) \\implies 1^2 + |z_1-z_2|^2 = 2(1+1) = 4 \\implies |z_1-z_2|^2 = 3 \\implies |z_1-z_2|=\\sqrt{3}$."
+    "explanation": "Parallelogram law: $|z_1+z_2|^2+|z_1-z_2|^2 = 2(|z_1|^2+|z_2|^2) \\implies 1^2 + |z_1-z_2|^2 = 2(1+1) = 4 \\implies |z_1-z_2|^2 = 3 \\implies |z_1-z_2|=\\sqrt{3}$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q195",
@@ -980,21 +711,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z_1|=3$, $|z_2|=4$, and $|z_1+z_2|=5$, then $z_1$ and $z_2$ are:",
-    "options": {
-      "A": "Perpendicular",
-      "B": "Parallel",
-      "C": "Opposite",
-      "D": "Equal"
-    },
     "option_a": "Perpendicular",
     "option_b": "Parallel",
     "option_c": "Opposite",
     "option_d": "Equal",
     "correct_answer": "A",
-    "explanation": "Since $|z_1+z_2|^2 = 25 = 3^2+4^2 = |z_1|^2+|z_2|^2$, the cross term $2\\operatorname{Re}(z_1\\bar{z}_2)=0$, so the vectors are perpendicular."
+    "explanation": "Since $|z_1+z_2|^2 = 25 = 3^2+4^2 = |z_1|^2+|z_2|^2$, the cross term $2\\operatorname{Re}(z_1\\bar{z}_2)=0$, so the vectors are perpendicular.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q196",
@@ -1002,21 +727,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z_1|=2$, $|z_2|=3$, and $|z_1+z_2|=1$, then $z_1$ and $z_2$ have:",
-    "options": {
-      "A": "Same direction",
-      "B": "Opposite directions",
-      "C": "A right angle",
-      "D": "Equal values"
-    },
     "option_a": "Same direction",
     "option_b": "Opposite directions",
     "option_c": "A right angle",
     "option_d": "Equal values",
     "correct_answer": "B",
-    "explanation": "The minimum possible sum modulus is $|3-2|=1$, which occurs if and only if $z_1$ and $z_2$ point in opposite directions."
+    "explanation": "The minimum possible sum modulus is $|3-2|=1$, which occurs if and only if $z_1$ and $z_2$ point in opposite directions.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q197",
@@ -1024,21 +743,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $|z-1|=|z-i|=1$, find all possible values of $z$.",
-    "options": {
-      "A": "$0, 1+i$",
-      "B": "$1, i$",
-      "C": "$\\frac{1}{2}\\pm \\frac{1}{2}i$",
-      "D": "$1\\pm i$"
-    },
     "option_a": "$0, 1+i$",
     "option_b": "$1, i$",
     "option_c": "$\\frac{1}{2}\\pm \\frac{1}{2}i$",
     "option_d": "$1\\pm i$",
     "correct_answer": "A",
-    "explanation": "$(x-1)^2+y^2=1$ and $x^2+(y-1)^2=1 \\implies x=y$. Substituting $y=x$ into $x^2+(x-1)^2=1 \\implies 2x^2-2x=0 \\implies x=0$ or $x=1$. Thus $z=0$ or $z=1+i$."
+    "explanation": "$(x-1)^2+y^2=1$ and $x^2+(y-1)^2=1 \\implies x=y$. Substituting $y=x$ into $x^2+(x-1)^2=1 \\implies 2x^2-2x=0 \\implies x=0$ or $x=1$. Thus $z=0$ or $z=1+i$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q198",
@@ -1046,21 +759,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z$ is equidistant from $0$, $1$, and $i$ in the complex plane, find $z$.",
-    "options": {
-      "A": "$1+i$",
-      "B": "$\\frac{1}{2}-\\frac{1}{2}i$",
-      "C": "$0$",
-      "D": "$\\frac{1}{2}+\\frac{1}{2}i$"
-    },
     "option_a": "$1+i$",
     "option_b": "$\\frac{1}{2}-\\frac{1}{2}i$",
     "option_c": "$0$",
     "option_d": "$\\frac{1}{2}+\\frac{1}{2}i$",
     "correct_answer": "D",
-    "explanation": "The point is the circumcentre of the right triangle with vertices at $(0,0), (1,0), (0,1)$, which is the midpoint of hypotenuse from $(1,0)$ to $(0,1)$: $\\left(\\frac{1}{2},\\frac{1}{2}\\right) = \\frac{1}{2}+\\frac{1}{2}i$."
+    "explanation": "The point is the circumcentre of the right triangle with vertices at $(0,0), (1,0), (0,1)$, which is the midpoint of hypotenuse from $(1,0)$ to $(0,1)$: $\\left(\\frac{1}{2},\\frac{1}{2}\\right) = \\frac{1}{2}+\\frac{1}{2}i$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q199",
@@ -1068,21 +775,15 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $0, z_1, z_2$ form a right-angled triangle at the origin, then:",
-    "options": {
-      "A": "$|z_1+z_2|^2=|z_1|^2+|z_2|^2$",
-      "B": "$z_1=z_2$",
-      "C": "$|z_1+z_2|=|z_1|+|z_2|$",
-      "D": "$z_1+z_2=0$"
-    },
     "option_a": "$|z_1+z_2|^2=|z_1|^2+|z_2|^2$",
     "option_b": "$z_1=z_2$",
     "option_c": "$|z_1+z_2|=|z_1|+|z_2|$",
     "option_d": "$z_1+z_2=0$",
     "correct_answer": "A",
-    "explanation": "Since the vectors are orthogonal, $\\operatorname{Re}(z_1\\bar{z}_2)=0$, so $|z_1+z_2|^2 = |z_1|^2+|z_2|^2$."
+    "explanation": "Since the vectors are orthogonal, $\\operatorname{Re}(z_1\\bar{z}_2)=0$, so $|z_1+z_2|^2 = |z_1|^2+|z_2|^2$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   },
   {
     "id": "c11-ch1-adv-q200",
@@ -1090,20 +791,14 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "difficulty": "Hard",
-    "difficulty_tier": "Advanced",
     "question": "If $z \\ne 0$ and $z+\\bar{z}=|z|$, find the possible principal arguments of $z$.",
-    "options": {
-      "A": "$\\pm \\frac{\\pi}{6}$",
-      "B": "$\\pm \\frac{\\pi}{3}$",
-      "C": "$\\pm \\frac{\\pi}{2}$",
-      "D": "$\\pm \\frac{2\\pi}{3}$"
-    },
     "option_a": "$\\pm \\frac{\\pi}{6}$",
     "option_b": "$\\pm \\frac{\\pi}{3}$",
     "option_c": "$\\pm \\frac{\\pi}{2}$",
     "option_d": "$\\pm \\frac{2\\pi}{3}$",
     "correct_answer": "B",
-    "explanation": "Let $z=r(\\cos\\theta+i\\sin\\theta)$. Then $z+\\bar{z} = 2r\\cos\\theta = r \\implies \\cos\\theta = \\frac{1}{2} \\implies \\theta = \\pm \\frac{\\pi}{3}$."
+    "explanation": "Let $z=r(\\cos\\theta+i\\sin\\theta)$. Then $z+\\bar{z} = 2r\\cos\\theta = r \\implies \\cos\\theta = \\frac{1}{2} \\implies \\theta = \\pm \\frac{\\pi}{3}$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced"
   }
 ];

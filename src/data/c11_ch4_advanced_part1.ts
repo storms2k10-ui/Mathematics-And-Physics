@@ -630,16 +630,20 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch4",
-    "chapter": "Sequence and Series",
-    "question": "For the AP in Question 39, find its first term.",
-    "option_a": "$4$",
-    "option_b": "$6$",
-    "option_c": "$8$",
-    "option_d": "$2$",
-    "correct_answer": "D",
-    "explanation": "From $a+3(4)=14$, we obtain $a=2$.",
+    "question": "If the sum of $n$ terms of an AP is $S_n = 2n^2 + 3n$, find its first term $a_1$.",
+    "options": {
+      "A": "$5$",
+      "B": "$4$",
+      "C": "$7$",
+      "D": "$2$"
+    },
+    "correct_option": "A",
+    "answer": "$5$",
+    "hint": "a_1 = S_1.",
+    "explanation": "$a_1 = S_1 = 2(1)^2 + 3(1) = 5$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "a_1 = S_1"
   },
   {
     "id": "c11-ch4-adv-q41",

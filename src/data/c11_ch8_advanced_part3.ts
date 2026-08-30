@@ -17,7 +17,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "explanation": "Adding a positive constant to the function output shifts the graph vertically upward.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "y = A f$1$ + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
+    "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
   },
   {
     "id": "c11-ch8-adv-q102",
@@ -35,7 +35,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "explanation": "Subtracting $2$ inside the input shifts the graph horizontally $2$ units to the right.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "y = A f$1$ + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
+    "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
   },
   {
     "id": "c11-ch8-adv-q103",
@@ -53,7 +53,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "explanation": "Adding $3$ inside the input shifts the graph horizontally $3$ units to the left.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "y = A f$1$ + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
+    "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
   },
   {
     "id": "c11-ch8-adv-q104",
@@ -71,7 +71,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "explanation": "Negating the function value negates the $y$-coordinates $(x,y) \\to (x,-y)$, reflecting across the $x$-axis.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "y = A f$1$ + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
+    "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
   },
   {
     "id": "c11-ch8-adv-q105",
@@ -89,7 +89,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "explanation": "Negating the input negates the $x$-coordinates $(x,y) \\to (-x,y)$, reflecting across the $y$-axis.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "y = A f$1$ + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
+    "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
   },
   {
     "id": "c11-ch8-adv-q106",
@@ -107,7 +107,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "explanation": "The transformation shifts the graph right by $3$, changing $(x,y)$ to $(x+3,y)$. Thus $(2,5) \\to (5,5)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "y = A f$1$ + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
+    "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
   },
   {
     "id": "c11-ch8-adv-q107",
@@ -125,7 +125,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "explanation": "The vertical shift upward by $2$ transforms $(x,y)$ into $(x,y+2)$, giving $(-1, 4+2) = (-1, 6)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "y = A f$1$ + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
+    "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
   },
   {
     "id": "c11-ch8-adv-q108",
@@ -143,7 +143,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "explanation": "Reflecting across the $x$-axis changes $(x,y)$ to $(x,-y)$, so $(3,-2) \\to (3,2)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "y = A f$1$ + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
+    "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
   },
   {
     "id": "c11-ch8-adv-q109",
@@ -161,7 +161,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "explanation": "Reflecting across the $y$-axis changes $(x,y)$ to $-x,y$, giving $-4,1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "y = A f$1$ + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
+    "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
   },
   {
     "id": "c11-ch8-adv-q110",
@@ -179,7 +179,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "explanation": "Multiplying f(x)$$ by $2$ multiplies all $y$-values by $2$, creating a vertical stretch by a factor of $2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "y = A f$1$ + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
+    "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
   },
   {
     "id": "c11-ch8-adv-q111",
@@ -197,7 +197,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "explanation": "Multiplying the output by $1/2$ reduces each $y$-coordinate by half, compressing the graph vertically.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "y = A f$1$ + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
+    "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
   },
   {
     "id": "c11-ch8-adv-q112",
@@ -215,7 +215,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "explanation": "For $y=f$2x$$, each output that occurred at input $u$ now occurs at $x=u/2$, compressing horizontally by a factor of $1/2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "y = A f$1$ + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
+    "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
   },
   {
     "id": "c11-ch8-adv-q113",
@@ -233,7 +233,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "explanation": "Replacing $x$ with $x/3$ triples the distance of every point from the $y$-axis, stretching horizontally by a factor of $3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
-    "formula": "y = A f$1$ + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
+    "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
   },
   {
     "id": "c11-ch8-adv-q114",
@@ -248,7 +248,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$-1,0$"
     },
     "correct_answer": "A",
-    "explanation": "$|x|\\g \ne 0$ with equality uniquely at $x=0$, giving the vertex (corner point) at $0,0$.",
+    "explanation": "$|x|\\ge 0$ with equality uniquely at $x=0$, giving the vertex (corner point) at $0,0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -284,7 +284,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$y\\le-1$"
     },
     "correct_answer": "B",
-    "explanation": "Since $-|x+1|\\l \ne 0$, $y=-|x+1|+4\\le4$. Thus the range is $(-\\infty,4]$.",
+    "explanation": "Since $-|x+1|\\le 0$, $y=-|x+1|+4\\le4$. Thus the range is $(-\\infty,4]$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -392,7 +392,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "A",
-    "explanation": "Since $\\sqrt{x-4}\\g \ne 0$, $y=\\sqrt{x-4}+3\\ge3$. Thus the range is $[3,\\infty)$.",
+    "explanation": "Since $\\sqrt{x-4}\\ge 0$, $y=\\sqrt{x-4}+3\\ge3$. Thus the range is $[3,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -410,7 +410,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$x<5$"
     },
     "correct_answer": "B",
-    "explanation": "$5-2x\\g \ne 0 \\implies 2x\\le5 \\implies x\\le\\dfrac{5}{2}$, or $\\left(-\\infty, \\dfrac{5}{2}\\right]$.",
+    "explanation": "$5-2x\\ge 0 \\implies 2x\\le5 \\implies x\\le\\dfrac{5}{2}$, or $\\left(-\\infty, \\dfrac{5}{2}\\right]$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -806,7 +806,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$[1,\\infty)$"
     },
     "correct_answer": "A",
-    "explanation": "For $x\\l \ne 0$, f(x)$=-x$, which is a line with negative slope (decreasing).",
+    "explanation": "For $x\\le 0$, f(x)$=-x$, which is a line with negative slope (decreasing).",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"

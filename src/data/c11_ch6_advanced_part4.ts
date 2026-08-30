@@ -38,16 +38,20 @@ export const C11_CH6_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch6",
-    "chapter": "Permutation and Combination and Probability",
-    "question": "From the bag in Question 152, two balls are drawn without replacement. The probability both are red is:",
-    "option_a": "$\\frac3{10}$",
-    "option_b": "$\\frac9{25}$",
-    "option_c": "$\\frac{1}{5}$",
-    "option_d": "$\\frac{2}{5}$",
-    "correct_answer": "A",
-    "explanation": "$\\frac{3}{5}\\cdot\\frac{2}{4}=\\frac{6}{20}=\\frac3{10}$.",
+    "question": "A bag contains $3$ red and $2$ blue balls. The probability of drawing a blue ball is:",
+    "options": {
+      "A": "$\\dfrac{2}{5}$",
+      "B": "$\\dfrac{3}{5}$",
+      "C": "$\\dfrac{1}{5}$",
+      "D": "$\\dfrac{1}{2}$"
+    },
+    "correct_option": "A",
+    "answer": "$\\dfrac{2}{5}$",
+    "hint": "P = (favorable outcomes) / (total outcomes).",
+    "explanation": "Total balls $= 5$, blue balls $= 2 \\implies P(\\text{Blue}) = \\dfrac{2}{5}$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "P(E) = \\dfrac{n(E)}{n(S)}"
   },
   {
     "id": "c11-ch6-adv-q154",
@@ -86,16 +90,20 @@ export const C11_CH6_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch6",
-    "chapter": "Permutation and Combination and Probability",
-    "question": "From the bag in Question 155, the probability of drawing one white and one black ball is:",
-    "option_a": "$\\frac4{15}$",
-    "option_b": "$\\frac{2}{5}$",
-    "option_c": "$\\frac7{15}$",
-    "option_d": "$\\frac8{15}$",
-    "correct_answer": "D",
-    "explanation": "Either order may occur: $2\\left(\\frac4{10}\\cdot\\frac{6}{9}\\right)=2\\left(\\frac{24}{90}\\right)=\\frac{48}{90}=\\frac{8}{15}$.",
+    "question": "A bag contains $4$ white and $6$ black balls. Two are drawn without replacement. The probability both are black is:",
+    "options": {
+      "A": "$\\dfrac{1}{3}$",
+      "B": "$\\dfrac{2}{15}$",
+      "C": "$\\dfrac{8}{15}$",
+      "D": "$\\dfrac{1}{2}$"
+    },
+    "correct_option": "A",
+    "answer": "$\\dfrac{1}{3}$",
+    "hint": "Use combination formula: C(6,2)/C(10,2).",
+    "explanation": "$\\dfrac{\\binom{6}{2}}{\\binom{10}{2}} = \\dfrac{15}{45} = \\dfrac{1}{3}$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "P = \\dfrac{\\binom{n_1}{k}}{\\binom{N}{k}}"
   },
   {
     "id": "c11-ch6-adv-q157",
@@ -118,16 +126,20 @@ export const C11_CH6_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch6",
-    "chapter": "Permutation and Combination and Probability",
-    "question": "From the box in Question 157, two items are selected without replacement. The probability both are good is:",
-    "option_a": "$\\frac{5}{7}$",
-    "option_b": "$\\frac{10}{21}$",
-    "option_c": "$\\frac{4}{7}$",
-    "option_d": "$\\frac{25}{49}$",
-    "correct_answer": "B",
-    "explanation": "$\\frac{5}{7}\\cdot\\frac{4}{6}=\\frac{20}{42}=\\frac{10}{21}$.",
+    "question": "A box contains $5$ good and $2$ defective items. One item is selected at random. The probability it is good is:",
+    "options": {
+      "A": "$\\dfrac{5}{7}$",
+      "B": "$\\dfrac{2}{7}$",
+      "C": "$\\dfrac{3}{7}$",
+      "D": "$\\dfrac{1}{7}$"
+    },
+    "correct_option": "A",
+    "answer": "$\\dfrac{5}{7}$",
+    "hint": "Favorable items / total items.",
+    "explanation": "Total items $= 7$, good items $= 5 \\implies P(\\text{Good}) = \\dfrac{5}{7}$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "P = \\dfrac{n(G)}{n(S)}"
   },
   {
     "id": "c11-ch6-adv-q159",
@@ -470,16 +482,20 @@ export const C11_CH6_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch6",
-    "chapter": "Permutation and Combination and Probability",
-    "question": "For the events in Question 179 with $P(A)=0.5, P(B)=0.4, P(A\\cap B)=0.2$, are $A,B$ independent?",
-    "option_a": "No, because $P(A\\cap B)=0$",
-    "option_b": "Yes, because $P(A)P(B)=0.2$",
-    "option_c": "No, because $P(A)\\ne P(B)$",
-    "option_d": "They are mutually exclusive",
-    "correct_answer": "B",
-    "explanation": "Independence holds because $P(A\\cap B)=0.2=(0.5)(0.4)=P(A)P(B)$.",
+    "question": "If $P(A)=0.5,\\ P(B)=0.4$, and $A$ and $B$ are mutually exclusive events, find $P(A\\cup B)$.",
+    "options": {
+      "A": "$0.9$",
+      "B": "$0.2$",
+      "C": "$0.7$",
+      "D": "$1.0$"
+    },
+    "correct_option": "A",
+    "answer": "$0.9$",
+    "hint": "For mutually exclusive events, P(A or B) = P(A) + P(B).",
+    "explanation": "$P(A\\cup B) = P(A) + P(B) - P(A\\cap B) = 0.5 + 0.4 - 0 = 0.9$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "P(A\\cup B) = P(A)+P(B)"
   },
   {
     "id": "c11-ch6-adv-q181",
@@ -742,16 +758,20 @@ export const C11_CH6_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch6",
-    "chapter": "Permutation and Combination and Probability",
-    "question": "From the box in Question 196 (3 red, 4 blue, 5 green balls), the probability the two balls have different colours is:",
-    "option_a": "$\\frac{19}{66}$",
-    "option_b": "$\\frac{23}{66}$",
-    "option_c": "$\\frac{47}{66}$",
-    "option_d": "$\\frac{1}{2}$",
-    "correct_answer": "C",
-    "explanation": "Use the complement: $1-\\frac{19}{66}=\\frac{47}{66}$.",
+    "question": "A box contains $3$ red, $4$ blue and $5$ green balls. Two are selected without replacement. The probability they have different colours is:",
+    "options": {
+      "A": "$\\dfrac{47}{66}$",
+      "B": "$\\dfrac{19}{66}$",
+      "C": "$\\dfrac{1}{2}$",
+      "D": "$\\dfrac{35}{66}$"
+    },
+    "correct_option": "A",
+    "answer": "$\\dfrac{47}{66}$",
+    "hint": "P(different) = 1 - P(same colour).",
+    "explanation": "Total pairs $= \\binom{12}{2} = 66$. Same colour pairs $= \\binom{3}{2}+\\binom{4}{2}+\\binom{5}{2} = 3+6+10=19$. Thus $P(\\text{different}) = 1 - \\dfrac{19}{66} = \\dfrac{47}{66}$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "P(\\text{diff}) = 1 - P(\\text{same})"
   },
   {
     "id": "c11-ch6-adv-q198",

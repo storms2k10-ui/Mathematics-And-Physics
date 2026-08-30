@@ -1,10 +1,5 @@
 import { Question } from '../types';
 
-// ============================================================================
-// 🧭 CLASS 11 MATHEMATICS — CHAPTER 3: VECTORS
-// ADVANCED DIFFICULTY TIER — PART 4 (QUESTIONS 151 to 200)
-// ============================================================================
-
 export const C11_CH3_ADVANCED_PART4: Question[] = [
   {
     "id": "c11-ch3-adv-q151",
@@ -219,16 +214,20 @@ export const C11_CH3_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch3",
-    "chapter": "Vectors",
-    "question": "Find the volume of the corresponding tetrahedron in Question 163.",
-    "option_a": "$4$",
-    "option_b": "$6$",
-    "option_c": "$12$",
-    "option_d": "$24$",
-    "correct_answer": "A",
-    "explanation": "The tetrahedral volume is $24/6=4$.",
+    "question": "If the volume of a parallelepiped formed by vectors $\\mathbf{a},\\mathbf{b},\\mathbf{c}$ is $36$, find the volume of the tetrahedron formed by the same vectors.",
+    "options": {
+      "A": "$6$",
+      "B": "$12$",
+      "C": "$18$",
+      "D": "$3$"
+    },
+    "correct_option": "A",
+    "answer": "$6$",
+    "hint": "Tetrahedron volume is 1/6 of parallelepiped volume.",
+    "explanation": "$V_{\\text{tetrahedron}} = \\dfrac{1}{6}(36) = 6$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "V_{\\text{tet}} = \\dfrac{1}{6} V_{\\text{par}}"
   },
   {
     "id": "c11-ch3-adv-q165",
@@ -258,7 +257,7 @@ export const C11_CH3_ADVANCED_PART4: Question[] = [
     "option_c": "No",
     "option_d": "They are equal",
     "correct_answer": "C",
-    "explanation": "Their scalar triple product is $1\\n \ne 0$.",
+    "explanation": "Their scalar triple product is $1\\ne 0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -427,16 +426,20 @@ export const C11_CH3_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch3",
-    "chapter": "Vectors",
-    "question": "For the vectors in Question 176, find $|\\mathbf{a}\\times\\mathbf{b}|$.",
-    "option_a": "$6$",
-    "option_b": "$6\\sqrt3$",
-    "option_c": "$12$",
-    "option_d": "$3\\sqrt3$",
-    "correct_answer": "B",
-    "explanation": "$3(4)\\sin60^\\circ=12(\\sqrt3/2)=6\\sqrt3$.",
+    "question": "If $\\mathbf{a}=2\\mathbf{i}-3\\mathbf{j}+\\mathbf{k}$ and $\\mathbf{b}=\\mathbf{i}+\\mathbf{j}-2\\mathbf{k}$, find $|\\mathbf{a}\\times\\mathbf{b}|$.",
+    "options": {
+      "A": "$5\\sqrt{3}$",
+      "B": "$\\sqrt{75}$",
+      "C": "$\\sqrt{35}$",
+      "D": "$3\\sqrt{5}$"
+    },
+    "correct_option": "A",
+    "answer": "$5\\sqrt{3}$",
+    "hint": "Calculate cross product first.",
+    "explanation": "$\\mathbf{a}\\times\\mathbf{b} = 5\\mathbf{i}+5\\mathbf{j}+5\\mathbf{k} \\implies |\\mathbf{a}\\times\\mathbf{b}| = \\sqrt{25+25+25} = 5\\sqrt{3}$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "|\\mathbf{a}\\times\\mathbf{b}| = \\sqrt{x^2+y^2+z^2}"
   },
   {
     "id": "c11-ch3-adv-q178",
@@ -475,16 +478,20 @@ export const C11_CH3_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch3",
-    "chapter": "Vectors",
-    "question": "For the vectors in Question 179, find their angle.",
-    "option_a": "$30^\\circ$",
-    "option_b": "$60^\\circ$",
-    "option_c": "$90^\\circ$",
-    "option_d": "$120^\\circ$",
-    "correct_answer": "B",
-    "explanation": "For unit vectors, $\\mathbf{a}\\cdot\\mathbf{b}=\\cos\\theta=1/2$.",
+    "question": "Find the angle $\\theta$ between vectors $\\mathbf{a}=\\mathbf{i}+\\mathbf{j}$ and $\\mathbf{b}=\\mathbf{j}+\\mathbf{k}$.",
+    "options": {
+      "A": "$60^\\circ$",
+      "B": "$45^\\circ$",
+      "C": "$30^\\circ$",
+      "D": "$90^\\circ$"
+    },
+    "correct_option": "A",
+    "answer": "$60^\\circ$",
+    "hint": "cos(theta) = (a . b) / (|a| |b|).",
+    "explanation": "$\\mathbf{a}\\cdot\\mathbf{b}=1,\\ |\\mathbf{a}|=\\sqrt{2},\\ |\\mathbf{b}|=\\sqrt{2} \\implies \\cos\\theta = \\dfrac{1}{2} \\implies \\theta = 60^\\circ$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "\\cos\\theta = \\dfrac{\\mathbf{a}\\cdot\\mathbf{b}}{|\\mathbf{a}||\\mathbf{b}|}"
   },
   {
     "id": "c11-ch3-adv-q181",
@@ -523,16 +530,20 @@ export const C11_CH3_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch3",
-    "chapter": "Vectors",
-    "question": "Under the conditions in Question 182, find $\\mathbf{a}\\cdot\\mathbf{b}$.",
-    "option_a": "$2$",
-    "option_b": "$4$",
-    "option_c": "$8$",
-    "option_d": "$16$",
-    "correct_answer": "B",
-    "explanation": "Subtracting squared expressions gives $25-9=4\\mathbf{a}\\cdot\\mathbf{b}$.",
+    "question": "If $|\\mathbf{a}|=3,\\ |\\mathbf{b}|=4$, and the angle between them is $60^\\circ$, find $\\mathbf{a}\\cdot\\mathbf{b}$.",
+    "options": {
+      "A": "$6$",
+      "B": "$12$",
+      "C": "$6\\sqrt{3}$",
+      "D": "$3$"
+    },
+    "correct_option": "A",
+    "answer": "$6$",
+    "hint": "Use scalar product formula.",
+    "explanation": "$\\mathbf{a}\\cdot\\mathbf{b} = |\\mathbf{a}||\\mathbf{b}|\\cos 60^\\circ = (3)(4)(0.5) = 6$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "\\mathbf{a}\\cdot\\mathbf{b} = |\\mathbf{a}||\\mathbf{b}|\\cos\\theta"
   },
   {
     "id": "c11-ch3-adv-q184",
@@ -587,16 +598,20 @@ export const C11_CH3_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch3",
-    "chapter": "Vectors",
-    "question": "For the vectors in Question 186, find $|\\mathbf{a}-\\mathbf{b}|$.",
-    "option_a": "$\\sqrt3$",
-    "option_b": "$1$",
-    "option_c": "$2$",
-    "option_d": "$\\sqrt2$",
-    "correct_answer": "A",
-    "explanation": "The square is $1+1-2(-1/2)=3$.",
+    "question": "If $|\\mathbf{a}|=2,\\ |\\mathbf{b}|=3$, and $\\mathbf{a}\\cdot\\mathbf{b}=0$, find $|\\mathbf{a}-\\mathbf{b}|$.",
+    "options": {
+      "A": "$\\sqrt{13}$",
+      "B": "$5$",
+      "C": "$1$",
+      "D": "$\\sqrt{5}$"
+    },
+    "correct_option": "A",
+    "answer": "$\\sqrt{13}$",
+    "hint": "|a - b|^2 = |a|^2 + |b|^2 - 2(a . b).",
+    "explanation": "$|\\mathbf{a}-\\mathbf{b}|^2 = 2^2+3^2-0 = 13 \\implies |\\mathbf{a}-\\mathbf{b}| = \\sqrt{13}$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "|\\mathbf{a}-\\mathbf{b}|^2 = |\\mathbf{a}|^2+|\\mathbf{b}|^2-2\\mathbf{a}\\cdot\\mathbf{b}"
   },
   {
     "id": "c11-ch3-adv-q188",
@@ -763,16 +778,20 @@ export const C11_CH3_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch3",
-    "chapter": "Vectors",
-    "question": "Find the volume of the tetrahedron generated by the vectors in Question 197.",
-    "option_a": "$1$",
-    "option_b": "$\\frac{1}{3}$",
-    "option_c": "$\\frac{1}{2}$",
-    "option_d": "$2$",
-    "correct_answer": "B",
-    "explanation": "A tetrahedron has one-sixth the parallelepiped volume, so $2/6=1/3$.",
+    "question": "Find the volume of the tetrahedron formed by the unit vectors $\\mathbf{i},\\ \\mathbf{j},\\ \\mathbf{k}$.",
+    "options": {
+      "A": "$\\dfrac{1}{6}$",
+      "B": "$\\dfrac{1}{3}$",
+      "C": "$1$",
+      "D": "$\\dfrac{1}{2}$"
+    },
+    "correct_option": "A",
+    "answer": "$\\dfrac{1}{6}$",
+    "hint": "Tetrahedron volume is 1/6 of scalar triple product.",
+    "explanation": "$V = \\dfrac{1}{6}|[\\mathbf{i}\\ \\mathbf{j}\\ \\mathbf{k}]| = \\dfrac{1}{6}(1) = \\dfrac{1}{6}$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "V = \\dfrac{1}{6}|[\\mathbf{a}\\ \\mathbf{b}\\ \\mathbf{c}]|"
   },
   {
     "id": "c11-ch3-adv-q199",

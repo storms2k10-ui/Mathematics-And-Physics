@@ -598,16 +598,20 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch4",
-    "chapter": "Sequence and Series",
-    "question": "Under the conditions in Question 87, total savings in 12 months are:",
-    "option_a": "Rs $4,200$",
-    "option_b": "Rs $4,500$",
-    "option_c": "Rs $3,900$",
-    "option_d": "Rs $4,800$",
-    "correct_answer": "B",
-    "explanation": "$S_{12}=6[200+550]=6(750)=4500$.",
+    "question": "If the second term of a positive GP is $6$ and the fifth term is $162$, find the first term $a$.",
+    "options": {
+      "A": "$2$",
+      "B": "$3$",
+      "C": "$1$",
+      "D": "$4$"
+    },
+    "correct_option": "A",
+    "answer": "$2$",
+    "hint": "ar = 6 and ar^4 = 162 => r^3 = 27 => r = 3.",
+    "explanation": "$r^3 = 162/6 = 27 \\implies r=3$. Then $a = 6/3 = 2$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "a_n = a r^{n-1}"
   },
   {
     "id": "c11-ch4-adv-q89",
@@ -630,16 +634,20 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch4",
-    "chapter": "Sequence and Series",
-    "question": "Total seats in the first $15$ rows in Question 89 are:",
-    "option_a": "$480$",
-    "option_b": "$500$",
-    "option_c": "$525$",
-    "option_d": "$510$",
-    "correct_answer": "D",
-    "explanation": "$S_{15}=\\frac{15}{2}(20+48)=510$.",
+    "question": "If a geometric progression has first term $a=2$ and common ratio $r=3$, find the sum of its first $4$ terms.",
+    "options": {
+      "A": "$80$",
+      "B": "$78$",
+      "C": "$81$",
+      "D": "$40$"
+    },
+    "correct_option": "A",
+    "answer": "$80$",
+    "hint": "Use S_n = a(r^n - 1)/(r - 1).",
+    "explanation": "$S_4 = \\dfrac{2(3^4-1)}{3-1} = 3^4-1 = 81-1 = 80$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "S_n = \\dfrac{a(r^n-1)}{r-1}"
   },
   {
     "id": "c11-ch4-adv-q91",

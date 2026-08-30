@@ -630,16 +630,20 @@ export const C11_CH5_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch5",
-    "chapter": "Miscellaneous Series",
-    "question": "Under the conditions in Question 189, find $r$.",
-    "option_a": "$\\frac{3}{2}$",
-    "option_b": "$\\frac{2}{3}$",
-    "option_c": "$2$",
-    "option_d": "$\\frac{1}{2}$",
-    "correct_answer": "B",
-    "explanation": "$6r^2-13r+6 = (2r-3)(3r-2) = 0 \\implies r = \\frac{3}{2}$ or $r = \\frac{2}{3}$. Since $0<r<1$, $r = \\frac{2}{3}$.",
+    "question": "If $\\sum_{k=1}^\\infty k r^k = 6$ for $0 < r < 1$, find the value of $r$.",
+    "options": {
+      "A": "$\\dfrac{2}{3}$",
+      "B": "$\\dfrac{1}{2}$",
+      "C": "$\\dfrac{3}{4}$",
+      "D": "$\\dfrac{1}{3}$"
+    },
+    "correct_option": "A",
+    "answer": "$\\dfrac{2}{3}$",
+    "hint": "sum k r^k = r / (1 - r)^2.",
+    "explanation": "$\\dfrac{r}{(1-r)^2} = 6 \\implies 6r^2 - 13r + 6 = 0 \\implies (2r-3)(3r-2)=0 \\implies r = \\dfrac{2}{3}$ since $0 < r < 1$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "\\sum_{k=1}^\\infty k r^k = \\dfrac{r}{(1-r)^2}"
   },
   {
     "id": "c11-ch5-adv-q191",

@@ -1,10 +1,5 @@
 import { Question } from '../types';
 
-// ============================================================================
-// 🧭 CLASS 11 MATHEMATICS — CHAPTER 3: VECTORS
-// ADVANCED DIFFICULTY TIER — PART 1 (QUESTIONS 1 to 50)
-// ============================================================================
-
 export const C11_CH3_ADVANCED_PART1: Question[] = [
   {
     "id": "c11-ch3-adv-q1",
@@ -347,16 +342,20 @@ export const C11_CH3_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch3",
-    "chapter": "Vectors",
-    "question": "For the vectors in Question 21, find $\\mathbf{a}-\\mathbf{b}$.",
-    "option_a": "$6\\mathbf{i}+2\\mathbf{j}$",
-    "option_b": "$2\\mathbf{i}-4\\mathbf{j}$",
-    "option_c": "$-2\\mathbf{i}+4\\mathbf{j}$",
-    "option_d": "$-2\\mathbf{i}+2\\mathbf{j}$",
-    "correct_answer": "C",
-    "explanation": "$(2-4)\\mathbf{i}+[3-(-1)]\\mathbf{j}=-2\\mathbf{i}+4\\mathbf{j}$.",
-    "difficulty": "Easy",
-    "difficulty_tier": "Advanced"
+    "question": "If $\\mathbf{a}=2\\mathbf{i}+3\\mathbf{j}-\\mathbf{k}$ and $\\mathbf{b}=\\mathbf{i}-2\\mathbf{j}+4\\mathbf{k}$, find $\\mathbf{a}-\\mathbf{b}$.",
+    "options": {
+      "A": "$\\mathbf{i}+5\\mathbf{j}-5\\mathbf{k}$",
+      "B": "$3\\mathbf{i}+\\mathbf{j}+3\\mathbf{k}$",
+      "C": "$\\mathbf{i}+\\mathbf{j}+3\\mathbf{k}$",
+      "D": "$\\mathbf{i}-5\\mathbf{j}+5\\mathbf{k}$"
+    },
+    "correct_option": "A",
+    "answer": "$\\mathbf{i}+5\\mathbf{j}-5\\mathbf{k}$",
+    "hint": "Subtract vector components.",
+    "explanation": "$\\mathbf{a}-\\mathbf{b} = (2-1)\\mathbf{i}+(3-(-2))\\mathbf{j}+(-1-4)\\mathbf{k} = \\mathbf{i}+5\\mathbf{j}-5\\mathbf{k}$.",
+    "difficulty": "Hard",
+    "difficulty_tier": "Advanced",
+    "formula": "\\mathbf{a}-\\mathbf{b} = (a_1-b_1)\\mathbf{i}+(a_2-b_2)\\mathbf{j}+(a_3-b_3)\\mathbf{k}"
   },
   {
     "id": "c11-ch3-adv-q23",
