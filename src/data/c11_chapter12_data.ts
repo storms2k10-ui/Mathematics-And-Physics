@@ -9,7 +9,10 @@ export const C11_CH12_ADVANCED_QUESTIONS: Question[] = [
   ...C11_CH12_ADVANCED_PART2,
   ...C11_CH12_ADVANCED_PART3,
   ...C11_CH12_ADVANCED_PART4,
-];
+].map((q) => ({
+  ...q,
+  difficulty_tier: 'Advanced' as const,
+}));
 
 export const C11_CH12_NORMAL_QUESTIONS: Question[] = [
   // =========================================================================
@@ -876,7 +879,10 @@ export const C11_CH12_NORMAL_QUESTIONS: Question[] = [
 ];
 
 export const C11_CH12_QUESTIONS: Question[] = [
-  ...C11_CH12_NORMAL_QUESTIONS,
+  ...C11_CH12_NORMAL_QUESTIONS.map((q) => ({
+    ...q,
+    difficulty_tier: 'Normal' as const,
+  })),
   ...C11_CH12_ADVANCED_QUESTIONS,
 ];
 
