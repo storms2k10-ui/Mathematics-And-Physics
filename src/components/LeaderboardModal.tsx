@@ -180,6 +180,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
             track: norm.track,
             chapterId: h.chapterId,
             chapterName: h.chapterName,
+            difficultyTier: h.difficultyTier || (h.chapterName && h.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal'),
             mode: 'practice',
             correctCount: Number(h.correctCount) || 0,
             totalQuestions: Number(h.totalQuestions) || 0,
@@ -271,6 +272,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                   track: norm.track,
                   chapterId: h.chapterId,
                   chapterName: h.chapterName,
+                  difficultyTier: h.difficultyTier || (h.chapterName && h.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal'),
                   mode: 'practice',
                   correctCount: Number(h.correctCount) || 0,
                   totalQuestions: Number(h.totalQuestions) || 0,
@@ -633,12 +635,12 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                           {/* Difficulty Tier Badges */}
                           {hasAdvanced && (
                             <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800 shrink-0 flex items-center gap-0.5">
-                              ⚡ Advanced
+                              Advanced
                             </span>
                           )}
                           {hasNormal && (
                             <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shrink-0 flex items-center gap-0.5">
-                              ✓ Normal
+                              Normal
                             </span>
                           )}
                         </div>
@@ -801,7 +803,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                                         ? 'bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800'
                                         : 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
                                     }`}>
-                                      {itemDifficulty === 'Advanced' ? '⚡ Advanced' : '✓ Normal'}
+                                      {itemDifficulty === 'Advanced' ? 'Advanced' : 'Normal'}
                                     </span>
                                   </div>
                                   <div className="flex items-center gap-2 text-[11px] text-slate-500">

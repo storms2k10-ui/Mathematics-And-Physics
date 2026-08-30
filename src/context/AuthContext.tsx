@@ -435,6 +435,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       chapterName: historyItem.chapterName,
       mode: 'practice',
       track: historyItem.track,
+      difficultyTier: historyItem.difficultyTier || (historyItem.chapterName && historyItem.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal'),
       correctCount: historyItem.correctCount,
       totalQuestions: historyItem.totalQuestions,
       skippedCount: historyItem.skippedCount || 0,

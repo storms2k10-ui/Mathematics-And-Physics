@@ -57,6 +57,7 @@ interface QuizViewProps {
     totalTimeSeconds: number;
     studentProfile?: StudentProfile;
     mode?: 'practice' | 'exam';
+    difficultyTier?: 'Normal' | 'Advanced';
     attemptId?: string;
   }) => void;
   onExitQuiz: () => void;
@@ -242,6 +243,7 @@ export const QuizView: React.FC<QuizViewProps> = ({
       totalTimeSeconds: totalTimer,
       studentProfile,
       mode,
+      difficultyTier: activeDifficultyTier,
       attemptId,
     });
   };

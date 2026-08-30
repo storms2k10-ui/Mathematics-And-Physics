@@ -18,6 +18,8 @@ const USERS_FILE = path.join(DATA_DIR, 'users.json');
 // Interface for Leaderboard records
 interface LeaderboardEntry {
   id: string;
+  uid?: string;
+  email?: string;
   studentName: string;
   classLevel: number;
   section?: string;
@@ -25,8 +27,10 @@ interface LeaderboardEntry {
   chapterName: string;
   mode?: 'practice' | 'exam';
   track?: string;
+  difficultyTier?: 'Normal' | 'Advanced' | string;
   correctCount: number;
   totalQuestions: number;
+  skippedCount?: number;
   scorePercentage: number;
   timeSpentSeconds: number;
   formattedTime: string;
@@ -41,8 +45,10 @@ interface ServerTestHistoryItem {
   chapterName: string;
   classLevel: number;
   track?: string;
+  difficultyTier?: 'Normal' | 'Advanced' | string;
   correctCount: number;
   totalQuestions: number;
+  skippedCount?: number;
   scorePercentage: number;
   timeSpentSeconds: number;
   formattedTime: string;
@@ -535,6 +541,8 @@ app.post('/api/leaderboard', (req, res) => {
 
     const validatedEntry: LeaderboardEntry = {
       id: newEntry.id || `lead_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+      uid: newEntry.uid,
+      email: newEntry.email,
       studentName: String(newEntry.studentName).trim().substring(0, 80),
       classLevel: Number(newEntry.classLevel) || 9,
       section: newEntry.section ? String(newEntry.section).trim().substring(0, 80) : 'Standard',
@@ -542,8 +550,10 @@ app.post('/api/leaderboard', (req, res) => {
       chapterName: newEntry.chapterName ? String(newEntry.chapterName).trim().substring(0, 100) : 'Mathematics',
       mode: newEntry.mode || 'practice',
       track: newEntry.track ? String(newEntry.track).trim() : 'Elementary Mathematics',
+      difficultyTier: newEntry.difficultyTier || (newEntry.chapterName && newEntry.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal'),
       correctCount: Number(newEntry.correctCount) || 0,
       totalQuestions: Number(newEntry.totalQuestions) || 1,
+      skippedCount: Number(newEntry.skippedCount) || 0,
       scorePercentage: Math.max(0, Math.min(100, Number(newEntry.scorePercentage))),
       timeSpentSeconds: Number(newEntry.timeSpentSeconds) || 0,
       formattedTime: newEntry.formattedTime || `${newEntry.timeSpentSeconds || 0}s`,

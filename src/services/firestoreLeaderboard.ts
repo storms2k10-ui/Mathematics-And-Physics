@@ -32,6 +32,8 @@ export class FirestoreLeaderboardService {
       const normalized = normalizeTrackAndClass(entry);
       const cleanStudentName = (entry.studentName || 'Student Candidate').trim();
 
+      const cleanDifficulty = entry.difficultyTier || (entry.chapterName && entry.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
+
       // Save every submission to leaderboard collection with unique ID and strictly verified track/class
       await setDoc(docRef, {
         ...entry,
@@ -41,6 +43,7 @@ export class FirestoreLeaderboardService {
         studentName: cleanStudentName,
         classLevel: normalized.classLevel,
         track: normalized.track,
+        difficultyTier: cleanDifficulty,
         timestamp: entry.timestamp || Date.now(),
         updatedAt: serverTimestamp(),
       }, { merge: true });
@@ -51,6 +54,7 @@ export class FirestoreLeaderboardService {
         id: entryId,
         track: normalized.track,
         classLevel: normalized.classLevel,
+        difficultyTier: cleanDifficulty,
       }, uid);
     } catch (error) {
       console.error('Firestore saveEntry error:', error);
@@ -66,6 +70,7 @@ export class FirestoreLeaderboardService {
       const resultDocId = entry.id || `result_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
       const resultDocRef = doc(db, TEST_RESULTS_COLLECTION, resultDocId);
       const normalized = normalizeTrackAndClass(entry);
+      const cleanDifficulty = entry.difficultyTier || (entry.chapterName && entry.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
       
       await setDoc(resultDocRef, {
         id: resultDocId,
@@ -74,7 +79,7 @@ export class FirestoreLeaderboardService {
         studentName: entry.studentName,
         classLevel: normalized.classLevel,
         track: normalized.track,
-        difficultyTier: entry.difficultyTier || 'Normal',
+        difficultyTier: cleanDifficulty,
         chapterId: entry.chapterId || 'general_quiz',
         chapterName: entry.chapterName,
         mode: entry.mode || 'practice',

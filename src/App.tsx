@@ -324,7 +324,10 @@ export default function App() {
     const userEmail = currentUser?.email || userProfile?.email || undefined;
     const userUid = currentUser?.uid || userProfile?.uid || undefined;
 
-    const activeTier = results.difficultyTier || pendingDifficultyTier || (results.questions && results.questions[0]?.difficulty_tier) || 'Normal';
+    const activeTier: PracticeDifficulty = results.difficultyTier || 
+      pendingDifficultyTier || 
+      (results.questions && (results.questions.some(q => q.difficulty_tier === 'Advanced') ? 'Advanced' : results.questions[0]?.difficulty_tier)) || 
+      (activeQuizTitle && activeQuizTitle.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
 
     const leaderboardEntry: LeaderboardEntry = {
       id: attemptId,

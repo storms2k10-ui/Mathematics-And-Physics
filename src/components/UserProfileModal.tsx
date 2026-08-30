@@ -363,29 +363,6 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
 
         {/* Modal Body */}
         <div className="p-3 sm:p-4 space-y-3 sm:space-y-4 overflow-y-auto flex-1">
-
-          {/* Real-time Live Submissions Count & Time & Date Sync Status Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-1.5 px-3 py-1.5 sm:py-2 rounded-xl bg-violet-50/80 dark:bg-violet-950/40 border border-violet-200/70 dark:border-violet-800/60 shadow-2xs">
-            <div className="flex items-center gap-1.5">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              <div className="text-[10.5px] sm:text-xs font-bold text-violet-950 dark:text-violet-200">
-                <span>{historyList.length} Live Submissions</span>
-                <span className="text-slate-400 font-normal ml-1 hidden sm:inline">
-                  • Synced
-                </span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-1 text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-              <Clock className="w-3 h-3 text-violet-500 shrink-0" />
-              <span>
-                Synced <strong className="text-violet-600 dark:text-violet-400">{formatLiveTime(latestTimestamp)}</strong>
-              </span>
-            </div>
-          </div>
           
           {/* Accuracy & Error Rates Section: Correct Accuracy, Error Rate & Skipped Questions */}
           <div className="space-y-1.5 sm:space-y-2">
@@ -676,7 +653,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                               ? 'bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800'
                               : 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
                           }`}>
-                            {itemDifficulty === 'Advanced' ? '⚡ Advanced' : '✓ Normal'}
+                            {itemDifficulty === 'Advanced' ? 'Advanced' : 'Normal'}
                           </span>
                         </div>
                         <div className="flex flex-wrap items-center gap-1.5 text-[10px] text-slate-500">

@@ -83,7 +83,9 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
   const [filterType, setFilterType] = useState<'all' | 'correct' | 'incorrect' | 'skipped'>('all');
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
-  const effectiveDifficultyTier: 'Normal' | 'Advanced' = difficultyTier || (questions && questions[0]?.difficulty_tier) || 'Normal';
+  const effectiveDifficultyTier: 'Normal' | 'Advanced' = difficultyTier || 
+    (questions && (questions.some(q => q.difficulty_tier === 'Advanced') ? 'Advanced' : questions[0]?.difficulty_tier)) || 
+    (chapterTitle && chapterTitle.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
 
   // Maintain consistent entry ID for server updates
   const [attemptEntryId] = useState<string>(() => {
