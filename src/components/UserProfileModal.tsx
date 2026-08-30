@@ -1,26 +1,10 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { 
   X, 
-  User, 
   Mail, 
-  GraduationCap, 
   Clock, 
-  CheckCircle2, 
-  XCircle, 
   LogOut, 
-  Sparkles, 
   BookOpen, 
-  Award, 
-  Flame, 
-  Zap, 
-  Target, 
-  Share2, 
-  Check, 
-  Calculator, 
-  Compass, 
-  Sigma, 
-  Layers, 
-  ChevronRight, 
   AlertTriangle, 
   BarChart3, 
   TrendingDown, 
@@ -41,7 +25,6 @@ import {
 import { useAuth } from '../context/AuthContext';
 import { useOffline } from '../context/OfflineContext';
 import { ClassLevel, Chapter } from '../types';
-import { MathText } from './MathText';
 import { FirestoreLeaderboardService } from '../services/firestoreLeaderboard';
 
 interface UserProfileModalProps {
@@ -276,8 +259,6 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
         cardGlow: 'shadow-amber-500/15 border-amber-500/30',
         avatarBg: 'bg-gradient-to-br from-amber-400 to-yellow-600 border-amber-200 text-slate-950 font-black',
         accentRing: 'ring-amber-400/50',
-        quote: '$$\\nabla \\times \\mathbf{B} = \\mu_0\\mathbf{J} + \\mu_0\\epsilon_0\\frac{\\partial \\mathbf{E}}{\\partial t} \\quad \\text{and} \\quad e^{i\\pi} + 1 = 0$$',
-        quoteTitle: 'Maxwell & Euler Classical Identities',
       };
     }
     if (correctPct >= 70) {
@@ -288,8 +269,6 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
         cardGlow: 'shadow-emerald-500/15 border-emerald-500/30',
         avatarBg: 'bg-gradient-to-br from-emerald-400 to-teal-700 border-emerald-200 text-white font-black',
         accentRing: 'ring-emerald-400/50',
-        quote: '$$\\int_{-\\infty}^{\\infty} e^{-x^2} dx = \\sqrt{\\pi} \\quad \\text{and} \\quad x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$',
-        quoteTitle: 'Gaussian Integral & Quadratic Principle',
       };
     }
     if (correctPct >= 50) {
@@ -300,8 +279,6 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
         cardGlow: 'shadow-violet-500/15 border-violet-500/30',
         avatarBg: 'bg-gradient-to-br from-violet-500 to-purple-700 border-violet-200 text-white font-black',
         accentRing: 'ring-violet-400/50',
-        quote: '$$a^2 + b^2 = c^2 \\quad \\text{and} \\quad \\sum_{k=1}^n k = \\frac{n(n+1)}{2}$$',
-        quoteTitle: 'Pythagorean & Arithmetic Series Theorems',
       };
     }
     return {
@@ -311,100 +288,70 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
       cardGlow: 'shadow-purple-500/15 border-purple-500/30',
       avatarBg: 'bg-gradient-to-br from-slate-600 to-violet-800 border-violet-200 text-white font-black',
       accentRing: 'ring-violet-400/50',
-      quote: '$$\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1 \\quad \\text{and} \\quad (a+b)^2 = a^2 + 2ab + b^2$$',
-      quoteTitle: 'Fundamental Limits & Algebraic Expansion',
     };
   };
 
   const theme = getDynamicTheme();
 
-  // Share track record / progress handler
-  const handleShareTrackRecord = async () => {
-    const shareText = `🎓 Academic Ranking Profile: ${userProfile.displayName}\n📚 Class: Class ${userProfile.classLevel} Mathematics & Physics\n🎯 Overall Accuracy: ${correctPct}%\n✅ Correct Answers: ${totalCorrect}/${totalQuestions} Questions\n📝 Practice Tests Completed: ${testsAttempted}\n🔗 View Academic Rankings: ${window.location.origin}`;
-
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: `${userProfile.displayName}'s Academic Track Record`,
-          text: shareText,
-          url: window.location.href,
-        });
-        setCopiedShare(true);
-        setTimeout(() => setCopiedShare(false), 3000);
-        return;
-      } catch {
-        // Fallback to clipboard
-      }
-    }
-
-    try {
-      await navigator.clipboard.writeText(shareText);
-      setCopiedShare(true);
-      setTimeout(() => setCopiedShare(false), 3000);
-    } catch {
-      // ignore
-    }
-  };
-
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
-      <div className={`bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-lg sm:max-w-2xl overflow-hidden flex flex-col max-h-[90vh] sm:max-h-[88vh] ${theme.cardGlow}`}>
+      <div className={`bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-md sm:max-w-xl overflow-hidden flex flex-col max-h-[85vh] ${theme.cardGlow}`}>
         
-        {/* Dynamic Profile Header with Mathematical Script & Formula Atmosphere */}
-        <div className={`bg-gradient-to-r ${theme.headerGradient} p-3.5 sm:p-5 text-white relative overflow-hidden flex flex-col justify-between gap-2.5 sm:gap-3.5 shadow-lg shrink-0`}>
+        {/* Dynamic Profile Header */}
+        <div className={`bg-gradient-to-r ${theme.headerGradient} p-3 sm:p-4 text-white relative overflow-hidden flex flex-col justify-between gap-2 shadow-md shrink-0`}>
           
           {/* Top Actions: Sign Out + Close */}
-          <div className="flex items-center justify-end relative z-10 gap-2">
+          <div className="flex items-center justify-end relative z-10 gap-1.5">
             <button
               onClick={() => {
                 signOut();
                 onClose();
               }}
-              className="p-1.5 sm:px-2.5 sm:py-1 rounded-lg sm:rounded-xl bg-white/15 hover:bg-rose-600 text-white transition-colors cursor-pointer flex items-center gap-1.5 text-[11px] font-bold shadow-xs"
+              className="px-2 py-1 rounded-lg bg-white/15 hover:bg-rose-600 text-white transition-colors cursor-pointer flex items-center gap-1 text-[10.5px] font-bold shadow-xs"
               title="Sign Out"
             >
-              <LogOut className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Sign Out</span>
+              <LogOut className="w-3 h-3" />
+              <span>Sign Out</span>
             </button>
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/20 transition-colors cursor-pointer"
+              className="p-1 rounded-lg text-white/80 hover:text-white hover:bg-white/20 transition-colors cursor-pointer"
               aria-label="Close"
             >
-              <X className="w-4 h-4 sm:w-5 sm:h-5" />
+              <X className="w-4 h-4" />
             </button>
           </div>
 
           {/* Candidate Profile Details & Avatar with Status Indicator */}
-          <div className="flex items-center gap-2.5 sm:gap-3.5 relative z-10">
+          <div className="flex items-center gap-3 relative z-10">
             <div className="relative shrink-0">
-              <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl ${theme.avatarBg} flex items-center justify-center border-2 shadow-lg text-lg sm:text-2xl`}>
+              <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl ${theme.avatarBg} flex items-center justify-center border-2 shadow-md text-base sm:text-lg`}>
                 {userProfile.displayName?.charAt(0).toUpperCase() || 'S'}
               </div>
               <span 
                 id="profile-modal-status-indicator"
-                className={`absolute -bottom-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 border-slate-900 transition-colors duration-300 ${indicatorDotClass}`}
+                className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-slate-900 transition-colors duration-300 ${indicatorDotClass}`}
                 title={`Connection: ${statusLabel}`}
               />
             </div>
             
             <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <h2 className="text-base sm:text-xl font-black tracking-tight text-white truncate">
+                <h2 className="text-sm sm:text-base font-black tracking-tight text-white truncate">
                   {userProfile.displayName}
                 </h2>
               </div>
-              <p className="text-[10px] sm:text-xs text-white/80 flex items-center gap-1 mt-0.5 font-medium truncate">
+              <p className="text-[10px] sm:text-[11px] text-white/80 flex items-center gap-1 mt-0.5 font-medium truncate">
                 <Mail className="w-3 h-3 shrink-0" />
                 <span className="truncate">{userProfile.email || 'Registered Student'}</span>
               </p>
-              <div className="flex flex-wrap items-center gap-1.5 mt-0.5">
+              <div className="flex flex-wrap items-center gap-1.5 mt-1">
                 {classRank && (
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black bg-amber-400 text-slate-950 shadow-xs">
-                    <Trophy className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-amber-950" />
+                    <Trophy className="w-2.5 h-2.5 text-amber-950" />
                     <span>Class {userProfile.classLevel} Rank #{classRank.rank}</span>
                   </span>
                 )}
@@ -412,30 +359,19 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
             </div>
           </div>
 
-          {/* Dynamic Mathematical Script Display Box with KaTeX */}
-          <div className="p-2 sm:p-2.5 rounded-xl bg-black/25 backdrop-blur-md border border-white/20 relative z-10 space-y-0.5 text-center sm:text-left">
-            <div className="flex items-center justify-between text-[9px] font-black uppercase tracking-wider text-pink-200/90">
-              <span>Mathematical Identity</span>
-              <span className="text-white/70 truncate ml-2">{theme.quoteTitle}</span>
-            </div>
-            <div className="text-[11px] sm:text-xs text-white overflow-x-auto py-0.5 font-serif no-scrollbar">
-              <MathText text={theme.quote} displayMode={true} />
-            </div>
-          </div>
-
         </div>
 
         {/* Modal Body */}
-        <div className="p-3 sm:p-5 space-y-3.5 sm:space-y-5 overflow-y-auto flex-1">
+        <div className="p-3 sm:p-4 space-y-3 sm:space-y-4 overflow-y-auto flex-1">
 
           {/* Real-time Live Submissions Count & Time & Date Sync Status Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl sm:rounded-2xl bg-violet-50/80 dark:bg-violet-950/40 border border-violet-200/70 dark:border-violet-800/60 shadow-2xs">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center justify-between gap-1.5 px-3 py-1.5 sm:py-2 rounded-xl bg-violet-50/80 dark:bg-violet-950/40 border border-violet-200/70 dark:border-violet-800/60 shadow-2xs">
+            <div className="flex items-center gap-1.5">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              <div className="text-[11px] sm:text-xs font-bold text-violet-950 dark:text-violet-200">
+              <div className="text-[10.5px] sm:text-xs font-bold text-violet-950 dark:text-violet-200">
                 <span>{historyList.length} Live Submissions</span>
                 <span className="text-slate-400 font-normal ml-1 hidden sm:inline">
                   • Synced
@@ -443,7 +379,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
               </div>
             </div>
 
-            <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+            <div className="flex items-center gap-1 text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium">
               <Clock className="w-3 h-3 text-violet-500 shrink-0" />
               <span>
                 Synced <strong className="text-violet-600 dark:text-violet-400">{formatLiveTime(latestTimestamp)}</strong>
@@ -452,136 +388,127 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
           </div>
           
           {/* Accuracy & Error Rates Section: Correct Accuracy, Error Rate & Skipped Questions */}
-          <div className="space-y-2 sm:space-y-2.5">
+          <div className="space-y-1.5 sm:space-y-2">
             <div className="flex items-center justify-between flex-wrap gap-1">
-              <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              <h4 className="text-[10.5px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Performance Analytics
               </h4>
-              <span className="text-[10.5px] sm:text-xs font-bold text-violet-700 dark:text-violet-300 bg-violet-100/80 dark:bg-violet-950/80 px-2.5 py-0.5 rounded-full border border-violet-200 dark:border-violet-800">
+              <span className="text-[10px] sm:text-[11px] font-bold text-violet-700 dark:text-violet-300 bg-violet-100/80 dark:bg-violet-950/80 px-2 py-0.5 rounded-full border border-violet-200 dark:border-violet-800">
                 Answered Accuracy: {overallAccuracy}% • {testsAttempted} Tests
               </span>
             </div>
             
             {/* 3 Analytics Cards: Correct, Incorrect, and Skipped */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-3">
+            <div className="grid grid-cols-3 gap-2">
               
               {/* Light Green Card: Correct Accuracy */}
-              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-700/80 flex flex-col items-center justify-center text-center gap-1.5 shadow-2xs">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 sm:border-3 border-emerald-500 dark:border-emerald-400 bg-white dark:bg-emerald-900/50 flex flex-col items-center justify-center shadow-inner">
-                  <span className="text-sm sm:text-lg font-black text-emerald-600 dark:text-emerald-300">
+              <div className="p-2 sm:p-2.5 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-700/80 flex flex-col items-center justify-center text-center gap-1 shadow-2xs">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-emerald-500 dark:border-emerald-400 bg-white dark:bg-emerald-900/50 flex items-center justify-center shadow-inner">
+                  <span className="text-xs sm:text-sm font-black text-emerald-600 dark:text-emerald-300">
                     {correctPct}%
-                  </span>
-                  <span className="text-[7px] sm:text-[8px] font-black uppercase text-emerald-700 dark:text-emerald-400 tracking-wider">
-                    Correct
                   </span>
                 </div>
 
                 <div className="space-y-0.5 text-center">
-                  <p className="text-xs sm:text-sm font-black text-emerald-900 dark:text-emerald-100">
+                  <p className="text-[11px] sm:text-xs font-black text-emerald-900 dark:text-emerald-100">
                     {totalCorrect}{' '}
-                    <span className="text-[9px] sm:text-[10px] font-normal text-emerald-700/80 dark:text-emerald-400">
+                    <span className="text-[9px] font-normal text-emerald-700/80 dark:text-emerald-400">
                       / {totalQuestions}
                     </span>
                   </p>
-                  <p className="text-[9px] text-emerald-700 dark:text-emerald-400 hidden sm:block">
-                    Validated
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+                    Correct
                   </p>
                 </div>
               </div>
 
               {/* Rose / Red Card: Error Rate / Missed Questions */}
-              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-rose-50/80 dark:bg-rose-950/40 border border-rose-300 dark:border-rose-700/80 flex flex-col items-center justify-center text-center gap-1.5 shadow-2xs">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 sm:border-3 border-rose-500 dark:border-rose-400 bg-white dark:bg-rose-900/50 flex flex-col items-center justify-center shadow-inner">
-                  <span className="text-sm sm:text-lg font-black text-rose-600 dark:text-rose-300">
+              <div className="p-2 sm:p-2.5 rounded-xl bg-rose-50/80 dark:bg-rose-950/40 border border-rose-300 dark:border-rose-700/80 flex flex-col items-center justify-center text-center gap-1 shadow-2xs">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-rose-500 dark:border-rose-400 bg-white dark:bg-rose-900/50 flex items-center justify-center shadow-inner">
+                  <span className="text-xs sm:text-sm font-black text-rose-600 dark:text-rose-300">
                     {wrongPct}%
-                  </span>
-                  <span className="text-[7px] sm:text-[8px] font-black uppercase text-rose-700 dark:text-rose-400 tracking-wider">
-                    Incorrect
                   </span>
                 </div>
 
                 <div className="space-y-0.5 text-center">
-                  <p className="text-xs sm:text-sm font-black text-rose-900 dark:text-rose-100">
+                  <p className="text-[11px] sm:text-xs font-black text-rose-900 dark:text-rose-100">
                     {totalWrong}{' '}
-                    <span className="text-[9px] sm:text-[10px] font-normal text-rose-700/80 dark:text-rose-400">
+                    <span className="text-[9px] font-normal text-rose-700/80 dark:text-rose-400">
                       / {totalQuestions}
                     </span>
                   </p>
-                  <p className="text-[9px] text-rose-700 dark:text-rose-400 hidden sm:block">
-                    Errors
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400">
+                    Incorrect
                   </p>
                 </div>
               </div>
 
               {/* Amber / Orange Card: Skipped Questions */}
-              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-700/80 flex flex-col items-center justify-center text-center gap-1.5 shadow-2xs">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 sm:border-3 border-amber-500 dark:border-amber-400 bg-white dark:bg-amber-900/50 flex flex-col items-center justify-center shadow-inner">
-                  <span className="text-sm sm:text-lg font-black text-amber-600 dark:text-amber-300">
+              <div className="p-2 sm:p-2.5 rounded-xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-700/80 flex flex-col items-center justify-center text-center gap-1 shadow-2xs">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-amber-500 dark:border-amber-400 bg-white dark:bg-amber-900/50 flex items-center justify-center shadow-inner">
+                  <span className="text-xs sm:text-sm font-black text-amber-600 dark:text-amber-300">
                     {skippedPct}%
-                  </span>
-                  <span className="text-[7px] sm:text-[8px] font-black uppercase text-amber-700 dark:text-amber-400 tracking-wider">
-                    Skipped
                   </span>
                 </div>
 
                 <div className="space-y-0.5 text-center">
-                  <p className="text-xs sm:text-sm font-black text-amber-900 dark:text-amber-100">
+                  <p className="text-[11px] sm:text-xs font-black text-amber-900 dark:text-amber-100">
                     {totalSkipped}{' '}
-                    <span className="text-[9px] sm:text-[10px] font-normal text-amber-700/80 dark:text-amber-400">
+                    <span className="text-[9px] font-normal text-amber-700/80 dark:text-amber-400">
                       / {totalQuestions}
                     </span>
                   </p>
-                  <p className="text-[9px] text-amber-700 dark:text-amber-400 hidden sm:block">
-                    Unanswered
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+                    Skipped
                   </p>
                 </div>
               </div>
 
             </div>
 
-            {/* Explanatory metric note to eliminate calculation confusion */}
-            <p className="text-[10px] text-slate-500 dark:text-slate-400 text-center">
-              * <strong>Answered Accuracy ({overallAccuracy}%)</strong> is based on attempted questions ({totalCorrect}/{attemptedQuestions}). Cards show distribution across all {totalQuestions} total questions.
+            {/* Explanatory metric note */}
+            <p className="text-[9.5px] text-slate-500 dark:text-slate-400 text-center">
+              * <strong>Accuracy ({overallAccuracy}%)</strong> based on {attemptedQuestions} attempted questions ({totalCorrect} correct).
             </p>
           </div>
 
           {/* 📊 RECHARTS VISUAL REPRESENTATION OF CHAPTER PERFORMANCE & STRUGGLE IDENTIFICATION */}
-          <div className="space-y-3 pt-1">
+          <div className="space-y-2 pt-0.5">
             <div className="flex items-center justify-between">
-              <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                <BarChart3 className="w-3.5 h-3.5 text-violet-500" />
+              <h4 className="text-[10.5px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                <BarChart3 className="w-3 h-3 text-violet-500" />
                 <span>Chapter-by-Chapter Performance</span>
               </h4>
-              <span className="text-[10px] text-slate-400 font-medium">
+              <span className="text-[9.5px] text-slate-400 font-medium">
                 {chapterPerformanceData.length} Chapters
               </span>
             </div>
 
             {chapterPerformanceData.length === 0 ? (
-              <div className="p-5 text-center rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-1.5">
-                <BarChart3 className="w-7 h-7 text-slate-400 mx-auto" />
-                <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
+              <div className="p-3.5 text-center rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-1">
+                <BarChart3 className="w-5 h-5 text-slate-400 mx-auto" />
+                <p className="text-[11px] font-bold text-slate-700 dark:text-slate-300">
                   No chapter performance data yet
                 </p>
-                <p className="text-[10px] text-slate-500 max-w-sm mx-auto">
-                  Take chapter practice quizzes to visualize your accuracy candles and identify topics requiring revision.
+                <p className="text-[9.5px] text-slate-500 max-w-xs mx-auto">
+                  Take chapter quizzes to visualize your accuracy candles and identify revision topics.
                 </p>
               </div>
             ) : (
-              <div className="space-y-3">
+              <div className="space-y-2">
                 
                 {/* Visual Struggle Identification Alert Box */}
                 {strugglingChapters.length > 0 ? (
-                  <div className="p-3 sm:p-3.5 rounded-xl sm:rounded-2xl bg-rose-50/80 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/60 flex items-start gap-2.5 shadow-2xs">
-                    <div className="w-7 h-7 rounded-lg bg-rose-100 dark:bg-rose-900/60 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
-                      <AlertTriangle className="w-4 h-4" />
+                  <div className="p-2.5 rounded-xl bg-rose-50/80 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/60 flex items-start gap-2 shadow-2xs">
+                    <div className="w-5 h-5 rounded-md bg-rose-100 dark:bg-rose-900/60 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
+                      <AlertTriangle className="w-3 h-3" />
                     </div>
-                    <div className="space-y-1 flex-1 min-w-0">
-                      <div className="flex flex-wrap items-center justify-between gap-1.5">
-                        <h5 className="text-[11px] sm:text-xs font-bold text-rose-900 dark:text-rose-200">
+                    <div className="space-y-0.5 flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center justify-between gap-1">
+                        <h5 className="text-[10.5px] font-bold text-rose-900 dark:text-rose-200">
                           Focus Needed on {strugglingChapters.length} Chapter{strugglingChapters.length > 1 ? 's' : ''}
                         </h5>
-                        <span className="text-[9px] font-black uppercase px-1.5 py-0.5 rounded bg-rose-200/80 dark:bg-rose-900 text-rose-800 dark:text-rose-200">
+                        <span className="text-[8.5px] font-black uppercase px-1 py-0.2 rounded bg-rose-200/80 dark:bg-rose-900 text-rose-800 dark:text-rose-200">
                           Review
                         </span>
                       </div>
@@ -589,26 +516,26 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                         {strugglingChapters.map((ch, i) => (
                           <span
                             key={i}
-                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 shadow-2xs"
+                            className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[9.5px] font-bold bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 shadow-2xs"
                           >
-                            <TrendingDown className="w-2.5 h-2.5 text-rose-500" />
+                            <TrendingDown className="w-2 h-2 text-rose-500" />
                             <span>{ch.name}</span>
-                            <span className="text-[9px] text-rose-500 font-black">({ch.accuracy}%)</span>
+                            <span className="text-[8.5px] text-rose-500 font-black">({ch.accuracy}%)</span>
                           </span>
                         ))}
                       </div>
                     </div>
                   </div>
                 ) : (
-                  <div className="p-3 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 flex items-center gap-2.5 shadow-2xs">
-                    <div className="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
-                      <TrendingUp className="w-4 h-4" />
+                  <div className="p-2 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 flex items-center gap-2 shadow-2xs">
+                    <div className="w-5 h-5 rounded-md bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                      <TrendingUp className="w-3 h-3" />
                     </div>
                     <div className="space-y-0.5">
-                      <h5 className="text-[11px] sm:text-xs font-bold text-emerald-900 dark:text-emerald-200">
+                      <h5 className="text-[10.5px] font-bold text-emerald-900 dark:text-emerald-200">
                         High Mastery across Tested Chapters
                       </h5>
-                      <p className="text-[10px] text-emerald-700 dark:text-emerald-300">
+                      <p className="text-[9.5px] text-emerald-700 dark:text-emerald-300">
                         All attempted chapters exceed the 70% benchmark.
                       </p>
                     </div>
@@ -616,47 +543,47 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                 )}
 
                 {/* Recharts Bar Chart Card with Thin Candles */}
-                <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-2">
-                  <div className="flex flex-wrap items-center justify-between gap-1.5 text-[11px]">
-                    <span className="font-bold text-slate-700 dark:text-slate-300 text-[10px] sm:text-xs">
+                <div className="p-2.5 sm:p-3 rounded-xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-1.5">
+                  <div className="flex flex-wrap items-center justify-between gap-1 text-[10px]">
+                    <span className="font-bold text-slate-700 dark:text-slate-300 text-[10.5px]">
                       Accuracy Candles by Chapter
                     </span>
-                    <div className="flex items-center gap-2 text-[9px] font-semibold">
-                      <span className="flex items-center gap-1 text-rose-600 dark:text-rose-400">
-                        <span className="w-2 h-2 rounded-xs bg-rose-500 inline-block"></span>
+                    <div className="flex items-center gap-2 text-[8.5px] font-semibold">
+                      <span className="flex items-center gap-0.5 text-rose-600 dark:text-rose-400">
+                        <span className="w-1.5 h-1.5 rounded-xs bg-rose-500 inline-block"></span>
                         <span>&lt;50%</span>
                       </span>
-                      <span className="flex items-center gap-1 text-amber-600 dark:text-amber-400">
-                        <span className="w-2 h-2 rounded-xs bg-amber-500 inline-block"></span>
+                      <span className="flex items-center gap-0.5 text-amber-600 dark:text-amber-400">
+                        <span className="w-1.5 h-1.5 rounded-xs bg-amber-500 inline-block"></span>
                         <span>50-69%</span>
                       </span>
-                      <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400">
-                        <span className="w-2 h-2 rounded-xs bg-emerald-500 inline-block"></span>
+                      <span className="flex items-center gap-0.5 text-emerald-600 dark:text-emerald-400">
+                        <span className="w-1.5 h-1.5 rounded-xs bg-emerald-500 inline-block"></span>
                         <span>≥70%</span>
                       </span>
                     </div>
                   </div>
 
-                  <div className="h-48 sm:h-56 w-full pt-1">
+                  <div className="h-36 sm:h-40 w-full pt-0.5">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart
                         data={chapterPerformanceData}
-                        margin={{ top: 10, right: 10, left: -24, bottom: 35 }}
+                        margin={{ top: 8, right: 8, left: -24, bottom: 25 }}
                         barCategoryGap="15%"
                       >
                         <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} opacity={0.4} />
                         <XAxis 
                           dataKey="shortName" 
-                          tick={{ fontSize: 9, fill: '#64748b' }}
+                          tick={{ fontSize: 8.5, fill: '#64748b' }}
                           interval={0}
-                          angle={-25}
+                          angle={-20}
                           textAnchor="end"
-                          height={45}
+                          height={35}
                         />
                         <YAxis 
                           domain={[0, 100]}
                           ticks={[0, 25, 50, 75, 100]}
-                          tick={{ fontSize: 9, fill: '#64748b' }}
+                          tick={{ fontSize: 8.5, fill: '#64748b' }}
                           unit="%"
                         />
                         <Tooltip
@@ -664,14 +591,14 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                             if (active && payload && payload.length) {
                               const data = payload[0].payload;
                               return (
-                                <div className="p-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl text-xs space-y-1 z-50">
-                                  <div className="font-bold text-slate-900 dark:text-white text-[11px]">
+                                <div className="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg shadow-xl text-[10px] space-y-0.5 z-50">
+                                  <div className="font-bold text-slate-900 dark:text-white text-[10.5px]">
                                     {data.name}
                                   </div>
-                                  <div className="text-[10px] text-slate-500">
+                                  <div className="text-[9px] text-slate-500">
                                     Class {data.classLevel} • {data.attempts} Attempt{data.attempts > 1 ? 's' : ''}
                                   </div>
-                                  <div className="pt-0.5 flex items-center justify-between gap-3 font-bold text-[11px]">
+                                  <div className="pt-0.5 flex items-center justify-between gap-2 font-bold text-[10px]">
                                     <span className="text-slate-600 dark:text-slate-300">Accuracy:</span>
                                     <span className={data.accuracy >= 70 ? 'text-emerald-600' : data.accuracy >= 50 ? 'text-amber-600' : 'text-rose-600'}>
                                       {data.accuracy}% ({data.totalCorrect}/{data.totalQuestions})
@@ -683,13 +610,13 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                             return null;
                           }}
                         />
-                        <ReferenceLine y={70} stroke="#10b981" strokeDasharray="3 3" label={{ value: '70%', position: 'insideTopRight', fill: '#10b981', fontSize: 9 }} />
+                        <ReferenceLine y={70} stroke="#10b981" strokeDasharray="3 3" label={{ value: '70%', position: 'insideTopRight', fill: '#10b981', fontSize: 8 }} />
                         <Bar 
                           dataKey="accuracy" 
-                          barSize={10}
-                          maxBarSize={12}
-                          radius={[3, 3, 0, 0]}
-                          animationDuration={600}
+                          barSize={8}
+                          maxBarSize={10}
+                          radius={[2, 2, 0, 0]}
+                          animationDuration={500}
                         >
                           {chapterPerformanceData.map((entry, index) => {
                             const color = entry.accuracy >= 70 ? '#10b981' : entry.accuracy >= 50 ? '#f59e0b' : '#f43f5e';
@@ -706,45 +633,45 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
           </div>
 
           {/* Test Attempt Practice History */}
-          <div className="space-y-3">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-indigo-500" />
+          <div className="space-y-2">
+            <div className="flex flex-wrap items-center justify-between gap-1">
+              <h4 className="text-[10.5px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                <Clock className="w-3 h-3 text-indigo-500" />
                 <span>Saved Practice History &amp; Test Results</span>
               </h4>
-              <span className="text-xs text-slate-400 font-medium">
+              <span className="text-[9.5px] text-slate-400 font-medium">
                 {historyList.length} attempts saved
               </span>
             </div>
 
             {historyList.length === 0 ? (
-              <div className="p-8 text-center rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-2">
-                <BookOpen className="w-8 h-8 text-slate-400 mx-auto" />
-                <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
+              <div className="p-4 text-center rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-1">
+                <BookOpen className="w-6 h-6 text-slate-400 mx-auto" />
+                <p className="text-[11px] font-bold text-slate-700 dark:text-slate-300">
                   No practice test attempts recorded yet.
                 </p>
-                <p className="text-[11px] text-slate-500">
+                <p className="text-[9.5px] text-slate-500">
                   Start an Elementary Mathematics or Physics session to build your academic track record.
                 </p>
               </div>
             ) : (
-              <div className="space-y-2 max-h-64 overflow-y-auto pr-1">
+              <div className="space-y-1.5 max-h-48 sm:max-h-52 overflow-y-auto pr-1">
                 {historyList.map((item, idx) => {
                   const itemDifficulty = item.difficultyTier || (item.chapterName && item.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
                   return (
                     <div
                       key={item.id || idx}
-                      className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3 text-xs"
+                      className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-2 text-xs"
                     >
-                      <div className="space-y-1 min-w-0">
-                        <div className="flex flex-wrap items-center gap-1.5">
-                          <span className="font-bold text-slate-900 dark:text-white truncate">
+                      <div className="space-y-0.5 min-w-0">
+                        <div className="flex flex-wrap items-center gap-1">
+                          <span className="font-bold text-slate-900 dark:text-white truncate text-[11px]">
                             {item.chapterName}
                           </span>
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 shrink-0">
+                          <span className="px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 shrink-0">
                             Class {item.classLevel}
                           </span>
-                          <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold shrink-0 border ${
+                          <span className={`px-1.5 py-0.2 rounded-full text-[9px] font-extrabold shrink-0 border ${
                             itemDifficulty === 'Advanced'
                               ? 'bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800'
                               : 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
@@ -752,29 +679,29 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                             {itemDifficulty === 'Advanced' ? '⚡ Advanced' : '✓ Normal'}
                           </span>
                         </div>
-                        <div className="flex flex-wrap items-center gap-2.5 text-[11px] text-slate-500">
+                        <div className="flex flex-wrap items-center gap-1.5 text-[10px] text-slate-500">
                           <span>{item.track || 'Elementary Mathematics'}</span>
                           <span>•</span>
                           <span>{item.formattedTime || `${item.timeSpentSeconds}s`}</span>
                           <span>•</span>
-                          <span className="text-indigo-600 dark:text-indigo-400 font-medium flex items-center gap-1">
-                            <Clock className="w-3 h-3" />
+                          <span className="text-indigo-600 dark:text-indigo-400 font-medium flex items-center gap-0.5">
+                            <Clock className="w-2.5 h-2.5" />
                             <span>{formatLiveTime(item.timestamp)}</span>
                           </span>
-                          <span className="text-slate-400 text-[10px] hidden sm:inline">
+                          <span className="text-slate-400 text-[9px] hidden sm:inline">
                             ({formatExactDateTime(item.timestamp, item.formattedDate)})
                           </span>
                         </div>
                       </div>
 
                       <div className="text-right shrink-0">
-                        <div className={`text-sm font-black ${
+                        <div className={`text-xs font-black ${
                           item.scorePercentage >= 80 ? 'text-emerald-600 dark:text-emerald-400' :
                           item.scorePercentage >= 50 ? 'text-indigo-600 dark:text-indigo-400' : 'text-rose-600 dark:text-rose-400'
                         }`}>
                           {item.scorePercentage}%
                         </div>
-                        <div className="text-[10px] text-slate-400 font-medium">
+                        <div className="text-[9px] text-slate-400 font-medium">
                           <span>{item.correctCount}/{item.totalQuestions} Correct</span>
                           {(item.skippedCount ?? 0) > 0 && (
                             <span className="ml-1 text-slate-500 font-semibold">• {item.skippedCount} Skipped</span>
