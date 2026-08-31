@@ -1,27 +1,12 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   X, 
   Mail, 
   Clock, 
   LogOut, 
   BookOpen, 
-  AlertTriangle, 
-  BarChart3, 
-  TrendingDown, 
-  TrendingUp,
   Trophy
 } from 'lucide-react';
-import {
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-  Cell,
-  ReferenceLine,
-} from 'recharts';
 import { useAuth } from '../context/AuthContext';
 import { useOffline } from '../context/OfflineContext';
 import { ClassLevel, Chapter } from '../types';
@@ -186,69 +171,6 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   const historyList = userProfile.history || [];
   const latestTimestamp = historyList.length > 0 ? Math.max(...historyList.map(h => h.timestamp || 0)) : userProfile.createdAt;
 
-  // Aggregate performance data by chapter using Recharts
-  const chapterPerformanceData = useMemo(() => {
-    if (!historyList || historyList.length === 0) {
-      return [];
-    }
-
-    const map = new Map<string, {
-      chapterName: string;
-      classLevel: number;
-      totalCorrect: number;
-      totalQuestions: number;
-      attempts: number;
-      bestScore: number;
-      latestTimestamp: number;
-    }>();
-
-    historyList.forEach((item) => {
-      const name = (item.chapterName || 'Unknown Chapter').trim();
-      const existing = map.get(name);
-      if (!existing) {
-        map.set(name, {
-          chapterName: name,
-          classLevel: Number(item.classLevel) || 9,
-          totalCorrect: item.correctCount || 0,
-          totalQuestions: item.totalQuestions || 0,
-          attempts: 1,
-          bestScore: item.scorePercentage || 0,
-          latestTimestamp: item.timestamp || 0,
-        });
-      } else {
-        existing.totalCorrect += item.correctCount || 0;
-        existing.totalQuestions += item.totalQuestions || 0;
-        existing.attempts += 1;
-        existing.bestScore = Math.max(existing.bestScore, item.scorePercentage || 0);
-        if ((item.timestamp || 0) > existing.latestTimestamp) {
-          existing.latestTimestamp = item.timestamp || 0;
-        }
-      }
-    });
-
-    return Array.from(map.values()).map((ch) => {
-      const avgAccuracy = ch.totalQuestions > 0 ? Math.round((ch.totalCorrect / ch.totalQuestions) * 100) : 0;
-      const missed = Math.max(0, ch.totalQuestions - ch.totalCorrect);
-      return {
-        name: ch.chapterName,
-        shortName: ch.chapterName.length > 18 ? ch.chapterName.slice(0, 16) + '…' : ch.chapterName,
-        classLevel: ch.classLevel,
-        accuracy: avgAccuracy,
-        bestScore: ch.bestScore,
-        attempts: ch.attempts,
-        totalCorrect: ch.totalCorrect,
-        totalQuestions: ch.totalQuestions,
-        missedQuestions: missed,
-        status: avgAccuracy < 50 ? 'critical' : avgAccuracy < 70 ? 'warning' : 'mastered',
-      };
-    }).sort((a, b) => a.accuracy - b.accuracy); // Ascending order: Lowest scoring (most struggled) chapters first!
-  }, [historyList]);
-
-  // Identify struggling chapters (accuracy < 70%)
-  const strugglingChapters = useMemo(() => {
-    return chapterPerformanceData.filter((c) => c.accuracy < 70);
-  }, [chapterPerformanceData]);
-
   // Dynamic Profile Theme Colors based on Overall Accuracy & Mastery
   const getDynamicTheme = () => {
     if (correctPct >= 85) {
@@ -297,7 +219,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
-      <div className={`bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-md sm:max-w-xl overflow-hidden flex flex-col max-h-[85vh] ${theme.cardGlow}`}>
+      <div className={`bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-md sm:max-w-xl md:max-w-2xl overflow-hidden flex flex-col max-h-[90vh] sm:max-h-[88vh] ${theme.cardGlow}`}>
         
         {/* Dynamic Profile Header */}
         <div className={`bg-gradient-to-r ${theme.headerGradient} p-3 sm:p-4 text-white relative overflow-hidden flex flex-col justify-between gap-2 shadow-md shrink-0`}>
@@ -449,190 +371,30 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
             </p>
           </div>
 
-          {/* 📊 RECHARTS VISUAL REPRESENTATION OF CHAPTER PERFORMANCE & STRUGGLE IDENTIFICATION */}
-          <div className="space-y-2 pt-0.5">
-            <div className="flex items-center justify-between">
-              <h4 className="text-[10.5px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1">
-                <BarChart3 className="w-3 h-3 text-violet-500" />
-                <span>Chapter-by-Chapter Performance</span>
-              </h4>
-              <span className="text-[9.5px] text-slate-400 font-medium">
-                {chapterPerformanceData.length} Chapters
-              </span>
-            </div>
-
-            {chapterPerformanceData.length === 0 ? (
-              <div className="p-3.5 text-center rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-1">
-                <BarChart3 className="w-5 h-5 text-slate-400 mx-auto" />
-                <p className="text-[11px] font-bold text-slate-700 dark:text-slate-300">
-                  No chapter performance data yet
-                </p>
-                <p className="text-[9.5px] text-slate-500 max-w-xs mx-auto">
-                  Take chapter quizzes to visualize your accuracy candles and identify revision topics.
-                </p>
-              </div>
-            ) : (
-              <div className="space-y-2">
-                
-                {/* Visual Struggle Identification Alert Box */}
-                {strugglingChapters.length > 0 ? (
-                  <div className="p-2.5 rounded-xl bg-rose-50/80 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/60 flex items-start gap-2 shadow-2xs">
-                    <div className="w-5 h-5 rounded-md bg-rose-100 dark:bg-rose-900/60 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
-                      <AlertTriangle className="w-3 h-3" />
-                    </div>
-                    <div className="space-y-0.5 flex-1 min-w-0">
-                      <div className="flex flex-wrap items-center justify-between gap-1">
-                        <h5 className="text-[10.5px] font-bold text-rose-900 dark:text-rose-200">
-                          Focus Needed on {strugglingChapters.length} Chapter{strugglingChapters.length > 1 ? 's' : ''}
-                        </h5>
-                        <span className="text-[8.5px] font-black uppercase px-1 py-0.2 rounded bg-rose-200/80 dark:bg-rose-900 text-rose-800 dark:text-rose-200">
-                          Review
-                        </span>
-                      </div>
-                      <div className="flex flex-wrap gap-1 pt-0.5">
-                        {strugglingChapters.map((ch, i) => (
-                          <span
-                            key={i}
-                            className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[9.5px] font-bold bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 shadow-2xs"
-                          >
-                            <TrendingDown className="w-2 h-2 text-rose-500" />
-                            <span>{ch.name}</span>
-                            <span className="text-[8.5px] text-rose-500 font-black">({ch.accuracy}%)</span>
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="p-2 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 flex items-center gap-2 shadow-2xs">
-                    <div className="w-5 h-5 rounded-md bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
-                      <TrendingUp className="w-3 h-3" />
-                    </div>
-                    <div className="space-y-0.5">
-                      <h5 className="text-[10.5px] font-bold text-emerald-900 dark:text-emerald-200">
-                        High Mastery across Tested Chapters
-                      </h5>
-                      <p className="text-[9.5px] text-emerald-700 dark:text-emerald-300">
-                        All attempted chapters exceed the 70% benchmark.
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {/* Recharts Bar Chart Card with Thin Candles */}
-                <div className="p-2.5 sm:p-3 rounded-xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-1.5">
-                  <div className="flex flex-wrap items-center justify-between gap-1 text-[10px]">
-                    <span className="font-bold text-slate-700 dark:text-slate-300 text-[10.5px]">
-                      Accuracy Candles by Chapter
-                    </span>
-                    <div className="flex items-center gap-2 text-[8.5px] font-semibold">
-                      <span className="flex items-center gap-0.5 text-rose-600 dark:text-rose-400">
-                        <span className="w-1.5 h-1.5 rounded-xs bg-rose-500 inline-block"></span>
-                        <span>&lt;50%</span>
-                      </span>
-                      <span className="flex items-center gap-0.5 text-amber-600 dark:text-amber-400">
-                        <span className="w-1.5 h-1.5 rounded-xs bg-amber-500 inline-block"></span>
-                        <span>50-69%</span>
-                      </span>
-                      <span className="flex items-center gap-0.5 text-emerald-600 dark:text-emerald-400">
-                        <span className="w-1.5 h-1.5 rounded-xs bg-emerald-500 inline-block"></span>
-                        <span>≥70%</span>
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="h-36 sm:h-40 w-full pt-0.5">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart
-                        data={chapterPerformanceData}
-                        margin={{ top: 8, right: 8, left: -24, bottom: 25 }}
-                        barCategoryGap="15%"
-                      >
-                        <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} opacity={0.4} />
-                        <XAxis 
-                          dataKey="shortName" 
-                          tick={{ fontSize: 8.5, fill: '#64748b' }}
-                          interval={0}
-                          angle={-20}
-                          textAnchor="end"
-                          height={35}
-                        />
-                        <YAxis 
-                          domain={[0, 100]}
-                          ticks={[0, 25, 50, 75, 100]}
-                          tick={{ fontSize: 8.5, fill: '#64748b' }}
-                          unit="%"
-                        />
-                        <Tooltip
-                          content={({ active, payload }) => {
-                            if (active && payload && payload.length) {
-                              const data = payload[0].payload;
-                              return (
-                                <div className="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg shadow-xl text-[10px] space-y-0.5 z-50">
-                                  <div className="font-bold text-slate-900 dark:text-white text-[10.5px]">
-                                    {data.name}
-                                  </div>
-                                  <div className="text-[9px] text-slate-500">
-                                    Class {data.classLevel} • {data.attempts} Attempt{data.attempts > 1 ? 's' : ''}
-                                  </div>
-                                  <div className="pt-0.5 flex items-center justify-between gap-2 font-bold text-[10px]">
-                                    <span className="text-slate-600 dark:text-slate-300">Accuracy:</span>
-                                    <span className={data.accuracy >= 70 ? 'text-emerald-600' : data.accuracy >= 50 ? 'text-amber-600' : 'text-rose-600'}>
-                                      {data.accuracy}% ({data.totalCorrect}/{data.totalQuestions})
-                                    </span>
-                                  </div>
-                                </div>
-                              );
-                            }
-                            return null;
-                          }}
-                        />
-                        <ReferenceLine y={70} stroke="#10b981" strokeDasharray="3 3" label={{ value: '70%', position: 'insideTopRight', fill: '#10b981', fontSize: 8 }} />
-                        <Bar 
-                          dataKey="accuracy" 
-                          barSize={8}
-                          maxBarSize={10}
-                          radius={[2, 2, 0, 0]}
-                          animationDuration={500}
-                        >
-                          {chapterPerformanceData.map((entry, index) => {
-                            const color = entry.accuracy >= 70 ? '#10b981' : entry.accuracy >= 50 ? '#f59e0b' : '#f43f5e';
-                            return <Cell key={`cell-${index}`} fill={color} />;
-                          })}
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
-
-              </div>
-            )}
-          </div>
-
           {/* Test Attempt Practice History */}
-          <div className="space-y-2">
+          <div className="space-y-2.5 min-h-[220px]">
             <div className="flex flex-wrap items-center justify-between gap-1">
               <h4 className="text-[10.5px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1">
-                <Clock className="w-3 h-3 text-indigo-500" />
+                <Clock className="w-3.5 h-3.5 text-indigo-500" />
                 <span>Saved Practice History &amp; Test Results</span>
               </h4>
-              <span className="text-[9.5px] text-slate-400 font-medium">
+              <span className="text-[9.5px] sm:text-[10px] text-slate-400 font-semibold">
                 {historyList.length} attempts saved
               </span>
             </div>
 
             {historyList.length === 0 ? (
-              <div className="p-4 text-center rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-1">
-                <BookOpen className="w-6 h-6 text-slate-400 mx-auto" />
-                <p className="text-[11px] font-bold text-slate-700 dark:text-slate-300">
+              <div className="p-6 text-center rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-1.5 min-h-[160px] flex flex-col items-center justify-center">
+                <BookOpen className="w-7 h-7 text-slate-400 mx-auto" />
+                <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
                   No practice test attempts recorded yet.
                 </p>
-                <p className="text-[9.5px] text-slate-500">
+                <p className="text-[10px] text-slate-500 max-w-xs">
                   Start an Elementary Mathematics or Physics session to build your academic track record.
                 </p>
               </div>
             ) : (
-              <div className="space-y-1.5 max-h-48 sm:max-h-52 overflow-y-auto pr-1">
+              <div className="space-y-2 min-h-[180px] max-h-72 sm:max-h-80 md:max-h-96 overflow-y-auto pr-1.5 scrollbar-thin">
                 {historyList.map((item, idx) => {
                   const itemDifficulty = item.difficultyTier || (item.chapterName && item.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
                   return (
