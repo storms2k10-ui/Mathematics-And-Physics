@@ -5,12 +5,17 @@ import {
   Clock, 
   LogOut, 
   BookOpen, 
-  Trophy
+  Trophy,
+  Calendar,
+  Archive,
+  TrendingUp,
+  Sparkles
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useOffline } from '../context/OfflineContext';
 import { ClassLevel, Chapter } from '../types';
 import { FirestoreLeaderboardService } from '../services/firestoreLeaderboard';
+import { getCurrentMonthKey, getPreviousMonthKey, formatMonthName, calculateMonthSummary } from '../utils/monthUtils';
 
 interface UserProfileModalProps {
   isOpen: boolean;
@@ -170,6 +175,13 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   const testsAttempted = userProfile.testsAttempted || 0;
   const historyList = userProfile.history || [];
   const latestTimestamp = historyList.length > 0 ? Math.max(...historyList.map(h => h.timestamp || 0)) : userProfile.createdAt;
+
+  // Monthly progress partitioning
+  const currentMonthKey = getCurrentMonthKey();
+  const previousMonthKey = getPreviousMonthKey();
+
+  const currentMonthProgress = userProfile.currentMonthProgress || calculateMonthSummary(userProfile.history || [], currentMonthKey);
+  const previousMonthProgress = userProfile.previousMonthProgress || calculateMonthSummary(userProfile.history || [], previousMonthKey);
 
   // Dynamic Profile Theme Colors based on Overall Accuracy & Mastery
   const getDynamicTheme = () => {
@@ -369,6 +381,120 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
             <p className="text-[9.5px] text-slate-500 dark:text-slate-400 text-center">
               * <strong>Accuracy ({overallAccuracy}%)</strong> based on {attemptedQuestions} attempted questions ({totalCorrect} correct).
             </p>
+          </div>
+
+          {/* Monthly Academic Progress Section */}
+          <div className="p-3 rounded-xl bg-slate-50/90 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 space-y-2.5">
+            <div>
+              <h4 className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5 text-emerald-500" />
+                <span>Monthly Academic Progress</span>
+              </h4>
+              <p className="text-[9.5px] text-slate-500 dark:text-slate-400">
+                Refreshed every new month • Previous months archived automatically
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {/* Card 1: Current Month Progress */}
+              <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-emerald-300 dark:border-emerald-800/80 shadow-2xs space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
+                    <span>Current Month</span>
+                  </span>
+                  <span className="text-[9px] font-black px-1.5 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                    {currentMonthProgress.monthName || formatMonthName(currentMonthKey)}
+                  </span>
+                </div>
+
+                <div className="flex items-baseline justify-between">
+                  <div>
+                    <span className="text-lg sm:text-xl font-black text-slate-900 dark:text-white">
+                      {currentMonthProgress.accuracy}%
+                    </span>
+                    <span className="text-[9.5px] text-slate-500 ml-1">Accuracy</span>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
+                      {currentMonthProgress.testsAttempted}
+                    </span>
+                    <span className="text-[9px] text-slate-400 ml-1">tests</span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-3 gap-1 pt-1 border-t border-slate-100 dark:border-slate-800/80 text-center">
+                  <div>
+                    <div className="text-[10.5px] font-black text-emerald-600 dark:text-emerald-400">{currentMonthProgress.totalCorrect}</div>
+                    <div className="text-[8.5px] text-slate-400 uppercase">Correct</div>
+                  </div>
+                  <div>
+                    <div className="text-[10.5px] font-black text-rose-600 dark:text-rose-400">{currentMonthProgress.totalWrong}</div>
+                    <div className="text-[8.5px] text-slate-400 uppercase">Incorrect</div>
+                  </div>
+                  <div>
+                    <div className="text-[10.5px] font-black text-amber-600 dark:text-amber-400">{currentMonthProgress.totalSkipped}</div>
+                    <div className="text-[8.5px] text-slate-400 uppercase">Skipped</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 2: Previous Month Progress (Server Archival) */}
+              <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1">
+                    <Archive className="w-2.5 h-2.5 text-indigo-500" />
+                    <span>Previous Month Progress</span>
+                  </span>
+                  <span className="text-[9px] font-black px-1.5 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                    {previousMonthProgress.monthName || formatMonthName(previousMonthKey)}
+                  </span>
+                </div>
+
+                {previousMonthProgress.testsAttempted > 0 ? (
+                  <>
+                    <div className="flex items-baseline justify-between">
+                      <div>
+                        <span className="text-lg sm:text-xl font-black text-slate-900 dark:text-white">
+                          {previousMonthProgress.accuracy}%
+                        </span>
+                        <span className="text-[9.5px] text-slate-500 ml-1">Accuracy</span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
+                          {previousMonthProgress.testsAttempted}
+                        </span>
+                        <span className="text-[9px] text-slate-400 ml-1">tests</span>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-1 pt-1 border-t border-slate-100 dark:border-slate-800/80 text-center">
+                      <div>
+                        <div className="text-[10.5px] font-black text-emerald-600 dark:text-emerald-400">{previousMonthProgress.totalCorrect}</div>
+                        <div className="text-[8.5px] text-slate-400 uppercase">Correct</div>
+                      </div>
+                      <div>
+                        <div className="text-[10.5px] font-black text-rose-600 dark:text-rose-400">{previousMonthProgress.totalWrong}</div>
+                        <div className="text-[8.5px] text-slate-400 uppercase">Incorrect</div>
+                      </div>
+                      <div>
+                        <div className="text-[10.5px] font-black text-amber-600 dark:text-amber-400">{previousMonthProgress.totalSkipped}</div>
+                        <div className="text-[8.5px] text-slate-400 uppercase">Skipped</div>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <div className="py-2.5 text-center space-y-0.5">
+                    <p className="text-[11px] font-semibold text-slate-600 dark:text-slate-400">
+                      No archived tests recorded
+                    </p>
+                    <p className="text-[9px] text-slate-400">
+                      Progress will archive here automatically when a new month begins.
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
 
           {/* Test Attempt Practice History */}

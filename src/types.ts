@@ -81,7 +81,10 @@ export interface Question {
   option_b?: string;
   option_c?: string;
   option_d?: string;
-  correct_answer: 'A' | 'B' | 'C' | 'D';
+  correct_answer?: 'A' | 'B' | 'C' | 'D';
+  correct_option?: 'A' | 'B' | 'C' | 'D';
+  answer?: string;
+  hint?: string;
   explanation: string;
   difficulty?: DifficultyLevel;
   difficulty_tier?: PracticeDifficulty;
@@ -276,6 +279,7 @@ export interface LeaderboardEntry {
   formattedTime: string;
   timestamp: number;
   formattedDate: string;
+  monthKey?: string;
 }
 
 export interface UserTestHistory {
@@ -295,6 +299,19 @@ export interface UserTestHistory {
   formattedTime: string;
   timestamp: number;
   formattedDate: string;
+  monthKey?: string;
+}
+
+export interface MonthlyProgressSummary {
+  monthKey: string;
+  monthName: string;
+  testsAttempted: number;
+  totalQuestions: number;
+  totalCorrect: number;
+  totalWrong: number;
+  totalSkipped: number;
+  accuracy: number;
+  history: UserTestHistory[];
 }
 
 export interface UserProfile {
@@ -311,6 +328,8 @@ export interface UserProfile {
   totalSkipped?: number;
   accuracy: number;
   history?: UserTestHistory[];
+  currentMonthProgress?: MonthlyProgressSummary;
+  previousMonthProgress?: MonthlyProgressSummary;
 }
 
 export interface TestAttemptAnswer {

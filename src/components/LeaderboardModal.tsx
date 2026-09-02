@@ -3,22 +3,23 @@ import {
   X, 
   Trophy, 
   Clock, 
-  Atom,
-  Sigma,
-  Calculator,
-  FlaskConical,
-  CheckCircle2,
-  Award,
-  Share2,
-  Check,
-  ChevronRight,
-  BookOpen
+  Atom, 
+  Sigma, 
+  Calculator, 
+  FlaskConical, 
+  CheckCircle2, 
+  Award, 
+  Share2, 
+  Check, 
+  ChevronRight, 
+  BookOpen 
 } from 'lucide-react';
 import { LeaderboardEntry, ClassLevel, CandidateRankingProfile } from '../types';
 import { MathService } from '../services/mathService';
 import { FirestoreLeaderboardService } from '../services/firestoreLeaderboard';
 import { useAuth } from '../context/AuthContext';
 import { normalizeTrackAndClass } from '../utils/trackUtils';
+import { getCurrentMonthKey, getMonthKey } from '../utils/monthUtils';
 
 export type LeaderboardTrack = 
   | 'Elementary Mathematics' 
@@ -50,6 +51,9 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
   const [candidateAttemptsList, setCandidateAttemptsList] = useState<LeaderboardEntry[]>([]);
   const [copiedShare, setCopiedShare] = useState<boolean>(false);
   const [now, setNow] = useState<number>(() => Date.now());
+
+  // Current month partition key - view ranking strictly shows current month records
+  const currentMonthKey = getCurrentMonthKey();
 
   // In-memory cache map to ensure once candidate attempts are fetched, they never re-load or flash spinners
   const candidateAttemptsCacheRef = useRef<Map<string, LeaderboardEntry[]>>(new Map());
@@ -95,30 +99,30 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
   const loadLeaderboardData = useCallback(async () => {
     try {
-      // 1. Try Firebase Firestore Cloud Database first
-      const firestoreData = await FirestoreLeaderboardService.fetchRanked('all', 'practice', selectedTrack);
+      // 1. Try Firebase Firestore Cloud Database first with current month filter
+      const firestoreData = await FirestoreLeaderboardService.fetchRanked('all', 'practice', selectedTrack, currentMonthKey);
       if (Array.isArray(firestoreData) && firestoreData.length > 0) {
         setAllEntries(firestoreData);
         return;
       }
 
-      // 2. Fallback to Node.js Server API
-      const serverEntries = await MathService.fetchServerLeaderboard('all', 'practice', selectedTrack);
+      // 2. Fallback to Node.js Server API with current month filter
+      const serverEntries = await MathService.fetchServerLeaderboard('all', 'practice', selectedTrack, currentMonthKey);
       if (Array.isArray(serverEntries) && serverEntries.length > 0) {
         setAllEntries(serverEntries);
       } else {
-        const local = await MathService.getRankedLeaderboard('all', 'practice', selectedTrack);
+        const local = await MathService.getRankedLeaderboard('all', 'practice', selectedTrack, currentMonthKey);
         setAllEntries(Array.isArray(local) ? local : []);
       }
     } catch {
       try {
-        const local = await MathService.getRankedLeaderboard('all', 'practice', selectedTrack);
+        const local = await MathService.getRankedLeaderboard('all', 'practice', selectedTrack, currentMonthKey);
         setAllEntries(Array.isArray(local) ? local : []);
       } catch {
         setAllEntries([]);
       }
     }
-  }, [selectedTrack]);
+  }, [selectedTrack, currentMonthKey]);
 
   // Initial load and Real-time Firestore Cloud listener
   useEffect(() => {
@@ -132,7 +136,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
         if (Array.isArray(cloudEntries)) {
           setAllEntries(cloudEntries);
         }
-      }, selectedTrack);
+      }, selectedTrack, currentMonthKey);
     } catch (e) {
       console.warn('Firestore subscription fallback:', e);
     }
@@ -145,31 +149,40 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
       if (unsubscribe) unsubscribe();
       clearInterval(interval);
     };
-  }, [isOpen, selectedTrack, loadLeaderboardData]);
+  }, [isOpen, selectedTrack, currentMonthKey, loadLeaderboardData]);
 
   // Safe entries array helper - merges live cloud leaderboard with active user profile test history
-  // Strictly normalizes all records so Chemistry only counts for Chemistry, Physics for Physics, etc.
+  // Strictly normalizes tracks and excludes previous month data to display only current month records
   const safeEntries = useMemo(() => {
     const map = new Map<string, LeaderboardEntry>();
 
-    // 1. Add all cloud / server leaderboard entries with strict normalization
+    // 1. Add all cloud / server leaderboard entries with strict normalization AND current month filtering
     if (Array.isArray(allEntries)) {
       for (const entry of allEntries) {
         if (entry && entry.id) {
+          const entryMonth = entry.monthKey || getMonthKey(entry.timestamp);
+          if (entryMonth !== currentMonthKey) {
+            continue; // Exclude non-current month entries
+          }
           const norm = normalizeTrackAndClass(entry);
           map.set(entry.id, {
             ...entry,
             track: norm.track,
             classLevel: norm.classLevel,
+            monthKey: entryMonth,
           });
         }
       }
     }
 
-    // 2. Merge logged-in user's local / cloud profile test history immediately with strict normalization
+    // 2. Merge logged-in user's local / cloud profile test history with strict normalization AND current month filtering
     if (userProfile && Array.isArray(userProfile.history)) {
       for (const h of userProfile.history) {
         if (h && h.id) {
+          const hMonth = h.monthKey || getMonthKey(h.timestamp);
+          if (hMonth !== currentMonthKey) {
+            continue; // Exclude non-current month entries
+          }
           const norm = normalizeTrackAndClass(h);
           const entryRecord: LeaderboardEntry = {
             id: h.id,
@@ -190,6 +203,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
             formattedTime: h.formattedTime || '0m 00s',
             timestamp: Number(h.timestamp) || Date.now(),
             formattedDate: h.formattedDate || 'Recent',
+            monthKey: hMonth,
           };
           map.set(h.id, entryRecord);
         }
@@ -197,7 +211,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
     }
 
     return Array.from(map.values());
-  }, [allEntries, userProfile, currentUser]);
+  }, [allEntries, userProfile, currentUser, currentMonthKey]);
 
   // Candidate attempts synchronization with zero-flicker caching
   useEffect(() => {

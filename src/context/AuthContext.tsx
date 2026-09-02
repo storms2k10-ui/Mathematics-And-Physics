@@ -28,6 +28,7 @@ import { FirestoreLeaderboardService } from '../services/firestoreLeaderboard';
 import { MathService } from '../services/mathService';
 import { safeFetchJson } from '../lib/apiHelper';
 import { offlineSyncService } from '../services/offlineSyncService';
+import { getMonthKey, getCurrentMonthKey, getPreviousMonthKey, calculateMonthSummary } from '../utils/monthUtils';
 
 interface AuthContextType {
   currentUser: FirebaseUser | null;
@@ -143,6 +144,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         const totalW = Math.max(0, totalQ - totalC - totalS);
         const accPct = (totalC + totalW) > 0 ? Math.round((totalC / (totalC + totalW)) * 100) : (totalQ > 0 ? Math.round((totalC / totalQ) * 100) : 0);
 
+        const currentMonthKey = getCurrentMonthKey();
+        const previousMonthKey = getPreviousMonthKey();
+
         const profile: UserProfile = {
           uid: user.uid,
           email: user.email || data.email || '',
@@ -156,10 +160,27 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           totalSkipped: totalS,
           accuracy: accPct,
           history: combinedHistory,
+          currentMonthProgress: calculateMonthSummary(combinedHistory, currentMonthKey),
+          previousMonthProgress: calculateMonthSummary(combinedHistory, previousMonthKey),
         };
 
         setUserProfile(profile);
         offlineSyncService.cacheUserProfile(profile);
+
+        // Also asynchronously fetch server monthly progress
+        FirestoreLeaderboardService.fetchMonthlyProgress(user.uid, user.email || undefined).then((serverProgress) => {
+          if (serverProgress.currentMonth || serverProgress.previousMonth) {
+            setUserProfile((prev) => {
+              if (!prev || prev.uid !== user.uid) return prev;
+              return {
+                ...prev,
+                currentMonthProgress: serverProgress.currentMonth || prev.currentMonthProgress,
+                previousMonthProgress: serverProgress.previousMonth || prev.previousMonthProgress,
+              };
+            });
+          }
+        }).catch(() => {});
+
         return profile;
       } else {
         // Check offline cache first if cloud doc didn't respond
@@ -171,6 +192,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
         // Create initial cloud user profile in Firestore
         const cleanName = user.displayName || user.email?.split('@')[0] || 'Student Candidate';
+        const currentMonthKey = getCurrentMonthKey();
+        const previousMonthKey = getPreviousMonthKey();
+
         const newProfile: UserProfile = {
           uid: user.uid,
           email: user.email || '',
@@ -183,6 +207,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           totalWrong: 0,
           accuracy: 0,
           history: [],
+          currentMonthProgress: calculateMonthSummary([], currentMonthKey),
+          previousMonthProgress: calculateMonthSummary([], previousMonthKey),
         };
 
         try {
@@ -241,10 +267,35 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     return () => unsubscribe();
   }, []);
 
-  // Synchronize profile on demand with Cloud Firestore
+  // Synchronize profile on demand with Cloud Firestore and Server
   const syncWithServer = async (): Promise<UserProfile | null> => {
-    if (!currentUser) return null;
-    return await fetchCloudUserProfile(currentUser);
+    const activeUid = currentUser?.uid || userProfile?.uid;
+    const activeEmail = currentUser?.email || userProfile?.email;
+    
+    let profile = userProfile;
+    if (currentUser) {
+      profile = await fetchCloudUserProfile(currentUser);
+    }
+
+    if (activeUid || activeEmail) {
+      try {
+        const serverProgress = await FirestoreLeaderboardService.fetchMonthlyProgress(activeUid, activeEmail || undefined);
+        if (serverProgress.currentMonth || serverProgress.previousMonth) {
+          setUserProfile((prev) => {
+            if (!prev) return prev;
+            return {
+              ...prev,
+              currentMonthProgress: serverProgress.currentMonth || prev.currentMonthProgress,
+              previousMonthProgress: serverProgress.previousMonth || prev.previousMonthProgress,
+            };
+          });
+        }
+      } catch (err) {
+        console.warn('Server monthly progress sync notice:', err);
+      }
+    }
+
+    return profile;
   };
 
   // Sign Up with Firebase Authentication & Cloud Firestore
@@ -427,8 +478,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const email = currentUser?.email || current?.email || '';
     const displayName = current?.displayName || currentUser?.displayName || 'Student Candidate';
 
+    const itemTimestamp = historyItem.timestamp || Date.now();
+    const itemMonthKey = historyItem.monthKey || getMonthKey(itemTimestamp);
+    historyItem.monthKey = itemMonthKey;
+
     const leaderboardEntryRecord: LeaderboardEntry = {
       id: historyItem.id,
+      uid,
+      email,
       studentName: displayName,
       classLevel: historyItem.classLevel,
       chapterId: historyItem.chapterId,
@@ -442,8 +499,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       scorePercentage: historyItem.scorePercentage,
       timeSpentSeconds: historyItem.timeSpentSeconds,
       formattedTime: historyItem.formattedTime,
-      timestamp: historyItem.timestamp,
+      timestamp: itemTimestamp,
       formattedDate: historyItem.formattedDate,
+      monthKey: itemMonthKey,
     };
 
     // 1. Calculate updated aggregate profile immediately
@@ -456,6 +514,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const totalS = updatedHistory.reduce((acc, h) => acc + (Number(h.skippedCount) || 0), 0);
     const totalW = Math.max(0, totalQ - totalC - totalS);
     const accPct = (totalC + totalW) > 0 ? Math.round((totalC / (totalC + totalW)) * 100) : (totalQ > 0 ? Math.round((totalC / totalQ) * 100) : 0);
+
+    const currentMonthKey = getCurrentMonthKey();
+    const previousMonthKey = getPreviousMonthKey();
 
     const updatedProfile: UserProfile = {
       uid,
@@ -470,6 +531,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       totalSkipped: totalS,
       accuracy: accPct,
       history: updatedHistory,
+      currentMonthProgress: calculateMonthSummary(updatedHistory, currentMonthKey),
+      previousMonthProgress: calculateMonthSummary(updatedHistory, previousMonthKey),
     };
 
     // Cache updated profile locally in offline storage
@@ -517,8 +580,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }
       }
 
-      // 4. Background broadcast to server
-      safeFetchJson('/api/auth/sync', {
+      // 4. Background broadcast to server with monthly sync response
+      safeFetchJson<{
+        success?: boolean;
+        currentMonthProgress?: any;
+        previousMonthProgress?: any;
+      }>('/api/auth/sync', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -528,6 +595,19 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           classLevel: historyItem.classLevel || current?.classLevel || 9,
           historyItem,
         }),
+      }).then((res) => {
+        if (res.ok && res.data?.success) {
+          if (res.data.currentMonthProgress || res.data.previousMonthProgress) {
+            setUserProfile((prev) => {
+              if (!prev) return prev;
+              return {
+                ...prev,
+                currentMonthProgress: res.data?.currentMonthProgress || prev.currentMonthProgress,
+                previousMonthProgress: res.data?.previousMonthProgress || prev.previousMonthProgress,
+              };
+            });
+          }
+        }
       }).catch(() => {});
     } catch (e) {
       console.warn('Network sync exception, queueing attempt for auto-sync:', e);

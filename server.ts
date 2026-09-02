@@ -13,6 +13,7 @@ app.use(express.json());
 // Server-side persistent storage file paths
 const DATA_DIR = path.join(process.cwd(), 'data');
 const LEADERBOARD_FILE = path.join(DATA_DIR, 'leaderboard.json');
+const LEADERBOARD_ARCHIVE_FILE = path.join(DATA_DIR, 'leaderboard_archive.json');
 const USERS_FILE = path.join(DATA_DIR, 'users.json');
 
 // Interface for Leaderboard records
@@ -36,6 +37,7 @@ interface LeaderboardEntry {
   formattedTime: string;
   timestamp: number;
   formattedDate: string;
+  monthKey?: string;
 }
 
 // Interface for Server User Test History Item
@@ -54,6 +56,20 @@ interface ServerTestHistoryItem {
   formattedTime: string;
   timestamp: number;
   formattedDate: string;
+  monthKey?: string;
+}
+
+// Interface for Monthly Progress Summary
+interface MonthlyProgressSummary {
+  monthKey: string;
+  monthName: string;
+  testsAttempted: number;
+  totalQuestions: number;
+  totalCorrect: number;
+  totalWrong: number;
+  totalSkipped: number;
+  accuracy: number;
+  history: ServerTestHistoryItem[];
 }
 
 // Interface for Server User Account
@@ -73,6 +89,73 @@ interface ServerUser {
   lastActive: number;
 }
 
+// =========================================================================
+// MONTHLY UTILITIES & SCHEDULER HELPERS
+// =========================================================================
+
+function getMonthKey(timestamp?: number | string | Date): string {
+  const d = timestamp ? new Date(timestamp) : new Date();
+  if (isNaN(d.getTime())) {
+    const fallback = new Date();
+    return `${fallback.getFullYear()}-${String(fallback.getMonth() + 1).padStart(2, '0')}`;
+  }
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  return `${year}-${month}`;
+}
+
+function getCurrentMonthKey(): string {
+  return getMonthKey();
+}
+
+function getPreviousMonthKey(referenceDate = new Date()): string {
+  const d = new Date(referenceDate.getFullYear(), referenceDate.getMonth() - 1, 1);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  return `${year}-${month}`;
+}
+
+function formatMonthName(monthKey: string): string {
+  if (!monthKey || !monthKey.includes('-')) return 'Current Month';
+  try {
+    const [yearStr, monthStr] = monthKey.split('-');
+    const year = parseInt(yearStr, 10);
+    const month = parseInt(monthStr, 10) - 1;
+    const d = new Date(year, month, 1);
+    return d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  } catch {
+    return monthKey;
+  }
+}
+
+function calculateMonthSummary(history: ServerTestHistoryItem[], targetMonthKey: string): MonthlyProgressSummary {
+  const monthItems = (history || []).filter((h) => {
+    const itemMonth = h.monthKey || getMonthKey(h.timestamp);
+    return itemMonth === targetMonthKey;
+  });
+
+  const totalQuestions = monthItems.reduce((acc, h) => acc + (Number(h.totalQuestions) || 0), 0);
+  const totalCorrect = monthItems.reduce((acc, h) => acc + (Number(h.correctCount) || 0), 0);
+  const totalSkipped = monthItems.reduce((acc, h) => acc + (Number(h.skippedCount) || 0), 0);
+  const totalWrong = Math.max(0, totalQuestions - totalCorrect - totalSkipped);
+  const attemptedQuestions = totalCorrect + totalWrong;
+  const accuracy = attemptedQuestions > 0 
+    ? Math.round((totalCorrect / attemptedQuestions) * 100) 
+    : (totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0);
+
+  return {
+    monthKey: targetMonthKey,
+    monthName: formatMonthName(targetMonthKey),
+    testsAttempted: monthItems.length,
+    totalQuestions,
+    totalCorrect,
+    totalWrong,
+    totalSkipped,
+    accuracy,
+    history: monthItems.sort((a, b) => (Number(b.timestamp) || 0) - (Number(a.timestamp) || 0)),
+  };
+}
+
 const DEFAULT_SERVER_LEADERBOARD: LeaderboardEntry[] = [];
 
 function ensureDataFiles(): void {
@@ -83,12 +166,100 @@ function ensureDataFiles(): void {
     if (!fs.existsSync(LEADERBOARD_FILE)) {
       fs.writeFileSync(LEADERBOARD_FILE, JSON.stringify([], null, 2), 'utf-8');
     }
+    if (!fs.existsSync(LEADERBOARD_ARCHIVE_FILE)) {
+      fs.writeFileSync(LEADERBOARD_ARCHIVE_FILE, JSON.stringify({}, null, 2), 'utf-8');
+    }
     if (!fs.existsSync(USERS_FILE)) {
       fs.writeFileSync(USERS_FILE, JSON.stringify([], null, 2), 'utf-8');
     }
   } catch (err) {
     console.error('Data directory initialization error:', err);
   }
+}
+
+function loadArchiveFromFile(): Record<string, LeaderboardEntry[]> {
+  try {
+    ensureDataFiles();
+    if (fs.existsSync(LEADERBOARD_ARCHIVE_FILE)) {
+      const content = fs.readFileSync(LEADERBOARD_ARCHIVE_FILE, 'utf-8');
+      const parsed = JSON.parse(content);
+      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+        return parsed;
+      }
+    }
+  } catch (err) {
+    console.error('Failed to read leaderboard archive file from disk:', err);
+  }
+  return {};
+}
+
+function saveArchiveToFile(archive: Record<string, LeaderboardEntry[]>): void {
+  try {
+    ensureDataFiles();
+    fs.writeFileSync(LEADERBOARD_ARCHIVE_FILE, JSON.stringify(archive, null, 2), 'utf-8');
+  } catch (err) {
+    console.error('Failed to save leaderboard archive file to disk:', err);
+  }
+}
+
+/**
+ * Automatically archives previous months' data from active leaderboard
+ * and keeps only the current month's entries active.
+ */
+function processMonthlyLeaderboardRollover(): {
+  currentMonth: string;
+  archivedMonths: string[];
+  archivedCount: number;
+  activeCount: number;
+} {
+  const currentMonth = getCurrentMonthKey();
+  const allEntries = loadLeaderboardFromFile();
+  const currentMonthEntries: LeaderboardEntry[] = [];
+  const olderEntriesByMonth: Record<string, LeaderboardEntry[]> = {};
+  let archivedCount = 0;
+
+  for (const entry of allEntries) {
+    const entryMonth = entry.monthKey || getMonthKey(entry.timestamp);
+    if (entryMonth === currentMonth) {
+      currentMonthEntries.push({
+        ...entry,
+        monthKey: currentMonth,
+      });
+    } else {
+      if (!olderEntriesByMonth[entryMonth]) {
+        olderEntriesByMonth[entryMonth] = [];
+      }
+      olderEntriesByMonth[entryMonth].push(entry);
+      archivedCount++;
+    }
+  }
+
+  const olderMonthKeys = Object.keys(olderEntriesByMonth);
+  if (olderMonthKeys.length > 0) {
+    const archive = loadArchiveFromFile();
+    for (const m of olderMonthKeys) {
+      if (!archive[m]) {
+        archive[m] = [];
+      }
+      const existingIds = new Set(archive[m].map((e) => e.id));
+      for (const item of olderEntriesByMonth[m]) {
+        if (!existingIds.has(item.id)) {
+          archive[m].push(item);
+          existingIds.add(item.id);
+        }
+      }
+    }
+    saveArchiveToFile(archive);
+    saveLeaderboardToFile(currentMonthEntries);
+    console.log(`[Monthly Rollover] Archived ${archivedCount} entries from previous months (${olderMonthKeys.join(', ')}). Active current month (${currentMonth}) entries: ${currentMonthEntries.length}`);
+  }
+
+  return {
+    currentMonth,
+    archivedMonths: olderMonthKeys,
+    archivedCount,
+    activeCount: currentMonthEntries.length,
+  };
 }
 
 function loadLeaderboardFromFile(): LeaderboardEntry[] {
@@ -340,6 +511,10 @@ app.get('/api/auth/profile', (req, res) => {
     res.json({
       success: true,
       user: sanitizeUser(user),
+      currentMonth: calculateMonthSummary(user.history, getCurrentMonthKey()),
+      previousMonth: calculateMonthSummary(user.history, getPreviousMonthKey()),
+      currentMonthProgress: calculateMonthSummary(user.history, getCurrentMonthKey()),
+      previousMonthProgress: calculateMonthSummary(user.history, getPreviousMonthKey()),
       serverSynced: true,
       timestamp: Date.now(),
     });
@@ -348,12 +523,62 @@ app.get('/api/auth/profile', (req, res) => {
   }
 });
 
-// POST /api/auth/sync - Live synchronization of test attempts and profile analytics
+// GET /api/auth/monthly-progress - Authoritative server calculation of current and previous month progress
+app.get('/api/auth/monthly-progress', (req, res) => {
+  try {
+    const { uid, email } = req.query;
+    const users = loadUsersFromFile();
+
+    let user: ServerUser | undefined;
+    if (uid) {
+      user = users.find((u) => u.uid === uid);
+    } else if (email) {
+      user = users.find((u) => u.email === String(email).trim().toLowerCase());
+    }
+
+    const currentMonthKey = getCurrentMonthKey();
+    const previousMonthKey = getPreviousMonthKey();
+
+    if (!user) {
+      res.json({
+        success: true,
+        currentMonth: calculateMonthSummary([], currentMonthKey),
+        previousMonth: calculateMonthSummary([], previousMonthKey),
+        currentMonthProgress: calculateMonthSummary([], currentMonthKey),
+        previousMonthProgress: calculateMonthSummary([], previousMonthKey),
+        serverSynced: true,
+      });
+      return;
+    }
+
+    const currentMonth = calculateMonthSummary(user.history, currentMonthKey);
+    const previousMonth = calculateMonthSummary(user.history, previousMonthKey);
+
+    res.json({
+      success: true,
+      currentMonth,
+      previousMonth,
+      currentMonthProgress: currentMonth,
+      previousMonthProgress: previousMonth,
+      serverSynced: true,
+      timestamp: Date.now(),
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err?.message || 'Failed to fetch monthly progress' });
+  }
+});
+
+// POST /api/auth/sync - Live synchronization of test attempts and profile analytics with monthly segregation
 app.post('/api/auth/sync', (req, res) => {
   try {
     const { uid, email, historyItem, classLevel, displayName } = req.body;
     const cleanEmail = email ? String(email).trim().toLowerCase() : '';
     const users = loadUsersFromFile();
+
+    // Ensure historyItem is tagged with monthKey
+    if (historyItem) {
+      historyItem.monthKey = historyItem.monthKey || getMonthKey(historyItem.timestamp || Date.now());
+    }
 
     let userIndex = -1;
     if (uid) {
@@ -391,9 +616,16 @@ app.post('/api/auth/sync', (req, res) => {
       users.push(guestUser);
       saveUsersToFile(users);
 
+      const currentMonthKey = getCurrentMonthKey();
+      const previousMonthKey = getPreviousMonthKey();
+
       res.json({
         success: true,
         user: sanitizeUser(guestUser),
+        currentMonth: calculateMonthSummary(guestUser.history, currentMonthKey),
+        previousMonth: calculateMonthSummary(guestUser.history, previousMonthKey),
+        currentMonthProgress: calculateMonthSummary(guestUser.history, currentMonthKey),
+        previousMonthProgress: calculateMonthSummary(guestUser.history, previousMonthKey),
         serverSynced: true,
       });
       return;
@@ -431,9 +663,16 @@ app.post('/api/auth/sync', (req, res) => {
     users[userIndex] = user;
     saveUsersToFile(users);
 
+    const currentMonthKey = getCurrentMonthKey();
+    const previousMonthKey = getPreviousMonthKey();
+
     res.json({
       success: true,
       user: sanitizeUser(user),
+      currentMonth: calculateMonthSummary(user.history, currentMonthKey),
+      previousMonth: calculateMonthSummary(user.history, previousMonthKey),
+      currentMonthProgress: calculateMonthSummary(user.history, currentMonthKey),
+      previousMonthProgress: calculateMonthSummary(user.history, previousMonthKey),
       serverSynced: true,
       timestamp: Date.now(),
     });
@@ -471,15 +710,31 @@ app.post('/api/auth/reset-password', (req, res) => {
 });
 
 // ==========================================
-// LEADERBOARD ROUTES
+// LEADERBOARD ROUTES WITH MONTHLY REFRESH & ARCHIVING
 // ==========================================
 
-// GET Leaderboard from Server (shared across all users)
+// GET Leaderboard from Server (Strictly filtered by month; excludes previous month data from view)
 app.get('/api/leaderboard', (req, res) => {
   try {
-    const { classLevel, mode, track } = req.query;
-    const allEntries = loadLeaderboardFromFile();
-    let filtered = [...allEntries];
+    const { classLevel, mode, track, month } = req.query;
+    
+    // Automatically perform rollover of previous month data to archive
+    const rollover = processMonthlyLeaderboardRollover();
+    const targetMonth = typeof month === 'string' && month ? month : rollover.currentMonth;
+
+    let entries: LeaderboardEntry[] = [];
+    if (targetMonth === rollover.currentMonth) {
+      entries = loadLeaderboardFromFile();
+    } else {
+      const archive = loadArchiveFromFile();
+      entries = archive[targetMonth] || [];
+    }
+
+    // Strictly ensure only entries from targetMonth are in the ranking view
+    let filtered = entries.filter((entry) => {
+      const entryMonth = entry.monthKey || getMonthKey(entry.timestamp);
+      return entryMonth === targetMonth;
+    });
 
     if (mode && mode !== 'all') {
       filtered = filtered.filter((entry) => entry.mode === mode || (!entry.mode && mode === 'practice'));
@@ -519,6 +774,10 @@ app.get('/api/leaderboard', (req, res) => {
 
     res.json({
       success: true,
+      month: targetMonth,
+      monthName: formatMonthName(targetMonth),
+      currentMonth: rollover.currentMonth,
+      previousMonth: getPreviousMonthKey(),
       entries: filtered,
       total: filtered.length,
       serverSynced: true,
@@ -529,7 +788,7 @@ app.get('/api/leaderboard', (req, res) => {
   }
 });
 
-// POST New Academic Ranking Entry to Server (with chapter deduplication & best-score retention)
+// POST New Academic Ranking Entry to Server (with month partition)
 app.post('/api/leaderboard', (req, res) => {
   try {
     const newEntry = req.body as Partial<LeaderboardEntry>;
@@ -538,6 +797,13 @@ app.post('/api/leaderboard', (req, res) => {
       res.status(400).json({ success: false, error: 'Invalid ranking data format' });
       return;
     }
+
+    // Rollover any older month entries first
+    processMonthlyLeaderboardRollover();
+
+    const timestamp = Number(newEntry.timestamp) || Date.now();
+    const currentMonth = getCurrentMonthKey();
+    const entryMonth = newEntry.monthKey || getMonthKey(timestamp);
 
     const validatedEntry: LeaderboardEntry = {
       id: newEntry.id || `lead_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
@@ -557,22 +823,40 @@ app.post('/api/leaderboard', (req, res) => {
       scorePercentage: Math.max(0, Math.min(100, Number(newEntry.scorePercentage))),
       timeSpentSeconds: Number(newEntry.timeSpentSeconds) || 0,
       formattedTime: newEntry.formattedTime || `${newEntry.timeSpentSeconds || 0}s`,
-      timestamp: Number(newEntry.timestamp) || Date.now(),
+      timestamp,
       formattedDate: newEntry.formattedDate || 'Just now',
+      monthKey: entryMonth,
     };
+
+    // If entry belongs to a previous month, store directly in archive so it doesn't pollute active view
+    if (entryMonth !== currentMonth) {
+      const archive = loadArchiveFromFile();
+      if (!archive[entryMonth]) {
+        archive[entryMonth] = [];
+      }
+      archive[entryMonth].unshift(validatedEntry);
+      saveArchiveToFile(archive);
+
+      res.json({
+        success: true,
+        entry: validatedEntry,
+        serverSynced: true,
+        archived: true,
+        month: entryMonth,
+      });
+      return;
+    }
 
     let entries = loadLeaderboardFromFile();
 
-    // Store each test submission; if exact submission ID exists, update it, otherwise prepend
+    // Store submission in active leaderboard
     const existingIndex = entries.findIndex((e) => e.id === validatedEntry.id);
-
     if (existingIndex !== -1) {
       entries[existingIndex] = validatedEntry;
     } else {
       entries.unshift(validatedEntry);
     }
 
-    // Keep store capped at 5000 latest records
     if (entries.length > 5000) {
       entries = entries.slice(0, 5000);
     }
@@ -583,6 +867,7 @@ app.post('/api/leaderboard', (req, res) => {
       success: true,
       entry: validatedEntry,
       serverSynced: true,
+      month: currentMonth,
       totalEntries: entries.length,
     });
   } catch (err: any) {
@@ -590,47 +875,69 @@ app.post('/api/leaderboard', (req, res) => {
   }
 });
 
-// Refresh and Reset Ranking History only (keeping user profiles and history preserved)
+// Refresh Leaderboard: Deletes/archives previous month data from view ranking/leaderboard and syncs new month data
 app.post('/api/leaderboard/refresh', (_req, res) => {
   try {
-    // Clear out outdated ranking records
-    saveLeaderboardToFile([]);
-    
-    // Optionally rebuild ranking entries strictly from existing verified user profile history in users.json
+    // 1. Rollover and archive any entries from previous months
+    const rollover = processMonthlyLeaderboardRollover();
+    const currentMonth = rollover.currentMonth;
+
+    // 2. Re-sync current month test attempts from verified user profiles in users.json
     const users = loadUsersFromFile();
-    const freshRankingEntries: LeaderboardEntry[] = [];
-    
+    const activeLeaderboard = loadLeaderboardFromFile();
+    const existingIds = new Set(activeLeaderboard.map((e) => e.id));
+    const currentMonthEntries: LeaderboardEntry[] = [...activeLeaderboard];
+
     for (const u of users) {
       if (Array.isArray(u.history) && u.history.length > 0) {
         for (const h of u.history) {
-          freshRankingEntries.push({
-            id: `rank_${u.uid}_${h.chapterId || 'ch'}_${Date.now()}`,
-            studentName: u.displayName || 'Candidate',
-            classLevel: Number(h.classLevel) || Number(u.classLevel) || 9,
-            section: 'Standard',
-            chapterId: h.chapterId || 'general',
-            chapterName: h.chapterName || 'Mathematics Test',
-            mode: 'practice',
-            track: h.track || 'Elementary Mathematics',
-            correctCount: Number(h.correctCount) || 0,
-            totalQuestions: Number(h.totalQuestions) || 1,
-            scorePercentage: Number(h.scorePercentage) || 0,
-            timeSpentSeconds: Number(h.timeSpentSeconds) || 0,
-            formattedTime: h.formattedTime || '0m 00s',
-            timestamp: Number(h.timestamp) || Date.now(),
-            formattedDate: h.formattedDate || 'Recent',
-          });
+          const itemMonth = h.monthKey || getMonthKey(h.timestamp);
+          // Only add entries belonging to the CURRENT month!
+          if (itemMonth === currentMonth && !existingIds.has(h.id)) {
+            currentMonthEntries.push({
+              id: h.id,
+              uid: u.uid,
+              email: u.email,
+              studentName: u.displayName || 'Candidate',
+              classLevel: Number(h.classLevel) || Number(u.classLevel) || 9,
+              section: 'Standard',
+              chapterId: h.chapterId || 'general',
+              chapterName: h.chapterName || 'Mathematics Test',
+              mode: 'practice',
+              track: h.track || 'Elementary Mathematics',
+              difficultyTier: h.difficultyTier || (h.chapterName && h.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal'),
+              correctCount: Number(h.correctCount) || 0,
+              totalQuestions: Number(h.totalQuestions) || 1,
+              skippedCount: Number(h.skippedCount) || 0,
+              scorePercentage: Number(h.scorePercentage) || 0,
+              timeSpentSeconds: Number(h.timeSpentSeconds) || 0,
+              formattedTime: h.formattedTime || '0m 00s',
+              timestamp: Number(h.timestamp) || Date.now(),
+              formattedDate: h.formattedDate || 'Recent',
+              monthKey: currentMonth,
+            });
+            existingIds.add(h.id);
+          }
         }
       }
     }
-    
-    saveLeaderboardToFile(freshRankingEntries);
+
+    // Guarantee that ONLY current month data remains in active leaderboard
+    const cleanedActive = currentMonthEntries.filter((e) => {
+      const m = e.monthKey || getMonthKey(e.timestamp);
+      return m === currentMonth;
+    });
+
+    saveLeaderboardToFile(cleanedActive);
 
     res.json({
       success: true,
-      message: 'Ranking history refreshed and re-synced from verified server database. User profiles and test histories remain fully preserved.',
-      totalEntries: freshRankingEntries.length,
-      entries: freshRankingEntries,
+      message: `Leaderboard refreshed for ${formatMonthName(currentMonth)}. Previous month data is archived and new month rankings are active.`,
+      currentMonth,
+      monthName: formatMonthName(currentMonth),
+      totalEntries: cleanedActive.length,
+      entries: cleanedActive,
+      archivedMonths: rollover.archivedMonths,
       timestamp: Date.now(),
     });
   } catch (err: any) {
@@ -638,10 +945,32 @@ app.post('/api/leaderboard/refresh', (_req, res) => {
   }
 });
 
-// Reset Leaderboard (Clears ranking history while keeping all user profiles preserved)
+// GET /api/leaderboard/archive - Retrieve archived previous month rankings
+app.get('/api/leaderboard/archive', (req, res) => {
+  try {
+    const { month } = req.query;
+    const archive = loadArchiveFromFile();
+    const availableMonths = Object.keys(archive).sort().reverse();
+    const targetMonth = typeof month === 'string' && month ? month : (availableMonths[0] || getPreviousMonthKey());
+    const entries = archive[targetMonth] || [];
+
+    res.json({
+      success: true,
+      month: targetMonth,
+      monthName: formatMonthName(targetMonth),
+      availableMonths,
+      entries,
+      total: entries.length,
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err?.message || 'Failed to load archive' });
+  }
+});
+
+// Reset Leaderboard (Clears active current month rankings while keeping all user profiles preserved)
 app.post('/api/leaderboard/reset', (_req, res) => {
   saveLeaderboardToFile([]);
-  res.json({ success: true, message: 'Ranking history refreshed and cleared on server. User profile history remains preserved.', entries: [] });
+  res.json({ success: true, message: 'Current month leaderboard reset on server. User profile history remains preserved.', entries: [] });
 });
 
 // Fallback for unhandled /api routes to always return JSON (never HTML)

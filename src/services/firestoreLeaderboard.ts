@@ -13,8 +13,9 @@ import {
   serverTimestamp
 } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { LeaderboardEntry, ClassLevel, UserTestHistory } from '../types';
+import { LeaderboardEntry, ClassLevel, UserTestHistory, MonthlyProgressSummary } from '../types';
 import { normalizeTrackAndClass } from '../utils/trackUtils';
+import { getMonthKey, getCurrentMonthKey, getPreviousMonthKey } from '../utils/monthUtils';
 
 const LEADERBOARD_COLLECTION = 'leaderboard';
 const TEST_RESULTS_COLLECTION = 'test_results';
@@ -31,10 +32,11 @@ export class FirestoreLeaderboardService {
       
       const normalized = normalizeTrackAndClass(entry);
       const cleanStudentName = (entry.studentName || 'Student Candidate').trim();
-
       const cleanDifficulty = entry.difficultyTier || (entry.chapterName && entry.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
+      const timestamp = entry.timestamp || Date.now();
+      const monthKey = entry.monthKey || getMonthKey(timestamp);
 
-      // Save every submission to leaderboard collection with unique ID and strictly verified track/class
+      // Save every submission to leaderboard collection with unique ID and strictly verified track/class and month
       await setDoc(docRef, {
         ...entry,
         id: entryId,
@@ -44,7 +46,8 @@ export class FirestoreLeaderboardService {
         classLevel: normalized.classLevel,
         track: normalized.track,
         difficultyTier: cleanDifficulty,
-        timestamp: entry.timestamp || Date.now(),
+        timestamp,
+        monthKey,
         updatedAt: serverTimestamp(),
       }, { merge: true });
 
@@ -55,6 +58,7 @@ export class FirestoreLeaderboardService {
         track: normalized.track,
         classLevel: normalized.classLevel,
         difficultyTier: cleanDifficulty,
+        monthKey,
       }, uid);
     } catch (error) {
       console.error('Firestore saveEntry error:', error);
@@ -71,6 +75,8 @@ export class FirestoreLeaderboardService {
       const resultDocRef = doc(db, TEST_RESULTS_COLLECTION, resultDocId);
       const normalized = normalizeTrackAndClass(entry);
       const cleanDifficulty = entry.difficultyTier || (entry.chapterName && entry.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
+      const timestamp = entry.timestamp || Date.now();
+      const monthKey = entry.monthKey || getMonthKey(timestamp);
       
       await setDoc(resultDocRef, {
         id: resultDocId,
@@ -89,8 +95,9 @@ export class FirestoreLeaderboardService {
         scorePercentage: entry.scorePercentage,
         timeSpentSeconds: entry.timeSpentSeconds,
         formattedTime: entry.formattedTime,
-        timestamp: entry.timestamp || Date.now(),
+        timestamp,
         formattedDate: entry.formattedDate || new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+        monthKey,
         completedAt: serverTimestamp(),
         createdAt: serverTimestamp(),
       }, { merge: true });
@@ -245,14 +252,38 @@ export class FirestoreLeaderboardService {
   }
 
   /**
-   * Fetches the ranked leaderboard from Firestore cloud database with strict class and track separation.
+   * Fetches the ranked leaderboard from server and Firestore cloud database with strict class, track, and month separation.
+   * Excludes previous month data to display fresh current month rankings.
    */
   static async fetchRanked(
     classLevel?: ClassLevel | 'all',
     mode: 'all' | 'practice' | 'exam' = 'practice',
-    track?: string | 'all'
+    track?: string | 'all',
+    month?: string
   ): Promise<LeaderboardEntry[]> {
+    const targetMonth = month || getCurrentMonthKey();
+
     try {
+      // 1. Primary source: Server API with automated monthly partition & rollover
+      const queryParams = new URLSearchParams();
+      if (classLevel && classLevel !== 'all') queryParams.set('classLevel', String(classLevel));
+      if (mode && mode !== 'all') queryParams.set('mode', mode);
+      if (track && track !== 'all') queryParams.set('track', track);
+      if (targetMonth) queryParams.set('month', targetMonth);
+
+      try {
+        const res = await fetch(`/api/leaderboard?${queryParams.toString()}`);
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success && Array.isArray(json.entries)) {
+            return json.entries;
+          }
+        }
+      } catch {
+        // Fallback to Firestore client direct query
+      }
+
+      // 2. Fallback: Firestore cloud database
       const colRef = collection(db, LEADERBOARD_COLLECTION);
       const snap = await getDocs(colRef);
       const entries: LeaderboardEntry[] = [];
@@ -265,6 +296,12 @@ export class FirestoreLeaderboardService {
           track: normalized.track,
           classLevel: normalized.classLevel,
         };
+
+        // Monthly isolation: Exclude previous month data from view ranking/leaderboard
+        const entryMonth = data.monthKey || getMonthKey(data.timestamp);
+        if (entryMonth !== targetMonth) {
+          return;
+        }
 
         // Strict class isolation check
         if (classLevel && classLevel !== 'all' && Number(data.classLevel) !== Number(classLevel)) {
@@ -306,13 +343,15 @@ export class FirestoreLeaderboardService {
   }
 
   /**
-   * Listens to real-time updates from Firestore cloud leaderboard with strict class separation
+   * Listens to real-time updates from Firestore cloud leaderboard with strict class and month separation
    */
   static subscribeToLeaderboard(
     classLevel: ClassLevel | 'all',
     onUpdate: (entries: LeaderboardEntry[]) => void,
-    track?: string | 'all'
+    track?: string | 'all',
+    month?: string
   ): Unsubscribe {
+    const targetMonth = month || getCurrentMonthKey();
     const colRef = collection(db, LEADERBOARD_COLLECTION);
     const q = query(colRef, limit(1000));
 
@@ -326,6 +365,12 @@ export class FirestoreLeaderboardService {
           track: normalized.track,
           classLevel: normalized.classLevel,
         };
+
+        // Monthly isolation
+        const entryMonth = data.monthKey || getMonthKey(data.timestamp);
+        if (entryMonth !== targetMonth) {
+          return;
+        }
 
         if (classLevel && classLevel !== 'all' && Number(data.classLevel) !== Number(classLevel)) {
           return;
@@ -356,15 +401,21 @@ export class FirestoreLeaderboardService {
   }
 
   /**
-   * Refreshes ranking records from Firebase server and website, ensuring only ranking history is refreshed
-   * while all candidate user profiles and private history remain preserved.
+   * Refreshes ranking records from server and cloud, ensuring previous month data is archived/deleted
+   * from active view and current month data is synchronized.
    */
   static async refreshRankingHistory(track?: string | 'all'): Promise<LeaderboardEntry[]> {
     try {
-      await fetch('/api/leaderboard/refresh', {
+      const res = await fetch('/api/leaderboard/refresh', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-      }).catch(() => {});
+      });
+      if (res.ok) {
+        const json = await res.json();
+        if (json.success && Array.isArray(json.entries)) {
+          return json.entries;
+        }
+      }
 
       const freshCloudEntries = await this.fetchRanked('all', 'practice', track);
       return freshCloudEntries;
@@ -372,5 +423,32 @@ export class FirestoreLeaderboardService {
       console.error('Failed to refresh ranking history from cloud:', err);
       return [];
     }
+  }
+
+  /**
+   * Fetches monthly progress (current and previous month) directly from server
+   */
+  static async fetchMonthlyProgress(uid?: string, email?: string): Promise<{
+    currentMonth?: MonthlyProgressSummary;
+    previousMonth?: MonthlyProgressSummary;
+  }> {
+    try {
+      const queryParams = new URLSearchParams();
+      if (uid) queryParams.set('uid', uid);
+      if (email) queryParams.set('email', email);
+      const res = await fetch(`/api/auth/monthly-progress?${queryParams.toString()}`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success) {
+          return {
+            currentMonth: data.currentMonth,
+            previousMonth: data.previousMonth,
+          };
+        }
+      }
+    } catch (err) {
+      console.warn('Failed to fetch monthly progress from server:', err);
+    }
+    return {};
   }
 }

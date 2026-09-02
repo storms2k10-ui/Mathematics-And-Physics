@@ -341,15 +341,16 @@ export class MathService {
   }
 
   /**
-   * Fetches latest global leaderboard entries from Firestore cloud database.
+   * Fetches latest global leaderboard entries from Firestore cloud database with optional month filter.
    */
   static async fetchServerLeaderboard(
     classLevel?: ClassLevel | 'all',
     mode?: 'all' | 'practice' | 'exam',
-    track?: string | 'all'
+    track?: string | 'all',
+    month?: string
   ): Promise<LeaderboardEntry[]> {
     try {
-      return await FirestoreLeaderboardService.fetchRanked(classLevel, mode || 'practice', track);
+      return await FirestoreLeaderboardService.fetchRanked(classLevel, mode || 'practice', track, month);
     } catch (err) {
       console.error('Failed to fetch leaderboard from Firestore:', err);
       return [];
@@ -359,8 +360,8 @@ export class MathService {
   /**
    * Retrieves raw leaderboard entries from Firestore
    */
-  static async getLeaderboardEntries(): Promise<LeaderboardEntry[]> {
-    return await FirestoreLeaderboardService.fetchRanked('all', 'practice');
+  static async getLeaderboardEntries(month?: string): Promise<LeaderboardEntry[]> {
+    return await FirestoreLeaderboardService.fetchRanked('all', 'practice', undefined, month);
   }
 
   /**
@@ -369,9 +370,10 @@ export class MathService {
   static async getRankedLeaderboard(
     classLevel?: ClassLevel | 'all',
     modeFilter?: 'all' | 'practice' | 'exam',
-    track?: string | 'all'
+    track?: string | 'all',
+    month?: string
   ): Promise<LeaderboardEntry[]> {
-    return await FirestoreLeaderboardService.fetchRanked(classLevel, modeFilter || 'practice', track);
+    return await FirestoreLeaderboardService.fetchRanked(classLevel, modeFilter || 'practice', track, month);
   }
 
   /**
