@@ -86,6 +86,8 @@ interface ServerUser {
   totalWrong: number;
   totalSkipped?: number;
   accuracy: number;
+  hasEditedName?: boolean;
+  nameEditedAt?: number;
   history: ServerTestHistoryItem[];
   lastActive: number;
 }
@@ -685,6 +687,75 @@ app.post('/api/auth/sync', (req, res) => {
     });
   } catch (err: any) {
     res.status(500).json({ success: false, error: err?.message || 'Server sync failed.' });
+  }
+});
+
+// POST /api/auth/update-name - Update candidate display name strictly ONCE and restrict forever
+app.post('/api/auth/update-name', (req, res) => {
+  try {
+    const { uid, email, newName } = req.body;
+    const cleanName = String(newName || '').trim();
+
+    if (!cleanName) {
+      res.status(400).json({ success: false, error: 'Name cannot be empty.' });
+      return;
+    }
+    if (cleanName.length < 2 || cleanName.length > 50) {
+      res.status(400).json({ success: false, error: 'Name must be between 2 and 50 characters.' });
+      return;
+    }
+
+    const users = loadUsersFromFile();
+    const cleanEmail = email ? String(email).trim().toLowerCase() : '';
+    let userIndex = -1;
+    if (uid) userIndex = users.findIndex((u) => u.uid === uid);
+    if (userIndex === -1 && cleanEmail) userIndex = users.findIndex((u) => u.email === cleanEmail);
+
+    if (userIndex !== -1) {
+      const user = users[userIndex];
+      if (user.hasEditedName) {
+        res.status(403).json({
+          success: false,
+          error: 'Your name has already been updated once and is permanently locked.',
+        });
+        return;
+      }
+
+      user.displayName = cleanName;
+      user.hasEditedName = true;
+      user.nameEditedAt = Date.now();
+      saveUsersToFile(users);
+
+      // Sync name across any past submissions in leaderboard
+      try {
+        const entries = loadLeaderboardFromFile();
+        let changed = false;
+        for (const entry of entries) {
+          if ((entry.uid && entry.uid === user.uid) || (entry.email && entry.email.toLowerCase() === cleanEmail)) {
+            entry.studentName = cleanName;
+            changed = true;
+          }
+        }
+        if (changed) {
+          saveLeaderboardToFile(entries);
+        }
+      } catch (entryErr) {
+        console.warn('Could not sync name to entries file:', entryErr);
+      }
+
+      res.json({
+        success: true,
+        displayName: cleanName,
+        hasEditedName: true,
+        nameEditedAt: user.nameEditedAt,
+        message: 'Name updated successfully. Future name changes are now permanently restricted.',
+      });
+      return;
+    }
+
+    res.status(404).json({ success: false, error: 'User record not found on server.' });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err?.message || 'Server error updating name.' });
   }
 });
 

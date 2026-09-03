@@ -45,6 +45,7 @@ interface AuthContextType {
   signOut: () => Promise<void>;
   recordTestAttempt: (historyItem: UserTestHistory) => Promise<UserProfile>;
   updateUserClass: (lvl: ClassLevel) => Promise<void>;
+  updateCandidateName: (newName: string) => Promise<{ success: boolean; error?: string }>;
   syncWithServer: () => Promise<UserProfile | null>;
 }
 
@@ -165,6 +166,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           history: combinedHistory,
           currentMonthProgress: calculateMonthSummary(combinedHistory, currentMonthKey),
           previousMonthProgress: calculateMonthSummary(combinedHistory, previousMonthKey),
+          hasEditedName: data.hasEditedName === true,
+          nameEditedAt: typeof data.nameEditedAt === 'number' 
+            ? data.nameEditedAt 
+            : (data.nameEditedAt && typeof (data.nameEditedAt as any).toMillis === 'function' 
+                ? (data.nameEditedAt as any).toMillis() 
+                : undefined),
         };
 
         setUserProfile(profile);
@@ -590,6 +597,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       history: updatedHistory,
       currentMonthProgress: calculateMonthSummary(updatedHistory, currentMonthKey),
       previousMonthProgress: calculateMonthSummary(updatedHistory, previousMonthKey),
+      hasEditedName: current?.hasEditedName || false,
+      nameEditedAt: current?.nameEditedAt,
     };
 
     // Cache updated profile locally in offline storage
@@ -696,6 +705,78 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
+  // Update candidate display name for one time only, then restrict forever
+  const updateCandidateName = async (newName: string): Promise<{ success: boolean; error?: string }> => {
+    const cleanName = newName.trim();
+    if (!cleanName) {
+      return { success: false, error: 'Name cannot be empty.' };
+    }
+    if (cleanName.length < 2 || cleanName.length > 50) {
+      return { success: false, error: 'Name must be between 2 and 50 characters.' };
+    }
+
+    if (userProfile?.hasEditedName) {
+      return { success: false, error: 'Your name has already been updated once and is permanently locked.' };
+    }
+
+    const editTimestamp = Date.now();
+
+    // 1. Update Firebase Auth displayName
+    if (currentUser) {
+      try {
+        await updateProfile(currentUser, { displayName: cleanName });
+      } catch (authErr) {
+        console.warn('Firebase updateProfile notice:', authErr);
+      }
+    }
+
+    // 2. Update Firestore user document
+    const activeUid = currentUser?.uid || userProfile?.uid;
+    if (activeUid) {
+      try {
+        const userRef = docRefForUser(activeUid);
+        await setDoc(userRef, {
+          displayName: cleanName,
+          hasEditedName: true,
+          nameEditedAt: serverTimestamp(),
+          updatedAt: serverTimestamp(),
+        }, { merge: true });
+      } catch (fireErr) {
+        console.warn('Firestore name update notice:', fireErr);
+      }
+    }
+
+    // 3. Update server record via API
+    try {
+      await safeFetchJson('/api/auth/update-name', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          uid: activeUid,
+          email: currentUser?.email || userProfile?.email,
+          newName: cleanName,
+        }),
+      });
+    } catch (serverErr) {
+      console.warn('Server name sync notice:', serverErr);
+    }
+
+    // 4. Update local state and offline cache
+    setUserProfile((prev) => {
+      if (!prev) return prev;
+      const updated: UserProfile = {
+        ...prev,
+        displayName: cleanName,
+        hasEditedName: true,
+        nameEditedAt: editTimestamp,
+      };
+      offlineSyncService.cacheUserProfile(updated);
+      return updated;
+    });
+
+    return { success: true };
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -711,6 +792,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         signOut,
         recordTestAttempt,
         updateUserClass,
+        updateCandidateName,
         syncWithServer,
       }}
     >

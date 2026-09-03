@@ -9,13 +9,23 @@ import {
   Calendar,
   Archive,
   TrendingUp,
-  Sparkles
+  Sparkles,
+  Pencil,
+  Lock,
+  Check,
+  AlertCircle,
+  ChartCandlestick,
+  Sigma,
+  Atom,
+  FlaskConical,
+  Compass
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useOffline } from '../context/OfflineContext';
 import { ClassLevel, Chapter } from '../types';
 import { FirestoreLeaderboardService } from '../services/firestoreLeaderboard';
 import { getCurrentMonthKey, getPreviousMonthKey, formatMonthName, calculateMonthSummary } from '../utils/monthUtils';
+import { normalizeTrackAndClass } from '../utils/trackUtils';
 
 interface UserProfileModalProps {
   isOpen: boolean;
@@ -30,11 +40,60 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   onSelectClass,
   onSelectChapter,
 }) => {
-  const { currentUser, userProfile: authProfile, signOut, syncWithServer } = useAuth();
+  const { currentUser, userProfile: authProfile, signOut, syncWithServer, updateCandidateName } = useAuth();
   const { isOnline, isOffline, isConnectionStable, indicatorDotClass, indicatorBadgeClass, statusLabel } = useOffline();
   const [copiedShare, setCopiedShare] = useState(false);
   const [now, setNow] = useState<number>(() => Date.now());
   const [classRank, setClassRank] = useState<{ rank: number; totalStudents: number } | null>(null);
+
+  // Candidate Name Edit state (1-time edit, then restricted forever)
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [nameInput, setNameInput] = useState('');
+  const [isSavingName, setIsSavingName] = useState(false);
+  const [nameEditError, setNameEditError] = useState<string | null>(null);
+  const [showNameConfirmModal, setShowNameConfirmModal] = useState(false);
+  const [nameSuccessMessage, setNameSuccessMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (authProfile?.displayName) {
+      setNameInput(authProfile.displayName);
+    }
+  }, [authProfile?.displayName]);
+
+  const handleConfirmSaveName = async () => {
+    const trimmed = nameInput.trim();
+    if (!trimmed) {
+      setNameEditError('Name cannot be empty.');
+      return;
+    }
+    if (trimmed.length < 2 || trimmed.length > 50) {
+      setNameEditError('Name must be between 2 and 50 characters.');
+      return;
+    }
+
+    setIsSavingName(true);
+    setNameEditError(null);
+
+    try {
+      const res = await updateCandidateName(trimmed);
+      if (!res.success) {
+        setNameEditError(res.error || 'Failed to update name.');
+        setIsSavingName(false);
+        return;
+      }
+
+      setShowNameConfirmModal(false);
+      setIsEditingName(false);
+      setNameSuccessMessage('Name updated successfully and permanently locked.');
+      setTimeout(() => {
+        setNameSuccessMessage(null);
+      }, 4500);
+    } catch (err: any) {
+      setNameEditError(err?.message || 'Error updating name.');
+    } finally {
+      setIsSavingName(false);
+    }
+  };
 
   // Real-time ticker for live timestamps
   useEffect(() => {
@@ -192,6 +251,96 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
     ? userProfile.previousMonthProgress
     : livePreviousMonthSummary;
 
+  // Subject Performance Horizontal Candle Graph data calculation across disciplines
+  const SUBJECT_DEFINITIONS = [
+    {
+      id: 'Elementary Mathematics',
+      title: 'Elementary Mathematics',
+      shortTitle: 'Mathematics',
+      icon: Sigma,
+      themeColor: 'indigo',
+    },
+    {
+      id: 'Elementary Physics',
+      title: 'Elementary Physics',
+      shortTitle: 'Physics',
+      icon: Atom,
+      themeColor: 'cyan',
+    },
+    {
+      id: 'Chemistry',
+      title: 'Chemistry',
+      shortTitle: 'Chemistry',
+      icon: FlaskConical,
+      themeColor: 'emerald',
+    },
+    {
+      id: 'Pre Calculas',
+      title: 'Pre Calculas',
+      shortTitle: 'Pre-Calculus',
+      icon: Compass,
+      themeColor: 'amber',
+    },
+  ];
+
+  const subjectCandleData = SUBJECT_DEFINITIONS.map((def) => {
+    const matchingTests = historyList.filter((h) => {
+      const norm = normalizeTrackAndClass(h);
+      if (norm.track.toLowerCase() === def.id.toLowerCase()) return true;
+      if (h.track && h.track.toLowerCase() === def.id.toLowerCase()) return true;
+      if (def.id === 'Elementary Mathematics' && (h.track?.toLowerCase().includes('math') || (!h.track && !h.chapterId?.includes('phy') && !h.chapterId?.includes('chem')))) return true;
+      if (def.id === 'Elementary Physics' && (h.track?.toLowerCase().includes('physic') || h.chapterId?.includes('phy'))) return true;
+      if (def.id === 'Chemistry' && (h.track?.toLowerCase().includes('chem') || h.chapterId?.includes('chem'))) return true;
+      if (def.id === 'Pre Calculas' && (h.track?.toLowerCase().includes('calc') || h.chapterId?.includes('calc'))) return true;
+      return false;
+    });
+
+    if (matchingTests.length === 0) {
+      return {
+        ...def,
+        testsCount: 0,
+        totalQ: 0,
+        totalCorrect: 0,
+        totalWrong: 0,
+        accuracy: 0,
+        minScore: 0,
+        maxScore: 0,
+        firstScore: 0,
+        latestScore: 0,
+        isImproving: true,
+      };
+    }
+
+    // Sort ascending by timestamp to calculate academic trajectory (first vs latest score)
+    const sorted = [...matchingTests].sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0));
+    const scores = sorted.map((t) => Math.max(0, Math.min(100, Math.round(t.scorePercentage || 0))));
+    const minScore = Math.min(...scores);
+    const maxScore = Math.max(...scores);
+    const firstScore = scores[0];
+    const latestScore = scores[scores.length - 1];
+
+    const totalQ = matchingTests.reduce((acc, t) => acc + (t.totalQuestions || 0), 0);
+    const totalCorrect = matchingTests.reduce((acc, t) => acc + (t.correctCount || 0), 0);
+    const totalSkipped = matchingTests.reduce((acc, t) => acc + (t.skippedCount || 0), 0);
+    const totalWrong = Math.max(0, totalQ - totalCorrect - totalSkipped);
+    const attempted = totalCorrect + totalWrong;
+    const accuracy = attempted > 0 ? Math.round((totalCorrect / attempted) * 100) : (totalQ > 0 ? Math.round((totalCorrect / totalQ) * 100) : 0);
+
+    return {
+      ...def,
+      testsCount: matchingTests.length,
+      totalQ,
+      totalCorrect,
+      totalWrong,
+      accuracy,
+      minScore,
+      maxScore,
+      firstScore,
+      latestScore,
+      isImproving: latestScore >= firstScore,
+    };
+  });
+
   // Dynamic Profile Theme Colors based on Overall Accuracy & Mastery
   const getDynamicTheme = () => {
     if (correctPct >= 85) {
@@ -269,8 +418,8 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
           </div>
 
           {/* Candidate Profile Details & Avatar with Status Indicator */}
-          <div className="flex items-center gap-3 relative z-10">
-            <div className="relative shrink-0">
+          <div className="flex items-start gap-3 relative z-10">
+            <div className="relative shrink-0 mt-0.5">
               <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl ${theme.avatarBg} flex items-center justify-center border-2 shadow-md text-base sm:text-lg`}>
                 {userProfile.displayName?.charAt(0).toUpperCase() || 'S'}
               </div>
@@ -281,24 +430,128 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
               />
             </div>
             
-            <div className="min-w-0">
-              <div className="flex items-center gap-2">
-                <h2 className="text-sm sm:text-base font-black tracking-tight text-white truncate">
-                  {userProfile.displayName}
-                </h2>
-              </div>
-              <p className="text-[10px] sm:text-[11px] text-white/80 flex items-center gap-1 mt-0.5 font-medium truncate">
-                <Mail className="w-3 h-3 shrink-0" />
-                <span className="truncate">{userProfile.email || 'Registered Student'}</span>
-              </p>
-              <div className="flex flex-wrap items-center gap-1.5 mt-1">
-                {classRank && (
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black bg-amber-400 text-slate-950 shadow-xs">
-                    <Trophy className="w-2.5 h-2.5 text-amber-950" />
-                    <span>Class {userProfile.classLevel} Rank #{classRank.rank}</span>
-                  </span>
-                )}
-              </div>
+            <div className="min-w-0 flex-1">
+              {!isEditingName ? (
+                <div className="space-y-1">
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <h2 className="text-sm sm:text-base font-black tracking-tight text-white truncate">
+                      {userProfile.displayName}
+                    </h2>
+
+                    {userProfile.hasEditedName ? (
+                      <span 
+                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-bold bg-white/15 text-white/90 border border-white/20 shadow-2xs shrink-0 cursor-help"
+                        title="Name has been updated once and is permanently locked."
+                      >
+                        <Lock className="w-2.5 h-2.5 text-amber-300" />
+                        <span>Name Locked</span>
+                      </span>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsEditingName(true);
+                          setNameInput(userProfile.displayName || '');
+                          setNameEditError(null);
+                        }}
+                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[9.5px] font-bold bg-white/20 hover:bg-white/30 text-white border border-white/30 transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                        title="Edit Candidate Name (Allowed 1 time only)"
+                      >
+                        <Pencil className="w-2.5 h-2.5 text-amber-300" />
+                        <span>Edit Name (1-Time)</span>
+                      </button>
+                    )}
+                  </div>
+
+                  <p className="text-[10px] sm:text-[11px] text-white/80 flex items-center gap-1 font-medium truncate">
+                    <Mail className="w-3 h-3 shrink-0" />
+                    <span className="truncate">{userProfile.email || 'Registered Student'}</span>
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-1.5 mt-0.5">
+                    {classRank && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black bg-amber-400 text-slate-950 shadow-xs">
+                        <Trophy className="w-2.5 h-2.5 text-amber-950" />
+                        <span>Class {userProfile.classLevel} Rank #{classRank.rank}</span>
+                      </span>
+                    )}
+                    {userProfile.hasEditedName && (
+                      <span className="text-[9px] text-amber-200/90 font-medium">
+                        • Verified Name (Permanent)
+                      </span>
+                    )}
+                  </div>
+
+                  {nameSuccessMessage && (
+                    <div className="mt-1 p-1.5 rounded-lg bg-emerald-500/30 border border-emerald-400/50 text-[10px] text-emerald-100 font-bold flex items-center gap-1 animate-fade-in">
+                      <Check className="w-3 h-3 text-emerald-300 shrink-0" />
+                      <span>{nameSuccessMessage}</span>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                /* One-Time Name Edit Form */
+                <div className="p-2.5 rounded-xl bg-black/45 backdrop-blur-md border border-amber-400/50 shadow-xl space-y-2 animate-fade-in w-full">
+                  <div className="flex items-center justify-between gap-1">
+                    <label className="text-[11px] font-bold text-white flex items-center gap-1">
+                      <Pencil className="w-3 h-3 text-amber-300" />
+                      <span>Edit Candidate Name</span>
+                    </label>
+                    <span className="text-[9px] font-black px-1.5 py-0.5 rounded bg-amber-400 text-slate-950 uppercase tracking-wide">
+                      1-Time Only
+                    </span>
+                  </div>
+                  
+                  <input
+                    type="text"
+                    value={nameInput}
+                    onChange={(e) => {
+                      setNameInput(e.target.value);
+                      setNameEditError(null);
+                    }}
+                    maxLength={50}
+                    placeholder="Enter official candidate name..."
+                    className="w-full px-2.5 py-1.5 text-xs rounded-lg bg-white text-slate-900 placeholder-slate-400 font-bold focus:outline-none focus:ring-2 focus:ring-amber-400 shadow-inner"
+                    autoFocus
+                  />
+
+                  <div className="p-1.5 rounded-lg bg-amber-500/25 border border-amber-400/40 text-[9.5px] text-amber-100 flex items-start gap-1.5 leading-tight">
+                    <AlertCircle className="w-3.5 h-3.5 text-amber-300 shrink-0 mt-0.5" />
+                    <span>
+                      <strong>Permanent Restriction:</strong> You can only edit your name <u>once</u>. After saving, this name cannot be edited or reverted.
+                    </span>
+                  </div>
+
+                  {nameEditError && (
+                    <p className="text-[9.5px] text-rose-200 font-semibold bg-rose-950/70 px-2 py-1 rounded border border-rose-500/40">
+                      {nameEditError}
+                    </p>
+                  )}
+
+                  <div className="flex items-center justify-end gap-1.5 pt-0.5">
+                    <button
+                      type="button"
+                      disabled={isSavingName}
+                      onClick={() => {
+                        setIsEditingName(false);
+                        setNameEditError(null);
+                      }}
+                      className="px-2.5 py-1 text-[10.5px] font-bold rounded-lg bg-white/15 hover:bg-white/25 text-white transition-colors cursor-pointer"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      disabled={isSavingName || !nameInput.trim() || nameInput.trim() === userProfile.displayName}
+                      onClick={() => setShowNameConfirmModal(true)}
+                      className="px-3 py-1 text-[10.5px] font-black rounded-lg bg-amber-400 hover:bg-amber-300 active:scale-95 text-slate-950 transition-all cursor-pointer shadow-xs disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1"
+                    >
+                      <Check className="w-3 h-3 text-slate-950" />
+                      <span>Save (1-Time)</span>
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -421,6 +674,167 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
             </div>
           </div>
 
+          {/* Subject Performance (Horizontal Candle Graph) */}
+          <div className="p-3 rounded-xl bg-slate-50/90 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 space-y-3">
+            <div className="flex flex-wrap items-center justify-between gap-1.5">
+              <div>
+                <h4 className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                  <ChartCandlestick className="w-3.5 h-3.5 text-violet-500" />
+                  <span>Subject Performance (Horizontal Candle Graph)</span>
+                </h4>
+                <p className="text-[9.5px] text-slate-500 dark:text-slate-400">
+                  Performance spread across subjects • Wick: Min/Max Range • Candle Body: Trend Progress
+                </p>
+              </div>
+              <div className="flex items-center gap-2.5 text-[9.5px] text-slate-500 dark:text-slate-400 font-medium">
+                <span className="flex items-center gap-1">
+                  <span className="w-3 h-0.5 bg-slate-400 dark:bg-slate-500 inline-block rounded-full" />
+                  <span>Range</span>
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="w-2.5 h-2 bg-emerald-500 inline-block rounded-xs" />
+                  <span>Trend</span>
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="w-2 h-2 rotate-45 bg-amber-400 inline-block border border-slate-900 rounded-2xs" />
+                  <span>Overall Acc</span>
+                </span>
+              </div>
+            </div>
+
+            <div className="space-y-2.5">
+              {subjectCandleData.map((subj) => {
+                const SubjIcon = subj.icon;
+                const hasData = subj.testsCount > 0;
+
+                // Horizontal Candle Positions (0 - 100%)
+                const wickLeft = Math.max(0, Math.min(100, subj.minScore));
+                const wickWidth = Math.max(1, Math.min(100 - wickLeft, subj.maxScore - subj.minScore));
+
+                // Candle body bounds (first attempt vs latest attempt)
+                const bodyLow = Math.max(0, Math.min(100, Math.min(subj.firstScore, subj.latestScore)));
+                const bodyHigh = Math.max(0, Math.min(100, Math.max(subj.firstScore, subj.latestScore)));
+                const rawWidth = bodyHigh - bodyLow;
+                const bodyWidth = Math.max(3.5, rawWidth);
+                const bodyLeft = rawWidth < 3.5 ? Math.max(0, Math.min(96.5, bodyLow - (3.5 - rawWidth) / 2)) : bodyLow;
+
+                return (
+                  <div
+                    key={subj.id}
+                    className="p-2.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 space-y-1.5 transition-all hover:border-slate-300 dark:hover:border-slate-700"
+                  >
+                    {/* Header Row: Subject icon, title, test count, accuracy badge */}
+                    <div className="flex items-center justify-between gap-2 text-xs">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <div className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 ${
+                          subj.themeColor === 'indigo' ? 'bg-indigo-100 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400' :
+                          subj.themeColor === 'cyan' ? 'bg-cyan-100 dark:bg-cyan-950/70 text-cyan-600 dark:text-cyan-400' :
+                          subj.themeColor === 'emerald' ? 'bg-emerald-100 dark:bg-emerald-950/70 text-emerald-600 dark:text-emerald-400' :
+                          'bg-amber-100 dark:bg-amber-950/70 text-amber-600 dark:text-amber-400'
+                        }`}>
+                          <SubjIcon className="w-3.5 h-3.5" />
+                        </div>
+                        <span className="font-bold text-slate-800 dark:text-slate-200 truncate text-[11px] sm:text-xs">
+                          {subj.title}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        {hasData ? (
+                          <>
+                            <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium hidden sm:inline">
+                              {subj.testsCount} {subj.testsCount === 1 ? 'test' : 'tests'} • {subj.totalCorrect}/{subj.totalQ} correct
+                            </span>
+                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${
+                              subj.accuracy >= 75 ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800' :
+                              subj.accuracy >= 50 ? 'bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-800' :
+                              'bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-800'
+                            }`}>
+                              {subj.accuracy}% Acc
+                            </span>
+                          </>
+                        ) : (
+                          <span className="text-[9.5px] font-semibold text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-full">
+                            No tests taken
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Horizontal Candle Track */}
+                    <div className="relative h-7 bg-slate-100 dark:bg-slate-950/80 rounded-lg border border-slate-200/80 dark:border-slate-800/80 overflow-hidden flex items-center px-2">
+                      {/* Grid Guidelines at 25%, 50%, 75% */}
+                      <div className="absolute top-0 bottom-0 left-[25%] border-r border-dashed border-slate-200 dark:border-slate-800 pointer-events-none" />
+                      <div className="absolute top-0 bottom-0 left-[50%] border-r border-dashed border-slate-300 dark:border-slate-700 pointer-events-none" />
+                      <div className="absolute top-0 bottom-0 left-[75%] border-r border-dashed border-slate-200 dark:border-slate-800 pointer-events-none" />
+
+                      {hasData ? (
+                        <div className="relative w-full h-full flex items-center">
+                          {/* Horizontal Wick (Min to Max Range) */}
+                          <div 
+                            className="absolute h-[3px] bg-slate-400 dark:bg-slate-500 rounded-full transition-all duration-500"
+                            style={{ left: `${wickLeft}%`, width: `${wickWidth}%` }}
+                          >
+                            {/* Left Wick End Tick */}
+                            <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-[2px] h-3 bg-slate-500 dark:bg-slate-400 rounded-full" />
+                            {/* Right Wick End Tick */}
+                            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-[2px] h-3 bg-slate-500 dark:bg-slate-400 rounded-full" />
+                          </div>
+
+                          {/* Horizontal Candle Body (First attempt vs Latest attempt progress) */}
+                          <div
+                            className={`absolute h-3.5 rounded-md shadow-xs border transition-all duration-500 flex items-center justify-center ${
+                              subj.isImproving
+                                ? 'bg-gradient-to-r from-emerald-500 to-teal-500 border-emerald-300 dark:border-emerald-600 text-white'
+                                : 'bg-gradient-to-r from-rose-500 to-amber-500 border-rose-300 dark:border-rose-600 text-white'
+                            }`}
+                            style={{ left: `${bodyLeft}%`, width: `${bodyWidth}%` }}
+                            title={`Trend: ${subj.firstScore}% initial → ${subj.latestScore}% latest`}
+                          />
+
+                          {/* Overall Accuracy Needle/Pin Marker */}
+                          <div
+                            className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-amber-400 border-2 border-slate-900 dark:border-white rounded-xs rotate-45 shadow-md z-10 transition-all duration-500 cursor-help"
+                            style={{ left: `${subj.accuracy}%` }}
+                            title={`Overall Accuracy: ${subj.accuracy}% (Min: ${subj.minScore}% | Max: ${subj.maxScore}%)`}
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-full flex items-center justify-between text-[9.5px] text-slate-400 dark:text-slate-500 px-2 italic">
+                          <span>0% baseline</span>
+                          <span>No attempts recorded yet</span>
+                          <span>100%</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Candle Sub-Legend details */}
+                    {hasData && (
+                      <div className="flex items-center justify-between text-[9px] text-slate-500 dark:text-slate-400 px-1 font-medium">
+                        <span>Min Score: <strong className="text-slate-700 dark:text-slate-300">{subj.minScore}%</strong></span>
+                        <span className="flex items-center gap-1">
+                          Trend: <strong className={subj.isImproving ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}>
+                            {subj.firstScore}% → {subj.latestScore}% ({subj.isImproving ? '▲ Improving' : '▼ Lower'})
+                          </strong>
+                        </span>
+                        <span>Best Score: <strong className="text-emerald-600 dark:text-emerald-400">{subj.maxScore}%</strong></span>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+
+              {/* Horizontal Scale Axis Ruler */}
+              <div className="pt-1 px-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[8.5px] text-slate-400 dark:text-slate-500 font-mono">
+                <span>0% (Foundation)</span>
+                <span>25%</span>
+                <span>50% (Passing)</span>
+                <span>75% (Distinction)</span>
+                <span>100% (Mastery)</span>
+              </div>
+            </div>
+          </div>
+
           {/* Test Attempt Practice History */}
           <div className="space-y-2.5 min-h-[220px]">
             <div className="flex flex-wrap items-center justify-between gap-1">
@@ -505,6 +919,58 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
           </div>
 
         </div>
+
+        {/* Permanent Name Change Confirmation Dialog */}
+        {showNameConfirmModal && (
+          <div className="fixed inset-0 z-60 flex items-center justify-center p-3 bg-slate-950/80 backdrop-blur-sm animate-fade-in">
+            <div className="bg-white dark:bg-slate-900 border border-amber-400/60 rounded-2xl p-4 sm:p-5 max-w-sm w-full shadow-2xl space-y-3">
+              <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400">
+                <AlertCircle className="w-5 h-5 shrink-0" />
+                <h3 className="text-sm font-black tracking-tight">Confirm Permanent Name</h3>
+              </div>
+              
+              <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                Are you sure you want to change your candidate name to:
+              </p>
+
+              <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-center">
+                <span className="text-sm font-black text-slate-900 dark:text-white">
+                  "{nameInput.trim()}"
+                </span>
+              </div>
+
+              <div className="p-2 rounded-lg bg-rose-500/10 border border-rose-500/30 text-[10px] text-rose-700 dark:text-rose-300 leading-snug">
+                ⚠️ <strong>Permanent Restriction Notice:</strong> You are allowed to edit your candidate name only <u>once</u>. After confirming, this name is permanently locked and cannot be changed again.
+              </div>
+
+              <div className="flex items-center justify-end gap-2 pt-1">
+                <button
+                  type="button"
+                  disabled={isSavingName}
+                  onClick={() => setShowNameConfirmModal(false)}
+                  className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  disabled={isSavingName}
+                  onClick={handleConfirmSaveName}
+                  className="px-4 py-1.5 text-xs font-black rounded-lg bg-amber-400 hover:bg-amber-300 active:scale-95 text-slate-950 shadow-md transition-all cursor-pointer flex items-center gap-1.5"
+                >
+                  {isSavingName ? (
+                    <span>Saving...</span>
+                  ) : (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-slate-950" />
+                      <span>Confirm &amp; Lock Forever</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
       </div>
     </div>

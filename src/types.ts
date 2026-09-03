@@ -330,6 +330,8 @@ export interface UserProfile {
   history?: UserTestHistory[];
   currentMonthProgress?: MonthlyProgressSummary;
   previousMonthProgress?: MonthlyProgressSummary;
+  hasEditedName?: boolean;
+  nameEditedAt?: number;
 }
 
 export interface TestAttemptAnswer {
