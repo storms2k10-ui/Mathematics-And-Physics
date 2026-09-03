@@ -27,6 +27,7 @@ import { MobileAppView } from './components/MobileAppView';
 import { Chapter, ClassInfo, ClassLevel, Question, StudentProfile, LeaderboardEntry, TestSessionConfig, UserTestHistory, PracticeDifficulty, UserAnswer } from './types';
 import { useAuth } from './context/AuthContext';
 import { useOffline } from './context/OfflineContext';
+import { getCurrentMonthKey } from './utils/monthUtils';
 import { Atom, ArrowLeft, Smartphone, Monitor } from 'lucide-react';
 
 export default function App() {
@@ -313,6 +314,7 @@ export default function App() {
     const student = results.studentProfile || activeStudent;
     const totalQ = results.questions.length;
     const correctCount = Object.values(results.userAnswers).filter(a => a?.isCorrect).length;
+    const skippedCount = Object.values(results.userAnswers).filter(a => a?.isSkipped).length;
     const scorePct = totalQ > 0 ? Math.round((correctCount / totalQ) * 100) : 0;
 
     const studentName = userProfile?.displayName || currentUser?.displayName || student?.name || 'Student Candidate';
@@ -320,6 +322,7 @@ export default function App() {
     const secs = results.totalTimeSeconds % 60;
     const formattedTime = `${mins}m ${secs.toString().padStart(2, '0')}s`;
     const attemptId = `lead_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
+    const currentMonth = getCurrentMonthKey();
 
     const userEmail = currentUser?.email || userProfile?.email || undefined;
     const userUid = currentUser?.uid || userProfile?.uid || undefined;
@@ -343,11 +346,13 @@ export default function App() {
       difficultyTier: activeTier,
       correctCount,
       totalQuestions: totalQ,
+      skippedCount,
       scorePercentage: scorePct,
       timeSpentSeconds: results.totalTimeSeconds,
       formattedTime,
       timestamp: Date.now(),
       formattedDate: 'Just now',
+      monthKey: currentMonth,
     };
 
     const historyItem: UserTestHistory = {
@@ -361,11 +366,13 @@ export default function App() {
       difficultyTier: activeTier,
       correctCount,
       totalQuestions: totalQ,
+      skippedCount,
       scorePercentage: scorePct,
       timeSpentSeconds: results.totalTimeSeconds,
       formattedTime,
       timestamp: Date.now(),
       formattedDate: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+      monthKey: currentMonth,
     };
 
     setQuizResults({

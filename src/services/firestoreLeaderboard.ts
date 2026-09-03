@@ -141,6 +141,7 @@ export class FirestoreLeaderboardService {
           formattedTime: data.formattedTime || '0m 00s',
           timestamp: Number(data.timestamp) || Date.now(),
           formattedDate: data.formattedDate || 'Recent',
+          monthKey: data.monthKey || getMonthKey(Number(data.timestamp) || Date.now()),
         });
       });
 

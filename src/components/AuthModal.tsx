@@ -34,7 +34,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   customTitle,
   customSubtitle,
 }) => {
-  const { signIn, signUp, resetPassword, checkEmailUniqueness } = useAuth();
+  const { signIn, signUp, signInWithGoogle, resetPassword, checkEmailUniqueness } = useAuth();
   
   const [mode, setMode] = useState<'signin' | 'signup' | 'forgot'>(initialMode || 'signin');
   
@@ -60,6 +60,28 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       setEmailCheckStatus('idle');
     }
   }, [isOpen, initialMode]);
+
+  // Handle 1-click Google Sign In
+  const handleGoogleSignIn = async () => {
+    setError(null);
+    setSuccessMsg(null);
+    setLoading(true);
+    try {
+      await signInWithGoogle();
+      setSuccessMsg('Signed in successfully with Google!');
+      setLoading(false);
+      setTimeout(() => {
+        onClose();
+        if (onSuccess) onSuccess();
+      }, 500);
+    } catch (err: any) {
+      console.warn('Google sign-in notice:', err?.message || err);
+      if (err.message && !err.message.includes('popup-closed')) {
+        setError(err.message || 'Google sign-in could not be completed. You can also use email and password.');
+      }
+      setLoading(false);
+    }
+  };
 
   // Check email uniqueness on blur for sign up
   const handleEmailBlur = async () => {
@@ -144,16 +166,26 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         setLoading(false);
       }
     } catch (err: any) {
-      console.error('Auth error:', err);
+      console.warn('Authentication notice:', err?.message || err);
       let msg = 'Authentication failed. Please try again.';
       const code = err?.code || '';
-      if (
-        code === 'auth/user-not-found' || 
-        code === 'auth/wrong-password' || 
+
+      if (err.message && (
+        err.message.includes('No registered account') ||
+        err.message.includes('create an account') ||
+        err.message.includes('Incorrect password') ||
+        err.message.includes('already exists')
+      )) {
+        msg = err.message;
+      } else if (code === 'auth/user-not-found') {
+        msg = 'No registered account found with this email. Please create an account to get started.';
+      } else if (code === 'auth/wrong-password') {
+        msg = 'Incorrect password. Please verify your credentials or click "Forgot Password" to reset.';
+      } else if (
         code === 'auth/invalid-credential' || 
         code === 'auth/invalid-login-credentials'
       ) {
-        msg = 'Invalid email or password. Please verify your credentials or sign up.';
+        msg = err.message || 'Invalid email or password. If you are not registered yet, please create an account.';
       } else if (code === 'auth/email-already-in-use' || (err.message && err.message.includes('already exists'))) {
         setEmailCheckStatus('taken');
         msg = 'An account with this email already exists. Please sign in instead.';
@@ -162,7 +194,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       } else if (code === 'auth/weak-password') {
         msg = 'Password is too weak. Please use at least 6 characters.';
       } else if (code === 'auth/operation-not-allowed') {
-        msg = 'Email/Password sign-in is disabled in your Firebase project. Please enable the Email/Password sign-in method in Firebase Console under Authentication > Sign-in method.';
+        msg = 'Email/Password sign-in is disabled in your Firebase project. Please use "Sign in with Google" or enable Email/Password in Firebase Console.';
       } else if (code === 'auth/network-request-failed') {
         msg = 'Network error. Please check your internet connection and try again.';
       } else if (code === 'auth/too-many-requests') {
@@ -248,8 +280,17 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <AlertCircle className="w-4 h-4 shrink-0 text-rose-400 mt-0.5" />
                 <span className="leading-relaxed">{error}</span>
               </div>
-              {mode === 'signin' && (error.toLowerCase().includes('sign up') || error.toLowerCase().includes('no registered account') || error.toLowerCase().includes('not found')) && (
-                <div className="pl-6.5 pt-1">
+              {mode === 'signin' && (
+                error.toLowerCase().includes('sign up') ||
+                error.toLowerCase().includes('create') ||
+                error.toLowerCase().includes('no registered account') ||
+                error.toLowerCase().includes('not found') ||
+                error.toLowerCase().includes('not registered')
+              ) && (
+                <div className="pl-6.5 pt-1.5 flex flex-col gap-2">
+                  <p className="text-[11px] text-rose-300/90 font-medium">
+                    New to the platform? Please create an account first:
+                  </p>
                   <button
                     type="button"
                     onClick={() => {
@@ -259,10 +300,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                         setName(email.split('@')[0]);
                       }
                     }}
-                    className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] transition-colors flex items-center gap-1.5 shadow-sm cursor-pointer"
+                    className="w-fit px-3.5 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs transition-all flex items-center gap-2 shadow-sm cursor-pointer active:scale-95 ring-1 ring-white/20"
                   >
                     <UserPlus className="w-3.5 h-3.5" />
-                    <span>Create New Account with {email || 'this email'}</span>
+                    <span>Create Account with {email || 'this email'}</span>
                   </button>
                 </div>
               )}
@@ -288,6 +329,44 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             <div className="p-3 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-200 text-xs font-semibold flex items-center gap-2 shadow-sm">
               <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
               <span>{successMsg}</span>
+            </div>
+          )}
+
+          {/* Quick 1-Click Google Sign In */}
+          {mode !== 'forgot' && (
+            <div className="space-y-3 pt-1">
+              <button
+                type="button"
+                onClick={handleGoogleSignIn}
+                disabled={loading}
+                className="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-slate-100 text-slate-800 font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2.5 cursor-pointer border border-slate-200 hover:shadow-lg disabled:opacity-50"
+              >
+                <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
+                  <path
+                    fill="#4285F4"
+                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                  />
+                  <path
+                    fill="#34A853"
+                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                  />
+                  <path
+                    fill="#FBBC05"
+                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+                  />
+                  <path
+                    fill="#EA4335"
+                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
+                  />
+                </svg>
+                <span>{mode === 'signup' ? 'Sign up with Google' : 'Continue with Google'}</span>
+              </button>
+
+              <div className="flex items-center gap-3">
+                <div className="flex-1 h-px bg-slate-800"></div>
+                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">or with email</span>
+                <div className="flex-1 h-px bg-slate-800"></div>
+              </div>
             </div>
           )}
 

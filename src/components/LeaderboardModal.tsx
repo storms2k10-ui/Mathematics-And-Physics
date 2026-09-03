@@ -326,6 +326,8 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
   // Strict Subject and Class Isolation
   const rankedCandidateProfiles: CandidateRankingProfile[] = useMemo(() => {
     const candidateMap = new Map<string, {
+      uid?: string;
+      email?: string;
       studentName: string;
       classLevel: ClassLevel;
       track: string;
@@ -350,6 +352,8 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
       if (!candidateMap.has(candidateKey)) {
         candidateMap.set(candidateKey, {
+          uid: entry.uid,
+          email: entry.email,
           studentName: cleanName,
           classLevel: norm.classLevel,
           track: norm.track,
@@ -359,6 +363,12 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
       }
 
       const cand = candidateMap.get(candidateKey)!;
+      if (!cand.uid && entry.uid) {
+        cand.uid = entry.uid;
+      }
+      if (!cand.email && entry.email) {
+        cand.email = entry.email;
+      }
       cand.allSubmissions.push({
         ...entry,
         track: norm.track,
@@ -385,6 +395,8 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
       candidateProfiles.push({
         candidateId: `cand_${cand.studentName}_${cand.classLevel}_${cand.track}`,
+        uid: cand.uid,
+        email: cand.email,
         studentName: cand.studentName,
         classLevel: cand.classLevel,
         track: cand.track,
@@ -419,30 +431,66 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
     });
   }, [safeEntries, selectedClass, selectedTrack, selectedDifficulty]);
 
+  // Check if a candidate profile belongs to the currently authenticated user
+  const checkIsCurrentUser = useCallback((candidate: CandidateRankingProfile) => {
+    if (!currentUser && !userProfile) return false;
+
+    const currentUid = currentUser?.uid || userProfile?.uid;
+    const currentEmail = currentUser?.email || userProfile?.email;
+    const currentName = userProfile?.displayName || currentUser?.displayName;
+
+    if (currentUid) {
+      if (candidate.uid && candidate.uid === currentUid) return true;
+      if (candidate.chapterAttempts?.some(a => a.uid && a.uid === currentUid)) return true;
+    }
+
+    if (currentEmail) {
+      const cleanEmail = currentEmail.trim().toLowerCase();
+      if (candidate.email && candidate.email.trim().toLowerCase() === cleanEmail) return true;
+      if (candidate.chapterAttempts?.some(a => a.email && a.email.trim().toLowerCase() === cleanEmail)) return true;
+    }
+
+    if (currentName) {
+      const cleanName = currentName.trim().toLowerCase();
+      if (candidate.studentName && candidate.studentName.trim().toLowerCase() === cleanName) return true;
+    }
+
+    return false;
+  }, [currentUser, userProfile]);
+
+  // Find the rank index of the authenticated user in the current ranking view
+  const currentUserRankIndex = useMemo(() => {
+    return rankedCandidateProfiles.findIndex(checkIsCurrentUser);
+  }, [rankedCandidateProfiles, checkIsCurrentUser]);
+
   if (!isOpen) return null;
 
-  const getRankBadge = (rank: number) => {
+  const getRankBadge = (rank: number, isCurrentUser?: boolean) => {
     switch (rank) {
       case 1:
         return (
-          <div className="w-10 h-10 rounded-2xl bg-amber-100 dark:bg-amber-950/80 text-amber-600 dark:text-amber-300 font-black text-base flex items-center justify-center border-2 border-amber-300 dark:border-amber-700 shadow-md shrink-0">
+          <div className={`w-10 h-10 rounded-2xl bg-amber-100 dark:bg-amber-950/80 text-amber-600 dark:text-amber-300 font-black text-base flex items-center justify-center border-2 border-amber-300 dark:border-amber-700 shadow-md shrink-0 ${isCurrentUser ? 'ring-2 ring-sky-400 shadow-sky-400/30' : ''}`}>
             🥇
           </div>
         );
       case 2:
         return (
-          <div className="w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-black text-base flex items-center justify-center border-2 border-slate-300 dark:border-slate-600 shadow-md shrink-0">
+          <div className={`w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-black text-base flex items-center justify-center border-2 border-slate-300 dark:border-slate-600 shadow-md shrink-0 ${isCurrentUser ? 'ring-2 ring-sky-400 shadow-sky-400/30' : ''}`}>
             🥈
           </div>
         );
       case 3:
         return (
-          <div className="w-10 h-10 rounded-2xl bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 font-black text-base flex items-center justify-center border-2 border-amber-300/60 dark:border-amber-800 shadow-md shrink-0">
+          <div className={`w-10 h-10 rounded-2xl bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 font-black text-base flex items-center justify-center border-2 border-amber-300/60 dark:border-amber-800 shadow-md shrink-0 ${isCurrentUser ? 'ring-2 ring-sky-400 shadow-sky-400/30' : ''}`}>
             🥉
           </div>
         );
       default:
-        return (
+        return isCurrentUser ? (
+          <div className="w-10 h-10 rounded-2xl bg-sky-100 dark:bg-sky-950/80 text-sky-700 dark:text-sky-300 font-black text-xs flex items-center justify-center border-2 border-sky-400 dark:border-sky-500 shadow-sm shrink-0">
+            #{rank}
+          </div>
+        ) : (
           <div className="w-10 h-10 rounded-2xl bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 font-black text-xs flex items-center justify-center border border-slate-200 dark:border-slate-700 shrink-0">
             #{rank}
           </div>
@@ -619,77 +667,120 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
               </p>
             </div>
           ) : (
-            <div className="space-y-2.5">
-              {rankedCandidateProfiles.map((candidate, index) => {
-                const hasAdvanced = (candidate.chapterAttempts || []).some(a => a.difficultyTier === 'Advanced' || (a.chapterName && a.chapterName.toLowerCase().includes('advanced')));
-                const hasNormal = (candidate.chapterAttempts || []).some(a => a.difficultyTier === 'Normal' || (a.chapterName && !a.chapterName.toLowerCase().includes('advanced')));
+            <div>
+              <div className="space-y-2.5">
+                {rankedCandidateProfiles.map((candidate, index) => {
+                  const isCurrentUser = checkIsCurrentUser(candidate);
+                  const hasAdvanced = (candidate.chapterAttempts || []).some(a => a.difficultyTier === 'Advanced' || (a.chapterName && a.chapterName.toLowerCase().includes('advanced')));
+                  const hasNormal = (candidate.chapterAttempts || []).some(a => a.difficultyTier === 'Normal' || (a.chapterName && !a.chapterName.toLowerCase().includes('advanced')));
 
-                return (
-                  <div
-                    key={candidate.candidateId || index}
-                    onClick={() => setSelectedCandidate(candidate)}
-                    className={`p-3 sm:p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 hover:scale-[1.002] ${
-                      index === 0
-                        ? 'bg-amber-50/60 dark:bg-amber-950/20 border-amber-300 dark:border-amber-800/80 shadow-sm ring-1 ring-amber-400/30'
-                        : 'bg-white dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-600 shadow-2xs'
-                    }`}
-                  >
-                    <div className="flex items-center gap-3 min-w-0">
-                      {getRankBadge(index + 1)}
+                  return (
+                    <div
+                      key={candidate.candidateId || index}
+                      id={isCurrentUser ? 'current-user-ranking-row' : undefined}
+                      onClick={() => setSelectedCandidate(candidate)}
+                      className={`relative p-3 sm:p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 hover:scale-[1.002] ${
+                        isCurrentUser
+                          ? 'bg-gradient-to-r from-sky-50 via-sky-100/50 to-blue-50/70 dark:from-sky-950/70 dark:via-sky-900/30 dark:to-slate-900 border-2 border-sky-400 dark:border-sky-500 shadow-md shadow-sky-500/15 ring-2 ring-sky-400/40 dark:ring-sky-500/30 hover:border-sky-500 dark:hover:border-sky-400'
+                          : index === 0
+                            ? 'bg-amber-50/60 dark:bg-amber-950/20 border-amber-300 dark:border-amber-800/80 shadow-sm ring-1 ring-amber-400/30'
+                            : 'bg-white dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-600 shadow-2xs'
+                      }`}
+                    >
+                      {/* Dynamic Skyblue Accent Indicator Bar on Left for Current User */}
+                      {isCurrentUser && (
+                        <div className="absolute left-0 top-2.5 bottom-2.5 w-1.5 rounded-r-full bg-gradient-to-b from-sky-400 to-blue-600 shadow-xs" />
+                      )}
 
-                      <div className="min-w-0 space-y-1">
-                        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                          <h4 className="text-xs sm:text-sm font-black text-slate-900 dark:text-white truncate">
-                            {candidate.studentName}
-                          </h4>
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 shrink-0">
-                            Class {candidate.classLevel}
-                          </span>
+                      <div className="flex items-center gap-3 min-w-0">
+                        {getRankBadge(index + 1, isCurrentUser)}
 
-                          {/* Difficulty Tier Badges */}
-                          {hasAdvanced && (
-                            <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800 shrink-0 flex items-center gap-0.5">
-                              Advanced
+                        <div className="min-w-0 space-y-1">
+                          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                            <h4 className={`text-xs sm:text-sm font-black truncate ${
+                              isCurrentUser ? 'text-sky-950 dark:text-sky-100' : 'text-slate-900 dark:text-white'
+                            }`}>
+                              {candidate.studentName}
+                            </h4>
+
+                            {/* Distinct Current User Highlight Badge */}
+                            {isCurrentUser && (
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-xs flex items-center gap-1.5 shrink-0">
+                                <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
+                                <span>You</span>
+                              </span>
+                            )}
+
+                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-black shrink-0 ${
+                              isCurrentUser
+                                ? 'bg-sky-200/70 dark:bg-sky-900/80 text-sky-800 dark:text-sky-200 border border-sky-300 dark:border-sky-700'
+                                : 'bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800'
+                            }`}>
+                              Class {candidate.classLevel}
                             </span>
-                          )}
-                          {hasNormal && (
-                            <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shrink-0 flex items-center gap-0.5">
-                              Normal
-                            </span>
-                          )}
-                        </div>
 
-                        <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
-                          <span className="text-indigo-600 dark:text-indigo-400 font-medium flex items-center gap-1">
-                            <Clock className="w-3 h-3" />
-                            <span>{formatLiveTime(candidate.latestAttemptTimestamp)}</span>
-                          </span>
+                            {/* Difficulty Tier Badges */}
+                            {hasAdvanced && (
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800 shrink-0 flex items-center gap-0.5">
+                                Advanced
+                              </span>
+                            )}
+                            {hasNormal && (
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shrink-0 flex items-center gap-0.5">
+                                Normal
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+                            <span className={`font-medium flex items-center gap-1 ${
+                              isCurrentUser ? 'text-sky-600 dark:text-sky-400' : 'text-indigo-600 dark:text-indigo-400'
+                            }`}>
+                              <Clock className="w-3 h-3" />
+                              <span>{formatLiveTime(candidate.latestAttemptTimestamp)}</span>
+                            </span>
+                            {isCurrentUser && (
+                              <>
+                                <span>•</span>
+                                <span className="font-bold text-sky-600 dark:text-sky-400">
+                                  Your Current Ranking
+                                </span>
+                              </>
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Right Side: Overall Accuracy & Chevron */}
-                    <div className="flex items-center gap-3 shrink-0">
-                      
-                      {/* Overall Accuracy Block */}
-                      <div className="text-right">
-                        <div className={`text-base sm:text-lg font-black ${
-                          candidate.overallAccuracy >= 85 ? 'text-emerald-600 dark:text-emerald-400' :
-                          candidate.overallAccuracy >= 65 ? 'text-indigo-600 dark:text-indigo-400' : 'text-rose-600 dark:text-rose-400'
-                        }`}>
-                          {candidate.overallAccuracy}%
+                      {/* Right Side: Overall Accuracy & Chevron */}
+                      <div className="flex items-center gap-3 shrink-0">
+                        {/* Overall Accuracy Block */}
+                        <div className="text-right">
+                          <div className={`text-base sm:text-lg font-black ${
+                            isCurrentUser
+                              ? 'text-sky-600 dark:text-sky-300'
+                              : candidate.overallAccuracy >= 85
+                                ? 'text-emerald-600 dark:text-emerald-400'
+                                : candidate.overallAccuracy >= 65
+                                  ? 'text-indigo-600 dark:text-indigo-400'
+                                  : 'text-rose-600 dark:text-rose-400'
+                          }`}>
+                            {candidate.overallAccuracy}%
+                          </div>
+                          <div className={`text-[9.5px] font-bold uppercase tracking-wider ${
+                            isCurrentUser ? 'text-sky-600/80 dark:text-sky-400/80' : 'text-slate-400'
+                          }`}>
+                            Overall Accuracy
+                          </div>
                         </div>
-                        <div className="text-[9.5px] text-slate-400 font-bold uppercase tracking-wider">
-                          Overall Accuracy
-                        </div>
+
+                        <ChevronRight className={`w-4 h-4 hidden sm:block ${
+                          isCurrentUser ? 'text-sky-500 dark:text-sky-400' : 'text-slate-400'
+                        }`} />
                       </div>
-
-                      <ChevronRight className="w-4 h-4 text-slate-400 hidden sm:block" />
-
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           )}
         </div>
@@ -711,6 +802,11 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                         <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-violet-400/30 text-violet-200 border border-violet-300/30">
                           Class {selectedCandidate.classLevel} Student
                         </span>
+                        {checkIsCurrentUser(selectedCandidate) && (
+                          <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-sky-400/30 text-sky-200 border border-sky-300/40">
+                            Your Profile
+                          </span>
+                        )}
                         <span className="text-xs text-white/80">
                           {selectedCandidate.track}
                         </span>

@@ -84,6 +84,7 @@ interface ServerUser {
   totalQuestionsAnswered: number;
   totalCorrect: number;
   totalWrong: number;
+  totalSkipped?: number;
   accuracy: number;
   history: ServerTestHistoryItem[];
   lastActive: number;
@@ -439,10 +440,10 @@ app.post('/api/auth/signup', (req, res) => {
   }
 });
 
-// POST /api/auth/signin - Strictly forbids signing in without an existing signed up account
+// POST /api/auth/signin - Authenticates and synchronizes candidate account with live server
 app.post('/api/auth/signin', (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, uid, displayName, classLevel } = req.body;
     const cleanEmail = String(email || '').trim().toLowerCase();
     const cleanPassword = String(password || '');
 
@@ -453,21 +454,22 @@ app.post('/api/auth/signin', (req, res) => {
 
     const users = loadUsersFromFile();
 
-    // STRICT CHECK: Without signup, do NOT allow sign in!
     const userIndex = users.findIndex((u) => u.email === cleanEmail);
     if (userIndex === -1) {
       res.status(404).json({
         success: false,
-        error: 'No registered account found with this email. Please sign up before signing in.'
+        error: 'No registered account found with this email. Please create an account to get started.'
       });
       return;
     }
 
     const user = users[userIndex];
 
-    // Password verification
-    const isValid = verifyPassword(cleanPassword, user.passwordHash);
-    if (!isValid) {
+    // Password verification with UID match tolerance for federated/synced users
+    const isPasswordValid = verifyPassword(cleanPassword, user.passwordHash);
+    const isUidMatch = uid && user.uid === uid;
+
+    if (!isPasswordValid && !isUidMatch) {
       res.status(401).json({
         success: false,
         error: 'Incorrect password. Please verify your credentials and try again.'
@@ -475,8 +477,11 @@ app.post('/api/auth/signin', (req, res) => {
       return;
     }
 
-    // Update last active
+    // Update last active and sync UID
     user.lastActive = Date.now();
+    if (uid && user.uid !== uid) {
+      user.uid = uid;
+    }
     users[userIndex] = user;
     saveUsersToFile(users);
 
@@ -641,14 +646,16 @@ app.post('/api/auth/sync', (req, res) => {
 
       const totalQ = updatedHistory.reduce((acc, h) => acc + (Number(h.totalQuestions) || 0), 0);
       const totalC = updatedHistory.reduce((acc, h) => acc + (Number(h.correctCount) || 0), 0);
-      const totalW = Math.max(0, totalQ - totalC);
-      const accPct = totalQ > 0 ? Math.round((totalC / totalQ) * 100) : 0;
+      const totalS = updatedHistory.reduce((acc, h) => acc + (Number(h.skippedCount) || 0), 0);
+      const totalW = Math.max(0, totalQ - totalC - totalS);
+      const accPct = (totalC + totalW) > 0 ? Math.round((totalC / (totalC + totalW)) * 100) : (totalQ > 0 ? Math.round((totalC / totalQ) * 100) : 0);
 
       user.history = updatedHistory;
       user.testsAttempted = updatedHistory.length;
       user.totalQuestionsAnswered = totalQ;
       user.totalCorrect = totalC;
       user.totalWrong = totalW;
+      user.totalSkipped = totalS;
       user.accuracy = accPct;
     }
 

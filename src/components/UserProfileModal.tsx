@@ -176,12 +176,21 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   const historyList = userProfile.history || [];
   const latestTimestamp = historyList.length > 0 ? Math.max(...historyList.map(h => h.timestamp || 0)) : userProfile.createdAt;
 
-  // Monthly progress partitioning
+  // Monthly progress live tracking: dynamically calculated in real-time from history whenever user attempts a test
   const currentMonthKey = getCurrentMonthKey();
   const previousMonthKey = getPreviousMonthKey();
 
-  const currentMonthProgress = userProfile.currentMonthProgress || calculateMonthSummary(userProfile.history || [], currentMonthKey);
-  const previousMonthProgress = userProfile.previousMonthProgress || calculateMonthSummary(userProfile.history || [], previousMonthKey);
+  // Compute live current month progress directly from user's test history
+  const liveCurrentMonthSummary = calculateMonthSummary(historyList, currentMonthKey);
+  // Guarantee taking the most comprehensive count between live history and synced profile
+  const currentMonthProgress = (userProfile.currentMonthProgress && userProfile.currentMonthProgress.testsAttempted > liveCurrentMonthSummary.testsAttempted)
+    ? userProfile.currentMonthProgress
+    : liveCurrentMonthSummary;
+
+  const livePreviousMonthSummary = calculateMonthSummary(historyList, previousMonthKey);
+  const previousMonthProgress = (userProfile.previousMonthProgress && userProfile.previousMonthProgress.testsAttempted > livePreviousMonthSummary.testsAttempted)
+    ? userProfile.previousMonthProgress
+    : livePreviousMonthSummary;
 
   // Dynamic Profile Theme Colors based on Overall Accuracy & Mastery
   const getDynamicTheme = () => {
@@ -298,91 +307,6 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
         {/* Modal Body */}
         <div className="p-3 sm:p-4 space-y-3 sm:space-y-4 overflow-y-auto flex-1">
           
-          {/* Accuracy & Error Rates Section: Correct Accuracy, Error Rate & Skipped Questions */}
-          <div className="space-y-1.5 sm:space-y-2">
-            <div className="flex items-center justify-between flex-wrap gap-1">
-              <h4 className="text-[10.5px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                Performance Analytics
-              </h4>
-              <span className="text-[10px] sm:text-[11px] font-bold text-violet-700 dark:text-violet-300 bg-violet-100/80 dark:bg-violet-950/80 px-2 py-0.5 rounded-full border border-violet-200 dark:border-violet-800">
-                Answered Accuracy: {overallAccuracy}% • {testsAttempted} Tests
-              </span>
-            </div>
-            
-            {/* 3 Analytics Cards: Correct, Incorrect, and Skipped */}
-            <div className="grid grid-cols-3 gap-2">
-              
-              {/* Light Green Card: Correct Accuracy */}
-              <div className="p-2 sm:p-2.5 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-700/80 flex flex-col items-center justify-center text-center gap-1 shadow-2xs">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-emerald-500 dark:border-emerald-400 bg-white dark:bg-emerald-900/50 flex items-center justify-center shadow-inner">
-                  <span className="text-xs sm:text-sm font-black text-emerald-600 dark:text-emerald-300">
-                    {correctPct}%
-                  </span>
-                </div>
-
-                <div className="space-y-0.5 text-center">
-                  <p className="text-[11px] sm:text-xs font-black text-emerald-900 dark:text-emerald-100">
-                    {totalCorrect}{' '}
-                    <span className="text-[9px] font-normal text-emerald-700/80 dark:text-emerald-400">
-                      / {totalQuestions}
-                    </span>
-                  </p>
-                  <p className="text-[9px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
-                    Correct
-                  </p>
-                </div>
-              </div>
-
-              {/* Rose / Red Card: Error Rate / Missed Questions */}
-              <div className="p-2 sm:p-2.5 rounded-xl bg-rose-50/80 dark:bg-rose-950/40 border border-rose-300 dark:border-rose-700/80 flex flex-col items-center justify-center text-center gap-1 shadow-2xs">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-rose-500 dark:border-rose-400 bg-white dark:bg-rose-900/50 flex items-center justify-center shadow-inner">
-                  <span className="text-xs sm:text-sm font-black text-rose-600 dark:text-rose-300">
-                    {wrongPct}%
-                  </span>
-                </div>
-
-                <div className="space-y-0.5 text-center">
-                  <p className="text-[11px] sm:text-xs font-black text-rose-900 dark:text-rose-100">
-                    {totalWrong}{' '}
-                    <span className="text-[9px] font-normal text-rose-700/80 dark:text-rose-400">
-                      / {totalQuestions}
-                    </span>
-                  </p>
-                  <p className="text-[9px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400">
-                    Incorrect
-                  </p>
-                </div>
-              </div>
-
-              {/* Amber / Orange Card: Skipped Questions */}
-              <div className="p-2 sm:p-2.5 rounded-xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-700/80 flex flex-col items-center justify-center text-center gap-1 shadow-2xs">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-amber-500 dark:border-amber-400 bg-white dark:bg-amber-900/50 flex items-center justify-center shadow-inner">
-                  <span className="text-xs sm:text-sm font-black text-amber-600 dark:text-amber-300">
-                    {skippedPct}%
-                  </span>
-                </div>
-
-                <div className="space-y-0.5 text-center">
-                  <p className="text-[11px] sm:text-xs font-black text-amber-900 dark:text-amber-100">
-                    {totalSkipped}{' '}
-                    <span className="text-[9px] font-normal text-amber-700/80 dark:text-amber-400">
-                      / {totalQuestions}
-                    </span>
-                  </p>
-                  <p className="text-[9px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
-                    Skipped
-                  </p>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Explanatory metric note */}
-            <p className="text-[9.5px] text-slate-500 dark:text-slate-400 text-center">
-              * <strong>Accuracy ({overallAccuracy}%)</strong> based on {attemptedQuestions} attempted questions ({totalCorrect} correct).
-            </p>
-          </div>
-
           {/* Monthly Academic Progress Section */}
           <div className="p-3 rounded-xl bg-slate-50/90 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 space-y-2.5">
             <div>

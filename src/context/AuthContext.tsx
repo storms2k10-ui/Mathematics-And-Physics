@@ -8,7 +8,9 @@ import {
   updateProfile,
   onAuthStateChanged,
   setPersistence,
-  browserLocalPersistence
+  browserLocalPersistence,
+  GoogleAuthProvider,
+  signInWithPopup
 } from 'firebase/auth';
 import { 
   doc, 
@@ -38,6 +40,7 @@ interface AuthContextType {
   checkEmailUniqueness: (email: string) => Promise<{ exists: boolean; available: boolean; error?: string }>;
   signUp: (email: string, pass: string, displayName: string, classLevel: ClassLevel) => Promise<void>;
   signIn: (email: string, pass: string) => Promise<void>;
+  signInWithGoogle: () => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
   signOut: () => Promise<void>;
   recordTestAttempt: (historyItem: UserTestHistory) => Promise<UserProfile>;
@@ -385,7 +388,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
-  // Sign In with Firebase Authentication & Cloud Firestore
+  // Sign In with Firebase Authentication & Cloud Firestore (requires existing registered account)
   const signIn = async (email: string, pass: string) => {
     const cleanEmail = email.trim().toLowerCase();
     if (!cleanEmail || !pass) {
@@ -404,31 +407,85 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       safeFetchJson('/api/auth/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: cleanEmail, password: pass }),
+        body: JSON.stringify({ uid: cred.user.uid, email: cleanEmail, password: pass }),
       }).catch(() => {});
     } catch (fbErr: any) {
       const code = fbErr?.code || '';
-      if (code === 'auth/operation-not-allowed') {
-        throw new Error('Email/Password sign-in is not enabled in your Firebase project. Please enable "Email/Password" in Firebase Console under Authentication > Sign-in method.');
+
+      // Check if candidate is not registered earlier
+      if (code === 'auth/user-not-found') {
+        throw new Error('No registered account found with this email. Please create an account to get started.');
       }
+
       if (
-        code === 'auth/user-not-found' || 
         code === 'auth/invalid-credential' || 
-        code === 'auth/wrong-password' ||
         code === 'auth/invalid-login-credentials'
       ) {
-        throw new Error('Invalid email or password. Please verify your credentials or sign up.');
+        // In Firebase v10/v11, auth/invalid-credential is used for both unregistered users and bad passwords.
+        // Check authoritative email presence:
+        try {
+          const uniqueness = await checkEmailUniqueness(cleanEmail);
+          if (!uniqueness.exists) {
+            throw new Error('No registered account found with this email. Please create an account to get started.');
+          }
+        } catch (checkErr: any) {
+          if (checkErr?.message && checkErr.message.includes('No registered account')) {
+            throw checkErr;
+          }
+        }
+
+        throw new Error('Incorrect password. Please verify your credentials or click "Forgot Password" to reset.');
+      }
+
+      if (code === 'auth/wrong-password') {
+        throw new Error('Incorrect password. Please check your credentials or click "Forgot Password".');
+      }
+      if (code === 'auth/operation-not-allowed') {
+        throw new Error('Email/Password sign-in is not enabled in your Firebase project. Please use "Sign in with Google" or enable Email/Password in Firebase Console.');
       }
       if (code === 'auth/invalid-email') {
         throw new Error('Please enter a valid email address.');
       }
       if (code === 'auth/too-many-requests') {
-        throw new Error('Too many failed attempts. Please try again in a few minutes or reset your password.');
+        throw new Error('Too many failed attempts. Please wait a few moments or reset your password.');
       }
       if (code === 'auth/network-request-failed') {
         throw new Error('Network error. Please check your internet connection and try again.');
       }
       throw new Error(fbErr.message || 'Failed to sign in. Please check your credentials.');
+    }
+  };
+
+  // Sign In with Google via Firebase Auth Popup
+  const signInWithGoogle = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: 'select_account' });
+      const cred = await signInWithPopup(auth, provider);
+      setCurrentUser(cred.user);
+      const profile = await fetchCloudUserProfile(cred.user);
+
+      // Background register/sync with server
+      safeFetchJson('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          uid: cred.user.uid,
+          email: cred.user.email || '',
+          displayName: cred.user.displayName || cred.user.email?.split('@')[0] || 'Student Candidate',
+          classLevel: profile.classLevel || 9,
+          password: 'google-oauth-authenticated-session',
+        }),
+      }).catch(() => {});
+    } catch (err: any) {
+      const code = err?.code || '';
+      if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
+        return; // User closed popup willingly, no error needed
+      }
+      if (code === 'auth/network-request-failed') {
+        throw new Error('Network error during Google sign-in. Please check your connection.');
+      }
+      throw new Error(err.message || 'Google sign-in could not be completed.');
     }
   };
 
@@ -649,6 +706,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         checkEmailUniqueness,
         signUp,
         signIn,
+        signInWithGoogle,
         resetPassword,
         signOut,
         recordTestAttempt,
