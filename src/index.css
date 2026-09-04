@@ -132,6 +132,43 @@
 .math-rendered .katex {
   font-size: 1.05em;
   text-rendering: optimizeLegibility;
+  max-width: 100%;
+}
+
+/* MathDisplay responsive container & mobile scrolling */
+.math-display-block {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+}
+
+.math-display-block::-webkit-scrollbar {
+  height: 4px;
+}
+
+.math-display-block::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.math-display-block::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+}
+
+.dark .math-display-block::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.45);
+}
+
+.math-display-inline {
+  vertical-align: middle;
+}
+
+@media (max-width: 640px) {
+  .math-rendered .katex {
+    font-size: 0.98em;
+  }
+  .math-display-block .katex-display {
+    margin: 0.25em 0;
+  }
 }
 
 /* KaTeX Dark Mode & Inheritance Fixes */

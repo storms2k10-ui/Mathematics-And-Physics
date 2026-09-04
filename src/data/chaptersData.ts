@@ -236,7 +236,7 @@ export const ELEMENTARY_CHAPTERS: Chapter[] = [
     name: 'Complex Numbers',
     description: 'Comprehensive study of complex numbers $z = a + ib$, algebraic operations, conjugate $\\bar{z} = a - ib$, modulus $|z| = \\sqrt{a^2 + b^2} = \\sqrt{z\\bar{z}}$, multiplicative inverse $z^{-1} = \\frac{\\bar{z}}{|z|^2}$, polar and exponential form $z = r(\\cos\\theta + i\\sin\\theta) = re^{i\\theta}$, Euler\'s relation $e^{i\\pi} + 1 = 0$, De Moivre\'s Theorem $(\\cos\\theta + i\\sin\\theta)^n = \\cos(n\\theta) + i\\sin(n\\theta)$, cube roots of unity $(1, \\omega, \\omega^2 \\text{ with } 1 + \\omega + \\omega^2 = 0, \\omega^3 = 1)$, and geometric Argand plane mappings.',
     category: 'Number Systems & Logarithms',
-    questionCount: 250,
+    questionCount: 450,
     difficulty: 'Mixed',
     keyTopics: [
       'Algebraic Form: $z = a + ib \\quad (a, b \\in \\mathbb{R}, \\; i = \\sqrt{-1}, \\; i^2 = -1)$',
@@ -258,7 +258,7 @@ export const ELEMENTARY_CHAPTERS: Chapter[] = [
     name: 'Matrices and Determinants',
     description: 'Matrix algebra, determinant properties, adjoint and inverse (A⁻¹ = adj(A)/|A|), rank of matrix, and solving systems of linear equations.',
     category: 'Matrices & Determinants',
-    questionCount: 250,
+    questionCount: 400,
     difficulty: 'Mixed',
     keyTopics: ['Matrix Multiplication & Transpose', 'Determinant Properties & Cofactors', 'Inverse A⁻¹ = \\frac{1}{|A|}\\text{adj}(A)', 'Echelon & Reduced Echelon Form'],
     color: 'emerald',
