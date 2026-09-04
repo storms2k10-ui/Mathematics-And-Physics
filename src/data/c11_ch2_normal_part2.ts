@@ -504,7 +504,7 @@ export const C11_CH2_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "For the matrices in Question 71, $BA$ is:",
+    "question": "If matrix $A$ is of order $2\\times3$ and matrix $B$ is of order $3\\times4$, then the product $BA$ is:",
     "options": {
       "A": "$3\\times3$",
       "B": "$4\\times4$",
@@ -517,10 +517,10 @@ export const C11_CH2_NORMAL_PART2: Question[] = [
     "option_d": "Not defined",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "The four columns of $B$ do not equal the two rows of $A$.",
+    "explanation": "Matrix multiplication $BA$ requires the number of columns of $B$ ($4$) to equal the number of rows of $A$ ($2$). Since $4 \\neq 2$, $BA$ is not defined.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "B"
+    "formula": "BA"
   },
   {
     "id": "c11-ch2-normal-q73",
@@ -551,7 +551,7 @@ export const C11_CH2_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "For the matrices in Question 73, $A-B=$:",
+    "question": "If $A=\\begin{bmatrix}1&2\\\\3&4\\end{bmatrix}$ and $B=\\begin{bmatrix}2&0\\\\-1&5\\end{bmatrix}$, then $A-B=$:",
     "options": {
       "A": "$\\begin{bmatrix}3&2\\\\2&9\\end{bmatrix}$",
       "B": "$\\begin{bmatrix}1&2\\\\-1&5\\end{bmatrix}$",
@@ -564,7 +564,7 @@ export const C11_CH2_NORMAL_PART2: Question[] = [
     "option_d": "$\\begin{bmatrix}-1&2\\\\4&-1\\end{bmatrix}$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Subtraction gives $1-2=-1,\\ 2-0=2,\\ 3-(-1)=4,\\ 4-5=-1$.",
+    "explanation": "Subtraction gives $\\begin{bmatrix}1-2 & 2-0\\\\3-(-1) & 4-5\\end{bmatrix} = \\begin{bmatrix}-1&2\\\\4&-1\\end{bmatrix}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "1-2=-1,\\ 2-0=2,\\ 3-(-1)=4,\\ 4-5=-1"

@@ -8,24 +8,16 @@ import {
   Trophy,
   Calendar,
   Archive,
-  TrendingUp,
-  Sparkles,
   Pencil,
   Lock,
   Check,
-  AlertCircle,
-  ChartCandlestick,
-  Sigma,
-  Atom,
-  FlaskConical,
-  Compass
+  AlertCircle
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useOffline } from '../context/OfflineContext';
 import { ClassLevel, Chapter } from '../types';
 import { FirestoreLeaderboardService } from '../services/firestoreLeaderboard';
 import { getCurrentMonthKey, getPreviousMonthKey, formatMonthName, calculateMonthSummary } from '../utils/monthUtils';
-import { normalizeTrackAndClass } from '../utils/trackUtils';
 
 interface UserProfileModalProps {
   isOpen: boolean;
@@ -250,96 +242,6 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   const previousMonthProgress = (userProfile.previousMonthProgress && userProfile.previousMonthProgress.testsAttempted > livePreviousMonthSummary.testsAttempted)
     ? userProfile.previousMonthProgress
     : livePreviousMonthSummary;
-
-  // Subject Performance Horizontal Candle Graph data calculation across disciplines
-  const SUBJECT_DEFINITIONS = [
-    {
-      id: 'Elementary Mathematics',
-      title: 'Elementary Mathematics',
-      shortTitle: 'Mathematics',
-      icon: Sigma,
-      themeColor: 'indigo',
-    },
-    {
-      id: 'Elementary Physics',
-      title: 'Elementary Physics',
-      shortTitle: 'Physics',
-      icon: Atom,
-      themeColor: 'cyan',
-    },
-    {
-      id: 'Chemistry',
-      title: 'Chemistry',
-      shortTitle: 'Chemistry',
-      icon: FlaskConical,
-      themeColor: 'emerald',
-    },
-    {
-      id: 'Pre Calculas',
-      title: 'Pre Calculas',
-      shortTitle: 'Pre-Calculus',
-      icon: Compass,
-      themeColor: 'amber',
-    },
-  ];
-
-  const subjectCandleData = SUBJECT_DEFINITIONS.map((def) => {
-    const matchingTests = historyList.filter((h) => {
-      const norm = normalizeTrackAndClass(h);
-      if (norm.track.toLowerCase() === def.id.toLowerCase()) return true;
-      if (h.track && h.track.toLowerCase() === def.id.toLowerCase()) return true;
-      if (def.id === 'Elementary Mathematics' && (h.track?.toLowerCase().includes('math') || (!h.track && !h.chapterId?.includes('phy') && !h.chapterId?.includes('chem')))) return true;
-      if (def.id === 'Elementary Physics' && (h.track?.toLowerCase().includes('physic') || h.chapterId?.includes('phy'))) return true;
-      if (def.id === 'Chemistry' && (h.track?.toLowerCase().includes('chem') || h.chapterId?.includes('chem'))) return true;
-      if (def.id === 'Pre Calculas' && (h.track?.toLowerCase().includes('calc') || h.chapterId?.includes('calc'))) return true;
-      return false;
-    });
-
-    if (matchingTests.length === 0) {
-      return {
-        ...def,
-        testsCount: 0,
-        totalQ: 0,
-        totalCorrect: 0,
-        totalWrong: 0,
-        accuracy: 0,
-        minScore: 0,
-        maxScore: 0,
-        firstScore: 0,
-        latestScore: 0,
-        isImproving: true,
-      };
-    }
-
-    // Sort ascending by timestamp to calculate academic trajectory (first vs latest score)
-    const sorted = [...matchingTests].sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0));
-    const scores = sorted.map((t) => Math.max(0, Math.min(100, Math.round(t.scorePercentage || 0))));
-    const minScore = Math.min(...scores);
-    const maxScore = Math.max(...scores);
-    const firstScore = scores[0];
-    const latestScore = scores[scores.length - 1];
-
-    const totalQ = matchingTests.reduce((acc, t) => acc + (t.totalQuestions || 0), 0);
-    const totalCorrect = matchingTests.reduce((acc, t) => acc + (t.correctCount || 0), 0);
-    const totalSkipped = matchingTests.reduce((acc, t) => acc + (t.skippedCount || 0), 0);
-    const totalWrong = Math.max(0, totalQ - totalCorrect - totalSkipped);
-    const attempted = totalCorrect + totalWrong;
-    const accuracy = attempted > 0 ? Math.round((totalCorrect / attempted) * 100) : (totalQ > 0 ? Math.round((totalCorrect / totalQ) * 100) : 0);
-
-    return {
-      ...def,
-      testsCount: matchingTests.length,
-      totalQ,
-      totalCorrect,
-      totalWrong,
-      accuracy,
-      minScore,
-      maxScore,
-      firstScore,
-      latestScore,
-      isImproving: latestScore >= firstScore,
-    };
-  });
 
   // Dynamic Profile Theme Colors based on Overall Accuracy & Mastery
   const getDynamicTheme = () => {
@@ -670,167 +572,6 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                     </p>
                   </div>
                 )}
-              </div>
-            </div>
-          </div>
-
-          {/* Subject Performance (Horizontal Candle Graph) */}
-          <div className="p-3 rounded-xl bg-slate-50/90 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 space-y-3">
-            <div className="flex flex-wrap items-center justify-between gap-1.5">
-              <div>
-                <h4 className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
-                  <ChartCandlestick className="w-3.5 h-3.5 text-violet-500" />
-                  <span>Subject Performance (Horizontal Candle Graph)</span>
-                </h4>
-                <p className="text-[9.5px] text-slate-500 dark:text-slate-400">
-                  Performance spread across subjects • Wick: Min/Max Range • Candle Body: Trend Progress
-                </p>
-              </div>
-              <div className="flex items-center gap-2.5 text-[9.5px] text-slate-500 dark:text-slate-400 font-medium">
-                <span className="flex items-center gap-1">
-                  <span className="w-3 h-0.5 bg-slate-400 dark:bg-slate-500 inline-block rounded-full" />
-                  <span>Range</span>
-                </span>
-                <span className="flex items-center gap-1">
-                  <span className="w-2.5 h-2 bg-emerald-500 inline-block rounded-xs" />
-                  <span>Trend</span>
-                </span>
-                <span className="flex items-center gap-1">
-                  <span className="w-2 h-2 rotate-45 bg-amber-400 inline-block border border-slate-900 rounded-2xs" />
-                  <span>Overall Acc</span>
-                </span>
-              </div>
-            </div>
-
-            <div className="space-y-2.5">
-              {subjectCandleData.map((subj) => {
-                const SubjIcon = subj.icon;
-                const hasData = subj.testsCount > 0;
-
-                // Horizontal Candle Positions (0 - 100%)
-                const wickLeft = Math.max(0, Math.min(100, subj.minScore));
-                const wickWidth = Math.max(1, Math.min(100 - wickLeft, subj.maxScore - subj.minScore));
-
-                // Candle body bounds (first attempt vs latest attempt)
-                const bodyLow = Math.max(0, Math.min(100, Math.min(subj.firstScore, subj.latestScore)));
-                const bodyHigh = Math.max(0, Math.min(100, Math.max(subj.firstScore, subj.latestScore)));
-                const rawWidth = bodyHigh - bodyLow;
-                const bodyWidth = Math.max(3.5, rawWidth);
-                const bodyLeft = rawWidth < 3.5 ? Math.max(0, Math.min(96.5, bodyLow - (3.5 - rawWidth) / 2)) : bodyLow;
-
-                return (
-                  <div
-                    key={subj.id}
-                    className="p-2.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 space-y-1.5 transition-all hover:border-slate-300 dark:hover:border-slate-700"
-                  >
-                    {/* Header Row: Subject icon, title, test count, accuracy badge */}
-                    <div className="flex items-center justify-between gap-2 text-xs">
-                      <div className="flex items-center gap-2 min-w-0">
-                        <div className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 ${
-                          subj.themeColor === 'indigo' ? 'bg-indigo-100 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400' :
-                          subj.themeColor === 'cyan' ? 'bg-cyan-100 dark:bg-cyan-950/70 text-cyan-600 dark:text-cyan-400' :
-                          subj.themeColor === 'emerald' ? 'bg-emerald-100 dark:bg-emerald-950/70 text-emerald-600 dark:text-emerald-400' :
-                          'bg-amber-100 dark:bg-amber-950/70 text-amber-600 dark:text-amber-400'
-                        }`}>
-                          <SubjIcon className="w-3.5 h-3.5" />
-                        </div>
-                        <span className="font-bold text-slate-800 dark:text-slate-200 truncate text-[11px] sm:text-xs">
-                          {subj.title}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center gap-1.5 shrink-0">
-                        {hasData ? (
-                          <>
-                            <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium hidden sm:inline">
-                              {subj.testsCount} {subj.testsCount === 1 ? 'test' : 'tests'} • {subj.totalCorrect}/{subj.totalQ} correct
-                            </span>
-                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${
-                              subj.accuracy >= 75 ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800' :
-                              subj.accuracy >= 50 ? 'bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-800' :
-                              'bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-800'
-                            }`}>
-                              {subj.accuracy}% Acc
-                            </span>
-                          </>
-                        ) : (
-                          <span className="text-[9.5px] font-semibold text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-full">
-                            No tests taken
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Horizontal Candle Track */}
-                    <div className="relative h-7 bg-slate-100 dark:bg-slate-950/80 rounded-lg border border-slate-200/80 dark:border-slate-800/80 overflow-hidden flex items-center px-2">
-                      {/* Grid Guidelines at 25%, 50%, 75% */}
-                      <div className="absolute top-0 bottom-0 left-[25%] border-r border-dashed border-slate-200 dark:border-slate-800 pointer-events-none" />
-                      <div className="absolute top-0 bottom-0 left-[50%] border-r border-dashed border-slate-300 dark:border-slate-700 pointer-events-none" />
-                      <div className="absolute top-0 bottom-0 left-[75%] border-r border-dashed border-slate-200 dark:border-slate-800 pointer-events-none" />
-
-                      {hasData ? (
-                        <div className="relative w-full h-full flex items-center">
-                          {/* Horizontal Wick (Min to Max Range) */}
-                          <div 
-                            className="absolute h-[3px] bg-slate-400 dark:bg-slate-500 rounded-full transition-all duration-500"
-                            style={{ left: `${wickLeft}%`, width: `${wickWidth}%` }}
-                          >
-                            {/* Left Wick End Tick */}
-                            <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-[2px] h-3 bg-slate-500 dark:bg-slate-400 rounded-full" />
-                            {/* Right Wick End Tick */}
-                            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-[2px] h-3 bg-slate-500 dark:bg-slate-400 rounded-full" />
-                          </div>
-
-                          {/* Horizontal Candle Body (First attempt vs Latest attempt progress) */}
-                          <div
-                            className={`absolute h-3.5 rounded-md shadow-xs border transition-all duration-500 flex items-center justify-center ${
-                              subj.isImproving
-                                ? 'bg-gradient-to-r from-emerald-500 to-teal-500 border-emerald-300 dark:border-emerald-600 text-white'
-                                : 'bg-gradient-to-r from-rose-500 to-amber-500 border-rose-300 dark:border-rose-600 text-white'
-                            }`}
-                            style={{ left: `${bodyLeft}%`, width: `${bodyWidth}%` }}
-                            title={`Trend: ${subj.firstScore}% initial → ${subj.latestScore}% latest`}
-                          />
-
-                          {/* Overall Accuracy Needle/Pin Marker */}
-                          <div
-                            className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-amber-400 border-2 border-slate-900 dark:border-white rounded-xs rotate-45 shadow-md z-10 transition-all duration-500 cursor-help"
-                            style={{ left: `${subj.accuracy}%` }}
-                            title={`Overall Accuracy: ${subj.accuracy}% (Min: ${subj.minScore}% | Max: ${subj.maxScore}%)`}
-                          />
-                        </div>
-                      ) : (
-                        <div className="w-full flex items-center justify-between text-[9.5px] text-slate-400 dark:text-slate-500 px-2 italic">
-                          <span>0% baseline</span>
-                          <span>No attempts recorded yet</span>
-                          <span>100%</span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Candle Sub-Legend details */}
-                    {hasData && (
-                      <div className="flex items-center justify-between text-[9px] text-slate-500 dark:text-slate-400 px-1 font-medium">
-                        <span>Min Score: <strong className="text-slate-700 dark:text-slate-300">{subj.minScore}%</strong></span>
-                        <span className="flex items-center gap-1">
-                          Trend: <strong className={subj.isImproving ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}>
-                            {subj.firstScore}% → {subj.latestScore}% ({subj.isImproving ? '▲ Improving' : '▼ Lower'})
-                          </strong>
-                        </span>
-                        <span>Best Score: <strong className="text-emerald-600 dark:text-emerald-400">{subj.maxScore}%</strong></span>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-
-              {/* Horizontal Scale Axis Ruler */}
-              <div className="pt-1 px-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[8.5px] text-slate-400 dark:text-slate-500 font-mono">
-                <span>0% (Foundation)</span>
-                <span>25%</span>
-                <span>50% (Passing)</span>
-                <span>75% (Distinction)</span>
-                <span>100% (Mastery)</span>
               </div>
             </div>
           </div>

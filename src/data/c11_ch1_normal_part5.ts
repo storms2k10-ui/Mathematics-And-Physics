@@ -145,7 +145,7 @@ export const C11_CH1_NORMAL_PART5: Question[] = [
     option_d: "$-\\frac{\\pi}{3}$",
     correct_answer: "A",
     correct_option: "A",
-    explanation: "$z$ lies in the third quadrant ($x < 0, y < 0$). The reference angle is $\\alpha = \\arctan(|-\\sqrt{3}|/|-1|) = \\frac{\\pi}{3}$. The principal argument is $\\theta = -\\pi + \\alpha = -\\pi + \\frac{\\pi}{3} = -\\frac{2\\pi}{3}$.",
+    explanation: "$z$ lies in the third quadrant ($x < 0, y < 0$). The acute angle is $\\alpha = \\arctan(|-\\sqrt{3}|/|-1|) = \\frac{\\pi}{3}$. The principal argument is $\\theta = -\\pi + \\alpha = -\\pi + \\frac{\\pi}{3} = -\\frac{2\\pi}{3}$.",
     difficulty: "Medium",
     difficulty_tier: "Normal",
     formula: "\\operatorname{Arg}(z) = -\\pi + \\alpha"

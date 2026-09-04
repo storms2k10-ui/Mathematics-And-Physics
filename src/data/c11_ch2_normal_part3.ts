@@ -200,7 +200,7 @@ export const C11_CH2_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "For the matrix in Question 108, the cofactor $A_{12}$ is:",
+    "question": "For $A=\\begin{bmatrix}1&2&3\\\\0&4&5\\\\1&0&6\\end{bmatrix}$, the cofactor $A_{12}$ is:",
     "options": {
       "A": "$5$",
       "B": "$-5$",
@@ -213,7 +213,7 @@ export const C11_CH2_NORMAL_PART3: Question[] = [
     "option_d": "$-6$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$A_{12}=(-1)^{1+2}M_{12}=-(-5)=5$.",
+    "explanation": "Minor $M_{12} = \\det\\begin{bmatrix}0&5\\\\1&6\\end{bmatrix} = 0(6) - 5(1) = -5$. The cofactor is $A_{12}=(-1)^{1+2}M_{12}=-(-5)=5$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "A_{12}=(-1)^{1+2}M_{12}=-(-5)=5"

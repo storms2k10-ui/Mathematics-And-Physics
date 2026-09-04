@@ -272,7 +272,7 @@ export const ELEMENTARY_CHAPTERS: Chapter[] = [
     name: 'Vectors',
     description: 'Vectors in 2D and 3D, scalar (dot) product a·b = |a||b|cos θ, vector (cross) product a×b, scalar triple product and vector applications in mechanics.',
     category: 'Vectors',
-    questionCount: 250,
+    questionCount: 400,
     difficulty: 'Mixed',
     keyTopics: ['Unit Vectors & Direction Cosines', 'Scalar (Dot) Product: \\vec{a} \\cdot \\vec{b}', 'Vector (Cross) Product: \\vec{a} \\times \\vec{b}', 'Scalar Triple Product \\vec{a} \\cdot (\\vec{b} \\times \\vec{c})', 'Work Done & Moment of Force'],
     color: 'cyan',
