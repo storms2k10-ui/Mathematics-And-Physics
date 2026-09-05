@@ -204,4 +204,28 @@
   color: #fff1f2 !important;
 }
 
+.dark .text-cyan-100 .katex,
+.dark .text-cyan-200 .katex,
+.dark .text-cyan-300 .katex {
+  color: #cffafe !important;
+}
+
+.dark .text-amber-100 .katex,
+.dark .text-amber-200 .katex,
+.dark .text-amber-300 .katex {
+  color: #fef3c7 !important;
+}
+
+.dark .text-blue-100 .katex,
+.dark .text-blue-200 .katex,
+.dark .text-blue-300 .katex {
+  color: #dbeafe !important;
+}
+
+.dark .text-yellow-100 .katex,
+.dark .text-yellow-200 .katex,
+.dark .text-yellow-300 .katex {
+  color: #fef9c3 !important;
+}
+
 
