@@ -144,7 +144,7 @@ export const ChapterArtwork: React.FC<ChapterArtworkProps> = ({
             <line x1="150" y1="180" x2="450" y2="40" stroke="currentColor" strokeWidth="2" strokeDasharray="5 5" />
             <circle cx="285" cy="115" r="6" fill="currentColor" />
             <text x="300" y="110" fill="currentColor" fontSize="18" fontFamily="sans-serif">Slope = f'(x)</text>
-            <text x="70" y="60" fill="currentColor" fontSize="24" fontFamily="serif" fontStyle="italic" opacity="0.7">df/dx = lim [f(x+h) - f(x)] / h</text>
+            <text x="70" y="60" fill="currentColor" fontSize="24" fontFamily="serif" fontStyle="italic" opacity="0.7">df/dx = limₕ→₀ [f(x+h) − f(x)] / h</text>
           </svg>
         );
 

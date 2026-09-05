@@ -35,6 +35,9 @@ export const KATEX_CONFIG: katex.KatexOptions = {
     '\\defeq': '\\stackrel{\\text{def}}{=}',
     '\\implies': '\\Longrightarrow',
     '\\iff': '\\Longleftrightarrow',
+    '\\lim': '\\mathop{\\mathrm{lim}}\\limits',
+    '\\limsup': '\\mathop{\\mathrm{lim\\,sup}}\\limits',
+    '\\liminf': '\\mathop{\\mathrm{lim\\,inf}}\\limits',
   },
 };
 
@@ -66,6 +69,14 @@ export function sanitizeLatex(str: string): string {
 
   // Normalize unbraced limits (e.g. \lim_x\to 0 -> \lim_{x \to 0})
   s = s.replace(/\\lim_([a-zA-Z0-9]+)\\to([a-zA-Z0-9\\infty]+)/g, '\\lim_{$1 \\to $2}');
+  s = s.replace(/\\lim_([a-zA-Z0-9]+)->([a-zA-Z0-9\\infty]+)/g, '\\lim_{$1 \\to $2}');
+  s = s.replace(/\\lim_\{([^}]+)->([^}]+)\}/g, '\\lim_{$1 \\to $2}');
+  s = s.replace(/\\lim_\{([^}]+)→([^}]+)\}/g, '\\lim_{$1 \\to $2}');
+
+  // Ensure limit subscripts are always placed directly underneath "lim" in authentic mathematical script
+  s = s.replace(/\\lim(?![a-zA-Z\\])(?!\\limits)/g, '\\lim\\limits');
+  s = s.replace(/\\limsup(?![a-zA-Z\\])(?!\\limits)/g, '\\limsup\\limits');
+  s = s.replace(/\\liminf(?![a-zA-Z\\])(?!\\limits)/g, '\\liminf\\limits');
 
   // Normalize unbraced integrals (e.g. \int_0^1 -> \int_{0}^{1})
   s = s.replace(/\\int_([a-zA-Z0-9]+)\^([a-zA-Z0-9\\infty]+)/g, '\\int_{$1}^{$2}');
@@ -138,7 +149,7 @@ export function parseAndRenderMixedText(text: string, forceDisplayMode?: boolean
   }
 
   // 4. Check if the string is likely a pure formula without explicit $ wrappers
-  const hasLatexKeywords = /\\(frac|sqrt|int|sum|prod|log|ln|sin|cos|tan|cot|sec|csc|alpha|beta|gamma|delta|theta|lambda|pi|mu|sigma|omega|Delta|Sigma|partial|infty|pm|neq|le|ge|approx|times|cdot|in|notin|subset|cap|cup|forall|exists|mathbb|mathbf|mathcal|text|quad|qquad|left|right|begin|end|vec|overline|hat)/.test(trimmed);
+  const hasLatexKeywords = /\\(lim|limsup|liminf|frac|sqrt|int|sum|prod|log|ln|sin|cos|tan|cot|sec|csc|alpha|beta|gamma|delta|theta|lambda|pi|mu|sigma|omega|Delta|Sigma|partial|infty|pm|neq|le|ge|approx|times|cdot|in|notin|subset|cap|cup|forall|exists|mathbb|mathbf|mathcal|text|quad|qquad|left|right|begin|end|vec|overline|hat)/.test(trimmed);
   const hasMathOperators = /[\^_=+\-*/<>]/.test(trimmed);
   const isQuestionSentence = /(Which|What|Find|Determine|According|Calculate|Evaluate|Select|State|Where|How)/i.test(trimmed);
 

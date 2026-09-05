@@ -36,6 +36,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const [sampleIdx, setSampleIdx] = useState(0);
 
   const sampleQuestions = [
+    // 1. Mathematics
     {
       subject: 'Mathematics – Quadratic Equations',
       question: 'For the quadratic equation $ax^2 + bx + c = 0$, if the discriminant $\\Delta = b^2 - 4ac < 0$, the roots are:',
@@ -47,6 +48,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       ],
       explanation: 'When discriminant $\\Delta = b^2 - 4ac < 0$, the quantity under the radical $\\sqrt{\\Delta}$ is negative ($i\\sqrt{|\\Delta|}$), yielding complex conjugate roots: $x = \\frac{-b \\pm i\\sqrt{4ac - b^2}}{2a}$.'
     },
+    // 2. Physics
     {
       subject: 'Physics – Vectors & Equilibrium',
       question: 'Two forces of equal magnitude $F$ act at an angle of $60^\\circ$ to each other. The magnitude of their resultant is:',
@@ -58,16 +60,101 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       ],
       explanation: 'By law of cosines for vectors: $R = \\sqrt{F^2 + F^2 + 2(F)(F)\\cos(60^\\circ)} = \\sqrt{2F^2 + 2F^2(0.5)} = \\sqrt{3F^2} = \\sqrt{3}F$.'
     },
+    // 3. Mathematics
     {
-      subject: 'Pre Calculas – Limits & Trigonometry',
-      question: 'The value of the fundamental trigonometric limit $\\lim_{\\theta \\to 0} \\frac{\\sin(\\theta)}{\\theta}$ (where $\\theta$ is in radians) is:',
+      subject: 'Mathematics – Limits & Trigonometry',
+      question: 'The value of the fundamental trigonometric limit $\\lim\\limits_{\\theta \\to 0} \\frac{\\sin\\theta}{\\theta}$ (where $\\theta$ is in radians) is:',
       options: [
         { key: 'A', text: '$1$', correct: true },
         { key: 'B', text: '$0$', correct: false },
         { key: 'C', text: '$\\infty$', correct: false },
         { key: 'D', text: 'Undefined', correct: false },
       ],
-      explanation: 'By the Squeeze (Sandwich) Theorem in radian measure, $\\cos(\\theta) < \\frac{\\sin\\theta}{\\theta} < 1$ near $\\theta = 0$. Since $\\lim_{\\theta \\to 0}\\cos\\theta = 1$, the limit equals $1$.'
+      explanation: 'By the Squeeze (Sandwich) Theorem in radian measure, $\\cos\\theta < \\frac{\\sin\\theta}{\\theta} < 1$ near $\\theta = 0$. Since $\\lim\\limits_{\\theta \\to 0}\\cos\\theta = 1$, the limit equals $1$.'
+    },
+    // 4. Physics
+    {
+      subject: 'Physics – Projectile Motion',
+      question: 'At what angle of projection $\\theta$ with the horizontal is the maximum height $H$ reached by a projectile equal to its horizontal range $R$?',
+      options: [
+        { key: 'A', text: '$\\tan^{-1}(4) \\approx 76^\\circ$', correct: true },
+        { key: 'B', text: '$45^\\circ$', correct: false },
+        { key: 'C', text: '$60^\\circ$', correct: false },
+        { key: 'D', text: '$\\tan^{-1}(2) \\approx 63.4^\\circ$', correct: false },
+      ],
+      explanation: 'Since $H = \\frac{v_0^2 \\sin^2\\theta}{2g}$ and $R = \\frac{2v_0^2 \\sin\\theta \\cos\\theta}{g}$, setting $H = R$ gives $\\frac{\\sin^2\\theta}{2} = 2\\sin\\theta\\cos\\theta \\implies \\frac{\\sin\\theta}{\\cos\\theta} = 4 \\implies \\theta = \\tan^{-1}(4)$.'
+    },
+    // 5. Mathematics
+    {
+      subject: 'Mathematics – Functions & Limits',
+      question: 'Evaluate the standard algebraic limit $\\lim\\limits_{x \\to a} \\frac{x^n - a^n}{x - a}$ for any rational number $n$:',
+      options: [
+        { key: 'A', text: '$n a^{n-1}$', correct: true },
+        { key: 'B', text: '$a^n$', correct: false },
+        { key: 'C', text: '$n a^n$', correct: false },
+        { key: 'D', text: '$\\frac{a^{n-1}}{n}$', correct: false },
+      ],
+      explanation: 'By algebraic quotient theorem or derivative definition: $\\lim\\limits_{x \\to a}\\frac{x^n - a^n}{x - a} = \\lim\\limits_{h \\to 0}\\frac{(a+h)^n - a^n}{h} = \\frac{d}{dx}(x^n)\\Big|_{x=a} = n a^{n-1}$.'
+    },
+    // 6. Physics
+    {
+      subject: 'Physics – Work, Energy & Momentum',
+      question: 'If the kinetic energy of a moving body is increased by $300\\%$, what is the percentage increase in its linear momentum?',
+      options: [
+        { key: 'A', text: '$100\\%$', correct: true },
+        { key: 'B', text: '$50\\%$', correct: false },
+        { key: 'C', text: '$200\\%$', correct: false },
+        { key: 'D', text: '$300\\%$', correct: false },
+      ],
+      explanation: 'Since $K = \\frac{p^2}{2m}$, momentum is $p = \\sqrt{2mK}$. If $K$ increases by $300\\%$, the new kinetic energy is $K\' = 4K$. Then $p\' = \\sqrt{2m(4K)} = 2\\sqrt{2mK} = 2p$, which corresponds to a $\\frac{2p - p}{p} \\times 100\\% = 100\\%$ increase.'
+    },
+    // 7. Mathematics
+    {
+      subject: 'Mathematics – Differentiation & Calculus',
+      question: 'If $y = \\ln(\\sec x + \\tan x)$, then the derivative $\\frac{dy}{dx}$ equals:',
+      options: [
+        { key: 'A', text: '$\\sec x$', correct: true },
+        { key: 'B', text: '$\\tan x$', correct: false },
+        { key: 'C', text: '$\\sec^2 x$', correct: false },
+        { key: 'D', text: '$\\sec x \\tan x$', correct: false },
+      ],
+      explanation: 'Using the derivative of natural logarithm and chain rule: $\\frac{dy}{dx} = \\frac{\\frac{d}{dx}(\\sec x + \\tan x)}{\\sec x + \\tan x} = \\frac{\\sec x \\tan x + \\sec^2 x}{\\sec x + \\tan x} = \\frac{\\sec x(\\tan x + \\sec x)}{\\sec x + \\tan x} = \\sec x$.'
+    },
+    // 8. Physics
+    {
+      subject: 'Physics – Electrostatics & Capacitance',
+      question: 'A parallel-plate capacitor with plate separation $d$ has capacitance $C$. If a dielectric slab with relative permittivity $\\kappa = 4$ fills the gap, the capacitance becomes:',
+      options: [
+        { key: 'A', text: '$4C$', correct: true },
+        { key: 'B', text: '$\\frac{C}{4}$', correct: false },
+        { key: 'C', text: '$2C$', correct: false },
+        { key: 'D', text: '$16C$', correct: false },
+      ],
+      explanation: 'Capacitance with a dielectric medium is $C\' = \\kappa \\frac{\\varepsilon_0 A}{d} = \\kappa C$. With $\\kappa = 4$, the capacitance quadruples to $4C$.'
+    },
+    // 9. Mathematics
+    {
+      subject: 'Mathematics – Definite Integration',
+      question: 'Evaluate the definite trigonometric integral $\\int_{0}^{\\pi/2} \\cos(x)\\,dx$:',
+      options: [
+        { key: 'A', text: '$1$', correct: true },
+        { key: 'B', text: '$0$', correct: false },
+        { key: 'C', text: '$\\pi$', correct: false },
+        { key: 'D', text: '$-1$', correct: false },
+      ],
+      explanation: 'The antiderivative of $\\cos(x)$ is $\\sin(x)$. By the Fundamental Theorem of Calculus: $\\int_{0}^{\\pi/2} \\cos(x)\\,dx = \\left[\\sin x\\right]_{0}^{\\pi/2} = \\sin(\\pi/2) - \\sin(0) = 1 - 0 = 1$.'
+    },
+    // 10. Physics
+    {
+      subject: 'Physics – Electromagnetic Induction',
+      question: 'According to Faraday\'s law of electromagnetic induction, the induced electromotive force (EMF) $\\mathcal{E}$ in a coil is proportional to:',
+      options: [
+        { key: 'A', text: 'Rate of change of magnetic flux $-\\frac{d\\Phi_B}{dt}$', correct: true },
+        { key: 'B', text: 'Total magnetic flux $\\Phi_B$', correct: false },
+        { key: 'C', text: 'Electric current in the coil', correct: false },
+        { key: 'D', text: 'Magnetic flux density squared $B^2$', correct: false },
+      ],
+      explanation: 'Faraday-Lenz law states that the induced EMF in a coil is given by $\\mathcal{E} = -N\\frac{d\\Phi_B}{dt}$, which is proportional to the time rate of change of magnetic flux.'
     }
   ];
 
@@ -245,15 +332,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 {/* Header badge */}
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-9 h-9 rounded-xl bg-indigo-50 dark:bg-indigo-950 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shadow-2xs">
-                      <Calculator className="w-5 h-5" />
+                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center shadow-2xs ${
+                      currentSample.subject.startsWith('Physics')
+                        ? 'bg-cyan-50 dark:bg-cyan-950 text-cyan-600 dark:text-cyan-400'
+                        : 'bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400'
+                    }`}>
+                      {currentSample.subject.startsWith('Physics') ? <Atom className="w-5 h-5" /> : <Calculator className="w-5 h-5" />}
                     </div>
                     <div>
                       <h3 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Sample ECAT Question</h3>
                       <p className="text-[11px] font-medium text-slate-500">{currentSample.subject}</p>
                     </div>
                   </div>
-                  <span className="px-3 py-0.5 text-xs font-bold bg-indigo-600 text-white rounded-full shadow-xs">
+                  <span className={`px-3 py-0.5 text-xs font-bold text-white rounded-full shadow-xs ${
+                    currentSample.subject.startsWith('Physics') ? 'bg-cyan-600' : 'bg-indigo-600'
+                  }`}>
                     {sampleIdx + 1}/10
                   </span>
                 </div>
