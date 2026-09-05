@@ -43,7 +43,8 @@ import {
   Building2,
   CheckCircle,
   FlaskConical,
-  Compass
+  Compass,
+  Share2
 } from 'lucide-react';
 import { ClassLevel, Chapter } from '../types';
 import { useAuth } from '../context/AuthContext';
@@ -333,9 +334,9 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
       label: 'Mathematics',
       badge: 'Core',
       icon: Sigma,
-      bgGradient: 'from-pink-400/20 via-purple-400/20 to-indigo-400/20',
-      activeRing: 'border-pink-500 shadow-pink-500/30',
-      iconColor: 'text-pink-600 dark:text-pink-400',
+      bgGradient: 'from-emerald-400/20 via-teal-400/20 to-green-400/20',
+      activeRing: 'border-emerald-500 shadow-emerald-500/30',
+      iconColor: 'text-emerald-600 dark:text-emerald-400',
       description: 'Standard Classes 9-12 Mathematics',
       sampleTopic: 'Algebra, Trigonometry & Matrices',
     },
@@ -385,7 +386,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
       title: 'Mathematics',
       subtitle: 'Core Foundation',
       icon: Sigma,
-      gradient: 'from-rose-100 to-pink-200 dark:from-rose-950/40 dark:to-pink-900/40',
+      gradient: 'from-emerald-100 to-green-200 dark:from-emerald-950/40 dark:to-green-900/40',
       action: () => onSelectTrack('Elementary Mathematics'),
     },
     {
@@ -469,9 +470,13 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                   </button>
                 )}
               </div>
-              <h2 className="text-sm font-extrabold tracking-tight text-slate-900 dark:text-white mt-0.5">
-                {isAuthenticated ? 'Welcome Back' : 'Welcome Back'}
-              </h2>
+              
+              {/* WELCOME BACK VIEW */}
+              <div className="relative inline-flex items-center mt-0.5">
+                <h2 className="text-xs sm:text-sm font-black tracking-wider uppercase bg-gradient-to-r from-purple-600 via-pink-500 to-amber-500 bg-clip-text text-transparent drop-shadow-xs flex items-center">
+                  WELCOME BACK
+                </h2>
+              </div>
             </div>
           </div>
 
@@ -508,12 +513,12 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
           <div className="space-y-3.5 animate-fade-in">
 
             {/* 1. CLASS LEVEL SELECTION CARD */}
-            <div className="p-3 sm:p-3.5 rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 shadow-lg shadow-purple-500/5 space-y-2">
+            <div className="p-3 sm:p-3.5 rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 shadow-lg shadow-emerald-500/5 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300">
                   Select Class Level
                 </span>
-                <span className="text-[11px] font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-950/50 px-2 py-0.5 rounded-full border border-pink-200/50 dark:border-pink-800/50">
+                <span className="text-[11px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800/60">
                   Class {selectedClass} Selected
                 </span>
               </div>
@@ -529,8 +534,8 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                       onClick={() => onSelectClass(lvl, activeTrack)}
                       className={`py-2 px-1 rounded-xl font-extrabold transition-all duration-300 flex items-center justify-center cursor-pointer relative overflow-hidden group ${
                         isSelected
-                          ? 'bg-gradient-to-tr from-purple-600 via-pink-600 to-rose-500 text-white shadow-md shadow-pink-500/30 scale-102 border-2 border-white/80 ring-2 ring-pink-400/50'
-                          : 'bg-slate-100/90 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-white hover:text-purple-600 hover:shadow-sm hover:border-purple-300 dark:hover:border-purple-600 border border-slate-200/60 dark:border-slate-700/60 hover:scale-105 active:scale-95'
+                          ? 'bg-gradient-to-tr from-emerald-600 via-green-600 to-teal-600 text-white shadow-md shadow-emerald-500/35 scale-102 border-2 border-emerald-300 ring-2 ring-emerald-400/60'
+                          : 'bg-slate-100/90 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-white hover:text-emerald-600 hover:shadow-sm hover:border-emerald-300 dark:hover:border-emerald-600 border border-slate-200/60 dark:border-slate-700/60 hover:scale-105 active:scale-95'
                       }`}
                     >
                       <span className="text-xs sm:text-sm font-black group-hover:tracking-wider transition-all duration-300">Class {lvl}</span>
@@ -544,12 +549,12 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
             </div>
 
             {/* 2. CHOOSE TRACK & STUDY MODE 4-TRACK GRID */}
-            <div className="p-3 sm:p-3.5 rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 shadow-lg shadow-purple-500/5 space-y-2">
+            <div className="p-3 sm:p-3.5 rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 shadow-lg shadow-emerald-500/5 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300">
                   Choose Track &amp; Study Mode
                 </span>
-                <span className="text-[11px] text-pink-600 dark:text-pink-400 font-bold bg-pink-50 dark:bg-pink-950/60 px-2 py-0.5 rounded-full border border-pink-200/50 dark:border-pink-800/50">
+                <span className="text-[11px] text-emerald-700 dark:text-emerald-300 font-bold bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800/60">
                   {activeTrack === 'Elementary Mathematics' ? 'Mathematics' : activeTrack === 'Elementary Physics' ? 'Physics' : activeTrack}
                 </span>
               </div>
@@ -570,17 +575,17 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                       }}
                       className={`p-2 rounded-xl transition-all duration-300 flex items-center gap-1.5 sm:gap-2 text-left cursor-pointer relative group ${
                         isActive
-                          ? 'ring-2 ring-pink-500 ring-offset-1 dark:ring-offset-slate-900 shadow-xs shadow-pink-500/25 scale-[1.01] bg-pink-50/70 dark:bg-pink-950/30 border border-pink-300 dark:border-pink-800'
+                          ? 'ring-2 ring-emerald-500 ring-offset-1 dark:ring-offset-slate-900 shadow-sm shadow-emerald-500/25 scale-[1.01] bg-emerald-50/90 dark:bg-emerald-950/50 border-2 border-emerald-500 dark:border-emerald-400'
                           : 'bg-slate-50/90 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 hover:scale-[1.01] active:scale-[0.98] hover:bg-white dark:hover:bg-slate-800 hover:shadow-xs'
                       }`}
                     >
                       {/* Gradient Square Thumbnail */}
-                      <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br ${item.gradient} border border-white/60 dark:border-slate-700 flex items-center justify-center shrink-0 shadow-xs transition-all duration-300 group-hover:scale-105 ${isActive ? 'shadow-pink-500/30 ring-1 ring-pink-400' : ''}`}>
-                        <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-800 dark:text-slate-200 stroke-[2.2] transition-transform duration-300 group-hover:rotate-6 ${isActive ? 'text-pink-600 dark:text-pink-300 scale-110' : ''}`} />
+                      <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br ${item.gradient} border border-white/60 dark:border-slate-700 flex items-center justify-center shrink-0 shadow-xs transition-all duration-300 group-hover:scale-105 ${isActive ? 'shadow-emerald-500/30 ring-2 ring-emerald-500' : ''}`}>
+                        <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-800 dark:text-slate-200 stroke-[2.2] transition-transform duration-300 group-hover:rotate-6 ${isActive ? 'text-emerald-600 dark:text-emerald-300 scale-110' : ''}`} />
                       </div>
                       
                       <div className="min-w-0 flex-1">
-                        <span className={`text-xs font-black block truncate transition-colors ${isActive ? 'text-pink-600 dark:text-pink-300' : 'text-slate-800 dark:text-slate-200 group-hover:text-purple-600'}`}>
+                        <span className={`text-xs font-black block truncate transition-colors ${isActive ? 'text-emerald-700 dark:text-emerald-300 font-bold' : 'text-slate-800 dark:text-slate-200 group-hover:text-emerald-600'}`}>
                           {item.title}
                         </span>
                       </div>
@@ -676,7 +681,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
 
               <div className="relative z-10">
                 <h3 className="text-lg sm:text-xl font-black uppercase tracking-wider bg-gradient-to-r from-white via-purple-200 to-cyan-300 bg-clip-text text-transparent flex items-center gap-2 transition-all drop-shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping shrink-0 inline-block" />
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 shrink-0 inline-block" />
                   <span>GREAT THINKERS</span>
                 </h3>
                 <p className="text-xs text-purple-200/80 mt-1 leading-relaxed">
@@ -920,10 +925,10 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
 
               <div>
                 <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
-                  Content of Mathematics &amp; Physics
+                  ENGINEERING COLLEGE ADMISSION TEST
                 </h3>
                 <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                  Comprehensive repository of fundamental laws, formulas, theorems, definitions &amp; scientific principles.
+                  Comprehensive repository of fundamental laws, formulas, theorems, definitions &amp; scientific principles for ECAT preparation.
                 </p>
               </div>
 
@@ -1644,10 +1649,47 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
 
               <button
                 onClick={() => setIsSettingsOpen(false)}
-                className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-slate-700 dark:hover:text-white transition-colors cursor-pointer"
+                className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-all active:scale-95 cursor-pointer flex items-center justify-center shadow-xs"
+                title="Close"
                 aria-label="Close Settings"
               >
                 <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* SECTION 0: 🚀 SHARE WEBSITE OPTION */}
+            <div className="p-3.5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200/60 dark:border-indigo-800/60 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-900/80 text-indigo-600 dark:text-indigo-300 flex items-center justify-center shrink-0">
+                  <Share2 className="w-4 h-4" />
+                </div>
+                <div className="min-w-0">
+                  <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">Share Website</h4>
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate">ENGINEERING COLLEGE ADMISSION TEST</p>
+                </div>
+              </div>
+
+              <button
+                onClick={async () => {
+                  const shareData = {
+                    title: 'ENGINEERING COLLEGE ADMISSION TEST',
+                    text: 'ENGINEERING COLLEGE ADMISSION TEST — Comprehensive preparation platform for Engineering College Admission Tests.',
+                    url: window.location.origin,
+                  };
+                  try {
+                    if (navigator.share) {
+                      await navigator.share(shareData);
+                    } else {
+                      await navigator.clipboard.writeText(`${shareData.text}\n${shareData.url}`);
+                      alert('Website link copied with description: ENGINEERING COLLEGE ADMISSION TEST');
+                    }
+                  } catch {
+                    // ignore
+                  }
+                }}
+                className="px-3 py-1.5 rounded-full bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white text-xs font-bold shadow-xs transition-all cursor-pointer shrink-0"
+              >
+                Share
               </button>
             </div>
 
@@ -1780,13 +1822,14 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                     <span>Subject Specialist</span>
                   </div>
                   <h3 className="text-base font-black text-white">Mahtab Ahmed</h3>
-                  <p className="text-[10px] text-indigo-200 font-medium">Mathematics &amp; Physics Creator</p>
+                  <p className="text-[10px] text-indigo-200 font-medium">ENGINEERING COLLEGE ADMISSION TEST Specialist</p>
                 </div>
               </div>
 
               <button
                 onClick={() => setIsAboutMeOpen(false)}
-                className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-colors cursor-pointer"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-slate-300 hover:text-white transition-all cursor-pointer flex items-center justify-center shadow-xs"
+                title="Close"
                 aria-label="Close About Developer"
               >
                 <X className="w-4 h-4" />

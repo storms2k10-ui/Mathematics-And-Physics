@@ -210,8 +210,14 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-fade-in">
-      <div className="bg-gradient-to-b from-slate-900 via-slate-900 to-indigo-950/90 text-white rounded-3xl border border-indigo-500/30 shadow-[0_25px_60px_-15px_rgba(79,70,229,0.35)] w-full max-w-md overflow-hidden flex flex-col max-h-[92vh] relative ring-1 ring-white/10">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md animate-fade-in cursor-pointer"
+      onClick={onClose}
+    >
+      <div 
+        className="bg-gradient-to-b from-slate-900 via-slate-900 to-indigo-950/90 text-white rounded-3xl border border-indigo-500/30 shadow-[0_25px_60px_-15px_rgba(79,70,229,0.35)] w-full max-w-md overflow-hidden flex flex-col max-h-[92vh] relative ring-1 ring-white/10 cursor-default"
+        onClick={(e) => e.stopPropagation()}
+      >
         
         {/* Dynamic Celestial Mathematical Header Banner */}
         <div className={`p-6 text-white relative overflow-hidden transition-all duration-500 border-b border-white/10 ${
@@ -238,8 +244,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full text-white/80 hover:text-white bg-black/20 hover:bg-black/40 backdrop-blur-sm transition-colors cursor-pointer z-10 border border-white/10"
+            className="absolute top-4 right-4 w-8 h-8 rounded-full text-white/80 hover:text-white bg-black/25 hover:bg-black/45 backdrop-blur-xs transition-all active:scale-95 cursor-pointer z-10 border border-white/15 flex items-center justify-center shadow-xs"
             aria-label="Close"
+            title="Close"
           >
             <X className="w-4 h-4" />
           </button>

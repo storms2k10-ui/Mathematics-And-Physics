@@ -290,8 +290,14 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
-      <div className={`bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-md sm:max-w-xl md:max-w-2xl overflow-hidden flex flex-col max-h-[90vh] sm:max-h-[88vh] ${theme.cardGlow}`}>
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in cursor-pointer"
+      onClick={onClose}
+    >
+      <div 
+        className={`bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-md sm:max-w-xl md:max-w-2xl overflow-hidden flex flex-col max-h-[90vh] sm:max-h-[88vh] cursor-default ${theme.cardGlow}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         
         {/* Dynamic Profile Header */}
         <div className={`bg-gradient-to-r ${theme.headerGradient} p-3 sm:p-4 text-white relative overflow-hidden flex flex-col justify-between gap-2 shadow-md shrink-0`}>
@@ -312,8 +318,9 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
 
             <button
               onClick={onClose}
-              className="p-1 rounded-lg text-white/80 hover:text-white hover:bg-white/20 transition-colors cursor-pointer"
+              className="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 active:scale-95 text-white flex items-center justify-center transition-all cursor-pointer shadow-xs"
               aria-label="Close"
+              title="Close"
             >
               <X className="w-4 h-4" />
             </button>

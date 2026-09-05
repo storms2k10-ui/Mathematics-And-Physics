@@ -20,12 +20,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <Sigma className="w-5 h-5 stroke-[2.5]" />
               </div>
               <span className="text-sm sm:text-base font-extrabold tracking-tight">
-                MATHEMATICS MCQs
+                ENGINEERING COLLEGE ADMISSION TEST
               </span>
             </div>
 
             <p className="text-slate-400 text-xs leading-relaxed max-w-md">
-              A dedicated Mathematics assessment platform for Class 9 to Class 12 students with instant verification and step-by-step mathematical proofs.
+              A dedicated preparation and assessment platform for Engineering College Admission Tests with instant verification and step-by-step mathematical proofs.
             </p>
 
             {/* Direct WhatsApp & Email Contact in Footer */}
@@ -134,9 +134,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         {/* Bottom copyright line */}
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-400 text-[11px]">
-          <p>© {new Date().getFullYear()} MATHEMATICS MCQs • CURATED BY MAHTAB. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} ENGINEERING COLLEGE ADMISSION TEST • CURATED BY MAHTAB. All rights reserved.</p>
           <div className="flex items-center gap-1 text-slate-400">
-            <span>Class 9 to Class 12 Mathematics</span>
+            <span>Classes 9, 10, 11 &amp; 12 • ECAT Preparation</span>
           </div>
         </div>
 

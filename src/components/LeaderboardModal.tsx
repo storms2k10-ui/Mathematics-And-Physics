@@ -500,14 +500,14 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
   // Share specific candidate's track record and progress
   const handleShareCandidateProgress = async (candidate: CandidateRankingProfile, rankIndex: number) => {
-    const text = `🏆 Academic Ranking Track Record\n👤 Candidate: ${candidate.studentName}\n🏅 Academic Rank: #${rankIndex + 1} (${selectedTrack})\n🎯 Overall Accuracy: ${candidate.overallAccuracy}%\n📚 Class: Class ${candidate.classLevel}\n✅ Correct Questions: ${candidate.totalCorrect}/${candidate.totalQuestions}\n📝 Chapters Mastered: ${candidate.testsAttempted} Chapters\n🔗 View Live Rankings: ${window.location.origin}`;
+    const text = `🏆 ENGINEERING COLLEGE ADMISSION TEST - Academic Ranking\n👤 Candidate: ${candidate.studentName}\n🏅 Academic Rank: #${rankIndex + 1} (${selectedTrack})\n🎯 Overall Accuracy: ${candidate.overallAccuracy}%\n📚 Class: Class ${candidate.classLevel}\n✅ Correct Questions: ${candidate.totalCorrect}/${candidate.totalQuestions}\n📝 Chapters Mastered: ${candidate.testsAttempted} Chapters\n🔗 Link: ${window.location.origin}\n📖 Description: ENGINEERING COLLEGE ADMISSION TEST — Practice & Preparation`;
 
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `${candidate.studentName}'s Academic Track Record`,
+          title: 'ENGINEERING COLLEGE ADMISSION TEST',
           text,
-          url: window.location.href,
+          url: window.location.origin,
         });
         setCopiedShare(true);
         setTimeout(() => setCopiedShare(false), 3000);
@@ -527,8 +527,14 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
-      <div className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-3xl overflow-hidden flex flex-col max-h-[85vh]">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in cursor-pointer"
+      onClick={onClose}
+    >
+      <div 
+        className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-3xl overflow-hidden flex flex-col max-h-[85vh] cursor-default"
+        onClick={(e) => e.stopPropagation()}
+      >
         
         {/* Academic Ranking Modal Header — Light Green Dynamic View */}
         <div className="bg-gradient-to-r from-emerald-500 via-teal-600 to-green-600 p-3.5 sm:p-4.5 text-white relative flex items-center justify-between shadow-md shadow-emerald-900/20">
@@ -538,7 +544,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
             </div>
             <div>
               <span className="text-base sm:text-lg font-black uppercase tracking-wider bg-gradient-to-r from-white via-emerald-100 to-lime-200 bg-clip-text text-transparent flex items-center gap-2 drop-shadow-sm transition-all">
-                <span className="w-2 h-2 rounded-full bg-lime-300 animate-ping shrink-0 inline-block" />
+                <span className="w-2 h-2 rounded-full bg-lime-300 shrink-0 inline-block" />
                 <span>ACADEMIC RANKING</span>
               </span>
             </div>
@@ -547,10 +553,11 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={onClose}
-              className="p-1.5 sm:p-2 rounded-full text-white/85 hover:text-white hover:bg-white/20 transition-all active:scale-95 cursor-pointer"
-              aria-label="Close modal"
+              className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all active:scale-95 cursor-pointer flex items-center justify-center shadow-xs"
+              aria-label="Close"
+              title="Close"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4.5 h-4.5" />
             </button>
           </div>
         </div>
@@ -706,7 +713,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                             {/* Distinct Current User Highlight Badge */}
                             {isCurrentUser && (
                               <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-xs flex items-center gap-1.5 shrink-0">
-                                <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
+                                <span className="w-1.5 h-1.5 rounded-full bg-white" />
                                 <span>You</span>
                               </span>
                             )}
@@ -787,8 +794,14 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
         {/* Selected Candidate Track Record & Progress Detail Drawer / Modal */}
         {selectedCandidate && (
-          <div className="fixed inset-0 z-60 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
-            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]">
+          <div 
+            className="fixed inset-0 z-60 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in cursor-pointer"
+            onClick={() => setSelectedCandidate(null)}
+          >
+            <div 
+              className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh] cursor-default"
+              onClick={(e) => e.stopPropagation()}
+            >
               
               {/* Drawer Header */}
               <div className="bg-gradient-to-r from-indigo-700 via-purple-700 to-indigo-900 p-6 text-white relative">
@@ -838,9 +851,11 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
                     <button
                       onClick={() => setSelectedCandidate(null)}
-                      className="p-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/20"
+                      className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 active:scale-95 text-white transition-all cursor-pointer flex items-center justify-center shadow-xs"
+                      title="Close"
+                      aria-label="Close"
                     >
-                      <X className="w-5 h-5" />
+                      <X className="w-4.5 h-4.5" />
                     </button>
                   </div>
                 </div>

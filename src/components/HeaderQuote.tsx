@@ -34,8 +34,8 @@ export const HeaderQuote: React.FC<HeaderQuoteProps> = () => {
 
           {/* Center Dynamic Gradient Typography */}
           <div className="flex items-center">
-            <h1 className="text-sm xs:text-base sm:text-xl md:text-2xl lg:text-3xl font-black tracking-wide sm:tracking-wider text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-white to-emerald-300 drop-shadow-[0_0_25px_rgba(99,102,241,0.65)] drop-shadow-[0_0_40px_rgba(56,189,248,0.4)] transition-all hover:brightness-110">
-              𝙴𝙲𝙰𝚃 - 𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃
+            <h1 className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-black tracking-wide sm:tracking-wider text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-white to-emerald-300 drop-shadow-[0_0_25px_rgba(99,102,241,0.65)] drop-shadow-[0_0_40px_rgba(56,189,248,0.4)] transition-all hover:brightness-110 uppercase">
+              ENGINEERING COLLEGE ADMISSION TEST
             </h1>
           </div>
 

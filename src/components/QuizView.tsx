@@ -514,14 +514,14 @@ export const QuizView: React.FC<QuizViewProps> = ({
                   )}
                 </button>
 
-                {/* Exit Test */}
+                {/* Exit Test / Close Button */}
                 <button
                   onClick={() => setShowExitConfirm(true)}
-                  className="p-1.5 sm:p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer"
-                  title="Exit Test"
-                  aria-label="Exit Test"
+                  className="w-8 h-8 rounded-full bg-slate-100 hover:bg-rose-50 dark:bg-slate-800 dark:hover:bg-rose-950/50 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-all active:scale-95 cursor-pointer flex items-center justify-center shadow-2xs"
+                  title="Close & Exit Test"
+                  aria-label="Close & Exit Test"
                 >
-                  <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
             </div>
@@ -553,7 +553,7 @@ export const QuizView: React.FC<QuizViewProps> = ({
           >
             <div className="flex items-center justify-between gap-2 mb-2 sm:mb-3">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-indigo-600 dark:bg-indigo-400 animate-ping" />
+                <span className="w-2 h-2 rounded-full bg-indigo-600 dark:bg-indigo-400" />
                 <span className="text-xs font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
                   Question Statement
                 </span>
@@ -718,8 +718,14 @@ export const QuizView: React.FC<QuizViewProps> = ({
 
       {/* Exit Confirmation Modal */}
       {showExitConfirm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-xs animate-fade-in">
-          <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-2xl max-w-sm w-full space-y-4 text-center">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-xs animate-fade-in cursor-pointer"
+          onClick={() => setShowExitConfirm(false)}
+        >
+          <div 
+            className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-2xl max-w-sm w-full space-y-4 text-center cursor-default"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 dark:bg-rose-950 dark:text-rose-400 mx-auto flex items-center justify-center">
               <AlertCircle className="w-6 h-6" />
             </div>
@@ -749,8 +755,14 @@ export const QuizView: React.FC<QuizViewProps> = ({
 
       {/* Final Submit Confirmation Modal */}
       {showSubmitModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-xs animate-fade-in">
-          <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-2xl max-w-md w-full space-y-4">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-xs animate-fade-in cursor-pointer"
+          onClick={() => setShowSubmitModal(false)}
+        >
+          <div 
+            className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-2xl max-w-md w-full space-y-4 cursor-default"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400 flex items-center justify-center">
                 <Award className="w-6 h-6" />

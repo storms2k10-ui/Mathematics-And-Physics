@@ -139,15 +139,22 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-sm animate-fade-in">
-      <div className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-md overflow-hidden flex flex-col max-h-[92vh]">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-sm animate-fade-in cursor-pointer"
+      onClick={onClose}
+    >
+      <div 
+        className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-md overflow-hidden flex flex-col max-h-[92vh] cursor-default"
+        onClick={(e) => e.stopPropagation()}
+      >
         
         {/* Header */}
         <div className="bg-gradient-to-r from-indigo-600 via-indigo-700 to-purple-700 px-5 py-4 text-white relative">
           <button
             onClick={onClose}
-            className="absolute top-3.5 right-3.5 p-1.5 rounded-full text-indigo-100 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            className="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 active:scale-95 text-white flex items-center justify-center transition-all cursor-pointer shadow-xs"
             aria-label="Close"
+            title="Close"
           >
             <X className="w-4 h-4" />
           </button>
@@ -293,7 +300,6 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
                     </span>
                     {difficultyTier === 'Normal' && (
                       <span className="flex h-2 w-2 relative">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-300 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
                       </span>
                     )}
@@ -332,7 +338,6 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
                     </span>
                     {difficultyTier === 'Advanced' && (
                       <span className="flex h-2 w-2 relative">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-300 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-300"></span>
                       </span>
                     )}
@@ -412,7 +417,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
                             {count} MCQs
                           </span>
                         </div>
-                        <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300 animate-ping' : 'bg-slate-300 dark:bg-slate-600'}`} />
+                        <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300' : 'bg-slate-300 dark:bg-slate-600'}`} />
                       </div>
 
                       <p className={`text-[9px] leading-tight ${isSelected ? 'text-indigo-100' : 'text-slate-500 dark:text-slate-400'}`}>

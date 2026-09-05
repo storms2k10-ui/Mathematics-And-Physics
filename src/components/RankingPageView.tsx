@@ -432,11 +432,19 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
   };
 
   const handleShareCandidateProgress = async (candidate: CandidateRankingProfile, rankIndex: number) => {
-    const text = `🏆 Academic Ranking Track Record\n👤 Candidate: ${candidate.studentName}\n🏅 Academic Rank: #${rankIndex + 1} (${selectedTrack})\n🎯 Overall Accuracy: ${candidate.overallAccuracy}%\n📚 Class: Class ${candidate.classLevel}\n✅ Correct Questions: ${candidate.totalCorrect}/${candidate.totalQuestions}\n📝 Chapters Mastered: ${candidate.testsAttempted} Chapters\n🔗 View Live Rankings: ${window.location.origin}`;
+    const text = `🏆 ENGINEERING COLLEGE ADMISSION TEST - Academic Ranking\n👤 Candidate: ${candidate.studentName}\n🏅 Academic Rank: #${rankIndex + 1} (${selectedTrack})\n🎯 Overall Accuracy: ${candidate.overallAccuracy}%\n📚 Class: Class ${candidate.classLevel}\n✅ Correct Questions: ${candidate.totalCorrect}/${candidate.totalQuestions}\n📝 Chapters Mastered: ${candidate.testsAttempted} Chapters\n🔗 Link: ${window.location.origin}\n📖 Description: ENGINEERING COLLEGE ADMISSION TEST — Practice & Preparation`;
     try {
-      await navigator.clipboard.writeText(text);
-      setCopiedShare(true);
-      setTimeout(() => setCopiedShare(false), 3000);
+      if (navigator.share) {
+        await navigator.share({
+          title: 'ENGINEERING COLLEGE ADMISSION TEST',
+          text,
+          url: window.location.origin,
+        });
+      } else {
+        await navigator.clipboard.writeText(text);
+        setCopiedShare(true);
+        setTimeout(() => setCopiedShare(false), 3000);
+      }
     } catch {
       // ignore
     }
@@ -445,17 +453,6 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
   return (
     <div id="ranking-page-view" className="py-6 sm:py-8 bg-slate-50 dark:bg-slate-950 min-h-[calc(100vh-100px)] animate-fade-in">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-        
-        {/* Navigation Breadcrumb */}
-        <div className="flex items-center justify-between">
-          <button
-            onClick={onBack}
-            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors w-fit cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back</span>
-          </button>
-        </div>
 
         {/* Academic Ranking Page Container with Increased Height for More Entries */}
         <div className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden flex flex-col min-h-[750px] lg:min-h-[850px]">
@@ -468,7 +465,7 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
               </div>
               <div>
                 <span className="text-base sm:text-lg font-black uppercase tracking-wider bg-gradient-to-r from-white via-emerald-100 to-lime-200 bg-clip-text text-transparent flex items-center gap-2 drop-shadow-sm transition-all">
-                  <span className="w-2 h-2 rounded-full bg-lime-300 animate-ping shrink-0 inline-block" />
+                  <span className="w-2 h-2 rounded-full bg-lime-300 shrink-0 inline-block" />
                   <span>ACADEMIC RANKING</span>
                 </span>
               </div>
@@ -477,11 +474,11 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
             <div className="flex items-center gap-2">
               <button
                 onClick={onBack}
-                className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all active:scale-95 cursor-pointer flex items-center gap-1.5 text-xs font-bold"
-                aria-label="Back"
+                className="px-2.5 py-0.5 sm:px-3 sm:py-0.5 rounded-full bg-white/20 hover:bg-white/30 active:scale-95 text-white transition-all cursor-pointer text-[10.5px] sm:text-[11px] font-bold shadow-xs flex items-center justify-center leading-none"
+                aria-label="Close"
+                title="Close"
               >
-                <ArrowLeft className="w-4 h-4" />
-                <span>Back</span>
+                Close
               </button>
             </div>
           </div>
@@ -640,7 +637,7 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
                               {/* Distinct Current User Highlight Badge */}
                               {isCurrentUser && (
                                 <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-xs flex items-center gap-1.5 shrink-0">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
+                                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
                                   <span>You</span>
                                 </span>
                               )}
@@ -721,8 +718,14 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
 
           {/* Selected Candidate Track Record & Progress Detail Drawer */}
           {selectedCandidate && (
-            <div className="fixed inset-0 z-60 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
-              <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div 
+              className="fixed inset-0 z-60 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in cursor-pointer"
+              onClick={() => setSelectedCandidate(null)}
+            >
+              <div 
+                className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh] cursor-default"
+                onClick={(e) => e.stopPropagation()}
+              >
                 
                 {/* Drawer Header */}
                 <div className="bg-gradient-to-r from-indigo-700 via-purple-700 to-indigo-900 p-6 text-white relative">
@@ -772,9 +775,11 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
 
                       <button
                         onClick={() => setSelectedCandidate(null)}
-                        className="p-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/20 cursor-pointer"
+                        className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 active:scale-95 text-white transition-all cursor-pointer flex items-center justify-center shadow-xs"
+                        title="Close"
+                        aria-label="Close"
                       >
-                        <X className="w-5 h-5" />
+                        <X className="w-4.5 h-4.5" />
                       </button>
                     </div>
                   </div>

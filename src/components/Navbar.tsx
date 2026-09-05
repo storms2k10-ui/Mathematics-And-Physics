@@ -156,8 +156,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="nav-logo-btn"
               onClick={() => onNavigate('home')}
               className="flex items-center group focus:outline-none cursor-pointer shrink-0"
-              title="MATHEMATICS & PHYSICS"
-              aria-label="Home - Mathematics & Physics"
+              title="ENGINEERING COLLEGE ADMISSION TEST"
+              aria-label="Home - ENGINEERING COLLEGE ADMISSION TEST"
             >
               <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800 text-white flex items-center justify-center shadow-md shadow-indigo-600/30 group-hover:scale-105 group-hover:shadow-indigo-600/40 transition-all border border-indigo-400/30">
                 <Sigma className="w-5 h-5 stroke-[2.5]" />
@@ -262,7 +262,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   <div className="px-4 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
                     <span>Academic Tracks</span>
-                    <span>Mathematics &amp; Physics</span>
+                    <span>ENGINEERING COLLEGE ADMISSION TEST</span>
                   </div>
                   
                   <div className="p-2 space-y-1.5">
