@@ -20,7 +20,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <Sigma className="w-5 h-5 stroke-[2.5]" />
               </div>
               <span className="text-sm sm:text-base font-extrabold tracking-tight">
-                ENGINEERING COLLEGE ADMISSION TEST
+                𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃
               </span>
             </div>
 
@@ -134,7 +134,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         {/* Bottom copyright line */}
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-400 text-[11px]">
-          <p>© {new Date().getFullYear()} ENGINEERING COLLEGE ADMISSION TEST • CURATED BY MAHTAB. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} 𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃 • CURATED BY MAHTAB. All rights reserved.</p>
           <div className="flex items-center gap-1 text-slate-400">
             <span>Classes 9, 10, 11 &amp; 12 • ECAT Preparation</span>
           </div>

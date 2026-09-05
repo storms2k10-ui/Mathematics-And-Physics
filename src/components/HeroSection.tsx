@@ -117,12 +117,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/70 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs font-bold tracking-wide shadow-xs">
                 <GraduationCap className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-                <span>MATHEMATICS &amp; PHYSICS PORTAL</span>
+                <span>𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃</span>
               </div>
 
               <div className="space-y-2">
                 <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.12]">
-                  MATHEMATICS &amp; PHYSICS
+                  𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃
                 </h1>
                 <p className="text-sm sm:text-base font-bold text-indigo-600 dark:text-indigo-400">
                   Comprehensive Concept Practice &amp; Step-by-Step Solutions

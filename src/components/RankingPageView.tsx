@@ -432,11 +432,11 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
   };
 
   const handleShareCandidateProgress = async (candidate: CandidateRankingProfile, rankIndex: number) => {
-    const text = `🏆 ENGINEERING COLLEGE ADMISSION TEST - Academic Ranking\n👤 Candidate: ${candidate.studentName}\n🏅 Academic Rank: #${rankIndex + 1} (${selectedTrack})\n🎯 Overall Accuracy: ${candidate.overallAccuracy}%\n📚 Class: Class ${candidate.classLevel}\n✅ Correct Questions: ${candidate.totalCorrect}/${candidate.totalQuestions}\n📝 Chapters Mastered: ${candidate.testsAttempted} Chapters\n🔗 Link: ${window.location.origin}\n📖 Description: ENGINEERING COLLEGE ADMISSION TEST — Practice & Preparation`;
+    const text = `🏆 𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃 - Academic Ranking\n👤 Candidate: ${candidate.studentName}\n🏅 Academic Rank: #${rankIndex + 1} (${selectedTrack})\n🎯 Overall Accuracy: ${candidate.overallAccuracy}%\n📚 Class: Class ${candidate.classLevel}\n✅ Correct Questions: ${candidate.totalCorrect}/${candidate.totalQuestions}\n📝 Chapters Mastered: ${candidate.testsAttempted} Chapters\n🔗 Link: ${window.location.origin}\n📖 Description: 𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃 — Practice & Preparation`;
     try {
       if (navigator.share) {
         await navigator.share({
-          title: 'ENGINEERING COLLEGE ADMISSION TEST',
+          title: '𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃',
           text,
           url: window.location.origin,
         });

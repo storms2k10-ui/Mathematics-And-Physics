@@ -262,7 +262,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   <div className="px-4 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
                     <span>Academic Tracks</span>
-                    <span>ENGINEERING COLLEGE ADMISSION TEST</span>
+                    <span>𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃</span>
                   </div>
                   
                   <div className="p-2 space-y-1.5">

@@ -925,7 +925,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
 
               <div>
                 <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
-                  ENGINEERING COLLEGE ADMISSION TEST
+                  𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃
                 </h3>
                 <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
                   Comprehensive repository of fundamental laws, formulas, theorems, definitions &amp; scientific principles for ECAT preparation.
@@ -1665,7 +1665,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                 </div>
                 <div className="min-w-0">
                   <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">Share Website</h4>
-                  <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate">ENGINEERING COLLEGE ADMISSION TEST</p>
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate">𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃</p>
                 </div>
               </div>
 
