@@ -4,7 +4,6 @@ import {
   CheckCircle, 
   CheckCircle2,
   Calculator, 
-  GraduationCap, 
   Sigma, 
   Sparkles, 
   Atom, 
@@ -291,11 +290,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Left Column: Heading & CTAs matching the image */}
             <div className="lg:col-span-7 space-y-5 text-center lg:text-left">
               
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/70 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs font-bold tracking-wide shadow-xs">
-                <GraduationCap className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-                <span>PAKISTAN&apos;S #1 ECAT PREPARATION PLATFORM</span>
-              </div>
-
               <div className="space-y-1.5">
                 <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.08]">
                   ECAT <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-500">Preparation</span>
