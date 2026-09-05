@@ -17,7 +17,7 @@ import { Footer } from './components/Footer';
 import { MathPhilosophySection } from './components/MathPhilosophySection';
 import { StudentEntryModal } from './components/StudentEntryModal';
 import { ChapterDetailModal } from './components/ChapterDetailModal';
-import { LeaderboardModal } from './components/LeaderboardModal';
+import { RankingPageView } from './components/RankingPageView';
 import { AuthModal } from './components/AuthModal';
 import { UserProfileModal } from './components/UserProfileModal';
 import { OfflineBanner } from './components/OfflineBanner';
@@ -40,7 +40,8 @@ export default function App() {
   const [activeContentSection, setActiveContentSection] = useState<ContentSection>('definitions');
   const [activeContentSubject, setActiveContentSubject] = useState<ContentSubject>('mathematics');
   const [activePhilosopherType, setActivePhilosopherType] = useState<'mathematicians' | 'physicists'>('mathematicians');
-  const [currentView, setCurrentView] = useState<'main' | 'class-page' | 'quiz' | 'results'>('main');
+  const [currentView, setCurrentView] = useState<'main' | 'class-page' | 'quiz' | 'results' | 'ranking'>('main');
+  const [previousView, setPreviousView] = useState<'main' | 'class-page' | 'results'>('main');
 
   // Loaded data
   const [classesInfo, setClassesInfo] = useState<ClassInfo[]>([]);
@@ -50,7 +51,6 @@ export default function App() {
   // Modals state
   const [isStudentModalOpen, setIsStudentModalOpen] = useState(false);
   const [isChapterModalOpen, setIsChapterModalOpen] = useState(false);
-  const [isLeaderboardModalOpen, setIsLeaderboardModalOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [authModalCustomTitle, setAuthModalCustomTitle] = useState<string | undefined>(undefined);
   const [authModalCustomSubtitle, setAuthModalCustomSubtitle] = useState<string | undefined>(undefined);
@@ -210,6 +210,23 @@ export default function App() {
     }
     setActiveTab('classes');
     setCurrentView('class-page');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Dedicated Ranking Page navigation handlers
+  const handleOpenLeaderboard = (track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas') => {
+    if (track) {
+      setActiveTrack(track);
+    }
+    if (currentView !== 'ranking') {
+      setPreviousView(currentView === 'quiz' ? 'main' : currentView);
+    }
+    setCurrentView('ranking');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBackFromRanking = () => {
+    setCurrentView(previousView || 'main');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -536,10 +553,7 @@ export default function App() {
             onNavigate={handleNavigate}
             onNavigateContentSection={handleNavigateContentSection}
             onSelectPhilosopherType={handleSelectPhilosopherType}
-            onOpenLeaderboard={() => {
-              setSelectedClass(9);
-              setIsLeaderboardModalOpen(true);
-            }}
+            onOpenLeaderboard={(track) => handleOpenLeaderboard(track)}
             onOpenAuth={() => {
               setAuthModalCustomTitle(undefined);
               setAuthModalCustomSubtitle(undefined);
@@ -562,10 +576,7 @@ export default function App() {
             onNavigate={handleNavigate}
             onNavigateContentSection={handleNavigateContentSection}
             onSelectPhilosopherType={handleSelectPhilosopherType}
-            onOpenLeaderboard={() => {
-              setSelectedClass(9);
-              setIsLeaderboardModalOpen(true);
-            }}
+            onOpenLeaderboard={(track) => handleOpenLeaderboard(track)}
             onOpenAuth={() => {
               setAuthModalCustomTitle(undefined);
               setAuthModalCustomSubtitle(undefined);
@@ -630,7 +641,7 @@ export default function App() {
                 setCurrentView('class-page');
               }}
               onBackToHome={handleBackToHome}
-              onOpenLeaderboard={() => setIsLeaderboardModalOpen(true)}
+              onOpenLeaderboard={(track) => handleOpenLeaderboard(track as any)}
             />
           ) : (
             <div className="min-h-[70vh] flex items-center justify-center p-6 animate-fade-in">
@@ -684,6 +695,15 @@ export default function App() {
           />
         )}
 
+        {/* ACADEMIC RANKING PAGE VIEW */}
+        {currentView === 'ranking' && (
+          <RankingPageView
+            initialTrack={activeTrack}
+            initialClass={selectedClass}
+            onBack={handleBackFromRanking}
+          />
+        )}
+
         {/* MAIN TAB VIEWS */}
         {currentView === 'main' && (
           <>
@@ -705,7 +725,7 @@ export default function App() {
                     onStartChapterPractice={handlePrepareChapterTest}
                     onStartClassPractice={handlePrepareClassPractice}
                     onOpenChapterDetails={handleOpenChapterDetails}
-                    onOpenLeaderboard={() => setIsLeaderboardModalOpen(true)}
+                    onOpenLeaderboard={(track) => handleOpenLeaderboard(track)}
                     onOpenAuth={() => setIsAuthModalOpen(true)}
                     onOpenProfile={handleOpenProfile}
                     onOpenDictionary={() => {
@@ -806,13 +826,6 @@ export default function App() {
         onOpenAuth={() => setIsAuthModalOpen(true)}
       />
 
-      {/* Class Leaderboard & Performance Ranking Modal */}
-      <LeaderboardModal
-        isOpen={isLeaderboardModalOpen}
-        onClose={() => setIsLeaderboardModalOpen(false)}
-        initialClass={9}
-      />
-
       {/* User Authentication Modal */}
       <AuthModal
         isOpen={isAuthModalOpen}
@@ -837,8 +850,8 @@ export default function App() {
         }}
       />
 
-      {/* Footer - Hidden in Quiz, Results/Score, Class Page Views, and completely hidden on Mobile View */}
-      {!['quiz', 'results', 'class-page'].includes(currentView) && activeTab !== 'classes' && !forceMobileDemo && (
+      {/* Footer - Hidden in Quiz, Results/Score, Class Page, and Ranking Views, and completely hidden on Mobile View */}
+      {!['quiz', 'results', 'class-page', 'ranking'].includes(currentView) && activeTab !== 'classes' && !forceMobileDemo && (
         <div className="hidden md:block">
           <Footer onNavigate={handleNavigate} />
         </div>
