@@ -474,11 +474,11 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
             <div className="flex items-center gap-2">
               <button
                 onClick={onBack}
-                className="px-2.5 py-0.5 sm:px-3 sm:py-0.5 rounded-full bg-white/20 hover:bg-white/30 active:scale-95 text-white transition-all cursor-pointer text-[10.5px] sm:text-[11px] font-bold shadow-xs flex items-center justify-center leading-none"
+                className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 active:scale-95 text-white transition-all cursor-pointer flex items-center justify-center shadow-xs"
                 aria-label="Close"
                 title="Close"
               >
-                Close
+                <X className="w-4.5 h-4.5" />
               </button>
             </div>
           </div>
