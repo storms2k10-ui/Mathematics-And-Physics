@@ -1672,8 +1672,8 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
               <button
                 onClick={async () => {
                   const shareData = {
-                    title: 'ENGINEERING COLLEGE ADMISSION TEST',
-                    text: 'ENGINEERING COLLEGE ADMISSION TEST — Comprehensive preparation platform for Engineering College Admission Tests.',
+                    title: '𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃',
+                    text: '𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃 — Comprehensive preparation platform for Engineering College Admission Tests.',
                     url: window.location.origin,
                   };
                   try {
@@ -1681,7 +1681,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                       await navigator.share(shareData);
                     } else {
                       await navigator.clipboard.writeText(`${shareData.text}\n${shareData.url}`);
-                      alert('Website link copied with description: ENGINEERING COLLEGE ADMISSION TEST');
+                      alert('Website link copied with description: 𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃');
                     }
                   } catch {
                     // ignore

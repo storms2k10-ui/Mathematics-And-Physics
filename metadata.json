@@ -1,6 +1,6 @@
 {
-  "name": "ENGINEERING COLLEGE ADMISSION TEST",
-  "description": "ENGINEERING COLLEGE ADMISSION TEST — Comprehensive preparation platform for Engineering College Admission Tests. Practice chapter-wise and topic-wise MCQs with step-by-step solutions, conceptual formulas, and live academic performance rankings.",
+  "name": "𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃",
+  "description": "𝙴𝙽𝙶𝙸𝙽𝙴𝙴𝚁𝙸𝙽𝙶 𝙲𝙾𝙻𝙻𝙴𝙶𝙴 𝙰𝙳𝙼𝙸𝚂𝚂𝙸𝙾𝙽 𝚃𝙴𝚂𝚃 — Comprehensive preparation platform for Engineering College Admission Tests. Practice chapter-wise and topic-wise MCQs with step-by-step solutions, conceptual formulas, and live academic performance rankings.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

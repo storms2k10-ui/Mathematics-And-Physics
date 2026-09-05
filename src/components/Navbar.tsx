@@ -30,6 +30,7 @@ import { useAuth } from '../context/AuthContext';
 import { useOffline } from '../context/OfflineContext';
 import { ContentSection, ContentSubject } from './ContentView';
 import { ALL_CHAPTERS } from '../data/chaptersData';
+import { EcatLogo } from './EcatLogo';
 
 export type NavTab = 'home' | 'philosophy' | 'classes' | 'dictionary' | 'about' | 'physics';
 
@@ -145,23 +146,20 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <nav id="main-navbar" className="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200/90 dark:border-slate-800 transition-colors shadow-xs">
+    <nav id="main-navbar" className="sticky top-0 z-40 bg-[#0B132B] border-b border-slate-800 text-white transition-colors shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-18">
           
           {/* Left Side: Brand Logo */}
           <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
-            {/* Brand Logo */}
             <button
               id="nav-logo-btn"
               onClick={() => onNavigate('home')}
-              className="flex items-center group focus:outline-none cursor-pointer shrink-0"
-              title="ENGINEERING COLLEGE ADMISSION TEST"
-              aria-label="Home - ENGINEERING COLLEGE ADMISSION TEST"
+              className="flex items-center group focus:outline-none cursor-pointer shrink-0 select-none py-1 transition-opacity hover:opacity-90 active:scale-95"
+              title="ECAT — Engineering College Admission Test"
+              aria-label="Home - ECAT"
             >
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800 text-white flex items-center justify-center shadow-md shadow-indigo-600/30 group-hover:scale-105 group-hover:shadow-indigo-600/40 transition-all border border-indigo-400/30">
-                <Sigma className="w-5 h-5 stroke-[2.5]" />
-              </div>
+              <EcatLogo className="h-8 sm:h-9 md:h-10 w-auto" />
             </button>
           </div>
 
@@ -179,12 +177,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => setPhilosophyDropdownOpen(!philosophyDropdownOpen)}
                 className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
                   activeTab === 'philosophy'
-                    ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 shadow-xs'
-                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                    ? 'text-white bg-white/15 shadow-xs'
+                    : 'text-slate-200 hover:text-white hover:bg-white/10'
                 }`}
                 aria-expanded={philosophyDropdownOpen}
               >
-                <Brain className="w-4 h-4 text-indigo-500" />
+                <Brain className="w-4 h-4 text-slate-300" />
                 <span>Philosophy</span>
                 <ChevronDown className={`w-3.5 h-3.5 opacity-70 transition-transform ${philosophyDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -247,11 +245,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => setSubjectDropdownOpen(!subjectDropdownOpen)}
                 className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
                   activeTab === 'classes' || activeTab === 'physics'
-                    ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 shadow-xs'
-                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                    ? 'text-white bg-white/15 shadow-xs'
+                    : 'text-slate-200 hover:text-white hover:bg-white/10'
                 }`}
               >
-                <BookOpen className="w-4 h-4" />
+                <BookOpen className="w-4 h-4 text-slate-300" />
                 <span>Subject</span>
                 <ChevronDown className={`w-3.5 h-3.5 opacity-70 transition-transform ${subjectDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -446,14 +444,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => setContentDropdownOpen(!contentDropdownOpen)}
                 className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
                   activeTab === 'dictionary'
-                    ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 shadow-xs'
-                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                    ? 'text-white bg-white/15 shadow-xs'
+                    : 'text-slate-200 hover:text-white hover:bg-white/10'
                 }`}
                 aria-expanded={contentDropdownOpen}
               >
-                <Library className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                <Layers className="w-4 h-4 text-slate-300" />
                 <span>Content</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${contentDropdownOpen ? 'rotate-180 text-indigo-600' : ''}`} />
+                <ChevronDown className={`w-3.5 h-3.5 opacity-70 transition-transform duration-200 ${contentDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {contentDropdownOpen && (
@@ -628,10 +626,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 id="nav-link-leaderboard"
                 onClick={() => onOpenLeaderboard(activeTrack)}
-                className="px-3 py-2 rounded-xl text-xs font-bold text-amber-700 dark:text-amber-300 hover:text-amber-800 dark:hover:text-amber-200 bg-amber-50/80 dark:bg-amber-950/40 hover:bg-amber-100 dark:hover:bg-amber-900/50 transition-all flex items-center gap-1.5 border border-amber-200/80 dark:border-amber-700/50 shadow-2xs cursor-pointer"
+                className="px-4 py-1.5 rounded-full text-sm font-semibold text-amber-400 hover:text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/80 transition-all flex items-center gap-2 cursor-pointer shadow-xs"
                 title="View Ranking & Track Records"
               >
-                <Trophy className="w-3.5 h-3.5 text-amber-500 fill-amber-500/20" />
+                <Trophy className="w-4 h-4 text-amber-400" />
                 <span>View Ranking</span>
               </button>
             )}
@@ -645,23 +643,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 id="nav-settings-btn"
                 onClick={() => setSettingsDropdownOpen(!settingsDropdownOpen)}
-                className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer shadow-xs ${
-                  settingsDropdownOpen
-                    ? 'bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-600 dark:border-indigo-500 shadow-md'
-                    : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700'
-                }`}
-                title="Settings: Profile, Theme, About"
-                aria-label="Settings Menu"
+                className="p-2.5 rounded-xl text-white hover:bg-white/10 transition-colors cursor-pointer flex items-center justify-center"
+                title="Menu"
+                aria-label="Menu"
                 aria-expanded={settingsDropdownOpen}
               >
-                {/* 3 Line Icon */}
-                <div className="flex flex-col justify-center gap-[3px] w-4 h-3.5">
-                  <span className={`block h-[2px] w-full rounded-full transition-colors ${settingsDropdownOpen ? 'bg-white' : 'bg-current'}`} />
-                  <span className={`block h-[2px] w-full rounded-full transition-colors ${settingsDropdownOpen ? 'bg-white' : 'bg-current'}`} />
-                  <span className={`block h-[2px] w-full rounded-full transition-colors ${settingsDropdownOpen ? 'bg-white' : 'bg-current'}`} />
+                {/* 3 Line Clean White Icon */}
+                <div className="flex flex-col justify-center gap-1.5 w-6 h-4">
+                  <span className="block h-[2px] w-full rounded-full bg-white transition-colors" />
+                  <span className="block h-[2px] w-full rounded-full bg-white transition-colors" />
+                  <span className="block h-[2px] w-full rounded-full bg-white transition-colors" />
                 </div>
-                <span className="hidden sm:inline">Settings</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-150 ${settingsDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {settingsDropdownOpen && (
