@@ -331,7 +331,7 @@ export const C11_CH6_ADVANCED_PART1: Question[] = [
     "option_a": "$\\dfrac{n!}{r!(n-r)!}$",
     "option_b": "$\\dfrac{n!}{(n-r)!}$",
     "option_c": "$\\dfrac{r!}{(n-r)!}$",
-    "option_d": "$n^r/r!$",
+    "option_d": "$\\frac{n^r}{r!}$",
     "correct_answer": "B",
     "explanation": "In permutations, order matters, giving $n(n-1)\\cdots(n-r+1)$.",
     "difficulty": "Hard",

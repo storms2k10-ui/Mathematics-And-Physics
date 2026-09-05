@@ -26,7 +26,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=3x-1$ and g(x)$=2x+4$, find $f\\circ g$2$$.",
+    "question": "If $f(x) = 3x-1$ and $g(x) = 2x+4$, find $(f\\circ g)(2)$.",
     "options": {
       "A": "$15$",
       "B": "$19$",
@@ -34,7 +34,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$25$"
     },
     "correct_answer": "C",
-    "explanation": "$g$2$=2$2$+4=8$. Then $f\\circ g$2$=f(g(x))=f$8$=3$8$-1=23$.",
+    "explanation": "$g(2)=2(2)+4=8$. Then $(f\\circ g)(2)$=f(g(x))=f(8)=3(8)-1=23$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ g)(x) = f(g(x)), \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
@@ -44,15 +44,15 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=x^2+1$ and g(x)$=x-3$, then $g\\circ f$x$=$:",
+    "question": "If $f(x) = x^2+1$ and $g(x) = x-3$, then $(g\\circ f)(x) = $:",
     "options": {
       "A": "$x^2-2$",
       "B": "$x^2+4$",
-      "C": "$$x-3$^2+1$",
+      "C": "$(x-3)^2+1$",
       "D": "$x^2-3x+1$"
     },
     "correct_answer": "A",
-    "explanation": "$g\\circ f$x$=g$1$=g$x^2+1$=$x^2+1$-3=x^2-2$.",
+    "explanation": "$(g\\circ f)(x) = g(f(x)) = g(x^2+1) = (x^2+1)-3 = x^2-2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ g)(x) = f(g(x)), \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
@@ -62,7 +62,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=\\sqrt{x}$ and g(x)$=x-4$, the domain of $f\\circ g$ is:",
+    "question": "If $f(x) = \\sqrt{x}$ and $g(x) = x-4$, the domain of $f\\circ g$ is:",
     "options": {
       "A": "$x\\ge 0$",
       "B": "$x>4$",
@@ -70,7 +70,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$x\\le4$"
     },
     "correct_answer": "C",
-    "explanation": "$f\\circ g$x$=f(g(x))=\\sqrt{x-4}$, which requires $x-4\\ge 0 \\implies x\\ge4$, i.e. $[4,\\infty)$.",
+    "explanation": "$(f\\circ g)(x) = f(g(x))=\\sqrt{x-4}$, which requires $x-4\\ge 0 \\implies x\\ge4$, i.e. $[4,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ g)(x) = f(g(x)), \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
@@ -80,7 +80,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=\\dfrac{1}{x}$ and g(x)$=x-2$, then $f\\circ g$x$=$:",
+    "question": "If $f(x) = \\dfrac{1}{x}$ and $g(x) = x-2$, then $(f\\circ g)(x) = $:",
     "options": {
       "A": "$\\dfrac{1}{x}-2$",
       "B": "$\\dfrac{1}{x-2}$",
@@ -88,7 +88,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$x+2$"
     },
     "correct_answer": "B",
-    "explanation": "$f\\circ g$x$=f(g(x))=f$x-2$=\\dfrac{1}{x-2}$.",
+    "explanation": "$(f\\circ g)(x) = f(g(x))=f(x-2)=\\dfrac{1}{x-2}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ g)(x) = f(g(x)), \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
@@ -98,7 +98,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The domain of the composite function $f\\circ g$x$=\\dfrac{1}{x-2}$ is:",
+    "question": "The domain of the composite function $(f\\circ g)(x) = \\frac{1}{x-2}$ is:",
     "options": {
       "A": "$\\mathbb{R}\\setminus\\{0\\}$",
       "B": "$\\mathbb{R}\\setminus\\{2\\}$",
@@ -116,7 +116,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=2x$, g(x)$=x+1$, and h(x)$=x^2$, then $h\\circ g\\circ f(g(x))=$:",
+    "question": "If $f(x) = 2x$, $g(x) = x+1$, and $h(x) = x^2$, then $h\\circ g\\circ f(g(x))=$:",
     "options": {
       "A": "$4$",
       "B": "$6$",
@@ -124,7 +124,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$16$"
     },
     "correct_answer": "C",
-    "explanation": "$f(g(x))=2$1$=2$, $g$1$=g$2$=3$, and $h(g$1$)=h$3$=3^2=9$.",
+    "explanation": "$f(g(x))=2(1)=2$, $g(1)=g(2)=3$, and $h(g(1))=h(3)=3^2=9$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ g)(x) = f(g(x)), \\quad \\text{Dom}(f \\circ g) = \\{x \\in \\text{Dom}(g) : g(x) \\in \\text{Dom}(f)\\}"
@@ -170,7 +170,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If I(x)$=x$ is the identity function, then:",
+    "question": "If $I(x) = x$ is the identity function, then:",
     "options": {
       "A": "$f\\circ I=I$",
       "B": "$I\\circ f=I$",
@@ -188,7 +188,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=5x-7$, then $f^{-1}$x$=$:",
+    "question": "If $f(x) = 5x-7$, then $f^{-1}(x)$=$:",
     "options": {
       "A": "$\\dfrac{x-7}{5}$",
       "B": "$\\dfrac{x+7}{5}$",
@@ -196,7 +196,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$\\dfrac{5}{x+7}$"
     },
     "correct_answer": "B",
-    "explanation": "Set $y=5x-7 \\implies 5x=y+7 \\implies x=\\dfrac{y+7}{5}$. Hence $f^{-1}$x$=\\dfrac{x+7}{5}$.",
+    "explanation": "Set $y=5x-7 \\implies 5x=y+7 \\implies x=\\dfrac{y+7}{5}$. Hence $f^{-1}(x)$=\\dfrac{x+7}{5}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -206,7 +206,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=\\dfrac{x-2}{3}$, then $f^{-1}$x$=$:",
+    "question": "If $f(x) = \\dfrac{x-2}{3}$, then $f^{-1}(x)$=$:",
     "options": {
       "A": "$3x-2$",
       "B": "$\\dfrac{x+2}{3}$",
@@ -214,7 +214,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$\\dfrac{3}{x-2}$"
     },
     "correct_answer": "C",
-    "explanation": "Set $y=\\dfrac{x-2}{3} \\implies x-2=3y \\implies x=3y+2$. Thus $f^{-1}$x$=3x+2$.",
+    "explanation": "Set $y=\\dfrac{x-2}{3} \\implies x-2=3y \\implies x=3y+2$. Thus $f^{-1}(x)$=3x+2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -242,7 +242,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=x^3+4$, then $f^{-1}$x$=$:",
+    "question": "If $f(x) = x^3+4$, then $f^{-1}(x)$=$:",
     "options": {
       "A": "$\\sqrt{x-4}$",
       "B": "$\\sqrt[3]{x-4}$",
@@ -250,7 +250,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$x^3-4$"
     },
     "correct_answer": "B",
-    "explanation": "Set $y=x^3+4 \\implies x^3=y-4 \\implies x=\\sqrt[3]{y-4}$. Thus $f^{-1}$x$=\\sqrt[3]{x-4}$.",
+    "explanation": "Set $y=x^3+4 \\implies x^3=y-4 \\implies x=\\sqrt[3]{y-4}$. Thus $f^{-1}(x)$=\\sqrt[3]{x-4}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -260,7 +260,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=\\dfrac{2x+1}{3}$, find $f^{-1}$5$$.",
+    "question": "If $f(x) = \\dfrac{2x+1}{3}$, find $f^{-1}(5)$.",
     "options": {
       "A": "$5$",
       "B": "$6$",
@@ -268,7 +268,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$8$"
     },
     "correct_answer": "C",
-    "explanation": "Set f(x)$=5 \\implies \\dfrac{2x+1}{3}=5 \\implies 2x+1=15 \\implies 2x=14 \\implies x=7$. Thus $f^{-1}$5$=7$.",
+    "explanation": "Set $f(x) = 5 \\implies \\dfrac{2x+1}{3}=5 \\implies 2x+1=15 \\implies 2x=14 \\implies x=7$. Thus $f^{-1}(5)$=7$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -278,7 +278,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=\\dfrac{1}{x}$, $x\\ne 0$, then $f^{-1}$x$=$:",
+    "question": "If $f(x) = \\dfrac{1}{x}$, $x\\ne 0$, then $f^{-1}(x)$=$:",
     "options": {
       "A": "$x$",
       "B": "$-x$",
@@ -286,7 +286,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$x^2$"
     },
     "correct_answer": "C",
-    "explanation": "Setting $y=1/x \\implies x=1/y$. Thus $f^{-1}$x$=1/x=f$x$$, so $f$ is its own inverse (an involution).",
+    "explanation": "Setting $y=1/x \\implies x=1/y$. Thus $f^{-1}(x)$=1/x=f(x)$, so $f$ is its own inverse (an involution).",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -296,7 +296,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=2-x$, then $f^{-1}$x$=$:",
+    "question": "If $f(x) = 2-x$, then $f^{-1}(x)$=$:",
     "options": {
       "A": "$x-2$",
       "B": "$2-x$",
@@ -304,7 +304,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$-2-x$"
     },
     "correct_answer": "B",
-    "explanation": "Setting $y=2-x \\implies x=2-y$. Thus $f^{-1}$x$=2-x=f$x$$.",
+    "explanation": "Setting $y=2-x \\implies x=2-y$. Thus $f^{-1}(x)$=2-x=f(x)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -314,15 +314,15 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If $f^{-1}$ exists, then $f^{-1}\\circ f$a$=$:",
+    "question": "If $f^{-1}( exists, then )$(f^{-1}\\circ f)(a) = $:",
     "options": {
-      "A": "$f$a$$",
+      "A": "$f(a)$",
       "B": "$a$",
       "C": "$0$",
       "D": "$1$"
     },
     "correct_answer": "B",
-    "explanation": "By definition of inverse, $f^{-1}$1$=a$ for all $a$ in the domain of $f$.",
+    "explanation": "By definition of inverse, $f^{-1}(f(a)) = a$ for all $a$ in the domain of $f$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -332,7 +332,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If $f$3$=8$ and $f$ is invertible, then $f^{-1}$8$=$:",
+    "question": "If $f(3)=8$ and $f$ is invertible, then $f^{-1}(8) = $:",
     "options": {
       "A": "$3$",
       "B": "$8$",
@@ -340,7 +340,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$24$"
     },
     "correct_answer": "A",
-    "explanation": "Since $f$3$=8$, applying the inverse gives $f^{-1}$8$=3$.",
+    "explanation": "Since $f(3)=8$, applying the inverse gives $f^{-1}(8)$=3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -358,7 +358,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "Origin"
     },
     "correct_answer": "C",
-    "explanation": "Inverting a function swaps the coordinates $$(x,y)$ \\leftrightarrow (y,x)$, which corresponds geometrically to reflection across the line $y=x$.",
+    "explanation": "Inverting a function swaps the coordinates $(x,y)$ \\leftrightarrow (y,x)$, which corresponds geometrically to reflection across the line $y=x$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -368,15 +368,15 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=x^2$ is restricted to domain $[0,\\infty)$, its inverse is:",
+    "question": "If $f(x) = x^2$ is restricted to domain $[0,\\infty)$, its inverse is:",
     "options": {
-      "A": "$f^{-1}$x$=x^2$",
-      "B": "$f^{-1}$x$=\\sqrt{x}$",
-      "C": "$f^{-1}$x$=-\\sqrt{x}$",
-      "D": "$f^{-1}$x$=\\dfrac{1}{x^2}$"
+      "A": "$f^{-1}(x)$=x^2$",
+      "B": "$f^{-1}(x)$=\\sqrt{x}$",
+      "C": "$f^{-1}(x)$=-\\sqrt{x}$",
+      "D": "$f^{-1}(x)$=\\dfrac{1}{x^2}$"
     },
     "correct_answer": "B",
-    "explanation": "For $x\\ge 0$, $y=x^2 \\implies x=\\sqrt{y}$ (the principal square root). Thus $f^{-1}$x$=\\sqrt{x}$.",
+    "explanation": "For $x\\ge 0$, $y=x^2 \\implies x=\\sqrt{y}$ (the principal square root). Thus $f^{-1}(x)$=\\sqrt{x}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -386,7 +386,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=x^2$ is restricted to domain $(-\\infty,0]$, its inverse is:",
+    "question": "If $f(x) = x^2$ is restricted to domain $(-\\infty,0]$, its inverse is:",
     "options": {
       "A": "$\\sqrt{x}$",
       "B": "$-\\sqrt{x}$",
@@ -394,7 +394,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$-x^2$"
     },
     "correct_answer": "B",
-    "explanation": "For $x\\le 0$, $y=x^2 \\implies x=-\\sqrt{y}$. Thus $f^{-1}$x$=-\\sqrt{x}$ for $x\\ge 0$.",
+    "explanation": "For $x\\le 0$, $y=x^2 \\implies x=-\\sqrt{y}$. Thus $f^{-1}(x)$=-\\sqrt{x}$ for $x\\ge 0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -404,7 +404,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=\\dfrac{x+1}{x-2}$, then $f^{-1}$x$=$:",
+    "question": "If $f(x) = \\dfrac{x+1}{x-2}$, then $f^{-1}(x)$=$:",
     "options": {
       "A": "$\\dfrac{2x+1}{x-1}$",
       "B": "$\\dfrac{2x-1}{x+1}$",
@@ -412,7 +412,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$\\dfrac{x+2}{x-1}$"
     },
     "correct_answer": "A",
-    "explanation": "$y=\\dfrac{x+1}{x-2} \\implies y$x-2$=x+1 \\implies yx-2y=x+1 \\implies x$y-1$=2y+1 \\implies x=\\dfrac{2y+1}{y-1}$. Hence $f^{-1}$x$=\\dfrac{2x+1}{x-1}$.",
+    "explanation": "$y=\\dfrac{x+1}{x-2} \\implies y(x-2)=x+1 \\implies yx-2y=x+1 \\implies x(y-1)=2y+1 \\implies x=\\dfrac{2y+1}{y-1}$. Hence $f^{-1}(x)$=\\dfrac{2x+1}{x-1}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -422,7 +422,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The range of f(x)$=\\dfrac{x+1}{x-2}$ is:",
+    "question": "The range of $f(x) = \\dfrac{x+1}{x-2}$ is:",
     "options": {
       "A": "$\\mathbb{R}\\setminus\\{1\\}$",
       "B": "$\\mathbb{R}\\setminus\\{2\\}$",
@@ -430,7 +430,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "A",
-    "explanation": "$\\text{Range}(f) = \\text{Dom}$f^{-1}$$. Since $f^{-1}$x$=\\dfrac{2x+1}{x-1}$, the denominator is zero at $x=1$. Thus the range is $\\mathbb{R}\\setminus\\{1\\}$.",
+    "explanation": "$\\text{Range}(f) = \\text{Dom}$f^{-1}$. Since $f^{-1}(x)$=\\dfrac{2x+1}{x-1}$, the denominator is zero at $x=1$. Thus the range is $\\mathbb{R}\\setminus\\{1\\}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Range}(f) = \\{f(x) : x \\in \\text{Dom}(f)\\}"
@@ -440,7 +440,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=ax+b$, $a\\ne 0$, then $f^{-1}$x$=$:",
+    "question": "If $f(x) = ax+b$, $a\\ne 0$, then $f^{-1}(x)$=$:",
     "options": {
       "A": "$\\dfrac{x+b}{a}$",
       "B": "$\\dfrac{x-b}{a}$",
@@ -448,7 +448,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$\\dfrac{a}{x-b}$"
     },
     "correct_answer": "B",
-    "explanation": "Setting $y=ax+b \\implies ax=y-b \\implies x=\\dfrac{y-b}{a}$. Thus $f^{-1}$x$=\\dfrac{x-b}{a}$.",
+    "explanation": "Setting $y=ax+b \\implies ax=y-b \\implies x=\\dfrac{y-b}{a}$. Thus $f^{-1}(x)$=\\dfrac{x-b}{a}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -458,7 +458,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=3x+2$ and g(x)$=\\dfrac{x-2}{3}$, then:",
+    "question": "If $f(x) = 3x+2$ and $g(x) = \\dfrac{x-2}{3}$, then:",
     "options": {
       "A": "$f+g=I$",
       "B": "$fg=I$",
@@ -514,13 +514,13 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch8",
     "question": "Which function is its own inverse?",
     "options": {
-      "A": "f(x)$=x+1$",
-      "B": "f(x)$=2x$",
-      "C": "f(x)$=-x$",
-      "D": "f(x)$=x^3$"
+      "A": "$f(x) = x+1$",
+      "B": "$f(x) = 2x$",
+      "C": "$f(x) = -x$",
+      "D": "$f(x) = x^3$"
     },
     "correct_answer": "C",
-    "explanation": "$f(g(x))=-$-x$=x$. Thus $f^{-1}$x$=f$x$=-x$.",
+    "explanation": "$f(g(x))=-$-x$=x$. Thus $f^{-1}(x)$=f(x)=-x$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -530,7 +530,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If f(x)$=\\dfrac{3}{x}$, $x\\ne 0$, then $f\\circ f$x$=$:",
+    "question": "If $f(x) = \\dfrac{3}{x}$, $x\\ne 0$, then $(f\\circ f)(x) = $:",
     "options": {
       "A": "$3x$",
       "B": "$x$",
@@ -592,7 +592,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$2,0$"
     },
     "correct_answer": "A",
-    "explanation": "Setting $x=0$: $y=3$0$-6=-6$, so the $y$-intercept is $0,-6$.",
+    "explanation": "Setting $x=0$: $y=3(0)-6=-6$, so the $y$-intercept is $0,-6$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -682,7 +682,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$y=3x-1$"
     },
     "correct_answer": "B",
-    "explanation": "In point-slope form: $y-1=3$x-2$ \\implies y-1=3x-6 \\implies y=3x-5$.",
+    "explanation": "In point-slope form: $y-1=3(x-2) \\implies y-1=3x-6 \\implies y=3x-5$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -692,7 +692,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The vertex of $y=$x-3$^2+2$ is:",
+    "question": "The vertex of $y=(x-3)^2+2$ is:",
     "options": {
       "A": "$-3,2$",
       "B": "$3,-2$",
@@ -700,7 +700,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$-3,-2$"
     },
     "correct_answer": "C",
-    "explanation": "In standard vertex form $y=a$x-h$^2+k$, the vertex is $(h,k)=$3,2$$.",
+    "explanation": "In standard vertex form $y=a(x-h)^2+k$, the vertex is $(h,k)=$3,2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "y = a(x-h)^2 + k, \\quad \\text{Vertex: } (h,k)"
@@ -710,7 +710,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The axis of symmetry of $y=$x+4$^2-1$ is:",
+    "question": "The axis of symmetry of $y=(x+4)^2-1$ is:",
     "options": {
       "A": "$x=4$",
       "B": "$x=-4$",
@@ -764,7 +764,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The maximum value of $y=-2$x+1$^2+7$ is:",
+    "question": "The maximum value of $y=-2(x+1)^2+7$ is:",
     "options": {
       "A": "$-2$",
       "B": "$1$",
@@ -772,7 +772,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "No maximum"
     },
     "correct_answer": "C",
-    "explanation": "Since $-2$x+1$^2\\le 0$, the expression attains its maximum value $7$ at $x=-1$.",
+    "explanation": "Since $-2(x+1)^2\\le 0$, the expression attains its maximum value $7$ at $x=-1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "y = a(x-h)^2 + k, \\quad \\text{Vertex: } (h,k)"
@@ -790,7 +790,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$-1,-6$"
     },
     "correct_answer": "B",
-    "explanation": "Factoring: $x^2-5x+6=$x-2$$x-3$=0 \\implies x=2, 3$.",
+    "explanation": "Factoring: $x^2-5x+6 = (x-2)(x-3) = 0 \\implies x=2, 3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "y = a(x-h)^2 + k, \\quad \\text{Vertex: } (h,k)"
@@ -808,7 +808,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "Three real $x$-intercepts"
     },
     "correct_answer": "C",
-    "explanation": "Discriminant $\\Delta = b^2-4ac = 4^2-4$1$$7$=16-28=-12<0$. Since $\\Delta<0$, there are no real zeros.",
+    "explanation": "Discriminant $\\Delta = b^2-4ac = 4^2-4(1)$7$=16-28=-12<0$. Since $\\Delta<0$, there are no real zeros.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "y = a(x-h)^2 + k, \\quad \\text{Vertex: } (h,k)"
@@ -826,7 +826,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$-3,4$"
     },
     "correct_answer": "A",
-    "explanation": "Completing the square: $y=$x^2-6x+9$-9+5=$x-3$^2-4$. The vertex is $3,-4$.",
+    "explanation": "Completing the square: $y=$x^2-6x+9$-9+5=(x-3)^2-4$. The vertex is $3,-4$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "y = a(x-h)^2 + k, \\quad \\text{Vertex: } (h,k)"
@@ -836,7 +836,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The range of $y=$x+2$^2+1$ is:",
+    "question": "The range of $y=(x+2)^2+1$ is:",
     "options": {
       "A": "$y\\le1$",
       "B": "$y\\ge1$",
@@ -844,7 +844,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "B",
-    "explanation": "$$x+2$^2\\ge 0 \\implies y=$x+2$^2+1\\ge1$. Thus the range is $[1,\\infty)$.",
+    "explanation": "$(x+2)^2\\ge 0 \\implies y=(x+2)^2+1\\ge1$. Thus the range is $[1,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Range}(f) = \\{f(x) : x \\in \\text{Dom}(f)\\}"
@@ -854,7 +854,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The range of $y=-3$x-1$^2+4$ is:",
+    "question": "The range of $y=-3(x-1)^2+4$ is:",
     "options": {
       "A": "$y\\ge4$",
       "B": "$y\\le4$",
@@ -862,7 +862,7 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "B",
-    "explanation": "$-3$x-1$^2\\le 0 \\implies y\\le4$. Hence the range is $(-\\infty,4]$.",
+    "explanation": "$-3(x-1)^2\\le 0 \\implies y\\le4$. Hence the range is $(-\\infty,4]$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Range}(f) = \\{f(x) : x \\in \\text{Dom}(f)\\}"
@@ -874,13 +874,13 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch8",
     "question": "If the graph of $y=x^2$ is shifted $3$ units upward, its equation becomes:",
     "options": {
-      "A": "$y=$x+3$^2$",
-      "B": "$y=$x-3$^2$",
+      "A": "$y=(x+3)^2$",
+      "B": "$y=(x-3)^2$",
       "C": "$y=x^2+3$",
       "D": "$y=x^2-3$"
     },
     "correct_answer": "C",
-    "explanation": "A vertical shift upward by $c$ units transforms $y=f$x$$ into $y=f$x$+c$. Here $y=x^2+3$.",
+    "explanation": "A vertical shift upward by $c$ units transforms $y=f(x)$ into $y=f(x)$+c$. Here $y=x^2+3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "y = a(x-h)^2 + k, \\quad \\text{Vertex: } (h,k)"
@@ -892,8 +892,8 @@ export const C11_CH8_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch8",
     "question": "If the graph of $y=x^2$ is shifted $4$ units right, its equation becomes:",
     "options": {
-      "A": "$y=$x+4$^2$",
-      "B": "$y=$x-4$^2$",
+      "A": "$y=(x+4)^2$",
+      "B": "$y=(x-4)^2$",
       "C": "$y=x^2+4$",
       "D": "$y=x^2-4$"
     },

@@ -433,7 +433,7 @@ export const C11_CH10_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch10",
     "chapter": "Trigonometric Identities of Sum and Difference of Angles",
     "question": "The value of $\\dfrac{\\tan 75^\\circ - \\tan 45^\\circ}{1 + \\tan 75^\\circ\\tan 45^\\circ}$ is:",
-    "option_a": "$1/\\sqrt{3}$",
+    "option_a": "$\\frac{1}{\\sqrt{3}}$",
     "option_b": "$1$",
     "option_c": "$\\sqrt{3}$",
     "option_d": "$2 - \\sqrt{3}$",

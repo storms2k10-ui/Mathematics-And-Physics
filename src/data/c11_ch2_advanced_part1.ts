@@ -722,7 +722,7 @@ export const C11_CH2_ADVANCED_PART1: Question[] = [
     "question": "For a scalar $k$, $(kA)^T$ equals:",
     "option_a": "$A^T+k$",
     "option_b": "$kA$",
-    "option_c": "$A^T/k$",
+    "option_c": "$\\frac{A^T}{k}$",
     "option_d": "$kA^T$",
     "correct_answer": "D",
     "explanation": "Scalar multiplication commutes with transposition.",

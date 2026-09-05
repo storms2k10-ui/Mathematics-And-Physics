@@ -60,17 +60,17 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $|z|=4$, then $\\left|\\frac1z\\right|=$:",
+    "question": "If $|z|=4$, then $\\left|\\frac{1}{z}\\right|=$:",
     "options": {
-      "A": "$\\frac14$",
+      "A": "$\\frac{1}{4}$",
       "B": "$4$",
       "C": "$16$",
-      "D": "$\\frac1{16}$"
+      "D": "$\\frac{1}{16}$"
     },
-    "option_a": "$\\frac14$",
+    "option_a": "$\\frac{1}{4}$",
     "option_b": "$4$",
     "option_c": "$16$",
-    "option_d": "$\\frac1{16}$",
+    "option_d": "$\\frac{1}{16}$",
     "correct_answer": "A",
     "correct_option": "A",
     "explanation": "The modulus of a reciprocal is the reciprocal of the modulus.",
@@ -203,7 +203,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z+\\frac1z=0$, then:",
+    "question": "If $z+\\frac{1}{z}=0$, then:",
     "options": {
       "A": "$z=\\pm1$",
       "B": "$z=\\pm i$",
@@ -229,18 +229,18 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "chapter": "Complex Numbers",
     "question": "If $z=1+i$, then $z^{-2}=$:",
     "options": {
-      "A": "$\\frac i2$",
+      "A": "$\\frac{i}{2}$",
       "B": "$2i$",
       "C": "$-2i$",
-      "D": "$-\\frac i2$"
+      "D": "$-\\frac{i}{2}$"
     },
-    "option_a": "$\\frac i2$",
+    "option_a": "$\\frac{i}{2}$",
     "option_b": "$2i$",
     "option_c": "$-2i$",
-    "option_d": "$-\\frac i2$",
+    "option_d": "$-\\frac{i}{2}$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Since $z^2=2i$, $z^{-2}=\\frac1{2i}=-\\frac i2$.",
+    "explanation": "Since $z^2=2i$, $z^{-2}=\\frac{1}{2i}=-\\frac{i}{2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "z^2=2i"
@@ -264,10 +264,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$1+2i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$z=\\frac5{2+i}=\\frac{5(2-i)}5=2-i$.",
+    "explanation": "$z=\\frac{5}{2+i}=\\frac{5(2-i)}{5}=2-i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z=\\frac5{2+i}=\\frac{5(2-i)}5=2-i"
+    "formula": "z=\\frac{5}{2+i}=\\frac{5(2-i)}{5}=2-i"
   },
   {
     "id": "c11-ch1-normal-q112",
@@ -445,15 +445,15 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "chapter": "Complex Numbers",
     "question": "If $x+iy=\\frac{2+i}{1-i}$, then:",
     "options": {
-      "A": "$\\left(\\frac12,\\frac32\\right)$",
-      "B": "$\\left(\\frac32,\\frac12\\right)$",
-      "C": "$\\left(-\\frac12,\\frac32\\right)$",
-      "D": "$\\left(\\frac12,-\\frac32\\right)$"
+      "A": "$\\left(\\frac{1}{2},\\frac{3}{2}\\right)$",
+      "B": "$\\left(\\frac{3}{2},\\frac{1}{2}\\right)$",
+      "C": "$\\left(-\\frac{1}{2},\\frac{3}{2}\\right)$",
+      "D": "$\\left(\\frac{1}{2},-\\frac{3}{2}\\right)$"
     },
-    "option_a": "$\\left(\\frac12,\\frac32\\right)$",
-    "option_b": "$\\left(\\frac32,\\frac12\\right)$",
-    "option_c": "$\\left(-\\frac12,\\frac32\\right)$",
-    "option_d": "$\\left(\\frac12,-\\frac32\\right)$",
+    "option_a": "$\\left(\\frac{1}{2},\\frac{3}{2}\\right)$",
+    "option_b": "$\\left(\\frac{3}{2},\\frac{1}{2}\\right)$",
+    "option_c": "$\\left(-\\frac{1}{2},\\frac{3}{2}\\right)$",
+    "option_d": "$\\left(\\frac{1}{2},-\\frac{3}{2}\\right)$",
     "correct_answer": "A",
     "correct_option": "A",
     "explanation": "Rationalization gives $\\frac{2+i}{1-i}=\\frac{1+3i}{2}$.",

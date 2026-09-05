@@ -11,7 +11,7 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     name: 'Physics and Measurements',
     description: 'Fundamental physical quantities, SI base & derived units, dimensional analysis $[M^a L^b T^c]$, errors (systematic & random), uncertainty propagation, and significant figures.',
     category: 'Mechanics & Kinematics',
-    questionCount: 70,
+    questionCount: 120,
     difficulty: 'Mixed',
     keyTopics: [
       'Physical Quantities: Base and Derived Units',

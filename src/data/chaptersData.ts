@@ -286,7 +286,7 @@ export const ELEMENTARY_CHAPTERS: Chapter[] = [
     name: 'Sequence and Series',
     description: 'Arithmetic Progression (A.P.), Geometric Progression (G.P.), Harmonic Progression (H.P.), Arithmetic, Geometric and Harmonic Means (A ≥ G ≥ H).',
     category: 'Sequences & Induction',
-    questionCount: 250,
+    questionCount: 416,
     difficulty: 'Mixed',
     keyTopics: ['A.P. General Term a_n = a + (n-1)d', 'Sum of A.P.: S_n = \\frac{n}{2}[2a+(n-1)d]', 'G.P. Sum: S_n = \\frac{a(1-r^n)}{1-r}', 'Infinite G.P. Sum: S_\\infty = \\frac{a}{1-r}', 'Relation: A \\ge G \\ge H and G^2 = AH'],
     color: 'violet',

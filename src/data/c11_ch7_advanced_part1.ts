@@ -50,7 +50,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "Contradiction"
     },
     "correct_answer": "C",
-    "explanation": "It is temporarily assumed so that $1$ can be established.",
+    "explanation": "It is temporarily assumed so that $P(k+1)$ can be established.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "P(1) \\text{ is true} \\;\\land\\; [P(k) \\implies P(k+1)] \\implies P(n) \\text{ holds } \\forall n \\in \\mathbb{N}"
@@ -62,10 +62,10 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "chapter_id": "c11-ch7",
     "question": "In the inductive step, one proves:",
     "options": {
-      "A": "(P$1$Rightarrow P$2$) only",
-      "B": "(P$k+1$Rightarrow P$k$)",
+      "A": "$P(1) \\implies P(2)$ only",
+      "B": "$P(k+1)\implies P(k)$",
       "C": "$1$ is false",
-      "D": "(P$k$Rightarrow P$k+1$)"
+      "D": "$P(k) \\implies P(k+1)$"
     },
     "correct_answer": "D",
     "explanation": "This implication carries the truth of the statement from one integer to the next.",
@@ -78,11 +78,11 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "If $1$ is true and (P$k$Rightarrow P$k+1$), then:",
+    "question": "If $P(1)$ is true and $P(k) \\implies P(k+1)$, then:",
     "options": {
-      "A": "$1$ is true for every positive integer $n$",
-      "B": "Only $1$ is true",
-      "C": "$1$ is false for even $n$",
+      "A": "$P(n)$ is true for every positive integer $n$",
+      "B": "Only $P(1)$ is true",
+      "C": "$P(n)$ is false for even $n$",
       "D": "Nothing follows"
     },
     "correct_answer": "A",
@@ -96,7 +96,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "For (1+2+cdots+n=\\dfrac{n$n+1$}2), the base case $1$ gives:",
+    "question": "For $1+2+\\cdots+n=\\frac{n(n+1)}{2}$, the base case $P(1)$ gives:",
     "options": {
       "A": "$1=0$",
       "B": "$1=1$",
@@ -104,7 +104,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$2=1$"
     },
     "correct_answer": "B",
-    "explanation": "The left side is $1$, while the formula gives (\\dfrac{1$2$}2=1).",
+    "explanation": "The left side is $1$, while the formula gives $\\frac{1(2)}{2}=1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "1 + 2 + \\dots + n = \\dfrac{n(n+1)}{2}"
@@ -114,12 +114,12 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Assuming (1+2+cdots+k=\\dfrac{k$k+1$}2), the expression for the sum up to $k+1$ is:",
+    "question": "Assuming $1+2+\\cdots+k=\\frac{k(k+1)}{2}$, the expression for the sum up to $k+1$ is:",
     "options": {
-      "A": "(\\dfrac{k$k+1$}2+k)",
-      "B": "(\\dfrac{k$k+1$}2+1)",
-      "C": "(\\dfrac{k$k+1$}2+$k+1$)",
-      "D": "(\\dfrac{$k+1$$k+2$}2+1)"
+      "A": "$\\dfrac{kk+1}{2}+k$",
+      "B": "$\\dfrac{kk+1}{2}+1$",
+      "C": "$\\dfrac{kk+1}{2}+k+1$",
+      "D": "$\\dfrac{k+1k+2}{2}+1$"
     },
     "correct_answer": "C",
     "explanation": "The next term $k+1$ must be added to the sum through $k$.",
@@ -132,15 +132,15 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Simplify (\\dfrac{k$k+1$}2+$k+1$).",
+    "question": "Simplify $\\frac{k(k+1)}{2}+(k+1)$.",
     "options": {
-      "A": "(\\dfrac{k$k+2$}2)",
-      "B": "($k+1$^2)",
-      "C": "(\\dfrac{k$k+1$}2)",
-      "D": "(\\dfrac{$k+1$$k+2$}2)"
+      "A": "$\\dfrac{kk+2}{2}$",
+      "B": "$(k+1)^2",
+      "C": "$\\dfrac{kk+1}{2}$",
+      "D": "$\\dfrac{k+1k+2}{2}$"
     },
     "correct_answer": "D",
-    "explanation": "Factor $k+1$: ($k+1$$k/2+1$=\\dfrac{$k+1$$k+2$}2).",
+    "explanation": "Factor $k+1$: $(k+1)(k/2+1)=\\frac{(k+1)(k+2)}{2}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "1 + 2 + \\dots + n = \\dfrac{n(n+1)}{2}"
@@ -150,7 +150,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The formula (1+3+5+cdots+$2n-1$=n^2) has base case:",
+    "question": "The formula $1+3+5+\\cdots+(2n-1) = n^2$ has base case:",
     "options": {
       "A": "$1=1^2$",
       "B": "$1=2$",
@@ -158,7 +158,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$0=1$"
     },
     "correct_answer": "A",
-    "explanation": "For $1$, the series contains only $1$, and the right side is $1$.",
+    "explanation": "For $n=1$, the series contains only $1$, and the right side is $1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "1 + 3 + 5 + \\dots + (2n-1) = n^2"
@@ -176,7 +176,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$2k+2$"
     },
     "correct_answer": "B",
-    "explanation": "The ($k+1$)th odd number is (2$k+1$-1=2k+1).",
+    "explanation": "The $(k+1)$th odd number is $2(k+1)-1=2k+1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "1 + 3 + 5 + \\dots + (2n-1) = n^2"
@@ -186,15 +186,15 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Simplify (k^2+$2k+1$).",
+    "question": "Simplify $k^2+(2k+1)$.",
     "options": {
-      "A": "(k$k+1$)",
+      "A": "$kk+1$",
       "B": "$k^2+1$",
-      "C": "($k+1$^2)",
-      "D": "($k+2$^2)"
+      "C": "$(k+1)^2",
+      "D": "$(k+2)^{2}$"
     },
     "correct_answer": "C",
-    "explanation": "(k^2+2k+1=$k+1$^2).",
+    "explanation": "$k^2+2k+1=(k+1)^2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "1 + 3 + 5 + \\dots + (2n-1) = n^2"
@@ -204,12 +204,12 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The statement (2+4+cdots+2n=n$n+1$) is true at $1$ because:",
+    "question": "The statement $2+4+\\cdots+2n = n(n+1)$ is true at $n=1$ because:",
     "options": {
       "A": "$2=1$",
       "B": "$2=0$",
       "C": "$1=2$",
-      "D": "(2=1$2$)"
+      "D": "$2=1(2)$"
     },
     "correct_answer": "D",
     "explanation": "Both sides equal $2$.",
@@ -222,15 +222,15 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "If (2+4+cdots+2k=k$k+1$), adding the next term gives:",
+    "question": "If $2+4+\\cdots+2k = k(k+1)$, adding the next term gives:",
     "options": {
-      "A": "(k$k+1$+2$k+1$)",
-      "B": "(k$k+1$+2k)",
-      "C": "(k$k+1$+k+1)",
-      "D": "(2k$k+1$)"
+      "A": "$k(k+1)+2(k+1)$",
+      "B": "$k(k+1)+2k$",
+      "C": "$k(k+1)+k+1$",
+      "D": "$2k(k+1)$"
     },
     "correct_answer": "A",
-    "explanation": "The next even number is (2$k+1$).",
+    "explanation": "The next even number is $2(k+1)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "2 + 4 + \\dots + 2n = n(n+1)"
@@ -240,15 +240,15 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Simplify (k$k+1$+2$k+1$).",
+    "question": "Simplify $k(k+1)+2(k+1)$.",
     "options": {
-      "A": "(k$k+2$)",
-      "B": "($k+1$$k+2$)",
+      "A": "$kk+2$",
+      "B": "$k+1k+2$",
       "C": "$k^2+1$",
-      "D": "(2$k+1$^2)"
+      "D": "$2k+1^2$"
     },
     "correct_answer": "B",
-    "explanation": "Factoring $k+1$ gives ($k+1$$k+2$).",
+    "explanation": "Factoring $k+1$ gives $(k+1)(k+2)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "2 + 4 + \\dots + 2n = n(n+1)"
@@ -258,15 +258,15 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "For (1^2+2^2+cdots+n^2=\\dfrac{n$n+1$$2n+1$}6), the next term after the $k$th stage is:",
+    "question": "For $1^2+2^2+\\cdots+n^2=\\frac{n(n+1)(2n+1)}{6}$, the next term after the $k$th stage is:",
     "options": {
       "A": "$k^2$",
       "B": "$2k+1$",
-      "C": "($k+1$^2)",
+      "C": "$(k+1)^2",
       "D": "$k+1$"
     },
     "correct_answer": "C",
-    "explanation": "The ($k+1$)th square is ($k+1$^2).",
+    "explanation": "The $(k+1)$th square is $(k+1)^2.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "1^2 + 2^2 + \\dots + n^2 = \\dfrac{n(n+1)(2n+1)}{6}"
@@ -276,12 +276,12 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "For (1^3+2^3+cdots+n^3=left[\\dfrac{n$n+1$}2\right]^2), the base case gives:",
+    "question": "For $1^3+2^3+\\cdots+n^3=left[\\frac{n(n+1)}{2}\right]^2$, the base case gives:",
     "options": {
       "A": "$1=0$",
       "B": "$1=4$",
       "C": "$0=1$",
-      "D": "(1=left(\\dfrac{1cdot2}{2}\right)^2)"
+      "D": "$1=left$\\frac{1cdot2}{2}\right$^2$"
     },
     "correct_answer": "D",
     "explanation": "Both sides equal $1$.",
@@ -296,7 +296,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "chapter_id": "c11-ch7",
     "question": "Which statement can be proved directly by mathematical induction?",
     "options": {
-      "A": "(1+2+cdots+n=\\dfrac{n$n+1$}2)",
+      "A": "$1+2+\cdots+n=\\dfrac{nn+1}{2}$",
       "B": "Every real number is rational",
       "C": "(pi) is an integer",
       "D": "Every equation has a real root"
@@ -317,7 +317,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "A": "The inductive step is unnecessary",
       "B": "The proposed statement is not true for every stated integer",
       "C": "The statement is automatically true",
-      "D": "Only $1$ matters"
+      "D": "Only $P(1)$ matters"
     },
     "correct_answer": "B",
     "explanation": "If the first required case is false, the universal claim is already disproved.",
@@ -330,12 +330,12 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Proving only (P$k$Rightarrow P$k+1$), without a base case, is insufficient because:",
+    "question": "Proving only $P(k) \\implies P(k+1)$, without a base case, is insufficient because:",
     "options": {
       "A": "$k$ cannot be an integer",
       "B": "The implication is always false",
       "C": "There is no established starting point",
-      "D": "$1$ is the base case"
+      "D": "$P(1)$ is the base case"
     },
     "correct_answer": "C",
     "explanation": "The chain of implications cannot begin unless at least one case is verified.",
@@ -366,7 +366,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "To prove (3mid$2^{2n}-1$), the base case $1$ gives:",
+    "question": "To prove $3mid$2^{2n}-1$, the base case $P(1)$ gives:",
     "options": {
       "A": "$2^2-1=3$",
       "B": "$2-1=1$",
@@ -402,15 +402,15 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Express (2^{2$k+1$}-1) in terms of $2^{2k}$.",
+    "question": "Express $2^{2(k+1)}-1$ in terms of $2^{2k}$.",
     "options": {
       "A": "$2^{2k}+1$",
-      "B": "(2$2^{2k}$-1)",
-      "C": "(4$2^{2k}$-1)",
+      "B": "$22^{2k}-1$",
+      "C": "$42^{2k}-1$",
       "D": "$2^{2k}-4$"
     },
     "correct_answer": "C",
-    "explanation": "(2^{2$k+1$}=2^{2k+2}=4cdot2^{2k}).",
+    "explanation": "$2^{2(k+1)}=2^{2k+2}=4cdot2^{2k}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -420,7 +420,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "If $2^{2k}-1=3m$, then (2^{2$k+1$}-1) equals:",
+    "question": "If $2^{2k}-1=3m$, then $2^{2(k+1)}-1$ equals:",
     "options": {
       "A": "$3m+1$",
       "B": "$4m$",
@@ -428,7 +428,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$12m+3$"
     },
     "correct_answer": "D",
-    "explanation": "(4$2^{2k}$-1=4$3m+1$-1=12m+3), divisible by $3$.",
+    "explanation": "$4$2^{2k}$-1=4(3m+1)-1=12m+3$, divisible by $3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -446,7 +446,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$2$ only"
     },
     "correct_answer": "A",
-    "explanation": "Since (5equiv1pmod4), (5^n-1equiv0pmod4).",
+    "explanation": "Since (5equiv1pmod4), $5^n-1equiv0pmod4$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -456,7 +456,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "To prove (4mid$5^n-1$), the base case is:",
+    "question": "To prove $4mid$5^n-1$, the base case is:",
     "options": {
       "A": "$5^0-1=0$ only",
       "B": "$5^1-1=4$",
@@ -464,7 +464,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$5-4=1$"
     },
     "correct_answer": "B",
-    "explanation": "For $1$, the expression equals $4$.",
+    "explanation": "For $n=1$, the expression equals $4$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -482,7 +482,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$20m+5$"
     },
     "correct_answer": "C",
-    "explanation": "(5^{k+1}-1=5$4m+1$-1=20m+4).",
+    "explanation": "$5^{k+1}-1=5(4m+1)-1=20m+4$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -518,7 +518,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$6$ only"
     },
     "correct_answer": "A",
-    "explanation": "(3^2=9equiv1pmod8), so (3^{2n}-1equiv0pmod8).",
+    "explanation": "$3^2=9equiv1pmod8$, so $3^{2n}-1equiv0pmod8$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -528,7 +528,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The base case of (8mid$3^{2n}-1$) gives:",
+    "question": "The base case of $8mid$3^{2n}-1$ gives:",
     "options": {
       "A": "$3-1=2$",
       "B": "$3^2-1=8$",
@@ -536,7 +536,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$9-1=7$"
     },
     "correct_answer": "B",
-    "explanation": "At $1$, the expression equals $8$.",
+    "explanation": "At $n=1$, the expression equals $8$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -564,7 +564,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "For every positive integer $n$, (n$n+1$) is:",
+    "question": "For every positive integer $n$, $n(n+1)$ is:",
     "options": {
       "A": "Odd",
       "B": "Prime",
@@ -582,7 +582,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "For every integer $n$, (n$n+1$$n+2$) is divisible by:",
+    "question": "For every integer $n$, $n(n+1)(n+2)$ is divisible by:",
     "options": {
       "A": "$6$",
       "B": "$4$ only",
@@ -608,7 +608,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$2n+1$"
     },
     "correct_answer": "B",
-    "explanation": "(n^2+n=n$n+1$), the product of consecutive integers.",
+    "explanation": "$n^2+n=n(n+1)$, the product of consecutive integers.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -626,7 +626,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$n^2-n+1$"
     },
     "correct_answer": "C",
-    "explanation": "(n^3-n=n$n-1$$n+1$), a product of three consecutive integers.",
+    "explanation": "$n^3-n=n(n-1)(n+1)$, a product of three consecutive integers.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -640,7 +640,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "options": {
       "A": "$k^3-k=3m$",
       "B": "$k^3-k=m$",
-      "C": "($k+1$^3-$k+1$=3m)",
+      "C": "$k+1^3-k+1=3m$",
       "D": "$k^3=3$"
     },
     "correct_answer": "A",
@@ -654,15 +654,15 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluating the difference $[(k+1)^3-(k+1)]-(k^3-k)$ gives:",
+    "question": "Evaluating the difference $[(k+1)^3-(k+1)]-$k^3-k$ gives:",
     "options": {
       "A": "$3k+1$",
-      "B": "(3k$k+1$)",
+      "B": "$3kk+1$",
       "C": "$k^2+k$",
       "D": "$3k^2$"
     },
     "correct_answer": "B",
-    "explanation": "Expansion gives (3k^2+3k=3k$k+1$), which is divisible by $3$.",
+    "explanation": "Expansion gives $3k^2+3k=3k(k+1)$, which is divisible by $3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -680,7 +680,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$1$"
     },
     "correct_answer": "C",
-    "explanation": "At $1$, $2^1=2=1+1$.",
+    "explanation": "At $n=1$, $2^1=2=1+1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -690,12 +690,12 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "If $2^kge k+1$, then (2^{k+1}ge2$k+1$). To prove $2^{k+1}ge k+2$, we use:",
+    "question": "If $2^kge k+1$, then $2^{k+1}ge2(k+1)$. To prove $2^{k+1}ge k+2$, we use:",
     "options": {
       "A": "$2kle k$",
       "B": "$k+1le0$",
-      "C": "(2$k+1$=k+1)",
-      "D": "(2$k+1$ge k+2) for $kge0$"
+      "C": "$2k+1=k+1$",
+      "D": "$2(k+1) \\ge k+2$ for $k \\ge 0$"
     },
     "correct_answer": "D",
     "explanation": "Their difference is $k$, which is nonnegative.",
@@ -710,10 +710,10 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "chapter_id": "c11-ch7",
     "question": "Bernoulli’s inequality for $x>-1$ and positive integer $n$ is:",
     "options": {
-      "A": "($1+x$^nge1+nx)",
-      "B": "($1+x$^n=1+x^n)",
-      "C": "($1+x$^nle1+nx) always",
-      "D": "($1+x$^n=nx)"
+      "A": "$(1+x)^{nge1+nx}$",
+      "B": "$1+x^n=1+x^n$",
+      "C": "$(1+x)^{nle1+nx}$ always",
+      "D": "$1+x^n=nx$"
     },
     "correct_answer": "A",
     "explanation": "This standard inequality can be proved by induction.",
@@ -726,10 +726,10 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "If (1+2+cdots+n=\\dfrac{n$n+1$}2), then (2+4+cdots+2n) equals:",
+    "question": "If $1+2+\\cdots+n=\\frac{n(n+1)}{2}$, then $2+4+\\cdots+2n$ equals:",
     "options": {
-      "A": "(\\dfrac{n$n+1$}2)",
-      "B": "(n$n+1$)",
+      "A": "$\\dfrac{nn+1}{2}$",
+      "B": "$n(n+1)$",
       "C": "$2n^2$",
       "D": "$n^2$"
     },
@@ -744,7 +744,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The formula (1+3+cdots+$2n-1$=n^2) implies the sum of the first $20$ odd numbers is:",
+    "question": "The formula $1+3+\\cdots+(2n-1) = n^2$ implies the sum of the first $20$ odd numbers is:",
     "options": {
       "A": "$200$",
       "B": "$420$",
@@ -752,7 +752,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$380$"
     },
     "correct_answer": "C",
-    "explanation": "Substitute $1$: $20^2=400$.",
+    "explanation": "Substitute $n=20$: $20^2=400$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "1 + 3 + 5 + \\dots + (2n-1) = n^2"
@@ -762,7 +762,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Using (sum_{r=1}^nr=\\dfrac{n$n+1$}2), find $sum_{r=1}^{30}r$.",
+    "question": "Using $sum_{r=1}^nr=\\frac{n(n+1)}{2}$, find $sum_{r=1}^{30}r$.",
     "options": {
       "A": "$435$",
       "B": "$450$",
@@ -770,7 +770,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$465$"
     },
     "correct_answer": "D",
-    "explanation": "(\\dfrac{30$31$}2=465).",
+    "explanation": "$\\frac{30(31)}{2}=465$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -780,7 +780,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Using the square-sum formula, find (1^2+cdots+10^2).",
+    "question": "Using the square-sum formula, find $1^2+\\cdots+10^2$.",
     "options": {
       "A": "$385$",
       "B": "$3025$",
@@ -788,7 +788,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$55$"
     },
     "correct_answer": "A",
-    "explanation": "(\\dfrac{10$11$$21$}6=385).",
+    "explanation": "$\\frac{10(11)(21)}{6}=385$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "1^2 + 2^2 + \\dots + n^2 = \\dfrac{n(n+1)(2n+1)}{6}"
@@ -798,7 +798,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Using the cube-sum formula, find (1^3+cdots+8^3).",
+    "question": "Using the cube-sum formula, find $1^3+\\cdots+8^3$.",
     "options": {
       "A": "$666$",
       "B": "$1296$",
@@ -806,7 +806,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
       "D": "$2025$"
     },
     "correct_answer": "B",
-    "explanation": "([\\dfrac{8$9$}2]^2=36^2=1296).",
+    "explanation": "$[\\frac{8(9)}{2}]^2=36^2=1296$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "1^3 + 2^3 + \\dots + n^3 = \\left[\\dfrac{n(n+1)}{2}\\right]^2"
@@ -836,13 +836,13 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "chapter_id": "c11-ch7",
     "question": "Strong induction differs because it assumes:",
     "options": {
-      "A": "Only $1$",
+      "A": "Only $P(1)$",
       "B": "No previous cases",
       "C": "Only the base case",
-      "D": "All cases through $1$"
+      "D": "All cases through $P(k)$"
     },
     "correct_answer": "D",
-    "explanation": "Strong induction uses (P$1$,P$2$,ldots,P$k$) to establish the next case.",
+    "explanation": "Strong induction uses $P(1), P(2), \\ldots, P(k)$ to establish the next case.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "P(1) \\text{ is true} \\;\\land\\; [P(k) \\implies P(k+1)] \\implies P(n) \\text{ holds } \\forall n \\in \\mathbb{N}"
@@ -888,7 +888,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "If $1$ is true and (P$k$Rightarrow P$k+1$) for every $kge5$, then $1$ is proved for:",
+    "question": "If $P(1)$ is true and $P(k) \\implies P(k+1)$ for every $kge5$, then the statement is proved for:",
     "options": {
       "A": "All integers",
       "B": "$n<5$ only",

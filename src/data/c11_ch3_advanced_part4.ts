@@ -652,7 +652,7 @@ export const C11_CH3_ADVANCED_PART4: Question[] = [
     "chapter_id": "c11-ch3",
     "chapter": "Vectors",
     "question": "If $\\mathbf{a}=(1,1,1)$, find the angle it makes with the positive $x$-axis.",
-    "option_a": "$\\cos^{-1}\\frac1{\\sqrt3}$",
+    "option_a": "$\\cos^{-1}\\frac{1}{\\sqrt3}$",
     "option_b": "$45^\\circ$",
     "option_c": "$60^\\circ$",
     "option_d": "$90^\\circ$",

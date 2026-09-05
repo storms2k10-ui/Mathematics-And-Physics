@@ -841,7 +841,7 @@ export const C11_CH11_ADVANCED_PART4: Question[] = [
     "chapter_id": "c11-ch11",
     "chapter": "Applications of Trigonometry",
     "question": "From the top of a $50\\text{ m}$ tower, the angle of depression to the base of another tower is $45^\\circ$, while the angle of elevation to its top is $30^\\circ$. The height of the second tower is:",
-    "option_a": "$50/\\sqrt{3}\\text{ m}$",
+    "option_a": "$\\frac{50}{\\sqrt{3}}\\text{ m}$",
     "option_b": "$50\\text{ m}$",
     "option_c": "$50 + \\frac{50}{\\sqrt{3}}\\text{ m}$",
     "option_d": "$50 + 50\\sqrt{3}\\text{ m}$",

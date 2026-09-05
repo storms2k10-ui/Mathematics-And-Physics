@@ -64,7 +64,7 @@ export const C11_CH2_ADVANCED_PART3: Question[] = [
     option_a: "$|A|\\operatorname{adj}A$",
     option_b: "$A^T/|A|$",
     option_c: "$\\operatorname{adj}A$",
-    option_d: "$\\dfrac{\\operatorname{adj}A}{|A|}$",
+    option_d: "$\\dfrac{\\operatorname{adj}{A}}{|A|}$",
     correct_answer: "D",
     explanation: "This is the standard adjoint formula for the inverse.",
     difficulty: "Hard",

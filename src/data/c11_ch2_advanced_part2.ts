@@ -331,7 +331,7 @@ export const C11_CH2_ADVANCED_PART2: Question[] = [
     "option_a": "$|A^T|=-|A|$",
     "option_b": "$|A^T|=|A|$",
     "option_c": "$|A^T|=|A|^2$",
-    "option_d": "$|A^T|=1/|A|$",
+    "option_d": "$|A^T|=\\frac{1}{|A|}$",
     "correct_answer": "B",
     "explanation": "Transposing interchanges rows and columns without changing the determinant.",
     "difficulty": "Hard",

@@ -204,21 +204,21 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "chapter": "Complex Numbers",
     "question": "For $z\\neq0$, $|z^{-1}|=$:",
     "options": {
-      "A": "$\\frac1{|z|}$",
+      "A": "$\\frac{1}{|z|}$",
       "B": "$-|z|$",
       "C": "$|z|$",
       "D": "$|z|^2$"
     },
-    "option_a": "$\\frac1{|z|}$",
+    "option_a": "$\\frac{1}{|z|}$",
     "option_b": "$-|z|$",
     "option_c": "$|z|$",
     "option_d": "$|z|^2$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Using the quotient rule, $\\left|\\frac1z\\right|=\\frac{|1|}{|z|}=\\frac1{|z|}$.",
+    "explanation": "Using the quotient rule, $\\left|\\frac{1}{z}\\right|=\\frac{|1|}{|z|}=\\frac{1}{|z|}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\left|\\frac1z\\right|=\\frac{|1|}{|z|}=\\frac1{|z|}"
+    "formula": "\\left|\\frac{1}{z}\\right|=\\frac{|1|}{|z|}=\\frac{1}{|z|}"
   },
   {
     "id": "c11-ch1-normal-q60",
@@ -464,7 +464,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $|z|=6$ and $|w|=2$, then $\\left|\\frac zw\\right|=$:",
+    "question": "If $|z|=6$ and $|w|=2$, then $\\left|\\frac{z}{w}\\right|=$:",
     "options": {
       "A": "$12$",
       "B": "$4$",
@@ -477,10 +477,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$3$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$\\left|\\frac zw\\right|=\\frac62=3$.",
+    "explanation": "$\\left|\\frac{z}{w}\\right|=\\frac{6}{2}=3$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\left|\\frac zw\\right|=\\frac62=3"
+    "formula": "\\left|\\frac{z}{w}\\right|=\\frac{6}{2}=3"
   },
   {
     "id": "c11-ch1-normal-q71",
@@ -584,17 +584,17 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=3-4i$, then $\\frac z{|z|}=$:",
+    "question": "If $z=3-4i$, then $\\frac{z}{|z|}=$:",
     "options": {
-      "A": "$\\frac35-\\frac45i$",
-      "B": "$\\frac45-\\frac35i$",
+      "A": "$\\frac{3}{5}-\\frac{4}{5}i$",
+      "B": "$\\frac{4}{5}-\\frac{3}{5}i$",
       "C": "$3-4i$",
-      "D": "$\\frac35+\\frac45i$"
+      "D": "$\\frac{3}{5}+\\frac{4}{5}i$"
     },
-    "option_a": "$\\frac35-\\frac45i$",
-    "option_b": "$\\frac45-\\frac35i$",
+    "option_a": "$\\frac{3}{5}-\\frac{4}{5}i$",
+    "option_b": "$\\frac{4}{5}-\\frac{3}{5}i$",
     "option_c": "$3-4i$",
-    "option_d": "$\\frac35+\\frac45i$",
+    "option_d": "$\\frac{3}{5}+\\frac{4}{5}i$",
     "correct_answer": "A",
     "correct_option": "A",
     "explanation": "Since $|z|=5$, divide both parts of $z$ by $5$.",
@@ -741,10 +741,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$\\frac{-2+3i}{13}$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$\\frac1{2+3i}=\\frac{2-3i}{2^2+3^2}=\\frac{2-3i}{13}$.",
+    "explanation": "$\\frac{1}{2+3i}=\\frac{2-3i}{2^2+3^2}=\\frac{2-3i}{13}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac1{2+3i}=\\frac{2-3i}{2^2+3^2}=\\frac{2-3i}{13}"
+    "formula": "\\frac{1}{2+3i}=\\frac{2-3i}{2^2+3^2}=\\frac{2-3i}{13}"
   },
   {
     "id": "c11-ch1-normal-q82",
@@ -776,7 +776,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac1i=$:",
+    "question": "$\\frac{1}{i}=$:",
     "options": {
       "A": "$-i$",
       "B": "$i$",
@@ -789,10 +789,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Multiply by $\\frac ii$: $\\frac{i}{i^2}=\\frac{i}{-1}=-i$.",
+    "explanation": "Multiply by $\\frac{i}{i}$: $\\frac{i}{i^2}=\\frac{i}{-1}=-i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac ii"
+    "formula": "\\frac{i}{i}"
   },
   {
     "id": "c11-ch1-normal-q84",
@@ -861,7 +861,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$\\frac{9-7i}{5}$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Multiply by $2-i$: $\\frac{(5-i)(2-i)}5=\\frac{9-7i}{5}$.",
+    "explanation": "Multiply by $2-i$: $\\frac{(5-i)(2-i)}{5}=\\frac{9-7i}{5}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "2-i"
@@ -925,18 +925,18 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
       "A": "$\\frac{a+bi}{a^2+b^2}$",
       "B": "$\\frac{a-bi}{a^2+b^2}$",
       "C": "$\\frac{-a+bi}{a^2+b^2}$",
-      "D": "$\\frac1{a+b}i$"
+      "D": "$\\frac{1}{a+b}i$"
     },
     "option_a": "$\\frac{a+bi}{a^2+b^2}$",
     "option_b": "$\\frac{a-bi}{a^2+b^2}$",
     "option_c": "$\\frac{-a+bi}{a^2+b^2}$",
-    "option_d": "$\\frac1{a+b}i$",
+    "option_d": "$\\frac{1}{a+b}i$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Rationalizing $\\frac1{a+bi}$ gives $\\frac{a-bi}{a^2+b^2}$.",
+    "explanation": "Rationalizing $\\frac{1}{a+bi}$ gives $\\frac{a-bi}{a^2+b^2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac1{a+bi}"
+    "formula": "\\frac{1}{a+bi}"
   },
   {
     "id": "c11-ch1-normal-q90",
@@ -957,10 +957,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$\\frac{2+i}{5}$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$z=\\frac1{2-i}=\\frac{2+i}{(2-i)(2+i)}=\\frac{2+i}{5}$.",
+    "explanation": "$z=\\frac{1}{2-i}=\\frac{2+i}{(2-i)(2+i)}=\\frac{2+i}{5}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z=\\frac1{2-i}=\\frac{2+i}{(2-i)(2+i)}=\\frac{2+i}{5}"
+    "formula": "z=\\frac{1}{2-i}=\\frac{2+i}{(2-i)(2+i)}=\\frac{2+i}{5}"
   },
   {
     "id": "c11-ch1-normal-q91",
@@ -968,7 +968,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=1+i$, then $\\frac z{\\bar{z}}=$:",
+    "question": "If $z=1+i$, then $\\frac{z}{\\bar{z}}=$:",
     "options": {
       "A": "$i$",
       "B": "$-i$",
@@ -1016,7 +1016,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=a+bi\\neq0$, then $\\frac1z+\\frac1{\\bar{z}}=$:",
+    "question": "If $z=a+bi\\neq0$, then $\\frac{1}{z}+\\frac{1}{\\bar{z}}=$:",
     "options": {
       "A": "$\\frac{2b}{a^2+b^2}$",
       "B": "$\\frac{2a}{a^2+b^2}$",
@@ -1040,7 +1040,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=a+bi\\neq0$, then $\\frac1z-\\frac1{\\bar{z}}=$:",
+    "question": "If $z=a+bi\\neq0$, then $\\frac{1}{z}-\\frac{1}{\\bar{z}}=$:",
     "options": {
       "A": "$\\frac{2a}{a^2+b^2}$",
       "B": "$\\frac{2bi}{a^2+b^2}$",
@@ -1066,21 +1066,21 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "chapter": "Complex Numbers",
     "question": "For $z=3+2i$, $\\frac{z+\\bar{z}}{z-\\bar{z}}=$:",
     "options": {
-      "A": "$-\\frac32i$",
-      "B": "$\\frac32i$",
-      "C": "$-\\frac23i$",
-      "D": "$\\frac23i$"
+      "A": "$-\\frac{3}{2}i$",
+      "B": "$\\frac{3}{2}i$",
+      "C": "$-\\frac{2}{3}i$",
+      "D": "$\\frac{2}{3}i$"
     },
-    "option_a": "$-\\frac32i$",
-    "option_b": "$\\frac32i$",
-    "option_c": "$-\\frac23i$",
-    "option_d": "$\\frac23i$",
+    "option_a": "$-\\frac{3}{2}i$",
+    "option_b": "$\\frac{3}{2}i$",
+    "option_c": "$-\\frac{2}{3}i$",
+    "option_d": "$\\frac{2}{3}i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$\\frac{6}{4i}=\\frac{3}{2i}=-\\frac32i$.",
+    "explanation": "$\\frac{6}{4i}=\\frac{3}{2i}=-\\frac{3}{2}i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{6}{4i}=\\frac{3}{2i}=-\\frac32i"
+    "formula": "\\frac{6}{4i}=\\frac{3}{2i}=-\\frac{3}{2}i"
   },
   {
     "id": "c11-ch1-normal-q96",

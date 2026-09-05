@@ -136,7 +136,7 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch4",
     "chapter": "Sequence and Series",
     "question": "The sum of the first $n$ terms of an AP is:",
-    "option_a": "$\\frac n2[2a+(n-1)d]$",
+    "option_a": "$\\frac{n}{2}[2a+(n-1)d]$",
     "option_b": "$a+(n-1)d$",
     "option_c": "$ar^{n-1}$",
     "option_d": "$\\frac{a(1-r^n)}{1-r}$",
@@ -153,7 +153,7 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "chapter": "Sequence and Series",
     "question": "Another formula for the sum of an AP is:",
     "option_a": "$S_n=n(a+l)$",
-    "option_b": "$S_n=\\frac n2(a+l)$",
+    "option_b": "$S_n=\\frac{n}{2}(a+l)$",
     "option_c": "$S_n=a+l$",
     "option_d": "$S_n=\\frac{a+l}{n}$",
     "correct_answer": "B",
@@ -173,7 +173,7 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_c": "$210$",
     "option_d": "$190$",
     "correct_answer": "C",
-    "explanation": "$\\frac{20(21)}2=210$.",
+    "explanation": "$\\frac{20(21)}{2}=210$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -189,7 +189,7 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_c": "$4950$",
     "option_d": "$5050$",
     "correct_answer": "D",
-    "explanation": "$\\frac{100(101)}2=5050$.",
+    "explanation": "$\\frac{100(101)}{2}=5050$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -317,7 +317,7 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_c": "$2n^2$",
     "option_d": "$n(n+1)$",
     "correct_answer": "D",
-    "explanation": "$2(1+2+\\cdots+n)=2\\cdot\\frac{n(n+1)}2=n(n+1)$.",
+    "explanation": "$2(1+2+\\cdots+n)=2\\cdot\\frac{n(n+1)}{2}=n(n+1)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -413,7 +413,7 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_c": "$13$",
     "option_d": "$14$",
     "correct_answer": "B",
-    "explanation": "$\\frac{n(n+1)}2=78$ gives $n(n+1)=156=12(13)$.",
+    "explanation": "$\\frac{n(n+1)}{2}=78$ gives $n(n+1)=156=12(13)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -509,7 +509,7 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_c": "$n(6-n)$",
     "option_d": "$n(7-2n)$",
     "correct_answer": "C",
-    "explanation": "The first term is $5$, $d=-2$, so $S_n=\\frac n2[10-2(n-1)]=n(6-n)$.",
+    "explanation": "The first term is $5$, $d=-2$, so $S_n=\\frac{n}{2}[10-2(n-1)]=n(6-n)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },

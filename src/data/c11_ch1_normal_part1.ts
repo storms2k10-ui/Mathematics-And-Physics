@@ -654,7 +654,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac1{1+i}=$:",
+    "question": "$\\frac{1}{1+i}=$:",
     "options": {
       "A": "$\\frac{1-i}{2}$",
       "B": "$\\frac{1+i}{2}$",
@@ -859,7 +859,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$i^{17}=i$, so $i^{-17}=\\frac1i=-i$.",
+    "explanation": "$i^{17}=i$, so $i^{-17}=\\frac{1}{i}=-i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "i^{17}=i"
@@ -1075,7 +1075,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$\\frac{3+i}{2}$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Multiply by $1-i$: $\\frac{(2-i)(1-i)}2=\\frac{1-3i}{2}$.",
+    "explanation": "Multiply by $1-i$: $\\frac{(2-i)(1-i)}{2}=\\frac{1-3i}{2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "1-i"
@@ -1099,7 +1099,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$\\frac{-1+7i}{5}$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Multiplication by $2+i$ gives $\\frac{(1+3i)(2+i)}5=\\frac{-1+7i}{5}$.",
+    "explanation": "Multiplication by $2+i$ gives $\\frac{(1+3i)(2+i)}{5}=\\frac{-1+7i}{5}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "2+i"

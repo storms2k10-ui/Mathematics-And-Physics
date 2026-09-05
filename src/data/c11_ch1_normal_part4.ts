@@ -184,16 +184,16 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "options": {
       "A": "$z=\\bar{z}$",
       "B": "$z=-\\bar{z}$",
-      "C": "$z=\\frac1z$",
-      "D": "$\\bar{z}=\\frac1z$"
+      "C": "$z=\\frac{1}{z}$",
+      "D": "$\\bar{z}=\\frac{1}{z}$"
     },
     "option_a": "$z=\\bar{z}$",
     "option_b": "$z=-\\bar{z}$",
-    "option_c": "$z=\\frac1z$",
-    "option_d": "$\\bar{z}=\\frac1z$",
+    "option_c": "$z=\\frac{1}{z}$",
+    "option_d": "$\\bar{z}=\\frac{1}{z}$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Since $z\\bar{z}=1$, dividing by $z$ gives $\\bar{z}=\\frac1z$.",
+    "explanation": "Since $z\\bar{z}=1$, dividing by $z$ gives $\\bar{z}=\\frac{1}{z}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
     "formula": "z\\bar{z}=1"
@@ -394,7 +394,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "Equality holds in $|z+w|\\leq|z|+|w|$ when $\\frac zw$ is:",
+    "question": "Equality holds in $|z+w|\\leq|z|+|w|$ when $\\frac{z}{w}$ is:",
     "options": {
       "A": "A nonnegative real number",
       "B": "A negative real number",
@@ -634,18 +634,18 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "chapter": "Complex Numbers",
     "question": "$\\frac{2+i}{2-i}+\\frac{2-i}{2+i}=$:",
     "options": {
-      "A": "$\\frac45$",
-      "B": "$\\frac65$",
-      "C": "$\\frac85$",
+      "A": "$\\frac{4}{5}$",
+      "B": "$\\frac{6}{5}$",
+      "C": "$\\frac{8}{5}$",
       "D": "$2$"
     },
-    "option_a": "$\\frac45$",
-    "option_b": "$\\frac65$",
-    "option_c": "$\\frac85$",
+    "option_a": "$\\frac{4}{5}$",
+    "option_b": "$\\frac{6}{5}$",
+    "option_c": "$\\frac{8}{5}$",
     "option_d": "$2$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The fractions become $\\frac{3+4i}{5}$ and $\\frac{3-4i}{5}$; their sum is $\\frac65$.",
+    "explanation": "The fractions become $\\frac{3+4i}{5}$ and $\\frac{3-4i}{5}$; their sum is $\\frac{6}{5}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
     "formula": "\\frac{3+4i}{5}"
@@ -679,7 +679,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z+\\frac1z=2$, then:",
+    "question": "If $z+\\frac{1}{z}=2$, then:",
     "options": {
       "A": "$z=1$",
       "B": "$z=-1$",
@@ -703,7 +703,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z-\\frac1z=0$, then:",
+    "question": "If $z-\\frac{1}{z}=0$, then:",
     "options": {
       "A": "$z=\\pm i$",
       "B": "$z=1$ only",
@@ -727,7 +727,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z+\\frac1z=3$, then:",
+    "question": "If $z+\\frac{1}{z}=3$, then:",
     "options": {
       "A": "$z=\\frac{-3\\pm\\sqrt5}{2}$",
       "B": "$z=\\frac{3\\pm\\sqrt5}{2}$",
@@ -751,7 +751,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z-\\frac1z=2i$, then $z=$:",
+    "question": "If $z-\\frac{1}{z}=2i$, then $z=$:",
     "options": {
       "A": "$1$",
       "B": "$-1$",
@@ -944,14 +944,14 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "chapter": "Complex Numbers",
     "question": "If $z=\\frac{3+4i}{4+3i}$, then $|z|=$:",
     "options": {
-      "A": "$\\frac35$",
-      "B": "$\\frac45$",
-      "C": "$\\frac75$",
+      "A": "$\\frac{3}{5}$",
+      "B": "$\\frac{4}{5}$",
+      "C": "$\\frac{7}{5}$",
       "D": "$1$"
     },
-    "option_a": "$\\frac35$",
-    "option_b": "$\\frac45$",
-    "option_c": "$\\frac75$",
+    "option_a": "$\\frac{3}{5}$",
+    "option_b": "$\\frac{4}{5}$",
+    "option_c": "$\\frac{7}{5}$",
     "option_d": "$1$",
     "correct_answer": "D",
     "correct_option": "D",
@@ -969,14 +969,14 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "question": "If $z=\\frac{3+4i}{4+3i}$, then $\\operatorname{Re}(z)=$:",
     "options": {
       "A": "$\\frac{24}{25}$",
-      "B": "$\\frac7{25}$",
+      "B": "$\\frac{7}{25}$",
       "C": "$\\frac{12}{25}$",
-      "D": "$\\frac35$"
+      "D": "$\\frac{3}{5}$"
     },
     "option_a": "$\\frac{24}{25}$",
-    "option_b": "$\\frac7{25}$",
+    "option_b": "$\\frac{7}{25}$",
     "option_c": "$\\frac{12}{25}$",
-    "option_d": "$\\frac35$",
+    "option_d": "$\\frac{3}{5}$",
     "correct_answer": "A",
     "correct_option": "A",
     "explanation": "Rationalization gives $z=\\frac{24+7i}{25}$, so its real part is $\\frac{24}{25}$.",
@@ -993,17 +993,17 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "question": "If $z=\\frac{3+4i}{4+3i}$, then $\\operatorname{Im}(z)=$:",
     "options": {
       "A": "$\\frac{24}{25}$",
-      "B": "$-\\frac7{25}$",
-      "C": "$\\frac7{25}$",
-      "D": "$\\frac45$"
+      "B": "$-\\frac{7}{25}$",
+      "C": "$\\frac{7}{25}$",
+      "D": "$\\frac{4}{5}$"
     },
     "option_a": "$\\frac{24}{25}$",
-    "option_b": "$-\\frac7{25}$",
-    "option_c": "$\\frac7{25}$",
-    "option_d": "$\\frac45$",
+    "option_b": "$-\\frac{7}{25}$",
+    "option_c": "$\\frac{7}{25}$",
+    "option_d": "$\\frac{4}{5}$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "From $z=\\frac{24+7i}{25}$, the coefficient of $i$ is $\\frac7{25}$.",
+    "explanation": "From $z=\\frac{24+7i}{25}$, the coefficient of $i$ is $\\frac{7}{25}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
     "formula": "z=\\frac{24+7i}{25}"
@@ -1115,18 +1115,18 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
       "A": "$5$",
       "B": "$\\sqrt5$",
       "C": "$5\\sqrt5$",
-      "D": "$\\frac1{\\sqrt5}$"
+      "D": "$\\frac{1}{\\sqrt5}$"
     },
     "option_a": "$5$",
     "option_b": "$\\sqrt5$",
     "option_c": "$5\\sqrt5$",
-    "option_d": "$\\frac1{\\sqrt5}$",
+    "option_d": "$\\frac{1}{\\sqrt5}$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The modulus is $\\frac{|3+4i|}{|1-2i|}=\\frac5{\\sqrt5}=\\sqrt5$.",
+    "explanation": "The modulus is $\\frac{|3+4i|}{|1-2i|}=\\frac{5}{\\sqrt5}=\\sqrt5$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{|3+4i|}{|1-2i|}=\\frac5{\\sqrt5}=\\sqrt5"
+    "formula": "\\frac{|3+4i|}{|1-2i|}=\\frac{5}{\\sqrt5}=\\sqrt5"
   },
   {
     "id": "c11-ch1-normal-q198",

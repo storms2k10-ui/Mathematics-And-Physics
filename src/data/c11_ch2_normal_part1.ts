@@ -109,13 +109,13 @@ export const C11_CH2_NORMAL_PART1: Question[] = [
     "options": {
       "A": "$kA^tB^tC^t$",
       "B": "$kC^tB^tA^t$",
-      "C": "$\\frac1kA^tB^tC^t$",
-      "D": "$\\frac1kC^tB^tA^t$"
+      "C": "$\\frac{1}{k}A^tB^tC^t$",
+      "D": "$\\frac{1}{k}C^tB^tA^t$"
     },
     "option_a": "$kA^tB^tC^t$",
     "option_b": "$kC^tB^tA^t$",
-    "option_c": "$\\frac1kA^tB^tC^t$",
-    "option_d": "$\\frac1kC^tB^tA^t$",
+    "option_c": "$\\frac{1}{k}A^tB^tC^t$",
+    "option_d": "$\\frac{1}{k}C^tB^tA^t$",
     "correct_answer": "B",
     "correct_option": "B",
     "explanation": "Transposition reverses the order of multiplication: $(ABC)^t=C^tB^tA^t$.",
@@ -369,13 +369,13 @@ export const C11_CH2_NORMAL_PART1: Question[] = [
     "options": {
       "A": "$-3$",
       "B": "$3$",
-      "C": "$\\frac13$",
-      "D": "$-\\frac13$"
+      "C": "$\\frac{1}{3}$",
+      "D": "$-\\frac{1}{3}$"
     },
     "option_a": "$-3$",
     "option_b": "$3$",
-    "option_c": "$\\frac13$",
-    "option_d": "$-\\frac13$",
+    "option_c": "$\\frac{1}{3}$",
+    "option_d": "$-\\frac{1}{3}$",
     "correct_answer": "A",
     "correct_option": "A",
     "explanation": "The equation is $7a=-18-3=-21$, hence $a=-3$.",

@@ -11,7 +11,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "A": "$x^n+y^n$",
       "B": "$xy^n$",
       "C": "$x^n-y^n$",
-      "D": "($x+y$^n)"
+      "D": "$(x+y)^{n}$"
     },
     "correct_answer": "D",
     "explanation": "It expresses a power of a two-term expression as a sum involving binomial coefficients.",
@@ -26,10 +26,10 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch7",
     "question": "For a positive integer $n$, $(x+y)^n = $",
     "options": {
-      "A": "(displaystylesum_{r=0}^n\binom nr x^{n-r}y^r)",
-      "B": "(displaystylesum_{r=0}^n\binom nr x^ry^r)",
+      "A": "$\\\\displaystyle\\sum_{r=0}^n\\binom{n}{r} x^{n-r}y^r$",
+      "B": "$\\\\displaystyle\\sum_{r=0}^n\\binom{n}{r} x^ry^r$",
       "C": "$x^n+y^n$",
-      "D": "(displaystylesum_{r=1}^n x^{n-r}y^r)"
+      "D": "$\\\\displaystyle\\sum_{r=1}^n x^{n-r}y^r$"
     },
     "correct_answer": "A",
     "explanation": "The powers of $x$ decrease while those of $y$ increase.",
@@ -42,7 +42,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The expansion of ($x+y$^n) contains:",
+    "question": "The expansion of $(x+y)^{n}$ contains:",
     "options": {
       "A": "$n$ terms",
       "B": "$n+1$ terms",
@@ -50,7 +50,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$n-1$ terms"
     },
     "correct_answer": "B",
-    "explanation": "The index $r$ takes the values (0,1,ldots,n).",
+    "explanation": "The index $r$ takes the values (0,1,\ldots,n).",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(x+y)^n = \\sum_{r=0}^n \\binom{n}{r} x^{n-r} y^r, \\quad T_{r+1} = \\binom{n}{r} x^{n-r} y^r"
@@ -60,7 +60,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The first term of ($x+y$^n) is:",
+    "question": "The first term of $(x+y)^{n}$ is:",
     "options": {
       "A": "$y^n$",
       "B": "$nx^{n-1}y$",
@@ -68,7 +68,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$1$"
     },
     "correct_answer": "C",
-    "explanation": "Set $1$ in the general term.",
+    "explanation": "Set $r=0$ in the general term.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(x+y)^n = \\sum_{r=0}^n \\binom{n}{r} x^{n-r} y^r, \\quad T_{r+1} = \\binom{n}{r} x^{n-r} y^r"
@@ -78,7 +78,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The last term of ($x+y$^n) is:",
+    "question": "The last term of $(x+y)^{n}$ is:",
     "options": {
       "A": "$x^n$",
       "B": "$ny^{n-1}$",
@@ -86,7 +86,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$y^n$"
     },
     "correct_answer": "D",
-    "explanation": "Set $1$, making the power of $x$ zero.",
+    "explanation": "Set $r=n$, making the power of $x$ zero.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(x+y)^n = \\sum_{r=0}^n \\binom{n}{r} x^{n-r} y^r, \\quad T_{r+1} = \\binom{n}{r} x^{n-r} y^r"
@@ -96,7 +96,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Expand ($x+y$^2).",
+    "question": "Expand $(x+y)^{2}$.",
     "options": {
       "A": "$x^2+2xy+y^2$",
       "B": "$x^2+y^2$",
@@ -104,7 +104,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$x^2-2xy+y^2$"
     },
     "correct_answer": "A",
-    "explanation": "The binomial coefficients for $1$ are $1,2,1$.",
+    "explanation": "The binomial coefficients for $n=2$ are $1,2,1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -114,7 +114,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Expand ($x-y$^2).",
+    "question": "Expand $(x-y)^{2}$.",
     "options": {
       "A": "$x^2+2xy+y^2$",
       "B": "$x^2-2xy+y^2$",
@@ -122,7 +122,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$x^2-xy+y^2$"
     },
     "correct_answer": "B",
-    "explanation": "Substitute $-y$ for $y$ in the expansion of ($x+y$^2).",
+    "explanation": "Substitute $-y$ for $y$ in the expansion of $(x+y)^{2}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -132,7 +132,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Expand ($x+y$^3).",
+    "question": "Expand $(x+y)^{3}$.",
     "options": {
       "A": "$x^3+y^3$",
       "B": "$x^3+2x^2y+2xy^2+y^3$",
@@ -150,7 +150,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Expand ($x-y$^3).",
+    "question": "Expand $(x-y)^{3}$.",
     "options": {
       "A": "$x^3-3x^2y-3xy^2-y^3$",
       "B": "$x^3-y^3$",
@@ -168,7 +168,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Expand ($a+b$^4).",
+    "question": "Expand $(a+b)^{4}$.",
     "options": {
       "A": "$a^4+4a^3b+6a^2b^2+4ab^3+b^4$",
       "B": "$a^4+2a^2b^2+b^4$",
@@ -186,7 +186,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The coefficient of $x^2y^2$ in ($x+y$^4) is:",
+    "question": "The coefficient of $x^2y^2$ in $(x+y)^{4}$ is:",
     "options": {
       "A": "$4$",
       "B": "$6$",
@@ -194,7 +194,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$12$"
     },
     "correct_answer": "B",
-    "explanation": "The coefficient is (\binom42=6).",
+    "explanation": "The coefficient is $\binom{4}{2}=6$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -204,7 +204,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The coefficient of $x^3y^2$ in ($x+y$^5) is:",
+    "question": "The coefficient of $x^3y^2$ in $(x+y)^{5}$ is:",
     "options": {
       "A": "$5$",
       "B": "$20$",
@@ -212,7 +212,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$15$"
     },
     "correct_answer": "C",
-    "explanation": "The power of $y$ is $2$, so the coefficient is (\binom52=10).",
+    "explanation": "The power of $y$ is $2$, so the coefficient is $\binom{5}{2}=10$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -222,7 +222,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The coefficient of $x^2y^4$ in ($x+y$^6) is:",
+    "question": "The coefficient of $x^2y^4$ in $(x+y)^{6}$ is:",
     "options": {
       "A": "$6$",
       "B": "$20$",
@@ -230,7 +230,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$15$"
     },
     "correct_answer": "D",
-    "explanation": "The coefficient is (\binom64=\binom62=15).",
+    "explanation": "The coefficient is $\binom{6}{4}=\binom{6}{2}=15$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -240,7 +240,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find the coefficient of $x^3$ in ($1+x$^5).",
+    "question": "Find the coefficient of $x^3$ in $(1+x)^{5}$.",
     "options": {
       "A": "$10$",
       "B": "$5$",
@@ -248,7 +248,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$1$"
     },
     "correct_answer": "A",
-    "explanation": "The coefficient is (\binom53=10).",
+    "explanation": "The coefficient is $\binom{5}{3}=10$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -258,7 +258,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find the coefficient of $x^4$ in ($1+x$^7).",
+    "question": "Find the coefficient of $x^4$ in $(1+x)^{7}$.",
     "options": {
       "A": "$21$",
       "B": "$35$",
@@ -266,7 +266,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$7$"
     },
     "correct_answer": "B",
-    "explanation": "(\binom74=\binom73=35).",
+    "explanation": "$\binom{7}{4}=\binom{7}{3}=35$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -276,7 +276,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find the coefficient of $x^2$ in ($1+2x$^4).",
+    "question": "Find the coefficient of $x^2$ in $(1+2x)^{4}$.",
     "options": {
       "A": "$6$",
       "B": "$12$",
@@ -284,7 +284,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$16$"
     },
     "correct_answer": "C",
-    "explanation": "The term is (\binom42$2x$^2=6$4$x^2=24x^2).",
+    "explanation": "The term is $\binom{4}{2}(2x)^2=6(4)x^2=24x^2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -294,7 +294,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find the coefficient of $x^3$ in ($1+3x$^5).",
+    "question": "Find the coefficient of $x^3$ in $(1+3x)^{5}$.",
     "options": {
       "A": "$90$",
       "B": "$135$",
@@ -302,7 +302,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$270$"
     },
     "correct_answer": "D",
-    "explanation": "(\binom53 3^3=10$27$=270).",
+    "explanation": "$\binom{5}{3} 3^3=10(27)=270$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -312,7 +312,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find the coefficient of $x^2$ in ($2+x$^5).",
+    "question": "Find the coefficient of $x^2$ in $(2+x)^{5}$.",
     "options": {
       "A": "$80$",
       "B": "$40$",
@@ -320,7 +320,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$160$"
     },
     "correct_answer": "A",
-    "explanation": "(\binom52 2^3x^2=10$8$x^2).",
+    "explanation": "$\binom{5}{2} 2^3x^2=10(8)x^2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -330,7 +330,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find the coefficient of $x^3$ in ($2+x$^6).",
+    "question": "Find the coefficient of $x^3$ in $(2+x)^{6}$.",
     "options": {
       "A": "$80$",
       "B": "$160$",
@@ -338,7 +338,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$240$"
     },
     "correct_answer": "B",
-    "explanation": "(\binom63 2^3=20$8$=160).",
+    "explanation": "$\binom{6}{3} 2^3=20(8)=160$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -348,7 +348,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find the coefficient of $x^4$ in ($3+x$^6).",
+    "question": "Find the coefficient of $x^4$ in $(3+x)^{6}$.",
     "options": {
       "A": "$45$",
       "B": "$90$",
@@ -356,7 +356,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$270$"
     },
     "correct_answer": "C",
-    "explanation": "(\binom64 3^2=15$9$=135).",
+    "explanation": "$\binom{6}{4} 3^2=15(9)=135$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -366,15 +366,15 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The general ($r+1$)th term of ($x+y$^n) is:",
+    "question": "The general $(r+1)$th term of $(x+y)^{n}$ is:",
     "options": {
-      "A": "(\binom nr x^ry^{n-r})",
-      "B": "(\binom n{r+1}x^{n-r}y^r)",
-      "C": "(\binom nr x^{n+r}y^r)",
-      "D": "(\binom nr x^{n-r}y^r)"
+      "A": "$\\binom{n}{r} x^ry^{n-r}$",
+      "B": "$\\binom{n}{r+1}x^{n-r}y^r$",
+      "C": "$\\binom{n}{r} x^{n+r}y^r$",
+      "D": "$\\binom{n}{r} x^{n-r}y^r$"
     },
     "correct_answer": "D",
-    "explanation": "The indexing begins with $1$, corresponding to the first term.",
+    "explanation": "The indexing begins with $r=0$, corresponding to the first term.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(x+y)^n = \\sum_{r=0}^n \\binom{n}{r} x^{n-r} y^r, \\quad T_{r+1} = \\binom{n}{r} x^{n-r} y^r"
@@ -384,15 +384,15 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The fourth term of ($x+y$^n) is:",
+    "question": "The fourth term of $(x+y)^{n}$ is:",
     "options": {
-      "A": "(\binom n3x^{n-3}y^3)",
-      "B": "(\binom n4x^{n-4}y^4)",
-      "C": "(\binom n3x^3y^{n-3})",
-      "D": "(\binom n2x^{n-2}y^2)"
+      "A": "$\\binom n3x^{n-3}y^3$",
+      "B": "$\\binom n4x^{n-4}y^4$",
+      "C": "$\\binom n3x^3y^{n-3}$",
+      "D": "$\\binom n2x^{n-2}y^2$"
     },
     "correct_answer": "A",
-    "explanation": "The fourth term corresponds to $1$.",
+    "explanation": "The fourth term corresponds to $r=3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(x+y)^n = \\sum_{r=0}^n \\binom{n}{r} x^{n-r} y^r, \\quad T_{r+1} = \\binom{n}{r} x^{n-r} y^r"
@@ -402,7 +402,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The third term of ($x+y$^8) is:",
+    "question": "The third term of $(x+y)^{8}$ is:",
     "options": {
       "A": "$8x^7y$",
       "B": "$28x^6y^2$",
@@ -410,7 +410,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$x^8$"
     },
     "correct_answer": "B",
-    "explanation": "Set $1$: (\binom82x^6y^2=28x^6y^2).",
+    "explanation": "Set $r=2$: $\\binom{8}{2}x^6y^2=28x^6y^2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -420,7 +420,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The fifth term of ($x+y$^7) is:",
+    "question": "The fifth term of $(x+y)^{7}$ is:",
     "options": {
       "A": "$21x^5y^2$",
       "B": "$7x^3y^4$",
@@ -428,7 +428,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$35x^4y^3$"
     },
     "correct_answer": "C",
-    "explanation": "Set $1$: (\binom74x^3y^4=35x^3y^4).",
+    "explanation": "Set $r=4$: $\\binom{7}{4}x^3y^4=35x^3y^4$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -438,7 +438,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find the fourth term of ($2x+y$^5).",
+    "question": "Find the fourth term of $(2x+y)^{5}$.",
     "options": {
       "A": "$40x^3y^2$",
       "B": "$80x^2y^3$",
@@ -446,7 +446,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$40x^2y^3$"
     },
     "correct_answer": "D",
-    "explanation": "(T_4=\binom53$2x$^2y^3=10$4$x^2y^3=40x^2y^3).",
+    "explanation": "$T_4=\binom{5}{3}(2x)^2y^3=10(4)x^2y^3=40x^2y^3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -456,7 +456,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find the third term of ($x+2y$^6).",
+    "question": "Find the third term of $(x+2y)^{6}$.",
     "options": {
       "A": "$60x^4y^2$",
       "B": "$30x^4y^2$",
@@ -464,7 +464,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$15x^4y^2$"
     },
     "correct_answer": "A",
-    "explanation": "(T_3=\binom62x^4$2y$^2=15$4$x^4y^2=60x^4y^2).",
+    "explanation": "$T_3=\binom{62}{x}^4(2y)^2=15(4)x^4y^2=60x^4y^2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -474,7 +474,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find the fourth term of ($x-2y$^5).",
+    "question": "Find the fourth term of $(x-2y)^{5}$.",
     "options": {
       "A": "$40x^2y^3$",
       "B": "$-80x^2y^3$",
@@ -482,7 +482,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$80x^2y^3$"
     },
     "correct_answer": "B",
-    "explanation": "(T_4=\binom53x^2$-2y$^3=10$-8$x^2y^3=-80x^2y^3).",
+    "explanation": "$T_4=\binom{53}{x}^2(-2y)^3=10(-8)x^2y^3=-80x^2y^3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -492,7 +492,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find the third term of ($2x-3y$^4).",
+    "question": "Find the third term of $(2x-3y)^{4}$.",
     "options": {
       "A": "$144x^2y^2$",
       "B": "$-144x^2y^2$",
@@ -500,7 +500,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$216x^2y^2$"
     },
     "correct_answer": "D",
-    "explanation": "(\binom42$2x$^2$-3y$^2=6$4$$9$x^2y^2=216x^2y^2).",
+    "explanation": "$\binom{4}{2}(2x)^2(-3y)^2=6(4)(9)x^2y^2=216x^2y^2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -510,7 +510,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The sum of the powers of $x$ and $y$ in every term of ($x+y$^n) is:",
+    "question": "The sum of the powers of $x$ and $y$ in every term of $(x+y)^{n}$ is:",
     "options": {
       "A": "$n$",
       "B": "$n+1$",
@@ -528,7 +528,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "In successive terms of ($x+y$^n), the power of $x$:",
+    "question": "In successive terms of $(x+y)^{n}$, the power of $x$:",
     "options": {
       "A": "Increases by $1$",
       "B": "Decreases by $1$",
@@ -546,7 +546,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "In successive terms of ($x+y$^n), the power of $y$:",
+    "question": "In successive terms of $(x+y)^{n}$, the power of $y$:",
     "options": {
       "A": "Decreases by $1$",
       "B": "Remains zero",
@@ -564,7 +564,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The binomial coefficients in ($x+y$^n) are:",
+    "question": "The binomial coefficients in $(x+y)^{n}$ are:",
     "options": {
       "A": "All equal",
       "B": "Strictly decreasing",
@@ -572,7 +572,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "Symmetric"
     },
     "correct_answer": "D",
-    "explanation": "(\binom nr=\binom n{n-r}).",
+    "explanation": "$\binom{n}{r}=\binom{n}{n}-r}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(x+y)^n = \\sum_{r=0}^n \\binom{n}{r} x^{n-r} y^r, \\quad T_{r+1} = \\binom{n}{r} x^{n-r} y^r"
@@ -582,7 +582,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Which coefficients occur in the expansion of ($x+y$^5)?",
+    "question": "Which coefficients occur in the expansion of $(x+y)^{5}$?",
     "options": {
       "A": "$1,5,10,10,5,1$",
       "B": "$1,4,6,4,1$",
@@ -600,7 +600,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Which coefficients occur in ($x+y$^6)?",
+    "question": "Which coefficients occur in $(x+y)^{6}$?",
     "options": {
       "A": "$1,5,10,10,5,1$",
       "B": "$1,6,15,20,15,6,1$",
@@ -608,7 +608,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$1,6,6,1$"
     },
     "correct_answer": "B",
-    "explanation": "They are (\binom60,\binom61,ldots,\binom66).",
+    "explanation": "They are $\binom{6}{0},\binom{6}{1},\ldots,\binom{6}{6}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -620,10 +620,10 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch7",
     "question": "Pascal’s identity is:",
     "options": {
-      "A": "(\binom nr=\binom n{n-r})",
-      "B": "(\binom nr=\binom{n-1}r-\binom{n-1}{r-1})",
-      "C": "(\binom nr=\binom{n-1}{r-1}+\binom{n-1}r)",
-      "D": "(\binom nr=n\binom{n-1}r)"
+      "A": "$\\binom{n}{r}=\\binom{n}{n-r}$",
+      "B": "$\\binom{n}{r}=\\binom{n-1}{r}-\\binom{n-1}{r-1}$",
+      "C": "$\\binom{n}{r}=\\binom{n-1}{r-1}+\\binom{n-1}{r}$",
+      "D": "$\\binom{n}{r}=n\\binom{n-1}{r}$"
     },
     "correct_answer": "C",
     "explanation": "Each interior Pascal-triangle entry is the sum of the two entries above it.",
@@ -636,7 +636,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate (\binom80+\binom81+cdots+\binom88).",
+    "question": "Evaluate $\binom{8}{0}+\binom{8}{1}+\\cdots+\binom{8}{8}$.",
     "options": {
       "A": "$128$",
       "B": "$512$",
@@ -644,7 +644,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$256$"
     },
     "correct_answer": "D",
-    "explanation": "Set $x=y=1$ in ($x+y$^8), giving $2^8=256$.",
+    "explanation": "Set $x=y=1$ in $(x+y)^{8}$, giving $2^8=256$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\sum_{r=0}^n \\binom{n}{r} = 2^n, \\quad C_0 + C_2 + \\dots = C_1 + C_3 + \\dots = 2^{n-1}"
@@ -654,7 +654,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The sum of all coefficients in ($x+y$^n) is:",
+    "question": "The sum of all coefficients in $(x+y)^{n}$ is:",
     "options": {
       "A": "$2^n$",
       "B": "(n!)",
@@ -672,7 +672,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The alternating sum\n\n$$\n\\binom{n}{0} - \\binom{n}{1} + \\binom{n}{2} - \\cdots\n$$\n\nequals, for $nge1$:",
+    "question": "The alternating sum\n\n$\n\\binom{n}{0} - \\binom{n}{1} + \\binom{n}{2} - \\cdots\n$\n\nequals, for $nge1$:",
     "options": {
       "A": "$2^n$",
       "B": "$0$",
@@ -680,7 +680,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$-1$"
     },
     "correct_answer": "B",
-    "explanation": "Set $x=1,y=-1$ in ($x+y$^n), giving $0^n=0$.",
+    "explanation": "Set $x=1,y=-1$ in $(x+y)^{n}$, giving $0^n=0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\sum_{r=0}^n \\binom{n}{r} = 2^n, \\quad C_0 + C_2 + \\dots = C_1 + C_3 + \\dots = 2^{n-1}"
@@ -726,7 +726,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate (\binom70+\binom72+\binom74+\binom76).",
+    "question": "Evaluate $\binom{7}{0}+\binom{7}{2}+\binom{7}{4}+\binom{7}{6}$.",
     "options": {
       "A": "$64$",
       "B": "$128$",
@@ -744,7 +744,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate (\binom71+\binom73+\binom75+\binom77).",
+    "question": "Evaluate $\binom{7}{1}+\binom{7}{3}+\binom{7}{5}+\binom{7}{7}$.",
     "options": {
       "A": "$32$",
       "B": "$64$",
@@ -762,15 +762,15 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate (displaystylesum_{r=0}^{n}$-1$^r\binom nr).",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}(-1)^r\binom{n}{r}$.",
     "options": {
       "A": "$1$",
       "B": "$2^n$",
       "C": "$0$",
-      "D": "($-1$^n)"
+      "D": "$(-1)^{n}$"
     },
     "correct_answer": "C",
-    "explanation": "This is the expansion of ($1-1$^n).",
+    "explanation": "This is the expansion of $(1-1)^{n}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -780,7 +780,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate (displaystylesum_{r=0}^{n}2^r\binom nr).",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}2^r\binom{n}{r}$.",
     "options": {
       "A": "$2^n$",
       "B": "$4^n$",
@@ -788,7 +788,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$3^n$"
     },
     "correct_answer": "D",
-    "explanation": "It is the expansion of ($1+2$^n).",
+    "explanation": "It is the expansion of $(1+2)^{n}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -798,7 +798,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate (displaystylesum_{r=0}^{n}3^r\binom nr).",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}3^r\binom{n}{r}$.",
     "options": {
       "A": "$4^n$",
       "B": "$3^n$",
@@ -816,15 +816,15 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate (displaystylesum_{r=0}^{n}$-2$^r\binom nr).",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}(-2)^r\binom{n}{r}$.",
     "options": {
       "A": "$2^n$",
-      "B": "($-1$^n)",
+      "B": "$(-1)^{n}$",
       "C": "$3^n$",
       "D": "$0$"
     },
     "correct_answer": "B",
-    "explanation": "The sum equals ($1-2$^n=$-1$^n).",
+    "explanation": "The sum equals $(1-2)^n=(-1)^n$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -834,7 +834,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate (displaystylesum_{r=0}^{5}\binom5r).",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{5}\binom{5}{r}$.",
     "options": {
       "A": "$16$",
       "B": "$64$",
@@ -852,7 +852,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate (displaystylesum_{r=0}^{6}2^r\binom6r).",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{6}2^r\binom{6}{r}$.",
     "options": {
       "A": "$64$",
       "B": "$216$",
@@ -870,15 +870,15 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The coefficient of $x^r$ in ($1+x$^n) is:",
+    "question": "The coefficient of $x^r$ in $(1+x)^{n}$ is:",
     "options": {
-      "A": "(\binom nr)",
+      "A": "$\\binom{n}{r}$",
       "B": "$n^r$",
       "C": "(r!)",
-      "D": "(\binom n{r+1})"
+      "D": "$\\binom{n}{r+1}$"
     },
     "correct_answer": "A",
-    "explanation": "The general term is (\binom nr x^r).",
+    "explanation": "The general term is $\binom{n}{r} x^r$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(x+y)^n = \\sum_{r=0}^n \\binom{n}{r} x^{n-r} y^r, \\quad T_{r+1} = \\binom{n}{r} x^{n-r} y^r"
@@ -888,15 +888,15 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The coefficient of $x^r$ in ($1-x$^n) is:",
+    "question": "The coefficient of $x^r$ in $(1-x)^{n}$ is:",
     "options": {
-      "A": "(\binom nr)",
-      "B": "($-1$^r\binom nr)",
-      "C": "(-\binom nr) always",
-      "D": "($-1$^n\binom nr)"
+      "A": "$\\binom{n}{r}$",
+      "B": "$-1^r\\binom{n}{r}$",
+      "C": "$-\binom{n}{r}$ always",
+      "D": "$-1^n\\binom{n}{r}$"
     },
     "correct_answer": "B",
-    "explanation": "The factor ($-x$^r) supplies the sign ($-1$^r).",
+    "explanation": "The factor $(-x)^{r}$ supplies the sign $(-1)^{r}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"

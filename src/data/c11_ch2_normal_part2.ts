@@ -973,12 +973,12 @@ export const C11_CH2_NORMAL_PART2: Question[] = [
     "chapter": "Matrices and Determinants",
     "question": "For $|A|\\neq0$, the inverse is:",
     "options": {
-      "A": "$A^{-1}=\\frac{\\operatorname{adj}A}{|A|}$",
+      "A": "$A^{-1}=\\frac{\\operatorname{adj}{A}}{|A|}$",
       "B": "$A^{-1}=|A|\\operatorname{adj}A$",
       "C": "$A^{-1}=A^t$",
       "D": "$A^{-1}=-A$"
     },
-    "option_a": "$A^{-1}=\\frac{\\operatorname{adj}A}{|A|}$",
+    "option_a": "$A^{-1}=\\frac{\\operatorname{adj}{A}}{|A|}$",
     "option_b": "$A^{-1}=|A|\\operatorname{adj}A$",
     "option_c": "$A^{-1}=A^t$",
     "option_d": "$A^{-1}=-A$",

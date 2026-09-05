@@ -6,7 +6,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The graph of $y=f$x$+5$ is obtained from $y=f$x$$ by shifting it:",
+    "question": "The graph of $y=f(x)+5$ is obtained from $y=f(x)$ by shifting it:",
     "options": {
       "A": "$5$ units left",
       "B": "$5$ units right",
@@ -42,7 +42,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The graph of $y=f$x+3$$ is shifted:",
+    "question": "The graph of $y=f(x+3)$ is shifted:",
     "options": {
       "A": "$3$ units right",
       "B": "$3$ units left",
@@ -114,7 +114,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If $-1,4$ lies on $y=f$x$$, which point lies on $y=f$x$+2$?",
+    "question": "If $(-1, 4)$ lies on $y=f(x)$, which point lies on $y=f(x)+2$?",
     "options": {
       "A": "$1,4$",
       "B": "$-1,6$",
@@ -168,7 +168,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The graph of $y=2f$x$$ is obtained by:",
+    "question": "The graph of $y=2f(x)$ is obtained by:",
     "options": {
       "A": "Halving every $x$-coordinate",
       "B": "Doubling every $y$-coordinate (vertical stretch)",
@@ -176,7 +176,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "Doubling every $x$-coordinate"
     },
     "correct_answer": "B",
-    "explanation": "Multiplying f(x)$$ by $2$ multiplies all $y$-values by $2$, creating a vertical stretch by a factor of $2$.",
+    "explanation": "Multiplying f(x)$ by $2$ multiplies all $y$-values by $2$, creating a vertical stretch by a factor of $2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
@@ -186,7 +186,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The graph of $y=\\dfrac{1}{2}f$x$$ represents a:",
+    "question": "The graph of $y=\\dfrac{1}{2}f(x)$ represents a:",
     "options": {
       "A": "Vertical compression by factor $\\dfrac{1}{2}$",
       "B": "Horizontal compression by factor $\\dfrac{1}{2}$",
@@ -204,7 +204,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The graph of $y=f$2x$$ is obtained by:",
+    "question": "The graph of $y=f(2x)$ is obtained by:",
     "options": {
       "A": "Horizontal compression by factor $\\dfrac{1}{2}$",
       "B": "Horizontal stretch by factor $2$",
@@ -212,7 +212,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "Shifting two units left"
     },
     "correct_answer": "A",
-    "explanation": "For $y=f$2x$$, each output that occurred at input $u$ now occurs at $x=u/2$, compressing horizontally by a factor of $1/2$.",
+    "explanation": "For $y=f(2x)$, each output that occurred at input $u$ now occurs at $x=u/2$, compressing horizontally by a factor of $1/2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
@@ -222,12 +222,12 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The graph of $y=f$x/3$$ represents a:",
+    "question": "The graph of $y=f(x/3)$ represents a:",
     "options": {
       "A": "Horizontal compression by factor $3$",
       "B": "Horizontal stretch by factor $3$",
       "C": "Vertical stretch by factor $3$",
-      "D": "Vertical compression by factor $1/3$"
+      "D": "Vertical compression by factor $\\frac{1}{3}$"
     },
     "correct_answer": "B",
     "explanation": "Replacing $x$ with $x/3$ triples the distance of every point from the $y$-axis, stretching horizontally by a factor of $3$.",
@@ -244,7 +244,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "options": {
       "A": "$0,0$",
       "B": "$1,0$",
-      "C": "$0,1$",
+      "C": "$(0,1)$",
       "D": "$-1,0$"
     },
     "correct_answer": "A",
@@ -266,7 +266,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$-2,3$"
     },
     "correct_answer": "C",
-    "explanation": "In the standard form $y=a|x-h|+k$, the vertex is $(h,k)=$3,2$$.",
+    "explanation": "In the standard form $y=a|x-h|+k$, the vertex is $(h,k)=$3,2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -330,7 +330,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The graph of $y=|f$x$|$ is obtained from $y=f$x$$ by:",
+    "question": "The graph of $y=|f(x)|$ is obtained from $y=f(x)$ by:",
     "options": {
       "A": "Reflecting the whole graph across the $y$-axis",
       "B": "Reflecting the portions below the $x$-axis across the $x$-axis",
@@ -356,7 +356,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "One-one on $\\mathbb{R}$"
     },
     "correct_answer": "B",
-    "explanation": "Let g(x)$=f(|x|)$. Then g(-x)$=f$|-x|$=f(|x|)=g$x$$, which satisfies the definition of an even function.",
+    "explanation": "Let $g(x) = f(|x|)$. Then $g(-x) = f(|-x|)=f(|x|)=g(x)$, which satisfies the definition of an even function.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -370,7 +370,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "options": {
       "A": "$-1,0$",
       "B": "$0,0$",
-      "C": "$0,1$",
+      "C": "$(0,1)$",
       "D": "$1,0$"
     },
     "correct_answer": "B",
@@ -456,7 +456,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The inverse of f(x)$=x^3$ is:",
+    "question": "The inverse of $f(x) = x^3$ is:",
     "options": {
       "A": "$x^2$",
       "B": "$\\sqrt{x}$",
@@ -464,7 +464,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$\\dfrac{1}{x^3}$"
     },
     "correct_answer": "C",
-    "explanation": "Solving $y=x^3$ for $x$ gives $x=\\sqrt[3]{y}$. Thus $f^{-1}$x$=\\sqrt[3]{x}$.",
+    "explanation": "Solving $y=x^3$ for $x$ gives $x=\\sqrt[3]{y}$. Thus $f^{-1}(x)$=\\sqrt[3]{x}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -582,7 +582,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The function f(x)$=\\dfrac{1}{x^2+1}$ has no vertical asymptote because:",
+    "question": "The function $f(x) = \\dfrac{1}{x^2+1}$ has no vertical asymptote because:",
     "options": {
       "A": "Its numerator is constant",
       "B": "$x^2+1$ is never zero for any real $x$",
@@ -621,7 +621,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "question": "The $y$-intercept of $y=\\dfrac{1}{x+1}$ is:",
     "options": {
       "A": "$0,0$",
-      "B": "$0,1$",
+      "B": "$(0,1)$",
       "C": "$1,0$",
       "D": "$0,-1$"
     },
@@ -680,7 +680,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$[0,1]$"
     },
     "correct_answer": "C",
-    "explanation": "Solving $y=\\dfrac{x}{x+1}$ for $x$: $yx+y=x \\implies x$1-y$=y \\implies x=\\dfrac{y}{1-y}$. This is valid for all $y\\ne1$.",
+    "explanation": "Solving $y=\\dfrac{x}{x+1}$ for $x$: $yx+y=x \\implies x(1-y)=y \\implies x=\\dfrac{y}{1-y}$. This is valid for all $y\\ne1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Range}(f) = \\{f(x) : x \\in \\text{Dom}(f)\\}"
@@ -708,7 +708,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The graph $y=$x-1$^3+2$ has its inflection point (central point of symmetry) at:",
+    "question": "The graph $y=(x-1)^3+2$ has its inflection point (central point of symmetry) at:",
     "options": {
       "A": "$-1,2$",
       "B": "$1,-2$",
@@ -728,13 +728,13 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch8",
     "question": "Which equation represents the reflection of $y=x^3$ across the $x$-axis?",
     "options": {
-      "A": "$y=$-x$^3$",
+      "A": "$y=(-x)^3$",
       "B": "$y=-x^3$",
       "C": "Both A and B",
       "D": "$y=x^3+1$"
     },
     "correct_answer": "C",
-    "explanation": "Reflecting across the $x$-axis yields $y=-x^3$. Since $$-x$^3=-x^3$, both expressions represent the same curve.",
+    "explanation": "Reflecting across the $x$-axis yields $y=-x^3$. Since $(-x)^3=-x^3$, both expressions represent the same curve.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -744,7 +744,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The function f(x)$=x^3$ is strictly increasing on:",
+    "question": "The function $f(x) = x^3$ is strictly increasing on:",
     "options": {
       "A": "Only $(0,\\infty)$",
       "B": "Only $(-\\infty,0)$",
@@ -752,7 +752,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "No interval"
     },
     "correct_answer": "C",
-    "explanation": "For any $x_1 < x_2$, $x_1^3 < x_2^3$. Thus f(x)$=x^3$ is strictly increasing on $(-\\infty,\\infty)$.",
+    "explanation": "For any $x_1 < x_2$, $x_1^3 < x_2^3$. Thus $f(x) = x^3$ is strictly increasing on $(-\\infty,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -762,7 +762,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The function f(x)$=x^2$ is strictly decreasing on:",
+    "question": "The function $f(x) = x^2$ is strictly decreasing on:",
     "options": {
       "A": "$(-\\infty,0]$",
       "B": "$[0,\\infty)$",
@@ -770,7 +770,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "No real interval"
     },
     "correct_answer": "A",
-    "explanation": "For $x_1 < x_2 \\le 0$, $x_1^2 > x_2^2$, so f(x)$=x^2$ is strictly decreasing on $(-\\infty,0]$.",
+    "explanation": "For $x_1 < x_2 \\le 0$, $x_1^2 > x_2^2$, so $f(x) = x^2$ is strictly decreasing on $(-\\infty,0]$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -780,7 +780,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The function f(x)$=x^2$ is strictly increasing on:",
+    "question": "The function $f(x) = x^2$ is strictly increasing on:",
     "options": {
       "A": "$(-\\infty,0]$",
       "B": "$[0,\\infty)$",
@@ -788,7 +788,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$[-1,1]$"
     },
     "correct_answer": "B",
-    "explanation": "For $0 \\le x_1 < x_2$, $x_1^2 < x_2^2$, so f(x)$=x^2$ is strictly increasing on $[0,\\infty)$.",
+    "explanation": "For $0 \\le x_1 < x_2$, $x_1^2 < x_2^2$, so $f(x) = x^2$ is strictly increasing on $[0,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -798,7 +798,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The function f(x)$=|x|$ is decreasing on:",
+    "question": "The function $f(x) = |x|$ is decreasing on:",
     "options": {
       "A": "$(-\\infty,0]$",
       "B": "$[0,\\infty)$",
@@ -806,7 +806,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$[1,\\infty)$"
     },
     "correct_answer": "A",
-    "explanation": "For $x\\le 0$, f(x)$=-x$, which is a line with negative slope (decreasing).",
+    "explanation": "For $x\\le 0$, $f(x) = -x$, which is a line with negative slope (decreasing).",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"

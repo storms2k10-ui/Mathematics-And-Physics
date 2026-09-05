@@ -38,12 +38,12 @@ export const C11_CH2_NORMAL_PART3: Question[] = [
     "question": "Multiplying one row by $k$ multiplies the determinant by:",
     "options": {
       "A": "$k^2$",
-      "B": "$\\frac1k$",
+      "B": "$\\frac{1}{k}$",
       "C": "$k$",
       "D": "$-k$"
     },
     "option_a": "$k^2$",
-    "option_b": "$\\frac1k$",
+    "option_b": "$\\frac{1}{k}$",
     "option_c": "$k$",
     "option_d": "$-k$",
     "correct_answer": "C",
@@ -133,12 +133,12 @@ export const C11_CH2_NORMAL_PART3: Question[] = [
       "A": "$|A^{-1}|=|A|$",
       "B": "$|A^{-1}|=-|A|$",
       "C": "$|A^{-1}|=0$",
-      "D": "$|A^{-1}|=\\frac1{|A|}$"
+      "D": "$|A^{-1}|=\\frac{1}{|A|}$"
     },
     "option_a": "$|A^{-1}|=|A|$",
     "option_b": "$|A^{-1}|=-|A|$",
     "option_c": "$|A^{-1}|=0$",
-    "option_d": "$|A^{-1}|=\\frac1{|A|}$",
+    "option_d": "$|A^{-1}|=\\frac{1}{|A|}$",
     "correct_answer": "D",
     "correct_option": "D",
     "explanation": "From $AA^{-1}=I$, $|A||A^{-1}|=1$.",
@@ -349,12 +349,12 @@ export const C11_CH2_NORMAL_PART3: Question[] = [
       "A": "$\\operatorname{diag}(2,5)$",
       "B": "$\\operatorname{diag}(-2,-5)$",
       "C": "$\\operatorname{diag}(5,2)$",
-      "D": "$\\operatorname{diag}\\left(\\frac12,\\frac15\\right)$"
+      "D": "$\\operatorname{diag}\\left(\\frac{1}{2},\\frac{1}{5}\\right)$"
     },
     "option_a": "$\\operatorname{diag}(2,5)$",
     "option_b": "$\\operatorname{diag}(-2,-5)$",
     "option_c": "$\\operatorname{diag}(5,2)$",
-    "option_d": "$\\operatorname{diag}\\left(\\frac12,\\frac15\\right)$",
+    "option_d": "$\\operatorname{diag}\\left(\\frac{1}{2},\\frac{1}{5}\\right)$",
     "correct_answer": "D",
     "correct_option": "D",
     "explanation": "Invert each nonzero diagonal entry.",
@@ -372,12 +372,12 @@ export const C11_CH2_NORMAL_PART3: Question[] = [
       "A": "$\\operatorname{diag}(2,3,4)$",
       "B": "$\\operatorname{diag}(12,8,6)$",
       "C": "$\\operatorname{diag}(6,8,12)$",
-      "D": "$\\operatorname{diag}\\left(\\frac12,\\frac13,\\frac14\\right)$"
+      "D": "$\\operatorname{diag}\\left(\\frac{1}{2},\\frac{1}{3},\\frac{1}{4}\\right)$"
     },
     "option_a": "$\\operatorname{diag}(2,3,4)$",
     "option_b": "$\\operatorname{diag}(12,8,6)$",
     "option_c": "$\\operatorname{diag}(6,8,12)$",
-    "option_d": "$\\operatorname{diag}\\left(\\frac12,\\frac13,\\frac14\\right)$",
+    "option_d": "$\\operatorname{diag}\\left(\\frac{1}{2},\\frac{1}{3},\\frac{1}{4}\\right)$",
     "correct_answer": "B",
     "correct_option": "B",
     "explanation": "Each diagonal cofactor is the product of the other two diagonal entries.",
@@ -440,20 +440,20 @@ export const C11_CH2_NORMAL_PART3: Question[] = [
     "question": "If $k\\neq0$ and $A$ is invertible, then:",
     "options": {
       "A": "$(kA)^{-1}=kA^{-1}$",
-      "B": "$(kA)^{-1}=\\frac1kA^{-1}$",
+      "B": "$(kA)^{-1}=\\frac{1}{k}A^{-1}$",
       "C": "$(kA)^{-1}=k^2A^{-1}$",
       "D": "$(kA)^{-1}=A^{-1}$"
     },
     "option_a": "$(kA)^{-1}=kA^{-1}$",
-    "option_b": "$(kA)^{-1}=\\frac1kA^{-1}$",
+    "option_b": "$(kA)^{-1}=\\frac{1}{k}A^{-1}$",
     "option_c": "$(kA)^{-1}=k^2A^{-1}$",
     "option_d": "$(kA)^{-1}=A^{-1}$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$(kA)\\left(\\frac1kA^{-1}\\right)=I$.",
+    "explanation": "$(kA)\\left(\\frac{1}{k}A^{-1}\\right)=I$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(kA)\\left(\\frac1kA^{-1}\\right)=I"
+    "formula": "(kA)\\left(\\frac{1}{k}A^{-1}\\right)=I"
   },
   {
     "id": "c11-ch2-normal-q120",
@@ -465,13 +465,13 @@ export const C11_CH2_NORMAL_PART3: Question[] = [
     "options": {
       "A": "$2$",
       "B": "$-2$",
-      "C": "$\\frac12$",
-      "D": "$-\\frac12$"
+      "C": "$\\frac{1}{2}$",
+      "D": "$-\\frac{1}{2}$"
     },
     "option_a": "$2$",
     "option_b": "$-2$",
-    "option_c": "$\\frac12$",
-    "option_d": "$-\\frac12$",
+    "option_c": "$\\frac{1}{2}$",
+    "option_d": "$-\\frac{1}{2}$",
     "correct_answer": "D",
     "correct_option": "D",
     "explanation": "$|A^{-1}|=1/|A|=-1/2$.",

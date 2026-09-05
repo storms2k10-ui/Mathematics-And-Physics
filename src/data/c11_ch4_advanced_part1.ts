@@ -205,7 +205,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$15$",
     "option_d": "$8$",
     "correct_answer": "A",
-    "explanation": "$T_4=\\frac{4(5)}2=10$.",
+    "explanation": "$T_4=\\frac{4(5)}{2}=10$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -217,7 +217,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "chapter": "Sequence and Series",
     "question": "The $n$th triangular number is:",
     "option_a": "$n^2$",
-    "option_b": "$\\frac{n(n+1)}2$",
+    "option_b": "$\\frac{n(n+1)}{2}$",
     "option_c": "$n!$",
     "option_d": "$2n-1$",
     "correct_answer": "B",
@@ -237,7 +237,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$21$",
     "option_d": "$28$",
     "correct_answer": "C",
-    "explanation": "$T_6=\\frac{6(7)}2=21$.",
+    "explanation": "$T_6=\\frac{6(7)}{2}=21$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
