@@ -429,8 +429,8 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
   };
 
   return (
-    <div id="ranking-page-view" className="py-6 sm:py-8 bg-slate-50 dark:bg-slate-950 min-h-[calc(100vh-100px)] animate-fade-in">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+    <div id="ranking-page-view" className="py-4 sm:py-8 bg-slate-50 dark:bg-slate-950 min-h-[calc(100vh-100px)] animate-fade-in">
+      <div className="w-full max-w-4xl mx-auto px-1.5 sm:px-6 lg:px-8 space-y-4">
 
         {/* Academic Ranking Page Container with Increased Height for More Entries */}
         <div className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden flex flex-col min-h-[750px] lg:min-h-[850px]">
@@ -561,8 +561,8 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
 
           </div>
 
-          {/* Main Content: Candidate Overall Accuracy Ranking List with Increased Height */}
-          <div className="flex-1 overflow-y-auto p-4 sm:p-6 min-h-[580px] lg:min-h-[680px]">
+          {/* Main Content: Candidate Overall Accuracy Ranking List with Increased Width in Mobile View */}
+          <div className="w-full flex-1 overflow-y-auto p-2 sm:p-6 min-h-[580px] lg:min-h-[680px]">
             {rankedCandidateProfiles.length === 0 ? (
               <div className="text-center py-20 space-y-3">
                 <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 flex items-center justify-center mx-auto">
@@ -588,7 +588,7 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
                         key={candidate.candidateId || index}
                         id={isCurrentUser ? 'current-user-ranking-row' : undefined}
                         onClick={() => setSelectedCandidate(candidate)}
-                        className={`relative p-3.5 sm:p-4 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 hover:scale-[1.002] ${
+                        className={`relative p-2.5 sm:p-4 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-2 sm:gap-3 hover:scale-[1.002] ${
                           isCurrentUser
                             ? 'bg-gradient-to-r from-sky-50 via-sky-100/50 to-blue-50/70 dark:from-sky-950/70 dark:via-sky-900/30 dark:to-slate-900 border-2 border-sky-400 dark:border-sky-500 shadow-md shadow-sky-500/15 ring-2 ring-sky-400/40 dark:ring-sky-500/30 hover:border-sky-500 dark:hover:border-sky-400'
                             : index === 0
@@ -601,12 +601,14 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
                           <div className="absolute left-0 top-2.5 bottom-2.5 w-1.5 rounded-r-full bg-gradient-to-b from-sky-400 to-blue-600 shadow-xs" />
                         )}
 
-                        <div className="flex items-center gap-3 min-w-0">
+                        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
                           {getRankBadge(index + 1, isCurrentUser)}
 
-                          <div className="min-w-0 space-y-1">
-                            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                              <h4 className={`text-xs sm:text-sm font-black truncate ${
+                          {/* Candidate Content: Exactly Two Lines in Mobile and Web View */}
+                          <div className="min-w-0 flex-1 space-y-0.5 sm:space-y-1">
+                            {/* Line 1: Candidate Name + Badges in One Single Line */}
+                            <div className="flex items-center gap-1.5 sm:gap-2 flex-nowrap overflow-hidden">
+                              <h4 className={`text-xs sm:text-sm font-black truncate shrink min-w-0 ${
                                 isCurrentUser ? 'text-sky-950 dark:text-sky-100' : 'text-slate-900 dark:text-white'
                               }`}>
                                 {candidate.studentName}
@@ -614,13 +616,13 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
 
                               {/* Distinct Current User Highlight Badge */}
                               {isCurrentUser && (
-                                <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-xs flex items-center gap-1.5 shrink-0">
+                                <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-xs flex items-center gap-1 shrink-0 whitespace-nowrap">
                                   <span className="w-1.5 h-1.5 rounded-full bg-white" />
                                   <span>You</span>
                                 </span>
                               )}
 
-                              <span className={`px-2 py-0.5 rounded-full text-[10px] font-black shrink-0 ${
+                              <span className={`px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black shrink-0 whitespace-nowrap ${
                                 isCurrentUser
                                   ? 'bg-sky-200/70 dark:bg-sky-900/80 text-sky-800 dark:text-sky-200 border border-sky-300 dark:border-sky-700'
                                   : 'bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800'
@@ -630,28 +632,29 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
 
                               {/* Difficulty Tier Badges */}
                               {hasAdvanced && (
-                                <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800 shrink-0 flex items-center gap-0.5">
+                                <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800 shrink-0 whitespace-nowrap flex items-center gap-0.5">
                                   Advanced
                                 </span>
                               )}
                               {hasNormal && (
-                                <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shrink-0 flex items-center gap-0.5">
+                                <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shrink-0 whitespace-nowrap flex items-center gap-0.5">
                                   Normal
                                 </span>
                               )}
                             </div>
 
-                            <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
-                              <span className={`font-medium flex items-center gap-1 ${
+                            {/* Line 2: All Components Below Name in One Single Line */}
+                            <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 whitespace-nowrap flex-nowrap overflow-hidden">
+                              <span className={`font-medium flex items-center gap-1 shrink-0 whitespace-nowrap ${
                                 isCurrentUser ? 'text-sky-600 dark:text-sky-400' : 'text-indigo-600 dark:text-indigo-400'
                               }`}>
-                                <Clock className="w-3 h-3" />
-                                <span>{formatLiveTime(candidate.latestAttemptTimestamp)}</span>
+                                <Clock className="w-3 h-3 shrink-0" />
+                                <span className="whitespace-nowrap">{formatLiveTime(candidate.latestAttemptTimestamp)}</span>
                               </span>
                               {isCurrentUser && (
                                 <>
-                                  <span>•</span>
-                                  <span className="font-bold text-sky-600 dark:text-sky-400">
+                                  <span className="shrink-0 text-slate-400 dark:text-slate-500">•</span>
+                                  <span className="font-bold text-sky-600 dark:text-sky-400 shrink-0 whitespace-nowrap">
                                     Your Current Ranking
                                   </span>
                                 </>
@@ -661,7 +664,7 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
                         </div>
 
                         {/* Right Side: Overall Accuracy & Chevron */}
-                        <div className="flex items-center gap-3 shrink-0">
+                        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                           {/* Overall Accuracy Block */}
                           <div className="text-right">
                             <div className={`text-base sm:text-lg font-black ${

@@ -699,12 +699,14 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                         <div className="absolute left-0 top-2.5 bottom-2.5 w-1.5 rounded-r-full bg-gradient-to-b from-sky-400 to-blue-600 shadow-xs" />
                       )}
 
-                      <div className="flex items-center gap-3 min-w-0">
+                      <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
                         {getRankBadge(index + 1, isCurrentUser)}
 
-                        <div className="min-w-0 space-y-1">
-                          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                            <h4 className={`text-xs sm:text-sm font-black truncate ${
+                        {/* Candidate Content: Exactly Two Lines in Mobile and Web View */}
+                        <div className="min-w-0 flex-1 space-y-0.5 sm:space-y-1">
+                          {/* Line 1: Candidate Name + Badges in One Single Line */}
+                          <div className="flex items-center gap-1.5 sm:gap-2 flex-nowrap overflow-hidden">
+                            <h4 className={`text-xs sm:text-sm font-black truncate shrink min-w-0 ${
                               isCurrentUser ? 'text-sky-950 dark:text-sky-100' : 'text-slate-900 dark:text-white'
                             }`}>
                               {candidate.studentName}
@@ -712,13 +714,13 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
                             {/* Distinct Current User Highlight Badge */}
                             {isCurrentUser && (
-                              <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-xs flex items-center gap-1.5 shrink-0">
+                              <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-xs flex items-center gap-1 shrink-0 whitespace-nowrap">
                                 <span className="w-1.5 h-1.5 rounded-full bg-white" />
                                 <span>You</span>
                               </span>
                             )}
 
-                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-black shrink-0 ${
+                            <span className={`px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black shrink-0 whitespace-nowrap ${
                               isCurrentUser
                                 ? 'bg-sky-200/70 dark:bg-sky-900/80 text-sky-800 dark:text-sky-200 border border-sky-300 dark:border-sky-700'
                                 : 'bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800'
@@ -728,28 +730,29 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
                             {/* Difficulty Tier Badges */}
                             {hasAdvanced && (
-                              <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800 shrink-0 flex items-center gap-0.5">
+                              <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800 shrink-0 whitespace-nowrap flex items-center gap-0.5">
                                 Advanced
                               </span>
                             )}
                             {hasNormal && (
-                              <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shrink-0 flex items-center gap-0.5">
+                              <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shrink-0 whitespace-nowrap flex items-center gap-0.5">
                                 Normal
                               </span>
                             )}
                           </div>
 
-                          <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
-                            <span className={`font-medium flex items-center gap-1 ${
+                          {/* Line 2: All Components Below Name in One Single Line */}
+                          <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 whitespace-nowrap flex-nowrap overflow-hidden">
+                            <span className={`font-medium flex items-center gap-1 shrink-0 whitespace-nowrap ${
                               isCurrentUser ? 'text-sky-600 dark:text-sky-400' : 'text-indigo-600 dark:text-indigo-400'
                             }`}>
-                              <Clock className="w-3 h-3" />
-                              <span>{formatLiveTime(candidate.latestAttemptTimestamp)}</span>
+                              <Clock className="w-3 h-3 shrink-0" />
+                              <span className="whitespace-nowrap">{formatLiveTime(candidate.latestAttemptTimestamp)}</span>
                             </span>
                             {isCurrentUser && (
                               <>
-                                <span>•</span>
-                                <span className="font-bold text-sky-600 dark:text-sky-400">
+                                <span className="shrink-0 text-slate-400 dark:text-slate-500">•</span>
+                                <span className="font-bold text-sky-600 dark:text-sky-400 shrink-0 whitespace-nowrap">
                                   Your Current Ranking
                                 </span>
                               </>
