@@ -806,58 +806,33 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
               {/* Drawer Header */}
               <div className="bg-gradient-to-r from-indigo-700 via-purple-700 to-indigo-900 p-6 text-white relative">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center font-black text-xl border border-white/30">
-                      {selectedCandidate.studentName.charAt(0).toUpperCase()}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-violet-400/30 text-violet-200 border border-violet-300/30">
-                          Class {selectedCandidate.classLevel} Student
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-violet-400/30 text-violet-200 border border-violet-300/30">
+                        Class {selectedCandidate.classLevel} Student
+                      </span>
+                      {checkIsCurrentUser(selectedCandidate) && (
+                        <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-sky-400/30 text-sky-200 border border-sky-300/40">
+                          Your Profile
                         </span>
-                        {checkIsCurrentUser(selectedCandidate) && (
-                          <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-sky-400/30 text-sky-200 border border-sky-300/40">
-                            Your Profile
-                          </span>
-                        )}
-                        <span className="text-xs text-white/80">
-                          {selectedCandidate.track}
-                        </span>
-                      </div>
-                      <h3 className="text-xl font-black text-white">
-                        {selectedCandidate.studentName}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => handleShareCandidateProgress(selectedCandidate, 0)}
-                      className="px-3 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 text-white transition-all cursor-pointer flex items-center gap-1.5 text-xs font-bold shadow-xs"
-                      title="Share Track Record"
-                    >
-                      {copiedShare ? (
-                        <>
-                          <Check className="w-3.5 h-3.5 text-emerald-300" />
-                          <span className="text-emerald-200">Copied!</span>
-                        </>
-                      ) : (
-                        <>
-                          <Share2 className="w-3.5 h-3.5" />
-                          <span>Share Track Record</span>
-                        </>
                       )}
-                    </button>
-
-                    <button
-                      onClick={() => setSelectedCandidate(null)}
-                      className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 active:scale-95 text-white transition-all cursor-pointer flex items-center justify-center shadow-xs"
-                      title="Close"
-                      aria-label="Close"
-                    >
-                      <X className="w-4.5 h-4.5" />
-                    </button>
+                      <span className="text-xs text-white/80">
+                        {selectedCandidate.track}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-black text-white mt-1">
+                      {selectedCandidate.studentName}
+                    </h3>
                   </div>
+
+                  <button
+                    onClick={() => setSelectedCandidate(null)}
+                    className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 active:scale-95 text-white transition-all cursor-pointer flex items-center justify-center shadow-xs"
+                    title="Close"
+                    aria-label="Close"
+                  >
+                    <X className="w-4.5 h-4.5" />
+                  </button>
                 </div>
 
                 {/* Overall Accuracy Bar for this exact subject and class */}
