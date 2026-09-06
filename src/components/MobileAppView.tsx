@@ -66,6 +66,44 @@ import { MathText } from './MathText';
 
 export type MobileTab = 'philosophers' | 'studio' | 'modules' | 'rankings' | 'profile';
 
+// Low-poly faceted blue pattern matching the exact design and pattern from the user reference figure
+const BlueFacetPatternSvg: React.FC = () => (
+  <svg
+    className="absolute inset-0 w-full h-full pointer-events-none rounded-full"
+    viewBox="0 0 300 80"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id="blueBaseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#0058f5" />
+        <stop offset="100%" stopColor="#0042d2" />
+      </linearGradient>
+    </defs>
+    <rect width="300" height="80" fill="url(#blueBaseGrad)" />
+    <polygon points="0,0 65,0 35,42" fill="#006bfb" opacity="0.9" />
+    <polygon points="0,0 35,42 0,80" fill="#0050db" opacity="0.9" />
+    <polygon points="0,80 35,42 75,80" fill="#0042c4" opacity="0.95" />
+    <polygon points="65,0 130,0 95,38" fill="#1c7bff" opacity="0.95" />
+    <polygon points="65,0 95,38 35,42" fill="#005ee9" opacity="0.9" />
+    <polygon points="35,42 95,38 75,80" fill="#0863f2" opacity="0.9" />
+    <polygon points="75,80 95,38 140,80" fill="#004cd4" opacity="0.95" />
+    <polygon points="130,0 185,0 155,42" fill="#2d87ff" opacity="0.9" />
+    <polygon points="130,0 155,42 95,38" fill="#1e7cff" opacity="0.95" />
+    <polygon points="95,38 155,42 140,80" fill="#0967f7" opacity="0.9" />
+    <polygon points="185,0 245,0 215,38" fill="#1673ff" opacity="0.95" />
+    <polygon points="185,0 215,38 155,42" fill="#2883ff" opacity="0.9" />
+    <polygon points="155,42 215,38 195,80" fill="#0056e6" opacity="0.95" />
+    <polygon points="140,80 155,42 195,80" fill="#004bcf" opacity="0.95" />
+    <polygon points="245,0 300,0 270,44" fill="#0062f5" opacity="0.9" />
+    <polygon points="245,0 270,44 215,38" fill="#1a76ff" opacity="0.95" />
+    <polygon points="215,38 270,44 245,80" fill="#0052dc" opacity="0.95" />
+    <polygon points="195,80 215,38 245,80" fill="#0045c4" opacity="0.95" />
+    <polygon points="300,0 300,80 270,44" fill="#0056e4" opacity="0.9" />
+    <polygon points="270,44 300,80 245,80" fill="#0040be" opacity="0.95" />
+  </svg>
+);
+
 interface MobileAppViewProps {
   activeTrack: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas';
   selectedClass: ClassLevel;
@@ -532,15 +570,22 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                       key={lvl}
                       id={`mobile-class-select-${lvl}`}
                       onClick={() => onSelectClass(lvl, activeTrack)}
-                      className={`py-2 px-1 rounded-xl font-extrabold transition-all duration-300 flex items-center justify-center cursor-pointer relative overflow-hidden group ${
+                      style={
                         isSelected
-                          ? 'bg-gradient-to-tr from-emerald-600 via-green-600 to-teal-600 text-white shadow-md shadow-emerald-500/35 scale-102 border-2 border-emerald-300 ring-2 ring-emerald-400/60'
-                          : 'bg-slate-100/90 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-white hover:text-emerald-600 hover:shadow-sm hover:border-emerald-300 dark:hover:border-emerald-600 border border-slate-200/60 dark:border-slate-700/60 hover:scale-105 active:scale-95'
+                          ? {
+                              background: 'linear-gradient(90deg, #00e599 0%, #00a8ff 55%, #0066ff 100%)',
+                            }
+                          : undefined
+                      }
+                      className={`h-9 sm:h-10 py-2 px-1 rounded-full font-bold transition-all duration-300 flex items-center justify-center cursor-pointer relative overflow-hidden group ${
+                        isSelected
+                          ? 'text-white shadow-md shadow-blue-500/30 scale-102 border-0 ring-0'
+                          : 'bg-slate-100/90 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 border border-slate-200/80 dark:border-slate-700/80 hover:scale-105 active:scale-95'
                       }`}
                     >
                       <span className="text-xs sm:text-sm font-black group-hover:tracking-wider transition-all duration-300">Class {lvl}</span>
                       {isSelected && (
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full duration-1000 transition-transform" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full duration-1000 transition-transform pointer-events-none" />
                       )}
                     </button>
                   );
@@ -573,19 +618,41 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                         setSelectedStyleId(item.id);
                         item.action();
                       }}
-                      className={`p-2 rounded-xl transition-all duration-300 flex items-center gap-1.5 sm:gap-2 text-left cursor-pointer relative group ${
+                      className={`h-8.5 sm:h-9 py-1 px-2.5 sm:py-1.5 sm:px-3 rounded-full transition-all duration-150 ease-out flex items-center gap-1.5 sm:gap-2 text-left cursor-pointer relative overflow-hidden group select-none active:scale-90 active:brightness-110 active:shadow-inner ${
                         isActive
-                          ? 'ring-2 ring-emerald-500 ring-offset-1 dark:ring-offset-slate-900 shadow-sm shadow-emerald-500/25 scale-[1.01] bg-emerald-50/90 dark:bg-emerald-950/50 border-2 border-emerald-500 dark:border-emerald-400'
-                          : 'bg-slate-50/90 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 hover:scale-[1.01] active:scale-[0.98] hover:bg-white dark:hover:bg-slate-800 hover:shadow-xs'
+                          ? 'text-white shadow-md shadow-blue-600/35 scale-[1.01] border-0 ring-2 ring-blue-400/40 ring-offset-1 dark:ring-offset-slate-900'
+                          : 'bg-slate-100/90 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 hover:scale-[1.02] hover:bg-white dark:hover:bg-slate-800 hover:shadow-xs'
                       }`}
                     >
-                      {/* Gradient Square Thumbnail */}
-                      <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br ${item.gradient} border border-white/60 dark:border-slate-700 flex items-center justify-center shrink-0 shadow-xs transition-all duration-300 group-hover:scale-105 ${isActive ? 'shadow-emerald-500/30 ring-2 ring-emerald-500' : ''}`}>
-                        <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-800 dark:text-slate-200 stroke-[2.2] transition-transform duration-300 group-hover:rotate-6 ${isActive ? 'text-emerald-600 dark:text-emerald-300 scale-110' : ''}`} />
+                      {/* Exact blue faceted pattern from picture when clicked/active */}
+                      {isActive && <BlueFacetPatternSvg />}
+
+                      {/* Interactive click touch-flash feedback overlay */}
+                      <span className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-active:opacity-100 transition-opacity duration-100 pointer-events-none" />
+
+                      {/* Icon Thumbnail */}
+                      <div
+                        className={`w-5.5 h-5.5 sm:w-6.5 sm:h-6.5 rounded-full flex items-center justify-center shrink-0 shadow-xs transition-all duration-150 z-10 group-active:scale-90 group-active:rotate-[-8deg] ${
+                          isActive
+                            ? 'bg-white/20 border border-white/40 text-white'
+                            : `bg-gradient-to-br ${item.gradient} border border-white/60 dark:border-slate-700 text-slate-800 dark:text-slate-200 group-hover:scale-105`
+                        }`}
+                      >
+                        <Icon
+                          className={`w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.2] transition-transform duration-150 ${
+                            isActive ? 'text-white scale-110' : 'text-slate-800 dark:text-slate-200'
+                          }`}
+                        />
                       </div>
                       
-                      <div className="min-w-0 flex-1">
-                        <span className={`text-xs font-black block truncate transition-colors ${isActive ? 'text-emerald-700 dark:text-emerald-300 font-bold' : 'text-slate-800 dark:text-slate-200 group-hover:text-emerald-600'}`}>
+                      <div className="min-w-0 flex-1 z-10">
+                        <span
+                          className={`text-[11px] sm:text-xs font-black block truncate transition-colors duration-150 ${
+                            isActive
+                              ? 'text-white font-black drop-shadow-xs'
+                              : 'text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400'
+                          }`}
+                        >
                           {item.title}
                         </span>
                       </div>
