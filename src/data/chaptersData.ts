@@ -300,7 +300,7 @@ export const ELEMENTARY_CHAPTERS: Chapter[] = [
     name: 'Miscellaneous Series',
     description: 'Sigma notation ($\\Sigma$), summation of the first $n$ natural numbers $\\sum_{r=1}^n r = \\frac{n(n+1)}{2}$, sum of squares $\\sum_{r=1}^n r^2 = \\frac{n(n+1)(2n+1)}{6}$, sum of cubes $\\sum_{r=1}^n r^3 = \\left[\\frac{n(n+1)}{2}\\right]^2$, method of differences with telescoping partial fractions $\\frac{1}{r(r+1)} = \\frac{1}{r} - \\frac{1}{r+1}$, and infinite arithmetico-geometric series (A.G.S.) $S_\\infty = \\frac{a}{1-r} + \\frac{dr}{(1-r)^2}$ for $|r| < 1$.',
     category: 'Sequences & Induction',
-    questionCount: 250,
+    questionCount: 400,
     difficulty: 'Mixed',
     keyTopics: [
       'Sum of First $n$ Natural Numbers: $\\sum_{r=1}^n r = \\frac{n(n+1)}{2}$',
