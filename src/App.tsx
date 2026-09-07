@@ -19,6 +19,7 @@ import { StudentEntryModal } from './components/StudentEntryModal';
 import { ChapterDetailModal } from './components/ChapterDetailModal';
 import { RankingPageView } from './components/RankingPageView';
 import { AuthModal } from './components/AuthModal';
+import { ResetPasswordView } from './components/ResetPasswordView';
 import { UserProfileModal } from './components/UserProfileModal';
 import { OfflineBanner } from './components/OfflineBanner';
 import { MathService, shuffleArray } from './services/mathService';
@@ -28,6 +29,7 @@ import { Chapter, ClassInfo, ClassLevel, Question, StudentProfile, LeaderboardEn
 import { useAuth } from './context/AuthContext';
 import { useOffline } from './context/OfflineContext';
 import { getCurrentMonthKey } from './utils/monthUtils';
+import { normalizeTrackAndClass, normalizeDifficultyTier } from './utils/trackUtils';
 import { Atom, ArrowLeft, Smartphone, Monitor } from 'lucide-react';
 
 export default function App() {
@@ -40,7 +42,7 @@ export default function App() {
   const [activeContentSection, setActiveContentSection] = useState<ContentSection>('definitions');
   const [activeContentSubject, setActiveContentSubject] = useState<ContentSubject>('mathematics');
   const [activePhilosopherType, setActivePhilosopherType] = useState<'mathematicians' | 'physicists'>('mathematicians');
-  const [currentView, setCurrentView] = useState<'main' | 'class-page' | 'quiz' | 'results' | 'ranking'>('main');
+  const [currentView, setCurrentView] = useState<'main' | 'class-page' | 'quiz' | 'results' | 'ranking' | 'reset-password'>('main');
   const [previousView, setPreviousView] = useState<'main' | 'class-page' | 'results'>('main');
 
   // Loaded data
@@ -52,6 +54,8 @@ export default function App() {
   const [isStudentModalOpen, setIsStudentModalOpen] = useState(false);
   const [isChapterModalOpen, setIsChapterModalOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authModalInitialMode, setAuthModalInitialMode] = useState<'signin' | 'signup' | 'forgot'>('signin');
+  const [authModalPrefillEmail, setAuthModalPrefillEmail] = useState<string | undefined>(undefined);
   const [authModalCustomTitle, setAuthModalCustomTitle] = useState<string | undefined>(undefined);
   const [authModalCustomSubtitle, setAuthModalCustomSubtitle] = useState<string | undefined>(undefined);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
@@ -148,6 +152,28 @@ export default function App() {
       }
     };
     loadData();
+  }, []);
+
+  // Listen for reset-password route and Firebase action parameters
+  useEffect(() => {
+    const checkResetPasswordRoute = () => {
+      if (typeof window === 'undefined') return;
+      const path = window.location.pathname || '';
+      const search = window.location.search || '';
+      const hash = window.location.hash || '';
+
+      const hasResetPath = path.includes('/reset-password');
+      const hasOobCode = search.includes('oobCode') || hash.includes('oobCode');
+      const hasResetMode = search.includes('mode=resetPassword') || hash.includes('mode=resetPassword');
+
+      if (hasResetPath || hasOobCode || hasResetMode) {
+        setCurrentView('reset-password');
+      }
+    };
+
+    checkResetPasswordRoute();
+    window.addEventListener('popstate', checkResetPasswordRoute);
+    return () => window.removeEventListener('popstate', checkResetPasswordRoute);
   }, []);
 
   // Update chapters when selectedClass or activeTrack changes
@@ -344,22 +370,32 @@ export default function App() {
     const userEmail = currentUser?.email || userProfile?.email || undefined;
     const userUid = currentUser?.uid || userProfile?.uid || undefined;
 
-    const activeTier: PracticeDifficulty = results.difficultyTier || 
-      pendingDifficultyTier || 
-      (results.questions && (results.questions.some(q => q.difficulty_tier === 'Advanced') ? 'Advanced' : results.questions[0]?.difficulty_tier)) || 
-      (activeQuizTitle && activeQuizTitle.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
+    const normalizedScope = normalizeTrackAndClass({
+      chapterId: activeChapterId,
+      chapterName: activeQuizTitle,
+      classLevel: student?.classLevel || activeQuizClass || 9,
+      track: activeTrack,
+    });
+
+    const activeTier: PracticeDifficulty = normalizeDifficultyTier({
+      difficultyTier: results.difficultyTier || pendingDifficultyTier,
+      chapterName: activeQuizTitle,
+      chapterId: activeChapterId,
+      difficulty: results.questions?.[0]?.difficulty,
+      difficulty_tier: results.questions?.find((q) => q.difficulty_tier)?.difficulty_tier,
+    });
 
     const leaderboardEntry: LeaderboardEntry = {
       id: attemptId,
       uid: userUid,
       email: userEmail,
       studentName,
-      classLevel: student?.classLevel || activeQuizClass || 9,
+      classLevel: normalizedScope.classLevel,
       section: student?.section || 'Standard',
       chapterId: activeChapterId || 'general_quiz',
-      chapterName: activeQuizTitle || `Class ${activeQuizClass} Mathematics`,
+      chapterName: activeQuizTitle || `Class ${normalizedScope.classLevel} Mathematics`,
       mode: results.mode || activeTestMode || 'practice',
-      track: activeTrack || 'Elementary Mathematics',
+      track: normalizedScope.track,
       difficultyTier: activeTier,
       correctCount,
       totalQuestions: totalQ,
@@ -377,9 +413,9 @@ export default function App() {
       uid: userUid,
       email: userEmail,
       chapterId: activeChapterId || 'general_quiz',
-      chapterName: activeQuizTitle || `Class ${activeQuizClass} Mathematics`,
-      classLevel: student?.classLevel || activeQuizClass || 9,
-      track: activeTrack || 'Elementary Mathematics',
+      chapterName: activeQuizTitle || `Class ${normalizedScope.classLevel} Mathematics`,
+      classLevel: normalizedScope.classLevel,
+      track: normalizedScope.track,
       difficultyTier: activeTier,
       correctCount,
       totalQuestions: totalQ,
@@ -704,6 +740,29 @@ export default function App() {
           />
         )}
 
+        {/* DEDICATED RESET PASSWORD VIEW */}
+        {currentView === 'reset-password' && (
+          <ResetPasswordView
+            onNavigateToLogin={(prefillEmail) => {
+              if (prefillEmail) setAuthModalPrefillEmail(prefillEmail);
+              setAuthModalInitialMode('signin');
+              setAuthModalCustomTitle(undefined);
+              setAuthModalCustomSubtitle(undefined);
+              setIsAuthModalOpen(true);
+              setCurrentView('main');
+              if (typeof window !== 'undefined' && window.history?.pushState) {
+                window.history.pushState({}, '', '/');
+              }
+            }}
+            onNavigateHome={() => {
+              setCurrentView('main');
+              if (typeof window !== 'undefined' && window.history?.pushState) {
+                window.history.pushState({}, '', '/');
+              }
+            }}
+          />
+        )}
+
         {/* MAIN TAB VIEWS */}
         {currentView === 'main' && (
           <>
@@ -830,8 +889,17 @@ export default function App() {
       <AuthModal
         isOpen={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
+        initialMode={authModalInitialMode}
+        prefillEmail={authModalPrefillEmail}
         customTitle={authModalCustomTitle}
         customSubtitle={authModalCustomSubtitle}
+        onNavigateToResetPage={() => {
+          setIsAuthModalOpen(false);
+          setCurrentView('reset-password');
+          if (typeof window !== 'undefined' && window.history?.pushState) {
+            window.history.pushState({}, '', '/reset-password');
+          }
+        }}
         onSuccess={handleAuthSuccess}
       />
 
@@ -850,8 +918,8 @@ export default function App() {
         }}
       />
 
-      {/* Footer - Hidden in Quiz, Results/Score, Class Page, and Ranking Views, and completely hidden on Mobile View */}
-      {!['quiz', 'results', 'class-page', 'ranking'].includes(currentView) && activeTab !== 'classes' && !forceMobileDemo && (
+      {/* Footer - Hidden in Quiz, Results/Score, Class Page, Ranking, and Reset Password Views, and completely hidden on Mobile View */}
+      {!['quiz', 'results', 'class-page', 'ranking', 'reset-password'].includes(currentView) && activeTab !== 'classes' && !forceMobileDemo && (
         <div className="hidden md:block">
           <Footer onNavigate={handleNavigate} />
         </div>

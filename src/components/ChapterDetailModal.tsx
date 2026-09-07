@@ -311,6 +311,9 @@ export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
                     <Lock className="w-3.5 h-3.5 text-amber-500" />
                   )}
                   <span>Normal</span>
+                  <span className="text-[10px] px-1.5 py-0.2 rounded-md bg-slate-100 dark:bg-slate-700/80 font-bold">
+                    {normalCount}
+                  </span>
                 </button>
 
                 <button
@@ -328,6 +331,9 @@ export const ChapterDetailModal: React.FC<ChapterDetailModalProps> = ({
                     <Lock className="w-3.5 h-3.5 text-amber-500" />
                   )}
                   <span>Advanced</span>
+                  <span className="text-[10px] px-1.5 py-0.2 rounded-md bg-slate-100 dark:bg-slate-700/80 font-bold">
+                    {advancedCount}
+                  </span>
                 </button>
               </div>
             </div>

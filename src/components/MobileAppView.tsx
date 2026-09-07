@@ -341,13 +341,16 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
 
       // Search query
       if (philosopherSearch.trim()) {
-        const q = philosopherSearch.toLowerCase();
-        const matchName = thinker.name.toLowerCase().includes(q);
-        const matchTitle = thinker.title.toLowerCase().includes(q);
-        const matchField = thinker.field.toLowerCase().includes(q);
-        const matchEra = thinker.era.toLowerCase().includes(q);
-        const matchQuote = thinker.famousQuote.toLowerCase().includes(q);
-        return matchName || matchTitle || matchField || matchEra || matchQuote;
+        const clean = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+        const q = clean(philosopherSearch.trim());
+        const matchName = clean(thinker.name).includes(q) || (thinker.latinName && clean(thinker.latinName).includes(q));
+        const matchAliases = thinker.aliases ? thinker.aliases.some(a => clean(a).includes(q)) : false;
+        const matchTitle = clean(thinker.title).includes(q);
+        const matchField = clean(thinker.field).includes(q);
+        const matchEra = clean(thinker.era).includes(q);
+        const matchQuote = clean(thinker.famousQuote).includes(q);
+        const matchPhilosophy = clean(thinker.philosophicalView).includes(q) || clean(thinker.philosophicalContribution).includes(q);
+        return matchName || matchAliases || matchTitle || matchField || matchEra || matchQuote || matchPhilosophy;
       }
 
       return true;

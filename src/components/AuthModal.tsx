@@ -6,24 +6,30 @@ import {
   User, 
   GraduationCap, 
   ArrowRight, 
+  ArrowLeft,
   Sparkles, 
   AlertCircle, 
   CheckCircle2, 
   KeyRound,
   LogIn,
-  UserPlus
+  UserPlus,
+  Eye,
+  EyeOff,
+  Loader2
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { ClassLevel } from '../types';
 import { MathText } from './MathText';
 
-interface AuthModalProps {
+export interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSuccess?: () => void;
   initialMode?: 'signin' | 'signup' | 'forgot';
   customTitle?: string;
   customSubtitle?: string;
+  prefillEmail?: string;
+  onNavigateToResetPage?: () => void;
 }
 
 export const AuthModal: React.FC<AuthModalProps> = ({
@@ -33,6 +39,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   initialMode,
   customTitle,
   customSubtitle,
+  prefillEmail,
+  onNavigateToResetPage,
 }) => {
   const { signIn, signUp, signInWithGoogle, resetPassword, checkEmailUniqueness } = useAuth();
   
@@ -41,6 +49,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   // Form fields
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [name, setName] = useState('');
   const [classLevel, setClassLevel] = useState<ClassLevel>(9);
   
@@ -54,12 +63,15 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     if (isOpen) {
       const targetMode = initialMode || 'signin';
       setMode(targetMode);
+      if (prefillEmail) {
+        setEmail(prefillEmail);
+      }
       setLoading(false);
       setError(null);
       setSuccessMsg(null);
       setEmailCheckStatus('idle');
     }
-  }, [isOpen, initialMode]);
+  }, [isOpen, initialMode, prefillEmail]);
 
   // Handle 1-click Google Sign In
   const handleGoogleSignIn = async () => {
@@ -156,13 +168,20 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           if (onSuccess) onSuccess();
         }, 600);
       } else if (mode === 'forgot') {
-        if (!email.trim()) {
+        const cleanEmail = email.trim();
+        if (!cleanEmail) {
           setError('Please enter your registered email address.');
           setLoading(false);
           return;
         }
-        await resetPassword(email);
-        setSuccessMsg(`Password reset link sent to ${email.trim()}. Please check your inbox.`);
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(cleanEmail)) {
+          setError('Please enter a valid email address.');
+          setLoading(false);
+          return;
+        }
+        await resetPassword(cleanEmail);
+        setSuccessMsg(`If an account exists for ${cleanEmail}, password reset instructions have been sent. Please check your inbox and spam folder.`);
         setLoading(false);
       }
     } catch (err: any) {
@@ -170,7 +189,17 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       let msg = 'Authentication failed. Please try again.';
       const code = err?.code || '';
 
-      if (err.message && (
+      if (code === 'auth/expired-action-code') {
+        msg = 'This password reset link has expired. Please request a new one.';
+      } else if (code === 'auth/invalid-action-code') {
+        msg = 'This password reset link is invalid.';
+      } else if (code === 'auth/user-disabled') {
+        msg = 'This account has been disabled. Please contact support.';
+      } else if (code === 'auth/network-request-failed') {
+        msg = 'Unable to connect. Please check your internet connection and try again.';
+      } else if (code === 'auth/too-many-requests') {
+        msg = 'Too many attempts. Access is temporarily locked. Please try again in a few minutes.';
+      } else if (err.message && (
         err.message.includes('No registered account') ||
         err.message.includes('create an account') ||
         err.message.includes('Incorrect password') ||
@@ -178,7 +207,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       )) {
         msg = err.message;
       } else if (code === 'auth/user-not-found') {
-        msg = 'No registered account found with this email. Please create an account to get started.';
+        msg = mode === 'forgot'
+          ? 'If an account exists for this email, reset instructions have been sent.'
+          : 'No registered account found with this email. Please create an account to get started.';
       } else if (code === 'auth/wrong-password') {
         msg = 'Incorrect password. Please verify your credentials or click "Forgot Password" to reset.';
       } else if (
@@ -195,10 +226,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         msg = 'Password is too weak. Please use at least 6 characters.';
       } else if (code === 'auth/operation-not-allowed') {
         msg = 'Email/Password sign-in is disabled in your Firebase project. Please use "Sign in with Google" or enable Email/Password in Firebase Console.';
-      } else if (code === 'auth/network-request-failed') {
-        msg = 'Network error. Please check your internet connection and try again.';
-      } else if (code === 'auth/too-many-requests') {
-        msg = 'Too many attempts. Access is temporarily locked. Please try again in a few minutes or reset your password.';
       } else if (err.message) {
         msg = err.message;
       }
@@ -263,7 +290,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             </div>
             <div>
               <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white drop-shadow-sm">
-                {customTitle || (mode === 'signup' ? 'Create New Account' : mode === 'forgot' ? 'Reset Password' : 'Sign In')}
+                {customTitle || (mode === 'signup' ? 'Create New Account' : mode === 'forgot' ? 'Forgot Password' : 'Sign In')}
               </h2>
             </div>
           </div>
@@ -272,7 +299,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             {customSubtitle || (mode === 'signup'
               ? 'Join to record test attempts, track accuracy, practice formulas, and rank on leaderboard.'
               : mode === 'forgot'
-              ? 'Enter your email to receive password reset instructions.'
+              ? 'Enter the email address associated with your account.'
               : 'Sign in to access your practice history, formula repository, and synchronized rankings.')}
           </p>
         </div>
@@ -460,13 +487,21 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               <div className="relative">
                 <Lock className="w-4 h-4 text-indigo-300 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-indigo-500/30 bg-slate-950/70 text-white text-xs font-medium focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-hidden placeholder:text-slate-500"
+                  className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-indigo-500/30 bg-slate-950/70 text-white text-xs font-medium focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-hidden placeholder:text-slate-500"
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-1 cursor-pointer transition-colors"
+                  title={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                </button>
               </div>
             </div>
           )}
@@ -485,7 +520,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               }`}
             >
               {loading ? (
-                <span>Please wait...</span>
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>{mode === 'forgot' ? 'Sending...' : 'Please wait...'}</span>
+                </>
               ) : mode === 'signup' ? (
                 <>
                   <span>Create New Account</span>
@@ -493,7 +531,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 </>
               ) : mode === 'forgot' ? (
                 <>
-                  <span>Send Reset Email</span>
+                  <span>Send Reset Link</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               ) : (
@@ -504,6 +542,39 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               )}
             </button>
           </div>
+
+          {/* Explicit Back to Login Button for Forgot Password Mode */}
+          {mode === 'forgot' && (
+            <div className="pt-2 space-y-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setMode('signin');
+                  setError(null);
+                  setSuccessMsg(null);
+                }}
+                className="w-full py-2.5 px-4 rounded-xl border border-slate-700/80 bg-slate-800/60 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>Back to Login</span>
+              </button>
+
+              {onNavigateToResetPage && (
+                <div className="text-center pt-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onClose();
+                      onNavigateToResetPage();
+                    }}
+                    className="text-[11px] text-indigo-300 hover:text-white underline cursor-pointer"
+                  >
+                    Already have a reset code? Open Reset Password Page
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Bottom Switcher */}
           <div className="text-center pt-2 text-xs text-slate-400">

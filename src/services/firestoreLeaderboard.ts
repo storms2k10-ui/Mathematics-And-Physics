@@ -14,7 +14,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { LeaderboardEntry, ClassLevel, UserTestHistory, MonthlyProgressSummary } from '../types';
-import { normalizeTrackAndClass } from '../utils/trackUtils';
+import { normalizeTrackAndClass, normalizeDifficultyTier } from '../utils/trackUtils';
 import { getMonthKey, getCurrentMonthKey, getPreviousMonthKey } from '../utils/monthUtils';
 
 const LEADERBOARD_COLLECTION = 'leaderboard';
@@ -32,7 +32,7 @@ export class FirestoreLeaderboardService {
       
       const normalized = normalizeTrackAndClass(entry);
       const cleanStudentName = (entry.studentName || 'Student Candidate').trim();
-      const cleanDifficulty = entry.difficultyTier || (entry.chapterName && entry.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
+      const cleanDifficulty = normalizeDifficultyTier(entry);
       const timestamp = entry.timestamp || Date.now();
       const monthKey = entry.monthKey || getMonthKey(timestamp);
 
@@ -74,7 +74,7 @@ export class FirestoreLeaderboardService {
       const resultDocId = entry.id || `result_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
       const resultDocRef = doc(db, TEST_RESULTS_COLLECTION, resultDocId);
       const normalized = normalizeTrackAndClass(entry);
-      const cleanDifficulty = entry.difficultyTier || (entry.chapterName && entry.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
+      const cleanDifficulty = normalizeDifficultyTier(entry);
       const timestamp = entry.timestamp || Date.now();
       const monthKey = entry.monthKey || getMonthKey(timestamp);
       
@@ -132,7 +132,7 @@ export class FirestoreLeaderboardService {
           chapterName: data.chapterName,
           classLevel: normalized.classLevel,
           track: normalized.track,
-          difficultyTier: data.difficultyTier || (data.chapterName && data.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal'),
+          difficultyTier: normalizeDifficultyTier(data),
           scorePercentage: Number(data.scorePercentage) || 0,
           correctCount: Number(data.correctCount) || 0,
           totalQuestions: Number(data.totalQuestions) || 0,
@@ -239,6 +239,7 @@ export class FirestoreLeaderboardService {
           ...item,
           track: normalized.track,
           classLevel: normalized.classLevel,
+          difficultyTier: normalizeDifficultyTier(item),
         };
       })
       .filter((item) => {
@@ -277,7 +278,15 @@ export class FirestoreLeaderboardService {
         if (res.ok) {
           const json = await res.json();
           if (json.success && Array.isArray(json.entries)) {
-            return json.entries;
+            return json.entries.map((e: LeaderboardEntry) => {
+              const norm = normalizeTrackAndClass(e);
+              return {
+                ...e,
+                track: norm.track,
+                classLevel: norm.classLevel,
+                difficultyTier: normalizeDifficultyTier(e),
+              };
+            });
           }
         }
       } catch {
@@ -296,6 +305,7 @@ export class FirestoreLeaderboardService {
           ...rawData,
           track: normalized.track,
           classLevel: normalized.classLevel,
+          difficultyTier: normalizeDifficultyTier(rawData),
         };
 
         // Monthly isolation: Exclude previous month data from view ranking/leaderboard
@@ -365,6 +375,7 @@ export class FirestoreLeaderboardService {
           ...rawData,
           track: normalized.track,
           classLevel: normalized.classLevel,
+          difficultyTier: normalizeDifficultyTier(rawData),
         };
 
         // Monthly isolation

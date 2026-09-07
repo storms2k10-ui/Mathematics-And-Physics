@@ -4,6 +4,7 @@ import fs from 'fs';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import { createServer as createViteServer } from 'vite';
+import { normalizeTrackAndClass, normalizeDifficultyTier } from './src/utils/trackUtils';
 
 const app = express();
 const PORT = 3000;
@@ -582,9 +583,13 @@ app.post('/api/auth/sync', (req, res) => {
     const cleanEmail = email ? String(email).trim().toLowerCase() : '';
     const users = loadUsersFromFile();
 
-    // Ensure historyItem is tagged with monthKey
+    // Ensure historyItem is tagged with monthKey and normalized
     if (historyItem) {
       historyItem.monthKey = historyItem.monthKey || getMonthKey(historyItem.timestamp || Date.now());
+      const norm = normalizeTrackAndClass(historyItem);
+      historyItem.track = norm.track;
+      historyItem.classLevel = norm.classLevel;
+      historyItem.difficultyTier = normalizeDifficultyTier(historyItem);
     }
 
     let userIndex = -1;
@@ -809,9 +814,18 @@ app.get('/api/leaderboard', (req, res) => {
     }
 
     // Strictly ensure only entries from targetMonth are in the ranking view
-    let filtered = entries.filter((entry) => {
-      const entryMonth = entry.monthKey || getMonthKey(entry.timestamp);
-      return entryMonth === targetMonth;
+    let filtered = entries.map((entry) => {
+      const norm = normalizeTrackAndClass(entry);
+      const diff = normalizeDifficultyTier(entry);
+      return {
+        ...entry,
+        track: norm.track,
+        classLevel: norm.classLevel,
+        difficultyTier: diff,
+        monthKey: entry.monthKey || getMonthKey(entry.timestamp),
+      };
+    }).filter((entry) => {
+      return entry.monthKey === targetMonth;
     });
 
     if (mode && mode !== 'all') {
@@ -883,18 +897,21 @@ app.post('/api/leaderboard', (req, res) => {
     const currentMonth = getCurrentMonthKey();
     const entryMonth = newEntry.monthKey || getMonthKey(timestamp);
 
+    const norm = normalizeTrackAndClass(newEntry);
+    const diffTier = normalizeDifficultyTier(newEntry);
+
     const validatedEntry: LeaderboardEntry = {
       id: newEntry.id || `lead_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
       uid: newEntry.uid,
       email: newEntry.email,
       studentName: String(newEntry.studentName).trim().substring(0, 80),
-      classLevel: Number(newEntry.classLevel) || 9,
+      classLevel: norm.classLevel,
       section: newEntry.section ? String(newEntry.section).trim().substring(0, 80) : 'Standard',
       chapterId: newEntry.chapterId || 'general_quiz',
       chapterName: newEntry.chapterName ? String(newEntry.chapterName).trim().substring(0, 100) : 'Mathematics',
       mode: newEntry.mode || 'practice',
-      track: newEntry.track ? String(newEntry.track).trim() : 'Elementary Mathematics',
-      difficultyTier: newEntry.difficultyTier || (newEntry.chapterName && newEntry.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal'),
+      track: norm.track,
+      difficultyTier: diffTier,
       correctCount: Number(newEntry.correctCount) || 0,
       totalQuestions: Number(newEntry.totalQuestions) || 1,
       skippedCount: Number(newEntry.skippedCount) || 0,

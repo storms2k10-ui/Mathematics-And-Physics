@@ -80,20 +80,29 @@ export class MathService {
     difficultyTier: PracticeDifficulty = 'Normal',
     track: string = 'Elementary Mathematics'
   ): Question[] {
-    const isPhysics = track.toLowerCase().includes('physics');
-    const isChemistry = track.toLowerCase().includes('chemistry');
+    // Handle potential argument swapping safely
+    let actualChapterId: string | undefined = typeof chapterId === 'string' ? chapterId : undefined;
+    let actualClassLevel: ClassLevel | undefined = typeof classLevel === 'number' ? classLevel : (typeof chapterId === 'number' ? chapterId : undefined);
+
+    const isPhysics = track.toLowerCase().includes('physic');
+    const isChemistry = track.toLowerCase().includes('chem');
+    const isPreCalculas = track.toLowerCase().includes('calculas') || track.toLowerCase().includes('calculus');
     let pool: Question[] = [];
 
-    if (chapterId) {
-      pool = QUESTIONS_DATA.filter((q) => q.chapter_id === chapterId);
-    } else if (classLevel) {
+    if (actualChapterId) {
+      const normalizedChapterId = actualChapterId.startsWith('precalc-') ? actualChapterId.replace('precalc-', '') : actualChapterId;
+      pool = QUESTIONS_DATA.filter((q) => q.chapter_id === actualChapterId || q.chapter_id === normalizedChapterId);
+    } else if (actualClassLevel) {
       pool = QUESTIONS_DATA.filter((q) => {
-        if (q.class !== classLevel) return false;
+        if (q.class !== actualClassLevel) return false;
         if (isPhysics) {
           return q.subject === 'Physics' || q.chapter_id.startsWith('el-phy');
         }
         if (isChemistry) {
           return q.subject === 'Chemistry' || q.chapter_id.startsWith('chem');
+        }
+        if (isPreCalculas) {
+          return q.class === 11 && (q.subject === 'Mathematics' || (!q.subject && !q.chapter_id.startsWith('el-phy') && !q.chapter_id.startsWith('chem')));
         }
         return q.subject !== 'Physics' && q.subject !== 'Chemistry';
       });
@@ -102,11 +111,23 @@ export class MathService {
         ? QUESTIONS_DATA.filter((q) => q.subject === 'Physics' || q.chapter_id.startsWith('el-phy'))
         : isChemistry
         ? QUESTIONS_DATA.filter((q) => q.subject === 'Chemistry' || q.chapter_id.startsWith('chem'))
+        : isPreCalculas
+        ? QUESTIONS_DATA.filter((q) => q.class === 11 && (q.subject === 'Mathematics' || (!q.subject && !q.chapter_id.startsWith('el-phy') && !q.chapter_id.startsWith('chem'))))
         : QUESTIONS_DATA.filter((q) => q.subject !== 'Physics' && q.subject !== 'Chemistry');
     }
 
     if (difficultyTier === 'Advanced') {
-      return pool.filter((q) => q.difficulty_tier === 'Advanced');
+      const explicitAdvanced = pool.filter((q) => q.difficulty_tier === 'Advanced');
+      if (explicitAdvanced.length > 0) {
+        return explicitAdvanced;
+      }
+      // High-yield conceptual, formulaic, and medium/hard questions for Advanced tier fallback
+      const advancedQuestions = pool
+        .filter((q) => q.difficulty === 'Hard' || q.difficulty === 'Medium' || (q.explanation && q.explanation.length > 80))
+        .map((q) => ({ ...q, difficulty_tier: 'Advanced' as const }));
+      return advancedQuestions.length > 0
+        ? advancedQuestions
+        : pool.slice(Math.floor(pool.length / 2)).map((q) => ({ ...q, difficulty_tier: 'Advanced' as const }));
     }
     // Normal difficulty includes all standard curriculum questions linked to Normal or without explicit tier
     return pool.filter((q) => !q.difficulty_tier || q.difficulty_tier === 'Normal');

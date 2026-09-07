@@ -321,7 +321,7 @@ export const ELEMENTARY_CHAPTERS: Chapter[] = [
     name: 'Permutation and Combination and Probability',
     description: 'Fundamental principle of counting, Permutations ⁿPᵣ, Combinations ⁿCᵣ, sample space, classical probability, addition and multiplication theorems.',
     category: 'Probability & Combinatorics',
-    questionCount: 250,
+    questionCount: 400,
     difficulty: 'Mixed',
     keyTopics: ['Permutations: ^nP_r = \\frac{n!}{(n-r)!}', 'Combinations: ^nC_r = \\frac{n!}{r!(n-r)!}', 'Probability P(E) = n(E)/n(S)', 'Conditional Probability & Independent Events'],
     color: 'teal',
@@ -843,7 +843,13 @@ export const ELEMENTARY_CHAPTERS: Chapter[] = [
   },
 ];
 
-export const PRE_CALCULAS_CHAPTERS: Chapter[] = [];
+export const PRE_CALCULAS_CHAPTERS: Chapter[] = ELEMENTARY_CHAPTERS
+  .filter((ch) => ch.class === 11)
+  .map((ch) => ({
+    ...ch,
+    id: `precalc-${ch.id}`,
+    track: 'Pre Calculas' as const,
+  }));
 
 import { CHEMISTRY_CHAPTERS } from "./chemistryChaptersData";
 import { ELEMENTARY_PHYSICS_11_CHAPTERS, ELEMENTARY_PHYSICS_12_CHAPTERS } from "./elementaryPhysicsChaptersData";

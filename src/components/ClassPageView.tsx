@@ -218,21 +218,48 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
                       className="rounded-b-none border-x-0 border-t-0"
                     />
 
+                    {/* Top Left: Chapter Number & Difficulty Badge */}
                     <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5">
                       <span className="w-6 h-6 rounded-full bg-black/50 backdrop-blur-md text-white font-mono font-bold text-[11px] flex items-center justify-center border border-white/20">
                         {idx + 1}
                       </span>
-                      {isClass11or12 && (
-                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold backdrop-blur-md border ${
-                          isChapterUnlocked
-                            ? selectedDifficulty === 'Normal'
-                              ? 'bg-emerald-950/80 text-emerald-300 border-emerald-500/40'
-                              : 'bg-purple-950/80 text-purple-300 border-purple-500/40'
-                            : 'bg-slate-900/80 text-amber-300 border-amber-500/40'
-                        }`}>
-                          {selectedDifficulty} {isChapterUnlocked ? '' : '• Locked'}
-                        </span>
-                      )}
+                      {(() => {
+                        const tierName = isClass11or12 ? selectedDifficulty : 'Normal';
+                        const isUnlocked = isClass11or12 ? isChapterUnlocked : chapterNormalCount > 0;
+
+                        return (
+                          <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold backdrop-blur-md border ${
+                            isUnlocked
+                              ? tierName === 'Normal'
+                                ? 'bg-emerald-950/80 text-emerald-300 border-emerald-500/40'
+                                : 'bg-purple-950/80 text-purple-300 border-purple-500/40'
+                              : 'bg-slate-900/80 text-amber-300 border-amber-500/40'
+                          }`}>
+                            {tierName} {isUnlocked ? '' : '• Locked'}
+                          </span>
+                        );
+                      })()}
+                    </div>
+
+                    {/* Top Right: Question Count Badge */}
+                    <div className="absolute top-3 right-3 z-20 flex items-center">
+                      {(() => {
+                        const tierName = isClass11or12 ? selectedDifficulty : 'Normal';
+                        const count = isClass11or12 ? currentTierCount : chapterNormalCount;
+                        const isUnlocked = isClass11or12 ? isChapterUnlocked : chapterNormalCount > 0;
+
+                        return (
+                          <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold backdrop-blur-md border shadow-xs ${
+                            isUnlocked
+                              ? tierName === 'Normal'
+                                ? 'bg-emerald-950/80 text-emerald-300 border-emerald-500/40'
+                                : 'bg-purple-950/80 text-purple-300 border-purple-500/40'
+                              : 'bg-slate-900/80 text-amber-300 border-amber-500/40'
+                          }`}>
+                            {count} {count === 1 ? 'Question' : 'Questions'}
+                          </span>
+                        );
+                      })()}
                     </div>
                   </div>
 

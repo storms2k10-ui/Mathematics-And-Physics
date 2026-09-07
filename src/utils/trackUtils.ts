@@ -92,12 +92,72 @@ export function normalizeTrackAndClass(record: {
     chapterName.includes('pre calculas') ||
     chapterName.includes('pre calculus')
   ) {
-    return { track: 'Pre Calculas', classLevel: classLevel || 11 };
+    return { track: 'Pre Calculas', classLevel: (classLevel === 9 ? 11 : classLevel) };
+  }
+
+  if (rawTrack.toLowerCase().includes('math')) {
+    return { track: 'Elementary Mathematics', classLevel };
   }
 
   if (rawTrack && rawTrack !== 'Elementary Mathematics') {
+    if (rawTrack.toLowerCase().includes('physic')) {
+      return { track: 'Elementary Physics', classLevel };
+    }
+    if (rawTrack.toLowerCase().includes('chem')) {
+      return { track: 'Chemistry', classLevel };
+    }
     return { track: rawTrack, classLevel };
   }
 
   return { track: 'Elementary Mathematics', classLevel };
+}
+
+/**
+ * Authoritative helper to normalize difficulty tier across all records,
+ * checking difficultyTier, difficulty_tier, difficulty, chapterName, and chapterId.
+ */
+export function normalizeDifficultyTier(record: {
+  difficultyTier?: string | null;
+  difficulty_tier?: string | null;
+  tier?: string | null;
+  difficulty?: string | null;
+  chapterName?: string | null;
+  chapterId?: string | null;
+} | null | undefined): 'Normal' | 'Advanced' {
+  if (!record) return 'Normal';
+
+  // 1. Direct explicit tier fields
+  const explicit = (
+    record.difficultyTier ||
+    record.difficulty_tier ||
+    record.tier ||
+    ''
+  ).toString().trim().toLowerCase();
+
+  if (explicit === 'advanced' || explicit === 'adv' || explicit === 'hard') {
+    return 'Advanced';
+  }
+  if (explicit === 'normal' || explicit === 'standard' || explicit === 'easy') {
+    return 'Normal';
+  }
+
+  // 2. Check chapterName keywords
+  const name = (record.chapterName || '').toLowerCase();
+  if (name.includes('advanced') || name.includes('adv.') || name.includes('(adv)')) {
+    return 'Advanced';
+  }
+
+  // 3. Check chapterId keywords
+  const cid = (record.chapterId || '').toLowerCase();
+  if (cid.includes('advanced') || cid.includes('-adv') || cid.endsWith('_adv')) {
+    return 'Advanced';
+  }
+
+  // 4. Check difficulty level if hard
+  const diff = (record.difficulty || '').toString().trim().toLowerCase();
+  if (diff === 'hard' || diff === 'advanced') {
+    return 'Advanced';
+  }
+
+  return 'Normal';
 }

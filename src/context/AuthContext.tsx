@@ -4,6 +4,9 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
+  verifyPasswordResetCode,
+  confirmPasswordReset,
+  ActionCodeSettings,
   signOut as firebaseSignOut,
   updateProfile,
   onAuthStateChanged,
@@ -31,6 +34,7 @@ import { MathService } from '../services/mathService';
 import { safeFetchJson } from '../lib/apiHelper';
 import { offlineSyncService } from '../services/offlineSyncService';
 import { getMonthKey, getCurrentMonthKey, getPreviousMonthKey, calculateMonthSummary } from '../utils/monthUtils';
+import { normalizeTrackAndClass, normalizeDifficultyTier } from '../utils/trackUtils';
 
 interface AuthContextType {
   currentUser: FirebaseUser | null;
@@ -42,6 +46,8 @@ interface AuthContextType {
   signIn: (email: string, pass: string) => Promise<void>;
   signInWithGoogle: () => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
+  verifyResetCode: (code: string) => Promise<string>;
+  confirmResetPassword: (code: string, newPass: string) => Promise<void>;
   signOut: () => Promise<void>;
   recordTestAttempt: (historyItem: UserTestHistory) => Promise<UserProfile>;
   updateUserClass: (lvl: ClassLevel) => Promise<void>;
@@ -138,7 +144,15 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           const sig = `${item.chapterId}_${item.classLevel}_${item.track || 'gen'}_${item.scorePercentage}_${approxTime}`;
           if (!seenSignatures.has(sig)) {
             seenSignatures.add(sig);
-            combinedHistory.push(item);
+            const norm = normalizeTrackAndClass(item);
+            const diffTier = normalizeDifficultyTier(item);
+            combinedHistory.push({
+              ...item,
+              track: norm.track,
+              classLevel: norm.classLevel,
+              difficultyTier: diffTier,
+              monthKey: item.monthKey || getMonthKey(item.timestamp),
+            });
           }
         }
 
@@ -502,24 +516,121 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     if (!cleanEmail) {
       throw new Error('Please enter your registered email address.');
     }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(cleanEmail)) {
+      throw new Error('Please enter a valid email address.');
+    }
+
+    const currentOrigin = typeof window !== 'undefined' && window.location?.origin
+      ? window.location.origin
+      : 'https://ais-pre-kh2pynl5ihcwu5dxf4tpqg-874635201430.asia-east1.run.app';
+
+    const actionCodeSettings: ActionCodeSettings = {
+      url: `${currentOrigin}/reset-password`,
+      handleCodeInApp: true,
+    };
 
     try {
-      await sendPasswordResetEmail(auth, cleanEmail);
+      try {
+        await sendPasswordResetEmail(auth, cleanEmail, actionCodeSettings);
+      } catch (settingsErr: any) {
+        // Fallback to standard reset email if domain is not whitelisted in ActionCodeSettings continue URI
+        const settingsCode = settingsErr?.code || '';
+        if (
+          settingsCode === 'auth/unauthorized-continue-uri' ||
+          settingsCode === 'auth/invalid-continue-uri' ||
+          settingsCode === 'auth/argument-error'
+        ) {
+          console.warn('Firebase ActionCodeSettings continue URI not authorized, falling back to default reset email:', settingsErr);
+          await sendPasswordResetEmail(auth, cleanEmail);
+        } else {
+          throw settingsErr;
+        }
+      }
     } catch (err: any) {
       const code = err?.code || '';
+      // Requirement 12: Email Privacy - Do not reveal whether user exists
+      if (code === 'auth/user-not-found') {
+        return;
+      }
       if (code === 'auth/operation-not-allowed') {
         throw new Error('Password reset is not enabled in your Firebase project. Please enable "Email/Password" in Firebase Console under Authentication > Sign-in method.');
-      }
-      if (code === 'auth/user-not-found') {
-        throw new Error('No registered account found with this email address.');
       }
       if (code === 'auth/invalid-email') {
         throw new Error('Please enter a valid email address.');
       }
+      if (code === 'auth/too-many-requests') {
+        throw new Error('Too many requests. Please wait a few moments before trying again.');
+      }
       if (code === 'auth/network-request-failed') {
-        throw new Error('Network error. Please check your internet connection and try again.');
+        throw new Error('Unable to connect. Please check your internet connection and try again.');
+      }
+      if (code === 'auth/user-disabled') {
+        throw new Error('This account has been disabled. Please contact support.');
       }
       throw new Error(err.message || 'Failed to send password reset email.');
+    }
+  };
+
+  // Verify password reset code (oobCode) from Firebase email link
+  const verifyResetCode = async (code: string): Promise<string> => {
+    const cleanCode = (code || '').trim();
+    if (!cleanCode) {
+      throw new Error('Password reset code is missing.');
+    }
+    try {
+      const email = await verifyPasswordResetCode(auth, cleanCode);
+      return email;
+    } catch (err: any) {
+      const c = err?.code || '';
+      if (c === 'auth/expired-action-code') {
+        throw new Error('This password reset link has expired. Please request a new one.');
+      }
+      if (c === 'auth/invalid-action-code') {
+        throw new Error('This password reset link is invalid or has already been used.');
+      }
+      if (c === 'auth/user-disabled') {
+        throw new Error('This account has been disabled. Please contact support.');
+      }
+      if (c === 'auth/network-request-failed') {
+        throw new Error('Unable to connect. Please check your internet connection and try again.');
+      }
+      throw new Error(err.message || 'Invalid or expired password reset link.');
+    }
+  };
+
+  // Confirm password reset with Firebase Authentication using oobCode
+  const confirmResetPassword = async (code: string, newPass: string): Promise<void> => {
+    const cleanCode = (code || '').trim();
+    if (!cleanCode) {
+      throw new Error('Password reset code is missing.');
+    }
+    if (!newPass || newPass.length < 6) {
+      throw new Error('Password must be at least 6 characters long.');
+    }
+    try {
+      await confirmPasswordReset(auth, cleanCode, newPass);
+    } catch (err: any) {
+      const c = err?.code || '';
+      if (c === 'auth/expired-action-code') {
+        throw new Error('This password reset link has expired. Please request a new one.');
+      }
+      if (c === 'auth/invalid-action-code') {
+        throw new Error('This password reset link is invalid or has already been used.');
+      }
+      if (c === 'auth/weak-password') {
+        throw new Error('Password is too weak. Please use at least 6 characters.');
+      }
+      if (c === 'auth/user-disabled') {
+        throw new Error('This account has been disabled. Please contact support.');
+      }
+      if (c === 'auth/too-many-requests') {
+        throw new Error('Too many attempts. Please wait a few moments and try again.');
+      }
+      if (c === 'auth/network-request-failed') {
+        throw new Error('Unable to connect. Please check your internet connection and try again.');
+      }
+      throw new Error(err.message || 'Failed to reset password. Please try again.');
     }
   };
 
@@ -546,17 +657,23 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const itemMonthKey = historyItem.monthKey || getMonthKey(itemTimestamp);
     historyItem.monthKey = itemMonthKey;
 
+    const norm = normalizeTrackAndClass(historyItem);
+    const diffTier = normalizeDifficultyTier(historyItem);
+    historyItem.track = norm.track;
+    historyItem.classLevel = norm.classLevel;
+    historyItem.difficultyTier = diffTier;
+
     const leaderboardEntryRecord: LeaderboardEntry = {
       id: historyItem.id,
       uid,
       email,
       studentName: displayName,
-      classLevel: historyItem.classLevel,
+      classLevel: norm.classLevel,
       chapterId: historyItem.chapterId,
       chapterName: historyItem.chapterName,
       mode: 'practice',
-      track: historyItem.track,
-      difficultyTier: historyItem.difficultyTier || (historyItem.chapterName && historyItem.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal'),
+      track: norm.track,
+      difficultyTier: diffTier,
       correctCount: historyItem.correctCount,
       totalQuestions: historyItem.totalQuestions,
       skippedCount: historyItem.skippedCount || 0,
@@ -789,6 +906,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         signIn,
         signInWithGoogle,
         resetPassword,
+        verifyResetCode,
+        confirmResetPassword,
         signOut,
         recordTestAttempt,
         updateUserClass,

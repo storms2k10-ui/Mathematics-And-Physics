@@ -18,7 +18,7 @@ import { LeaderboardEntry, ClassLevel, CandidateRankingProfile } from '../types'
 import { MathService } from '../services/mathService';
 import { FirestoreLeaderboardService } from '../services/firestoreLeaderboard';
 import { useAuth } from '../context/AuthContext';
-import { normalizeTrackAndClass } from '../utils/trackUtils';
+import { normalizeTrackAndClass, normalizeDifficultyTier } from '../utils/trackUtils';
 import { getCurrentMonthKey, getMonthKey } from '../utils/monthUtils';
 
 export type LeaderboardTrack = 
@@ -57,6 +57,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
   // In-memory cache map to ensure once candidate attempts are fetched, they never re-load or flash spinners
   const candidateAttemptsCacheRef = useRef<Map<string, LeaderboardEntry[]>>(new Map());
+  const syncedHistoryIdsRef = useRef<Set<string>>(new Set());
 
   // Real-time live timestamp ticker
   useEffect(() => {
@@ -169,6 +170,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
             ...entry,
             track: norm.track,
             classLevel: norm.classLevel,
+            difficultyTier: normalizeDifficultyTier(entry),
             monthKey: entryMonth,
           });
         }
@@ -184,6 +186,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
             continue; // Exclude non-current month entries
           }
           const norm = normalizeTrackAndClass(h);
+          const diffTier = normalizeDifficultyTier(h);
           const entryRecord: LeaderboardEntry = {
             id: h.id,
             uid: userProfile.uid,
@@ -193,7 +196,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
             track: norm.track,
             chapterId: h.chapterId,
             chapterName: h.chapterName,
-            difficultyTier: h.difficultyTier || (h.chapterName && h.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal'),
+            difficultyTier: diffTier,
             mode: 'practice',
             correctCount: Number(h.correctCount) || 0,
             totalQuestions: Number(h.totalQuestions) || 0,
@@ -212,6 +215,59 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
 
     return Array.from(map.values());
   }, [allEntries, userProfile, currentUser, currentMonthKey]);
+
+  // Automatically sync profile history data to Firestore & server in background without UI interruption
+  useEffect(() => {
+    if (!userProfile?.history || !Array.isArray(userProfile.history) || userProfile.history.length === 0) {
+      return;
+    }
+
+    const unsynced = userProfile.history.filter((h) => h && h.id && !syncedHistoryIdsRef.current.has(h.id));
+    if (unsynced.length === 0) return;
+
+    for (const h of unsynced) {
+      syncedHistoryIdsRef.current.add(h.id);
+    }
+
+    const syncProfileHistory = async () => {
+      try {
+        for (const h of unsynced) {
+          if (!h || !h.id) continue;
+          const norm = normalizeTrackAndClass(h);
+          const diffTier = normalizeDifficultyTier(h);
+          const hMonth = h.monthKey || getMonthKey(h.timestamp);
+
+          const syncedEntry: LeaderboardEntry = {
+            id: h.id,
+            uid: userProfile.uid,
+            email: userProfile.email,
+            studentName: userProfile.displayName || currentUser?.displayName || 'Student Candidate',
+            classLevel: norm.classLevel,
+            track: norm.track,
+            chapterId: h.chapterId,
+            chapterName: h.chapterName,
+            difficultyTier: diffTier,
+            mode: 'practice',
+            correctCount: Number(h.correctCount) || 0,
+            totalQuestions: Number(h.totalQuestions) || 0,
+            skippedCount: Number(h.skippedCount) || 0,
+            scorePercentage: Number(h.scorePercentage) || 0,
+            timeSpentSeconds: Number(h.timeSpentSeconds) || 0,
+            formattedTime: h.formattedTime || '0s',
+            timestamp: Number(h.timestamp) || Date.now(),
+            formattedDate: h.formattedDate || 'Recent',
+            monthKey: hMonth,
+          };
+
+          MathService.saveLeaderboardEntry(syncedEntry, userProfile.uid).catch(() => {});
+        }
+      } catch {
+        // Silent automatic synchronization
+      }
+    };
+
+    syncProfileHistory();
+  }, [userProfile?.history, userProfile?.uid, currentUser?.displayName]);
 
   // Candidate attempts synchronization with zero-flicker caching
   useEffect(() => {
@@ -264,7 +320,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
           if (a && a.id) {
             const norm = normalizeTrackAndClass(a);
             if (norm.track === selectedCandidate.track && Number(norm.classLevel) === Number(selectedCandidate.classLevel)) {
-              mergedMap.set(a.id, { ...a, track: norm.track, classLevel: norm.classLevel });
+              mergedMap.set(a.id, { ...a, track: norm.track, classLevel: norm.classLevel, difficultyTier: normalizeDifficultyTier(a) });
             }
           }
         }
@@ -286,7 +342,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                   track: norm.track,
                   chapterId: h.chapterId,
                   chapterName: h.chapterName,
-                  difficultyTier: h.difficultyTier || (h.chapterName && h.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal'),
+                  difficultyTier: normalizeDifficultyTier(h),
                   mode: 'practice',
                   correctCount: Number(h.correctCount) || 0,
                   totalQuestions: Number(h.totalQuestions) || 0,
@@ -344,7 +400,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
       if (norm.track !== selectedTrack) continue;
       if (Number(norm.classLevel) !== Number(selectedClass)) continue;
 
-      const entryDifficulty = entry.difficultyTier || (entry.chapterName && entry.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
+      const entryDifficulty = normalizeDifficultyTier(entry);
       if (entryDifficulty !== selectedDifficulty) continue;
 
       const cleanName = (entry.studentName || 'Anonymous Student').trim();
@@ -604,7 +660,7 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                 const count = safeEntries.filter(e => {
                   if (!e) return false;
                   const norm = normalizeTrackAndClass(e);
-                  const entryDiff = e.difficultyTier || (e.chapterName && e.chapterName.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
+                  const entryDiff = normalizeDifficultyTier(e);
                   const diffMatch = entryDiff === selectedDifficulty;
                   return norm.track === selectedTrack && Number(norm.classLevel) === lvl && diffMatch && (!e.id || !e.id.startsWith('lead-seed-'));
                 }).length;

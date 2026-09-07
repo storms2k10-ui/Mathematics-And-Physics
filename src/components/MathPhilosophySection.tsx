@@ -2,7 +2,6 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { 
   Quote, 
   Sparkles, 
-  Search, 
   ChevronRight, 
   BookOpen, 
   Lightbulb, 
@@ -18,8 +17,7 @@ import {
   Sigma,
   Zap,
   Home,
-  ArrowLeft,
-  Filter
+  ArrowLeft
 } from 'lucide-react';
 import { MATHEMATICIANS, Mathematician } from '../data/mathematiciansData';
 import { MathText } from './MathText';
@@ -101,15 +99,11 @@ export const MathPhilosophySection: React.FC<MathPhilosophySectionProps> = ({
 }) => {
   const [selectedMathematician, setSelectedMathematician] = useState<Mathematician | null>(null);
   const [activeMainSection, setActiveMainSection] = useState<'mathematicians' | 'physicists'>(initialTab);
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [selectedFieldFilter, setSelectedFieldFilter] = useState<string>('All');
 
   // Keep synced with navbar dropdown
   useEffect(() => {
     if (initialTab) {
       setActiveMainSection(initialTab);
-      setSelectedFieldFilter('All');
-      setSearchQuery('');
     }
   }, [initialTab]);
 
@@ -119,41 +113,10 @@ export const MathPhilosophySection: React.FC<MathPhilosophySectionProps> = ({
     return { mathCount, physCount };
   }, []);
 
-  const availableFields = useMemo(() => {
-    const fields = new Set<string>();
-    MATHEMATICIANS.forEach(m => {
-      if (m.thinkerType === (activeMainSection === 'physicists' ? 'physicist' : 'mathematician')) {
-        fields.add(m.field);
-      }
-    });
-    return ['All', ...Array.from(fields)];
-  }, [activeMainSection]);
-
   const filteredThinkers = useMemo(() => {
-    return MATHEMATICIANS.filter((m) => {
-      const matchesType = m.thinkerType === (activeMainSection === 'physicists' ? 'physicist' : 'mathematician');
-      if (!matchesType) return false;
-
-      if (selectedFieldFilter !== 'All' && m.field !== selectedFieldFilter) {
-        return false;
-      }
-
-      if (searchQuery.trim()) {
-        const q = searchQuery.toLowerCase();
-        const matchesName = m.name.toLowerCase().includes(q);
-        const matchesTitle = m.title.toLowerCase().includes(q);
-        const matchesQuote = m.famousQuote.toLowerCase().includes(q);
-        const matchesField = m.field.toLowerCase().includes(q);
-        const matchesNationality = m.nationality.toLowerCase().includes(q);
-        const matchesBreakthroughs = m.majorBreakthroughs.some(b => 
-          b.title.toLowerCase().includes(q) || b.description.toLowerCase().includes(q) || (b.formula && b.formula.toLowerCase().includes(q))
-        );
-        return matchesName || matchesTitle || matchesQuote || matchesField || matchesNationality || matchesBreakthroughs;
-      }
-
-      return true;
-    });
-  }, [activeMainSection, selectedFieldFilter, searchQuery]);
+    const targetType = activeMainSection === 'physicists' ? 'physicist' : 'mathematician';
+    return MATHEMATICIANS.filter((m) => m.thinkerType === targetType);
+  }, [activeMainSection]);
 
   return (
     <section 
@@ -214,7 +177,6 @@ export const MathPhilosophySection: React.FC<MathPhilosophySectionProps> = ({
               id="philosophy-tab-physicists"
               onClick={() => {
                 setActiveMainSection('physicists');
-                setSelectedFieldFilter('All');
               }}
               className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl font-black text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 transition-all cursor-pointer ${
                 activeMainSection === 'physicists'
@@ -235,7 +197,6 @@ export const MathPhilosophySection: React.FC<MathPhilosophySectionProps> = ({
               id="philosophy-tab-mathematicians"
               onClick={() => {
                 setActiveMainSection('mathematicians');
-                setSelectedFieldFilter('All');
               }}
               className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl font-black text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 transition-all cursor-pointer ${
                 activeMainSection === 'mathematicians'
@@ -252,48 +213,6 @@ export const MathPhilosophySection: React.FC<MathPhilosophySectionProps> = ({
               </span>
             </button>
           </div>
-        </div>
-
-        {/* 🔍 OPTIMIZED SEARCH AND FIELD FILTERS */}
-        <div className="max-w-3xl mx-auto space-y-3">
-          <div className="relative">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={`Search ${activeMainSection} by name, quote, landmark formula, or era...`}
-              className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 shadow-xs transition-all"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white cursor-pointer"
-                title="Clear search"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            )}
-          </div>
-
-          {/* Quick Discipline Filter Pills */}
-          {availableFields.length > 2 && (
-            <div className="flex flex-wrap items-center justify-center gap-1.5 pt-1">
-              {availableFields.map((field) => (
-                <button
-                  key={field}
-                  onClick={() => setSelectedFieldFilter(field)}
-                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    selectedFieldFilter === field
-                      ? 'bg-indigo-600 text-white shadow-xs'
-                      : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-800'
-                  }`}
-                >
-                  {field}
-                </button>
-              ))}
-            </div>
-          )}
         </div>
 
         {/* Thinkers Cards Grid */}
@@ -365,23 +284,6 @@ export const MathPhilosophySection: React.FC<MathPhilosophySectionProps> = ({
             );
           })}
         </div>
-
-        {filteredThinkers.length === 0 && (
-          <div className="text-center py-16 bg-white dark:bg-slate-900/40 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-3">
-            <Search className="w-10 h-10 text-slate-400 dark:text-slate-600 mx-auto" />
-            <h4 className="text-base font-bold text-slate-800 dark:text-slate-300">No {activeMainSection} match your search</h4>
-            <p className="text-xs text-slate-500">Try searching for a different keyword, quote, or clear filters.</p>
-            <button
-              onClick={() => {
-                setSearchQuery('');
-                setSelectedFieldFilter('All');
-              }}
-              className="mt-2 px-4 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs cursor-pointer transition-colors"
-            >
-              Reset Filters
-            </button>
-          </div>
-        )}
 
       </div>
 

@@ -34,6 +34,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
 import { useOffline } from '../context/OfflineContext';
 import { UserTestHistory } from '../types';
+import { normalizeTrackAndClass, normalizeDifficultyTier } from '../utils/trackUtils';
 
 interface ScoreViewProps {
   classLevel: ClassLevel;
@@ -83,9 +84,20 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
   const [filterType, setFilterType] = useState<'all' | 'correct' | 'incorrect' | 'skipped'>('all');
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
-  const effectiveDifficultyTier: 'Normal' | 'Advanced' = difficultyTier || 
-    (questions && (questions.some(q => q.difficulty_tier === 'Advanced') ? 'Advanced' : questions[0]?.difficulty_tier)) || 
-    (chapterTitle && chapterTitle.toLowerCase().includes('advanced') ? 'Advanced' : 'Normal');
+  const normalizedScope = normalizeTrackAndClass({
+    chapterId: questions[0]?.chapter_id,
+    chapterName: chapterTitle,
+    classLevel,
+    track,
+  });
+
+  const effectiveDifficultyTier: 'Normal' | 'Advanced' = normalizeDifficultyTier({
+    difficultyTier,
+    chapterName: chapterTitle,
+    chapterId: questions[0]?.chapter_id,
+    difficulty: questions[0]?.difficulty,
+    difficulty_tier: questions.find((q) => q.difficulty_tier)?.difficulty_tier,
+  });
 
   // Maintain consistent entry ID for server updates
   const [attemptEntryId] = useState<string>(() => {
@@ -131,8 +143,8 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
           id: attemptEntryId,
           chapterId: questions[0]?.chapter_id || 'general_quiz',
           chapterName: chapterTitle,
-          classLevel: classLevel,
-          track: track || 'Elementary Mathematics',
+          classLevel: normalizedScope.classLevel,
+          track: normalizedScope.track,
           difficultyTier: effectiveDifficultyTier,
           correctCount,
           totalQuestions,
