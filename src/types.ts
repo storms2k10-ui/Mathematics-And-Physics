@@ -55,7 +55,7 @@ export interface Chapter {
   description: string;
   category: MathCategory;
   questionCount: number;
-  difficulty?: DifficultyLevel | 'Mixed';
+  difficulty?: DifficultyLevel | 'Mixed' | PracticeDifficulty;
   keyTopics: string[];
   color: 'indigo' | 'emerald' | 'amber' | 'rose' | 'cyan' | 'violet' | 'teal' | 'fuchsia' | 'blue' | 'purple' | 'sky';
   icon: string;

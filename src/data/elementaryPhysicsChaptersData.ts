@@ -654,44 +654,45 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     id: 'el-phy12-ch1',
     class: 12,
     track: 'Elementary Physics',
-    name: 'Electric Charges & Fields',
-    description: 'Electric charge properties, Coulomb\'s inverse-square law, electric field $\\mathbf{E}$, electric dipole $\\mathbf{p} = q(2\\mathbf{a})$, dipole torque $\\boldsymbol{\\tau} = \\mathbf{p} \\times \\mathbf{E}$, Gauss\'s Law $\\oint \\mathbf{E} \\cdot d\\mathbf{A} = \\frac{Q_{\\text{enc}}}{\\varepsilon_0}$, and applications to symmetric charge distributions.',
-    category: 'Electrostatics & Current Electricity',
-    questionCount: 0,
-    difficulty: 'Mixed',
+    name: '1. Molecular Theory of Gases',
+    description: 'Kinetic molecular theory of gases, ideal gas equation $PV = nRT$, pressure exerted by gas $P = \\frac{1}{3}\\rho \\overline{v^2}$, kinetic interpretation of temperature $\\overline{K} = \\frac{3}{2} k_B T$, root-mean-square speed $v_{\\text{rms}} = \\sqrt{\\frac{3k_B T}{m}}$, degrees of freedom, equipartition of energy, and mean free path.',
+    category: 'Thermodynamics & Heat',
+    questionCount: 250,
+    difficulty: 'Normal',
     keyTopics: [
-      'Quantization ($q = \\pm ne$) and Conservation of Electric Charge',
-      'Coulomb\'s Law: $\\mathbf{F} = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q_1 q_2}{r^2}\\hat{\\mathbf{r}}$',
-      'Electric Field & Field Lines for Point Charges and Dipoles',
-      'Electric Dipole Moment $\\mathbf{p} = q(2\\mathbf{a})$ and Torque $\\boldsymbol{\\tau} = \\mathbf{p} \\times \\mathbf{E}$',
-      'Gauss\'s Law: $\\oint \\mathbf{E} \\cdot d\\mathbf{A} = \\frac{Q_{\\text{enclosed}}}{\\varepsilon_0}$ (Infinite Wire, Plane Sheet, Spherical Shell)'
+      'Postulates of Kinetic Molecular Theory of Gases',
+      'Derivation of Gas Pressure: $P = \\frac{1}{3}\\rho \\overline{v^2}$',
+      'Kinetic Interpretation of Temperature: $\\overline{E_k} = \\frac{3}{2} k_B T$',
+      'Root-Mean-Square Speed: $v_{\\text{rms}} = \\sqrt{\\frac{3RT}{M}} = \\sqrt{\\frac{3k_B T}{m}}$',
+      'Degrees of Freedom & Law of Equipartition of Energy',
+      'Mean Free Path of Gas Molecules: $\\lambda = \\frac{1}{\\sqrt{2}\\pi n d^2}$'
     ],
-    color: 'indigo',
-    icon: 'Zap',
-    artTheme: 'calculus',
-    formulaHighlight: 'F = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q_1 q_2}{r^2}, \\quad \\boldsymbol{\\tau} = \\mathbf{p} \\times \\mathbf{E}, \\quad \\oint \\mathbf{E} \\cdot d\\mathbf{A} = \\frac{Q_{\\text{enc}}}{\\varepsilon_0}',
+    color: 'amber',
+    icon: 'Wind',
+    artTheme: 'chemistry',
+    formulaHighlight: 'P = \\frac{1}{3}\\rho \\overline{v^2}, \\quad \\overline{K} = \\frac{3}{2}k_B T, \\quad v_{\\text{rms}} = \\sqrt{\\frac{3k_B T}{m}}, \\quad \\lambda = \\frac{1}{\\sqrt{2}\\pi n d^2}',
     overview: {
-      summary: 'Electrostatics studies static electric charges and their interactions. Coulomb\'s law quantifies fundamental forces, while Gauss\'s law uses flux symmetry to evaluate electric fields around continuous charge distributions.',
-      historicalContext: 'Charles-Augustin de Coulomb formulated his inverse-square law in 1785; Carl Friedrich Gauss published his divergence theorem for electric flux in 1835.',
+      summary: 'The molecular theory of gases provides a microscopic statistical interpretation of macroscopic thermodynamic quantities. It establishes that gas pressure originates from molecular collisions and absolute temperature is directly proportional to average translational kinetic energy.',
+      historicalContext: 'Daniel Bernoulli first proposed the kinetic model of gases in 1738; Rudolf Clausius, James Clerk Maxwell, and Ludwig Boltzmann formulated the statistical kinetic theory in the 19th century.',
       learningOutcomes: [
-        'Calculate electrostatic forces between multiple point charges using Coulomb\'s law and superposition',
-        'Evaluate electric field intensity along axial and equatorial lines of an electric dipole',
-        'Apply Gauss\'s law to compute electric fields of infinite line charges, sheets, and spherical shells',
-        'Determine torque and potential energy of an electric dipole in uniform and non-uniform fields'
+        'State and explain the fundamental postulates of the kinetic molecular theory of ideal gases',
+        'Derive the pressure formula $P = \\frac{1}{3}\\rho \\overline{v^2}$ from elastic collisions with container walls',
+        'Relate average translational kinetic energy per molecule directly to thermodynamic temperature',
+        'Calculate root-mean-square speed, degrees of freedom, and mean free path for diverse gases'
       ],
       coreFormulas: [
-        { label: 'Coulomb\'s Law in Vacuum', formula: 'F = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q_1 q_2}{r^2} \\quad \\left(\\frac{1}{4\\pi\\varepsilon_0} \\approx 8.99 \\times 10^9 \\text{ N}\\cdot\\text{m}^2/\\text{C}^2\\right)', explanation: 'Magnitude of electrostatic force between two point charges separated by distance $r$.' },
-        { label: 'Gauss\'s Law', formula: '\\Phi_E = \\oint \\mathbf{E} \\cdot d\\mathbf{A} = \\frac{Q_{\\text{enclosed}}}{\\varepsilon_0}', explanation: 'Total electric flux passing through a closed Gaussian surface.' },
-        { label: 'Field of Infinite Line Charge', formula: 'E = \\frac{\\lambda}{2\\pi\\varepsilon_0 r}', explanation: 'Radial field at distance $r$ from a line of uniform linear charge density $\\lambda$.' }
+        { label: 'Pressure of an Ideal Gas', formula: 'P = \\frac{1}{3}\\rho \\overline{v^2} = \\frac{2}{3} N_0 \\overline{E_k}', explanation: 'Pressure exerted by $N$ gas molecules of mass $m$ in volume $V$ with mean square speed $\\overline{v^2}$.' },
+        { label: 'Kinetic Temperature Relation', formula: '\\overline{E_k} = \\frac{1}{2} m \\overline{v^2} = \\frac{3}{2} k_B T', explanation: 'Average translational kinetic energy per molecule depends solely on absolute temperature.' },
+        { label: 'Root-Mean-Square Speed', formula: 'v_{\\text{rms}} = \\sqrt{\\frac{3 k_B T}{m}} = \\sqrt{\\frac{3 R T}{M}}', explanation: 'Effective statistical molecular velocity in an ideal gas at temperature $T$.' }
       ],
       realWorldApplications: [
-        'Photocopying & Laser Printing: Electrostatic charge deposition on photoreceptor drums',
-        'Electrostatic Precipitators: Industrial smoke stack particulate pollution filtering',
-        'Faraday Cage Shielding: Protecting sensitive avionics and electronics from lightning strikes',
-        'Touchscreen Displays: Capacitive touch grid sensing human fingertip charges'
+        'Vacuum Engineering: High-vacuum diffusion pumps operating below atmospheric mean free path thresholds',
+        'Atmospheric Physics: Planetary atmospheric retention and thermal escape velocities of light gases (hydrogen, helium)',
+        'Gas Separation: Uranium isotope separation ($^{235}\\text{UF}_6$ vs $^{238}\\text{UF}_6$) via gaseous effusion rates',
+        'Aerospace Hypersonics: Knudsen number regimes determining continuum vs rarefied aerodynamic flow'
       ],
       keyTheorems: [
-        { title: 'Gauss\'s Electrostatic Law', statement: 'The total electric flux through any closed Gaussian surface is equal to $\\frac{1}{\\varepsilon_0}$ times the total net charge enclosed within that surface.', importance: 'The first of Maxwell\'s four fundamental equations of electromagnetism.' }
+        { title: 'Law of Equipartition of Energy', statement: 'For any dynamical system in thermal equilibrium, the total energy is distributed equally among all degrees of freedom, with each degree of freedom possessing average energy $\\frac{1}{2}k_B T$.', importance: 'Determines molar specific heats and adiabatic indices across monatomic, diatomic, and polyatomic gases.' }
       ]
     }
   },
@@ -699,44 +700,45 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     id: 'el-phy12-ch2',
     class: 12,
     track: 'Elementary Physics',
-    name: 'Electrostatic Potential & Capacitance',
-    description: 'Electric potential $V = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q}{r}$, conservative field gradient $\\mathbf{E} = -\\boldsymbol{\\nabla}V$, equipotential surfaces, capacitance $C = \\frac{Q}{V}$, parallel-plate capacitors $C = \\frac{\\varepsilon_r \\varepsilon_0 A}{d}$, dielectric polarization, and electrostatic energy density $u = \\frac{1}{2}\\varepsilon_0 E^2$.',
-    category: 'Electrostatics & Current Electricity',
-    questionCount: 0,
-    difficulty: 'Mixed',
+    name: '2. First Law of Thermodynamics',
+    description: 'Thermodynamic systems, state variables, heat ($Q$), work done by gas ($W = \\int P\\,dV$), First Law of Thermodynamics $\\Delta U = Q - W$, isothermal, isobaric, isochoric, and adiabatic processes ($PV^\\gamma = \\text{const}$), molar specific heats $C_p$ and $C_v$, and Mayer\'s relation $C_p - C_v = R$.',
+    category: 'Thermodynamics & Heat',
+    questionCount: 200,
+    difficulty: 'Normal',
     keyTopics: [
-      'Electric Potential: $V(\\mathbf{r}) = -\\int_\\infty^\\mathbf{r} \\mathbf{E} \\cdot d\\mathbf{l} = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q}{r}$',
-      'Equipotential Surfaces ($V = \\text{const}$) & Field Gradient $\\mathbf{E} = -\\frac{dV}{dr}\\hat{\\mathbf{r}}$',
-      'Capacitance: $C = \\frac{Q}{V}$ & Parallel Plate Capacitor $C = \\frac{\\varepsilon_0 A}{d}$',
-      'Dielectric Insertion: $C = K C_0$ & Dielectric Breakdown Strength',
-      'Energy Stored in Capacitor: $U = \\frac{1}{2} C V^2 = \\frac{Q^2}{2C}$ & Energy Density $u = \\frac{1}{2}\\varepsilon_0 E^2$'
+      'Thermodynamic State Variables, Boundaries & Internal Energy ($U$)',
+      'Work Done During Volume Changes ($W = \\int P\\,dV$ and $P-V$ Indicator Diagrams)',
+      'First Law of Thermodynamics: $\\Delta U = Q - W$',
+      'Isothermal Process (\\Delta T = 0, $W = nRT\\ln(V_f/V_i)$) & Isochoric Process (\\Delta V = 0, $W = 0$)',
+      'Isobaric Process (\\Delta P = 0, $W = P\\Delta V$) & Adiabatic Process ($Q = 0, P V^\\gamma = \\text{const}$)',
+      'Molar Specific Heat Capacities: $C_p - C_v = R$ and Ratio $\\gamma = C_p/C_v$'
     ],
-    color: 'emerald',
-    icon: 'Layers',
-    artTheme: 'integral',
-    formulaHighlight: 'V = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q}{r}, \\quad C = \\frac{K \\varepsilon_0 A}{d}, \\quad U = \\frac{1}{2} C V^2, \\quad u_E = \\frac{1}{2}\\varepsilon_0 E^2',
+    color: 'rose',
+    icon: 'Flame',
+    artTheme: 'differential',
+    formulaHighlight: '\\Delta U = Q - W, \\quad W = nRT\\ln\\left(\\frac{V_f}{V_i}\\right), \\quad P V^\\gamma = \\text{const}, \\quad C_p - C_v = R',
     overview: {
-      summary: 'Electric potential represents the potential energy per unit charge. Capacitors store electrostatic energy in electric fields between conductors separated by dielectrics, serving as essential components in electronic circuits.',
-      historicalContext: 'Ewald Georg von Kleist and Pieter van Musschenbroek invented the Leyden jar capacitor in 1745; Michael Faraday formalized capacitance and dielectric constants in 1837.',
+      summary: 'The First Law of Thermodynamics is the universal law of conservation of energy applied to thermodynamic systems. It establishes internal energy as a state function and governs energy exchange through heat transfer and mechanical work.',
+      historicalContext: 'Julius Robert von Mayer, James Prescott Joule, and Hermann von Helmholtz formulated the mechanical equivalence of heat and the conservation of energy in the 1840s.',
       learningOutcomes: [
-        'Calculate electrostatic potential due to point charges, dipoles, and continuous charge distributions',
-        'Determine the relationship between electric field vectors and equipotential contours',
-        'Derive capacitance formulas for parallel plate, spherical, and cylindrical capacitors',
-        'Compute equivalent capacitance and stored energy for series-parallel capacitor combinations'
+        'Distinguish state functions (internal energy, pressure, temperature) from path-dependent quantities (heat, work)',
+        'Calculate mechanical work done during expansion or compression using area under $P-V$ curves',
+        'Apply the First Law to isothermal, isobaric, isochoric, and adiabatic thermodynamic paths',
+        'Derive Mayer\'s relation $C_p - C_v = R$ and analyze adiabatic expansion equations'
       ],
       coreFormulas: [
-        { label: 'Parallel Plate Capacitance', formula: 'C = \\frac{K \\varepsilon_0 A}{d}', explanation: 'Capacitance with a dielectric of constant $K$ filling plate spacing $d$.' },
-        { label: 'Electrostatic Stored Energy', formula: 'U = \\frac{1}{2} C V^2 = \\frac{1}{2} Q V = \\frac{Q^2}{2C}', explanation: 'Total electrostatic potential energy stored inside the capacitor.' },
-        { label: 'Energy Density of Electric Field', formula: 'u_E = \\frac{1}{2} \\varepsilon_0 E^2', explanation: 'Energy stored per unit volume in an electric field of intensity $E$.' }
+        { label: 'First Law of Thermodynamics', formula: '\\Delta U = Q - W \\implies Q = \\Delta U + W', explanation: 'Net heat supplied to a system equals increase in internal energy plus work done by the system.' },
+        { label: 'Isothermal Work Formula', formula: 'W = n R T \\ln\\left(\\frac{V_f}{V_i}\\right) = n R T \\ln\\left(\\frac{P_i}{P_f}\\right)', explanation: 'Work executed by an ideal gas expanding reversibly at constant temperature $T$.' },
+        { label: 'Mayer\'s Relation', formula: 'C_p - C_v = R', explanation: 'Difference between constant pressure and constant volume molar heat capacities equals universal gas constant $R$.' }
       ],
       realWorldApplications: [
-        'Medical Defibrillators: Rapid high-voltage capacitor energy discharge restoring cardiac rhythm',
-        'Camera Flash Units: Capacitor rapid discharge delivering intense high-lumen illumination pulses',
-        'DRAM Memory Cells: Microscopic 1-transistor 1-capacitor binary charge storage bits',
-        'Supercapacitors: High energy density regenerative braking and grid peak-shaving storage'
+        'Internal Combustion Engines: Compression and expansion power strokes modeled by thermodynamic cycles',
+        'Gas Turbines & Jet Engines: Brayton cycle isobaric heating and adiabatic nozzle gas expansion',
+        'Scuba Diving Tanks: Adiabatic cooling during rapid air tank decompression valves',
+        'Meteorological Lapse Rates: Dry adiabatic cooling of rising air parcels creating cloud condensation layers'
       ],
       keyTheorems: [
-        { title: 'Equipotential Surface Orthogonality', statement: 'Electric field lines are always perpendicular to equipotential surfaces at every point in space.', importance: 'Proves that zero work is performed moving a charge along an equipotential path.' }
+        { title: 'First Law of Thermodynamics', statement: 'Energy cannot be created or destroyed in any thermodynamic interaction; the total change in internal energy of a closed system is equal to the heat added minus work done by the system.', importance: 'The cornerstone conservation law connecting mechanical work, thermal energy, and internal energy.' }
       ]
     }
   },
@@ -744,44 +746,45 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     id: 'el-phy12-ch3',
     class: 12,
     track: 'Elementary Physics',
-    name: 'Current Electricity',
-    description: 'Electric current $I = n e A v_d$, drift velocity, Ohm\'s law $\\mathbf{J} = \\sigma\\mathbf{E}$, resistivity and temperature coefficient $\\rho(T)$, EMF and internal resistance, Kirchhoff\'s junction and loop rules, Wheatstone bridge, and potentiometer.',
-    category: 'Electrostatics & Current Electricity',
+    name: '3. Second Law of Thermodynamics',
+    description: 'Heat engines and cyclic processes, thermal efficiency $\\eta = \\frac{W}{Q_H}$, Kelvin-Planck and Clausius statements, Carnot reversible engine cycle, Carnot efficiency $\\eta_C = 1 - \\frac{T_C}{T_H}$, refrigerators and heat pumps (COP), entropy $S$, entropy changes $\\Delta S = \\int \\frac{dQ_{\\text{rev}}}{T}$, and principle of entropy increase.',
+    category: 'Thermodynamics & Heat',
     questionCount: 0,
     difficulty: 'Mixed',
     keyTopics: [
-      'Current & Drift Velocity: $I = n e A v_d$ with $v_d = \\frac{e E \\tau}{m}$',
-      'Ohm\'s Law: $V = I R$ and Resistivity: $R = \\rho \\frac{L}{A}$ with $\\rho(T) = \\rho_0[1+\\alpha(T-T_0)]$',
-      'EMF ($\\mathcal{E}$), Internal Resistance ($r$), and Terminal Voltage: $V = \\mathcal{E} - I r$',
-      'Kirchhoff\'s Rules: Junction Rule ($\\sum I = 0$) & Loop Rule ($\\sum \\Delta V = 0$)',
-      'Wheatstone Bridge Balance: $\\frac{P}{Q} = \\frac{R}{S}$ & Potentiometer Principle'
+      'Heat Engines & Thermal Efficiency $\\eta = 1 - \\frac{Q_C}{Q_H}$',
+      'Kelvin-Planck and Clausius Formulations of the Second Law of Thermodynamics',
+      'Carnot Reversible Cycle (Isothermal and Adiabatic Expansions & Compressions)',
+      'Carnot Theorem & Upper Bound Thermal Efficiency $\\eta_C = 1 - \\frac{T_C}{T_H}$',
+      'Refrigerators and Heat Pumps: Coefficient of Performance ($\\text{COP}$)',
+      'Concept of Entropy ($S$) & Principle of Entropy Increase ($\\Delta S_{\\text{universe}} \\ge 0$)'
     ],
     color: 'amber',
-    icon: 'Sliders',
-    artTheme: 'differential',
-    formulaHighlight: 'I = n e A v_d, \\quad V = I R, \\quad \\sum I_{\\text{in}} = \\sum I_{\\text{out}}, \\quad \\sum \\Delta V = 0, \\quad \\frac{P}{Q} = \\frac{R}{S}',
+    icon: 'RotateCw',
+    artTheme: 'calculus',
+    formulaHighlight: '\\eta = 1 - \\frac{Q_C}{Q_H}, \\quad \\eta_{\\text{Carnot}} = 1 - \\frac{T_C}{T_H}, \\quad \\Delta S = \\int \\frac{dQ_{\\text{rev}}}{T} \\ge 0, \\quad \\text{COP} = \\frac{Q_C}{W}',
     overview: {
-      summary: 'Current electricity investigates the dynamics of charge carrier drift in conducting materials. Kirchhoff\'s conservation laws and bridge networks enable complete analysis of complex multi-loop DC electrical circuits.',
-      historicalContext: 'Georg Simon Ohm published Ohm\'s Law in 1827; Gustav Kirchhoff published his circuit laws in 1845, establishing universal circuit analysis rules.',
+      summary: 'The Second Law of Thermodynamics determines the natural direction of physical and chemical processes. It proves that no heat engine can convert heat entirely into work and establishes entropy as the fundamental measure of thermodynamic irreversibility and disorder.',
+      historicalContext: 'Nicolas Léonard Sadi Carnot established the foundations of heat engine efficiency in 1824; Rudolf Clausius and Lord Kelvin formalized the Second Law and entropy concept in the 1850s.',
       learningOutcomes: [
-        'Derive the microscopic relationship between drift velocity, relaxation time, and electric current',
-        'Calculate resistance variations across temperature regimes and analyze color-coded resistors',
-        'Apply Kirchhoff\'s junction and loop laws to solve multi-branch DC mesh networks',
-        'Determine unknown resistances and EMFs using Wheatstone bridge and potentiometer methods'
+        'Analyze heat engine cycles and calculate thermal efficiencies from heat absorbed and rejected',
+        'Prove equivalence between Kelvin-Planck and Clausius statements of the Second Law',
+        'Trace the four stages of the Carnot cycle and calculate maximum theoretical Carnot efficiency',
+        'Calculate entropy changes for reversible and irreversible processes, demonstrating universal entropy growth'
       ],
       coreFormulas: [
-        { label: 'Drift Velocity Relation', formula: 'v_d = \\frac{e E \\tau}{m} = \\frac{I}{n e A}', explanation: 'Average drift speed of conduction electrons under applied field $E$.' },
-        { label: 'Resistivity and Resistance', formula: 'R = \\rho \\frac{L}{A} = \\frac{m}{n e^2 \\tau} \\frac{L}{A}', explanation: 'Resistance in terms of material resistivity $\\rho$, length $L$, and area $A$.' },
-        { label: 'Wheatstone Bridge Balance Condition', formula: '\\frac{R_1}{R_2} = \\frac{R_3}{R_4} \\implies I_g = 0', explanation: 'Condition for zero galvanometer current across bridge diagonal.' }
+        { label: 'Carnot Engine Efficiency', formula: '\\eta_{\\text{Carnot}} = 1 - \\frac{T_C}{T_H}', explanation: 'Maximum attainable efficiency of any heat engine operating between hot reservoir $T_H$ and cold reservoir $T_C$.' },
+        { label: 'Entropy Definition', formula: 'dS = \\frac{dQ_{\\text{rev}}}{T} \\implies \\Delta S = \\int \\frac{dQ_{\\text{rev}}}{T}', explanation: 'Infinitesimal reversible heat transfer divided by absolute temperature.' },
+        { label: 'Refrigerator Performance', formula: '\\text{COP}_{\\text{ref}} = \\frac{Q_C}{W} = \\frac{T_C}{T_H - T_C}', explanation: 'Coefficient of performance for a Carnot refrigerator extracting heat $Q_C$ with work input $W$.' }
       ],
       realWorldApplications: [
-        'Electrical Power Grid: High-voltage AC/DC transmission line resistive loss reduction ($P = I^2 R$)',
-        'Strain Gauge Sensors: Wheatstone bridge resistive micro-strain measurements in aerospace',
-        'Battery Management Systems: Monitoring internal battery cell resistance and State of Charge (SoC)',
-        'Thermistor Temperature Probes: NTC/PTC resistance-temperature measurement in avionics'
+        'Thermal & Nuclear Power Plants: Superheated steam Rankine cycles engineered against Carnot limits',
+        'HVAC & Domestic Refrigeration: Vapor-compression heat pump cycles and seasonal COP optimization',
+        'Automotive Powertrains: Fuel economy limits in internal combustion Otto and Diesel engines',
+        'Cosmological Thermodynamics: The Arrow of Time and the ultimate Thermodynamic Heat Death of the Universe'
       ],
       keyTheorems: [
-        { title: 'Kirchhoff\'s Current and Voltage Laws', statement: 'At any circuit junction, $\\sum I = 0$ (conservation of charge), and around any closed loop, $\\sum \\Delta V = 0$ (conservation of energy).', importance: 'The fundamental mathematical axioms of all electrical circuit analysis.' }
+        { title: 'Carnot\'s Theorem', statement: 'No heat engine operating between two given heat reservoirs can be more efficient than a reversible Carnot engine operating between the same two reservoirs.', importance: 'Establishes the absolute theoretical upper limit of heat engine performance.' }
       ]
     }
   },
@@ -789,44 +792,45 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     id: 'el-phy12-ch4',
     class: 12,
     track: 'Elementary Physics',
-    name: 'Moving Charges & Magnetism',
-    description: 'Lorentz force $\\mathbf{F} = q(\\mathbf{E} + \\mathbf{v} \\times \\mathbf{B})$, magnetic force on current-carrying conductor $\\mathbf{F} = I\\mathbf{L} \\times \\mathbf{B}$, Biot-Savart law, Ampere\'s Circuital Law $\\oint \\mathbf{B} \\cdot d\\mathbf{l} = \\mu_0 I_{\\text{enc}}$, magnetic field of solenoids/toroids, and moving coil galvanometers.',
+    name: '4. Magnetic Fields',
+    description: 'Magnetic induction vector $\\mathbf{B}$, magnetic flux $\\Phi_B$, Lorentz force $\\mathbf{F} = q(\\mathbf{v} \\times \\mathbf{B})$, cyclotron radius $r = \\frac{mv}{qB}$ and frequency, force on current-carrying conductor $\\mathbf{F} = I(\\mathbf{L} \\times \\mathbf{B})$, magnetic torque $\\boldsymbol{\\tau} = \\mathbf{M} \\times \\mathbf{B}$, Biot-Savart law, Ampere\'s Circuital Law, and magnetic fields of coils, solenoids, and toroids.',
     category: 'Magnetism & Induction',
     questionCount: 0,
     difficulty: 'Mixed',
     keyTopics: [
-      'Lorentz Force: $\\mathbf{F} = q(\\mathbf{E} + \\mathbf{v} \\times \\mathbf{B})$ & Helical Motion ($r = \\frac{mv}{qB}, T = \\frac{2\\pi m}{qB}$)',
-      'Biot-Savart Law: $d\\mathbf{B} = \\frac{\\mu_0}{4\\pi} \\frac{I d\\mathbf{l} \\times \\hat{\\mathbf{r}}}{r^2}$ (Circular Loop Field $B = \\frac{\\mu_0 I R^2}{2(R^2+x^2)^{3/2}}$)',
-      'Ampere\'s Circuital Law: $\\oint \\mathbf{B} \\cdot d\\mathbf{l} = \\mu_0 I_{\\text{enclosed}}$ (Straight Wire, Solenoid, Toroid)',
-      'Force Between Parallel Currents: $\\frac{F}{L} = \\frac{\\mu_0 I_1 I_2}{2\\pi d}$ (Definition of the Ampere)',
-      'Torque on Magnetic Loop $\\boldsymbol{\\tau} = \\mathbf{M} \\times \\mathbf{B}$ & Moving Coil Galvanometer Sensitivity'
+      'Magnetic Lorentz Force: $\\mathbf{F} = q(\\mathbf{v} \\times \\mathbf{B})$ & Helical Particle Trajectories',
+      'Cyclotron Motion: Orbit Radius $r = \\frac{mv}{qB}$ & Period $T = \\frac{2\\pi m}{qB}$',
+      'Magnetic Force on Current-Carrying Conductor: $\\mathbf{F} = I(\\mathbf{L} \\times \\mathbf{B})$',
+      'Torque on Magnetic Loop $\\boldsymbol{\\tau} = \\mathbf{M} \\times \\mathbf{B}$ & Magnetic Dipole Moment $\\mathbf{M} = I\\mathbf{A}$',
+      'Biot-Savart Law: $d\\mathbf{B} = \\frac{\\mu_0}{4\\pi}\\frac{I d\\mathbf{l} \\times \\hat{\\mathbf{r}}}{r^2}$ (Circular Coil Field $B = \\frac{\\mu_0 I R^2}{2(R^2+x^2)^{3/2}}$)',
+      'Ampere\'s Circuital Law: $\\oint \\mathbf{B} \\cdot d\\mathbf{l} = \\mu_0 I_{\\text{enc}}$ (Straight Wire, Solenoid $B = \\mu_0 n I$, Toroid)'
     ],
-    color: 'cyan',
+    color: 'indigo',
     icon: 'Compass',
     artTheme: 'vector',
-    formulaHighlight: '\\mathbf{F} = q(\\mathbf{E} + \\mathbf{v} \\times \\mathbf{B}), \\quad d\\mathbf{B} = \\frac{\\mu_0}{4\\pi}\\frac{I d\\mathbf{l} \\times \\hat{\\mathbf{r}}}{r^2}, \\quad \\oint \\mathbf{B} \\cdot d\\mathbf{l} = \\mu_0 I_{\\text{enc}}',
+    formulaHighlight: '\\mathbf{F} = q(\\mathbf{v} \\times \\mathbf{B}), \\quad r = \\frac{mv}{qB}, \\quad \\boldsymbol{\\tau} = \\mathbf{M} \\times \\mathbf{B}, \\quad \\oint \\mathbf{B} \\cdot d\\mathbf{l} = \\mu_0 I_{\\text{enc}}',
     overview: {
-      summary: 'Moving electric charges generate magnetic fields, and magnetic fields exert forces on moving charges. The Biot-Savart law and Ampere\'s circuital law calculate magnetic field topologies around current-carrying conductors.',
+      summary: 'Magnetic fields are produced by moving electric charges and exert forces on other moving charges or electric currents. The Biot-Savart and Ampere circuital laws calculate magnetic field geometries for fundamental circuit topologies.',
       historicalContext: 'Hans Christian Ørsted discovered current-induced magnetic deflection in 1820; Jean-Baptiste Biot, Félix Savart, and André-Marie Ampère formalized magnetic electrodynamics.',
       learningOutcomes: [
-        'Calculate trajectory radii and orbital frequencies for charged particles moving in uniform magnetic fields',
-        'Apply the Biot-Savart law to find magnetic fields at centers and axes of circular coils',
-        'Use Ampere\'s circuital law to derive magnetic fields inside ideal solenoids and toroids',
-        'Determine forces between parallel current-carrying conductors and torque on magnetic dipoles'
+        'Calculate magnetic Lorentz force on charged particles and predict helical trajectory parameters',
+        'Determine magnetic force and torque on conductors and closed planar coils in uniform fields',
+        'Apply the Biot-Savart law to find magnetic fields of straight lines and circular current loops',
+        'Employ Ampere\'s circuital law to compute magnetic fields inside ideal solenoids and toroids'
       ],
       coreFormulas: [
-        { label: 'Lorentz Force', formula: '\\mathbf{F} = q(\\mathbf{E} + \\mathbf{v} \\times \\mathbf{B})', explanation: 'Total force on a charge $q$ experiencing simultaneous electric and magnetic fields.' },
-        { label: 'Ampere\'s Circuital Law', formula: '\\oint \\mathbf{B} \\cdot d\\mathbf{l} = \\mu_0 I_{\\text{enclosed}}', explanation: 'Line integral of magnetic field around any closed loop equals $\\mu_0$ times enclosed current.' },
-        { label: 'Magnetic Field of Ideal Solenoid', formula: 'B = \\mu_0 n I', explanation: 'Uniform axial magnetic field inside a solenoid with $n$ turns per unit length.' }
+        { label: 'Lorentz Force', formula: '\\mathbf{F} = q(\\mathbf{E} + \\mathbf{v} \\times \\mathbf{B})', explanation: 'Combined electromagnetic force acting on a point charge $q$ moving with velocity $\\mathbf{v}$.' },
+        { label: 'Cyclotron Radius', formula: 'r = \\frac{m v}{q B}', explanation: 'Radius of circular orbit for a charged particle moving perpendicular to uniform magnetic field $B$.' },
+        { label: 'Field Inside Long Solenoid', formula: 'B = \\mu_0 n I = \\mu_0 \\frac{N}{L} I', explanation: 'Uniform magnetic field inside an ideal solenoid with $n$ turns per unit length carrying current $I$.' }
       ],
       realWorldApplications: [
-        'Magnetic Resonance Imaging (MRI): High-field superconducting solenoid magnets for medical diagnostics',
-        'Electric Motors & Actuators: Lorentz torque driving electric vehicle traction motors',
-        'Particle Accelerators (CERN LHC): Magnetic dipole bending fields guiding proton beams',
-        'Mass Spectrometry: Velocity selector and magnetic deflection isotope mass separation'
+        'Particle Accelerators (CERN LHC): Superconducting bending magnets steering relativistic proton beams',
+        'Mass Spectrometry: Magnetic deflection sorting ionized chemical isotopes according to mass-to-charge ratios',
+        'Electric Vehicle Motors: Stator coils generating rotating magnetic fields to produce rotor torque',
+        'Magnetic Levitation (Maglev): Electrodynamic suspension propelling high-speed trains without rail friction'
       ],
       keyTheorems: [
-        { title: 'Ampere\'s Circuital Theorem', statement: 'The circulation of magnetic field $\\mathbf{B}$ around any closed Amperian path equals $\\mu_0$ times the total electric current passing through the surface enclosed by the path.', importance: 'The magnetic counterpart to Gauss\'s Law in symmetric current geometry.' }
+        { title: 'Ampere\'s Circuital Theorem', statement: 'The line integral of magnetic field $\\mathbf{B}$ around any closed path equals $\\mu_0$ times the total steady electric current enclosed by the path.', importance: 'The magnetic counterpart to Gauss\'s Law in electrostatics.' }
       ]
     }
   },
@@ -834,69 +838,25 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     id: 'el-phy12-ch5',
     class: 12,
     track: 'Elementary Physics',
-    name: 'Magnetism & Matter',
-    description: 'Magnetic dipole moment $\\mathbf{M} = I\\mathbf{A}$, Gauss\'s Law for Magnetism $\\oint \\mathbf{B} \\cdot d\\mathbf{A} = 0$, Earth\'s magnetic elements (declination, dip, horizontal field), classification of magnetic materials (diamagnetic, paramagnetic, ferromagnetic, Curie\'s law), and hysteresis.',
+    name: '5. Electromagnetic Induction',
+    description: 'Magnetic flux $\\Phi = \\mathbf{B} \\cdot \\mathbf{A}$, Faraday\'s laws of electromagnetic induction $\\mathcal{E} = -N \\frac{d\\Phi}{dt}$, Lenz\'s law and energy conservation, motional electromotive force $\\mathcal{E} = Bvl$, induced electric fields, eddy currents and damping, self-inductance ($L$), mutual inductance ($M$), and energy stored in magnetic field $U_B = \\frac{1}{2} L I^2$.',
     category: 'Magnetism & Induction',
     questionCount: 0,
     difficulty: 'Mixed',
     keyTopics: [
-      'Bar Magnet as Magnetic Dipole ($M = m \\times 2l$) & Magnetic Field Lines',
-      'Gauss\'s Law for Magnetism: $\\oint \\mathbf{B} \\cdot d\\mathbf{A} = 0$ (Absence of Monopoles)',
-      'Earth\'s Magnetic Field: Declination ($\\theta$), Angle of Dip ($\\delta$), and Horizontal Component ($B_H = B\\cos\\delta$)',
-      'Magnetic Intensity ($\\mathbf{H}$), Magnetization ($\\mathbf{M}$), and Magnetic Susceptibility ($\\chi_m$)',
-      'Dia-, Para-, and Ferromagnetism, Curie\'s Law ($\\chi \\propto 1/T$), and Hysteresis ($B-H$) Loop'
-    ],
-    color: 'blue',
-    icon: 'Radio',
-    artTheme: 'conic',
-    formulaHighlight: '\\oint \\mathbf{B} \\cdot d\\mathbf{A} = 0, \\quad \\mathbf{B} = \\mu_0(\\mathbf{H} + \\mathbf{M}), \\quad \\chi_m = \\frac{M}{H}, \\quad B_H = B\\cos\\delta',
-    overview: {
-      summary: 'Magnetic properties of materials originate from atomic electron orbital and spin magnetic dipoles. Gauss\'s law for magnetism confirms the absence of isolated magnetic monopoles, while materials exhibit diamagnetic, paramagnetic, or ferromagnetic behaviors.',
-      historicalContext: 'William Gilbert published De Magnete in 1600 identifying Earth as a giant magnet; Pierre Curie discovered the temperature dependence of paramagnetic susceptibility in 1895.',
-      learningOutcomes: [
-        'Calculate magnetic field intensity along axial and broadside-on equatorial lines of bar magnets',
-        'Explain Gauss\'s law for magnetism and its implication for continuous closed magnetic flux loops',
-        'Determine terrestrial magnetic field components using dip circles and deflection magnetometers',
-        'Differentiate between diamagnetic, paramagnetic, and ferromagnetic materials via susceptibility and hysteresis'
-      ],
-      coreFormulas: [
-        { label: 'Gauss\'s Law for Magnetism', formula: '\\oint \\mathbf{B} \\cdot d\\mathbf{A} = 0', explanation: 'Net magnetic flux through any closed Gaussian surface is identically zero.' },
-        { label: 'Magnetic Susceptibility', formula: '\\chi_m = \\frac{M}{H} = \\mu_r - 1', explanation: 'Degree of magnetization induced in a material per unit applied magnetic field intensity.' },
-        { label: 'Curie\'s Law for Paramagnetism', formula: '\\chi = \\frac{C}{T}', explanation: 'Paramagnetic susceptibility is inversely proportional to absolute temperature $T$.' }
-      ],
-      realWorldApplications: [
-        'Magnetic Data Storage: Ferromagnetic thin-film domain orientations on computer hard drives',
-        'Transformer Core Design: Soft ferromagnetic silicon steel reducing hysteresis power loss',
-        'Permanent Magnet Motors: Rare-earth NdFeB magnets delivering extreme magnetic flux densities',
-        'Geophysical Navigation: Geomagnetic field orientation aiding aviation and marine compasses'
-      ],
-      keyTheorems: [
-        { title: 'Non-Existence of Magnetic Monopoles', statement: 'Magnetic poles always exist in equal and opposite dipole pairs; isolated single magnetic charges (monopoles) do not exist in classical electromagnetism.', importance: 'Guarantees that all magnetic field lines form continuous closed loops.' }
-      ]
-    }
-  },
-  {
-    id: 'el-phy12-ch6',
-    class: 12,
-    track: 'Elementary Physics',
-    name: 'Electromagnetic Induction (EMI)',
-    description: 'Magnetic flux $\\Phi_B = \\mathbf{B} \\cdot \\mathbf{A}$, Faraday\'s Law of Electromagnetic Induction $\\mathcal{E} = -\\frac{d\\Phi_B}{dt}$, Lenz\'s Law, motional EMF $\\mathcal{E} = Bvl$, eddy currents, self-inductance $L$, mutual inductance $M$, and energy stored in inductors $U = \\frac{1}{2}LI^2$.',
-    category: 'Magnetism & Induction',
-    questionCount: 0,
-    difficulty: 'Mixed',
-    keyTopics: [
-      'Magnetic Flux: $\\Phi_B = \\int \\mathbf{B} \\cdot d\\mathbf{A} = B A \\cos\\theta$',
-      'Faraday\'s Law: $\\mathcal{E} = -N \\frac{d\\Phi_B}{dt}$ and Lenz\'s Law of Conservation of Energy',
-      'Motional Electromotive Force: $\\mathcal{E} = B v l$ and Induced Current $I = \\frac{B v l}{R}$',
-      'Eddy Currents, Induction Heating & Electromagnetic Damping',
-      'Self-Inductance ($L = \\frac{N\\Phi}{I}$) and Mutual Inductance ($M = \\frac{\\mu_0 N_1 N_2 A}{l}$)'
+      'Magnetic Flux: $\\Phi = \\mathbf{B} \\cdot \\mathbf{A} = B A \\cos\\theta$',
+      'Faraday\'s Law of Induction: $\\mathcal{E} = -N \\frac{d\\Phi}{dt}$',
+      'Lenz\'s Law and Electromagnetic Conservation of Energy',
+      'Motional Electromotive Force: $\\mathcal{E} = B v l$ and Induced Current $I = \\frac{Bvl}{R}$',
+      'Eddy Currents, Induction Heating, and Electromagnetic Brakes',
+      'Self-Inductance ($L = \\frac{N\\Phi}{I}$) & Energy in Inductor ($U = \\frac{1}{2} L I^2$)'
     ],
     color: 'teal',
     icon: 'Activity',
     artTheme: 'calculus',
-    formulaHighlight: '\\mathcal{E} = -\\frac{d\\Phi_B}{dt}, \\quad \\mathcal{E} = B v l, \\quad U = \\frac{1}{2} L I^2, \\quad L = \\frac{\\mu_0 N^2 A}{l}',
+    formulaHighlight: '\\mathcal{E} = -N\\frac{d\\Phi}{dt}, \\quad \\mathcal{E} = B v l, \\quad U_B = \\frac{1}{2} L I^2, \\quad L = \\frac{\\mu_0 N^2 A}{l}',
     overview: {
-      summary: 'Electromagnetic induction describes how a changing magnetic flux induces an electromotive force (EMF) in a closed conductor. Lenz\'s law guarantees energy conservation by opposing the flux change, enabling electrical power generation.',
+      summary: 'Electromagnetic induction describes how a changing magnetic flux induces an electromotive force (EMF) in a closed conductor. Lenz\'s law enforces energy conservation by opposing the flux change, enabling modern electrical power generation.',
       historicalContext: 'Discovered independently by Michael Faraday in 1831 and Joseph Henry, revolutionizing electrical engineering and mechanical-to-electrical energy conversion.',
       learningOutcomes: [
         'Calculate induced EMF using Faraday\'s Law for time-varying magnetic fields and moving loops',
@@ -905,14 +865,14 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
         'Calculate self and mutual inductances for coaxial solenoids and stored magnetic energy'
       ],
       coreFormulas: [
-        { label: 'Faraday-Lenz Law', formula: '\\mathcal{E} = -\\frac{d\\Phi_B}{dt} = -\\frac{d}{dt}(B A \\cos\\theta)', explanation: 'Induced EMF equals the negative rate of change of magnetic flux.' },
-        { label: 'Motional EMF', formula: '\\mathcal{E} = B v l', explanation: 'EMF induced across a conductor of length $l$ moving at speed $v$ through field $B$.' },
-        { label: 'Energy in Magnetic Field of Inductor', formula: 'U_B = \\frac{1}{2} L I^2', explanation: 'Magnetic potential energy stored in an inductor carrying current $I$.' }
+        { label: 'Faraday-Lenz Law', formula: '\\mathcal{E} = -N \\frac{d\\Phi_B}{dt} = -N \\frac{d}{dt}(B A \\cos\\theta)', explanation: 'Induced EMF equals the negative rate of change of magnetic flux through $N$ turns.' },
+        { label: 'Motional EMF', formula: '\\mathcal{E} = B v l', explanation: 'EMF induced across a conductor of length $l$ moving at speed $v$ perpendicularly through field $B$.' },
+        { label: 'Energy Stored in Inductor', formula: 'U_B = \\frac{1}{2} L I^2', explanation: 'Magnetic potential energy stored in an inductor carrying current $I$.' }
       ],
       realWorldApplications: [
-        'Hydro & Steam Turbine Generators: Rotating rotor magnetic flux inducing multi-megawatt AC voltage',
+        'Hydroelectric & Wind Turbines: Rotor magnets inducing multi-megawatt AC voltage across stator coils',
         'Induction Cooktops: High-frequency eddy currents heating ferromagnetic cookware directly',
-        'Electromagnetic Braking: Eddy current retardation in high-speed bullet trains (Shinkansen)',
+        'Electromagnetic Braking: Eddy current retardation in high-speed bullet trains',
         'Wireless EV Charging: Resonant inductive coupling transmitting power across air gaps'
       ],
       keyTheorems: [
@@ -921,38 +881,39 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     }
   },
   {
-    id: 'el-phy12-ch7',
+    id: 'el-phy12-ch6',
     class: 12,
     track: 'Elementary Physics',
-    name: 'Alternating Current (AC) Circuits',
-    description: 'Sinusoidal AC voltage and current $V(t) = V_0\\sin(\\omega t)$, root-mean-square values $V_{\\text{rms}} = \\frac{V_0}{\\sqrt{2}}$, phasor diagrams, inductive reactance $X_L = \\omega L$, capacitive reactance $X_C = \\frac{1}{\\omega C}$, LCR series resonance $\\omega_0 = \\frac{1}{\\sqrt{LC}}$, quality factor $Q$, power factor $\\cos\\phi$, and transformers.',
-    category: 'Electrostatics & Current Electricity',
+    name: '6. AC Circuits',
+    description: 'Sinusoidal alternating voltage and current, RMS and peak values $I_{\\text{rms}} = \\frac{I_0}{\\sqrt{2}}$, AC through pure resistor, inductor, and capacitor, phase angles and phasor diagrams, inductive reactance $X_L = \\omega L$, capacitive reactance $X_C = \\frac{1}{\\omega C}$, series RLC circuits, total impedance $Z = \\sqrt{R^2 + (X_L - X_C)^2}$, electrical resonance $f_0 = \\frac{1}{2\\pi\\sqrt{LC}}$, quality factor $Q$, and power in AC circuits.',
+    category: 'Magnetism & Induction',
     questionCount: 0,
     difficulty: 'Mixed',
     keyTopics: [
-      'AC Voltage & RMS Relationships: $I_{\\text{rms}} = \\frac{I_0}{\\sqrt{2}} \\approx 0.707 I_0$',
-      'Reactance: Inductive $X_L = \\omega L$ (Current Lags) & Capacitive $X_C = \\frac{1}{\\omega C}$ (Current Leads)',
-      'Series LCR Circuit Impedance: $Z = \\sqrt{R^2 + (X_L - X_C)^2}$ with $\\tan\\phi = \\frac{X_L - X_C}{R}$',
-      'Electrical Resonance: $\\omega_0 = \\frac{1}{\\sqrt{LC}}$, Sharpness, and Quality Factor $Q = \\frac{\\omega_0 L}{R}$',
-      'Power in AC: $P_{\\text{avg}} = V_{\\text{rms}} I_{\\text{rms}} \\cos\\phi$ & Transformer Equation $\\frac{V_s}{V_p} = \\frac{N_s}{N_p} = \\frac{I_p}{I_s}$'
+      'Sinusoidal AC Waveforms & Root Mean Square ($V_{\\text{rms}} = \\frac{V_0}{\\sqrt{2}}$)',
+      'Phasor Representation & Phase Shifts in Resistors, Inductors, and Capacitors',
+      'Reactance: Inductive $X_L = \\omega L$ and Capacitive $X_C = \\frac{1}{\\omega C}$',
+      'Series R-L-C Circuit Impedance: $Z = \\sqrt{R^2 + (X_L - X_C)^2}$',
+      'Resonance in AC Circuits: $f_0 = \\frac{1}{2\\pi\\sqrt{LC}}$ & Sharpness Quality Factor ($Q$)',
+      'AC Power Factor $\\cos\\phi$ and Average Power Dissipation ($P = V_{\\text{rms}} I_{\\text{rms}} \\cos\\phi$)'
     ],
     color: 'purple',
     icon: 'Zap',
     artTheme: 'trigonometry',
-    formulaHighlight: 'I_{\\text{rms}} = \\frac{I_0}{\\sqrt{2}}, \\quad Z = \\sqrt{R^2 + (\\omega L - \\frac{1}{\\omega C})^2}, \\quad f_0 = \\frac{1}{2\\pi\\sqrt{LC}}, \\quad \\frac{V_s}{V_p} = \\frac{N_s}{N_p}',
+    formulaHighlight: 'I_{\\text{rms}} = \\frac{I_0}{\\sqrt{2}}, \\quad Z = \\sqrt{R^2 + \\left(\\omega L - \\frac{1}{\\omega C}\\right)^2}, \\quad f_0 = \\frac{1}{2\\pi\\sqrt{LC}}, \\quad P = V I \\cos\\phi',
     overview: {
       summary: 'Alternating current powers global electrical grids. Phasor analysis resolves phase relationships between voltage and current across resistive, inductive, and capacitive components, with resonance enabling frequency tuning.',
       historicalContext: 'Nikola Tesla and George Westinghouse pioneered multiphase AC power in the late 19th-century "War of the Currents", proving its superiority over DC for long-distance transmission.',
       learningOutcomes: [
         'Calculate peak, instantaneous, and RMS values for sinusoidal voltages and currents',
-        'Construct phasor diagrams and compute total impedance $Z$ for series LCR networks',
+        'Construct phasor diagrams and compute total impedance $Z$ for series RLC networks',
         'Determine resonant frequency, bandwidth, and quality factor $Q$ of tuned filter circuits',
         'Evaluate active, reactive, and apparent power, and calculate transformer voltage/current step ratios'
       ],
       coreFormulas: [
-        { label: 'Series LCR Impedance', formula: 'Z = \\sqrt{R^2 + \\left(\\omega L - \\frac{1}{\\omega C}\\right)^2}', explanation: 'Total opposition to AC current flow combining resistance and net reactance.' },
+        { label: 'Series RLC Impedance', formula: 'Z = \\sqrt{R^2 + \\left(\\omega L - \\frac{1}{\\omega C}\\right)^2}', explanation: 'Total opposition to AC current flow combining resistance and net reactance.' },
         { label: 'Resonant Frequency', formula: '\\omega_0 = \\frac{1}{\\sqrt{L C}} \\implies f_0 = \\frac{1}{2\\pi\\sqrt{L C}}', explanation: 'Frequency where inductive and capacitive reactances cancel ($X_L = X_C$), minimizing impedance to $Z=R$.' },
-        { label: 'Ideal Transformer Relation', formula: '\\frac{V_s}{V_p} = \\frac{N_s}{N_p} = \\frac{I_p}{I_s}', explanation: 'Voltage transformation ratio proportional to secondary-to-primary turn ratio.' }
+        { label: 'AC Power Factor', formula: 'P_{\\text{avg}} = V_{\\text{rms}} I_{\\text{rms}} \\cos\\phi \\quad \\left(\\cos\\phi = \\frac{R}{Z}\\right)', explanation: 'Real electrical power consumed in an AC circuit as a function of phase difference $\\phi$.' }
       ],
       realWorldApplications: [
         'Power Grid Transmission: Step-up transformers boosting voltages to 400kV+ minimizing line losses',
@@ -966,48 +927,94 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     }
   },
   {
-    id: 'el-phy12-ch8',
+    id: 'el-phy12-ch7',
     class: 12,
     track: 'Elementary Physics',
-    name: 'Electromagnetic Waves',
-    description: 'Displacement current $I_d = \\varepsilon_0 \\frac{d\\Phi_E}{dt}$, Maxwell\'s four equations, transverse wave propagation, speed of light $c = \\frac{1}{\\sqrt{\\mu_0\\varepsilon_0}}$, energy transport, Poynting vector $\\mathbf{S} = \\frac{1}{\\mu_0}(\\mathbf{E} \\times \\mathbf{B})$, and the electromagnetic spectrum.',
-    category: 'Oscillations & Waves',
+    name: '7. Physics of Solids',
+    description: 'Structure of crystalline, amorphous, and polymeric solids, crystal lattices and unit cells, mechanical properties: stress $\\sigma$, strain $\\varepsilon$, Hooke\'s law, Young\'s, shear, and bulk moduli, stress-strain curves and elastic limit, strain energy density $u = \\frac{1}{2}\\sigma \\varepsilon$, electrical energy band theory of solids (conductors, semiconductors, insulators), superconductivity ($T_c$, Meissner effect), and magnetic domains.',
+    category: 'Fluids & Material Properties',
     questionCount: 0,
     difficulty: 'Mixed',
     keyTopics: [
-      'Displacement Current: $I_d = \\varepsilon_0 \\frac{d\\Phi_E}{dt}$ & Maxwell-Ampere Law',
-      'Maxwell\'s Four Fundamental Equations of Electromagnetism',
-      'Wave Velocity: $c = \\frac{1}{\\sqrt{\\mu_0\\varepsilon_0}} = \\frac{E_0}{B_0} \\approx 3 \\times 10^8 \\text{ m/s}$',
-      'Transverse Nature of EM Waves: $\\mathbf{E} \\perp \\mathbf{B} \\perp \\mathbf{k}$',
-      'Energy Density ($u = \\varepsilon_0 E^2$) & Poynting Vector: $\\mathbf{S} = \\frac{1}{\\mu_0}(\\mathbf{E} \\times \\mathbf{B})$',
-      'Electromagnetic Spectrum (Radio, Micro, Infrared, Visible, UV, X-rays, Gamma rays)'
+      'Classification of Solids: Crystalline, Amorphous, and Polymeric',
+      'Mechanical Stress ($\\sigma = F/A$) and Tensile/Shear/Volumetric Strain ($\\varepsilon$)',
+      'Elastic Moduli: Young\'s ($Y$), Shear ($G$), and Bulk ($K$) Modulus',
+      'Stress-Strain Curve: Proportional Limit, Yield Point, UTS, and Fracture',
+      'Energy Band Theory: Valence Band, Conduction Band, and Energy Gap $E_g$',
+      'Superconductivity, Critical Temperature ($T_c$), and Magnetic Properties'
     ],
     color: 'cyan',
-    icon: 'Radio',
-    artTheme: 'calculus',
-    formulaHighlight: 'c = \\frac{1}{\\sqrt{\\mu_0\\varepsilon_0}}, \\quad \\mathbf{S} = \\frac{1}{\\mu_0}(\\mathbf{E} \\times \\mathbf{B}), \\quad \\frac{E_0}{B_0} = c, \\quad I_d = \\varepsilon_0\\frac{d\\Phi_E}{dt}',
+    icon: 'Layers',
+    artTheme: 'integral',
+    formulaHighlight: 'Y = \\frac{\\sigma}{\\varepsilon} = \\frac{F L}{A \\Delta L}, \\quad U = \\frac{1}{2} F \\Delta L = \\frac{1}{2} \\sigma \\varepsilon V, \\quad E_g = E_c - E_v',
     overview: {
-      summary: 'Electromagnetic waves are self-propagating oscillations of coupled electric and magnetic fields traveling through vacuum at the speed of light. Maxwell\'s unification of electricity and magnetism proved that light is an electromagnetic wave.',
-      historicalContext: 'James Clerk Maxwell published his unifying equations in 1865; Heinrich Hertz experimentally verified radio wave propagation in 1887.',
+      summary: 'The physics of solids explores the mechanical, electrical, and magnetic properties arising from atomic arrangements in crystal lattices. Energy band theory explains the quantum distinction between conductors, semiconductors, and insulators.',
+      historicalContext: 'Robert Hooke formulated Hooke\'s law of elasticity in 1676; Felix Bloch and Alan Wilson developed the quantum band theory of solids in the late 1920s and 1930s.',
       learningOutcomes: [
-        'Explain the necessity of Maxwell\'s displacement current in capacitor charging loops',
-        'Write Maxwell\'s four differential/integral equations and identify their physical meanings',
-        'Calculate electric and magnetic field amplitudes ($E_0 = c B_0$) for propagating EM waves',
-        'Determine energy flux density using the Poynting vector and map EM spectrum characteristics'
+        'Distinguish crystalline, amorphous, and polymeric molecular structures and unit cell lattices',
+        'Calculate stress, strain, and Young\'s modulus from experimental tensile test data',
+        'Evaluate elastic strain energy stored in deformed structural elements and wires',
+        'Explain electrical conduction using energy band diagrams and classify conductors, semiconductors, and insulators'
       ],
       coreFormulas: [
-        { label: 'Speed of Light in Vacuum', formula: 'c = \\frac{1}{\\sqrt{\\mu_0\\varepsilon_0}} \\approx 2.998 \\times 10^8 \\text{ m/s}', explanation: 'Fundamental invariant speed determined by electric permittivity and magnetic permeability.' },
-        { label: 'Poynting Vector', formula: '\\mathbf{S} = \\frac{1}{\\mu_0}(\\mathbf{E} \\times \\mathbf{B})', explanation: 'Vector rate of directional energy flow per unit area in an electromagnetic wave.' },
-        { label: 'EM Energy Density', formula: 'u = u_E + u_B = \\frac{1}{2}\\varepsilon_0 E^2 + \\frac{1}{2\\mu_0}B^2 = \\varepsilon_0 E^2', explanation: 'Total electromagnetic energy stored per unit volume of space.' }
+        { label: 'Young\'s Modulus of Elasticity', formula: 'Y = \\frac{\\text{Tensile Stress}}{\\text{Tensile Strain}} = \\frac{F / A}{\\Delta L / L} = \\frac{F L}{A \\Delta L}', explanation: 'Ratio of longitudinal stress to strain within the proportional elastic limit.' },
+        { label: 'Elastic Strain Energy Density', formula: 'u = \\frac{1}{2} \\sigma \\varepsilon = \\frac{1}{2} Y \\varepsilon^2', explanation: 'Strain energy stored per unit volume in an elastically deformed solid.' },
+        { label: 'Energy Band Gap', formula: 'E_g = E_c - E_v', explanation: 'Forbidden energy gap between top of valence band $E_v$ and bottom of conduction band $E_c$.' }
       ],
       realWorldApplications: [
-        '5G & Satellite Telecommunications: Microwave and millimeter-wave wireless data transmission',
-        'Radar & Weather Forecasting: Doppler pulsed radio echo atmospheric cloud mapping',
-        'Fiber-Optic Internet: Infrared optical carrier signals transmitting petabits of global web data',
-        'Medical Radiology: Diagnostic X-ray imaging and oncology radiation therapy'
+        'Civil & Structural Engineering: Tensile testing and safety factors in steel girder and bridge designs',
+        'Aerospace Composites: Carbon fiber reinforced polymers engineered for high strength-to-weight ratios',
+        'Superconducting Magnets: MRI scanners and fusion tokamaks operating below critical temperature $T_c$',
+        'Piezoelectric Transducers: Quartz crystal oscillators providing precision timing in microchips'
       ],
       keyTheorems: [
-        { title: 'Maxwell\'s Electromagnetic Wave Theorem', statement: 'Time-varying electric fields produce magnetic fields and time-varying magnetic fields produce electric fields, propagating as transverse coupled waves through vacuum at speed $c = 1/\\sqrt{\\mu_0\\varepsilon_0}$.', importance: 'Unifies light, optics, electricity, and magnetism into a single comprehensive theory.' }
+        { title: 'Hooke\'s Law of Elasticity', statement: 'Within elastic limits, the mechanical stress produced in a body is directly proportional to the corresponding strain produced.', importance: 'The fundamental constitutive relation in solid state mechanics.' }
+      ]
+    }
+  },
+  {
+    id: 'el-phy12-ch8',
+    class: 12,
+    track: 'Elementary Physics',
+    name: '8. Solid State Electronics',
+    description: 'Intrinsic semiconductors and thermal generation, extrinsic semiconductors (n-type and p-type doping), p-n junction formation, barrier potential and depletion layer, forward and reverse bias V-I characteristics, half-wave and full-wave bridge rectification, filter circuits, Zener diode as voltage regulator, optoelectronic devices (LED, photodiode, solar cells), and bipolar junction transistors (BJT npn/pnp, current gain $\\beta$, amplifier and switch action).',
+    category: 'Semiconductors & Electronics',
+    questionCount: 0,
+    difficulty: 'Mixed',
+    keyTopics: [
+      'Intrinsic & Extrinsic Semiconductors (Group III & V Doping)',
+      'p-n Junction Diode: Depletion Layer, Barrier Potential & Bias Characteristics',
+      'Diode Rectification: Half-Wave, Full-Wave Center-Tapped & Bridge Rectifiers',
+      'Zener Diode Breakdown Mechanism & DC Voltage Regulation',
+      'Optoelectronic Transducers: Photodiodes, LEDs, and Solar Cell Operation',
+      'Bipolar Junction Transistors (BJT): Configurations, Current Gain $\\beta$, and Amplification'
+    ],
+    color: 'emerald',
+    icon: 'Cpu',
+    artTheme: 'differential',
+    formulaHighlight: 'n_e n_h = n_i^2, \\quad I = I_s\\left(e^{\\frac{eV}{\\eta k_B T}} - 1\\right), \\quad I_e = I_b + I_c, \\quad \\beta = \\frac{I_c}{I_b}',
+    overview: {
+      summary: 'Solid state electronics constitutes the hardware backbone of all modern computation and telecommunications. Controllable doping in semiconductor lattices enables p-n junction rectification, optoelectronics, and transistor signal amplification.',
+      historicalContext: 'John Bardeen, Walter Brattain, and William Shockley invented the point-contact transistor at Bell Labs in 1947, replacing vacuum tubes and initiating the microelectronics revolution.',
+      learningOutcomes: [
+        'Explain charge carrier transport and Fermi level shifts in doped n-type and p-type silicon',
+        'Analyze p-n junction depletion layer dynamics under forward and reverse bias voltages',
+        'Design AC-to-DC rectifier circuits with smoothing capacitor filters and Zener regulation',
+        'Determine BJT transistor operating regions (cutoff, active, saturation) and calculate current gain'
+      ],
+      coreFormulas: [
+        { label: 'Mass Action Law', formula: 'n_e \\cdot n_h = n_i^2', explanation: 'Product of electron and hole concentrations in thermal equilibrium at temperature $T$.' },
+        { label: 'Transistor Current Conservation', formula: 'I_e = I_b + I_c', explanation: 'Emitter current equals base current plus collector current in any bipolar junction transistor.' },
+        { label: 'Common-Emitter Current Gain', formula: '\\beta = \\frac{I_c}{I_b}', explanation: 'DC current amplification factor relating collector current to base current.' }
+      ],
+      realWorldApplications: [
+        'Microprocessors & GPUs: Billions of nanometer FinFET and GAA silicon transistors in modern chips',
+        'Power Electronics: Silicon Carbide (SiC) and GaN high-efficiency fast-charging power converters',
+        'Solid-State Lighting: High-efficiency GaN blue and white LEDs illuminating modern infrastructure',
+        'Renewable Photovoltaics: Silicon p-n junction solar panels converting solar irradiance into clean DC power'
+      ],
+      keyTheorems: [
+        { title: 'Shockley Diode Equation', statement: 'The current through an ideal p-n junction diode grows exponentially with applied forward voltage: $I = I_s (e^{eV/\eta k_B T} - 1)$.', importance: 'Defines the non-linear rectification behavior fundamental to semiconductor physics.' }
       ]
     }
   },
@@ -1015,44 +1022,45 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     id: 'el-phy12-ch9',
     class: 12,
     track: 'Elementary Physics',
-    name: 'Ray Optics & Optical Instruments',
-    description: 'Reflection, refraction, Snell\'s Law ($n_1\\sin\\theta_1 = n_2\\sin\\theta_2$), Total Internal Reflection (TIR), critical angle $\\sin\\theta_c = \\frac{1}{n}$, prism formula $n = \\frac{\\sin(\\frac{A+D_m}{2})}{\\sin(\\frac{A}{2})}$, thin lens equation $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u}$, lens maker\'s formula, compound microscope, and astronomical telescope.',
-    category: 'Optics & Wave Theory',
+    name: '9. Digital Electronics',
+    description: 'Analog versus digital signals, binary number system and binary logic levels, fundamental logic gates (NOT, AND, OR) and their truth tables, universal logic gates (NAND, NOR), exclusive gates (XOR, XNOR), Boolean algebra laws and De Morgan\'s theorems, logic gate combinations, operational amplifiers (Op-Amp) in inverting, non-inverting, and comparator configurations, and digital electronic control systems.',
+    category: 'Semiconductors & Electronics',
     questionCount: 0,
     difficulty: 'Mixed',
     keyTopics: [
-      'Refraction at Spherical Surfaces & Snell\'s Law: $n_1\\sin\\theta_1 = n_2\\sin\\theta_2$',
-      'Total Internal Reflection (TIR) & Optical Fibers ($\\sin i_c = \\frac{1}{n}$)',
-      'Prism Deviation & Refractive Index: $n = \\frac{\\sin\\left(\\frac{A + D_m}{2}\\right)}{\\sin\\left(\\frac{A}{2}\\right)}$',
-      'Lens Maker\'s Formula: $\\frac{1}{f} = (n - 1)\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right)$ & Power $P = \\frac{1}{f}$',
-      'Magnification of Compound Microscope ($M = \\frac{L}{f_o}\\frac{D}{f_e}$) & Astronomical Telescope ($M = \\frac{f_o}{f_e}$)'
+      'Analog vs Digital Signals & Binary Logic Representation',
+      'Basic Logic Gates (NOT, AND, OR): Symbols and Truth Tables',
+      'Universal Logic Gates: NAND and NOR Synthesis of Logic Functions',
+      'Exclusive Logic Gates: XOR and XNOR Parity Operations',
+      'Boolean Algebra Simplification & De Morgan\'s Theorems',
+      'Operational Amplifier (Op-Amp): Inverting, Non-Inverting, and Comparator Circuits'
     ],
-    color: 'emerald',
-    icon: 'Sun',
-    artTheme: 'triangle',
-    formulaHighlight: 'n_1\\sin\\theta_1 = n_2\\sin\\theta_2, \\quad \\frac{1}{f} = (n-1)\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right), \\quad M_{\\text{telescope}} = \\frac{f_o}{f_e}',
+    color: 'blue',
+    icon: 'Binary',
+    artTheme: 'algebra',
+    formulaHighlight: 'Y = \\overline{A \\cdot B}, \\quad Y = \\overline{A + B}, \\quad \\overline{A \\cdot B} = \\overline{A} + \\overline{B}, \\quad A_v = -\\frac{R_f}{R_{in}}',
     overview: {
-      summary: 'Ray optics models light propagation as rectilinear rays obeying reflection and refraction laws at interfaces. Geometric ray tracing designs precision lenses, prisms, optical fiber waveguides, microscopes, and telescopes.',
-      historicalContext: 'Willebrord Snellius formulated Snell\'s Law in 1621; René Descartes published geometric ray refraction in La Dioptrique in 1637.',
+      summary: 'Digital electronics processes discrete binary states (0 and 1) to perform arithmetic and logical operations. Boolean algebra and universal logic gates provide the mathematical and physical foundation of computer processors and digital control systems.',
+      historicalContext: 'George Boole published the laws of Boolean logic in 1854; Claude Shannon demonstrated that Boolean algebra could model electrical relay circuits in 1937.',
       learningOutcomes: [
-        'Trace rays and calculate image locations, magnification, and real/virtual orientations',
-        'Apply total internal reflection principles to prism periscopes and optical fiber cladding',
-        'Use the Lens Maker\'s formula to design lenses with prescribed focal lengths and curvatures',
-        'Calculate angular magnification and tube lengths for compound microscopes and astronomical telescopes'
+        'Convert between analog signals, binary levels, and decimal numbers',
+        'Construct and interpret truth tables for all elementary, universal, and exclusive logic gates',
+        'Apply Boolean theorems and De Morgan\'s laws to simplify digital combinational logic circuits',
+        'Analyze operational amplifier configurations for signal amplification and analog-to-digital comparison'
       ],
       coreFormulas: [
-        { label: 'Snell\'s Law of Refraction', formula: 'n_1 \\sin\\theta_1 = n_2 \\sin\\theta_2', explanation: 'Fundamental relation between angles of incidence and refraction across optical boundaries.' },
-        { label: 'Lens Maker\'s Formula', formula: '\\frac{1}{f} = (n - 1)\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right)', explanation: 'Calculates focal length from glass refractive index $n$ and radii of curvature $R_1, R_2$.' },
-        { label: 'Telescope Angular Magnification', formula: 'M = \\frac{f_o}{f_e}', explanation: 'Magnifying power of an astronomical telescope in normal adjustment.' }
+        { label: 'De Morgan\'s First Law', formula: '\\overline{A \\cdot B} = \\overline{A} + \\overline{B}', explanation: 'The complement of a logical product equals the sum of individual complements.' },
+        { label: 'De Morgan\'s Second Law', formula: '\\overline{A + B} = \\overline{A} \\cdot \\overline{B}', explanation: 'The complement of a logical sum equals the product of individual complements.' },
+        { label: 'Inverting Op-Amp Closed-Loop Gain', formula: 'A_v = \\frac{V_{\\text{out}}}{V_{\\text{in}}} = -\\frac{R_f}{R_{\\text{in}}}', explanation: 'Voltage gain determined strictly by external feedback and input resistors.' }
       ],
       realWorldApplications: [
-        'Fiber-Optic Communications: Total internal reflection carrying internet signals with minimal attenuation',
-        'Vision Correction: Optometric prescription glasses correcting myopia (concave) and hyperopia (convex)',
-        'Observational Astronomy: Giant ground-based and space telescopes (James Webb Space Telescope)',
-        'Biomedical Endoscopy: Flexible fiber-optic bundles providing internal surgical imaging'
+        'Central Processing Units (CPUs): Arithmetic Logic Units (ALUs) constructed from billions of CMOS logic gates',
+        'Flash Memory Arrays: Non-volatile NAND flash chips storing data in solid-state drives and smartphones',
+        'Industrial Automation: Programmable Logic Controllers (PLCs) automating manufacturing robotics',
+        'Sensor Interfacing: Op-Amp comparator circuits converting raw analog transducer voltages to digital triggers'
       ],
       keyTheorems: [
-        { title: 'Fermat\'s Principle of Least Time', statement: 'The path taken by a ray of light between two points is the path that can be traversed in the least time.', importance: 'The overarching variational principle from which all reflection and refraction laws derive.' }
+        { title: 'Universal Logic Gate Theorem', statement: 'Any arbitrary digital logic circuit or computing system can be synthesized entirely using only NAND gates or only NOR gates.', importance: 'Proves the completeness of universal logic in digital computer hardware architecture.' }
       ]
     }
   },
@@ -1060,44 +1068,45 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     id: 'el-phy12-ch10',
     class: 12,
     track: 'Elementary Physics',
-    name: 'Wave Optics',
-    description: 'Huygens\' wave principle, wave fronts, reflection and refraction by wave theory, Young\'s Double Slit Experiment (YDSE) fringe width $\\beta = \\frac{\\lambda D}{d}$, single slit Fraunhofer diffraction angular width $\\theta = \\frac{\\lambda}{a}$, Brewster\'s Law $\\tan i_p = n$, and polarization.',
-    category: 'Optics & Wave Theory',
+    name: '10. Relativity',
+    description: 'Galilean relativity and reference frames, Michelson-Morley experiment and constancy of speed of light, Einstein\'s two postulates of Special Relativity, Lorentz transformations, relativity of simultaneity, relativistic time dilation $\\Delta t = \\gamma \\Delta t_0$, Lorentz length contraction $L = L_0/\\gamma$, relativistic momentum $\\mathbf{p} = \\gamma m_0 \\mathbf{v}$, mass-energy equivalence $E = mc^2 = \\gamma m_0 c^2$, and the energy-momentum invariant $E^2 = p^2 c^2 + m_0^2 c^4$.',
+    category: 'Modern Physics & Quantum Theory',
     questionCount: 0,
     difficulty: 'Mixed',
     keyTopics: [
-      'Huygens\' Principle of Secondary Wavelets & Wavefront Construction',
-      'Interference & Young\'s Double Slit Experiment (YDSE): Path Difference $\\Delta x = d\\sin\\theta$',
-      'YDSE Fringe Width: $\\beta = \\frac{\\lambda D}{d}$ for Bright and Dark Fringes',
-      'Single Slit Fraunhofer Diffraction: Central Maxima Width $2\\theta = \\frac{2\\lambda}{a}$',
-      'Polarization of Light: Malus\'s Law ($I = I_0\\cos^2\\theta$) & Brewster\'s Law ($\\tan i_p = n$)'
+      'Postulates of Special Relativity & Invariance of the Speed of Light ($c$)',
+      'Lorentz Factor: $\\gamma = \\frac{1}{\\sqrt{1 - v^2/c^2}}$',
+      'Relativistic Time Dilation: $\\Delta t = \\gamma \\Delta t_0$ (Twin Paradox & Muon Decay)',
+      'Lorentz Length Contraction: $L = L_0 \\sqrt{1 - v^2/c^2}$',
+      'Relativistic Momentum ($\\mathbf{p} = \\gamma m_0 \\mathbf{v}$) & Mass-Energy Equivalence ($E = m c^2$)',
+      'Energy-Momentum Relation: $E^2 = p^2 c^2 + m_0^2 c^4$ (Massless Photons $E = pc$)'
     ],
-    color: 'rose',
-    icon: 'Disc',
-    artTheme: 'series',
-    formulaHighlight: '\\beta = \\frac{\\lambda D}{d}, \\quad I = I_0\\cos^2\\theta, \\quad \\tan i_p = n, \\quad a\\sin\\theta = m\\lambda',
+    color: 'violet',
+    icon: 'Hourglass',
+    artTheme: 'calculus',
+    formulaHighlight: '\\Delta t = \\frac{\\Delta t_0}{\\sqrt{1 - v^2/c^2}}, \\quad L = L_0\\sqrt{1 - v^2/c^2}, \\quad E = m c^2, \\quad E^2 = p^2 c^2 + m_0^2 c^4',
     overview: {
-      summary: 'Wave optics proves the wave nature of light through interference, diffraction, and polarization. Huygens\' wavelets explain wavefront propagation, while Young\'s double-slit experiment demonstrates spatial constructive and destructive interference fringes.',
-      historicalContext: 'Christiaan Huygens proposed wave theory in 1678; Thomas Young definitively proved wave interference with his famous double-slit experiment in 1801.',
+      summary: 'Albert Einstein\'s Special Theory of Relativity revolutionized our understanding of space, time, and energy. It unifies space and time into a four-dimensional spacetime continuum where the speed of light in vacuum is an absolute universal invariant.',
+      historicalContext: 'Albert Einstein formulated Special Relativity in 1905, resolving incompatibilities between Newtonian mechanics and Maxwellian electrodynamics without requiring a luminiferous ether.',
       learningOutcomes: [
-        'Construct spherical and planar wavefronts using Huygens\' secondary wavelet principle',
-        'Calculate fringe widths and positions of constructive/destructive interference in YDSE',
-        'Determine angular spread and intensity profile of single-slit Fraunhofer diffraction patterns',
-        'Apply Brewster\'s law and Malus\'s law to calculate polarized light transmission intensities'
+        'State Einstein\'s two fundamental postulates of Special Relativity and explain their physical implications',
+        'Calculate time dilation and length contraction for relativistic speeds ($v \\to c$)',
+        'Derive the relativistic mass-energy equivalence $E = mc^2$ and momentum-energy relation',
+        'Explain experimental confirmations of relativity including atmospheric muon lifetime extension and GPS corrections'
       ],
       coreFormulas: [
-        { label: 'YDSE Fringe Width', formula: '\\beta = \\frac{\\lambda D}{d}', explanation: 'Separation between consecutive bright (or dark) interference bands on a screen at distance $D$.' },
-        { label: 'Single Slit Diffraction Minimum', formula: 'a \\sin\\theta = m \\lambda \\quad (m = \\pm 1, \\pm 2, \\dots)', explanation: 'Condition for zero intensity in Fraunhofer diffraction by a slit of width $a$.' },
-        { label: 'Brewster\'s Law', formula: '\\tan i_p = n', explanation: 'Angle of incidence where reflected light is 100% linearly polarized.' }
+        { label: 'Relativistic Time Dilation', formula: '\\Delta t = \\frac{\\Delta t_0}{\\sqrt{1 - \\frac{v^2}{c^2}}} = \\gamma \\Delta t_0', explanation: 'Elapsed time $\\Delta t$ measured by a moving observer is dilated relative to proper time $\\Delta t_0$.' },
+        { label: 'Lorentz Length Contraction', formula: 'L = L_0 \\sqrt{1 - \\frac{v^2}{c^2}} = \\frac{L_0}{\\gamma}', explanation: 'Length $L$ measured along direction of motion contracts relative to proper length $L_0$.' },
+        { label: 'Relativistic Energy-Momentum Invariant', formula: 'E^2 = p^2 c^2 + m_0^2 c^4', explanation: 'Fundamental relation connecting total relativistic energy $E$, momentum $p$, and rest mass $m_0$.' }
       ],
       realWorldApplications: [
-        'Anti-Reflective Optical Coatings: Thin-film destructive interference on camera and eyeglass lenses',
-        'Polarized Sunglasses: Eliminating glare from reflective water and road surfaces via Brewster filtering',
-        'Laser Holography: 3D wavefront recording and reconstruction using coherent interference patterns',
-        'Diffraction Gratings: High-resolution spectrometers analyzing chemical element emission spectra'
+        'Global Positioning System (GPS): Satellite atomic clocks corrected daily for special and general relativistic time shifts',
+        'Particle Colliders: Relativistic beam dynamics and particle lifetimes at CERN\'s Large Hadron Collider',
+        'Nuclear Energy Generation: Mass defect conversions releasing multi-gigawatt thermal energy via $E = \\Delta m c^2$',
+        'Astrophysics: Relativistic jets ejected by supermassive black holes at over 99% the speed of light'
       ],
       keyTheorems: [
-        { title: 'Huygens-Fresnel Wave Principle', statement: 'Every point on a primary wavefront acts as a source of secondary spherical wavelets, and the new wavefront at any later instant is the envelope tangent to these secondary wavelets.', importance: 'The foundational wave mechanism explaining diffraction around barriers.' }
+        { title: 'Principle of Invariant Light Speed', statement: 'The speed of light in vacuum ($c \\approx 3 \\times 10^8 \\text{ m/s}$) is identical in all inertial reference frames, independent of the motion of the emitting source or observing receiver.', importance: 'The revolutionary kinematic axiom underlying modern spacetime geometry.' }
       ]
     }
   },
@@ -1105,44 +1114,45 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     id: 'el-phy12-ch11',
     class: 12,
     track: 'Elementary Physics',
-    name: 'Dual Nature of Radiation & Matter',
-    description: 'Photoelectric effect observations (Hertz, Lenard), Einstein\'s photoelectric equation $h\\nu = \\Phi_0 + K_{\\max} = h\\nu_0 + eV_0$, work function, threshold frequency, stopping potential, de Broglie matter wave hypothesis $\\lambda = \\frac{h}{p} = \\frac{h}{\\sqrt{2mE}}$, and Davisson-Germer electron diffraction.',
+    name: '11. Quantum Physics',
+    description: 'Blackbody radiation curves and Planck\'s quantum hypothesis $E = h\\nu$, photoelectric effect observations and Einstein\'s photoelectric equation $K_{\\max} = h\\nu - \\Phi_0 = e V_0$, Compton scattering and Compton shift $\\Delta\\lambda = \\frac{h}{m_e c}(1 - \\cos\\theta)$, pair production and annihilation, de Broglie matter waves $\\lambda = \\frac{h}{p}$, Davisson-Germer electron diffraction, and Heisenberg\'s Uncertainty Principle $\\Delta x \\Delta p \\ge \\frac{\\hbar}{2}$.',
     category: 'Modern Physics & Quantum Theory',
     questionCount: 0,
     difficulty: 'Mixed',
     keyTopics: [
-      'Photoelectric Effect: Instantaneous Emission, Threshold Frequency ($\\nu_0$), Stopping Potential ($V_0$)',
-      'Einstein\'s Photoelectric Equation: $K_{\\max} = h\\nu - \\Phi_0 = e V_0$',
-      'Photon Properties: Energy $E = h\\nu$, Momentum $p = \\frac{h}{\\lambda}$, Rest Mass $m_0 = 0$',
-      'de Broglie Matter Waves: $\\lambda = \\frac{h}{p} = \\frac{h}{mv} = \\frac{h}{\\sqrt{2m q V}}$',
-      'Davisson-Germer Experiment (Electron Diffraction Proof of Matter Waves)'
+      'Blackbody Radiation & Planck\'s Quantization of Energy ($E = h\\nu$)',
+      'Photoelectric Effect: Work Function $\\Phi_0$, Stopping Potential $V_0$, and Photons',
+      'Compton Effect: Wavelength Shift $\\Delta\\lambda = \\frac{h}{m_e c}(1 - \\cos\\theta)$',
+      'Pair Production ($h\\nu \\to e^- + e^+$) and Electron-Positron Annihilation',
+      'de Broglie Matter Waves: $\\lambda = \\frac{h}{p} = \\frac{h}{\\sqrt{2m E_k}}$ & Davisson-Germer Experiment',
+      'Heisenberg Uncertainty Principle: $\\Delta x \\cdot \\Delta p \\ge \\frac{\\hbar}{2}$ and $\\Delta E \\cdot \\Delta t \\ge \\frac{\\hbar}{2}$'
     ],
-    color: 'violet',
+    color: 'rose',
     icon: 'Sparkles',
     artTheme: 'calculus',
-    formulaHighlight: 'h\\nu = \\Phi_0 + \\frac{1}{2}m v_{\\max}^2, \\quad e V_0 = h\\nu - h\\nu_0, \\quad \\lambda = \\frac{h}{p} = \\frac{1.227}{\\sqrt{V}}\\text{ nm}',
+    formulaHighlight: 'K_{\\max} = h\\nu - \\Phi_0 = e V_0, \\quad \\Delta\\lambda = \\frac{h}{m_e c}(1 - \\cos\\theta), \\quad \\lambda = \\frac{h}{p}, \\quad \\Delta x \\Delta p \\ge \\frac{\\hbar}{2}',
     overview: {
-      summary: 'Quantum mechanics emerged from wave-particle duality. Light behaves as discrete quanta (photons) in the photoelectric effect, while moving particles (electrons) exhibit wave properties governed by the de Broglie wavelength.',
-      historicalContext: 'Max Planck postulated quantum energy packets in 1900; Albert Einstein explained the photoelectric effect in 1905 (earning the 1921 Nobel Prize), and Louis de Broglie introduced matter waves in 1924.',
+      summary: 'Quantum physics describes physical phenomena at atomic and subatomic scales where energy and momentum are quantized. Wave-particle duality reveals that electromagnetic radiation behaves as discrete quanta (photons) while material particles exhibit wave characteristics.',
+      historicalContext: 'Max Planck postulated quantum energy packets in 1900; Albert Einstein explained the photoelectric effect in 1905, Louis de Broglie introduced matter waves in 1924, and Werner Heisenberg formulated uncertainty in 1927.',
       learningOutcomes: [
-        'Analyze photoelectric experimental graphs ($I$ vs $V$, stopping potential vs frequency)',
-        'Apply Einstein\'s equation to calculate work functions, threshold frequencies, and electron speeds',
-        'Calculate de Broglie wavelengths for accelerated electrons, protons, and macroscopic bodies',
-        'Explain how the Davisson-Germer electron diffraction experiment confirms matter wave theory'
+        'Explain the ultraviolet catastrophe and analyze Planck\'s quantum blackbody radiation formula',
+        'Apply Einstein\'s photoelectric equation to calculate work functions, threshold frequencies, and electron speeds',
+        'Calculate Compton wavelength shifts during high-energy photon collisions with electrons',
+        'Compute de Broglie matter wavelengths and apply Heisenberg\'s uncertainty principle to bound quantum states'
       ],
       coreFormulas: [
-        { label: 'Einstein\'s Photoelectric Equation', formula: 'K_{\\max} = e V_0 = h\\nu - \\Phi_0 = h(\\nu - \\nu_0)', explanation: 'Maximum kinetic energy of ejected photoelectrons equals photon energy minus work function.' },
-        { label: 'de Broglie Wavelength of Electron', formula: '\\lambda = \\frac{h}{\\sqrt{2m e V}} = \\frac{1.227}{\\sqrt{V}} \\text{ nm}', explanation: 'Quantum wavelength of an electron accelerated through potential difference $V$.' },
-        { label: 'Photon Momentum', formula: 'p = \\frac{E}{c} = \\frac{h}{\\lambda}', explanation: 'Momentum carried by a single light quantum (photon).' }
+        { label: 'Einstein\'s Photoelectric Equation', formula: 'K_{\\max} = e V_0 = h\\nu - \\Phi_0 = h(\\nu - \\nu_0)', explanation: 'Maximum kinetic energy of ejected photoelectrons equals photon energy minus material work function.' },
+        { label: 'Compton Scattering Shift', formula: '\\Delta\\lambda = \\lambda\' - \\lambda = \\frac{h}{m_e c}(1 - \\cos\\theta) = \\lambda_c (1 - \\cos\\theta)', explanation: 'Wavelength increase of X-ray or gamma photon scattering through angle $\\theta$ off stationary electron.' },
+        { label: 'de Broglie Matter Wavelength', formula: '\\lambda = \\frac{h}{p} = \\frac{h}{m v} = \\frac{h}{\\sqrt{2m q V}}', explanation: 'Wavelength of quantum matter wave associated with any moving mass $m$ with momentum $p$.' }
       ],
       realWorldApplications: [
-        'Transmission Electron Microscopes (TEM): Ultra-short electron matter waves delivering sub-angstrom resolution',
-        'Solar Photovoltaic Cells: Photon absorption generating electron-hole pairs and renewable DC electricity',
-        'Night Vision Photomultiplier Tubes: Cascade electron multiplication from low-light photon strikes',
-        'Quantum Cryptography: Quantum key distribution (QKD) secured by single-photon polarization'
+        'Transmission Electron Microscopes (TEM): Sub-angstrom atomic imaging leveraging picometer electron matter waves',
+        'Solar Photovoltaic Cells: Photon absorption generating electron-hole pairs and clean DC electricity',
+        'Quantum Computing: Qubits exploiting quantum superposition and entanglement for exponential calculation speedups',
+        'Medical Radiation Oncology: Linear accelerator megavoltage Compton scattering targeting deep tumors'
       ],
       keyTheorems: [
-        { title: 'de Broglie\'s Wave-Particle Hypothesis', statement: 'Every moving particle or quantum entity possesses an associated matter wave with wavelength $\\lambda = \\frac{h}{p}$, where $h$ is Planck\'s constant and $p$ is momentum.', importance: 'The fundamental postulate initiating modern quantum wave mechanics.' }
+        { title: 'Heisenberg Uncertainty Principle', statement: 'It is impossible to simultaneously measure both the exact position and exact linear momentum of a quantum particle with arbitrary precision: $\\Delta x \\cdot \\Delta p \\ge \\frac{\\hbar}{2}$.', importance: 'The fundamental epistemological and physical boundary of quantum mechanics.' }
       ]
     }
   },
@@ -1150,44 +1160,45 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     id: 'el-phy12-ch12',
     class: 12,
     track: 'Elementary Physics',
-    name: 'Atoms & Atomic Spectra',
-    description: 'Rutherford\'s $\\alpha$-particle scattering experiment and nuclear atom model, Bohr\'s postulates for the hydrogen atom ($mvr = \\frac{nh}{2\\pi}$), quantized orbital radii $r_n = n^2 a_0$, energy levels $E_n = -\\frac{13.6}{n^2}\\text{ eV}$, hydrogen emission spectral series (Lyman, Balmer, Paschen, Brackett, Pfund), and Rydberg formula.',
+    name: '12. Atomic Physics',
+    description: 'Rutherford\'s alpha scattering experiment and nuclear atom model, atomic spectra and emission/absorption series, Rydberg formula $\\frac{1}{\\lambda} = R_H\\left(\\frac{1}{n_1^2} - \\frac{1}{n_2^2}\\right)$, Bohr\'s quantum postulates of hydrogen atom ($L = mvr = \\frac{nh}{2\\pi}$), Bohr radii $r_n = n^2 a_0$, quantized energy levels $E_n = -\\frac{13.6}{n^2}\\text{ eV}$, spectral series (Lyman, Balmer, Paschen), X-ray production (characteristic and Bremsstrahlung, Moseley\'s law), and lasers (stimulated emission and population inversion).',
     category: 'Modern Physics & Quantum Theory',
     questionCount: 0,
     difficulty: 'Mixed',
     keyTopics: [
-      'Rutherford Alpha Scattering Experiment, Impact Parameter & Distance of Closest Approach',
-      'Bohr\'s Postulates: Angular Momentum Quantization $L = mvr = n\\frac{h}{2\\pi}$',
-      'Bohr Orbit Radius: $r_n = \\frac{n^2 h^2 \\varepsilon_0}{\\pi m e^2} = n^2 a_0$ ($a_0 \\approx 0.529 \\text{ \\AA}$)',
-      'Energy Quantization: $E_n = -\\frac{13.6}{n^2} \\text{ eV}$ (Ground state $E_1 = -13.6 \\text{ eV}$)',
-      'Hydrogen Spectral Series: $\\frac{1}{\\lambda} = R_H\\left(\\frac{1}{n_1^2} - \\frac{1}{n_2^2}\\right)$ (Lyman, Balmer, Paschen)'
+      'Rutherford Alpha Scattering Experiment & Nuclear Atom Model',
+      'Bohr Postulates: Quantized Angular Momentum $L = mvr = n\\hbar$',
+      'Bohr Orbit Radii ($r_n = n^2 a_0$) and Quantized Energy Levels ($E_n = -\\frac{13.6}{n^2}\\text{ eV}$)',
+      'Hydrogen Emission Spectral Series (Lyman, Balmer, Paschen, Brackett, Pfund)',
+      'Production of X-Rays: Continuous Bremsstrahlung, Characteristic Lines & Moseley\'s Law',
+      'Laser Physics: Spontaneous & Stimulated Emission, Population Inversion, and He-Ne Lasers'
     ],
     color: 'indigo',
     icon: 'Atom',
     artTheme: 'conic',
-    formulaHighlight: 'mvr = \\frac{nh}{2\\pi}, \\quad E_n = -\\frac{13.6}{n^2}\\text{ eV}, \\quad \\frac{1}{\\lambda} = R_H\\left(\\frac{1}{n_1^2} - \\frac{1}{n_2^2}\\right)',
+    formulaHighlight: 'mvr = \\frac{nh}{2\\pi}, \\quad E_n = -\\frac{13.6}{n^2}\\text{ eV}, \\quad \\frac{1}{\\lambda} = R_H\\left(\\frac{1}{n_1^2} - \\frac{1}{n_2^2}\\right), \\quad \\sqrt{\\nu} = a(Z - b)',
     overview: {
-      summary: 'Atomic physics models the subatomic structure of matter. Bohr\'s quantum postulates resolved classical orbital radiation instability by quantizing electron angular momentum, explaining the discrete line spectra of hydrogen.',
-      historicalContext: 'Ernest Rutherford discovered the dense atomic nucleus in 1911; Niels Bohr published his quantum model of the atom in 1913, introducing stationary quantized energy levels.',
+      summary: 'Atomic physics investigates the quantum electronic architecture of atoms. Bohr\'s postulates resolved classical orbital radiation collapse by quantizing electron angular momentum, explaining the discrete line emission and absorption spectra of hydrogen.',
+      historicalContext: 'Ernest Rutherford discovered the atomic nucleus in 1911; Niels Bohr published his quantum model of the atom in 1913, introducing stationary quantized energy states.',
       learningOutcomes: [
         'Calculate nuclear impact parameters and distance of closest approach for alpha scattering',
         'Derive Bohr orbital radii, orbital velocities, and quantized total energy levels for hydrogenic atoms',
         'Compute photon wavelengths, frequencies, and transition energies between atomic quantum shells',
-        'Map emission and absorption transitions to the Lyman (UV), Balmer (Visible), and Paschen (IR) series'
+        'Explain X-ray production mechanisms and apply Moseley\'s law to determine atomic numbers'
       ],
       coreFormulas: [
-        { label: 'Bohr Angular Momentum Quantization', formula: 'L = m v r = \\frac{n h}{2\\pi} \\quad (n = 1, 2, 3, \\dots)', explanation: 'Electrons orbit stably only in orbits where orbital angular momentum is an integer multiple of $\\hbar$.' },
-        { label: 'Hydrogen Energy Level Formula', formula: 'E_n = -\\frac{13.6 \\text{ eV}}{n^2} Z^2', explanation: 'Total quantized binding energy of an electron in orbit $n$ around nucleus of charge $Z$.' },
-        { label: 'Rydberg Spectral Formula', formula: '\\frac{1}{\\lambda} = R_H \\left( \\frac{1}{n_1^2} - \\frac{1}{n_2^2} \\right) \\quad (R_H \\approx 1.097 \\times 10^7 \\text{ m}^{-1})', explanation: 'Calculates the exact emitted photon wavelength during electron transition from $n_2$ to $n_1$.' }
+        { label: 'Bohr Angular Momentum Quantization', formula: 'L = m v r = \\frac{n h}{2\\pi} = n \\hbar \\quad (n = 1, 2, 3, \\dots)', explanation: 'Electrons orbit stably without radiating only in orbits where orbital angular momentum is an integer multiple of $\\hbar$.' },
+        { label: 'Hydrogen Quantized Energy Levels', formula: 'E_n = -\\frac{13.6 \\text{ eV}}{n^2} \\cdot Z^2', explanation: 'Total quantized binding energy of an electron in orbit $n$ around a nucleus of charge $Z$.' },
+        { label: 'Rydberg Spectral Formula', formula: '\\frac{1}{\\lambda} = R_H \\left( \\frac{1}{n_1^2} - \\frac{1}{n_2^2} \\right) \\quad (R_H \\approx 1.097 \\times 10^7 \\text{ m}^{-1})', explanation: 'Calculates emitted or absorbed photon wavelength during electron transition between levels $n_2$ and $n_1$.' }
       ],
       realWorldApplications: [
-        'Laser Technology: Stimulated emission in Ruby, He-Ne, and diode lasers creating coherent monochromatic beams',
-        'Astronomical Spectroscopy: Identifying atmospheric chemical composition of distant stars and exoplanets',
-        'Atomic Clocks: Hyperfine transition resonance frequencies providing GPS nanosecond synchronization',
-        'Fluorescent Lighting: UV mercury vapor emission exciting phosphor coatings into white light'
+        'Laser Technology: Stimulated emission in gas, solid-state, and semiconductor lasers providing monochromatic beams',
+        'Astronomical Spectroscopy: Identifying atmospheric chemical composition and redshift of distant stars and galaxies',
+        'Medical Radiography: Diagnostic X-ray tubes producing Bremsstrahlung and characteristic tungsten emission lines',
+        'Atomic Clocks: Cesium-133 hyperfine transition resonance frequencies providing GPS nanosecond synchronization'
       ],
       keyTheorems: [
-        { title: 'Bohr Frequency Condition', statement: 'Radiation is emitted or absorbed by an atom only when an electron jumps from one stationary quantum state to another, with photon frequency given by $h\\nu = E_{\\text{initial}} - E_{\\text{final}}$.', importance: 'Replaces classical continuous electromagnetic radiation with discrete quantum photon emissions.' }
+        { title: 'Bohr Frequency Condition', statement: 'Radiation is emitted or absorbed by an atom only when an electron jumps from one stationary quantum state to another, with photon frequency given by $h\\nu = E_{\\text{initial}} - E_{\\text{final}}$.', importance: 'Replaces classical continuous electromagnetic radiation with discrete quantum transitions.' }
       ]
     }
   },
@@ -1195,22 +1206,23 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     id: 'el-phy12-ch13',
     class: 12,
     track: 'Elementary Physics',
-    name: 'Nuclei & Nuclear Energy',
-    description: 'Nuclear composition, nuclear radius $R = R_0 A^{1/3}$, mass defect $\\Delta m$, nuclear binding energy $E_b = \\Delta m \\cdot c^2$, binding energy per nucleon curve, nuclear forces, radioactive decay law $N(t) = N_0 e^{-\\lambda t}$, half-life $T_{1/2} = \\frac{\\ln 2}{\\lambda}$, nuclear fission, and nuclear fusion.',
+    name: '13. Nuclear Physics',
+    description: 'Nuclear composition (protons, neutrons, nucleons, isotopes), nuclear radius $R = R_0 A^{1/3}$ and density, strong nuclear force, mass defect $\\Delta m$ and binding energy $E_b = \\Delta m c^2$, binding energy per nucleon curve ($E_b/A$) and nuclear stability, radioactive decay law $N(t) = N_0 e^{-\\lambda t}$, half-life $T_{1/2} = \\frac{\\ln 2}{\\lambda}$ and activity $A = \\lambda N$, nuclear fission of Uranium-235 and chain reactions, nuclear reactors, and thermonuclear fusion in stars.',
     category: 'Modern Physics & Quantum Theory',
     questionCount: 0,
     difficulty: 'Mixed',
     keyTopics: [
-      'Nuclear Properties: Size $R = R_0 A^{1/3}$ ($R_0 \\approx 1.2 \\text{ fm}$) and Constant Nuclear Density',
+      'Nuclear Radius ($R = R_0 A^{1/3}$), Constant Nuclear Density & Strong Nuclear Force',
       'Mass Defect $\\Delta m = [Z m_p + (A-Z)m_n] - M_{\\text{nucleus}}$ & Binding Energy $E_b = \\Delta m c^2$',
-      'Binding Energy per Nucleon ($E_b/A$) Curve & Peak Stability around Iron-56 ($^{56}\\text{Fe}$)',
-      'Radioactivity Law: $N(t) = N_0 e^{-\\lambda t}$, Half-Life $T_{1/2} = \\frac{0.693}{\\lambda}$, Activity $A = \\lambda N$',
-      'Nuclear Fission ($^{235}\\text{U} + n \\to \\text{Fission Products} + 200\\text{ MeV}$) & Fusion ($4^1\\text{H} \\to ^4\\text{He} + 26.7\\text{ MeV}$)'
+      'Binding Energy per Nucleon ($E_b/A$) Curve, Fission and Fusion Stability',
+      'Law of Radioactive Decay: $N(t) = N_0 e^{-\\lambda t}$, Half-Life $T_{1/2} = \\frac{0.693}{\\lambda}$, and Activity',
+      'Nuclear Fission of $^{235}\\text{U}$, Critical Mass, and Nuclear Reactor Components',
+      'Nuclear Fusion: Proton-Proton Chain in Stars and Thermonuclear Energy'
     ],
     color: 'rose',
     icon: 'Flame',
     artTheme: 'differential',
-    formulaHighlight: 'E = \\Delta m \\cdot c^2, \\quad N(t) = N_0 e^{-\\lambda t}, \\quad T_{1/2} = \\frac{\\ln 2}{\\lambda}, \\quad R = R_0 A^{1/3}',
+    formulaHighlight: 'R = R_0 A^{1/3}, \\quad E_b = \\Delta m \\cdot c^2 = \\Delta m \\times 931.5\\text{ MeV}, \\quad N(t) = N_0 e^{-\\lambda t}, \\quad T_{1/2} = \\frac{\\ln 2}{\\lambda}',
     overview: {
       summary: 'Nuclear physics investigates atomic nuclei bound by the strong nuclear force. Mass-energy equivalence ($E=mc^2$) explains the enormous energy released in radioactive decay, nuclear fission, and stellar thermonuclear fusion.',
       historicalContext: 'Henri Becquerel discovered radioactivity in 1896; Marie and Pierre Curie isolated polonium and radium; James Chadwick discovered the neutron in 1932.',
@@ -1240,45 +1252,45 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     id: 'el-phy12-ch14',
     class: 12,
     track: 'Elementary Physics',
-    name: 'Semiconductor Electronics & Digital Logic',
-    description: 'Energy bands in solids (valence, conduction, forbidden bandgap $E_g$), intrinsic & extrinsic semiconductors (p-type, n-type), p-n junction diode forward and reverse bias characteristics, half-wave & full-wave rectifiers, Zener diode voltage regulation, optoelectronic devices (LEDs, photodiodes, solar cells), and fundamental digital logic gates (AND, OR, NOT, NAND, NOR).',
-    category: 'Semiconductors & Electronics',
+    name: '14. Particle Physics',
+    description: 'Four fundamental interactions of nature (gravity, electromagnetism, weak force, strong force) and exchange bosons, matter particles: leptons and quarks, quark flavors (up, down, charm, strange, top, bottom) and fractional electric charges ($+2/3e, -1/3e$), hadrons: baryons ($qqq$) and mesons ($q\\bar{q}$), antiparticles and annihilation, fundamental conservation laws (baryon number, lepton number, strangeness, charge), the Standard Model, and the Higgs boson.',
+    category: 'Modern Physics & Quantum Theory',
     questionCount: 0,
     difficulty: 'Mixed',
     keyTopics: [
-      'Energy Band Theory: Conductors ($E_g=0$), Semiconductors ($E_g \\sim 1\\text{ eV}$), Insulators ($E_g > 3\\text{ eV}$)',
-      'Doping: Intrinsic Carrier Density $n_i^2 = n_e n_h$, n-type (Donor Group V) & p-type (Acceptor Group III)',
-      'p-n Junction Diode: Depletion Layer, Barrier Potential & I-V Characteristics',
-      'Diode Applications: Half-Wave ($50\\text{ Hz}$) & Full-Wave Center-Tapped/Bridge Rectifiers ($100\\text{ Hz}$)',
-      'Zener Diode as DC Voltage Regulator, LEDs, Photodiodes & Solar Cell V-I Quadrants',
-      'Digital Logic Gates: Truth Tables and Boolean Algebra for AND, OR, NOT, NAND, NOR'
+      'Four Fundamental Forces & Exchange Gauge Bosons (Photon, Gluons, $W^\\pm, Z^0$, Graviton)',
+      'Leptons (Electron, Muon, Tau & Corresponding Neutrinos)',
+      'Quarks: Six Flavors (u, d, c, s, t, b) and Fractional Electric Charges',
+      'Hadrons: Baryons ($qqq$ like Protons/Neutrons) and Mesons ($q\\bar{q}$ like Pions/Kaons)',
+      'Antiparticles, Pair Annihilation, and Fundamental Conservation Laws',
+      'The Standard Model of Particle Physics, Higgs Mechanism, and Cosmic Origins'
     ],
-    color: 'emerald',
-    icon: 'Binary',
-    artTheme: 'algebra',
-    formulaHighlight: 'n_i^2 = n_e \\cdot n_h, \\quad I = I_0(e^{\\frac{eV}{k_B T}} - 1), \\quad Y = \\overline{A \\cdot B}, \\quad Y = \\overline{A + B}',
+    color: 'purple',
+    icon: 'Orbit',
+    artTheme: 'conic',
+    formulaHighlight: 'q_u = +\\frac{2}{3}e, \\quad q_d = -\\frac{1}{3}e, \\quad p = uud, \\quad n = udd, \\quad \\sum Q = \\text{const}, \\quad \\sum B = \\text{const}',
     overview: {
-      summary: 'Semiconductor physics forms the physical hardware foundation of all modern computation and telecommunications. Controllable doping in silicon and germanium enables p-n junction rectification, optoelectronics, and digital logic gates.',
-      historicalContext: 'John Bardeen, Walter Brattain, and William Shockley invented the point-contact transistor at Bell Labs in 1947, ushering in the modern Information Age.',
+      summary: 'Particle physics probes the most fundamental constituents of matter and the forces governing their interactions. The Standard Model classifies fundamental fermions (quarks and leptons) and gauge bosons mediating the fundamental forces, completed by the Higgs mechanism.',
+      historicalContext: 'Murray Gell-Mann and George Zweig proposed the quark model in 1964; the electroweak theory was unified in the late 1960s, culminating in the discovery of the Higgs boson at CERN in 2012.',
       learningOutcomes: [
-        'Differentiate conductors, semiconductors, and insulators using energy band gap diagrams',
-        'Explain majority and minority charge carrier transport in doped n-type and p-type semiconductors',
-        'Analyze p-n junction barrier potentials under forward and reverse bias configurations',
-        'Design AC-to-DC rectifier circuits and construct truth tables for combination logic gate networks'
+        'Classify fundamental forces of nature, relative strengths, ranges, and mediating gauge bosons',
+        'Distinguish fundamental fermions: six leptons and six quarks with their quantum numbers and charges',
+        'Determine quark composition of hadrons (baryons composed of $qqq$ and mesons composed of $q\\bar{q}$)',
+        'Verify conservation of electric charge, baryon number, and lepton numbers in particle interactions'
       ],
       coreFormulas: [
-        { label: 'Mass Action Law', formula: 'n_e \\cdot n_h = n_i^2', explanation: 'Product of electron and hole concentrations in thermal equilibrium.' },
-        { label: 'Diode Ideal Shockley Equation', formula: 'I = I_s \\left( e^{\\frac{e V}{\\eta k_B T}} - 1 \\right)', explanation: 'Exponential forward and reverse saturation current response of a semiconductor diode.' },
-        { label: 'De Morgan\'s Laws', formula: '\\overline{A + B} = \\overline{A} \\cdot \\overline{B}, \\quad \\overline{A \\cdot B} = \\overline{A} + \\overline{B}', explanation: 'Universal Boolean algebraic rules for digital logic gate transformation.' }
+        { label: 'Proton Quark Structure', formula: 'p = u + u + d \\implies Q = \\left(+\\frac{2}{3}e\\right) + \\left(+\\frac{2}{3}e\\right) + \\left(-\\frac{1}{3}e\\right) = +1e', explanation: 'Baryon composed of two up quarks and one down quark.' },
+        { label: 'Neutron Quark Structure', formula: 'n = u + d + d \\implies Q = \\left(+\\frac{2}{3}e\\right) + \\left(-\\frac{1}{3}e\\right) + \\left(-\\frac{1}{3}e\\right) = 0', explanation: 'Baryon composed of one up quark and two down quarks.' },
+        { label: 'Beta-Minus Decay at Quark Level', formula: 'd \\to u + W^- \\to u + e^- + \\bar{\\nu}_e', explanation: 'Weak interaction converting a down quark into an up quark with emission of electron and antineutrino.' }
       ],
       realWorldApplications: [
-        'Microprocessors & GPUs: Billions of nanometer FinFET and GAA silicon transistors in modern chips',
-        'Power Electronics: Silicon Carbide (SiC) and GaN high-efficiency fast-charging power converters',
-        'Solid-State Lighting: High-efficiency GaN blue and white LEDs illuminating modern infrastructure',
-        'Digital Embedded Systems: NAND and NOR flash memory arrays and microcontrollers'
+        'Synchrotron Light Sources: High-intensity coherent X-rays deciphering biological protein crystal structures',
+        'Positron Emission Tomography (PET): Antimatter positron annihilation generating dual 511 keV gamma rays',
+        'Hadron Cancer Therapy: Precision proton and carbon-ion beam irradiation minimizing surrounding tissue damage',
+        'Early Universe Cosmology: Understanding matter-antimatter asymmetry and Big Bang nucleosynthesis conditions'
       ],
       keyTheorems: [
-        { title: 'Universal Logic Gate Theorem', statement: 'Any arbitrary digital logic circuit or computing system can be synthesized entirely using only NAND gates or only NOR gates.', importance: 'Proves the completeness of universal logic in digital computer hardware architecture.' }
+        { title: 'Standard Model of Particle Physics', statement: 'All visible matter in the universe is constructed from twelve fundamental spin-1/2 fermions (six quarks and six leptons) interacting via exchange of spin-1 gauge bosons (photons, gluons, W/Z bosons), with masses generated by electroweak symmetry breaking through the Higgs field.', importance: 'The most comprehensive and rigorously tested theory in modern fundamental physics.' }
       ]
     }
   }

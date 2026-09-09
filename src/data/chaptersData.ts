@@ -405,7 +405,7 @@ export const ELEMENTARY_CHAPTERS: Chapter[] = [
     name: 'Graphs of Trigonometric and Inverse Trigonometric Functions and Solutions of Trigonometric Equations',
     description: 'Periods of trigonometric functions, graphs and domains/ranges of sin x, cos x, tan x, sec x, csc x, cot x, inverse trigonometric functions (arcsin, arccos, arctan), principal value branches, and general solutions of trig equations.',
     category: 'Trigonometry',
-    questionCount: 250,
+    questionCount: 600,
     difficulty: 'Mixed',
     keyTopics: [
       'Periods: $\\sin x, \\cos x, \\sec x, \\csc x$ period $2\\pi$; $\\tan x, \\cot x$ period $\\pi$',

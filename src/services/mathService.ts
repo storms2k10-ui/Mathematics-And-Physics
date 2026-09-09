@@ -117,17 +117,9 @@ export class MathService {
     }
 
     if (difficultyTier === 'Advanced') {
-      const explicitAdvanced = pool.filter((q) => q.difficulty_tier === 'Advanced');
-      if (explicitAdvanced.length > 0) {
-        return explicitAdvanced;
-      }
-      // High-yield conceptual, formulaic, and medium/hard questions for Advanced tier fallback
-      const advancedQuestions = pool
-        .filter((q) => q.difficulty === 'Hard' || q.difficulty === 'Medium' || (q.explanation && q.explanation.length > 80))
-        .map((q) => ({ ...q, difficulty_tier: 'Advanced' as const }));
-      return advancedQuestions.length > 0
-        ? advancedQuestions
-        : pool.slice(Math.floor(pool.length / 2)).map((q) => ({ ...q, difficulty_tier: 'Advanced' as const }));
+      // Strictly return questions explicitly authored for Advanced difficulty.
+      // Do NOT automatically fallback or map from Normal tier.
+      return pool.filter((q) => q.difficulty_tier === 'Advanced');
     }
     // Normal difficulty includes all standard curriculum questions linked to Normal or without explicit tier
     return pool.filter((q) => !q.difficulty_tier || q.difficulty_tier === 'Normal');
