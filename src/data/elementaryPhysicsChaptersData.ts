@@ -749,8 +749,8 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     name: '3. Second Law of Thermodynamics',
     description: 'Heat engines and cyclic processes, thermal efficiency $\\eta = \\frac{W}{Q_H}$, Kelvin-Planck and Clausius statements, Carnot reversible engine cycle, Carnot efficiency $\\eta_C = 1 - \\frac{T_C}{T_H}$, refrigerators and heat pumps (COP), entropy $S$, entropy changes $\\Delta S = \\int \\frac{dQ_{\\text{rev}}}{T}$, and principle of entropy increase.',
     category: 'Thermodynamics & Heat',
-    questionCount: 0,
-    difficulty: 'Mixed',
+    questionCount: 200,
+    difficulty: 'Normal',
     keyTopics: [
       'Heat Engines & Thermal Efficiency $\\eta = 1 - \\frac{Q_C}{Q_H}$',
       'Kelvin-Planck and Clausius Formulations of the Second Law of Thermodynamics',
