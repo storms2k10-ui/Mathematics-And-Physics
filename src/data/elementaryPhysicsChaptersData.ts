@@ -795,8 +795,8 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     name: '4. Magnetic Fields',
     description: 'Magnetic induction vector $\\mathbf{B}$, magnetic flux $\\Phi_B$, Lorentz force $\\mathbf{F} = q(\\mathbf{v} \\times \\mathbf{B})$, cyclotron radius $r = \\frac{mv}{qB}$ and frequency, force on current-carrying conductor $\\mathbf{F} = I(\\mathbf{L} \\times \\mathbf{B})$, magnetic torque $\\boldsymbol{\\tau} = \\mathbf{M} \\times \\mathbf{B}$, Biot-Savart law, Ampere\'s Circuital Law, and magnetic fields of coils, solenoids, and toroids.',
     category: 'Magnetism & Induction',
-    questionCount: 0,
-    difficulty: 'Mixed',
+    questionCount: 200,
+    difficulty: 'Normal',
     keyTopics: [
       'Magnetic Lorentz Force: $\\mathbf{F} = q(\\mathbf{v} \\times \\mathbf{B})$ & Helical Particle Trajectories',
       'Cyclotron Motion: Orbit Radius $r = \\frac{mv}{qB}$ & Period $T = \\frac{2\\pi m}{qB}$',
@@ -841,8 +841,8 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     name: '5. Electromagnetic Induction',
     description: 'Magnetic flux $\\Phi = \\mathbf{B} \\cdot \\mathbf{A}$, Faraday\'s laws of electromagnetic induction $\\mathcal{E} = -N \\frac{d\\Phi}{dt}$, Lenz\'s law and energy conservation, motional electromotive force $\\mathcal{E} = Bvl$, induced electric fields, eddy currents and damping, self-inductance ($L$), mutual inductance ($M$), and energy stored in magnetic field $U_B = \\frac{1}{2} L I^2$.',
     category: 'Magnetism & Induction',
-    questionCount: 0,
-    difficulty: 'Mixed',
+    questionCount: 200,
+    difficulty: 'Normal',
     keyTopics: [
       'Magnetic Flux: $\\Phi = \\mathbf{B} \\cdot \\mathbf{A} = B A \\cos\\theta$',
       'Faraday\'s Law of Induction: $\\mathcal{E} = -N \\frac{d\\Phi}{dt}$',
@@ -887,8 +887,8 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     name: '6. AC Circuits',
     description: 'Sinusoidal alternating voltage and current, RMS and peak values $I_{\\text{rms}} = \\frac{I_0}{\\sqrt{2}}$, AC through pure resistor, inductor, and capacitor, phase angles and phasor diagrams, inductive reactance $X_L = \\omega L$, capacitive reactance $X_C = \\frac{1}{\\omega C}$, series RLC circuits, total impedance $Z = \\sqrt{R^2 + (X_L - X_C)^2}$, electrical resonance $f_0 = \\frac{1}{2\\pi\\sqrt{LC}}$, quality factor $Q$, and power in AC circuits.',
     category: 'Magnetism & Induction',
-    questionCount: 0,
-    difficulty: 'Mixed',
+    questionCount: 200,
+    difficulty: 'Normal',
     keyTopics: [
       'Sinusoidal AC Waveforms & Root Mean Square ($V_{\\text{rms}} = \\frac{V_0}{\\sqrt{2}}$)',
       'Phasor Representation & Phase Shifts in Resistors, Inductors, and Capacitors',
@@ -933,8 +933,8 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     name: '7. Physics of Solids',
     description: 'Structure of crystalline, amorphous, and polymeric solids, crystal lattices and unit cells, mechanical properties: stress $\\sigma$, strain $\\varepsilon$, Hooke\'s law, Young\'s, shear, and bulk moduli, stress-strain curves and elastic limit, strain energy density $u = \\frac{1}{2}\\sigma \\varepsilon$, electrical energy band theory of solids (conductors, semiconductors, insulators), superconductivity ($T_c$, Meissner effect), and magnetic domains.',
     category: 'Fluids & Material Properties',
-    questionCount: 0,
-    difficulty: 'Mixed',
+    questionCount: 200,
+    difficulty: 'Normal',
     keyTopics: [
       'Classification of Solids: Crystalline, Amorphous, and Polymeric',
       'Mechanical Stress ($\\sigma = F/A$) and Tensile/Shear/Volumetric Strain ($\\varepsilon$)',
