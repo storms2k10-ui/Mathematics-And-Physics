@@ -5,8 +5,8 @@ import { Question } from '../types';
 // Previous questions data cleared per curriculum update
 // ============================================================================
 
-export const EL_PHY12_CH8_QUESTIONS: Question[] = [];
-export const EL_PHY12_CH9_QUESTIONS: Question[] = [];
+export { EL_PHY12_CH8_QUESTIONS } from './el_phy12_chapter8_data';
+export { EL_PHY12_CH9_QUESTIONS } from './el_phy12_chapter9_data';
 export const EL_PHY12_CH10_QUESTIONS: Question[] = [];
 export const EL_PHY12_CH11_QUESTIONS: Question[] = [];
 export const EL_PHY12_CH12_QUESTIONS: Question[] = [];

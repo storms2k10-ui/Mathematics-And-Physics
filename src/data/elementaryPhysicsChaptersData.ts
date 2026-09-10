@@ -979,8 +979,8 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     name: '8. Solid State Electronics',
     description: 'Intrinsic semiconductors and thermal generation, extrinsic semiconductors (n-type and p-type doping), p-n junction formation, barrier potential and depletion layer, forward and reverse bias V-I characteristics, half-wave and full-wave bridge rectification, filter circuits, Zener diode as voltage regulator, optoelectronic devices (LED, photodiode, solar cells), and bipolar junction transistors (BJT npn/pnp, current gain $\\beta$, amplifier and switch action).',
     category: 'Semiconductors & Electronics',
-    questionCount: 0,
-    difficulty: 'Mixed',
+    questionCount: 200,
+    difficulty: 'Normal',
     keyTopics: [
       'Intrinsic & Extrinsic Semiconductors (Group III & V Doping)',
       'p-n Junction Diode: Depletion Layer, Barrier Potential & Bias Characteristics',
@@ -1025,8 +1025,8 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     name: '9. Digital Electronics',
     description: 'Analog versus digital signals, binary number system and binary logic levels, fundamental logic gates (NOT, AND, OR) and their truth tables, universal logic gates (NAND, NOR), exclusive gates (XOR, XNOR), Boolean algebra laws and De Morgan\'s theorems, logic gate combinations, operational amplifiers (Op-Amp) in inverting, non-inverting, and comparator configurations, and digital electronic control systems.',
     category: 'Semiconductors & Electronics',
-    questionCount: 0,
-    difficulty: 'Mixed',
+    questionCount: 200,
+    difficulty: 'Normal',
     keyTopics: [
       'Analog vs Digital Signals & Binary Logic Representation',
       'Basic Logic Gates (NOT, AND, OR): Symbols and Truth Tables',
