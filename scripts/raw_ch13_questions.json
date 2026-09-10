@@ -1,0 +1,2002 @@
+[
+  {
+    "qnum": 1,
+    "question": "The nucleus of an atom consists mainly of:",
+    "opt_a": "Protons and neutrons",
+    "opt_b": "Electrons and protons",
+    "opt_c": "Electrons and neutrons",
+    "opt_d": "Photons and electrons",
+    "answer": "A",
+    "explanation": "Protons and neutrons together form the nucleus and are collectively called nucleons."
+  },
+  {
+    "qnum": 2,
+    "question": "The atomic number \\(Z\\) of an element represents the number of:",
+    "opt_a": "Neutrons",
+    "opt_b": "Protons",
+    "opt_c": "Nucleons",
+    "opt_d": "Protons plus neutrons",
+    "answer": "B",
+    "explanation": "Atomic number is defined as the number of protons present in the nucleus."
+  },
+  {
+    "qnum": 3,
+    "question": "The mass number \\(A\\) is equal to:",
+    "opt_a": "\\(Z-N\\)",
+    "opt_b": "\\(N-Z\\)",
+    "opt_c": "\\(Z+N\\)",
+    "opt_d": "\\(ZN\\)",
+    "answer": "C",
+    "explanation": "If \\(Z\\) is the proton number and \\(N\\) the neutron number, then \\(A=Z+N\\)."
+  },
+  {
+    "qnum": 4,
+    "question": "The number of neutrons in a nucleus is:",
+    "opt_a": "\\(A+Z\\)",
+    "opt_b": "\\(Z-A\\)",
+    "opt_c": "\\(AZ\\)",
+    "opt_d": "\\(A-Z\\)",
+    "answer": "D",
+    "explanation": "Since \\(A=Z+N\\), rearranging gives \\(N=A-Z\\)."
+  },
+  {
+    "qnum": 5,
+    "question": "Which particles are collectively called nucleons?",
+    "opt_a": "Protons and neutrons",
+    "opt_b": "Protons and electrons",
+    "opt_c": "Neutrons and electrons",
+    "opt_d": "Electrons and positrons",
+    "answer": "A",
+    "explanation": "The particles contained in the nucleus—protons and neutrons—are nucleons."
+  },
+  {
+    "qnum": 6,
+    "question": "Isotopes of an element have the same:",
+    "opt_a": "Mass number",
+    "opt_b": "Atomic number",
+    "opt_c": "Number of neutrons",
+    "opt_d": "Nuclear mass",
+    "answer": "B",
+    "explanation": "Isotopes belong to the same element, so they have the same number of protons but different neutron numbers."
+  },
+  {
+    "qnum": 7,
+    "question": "Isotopes of the same element differ in their number of:",
+    "opt_a": "Protons",
+    "opt_b": "Electrons in neutral atoms",
+    "opt_c": "Neutrons",
+    "opt_d": "Nuclear charge",
+    "answer": "C",
+    "explanation": "Different neutron numbers produce different mass numbers while \\(Z\\) remains unchanged."
+  },
+  {
+    "qnum": 8,
+    "question": "An atom has \\(A=27\\) and \\(Z=13\\). Its neutron number is:",
+    "opt_a": "27",
+    "opt_b": "13",
+    "opt_c": "40",
+    "opt_d": "14",
+    "answer": "D",
+    "explanation": "\\(N=A-Z=27-13=14\\)."
+  },
+  {
+    "qnum": 9,
+    "question": "The nuclear charge of an atom of atomic number \\(Z\\) is:",
+    "opt_a": "\\(+Ze\\)",
+    "opt_b": "\\(-Ze\\)",
+    "opt_c": "\\(+Ae\\)",
+    "opt_d": "\\(-Ae\\)",
+    "answer": "A",
+    "explanation": "Each proton carries charge \\(+e\\), so \\(Z\\) protons give nuclear charge \\(+Ze\\)."
+  },
+  {
+    "qnum": 10,
+    "question": "A nuclide represented by \\({}^{A}_{Z}X\\) contains how many neutrons?",
+    "opt_a": "\\(A+Z\\)",
+    "opt_b": "\\(A-Z\\)",
+    "opt_c": "\\(Z-A\\)",
+    "opt_d": "\\(A/Z\\)",
+    "answer": "B",
+    "explanation": "The neutron number is \\(N=A-Z\\)."
+  },
+  {
+    "qnum": 11,
+    "question": "Which radiation consists of helium nuclei?",
+    "opt_a": "Beta",
+    "opt_b": "Gamma",
+    "opt_c": "Alpha",
+    "opt_d": "X-rays",
+    "answer": "C",
+    "explanation": "An alpha particle is a helium nucleus containing two protons and two neutrons."
+  },
+  {
+    "qnum": 12,
+    "question": "The charge on an alpha particle is:",
+    "opt_a": "\\(-2e\\)",
+    "opt_b": "\\(+e\\)",
+    "opt_c": "Zero",
+    "opt_d": "\\(+2e\\)",
+    "answer": "D",
+    "explanation": "Two protons in the alpha particle give it a net charge of \\(+2e\\)."
+  },
+  {
+    "qnum": 13,
+    "question": "The mass number of an alpha particle is:",
+    "opt_a": "4",
+    "opt_b": "2",
+    "opt_c": "1",
+    "opt_d": "0",
+    "answer": "A",
+    "explanation": "An alpha particle contains two protons and two neutrons, giving \\(A=4\\)."
+  },
+  {
+    "qnum": 14,
+    "question": "Beta-minus radiation consists essentially of:",
+    "opt_a": "Protons",
+    "opt_b": "Electrons",
+    "opt_c": "Neutrons",
+    "opt_d": "Helium nuclei",
+    "answer": "B",
+    "explanation": "In \\(\\beta^-\\) decay, a high-speed electron is emitted from the nucleus."
+  },
+  {
+    "qnum": 15,
+    "question": "Gamma radiation consists of:",
+    "opt_a": "Helium nuclei",
+    "opt_b": "Electrons",
+    "opt_c": "Electromagnetic photons",
+    "opt_d": "Protons",
+    "answer": "C",
+    "explanation": "Gamma rays are high-energy electromagnetic radiation emitted by nuclei."
+  },
+  {
+    "qnum": 16,
+    "question": "Which nuclear radiation has no electric charge?",
+    "opt_a": "Alpha only",
+    "opt_b": "Beta only",
+    "opt_c": "Alpha and beta",
+    "opt_d": "Gamma",
+    "answer": "D",
+    "explanation": "Gamma photons carry no electric charge."
+  },
+  {
+    "qnum": 17,
+    "question": "Which radiation has the greatest ionizing power among \\(\\alpha,\\beta,\\gamma\\)?",
+    "opt_a": "Alpha",
+    "opt_b": "Beta",
+    "opt_c": "Gamma",
+    "opt_d": "All equal",
+    "answer": "A",
+    "explanation": "Alpha particles are massive and doubly charged, producing intense ionization."
+  },
+  {
+    "qnum": 18,
+    "question": "Which generally has greater penetrating power than alpha but less than gamma radiation?",
+    "opt_a": "Proton radiation",
+    "opt_b": "Beta radiation",
+    "opt_c": "Neutron number",
+    "opt_d": "Visible radiation",
+    "answer": "B",
+    "explanation": "The usual penetration order is \\(\\alpha<\\beta<\\gamma\\)."
+  },
+  {
+    "qnum": 19,
+    "question": "Among alpha, beta and gamma radiation, the greatest penetrating power belongs to:",
+    "opt_a": "Alpha",
+    "opt_b": "Beta",
+    "opt_c": "Gamma",
+    "opt_d": "All are equal",
+    "answer": "C",
+    "explanation": "Gamma rays are highly penetrating electromagnetic radiation."
+  },
+  {
+    "qnum": 20,
+    "question": "In an electric field, gamma radiation is:",
+    "opt_a": "Deflected toward positive plate",
+    "opt_b": "Deflected toward negative plate",
+    "opt_c": "Strongly accelerated",
+    "opt_d": "Not deflected",
+    "answer": "D",
+    "explanation": "Gamma photons are electrically neutral."
+  },
+  {
+    "qnum": 21,
+    "question": "Radioactivity is primarily a property of the:",
+    "opt_a": "Nucleus",
+    "opt_b": "Electron cloud",
+    "opt_c": "Chemical bonds",
+    "opt_d": "Outer electrons",
+    "answer": "A",
+    "explanation": "Radioactive decay originates from unstable atomic nuclei."
+  },
+  {
+    "qnum": 22,
+    "question": "Natural radioactivity is generally:",
+    "opt_a": "Caused by heating",
+    "opt_b": "Spontaneous",
+    "opt_c": "Caused by pressure",
+    "opt_d": "Stopped by cooling",
+    "answer": "B",
+    "explanation": "Unstable nuclei decay spontaneously without requiring an external trigger."
+  },
+  {
+    "qnum": 23,
+    "question": "Radioactive decay is largely unaffected by ordinary changes in:",
+    "opt_a": "Nuclear composition",
+    "opt_b": "Neutron-to-proton ratio",
+    "opt_c": "Temperature and pressure",
+    "opt_d": "Nuclear stability",
+    "answer": "C",
+    "explanation": "Ordinary physical conditions do not significantly alter nuclear decay rates."
+  },
+  {
+    "qnum": 24,
+    "question": "The SI unit of radioactive activity is:",
+    "opt_a": "Gray",
+    "opt_b": "Sievert",
+    "opt_c": "Joule",
+    "opt_d": "Becquerel",
+    "answer": "D",
+    "explanation": "One becquerel (Bq) corresponds to one nuclear decay per second."
+  },
+  {
+    "qnum": 25,
+    "question": "One becquerel equals:",
+    "opt_a": "One disintegration per second",
+    "opt_b": "One disintegration per minute",
+    "opt_c": "One joule per second",
+    "opt_d": "One electron volt per second",
+    "answer": "A",
+    "explanation": "By definition, \\(1\\,\\text{Bq}=1\\) decay s\\(^{-1}\\)."
+  },
+  {
+    "qnum": 26,
+    "question": "The half-life of a radioactive substance is the time required for:",
+    "opt_a": "All nuclei to decay",
+    "opt_b": "Half the radioactive nuclei to decay",
+    "opt_c": "Activity to become zero",
+    "opt_d": "Mass to double",
+    "answer": "B",
+    "explanation": "After one half-life, half of the original undecayed radioactive nuclei remain."
+  },
+  {
+    "qnum": 27,
+    "question": "After one half-life, the fraction of radioactive nuclei remaining is:",
+    "opt_a": "\\(1/4\\)",
+    "opt_b": "\\(3/4\\)",
+    "opt_c": "\\(1/2\\)",
+    "opt_d": "Zero",
+    "answer": "C",
+    "explanation": "Half-life directly means that \\(N=N_0/2\\)."
+  },
+  {
+    "qnum": 28,
+    "question": "After two half-lives, the fraction remaining is:",
+    "opt_a": "\\(1/2\\)",
+    "opt_b": "\\(1/8\\)",
+    "opt_c": "\\(3/4\\)",
+    "opt_d": "\\(1/4\\)",
+    "answer": "D",
+    "explanation": "\\(N/N_0=(1/2)^2=1/4\\)."
+  },
+  {
+    "qnum": 29,
+    "question": "After three half-lives, the fraction remaining is:",
+    "opt_a": "\\(1/8\\)",
+    "opt_b": "\\(1/4\\)",
+    "opt_c": "\\(1/6\\)",
+    "opt_d": "\\(1/16\\)",
+    "answer": "A",
+    "explanation": "\\((1/2)^3=1/8\\)."
+  },
+  {
+    "qnum": 30,
+    "question": "If a sample initially contains 8000 radioactive nuclei, how many remain after one half-life?",
+    "opt_a": "2000",
+    "opt_b": "4000",
+    "opt_c": "6000",
+    "opt_d": "1000",
+    "answer": "B",
+    "explanation": "\\(8000/2=4000\\)."
+  },
+  {
+    "qnum": 31,
+    "question": "A radioactive sample has a half-life of 5 h. The fraction remaining after 10 h is:",
+    "opt_a": "\\(1/2\\)",
+    "opt_b": "\\(1/8\\)",
+    "opt_c": "\\(1/4\\)",
+    "opt_d": "\\(1/16\\)",
+    "answer": "C",
+    "explanation": "Ten hours equals two half-lives, so \\((1/2)^2=1/4\\)."
+  },
+  {
+    "qnum": 32,
+    "question": "A sample has half-life 2 days. After 6 days its remaining fraction is:",
+    "opt_a": "\\(1/2\\)",
+    "opt_b": "\\(1/4\\)",
+    "opt_c": "\\(1/16\\)",
+    "opt_d": "\\(1/8\\)",
+    "answer": "D",
+    "explanation": "Six days represents three half-lives, hence \\(1/2^3=1/8\\)."
+  },
+  {
+    "qnum": 33,
+    "question": "The decay constant \\(\\lambda\\) has SI unit:",
+    "opt_a": "s\\(^{-1}\\)",
+    "opt_b": "s",
+    "opt_c": "kg s\\(^{-1}\\)",
+    "opt_d": "J",
+    "answer": "A",
+    "explanation": "Decay constant represents decay probability per unit time, so its dimension is inverse time."
+  },
+  {
+    "qnum": 34,
+    "question": "The relation between half-life \\(T_{1/2}\\) and decay constant is:",
+    "opt_a": "\\(T_{1/2}=\\lambda/0.693\\)",
+    "opt_b": "\\(T_{1/2}=0.693/\\lambda\\)",
+    "opt_c": "\\(T_{1/2}=1/\\lambda^2\\)",
+    "opt_d": "\\(T_{1/2}=0.693\\lambda\\)",
+    "answer": "B",
+    "explanation": "Radioactive decay gives \\(T_{1/2}=\\ln2/\\lambda=0.693/\\lambda\\)."
+  },
+  {
+    "qnum": 35,
+    "question": "A larger decay constant corresponds to a:",
+    "opt_a": "Larger mass number necessarily",
+    "opt_b": "Greater atomic number necessarily",
+    "opt_c": "Shorter half-life",
+    "opt_d": "Longer half-life",
+    "answer": "C",
+    "explanation": "Since \\(T_{1/2}=0.693/\\lambda\\), the quantities are inversely proportional."
+  },
+  {
+    "qnum": 36,
+    "question": "If \\(\\lambda\\) doubles, the half-life becomes:",
+    "opt_a": "Four times",
+    "opt_b": "Twice",
+    "opt_c": "Unchanged",
+    "opt_d": "Half",
+    "answer": "D",
+    "explanation": "\\(T_{1/2}\\propto1/\\lambda\\)."
+  },
+  {
+    "qnum": 37,
+    "question": "The radioactive decay law is:",
+    "opt_a": "\\(N=N_0e^{-\\lambda t}\\)",
+    "opt_b": "\\(N=N_0e^{+\\lambda t}\\)",
+    "opt_c": "\\(N=N_0\\lambda t\\)",
+    "opt_d": "\\(N=N_0/t\\)",
+    "answer": "A",
+    "explanation": "The number of undecayed nuclei decreases exponentially with time."
+  },
+  {
+    "qnum": 38,
+    "question": "Activity \\(R\\) of a radioactive sample is proportional to:",
+    "opt_a": "\\(1/N\\)",
+    "opt_b": "\\(N\\)",
+    "opt_c": "\\(N^2\\)",
+    "opt_d": "\\(\\sqrt N\\)",
+    "answer": "B",
+    "explanation": "\\(R=\\lambda N\\), so for fixed \\(\\lambda\\), activity is directly proportional to the number of undecayed nuclei."
+  },
+  {
+    "qnum": 39,
+    "question": "Which detector is commonly associated with detecting nuclear radiation?",
+    "opt_a": "Ammeter",
+    "opt_b": "Potentiometer",
+    "opt_c": "Geiger-Müller counter",
+    "opt_d": "Transformer",
+    "answer": "C",
+    "explanation": "A Geiger-Müller counter detects ionizing nuclear radiation."
+  },
+  {
+    "qnum": 40,
+    "question": "A radioactive nucleus is best described as one that is:",
+    "opt_a": "Chemically reactive",
+    "opt_b": "Electrically neutral",
+    "opt_c": "Electron-deficient",
+    "opt_d": "Nuclear-unstable",
+    "answer": "D",
+    "explanation": "Radioactivity results from instability of the nucleus."
+  },
+  {
+    "qnum": 41,
+    "question": "In alpha decay, the mass number of the daughter nucleus decreases by:",
+    "opt_a": "4",
+    "opt_b": "1",
+    "opt_c": "2",
+    "opt_d": "0",
+    "answer": "A",
+    "explanation": "An alpha particle carries four nucleons."
+  },
+  {
+    "qnum": 42,
+    "question": "In alpha decay, atomic number decreases by:",
+    "opt_a": "4",
+    "opt_b": "2",
+    "opt_c": "1",
+    "opt_d": "0",
+    "answer": "B",
+    "explanation": "The emitted alpha particle contains two protons."
+  },
+  {
+    "qnum": 43,
+    "question": "If \\({}^{238}_{92}U\\) emits an alpha particle, the daughter mass number is:",
+    "opt_a": "238",
+    "opt_b": "236",
+    "opt_c": "234",
+    "opt_d": "230",
+    "answer": "C",
+    "explanation": "\\(238-4=234\\)."
+  },
+  {
+    "qnum": 44,
+    "question": "If \\({}^{238}_{92}U\\) undergoes alpha decay, the daughter atomic number is:",
+    "opt_a": "94",
+    "opt_b": "92",
+    "opt_c": "88",
+    "opt_d": "90",
+    "answer": "D",
+    "explanation": "Alpha emission decreases \\(Z\\) by 2: \\(92-2=90\\)."
+  },
+  {
+    "qnum": 45,
+    "question": "During \\(\\beta^-\\) decay, a neutron effectively changes into a:",
+    "opt_a": "Proton",
+    "opt_b": "Alpha particle",
+    "opt_c": "Photon",
+    "opt_d": "Neutron pair",
+    "answer": "A",
+    "explanation": "In beta-minus decay, a neutron converts into a proton with beta emission (and an antineutrino in the fuller description)."
+  },
+  {
+    "qnum": 46,
+    "question": "During \\(\\beta^-\\) decay, the mass number of the nucleus:",
+    "opt_a": "Increases by 1",
+    "opt_b": "Remains unchanged",
+    "opt_c": "Decreases by 1",
+    "opt_d": "Decreases by 4",
+    "answer": "B",
+    "explanation": "A neutron changes into a proton, so the total number of nucleons remains the same."
+  },
+  {
+    "qnum": 47,
+    "question": "In \\(\\beta^-\\) decay, the atomic number:",
+    "opt_a": "Decreases by 2",
+    "opt_b": "Remains constant",
+    "opt_c": "Increases by 1",
+    "opt_d": "Decreases by 1",
+    "answer": "C",
+    "explanation": "Conversion of one neutron into one proton increases \\(Z\\) by one."
+  },
+  {
+    "qnum": 48,
+    "question": "Gamma emission changes the mass and atomic numbers by:",
+    "opt_a": "\\(-4,-2\\)",
+    "opt_b": "\\(0,+1\\)",
+    "opt_c": "\\(0,-1\\)",
+    "opt_d": "\\(0,0\\)",
+    "answer": "D",
+    "explanation": "Gamma emission only removes excess nuclear energy."
+  },
+  {
+    "qnum": 49,
+    "question": "A nucleus \\({}^{A}_{Z}X\\) undergoing alpha decay becomes:",
+    "opt_a": "\\({}^{A-4}_{Z-2}Y\\)",
+    "opt_b": "\\({}^{A}_{Z+1}Y\\)",
+    "opt_c": "\\({}^{A-2}_{Z-4}Y\\)",
+    "opt_d": "\\({}^{A}_{Z}Y\\)",
+    "answer": "A",
+    "explanation": "Alpha emission removes two protons and two neutrons."
+  },
+  {
+    "qnum": 50,
+    "question": "A nucleus \\({}^{A}_{Z}X\\) undergoing \\(\\beta^-\\) decay produces a daughter with:",
+    "opt_a": "\\(A-1,Z\\)",
+    "opt_b": "\\(A,Z+1\\)",
+    "opt_c": "\\(A-4,Z-2\\)",
+    "opt_d": "\\(A,Z-1\\)",
+    "answer": "B",
+    "explanation": "The nucleon number remains \\(A\\), while the proton number increases by one."
+  },
+  {
+    "qnum": 51,
+    "question": "The most massive of alpha, beta and gamma radiations is:",
+    "opt_a": "Gamma",
+    "opt_b": "Beta",
+    "opt_c": "Alpha",
+    "opt_d": "All have equal rest mass",
+    "answer": "C",
+    "explanation": "An alpha particle consists of four nucleons and is far more massive than an electron; gamma photons have zero rest mass."
+  },
+  {
+    "qnum": 52,
+    "question": "Which radiation travels at the speed of light in vacuum?",
+    "opt_a": "Alpha",
+    "opt_b": "Beta",
+    "opt_c": "Alpha and beta",
+    "opt_d": "Gamma",
+    "answer": "D",
+    "explanation": "Gamma rays are electromagnetic radiation."
+  },
+  {
+    "qnum": 53,
+    "question": "Nuclear force is primarily responsible for:",
+    "opt_a": "Binding nucleons together",
+    "opt_b": "Binding electrons to atoms",
+    "opt_c": "Chemical bonding",
+    "opt_d": "Gravitational attraction",
+    "answer": "A",
+    "explanation": "Strong nuclear interaction binds protons and neutrons within the nucleus."
+  },
+  {
+    "qnum": 54,
+    "question": "The nuclear force must overcome the electrostatic repulsion mainly between:",
+    "opt_a": "Neutrons",
+    "opt_b": "Protons",
+    "opt_c": "Electrons",
+    "opt_d": "Photons",
+    "answer": "B",
+    "explanation": "Positively charged protons repel one another through Coulomb force."
+  },
+  {
+    "qnum": 55,
+    "question": "Nuclear forces are important over:",
+    "opt_a": "Astronomical distances",
+    "opt_b": "Macroscopic distances",
+    "opt_c": "Very short nuclear distances",
+    "opt_d": "Infinite distances",
+    "answer": "C",
+    "explanation": "The strong nuclear force is a short-range interaction."
+  },
+  {
+    "qnum": 56,
+    "question": "Which quantity provides a direct measure of the energy needed to separate a nucleus completely into nucleons?",
+    "opt_a": "Ionization energy",
+    "opt_b": "Work function",
+    "opt_c": "Excitation potential",
+    "opt_d": "Binding energy",
+    "answer": "D",
+    "explanation": "Nuclear binding energy is the energy required to separate a nucleus into its constituent nucleons."
+  },
+  {
+    "qnum": 57,
+    "question": "The mass of a bound nucleus is generally:",
+    "opt_a": "Less than the total mass of its separated nucleons",
+    "opt_b": "Greater than the total mass of its nucleons",
+    "opt_c": "Exactly twice the nucleon mass",
+    "opt_d": "Independent of nucleon masses",
+    "answer": "A",
+    "explanation": "The missing mass corresponds to nuclear binding energy."
+  },
+  {
+    "qnum": 58,
+    "question": "The difference between the sum of masses of free nucleons and the actual nuclear mass is called:",
+    "opt_a": "Atomic excess",
+    "opt_b": "Mass defect",
+    "opt_c": "Nuclear radius",
+    "opt_d": "Critical mass",
+    "answer": "B",
+    "explanation": "This difference is the mass defect \\(\\Delta m\\)."
+  },
+  {
+    "qnum": 59,
+    "question": "Nuclear binding energy is related to mass defect through:",
+    "opt_a": "\\(E=mc\\)",
+    "opt_b": "\\(E=m/c^2\\)",
+    "opt_c": "\\(E=\\Delta mc^2\\)",
+    "opt_d": "\\(E=\\Delta mc\\)",
+    "answer": "C",
+    "explanation": "Einstein's mass-energy relation gives \\(E_b=\\Delta mc^2\\)."
+  },
+  {
+    "qnum": 60,
+    "question": "A commonly used unit of nuclear energy is:",
+    "opt_a": "Tesla",
+    "opt_b": "Weber",
+    "opt_c": "Ampere",
+    "opt_d": "MeV",
+    "answer": "D",
+    "explanation": "Nuclear energies are conveniently expressed in mega-electron-volts."
+  },
+  {
+    "qnum": 61,
+    "question": "One electron volt is the energy acquired by:",
+    "opt_a": "One electron moving through a potential difference of 1 V",
+    "opt_b": "One proton moving through 1 metre",
+    "opt_c": "One neutron moving through 1 V",
+    "opt_d": "One coulomb moving through 1 m",
+    "answer": "A",
+    "explanation": "\\(1\\,eV=e(1\\,V)\\)."
+  },
+  {
+    "qnum": 62,
+    "question": "One electron volt in joules is approximately:",
+    "opt_a": "\\(1.6\\times10^{-13}\\) J",
+    "opt_b": "\\(1.6\\times10^{-19}\\) J",
+    "opt_c": "\\(9.1\\times10^{-31}\\) J",
+    "opt_d": "\\(3\\times10^8\\) J",
+    "answer": "B",
+    "explanation": "\\(1\\,eV=1.602\\times10^{-19}\\) J."
+  },
+  {
+    "qnum": 63,
+    "question": "\\(1\\,MeV\\) is equal to:",
+    "opt_a": "\\(10^3\\) eV",
+    "opt_b": "\\(10^9\\) eV",
+    "opt_c": "\\(10^6\\) eV",
+    "opt_d": "\\(10^{-6}\\) eV",
+    "answer": "C",
+    "explanation": "Mega means \\(10^6\\)."
+  },
+  {
+    "qnum": 64,
+    "question": "The greater the binding energy per nucleon, generally the:",
+    "opt_a": "Larger the atomic radius",
+    "opt_b": "Greater the electron energy",
+    "opt_c": "Lower the nuclear charge",
+    "opt_d": "More stable the nucleus",
+    "answer": "D",
+    "explanation": "High binding energy per nucleon means nucleons are more strongly bound."
+  },
+  {
+    "qnum": 65,
+    "question": "Binding energy per nucleon equals:",
+    "opt_a": "Total binding energy divided by mass number",
+    "opt_b": "Binding energy multiplied by \\(A\\)",
+    "opt_c": "Mass defect divided by \\(Z\\) only",
+    "opt_d": "\\(mc^2/A^2\\)",
+    "answer": "A",
+    "explanation": "\\(BE/A\\) gives the average binding energy associated with each nucleon."
+  },
+  {
+    "qnum": 66,
+    "question": "A nucleus has binding energy 80 MeV and \\(A=10\\). Its binding energy per nucleon is:",
+    "opt_a": "800 MeV",
+    "opt_b": "8 MeV",
+    "opt_c": "0.8 MeV",
+    "opt_d": "90 MeV",
+    "answer": "B",
+    "explanation": "\\(80/10=8\\) MeV per nucleon."
+  },
+  {
+    "qnum": 67,
+    "question": "The energy released in many nuclear reactions originates from a change in:",
+    "opt_a": "Electric charge only",
+    "opt_b": "Number of electrons only",
+    "opt_c": "Nuclear binding energy",
+    "opt_d": "Chemical bonding only",
+    "answer": "C",
+    "explanation": "Products may be more tightly bound than reactants, and the binding-energy difference appears as released energy."
+  },
+  {
+    "qnum": 68,
+    "question": "In a nuclear reaction, a small loss of mass can correspond to a large energy because:",
+    "opt_a": "Mass is dimensionless",
+    "opt_b": "Nuclear mass is infinite",
+    "opt_c": "Charge is converted to mass",
+    "opt_d": "\\(c^2\\) is extremely large",
+    "answer": "D",
+    "explanation": "In \\(E=\\Delta mc^2\\), the factor \\(c^2\\) is about \\(9\\times10^{16}\\)."
+  },
+  {
+    "qnum": 69,
+    "question": "Nuclear transmutation means:",
+    "opt_a": "Transformation of one nucleus/element into another",
+    "opt_b": "Removal of atomic electrons only",
+    "opt_c": "Change of physical state",
+    "opt_d": "Chemical decomposition",
+    "answer": "A",
+    "explanation": "Nuclear reactions can alter the proton number and hence change one element into another."
+  },
+  {
+    "qnum": 70,
+    "question": "Artificial transmutation can be produced by:",
+    "opt_a": "Cooling the atom",
+    "opt_b": "Bombarding nuclei with suitable particles",
+    "opt_c": "Changing pressure",
+    "opt_d": "Applying an ordinary electric field",
+    "answer": "B",
+    "explanation": "Projectile particles can interact with a target nucleus and transform it."
+  },
+  {
+    "qnum": 71,
+    "question": "In a balanced nuclear reaction, which quantity must be conserved?",
+    "opt_a": "Temperature",
+    "opt_b": "Volume",
+    "opt_c": "Total charge",
+    "opt_d": "Density",
+    "answer": "C",
+    "explanation": "Electric charge is conserved in nuclear reactions."
+  },
+  {
+    "qnum": 72,
+    "question": "In nuclear equations, the total mass number on both sides must be:",
+    "opt_a": "Zero",
+    "opt_b": "Doubled",
+    "opt_c": "Different",
+    "opt_d": "Conserved",
+    "answer": "D",
+    "explanation": "The total number of nucleons is conserved in standard nuclear reaction bookkeeping."
+  },
+  {
+    "qnum": 73,
+    "question": "Nuclear fission is the process in which:",
+    "opt_a": "A heavy nucleus splits into lighter nuclei",
+    "opt_b": "Light nuclei combine",
+    "opt_c": "Electrons leave an atom",
+    "opt_d": "Photons form electrons",
+    "answer": "A",
+    "explanation": "Fission involves division of a heavy nucleus into two or more lighter fragments."
+  },
+  {
+    "qnum": 74,
+    "question": "A commonly used fissile isotope is:",
+    "opt_a": "\\({}^{238}U\\) only",
+    "opt_b": "\\({}^{235}U\\)",
+    "opt_c": "\\({}^{4}He\\)",
+    "opt_d": "\\({}^{12}C\\)",
+    "answer": "B",
+    "explanation": "Uranium-235 can readily undergo neutron-induced fission and sustain a chain reaction."
+  },
+  {
+    "qnum": 75,
+    "question": "In uranium fission, additional particles commonly released are:",
+    "opt_a": "Electrons only",
+    "opt_b": "Protons only",
+    "opt_c": "Neutrons",
+    "opt_d": "Alpha particles only",
+    "answer": "C",
+    "explanation": "Fission releases neutrons that can induce further fission events."
+  },
+  {
+    "qnum": 76,
+    "question": "A self-propagating sequence of fission events is called a:",
+    "opt_a": "Fusion cycle",
+    "opt_b": "Decay series",
+    "opt_c": "Transmutation loop",
+    "opt_d": "Chain reaction",
+    "answer": "D",
+    "explanation": "Neutrons from one fission can initiate further fissions, forming a chain reaction."
+  },
+  {
+    "qnum": 77,
+    "question": "In a controlled chain reaction, the rate of fission is:",
+    "opt_a": "Regulated",
+    "opt_b": "Allowed to increase without limit",
+    "opt_c": "Reduced permanently to zero",
+    "opt_d": "Independent of neutrons",
+    "answer": "A",
+    "explanation": "Nuclear reactors regulate the neutron population so energy is released at a controlled rate."
+  },
+  {
+    "qnum": 78,
+    "question": "An uncontrolled fission chain reaction is associated with a:",
+    "opt_a": "Solar cell",
+    "opt_b": "Fission weapon",
+    "opt_c": "Transformer",
+    "opt_d": "Refrigerator",
+    "answer": "B",
+    "explanation": "An uncontrolled rapidly multiplying fission chain reaction releases enormous energy in a very short interval."
+  },
+  {
+    "qnum": 79,
+    "question": "The primary function of control rods in a nuclear reactor is to:",
+    "opt_a": "Produce uranium",
+    "opt_b": "Increase temperature directly",
+    "opt_c": "Absorb excess neutrons",
+    "opt_d": "Produce electrons",
+    "answer": "C",
+    "explanation": "Control rods regulate the chain reaction by capturing neutrons."
+  },
+  {
+    "qnum": 80,
+    "question": "A moderator in a thermal nuclear reactor is mainly used to:",
+    "opt_a": "Accelerate electrons",
+    "opt_b": "Absorb all neutrons",
+    "opt_c": "Cool the turbine",
+    "opt_d": "Slow down fast neutrons",
+    "answer": "D",
+    "explanation": "Slower neutrons are more effective in producing fission in fuels such as U-235."
+  },
+  {
+    "qnum": 81,
+    "question": "A nuclear reactor converts nuclear energy first mainly into:",
+    "opt_a": "Thermal energy",
+    "opt_b": "Electrical energy directly",
+    "opt_c": "Chemical energy",
+    "opt_d": "Gravitational energy",
+    "answer": "A",
+    "explanation": "Fission energy heats the reactor coolant; the heat can later be converted into mechanical and electrical energy."
+  },
+  {
+    "qnum": 82,
+    "question": "The purpose of coolant in a reactor is primarily to:",
+    "opt_a": "Stop radioactivity",
+    "opt_b": "Carry thermal energy away from the core",
+    "opt_c": "Produce uranium",
+    "opt_d": "Absorb every neutron",
+    "answer": "B",
+    "explanation": "Coolant transfers heat generated in the reactor core to another part of the power system."
+  },
+  {
+    "qnum": 83,
+    "question": "Critical mass refers broadly to the minimum amount of fissile material needed to:",
+    "opt_a": "Stop radioactive decay",
+    "opt_b": "Produce gamma rays",
+    "opt_c": "Sustain a chain reaction",
+    "opt_d": "undergo fusion",
+    "answer": "C",
+    "explanation": "Below critical conditions too many neutrons escape to maintain the chain reaction."
+  },
+  {
+    "qnum": 84,
+    "question": "If too many neutrons escape from a small fissile sample, the chain reaction tends to:",
+    "opt_a": "Become infinitely fast",
+    "opt_b": "Produce fusion",
+    "opt_c": "Increase automatically",
+    "opt_d": "Die out",
+    "answer": "D",
+    "explanation": "Sustained fission requires enough neutrons from one generation to trigger the next."
+  },
+  {
+    "qnum": 85,
+    "question": "Nuclear fusion involves:",
+    "opt_a": "Combining light nuclei into a heavier nucleus",
+    "opt_b": "Splitting heavy nuclei",
+    "opt_c": "Emission of electrons only",
+    "opt_d": "Chemical combustion",
+    "answer": "A",
+    "explanation": "Fusion combines relatively light nuclei and can release enormous energy."
+  },
+  {
+    "qnum": 86,
+    "question": "The Sun's energy is produced primarily through:",
+    "opt_a": "Fission",
+    "opt_b": "Fusion",
+    "opt_c": "Alpha decay alone",
+    "opt_d": "Chemical burning",
+    "answer": "B",
+    "explanation": "Stellar energy comes mainly from nuclear fusion reactions."
+  },
+  {
+    "qnum": 87,
+    "question": "Fusion requires extremely high temperatures mainly because positively charged nuclei must overcome:",
+    "opt_a": "Gravitational attraction",
+    "opt_b": "Magnetic repulsion",
+    "opt_c": "Electrostatic repulsion",
+    "opt_d": "Electron pressure only",
+    "answer": "C",
+    "explanation": "Positive nuclei repel one another through Coulomb force and must approach closely enough for nuclear forces to dominate."
+  },
+  {
+    "qnum": 88,
+    "question": "A fusion reaction involving deuterium and tritium can produce helium plus a:",
+    "opt_a": "Proton only",
+    "opt_b": "Positron only",
+    "opt_c": "Gamma ray only",
+    "opt_d": "Neutron",
+    "answer": "D",
+    "explanation": "A standard D-T fusion reaction produces a helium-4 nucleus and a neutron."
+  },
+  {
+    "qnum": 89,
+    "question": "Compared with ordinary chemical reactions, nuclear reactions generally release:",
+    "opt_a": "Much greater energy per event",
+    "opt_b": "Much less energy",
+    "opt_c": "Exactly equal energy",
+    "opt_d": "No energy",
+    "answer": "A",
+    "explanation": "Nuclear binding energies are on the MeV scale, much larger than typical chemical bond energies."
+  },
+  {
+    "qnum": 90,
+    "question": "The enormous energy of the Sun provides evidence for:",
+    "opt_a": "Uranium fission in its core",
+    "opt_b": "Thermonuclear fusion",
+    "opt_c": "Chemical combustion",
+    "opt_d": "Gravitational force alone",
+    "answer": "B",
+    "explanation": "Fusion of light nuclei powers stars over astronomical timescales."
+  },
+  {
+    "qnum": 91,
+    "question": "The basic reason both fission and fusion can release energy is that their products can have:",
+    "opt_a": "More electrons",
+    "opt_b": "Greater atomic radius",
+    "opt_c": "Greater binding energy per nucleon",
+    "opt_d": "Zero mass",
+    "answer": "C",
+    "explanation": "Movement toward more strongly bound nuclear configurations releases energy."
+  },
+  {
+    "qnum": 92,
+    "question": "A hydrogen bomb is primarily based on:",
+    "opt_a": "Radioactive dating",
+    "opt_b": "Alpha scattering",
+    "opt_c": "Controlled fission only",
+    "opt_d": "Thermonuclear fusion",
+    "answer": "D",
+    "explanation": "A hydrogen bomb obtains its major energy release from uncontrolled fusion reactions."
+  },
+  {
+    "qnum": 93,
+    "question": "Carbon-14 dating is particularly useful for determining the age of:",
+    "opt_a": "Once-living organic material",
+    "opt_b": "The Earth's core directly",
+    "opt_c": "The Sun",
+    "opt_d": "Fundamental particles",
+    "answer": "A",
+    "explanation": "Living organisms exchange carbon with their environment; after death, the C-14 content decreases by radioactive decay."
+  },
+  {
+    "qnum": 94,
+    "question": "Uranium dating is particularly useful for estimating ages of:",
+    "opt_a": "Recent leaves only",
+    "opt_b": "Very old rocks",
+    "opt_c": "Living cells only",
+    "opt_d": "Atmospheric gases only",
+    "answer": "B",
+    "explanation": "Long-lived uranium isotopes are suitable for geological time scales."
+  },
+  {
+    "qnum": 95,
+    "question": "Radioactive dating fundamentally relies on knowledge of the isotope's:",
+    "opt_a": "Density",
+    "opt_b": "Melting point",
+    "opt_c": "Half-life",
+    "opt_d": "Refractive index",
+    "answer": "C",
+    "explanation": "The known decay rate provides a nuclear clock."
+  },
+  {
+    "qnum": 96,
+    "question": "If only \\(1/16\\) of the original radioactive parent isotope remains, the sample has passed through:",
+    "opt_a": "One half-life",
+    "opt_b": "Two half-lives",
+    "opt_c": "Three half-lives",
+    "opt_d": "Four half-lives",
+    "answer": "D",
+    "explanation": "\\(1/16=(1/2)^4\\)."
+  },
+  {
+    "qnum": 97,
+    "question": "A 160-g radioactive sample has a half-life of 4 years. After 8 years the undecayed amount is:",
+    "opt_a": "40 g",
+    "opt_b": "80 g",
+    "opt_c": "20 g",
+    "opt_d": "10 g",
+    "answer": "A",
+    "explanation": "Eight years is two half-lives: \\(160(1/2)^2=40\\) g."
+  },
+  {
+    "qnum": 98,
+    "question": "A sample decreases from 64 g to 8 g. How many half-lives have elapsed?",
+    "opt_a": "2",
+    "opt_b": "3",
+    "opt_c": "4",
+    "opt_d": "8",
+    "answer": "B",
+    "explanation": "\\(64\\to32\\to16\\to8\\), which is three half-lives."
+  },
+  {
+    "qnum": 99,
+    "question": "A radioactive source initially has activity 1200 Bq. After two half-lives its activity is:",
+    "opt_a": "600 Bq",
+    "opt_b": "150 Bq",
+    "opt_c": "300 Bq",
+    "opt_d": "400 Bq",
+    "answer": "C",
+    "explanation": "\\(1200(1/2)^2=300\\) Bq."
+  },
+  {
+    "qnum": 100,
+    "question": "After five half-lives, the percentage of radioactive nuclei remaining is:",
+    "opt_a": "50%",
+    "opt_b": "12.5%",
+    "opt_c": "6.25%",
+    "opt_d": "3.125%",
+    "answer": "D",
+    "explanation": "\\((1/2)^5=1/32=0.03125=3.125\\%\\)."
+  },
+  {
+    "qnum": 101,
+    "question": "A radioactive sample has \\(\\lambda=0.693\\,\\text{day}^{-1}\\). Its half-life is:",
+    "opt_a": "1 day",
+    "opt_b": "2 days",
+    "opt_c": "0.5 day",
+    "opt_d": "0.693 day",
+    "answer": "A",
+    "explanation": "\\(T_{1/2}=0.693/0.693=1\\) day."
+  },
+  {
+    "qnum": 102,
+    "question": "If a radionuclide has half-life 10 s, its decay constant is approximately:",
+    "opt_a": "\\(6.93\\,s^{-1}\\)",
+    "opt_b": "\\(0.0693\\,s^{-1}\\)",
+    "opt_c": "\\(0.693\\,s^{-1}\\)",
+    "opt_d": "\\(10\\,s^{-1}\\)",
+    "answer": "B",
+    "explanation": "\\(\\lambda=0.693/10=0.0693\\,s^{-1}\\)."
+  },
+  {
+    "qnum": 103,
+    "question": "Two samples contain equal numbers of nuclei. Sample X has twice the decay constant of Y. Initially:",
+    "opt_a": "Their activities are equal",
+    "opt_b": "Y has twice X's activity",
+    "opt_c": "X has twice Y's activity",
+    "opt_d": "X has four times Y's activity",
+    "answer": "C",
+    "explanation": "Since \\(R=\\lambda N\\), doubling \\(\\lambda\\) at fixed \\(N\\) doubles activity."
+  },
+  {
+    "qnum": 104,
+    "question": "A nuclide has a very long half-life. Its decay constant is comparatively:",
+    "opt_a": "Infinite",
+    "opt_b": "Large",
+    "opt_c": "Equal to its half-life",
+    "opt_d": "Small",
+    "answer": "D",
+    "explanation": "\\(\\lambda=0.693/T_{1/2}\\)."
+  },
+  {
+    "qnum": 105,
+    "question": "A nucleus \\({}^{226}_{88}Ra\\) emits an alpha particle. The daughter nucleus has \\(A,Z\\):",
+    "opt_a": "\\(222,86\\)",
+    "opt_b": "\\(224,87\\)",
+    "opt_c": "\\(226,86\\)",
+    "opt_d": "\\(222,88\\)",
+    "answer": "A",
+    "explanation": "Alpha emission reduces \\(A\\) by 4 and \\(Z\\) by 2."
+  },
+  {
+    "qnum": 106,
+    "question": "\\({}^{14}_{6}C\\) undergoes \\(\\beta^-\\) decay. The daughter atomic number is:",
+    "opt_a": "5",
+    "opt_b": "7",
+    "opt_c": "6",
+    "opt_d": "8",
+    "answer": "B",
+    "explanation": "Beta-minus decay increases the proton number from 6 to 7 while \\(A=14\\) remains constant."
+  },
+  {
+    "qnum": 107,
+    "question": "If a nucleus emits one alpha particle followed by one \\(\\beta^-\\) particle, its net change in atomic number is:",
+    "opt_a": "\\(+1\\)",
+    "opt_b": "\\(-2\\)",
+    "opt_c": "\\(-1\\)",
+    "opt_d": "\\(-3\\)",
+    "answer": "C",
+    "explanation": "Alpha gives \\(-2\\), then beta-minus gives \\(+1\\), so net change is \\(-1\\)."
+  },
+  {
+    "qnum": 108,
+    "question": "A nucleus emits two alpha particles. Its mass number changes by:",
+    "opt_a": "\\(-2\\)",
+    "opt_b": "\\(-4\\)",
+    "opt_c": "\\(-6\\)",
+    "opt_d": "\\(-8\\)",
+    "answer": "D",
+    "explanation": "Each alpha emission removes four nucleons; two remove eight."
+  },
+  {
+    "qnum": 109,
+    "question": "After three alpha decays, an original nucleus with \\(Z=92\\) has atomic number:",
+    "opt_a": "86",
+    "opt_b": "89",
+    "opt_c": "90",
+    "opt_d": "80",
+    "answer": "A",
+    "explanation": "Each alpha decay reduces \\(Z\\) by 2: \\(92-3(2)=86\\)."
+  },
+  {
+    "qnum": 110,
+    "question": "A nucleus undergoes one alpha and two \\(\\beta^-\\) decays. Its final atomic number relative to its initial value is:",
+    "opt_a": "\\(Z-2\\)",
+    "opt_b": "\\(Z\\)",
+    "opt_c": "\\(Z+2\\)",
+    "opt_d": "\\(Z-4\\)",
+    "answer": "B",
+    "explanation": "Alpha changes \\(Z\\) by \\(-2\\), while two beta-minus decays contribute \\(+2\\); net change is zero."
+  },
+  {
+    "qnum": 111,
+    "question": "After one alpha decay and two beta-minus decays, the mass number changes by:",
+    "opt_a": "0",
+    "opt_b": "\\(-2\\)",
+    "opt_c": "\\(-4\\)",
+    "opt_d": "\\(+2\\)",
+    "answer": "C",
+    "explanation": "Beta decay leaves \\(A\\) unchanged; only alpha emission changes it by \\(-4\\)."
+  },
+  {
+    "qnum": 112,
+    "question": "If \\({}^{A}_{Z}X\\) emits only a gamma ray, the daughter is characterized by:",
+    "opt_a": "\\(A-4,Z-2\\)",
+    "opt_b": "\\(A,Z+1\\)",
+    "opt_c": "\\(A,Z-1\\)",
+    "opt_d": "Same \\(A\\) and \\(Z\\), but lower nuclear energy",
+    "answer": "D",
+    "explanation": "Gamma emission de-excites a nucleus without changing its composition."
+  },
+  {
+    "qnum": 113,
+    "question": "A mass defect of \\(1\\,u\\) corresponds to an energy of approximately:",
+    "opt_a": "931.5 MeV",
+    "opt_b": "1 MeV",
+    "opt_c": "511 MeV",
+    "opt_d": "9.31 MeV",
+    "answer": "A",
+    "explanation": "The mass-energy equivalent of one atomic mass unit is approximately \\(931.5\\) MeV."
+  },
+  {
+    "qnum": 114,
+    "question": "A nucleus has mass defect \\(0.020\\,u\\). Its approximate binding energy is:",
+    "opt_a": "9.315 MeV",
+    "opt_b": "18.63 MeV",
+    "opt_c": "46.6 MeV",
+    "opt_d": "931.5 MeV",
+    "answer": "B",
+    "explanation": "\\(BE=0.020(931.5)\\approx18.63\\) MeV."
+  },
+  {
+    "qnum": 115,
+    "question": "If a nucleus of mass number 4 has total binding energy 28 MeV, its binding energy per nucleon is:",
+    "opt_a": "112 MeV",
+    "opt_b": "28 MeV",
+    "opt_c": "7 MeV",
+    "opt_d": "4 MeV",
+    "answer": "C",
+    "explanation": "\\(28/4=7\\) MeV per nucleon."
+  },
+  {
+    "qnum": 116,
+    "question": "If the total mass before a nuclear reaction exceeds that after the reaction, the missing mass generally appears as:",
+    "opt_a": "Charge",
+    "opt_b": "Atomic number",
+    "opt_c": "Neutron number only",
+    "opt_d": "Released energy",
+    "answer": "D",
+    "explanation": "The mass difference is converted to energy according to \\(E=\\Delta mc^2\\)."
+  },
+  {
+    "qnum": 117,
+    "question": "Which nucleus would generally be more tightly bound?",
+    "opt_a": "One with \\(BE/A=8.5\\) MeV",
+    "opt_b": "One with \\(BE/A=2\\) MeV",
+    "opt_c": "One with \\(BE/A=1\\) MeV",
+    "opt_d": "One with \\(BE/A=0.5\\) MeV",
+    "answer": "A",
+    "explanation": "Greater binding energy per nucleon indicates stronger average nucleon binding."
+  },
+  {
+    "qnum": 118,
+    "question": "A reaction releases \\(3\\,MeV\\). In joules this is approximately:",
+    "opt_a": "\\(4.8\\times10^{-16}\\) J",
+    "opt_b": "\\(4.8\\times10^{-13}\\) J",
+    "opt_c": "\\(1.6\\times10^{-19}\\) J",
+    "opt_d": "\\(3\\times10^6\\) J",
+    "answer": "B",
+    "explanation": "\\(3\\times10^6\\times1.6\\times10^{-19}=4.8\\times10^{-13}\\) J."
+  },
+  {
+    "qnum": 119,
+    "question": "The mass-energy equivalent of \\(2\\,u\\) is approximately:",
+    "opt_a": "931.5 MeV",
+    "opt_b": "465.75 MeV",
+    "opt_c": "1863 MeV",
+    "opt_d": "2 MeV",
+    "answer": "C",
+    "explanation": "\\(2(931.5)=1863\\) MeV."
+  },
+  {
+    "qnum": 120,
+    "question": "If mass defect increases while mass number remains fixed, binding energy per nucleon:",
+    "opt_a": "Must decrease",
+    "opt_b": "Becomes zero",
+    "opt_c": "Remains unchanged",
+    "opt_d": "Increases",
+    "answer": "D",
+    "explanation": "\\(BE/A=\\Delta mc^2/A\\); with fixed \\(A\\), larger \\(\\Delta m\\) means larger \\(BE/A\\)."
+  },
+  {
+    "qnum": 121,
+    "question": "A sample has a half-life of 6 h. The time required for its activity to fall to \\(1/8\\) is:",
+    "opt_a": "18 h",
+    "opt_b": "12 h",
+    "opt_c": "24 h",
+    "opt_d": "48 h",
+    "answer": "A",
+    "explanation": "\\(1/8=(1/2)^3\\), so three half-lives are needed: \\(3(6)=18\\) h."
+  },
+  {
+    "qnum": 122,
+    "question": "Activity falls from 6400 Bq to 800 Bq in 9 h. The half-life is:",
+    "opt_a": "9 h",
+    "opt_b": "3 h",
+    "opt_c": "4.5 h",
+    "opt_d": "1 h",
+    "answer": "B",
+    "explanation": "\\(6400\\to3200\\to1600\\to800\\): three half-lives occur in 9 h, so \\(T_{1/2}=3\\) h."
+  },
+  {
+    "qnum": 123,
+    "question": "A radioactive sample has \\(N_0=8\\times10^6\\) nuclei. After four half-lives, \\(N\\) is:",
+    "opt_a": "\\(4\\times10^6\\)",
+    "opt_b": "\\(2\\times10^6\\)",
+    "opt_c": "\\(5\\times10^5\\)",
+    "opt_d": "\\(10^6\\)",
+    "answer": "C",
+    "explanation": "\\(8\\times10^6/16=5\\times10^5\\)."
+  },
+  {
+    "qnum": 124,
+    "question": "If 87.5% of a radioactive sample has decayed, the fraction remaining is:",
+    "opt_a": "\\(1/2\\)",
+    "opt_b": "\\(1/4\\)",
+    "opt_c": "\\(1/16\\)",
+    "opt_d": "\\(1/8\\)",
+    "answer": "D",
+    "explanation": "\\(100-87.5=12.5\\%=1/8\\)."
+  },
+  {
+    "qnum": 125,
+    "question": "If 75% of a radioactive substance has decayed, the number of half-lives elapsed is:",
+    "opt_a": "2",
+    "opt_b": "3",
+    "opt_c": "1",
+    "opt_d": "4",
+    "answer": "A",
+    "explanation": "25% remains, and \\(25\\%=1/4=(1/2)^2\\)."
+  },
+  {
+    "qnum": 126,
+    "question": "A 320-mg sample has a half-life of 3 days. Its undecayed mass after 12 days is:",
+    "opt_a": "40 mg",
+    "opt_b": "20 mg",
+    "opt_c": "10 mg",
+    "opt_d": "80 mg",
+    "answer": "B",
+    "explanation": "Twelve days equals four half-lives: \\(320/16=20\\) mg."
+  },
+  {
+    "qnum": 127,
+    "question": "A radioactive isotope has \\(\\lambda=0.1\\,s^{-1}\\). Its mean decay tendency compared with one having \\(\\lambda=0.01\\,s^{-1}\\) is:",
+    "opt_a": "One-tenth",
+    "opt_b": "Equal",
+    "opt_c": "Ten times greater",
+    "opt_d": "One hundred times greater",
+    "answer": "C",
+    "explanation": "Decay probability per unit time is proportional to \\(\\lambda\\)."
+  },
+  {
+    "qnum": 128,
+    "question": "When the number of undecayed nuclei falls to half, activity becomes:",
+    "opt_a": "Four times",
+    "opt_b": "Twice",
+    "opt_c": "Unchanged",
+    "opt_d": "Half",
+    "answer": "D",
+    "explanation": "\\(R=\\lambda N\\); for constant \\(\\lambda\\), halving \\(N\\) halves activity."
+  },
+  {
+    "qnum": 129,
+    "question": "A reactor is exactly critical when, on average:",
+    "opt_a": "Each fission generation produces enough effective neutrons to reproduce itself",
+    "opt_b": "No neutrons are produced",
+    "opt_c": "All neutrons escape",
+    "opt_d": "Fusion begins",
+    "answer": "A",
+    "explanation": "A steady chain reaction requires one generation to sustain the next without growth or decline."
+  },
+  {
+    "qnum": 130,
+    "question": "Inserting control rods further into a reactor core generally:",
+    "opt_a": "Increases neutron population",
+    "opt_b": "Decreases the fission rate",
+    "opt_c": "Starts fusion",
+    "opt_d": "Increases critical mass automatically",
+    "answer": "B",
+    "explanation": "Control rods absorb neutrons, leaving fewer available to cause fission."
+  },
+  {
+    "qnum": 131,
+    "question": "Withdrawing neutron-absorbing control rods tends to:",
+    "opt_a": "Stop fission",
+    "opt_b": "Reduce neutron population",
+    "opt_c": "Increase the chain-reaction rate",
+    "opt_d": "Convert fission into fusion",
+    "answer": "C",
+    "explanation": "Fewer neutrons are absorbed, so more can induce additional fissions."
+  },
+  {
+    "qnum": 132,
+    "question": "If the neutron multiplication factor is below the level needed for a self-sustaining chain reaction, the reactor is:",
+    "opt_a": "Supercritical",
+    "opt_b": "Critical",
+    "opt_c": "Explosive",
+    "opt_d": "Subcritical",
+    "answer": "D",
+    "explanation": "In a subcritical system, each generation produces fewer effective fissions than the preceding one."
+  },
+  {
+    "qnum": 133,
+    "question": "A moderator should ideally:",
+    "opt_a": "Slow neutrons without absorbing too many of them",
+    "opt_b": "Absorb every neutron",
+    "opt_c": "Increase proton energy",
+    "opt_d": "Produce beta particles",
+    "answer": "A",
+    "explanation": "The purpose is neutron slowing, not wholesale neutron removal."
+  },
+  {
+    "qnum": 134,
+    "question": "Why are neutrons useful projectiles in nuclear reactions?",
+    "opt_a": "They have very large positive charge",
+    "opt_b": "They experience no Coulomb repulsion from the positively charged nucleus",
+    "opt_c": "They have zero mass",
+    "opt_d": "They always travel at \\(c\\)",
+    "answer": "B",
+    "explanation": "A neutron is uncharged, so it can approach a positively charged nucleus without electrostatic repulsion."
+  },
+  {
+    "qnum": 135,
+    "question": "In fission, the released neutrons are crucial because they can:",
+    "opt_a": "Form atomic electrons",
+    "opt_b": "Stop radioactivity",
+    "opt_c": "Initiate further fissions",
+    "opt_d": "Convert all energy to mass",
+    "answer": "C",
+    "explanation": "This is the physical basis of the fission chain reaction."
+  },
+  {
+    "qnum": 136,
+    "question": "A reactor operating steadily must prevent the neutron population from:",
+    "opt_a": "Existing",
+    "opt_b": "Interacting with fuel",
+    "opt_c": "Being moderated",
+    "opt_d": "Increasing or decreasing uncontrollably",
+    "answer": "D",
+    "explanation": "Stable power requires controlled neutron multiplication."
+  },
+  {
+    "qnum": 137,
+    "question": "Two light nuclei release energy on fusion because the final nucleus typically has:",
+    "opt_a": "Higher binding energy per nucleon",
+    "opt_b": "Lower binding energy per nucleon",
+    "opt_c": "More electrons",
+    "opt_d": "Zero binding energy",
+    "answer": "A",
+    "explanation": "The increase in binding energy corresponds to released energy."
+  },
+  {
+    "qnum": 138,
+    "question": "The main obstacle to controlled fusion on Earth is achieving and maintaining:",
+    "opt_a": "Very low temperature",
+    "opt_b": "Extremely high temperature and suitable confinement",
+    "opt_c": "Zero pressure",
+    "opt_d": "Complete absence of ions",
+    "answer": "B",
+    "explanation": "Nuclei need enormous kinetic energy to overcome Coulomb repulsion and must remain confined long enough to fuse."
+  },
+  {
+    "qnum": 139,
+    "question": "At extremely high fusion temperatures, matter generally exists as:",
+    "opt_a": "Solid",
+    "opt_b": "Neutral liquid",
+    "opt_c": "Plasma",
+    "opt_d": "Ordinary molecular gas only",
+    "answer": "C",
+    "explanation": "At such temperatures atoms are ionized, forming a plasma of charged particles."
+  },
+  {
+    "qnum": 140,
+    "question": "Fusion reactions are difficult at ordinary temperature mainly because nuclei:",
+    "opt_a": "Have no kinetic energy at all",
+    "opt_b": "Are neutral",
+    "opt_c": "Are attracted electrostatically",
+    "opt_d": "Repel each other electrically",
+    "answer": "D",
+    "explanation": "Positive nuclei experience Coulomb repulsion."
+  },
+  {
+    "qnum": 141,
+    "question": "Suppose \\(75\\%\\) of a C-14 sample has disappeared. The number of half-lives elapsed is:",
+    "opt_a": "2",
+    "opt_b": "1",
+    "opt_c": "3",
+    "opt_d": "4",
+    "answer": "A",
+    "explanation": "25% remains; \\(1/4=(1/2)^2\\)."
+  },
+  {
+    "qnum": 142,
+    "question": "A fossil contains \\(1/8\\) of the C-14 proportion expected initially. Its age corresponds to:",
+    "opt_a": "Two half-lives",
+    "opt_b": "Three half-lives",
+    "opt_c": "Four half-lives",
+    "opt_d": "Eight half-lives",
+    "answer": "B",
+    "explanation": "\\(1/8=(1/2)^3\\)."
+  },
+  {
+    "qnum": 143,
+    "question": "A rock contains \\(1/16\\) of its initial parent radioactive isotope. The number of elapsed half-lives is:",
+    "opt_a": "2",
+    "opt_b": "3",
+    "opt_c": "4",
+    "opt_d": "16",
+    "answer": "C",
+    "explanation": "\\((1/2)^4=1/16\\)."
+  },
+  {
+    "qnum": 144,
+    "question": "A radioactive clock becomes particularly useful because its decay rate is approximately:",
+    "opt_a": "Strongly dependent on weather",
+    "opt_b": "Strongly dependent on pressure",
+    "opt_c": "Controlled by chemical state",
+    "opt_d": "Intrinsic to the radionuclide",
+    "answer": "D",
+    "explanation": "Nuclear decay rates are highly stable against ordinary environmental changes."
+  },
+  {
+    "qnum": 145,
+    "question": "A nucleus has \\(A=56\\), \\(Z=26\\). Its number of neutrons is:",
+    "opt_a": "30",
+    "opt_b": "26",
+    "opt_c": "56",
+    "opt_d": "82",
+    "answer": "A",
+    "explanation": "\\(N=56-26=30\\)."
+  },
+  {
+    "qnum": 146,
+    "question": "A nucleus contains 17 protons and 18 neutrons. Its mass number is:",
+    "opt_a": "17",
+    "opt_b": "35",
+    "opt_c": "18",
+    "opt_d": "1",
+    "answer": "B",
+    "explanation": "\\(A=Z+N=17+18=35\\)."
+  },
+  {
+    "qnum": 147,
+    "question": "Two nuclei have the same \\(Z\\) but \\(A=35\\) and \\(A=37\\). They are:",
+    "opt_a": "Isobars",
+    "opt_b": "Identical nuclides",
+    "opt_c": "Isotopes",
+    "opt_d": "Alpha particles",
+    "answer": "C",
+    "explanation": "Same proton number but different neutron/mass numbers defines isotopes."
+  },
+  {
+    "qnum": 148,
+    "question": "If an atom has 15 protons and 16 neutrons, its neutron number is:",
+    "opt_a": "31",
+    "opt_b": "15",
+    "opt_c": "1",
+    "opt_d": "16",
+    "answer": "D",
+    "explanation": "The neutron number is directly given as 16; its mass number would be 31."
+  },
+  {
+    "qnum": 149,
+    "question": "A radioactive sample has activity \\(A_0\\). After three half-lives its activity is:",
+    "opt_a": "\\(A_0/8\\)",
+    "opt_b": "\\(A_0/3\\)",
+    "opt_c": "\\(A_0/6\\)",
+    "opt_d": "\\(3A_0\\)",
+    "answer": "A",
+    "explanation": "Activity follows the same exponential law: \\(A=A_0(1/2)^3=A_0/8\\)."
+  },
+  {
+    "qnum": 150,
+    "question": "The probability per unit time that a particular radioactive nucleus decays is characterized by:",
+    "opt_a": "Binding energy",
+    "opt_b": "Decay constant",
+    "opt_c": "Mass number",
+    "opt_d": "Atomic radius",
+    "answer": "B",
+    "explanation": "\\(\\lambda\\) is the decay probability per unit time."
+  },
+  {
+    "qnum": 151,
+    "question": "If two radionuclides have half-lives 2 h and 20 h, the isotope with 2 h half-life has:",
+    "opt_a": "Smaller \\(\\lambda\\)",
+    "opt_b": "Same \\(\\lambda\\)",
+    "opt_c": "Larger \\(\\lambda\\)",
+    "opt_d": "Zero \\(\\lambda\\)",
+    "answer": "C",
+    "explanation": "Shorter half-life corresponds to larger decay constant."
+  },
+  {
+    "qnum": 152,
+    "question": "As \\(t\\rightarrow\\infty\\), the mathematical decay law \\(N=N_0e^{-\\lambda t}\\) predicts \\(N\\) approaches:",
+    "opt_a": "\\(N_0\\)",
+    "opt_b": "Infinity",
+    "opt_c": "\\(N_0/2\\)",
+    "opt_d": "Zero",
+    "answer": "D",
+    "explanation": "The exponential factor \\(e^{-\\lambda t}\\) tends toward zero."
+  },
+  {
+    "qnum": 153,
+    "question": "An alpha particle passing through matter loses energy rapidly mainly because of its:",
+    "opt_a": "Strong ionization",
+    "opt_b": "Zero charge",
+    "opt_c": "Zero rest mass",
+    "opt_d": "Electromagnetic-wave nature",
+    "answer": "A",
+    "explanation": "Its \\(+2e\\) charge and relatively large mass lead to intense interactions and ionization."
+  },
+  {
+    "qnum": 154,
+    "question": "Gamma rays require thick shielding because of their:",
+    "opt_a": "Large positive charge",
+    "opt_b": "High penetrating ability",
+    "opt_c": "Large rest mass",
+    "opt_d": "Low speed",
+    "answer": "B",
+    "explanation": "Gamma radiation can penetrate deeply into materials."
+  },
+  {
+    "qnum": 155,
+    "question": "A magnetic field can distinguish beta radiation from gamma radiation because:",
+    "opt_a": "Both are neutral",
+    "opt_b": "Gamma is more massive",
+    "opt_c": "Beta particles are charged whereas gamma photons are neutral",
+    "opt_d": "Beta travels faster than light",
+    "answer": "C",
+    "explanation": "A magnetic force acts on moving charged beta particles but not on neutral gamma photons."
+  },
+  {
+    "qnum": 156,
+    "question": "Alpha and beta radiations bend in opposite directions in a magnetic field primarily because they have:",
+    "opt_a": "Equal masses",
+    "opt_b": "Equal speeds",
+    "opt_c": "Identical charge",
+    "opt_d": "Opposite signs of charge",
+    "answer": "D",
+    "explanation": "Alpha particles are positive while beta-minus particles are negative."
+  },
+  {
+    "qnum": 157,
+    "question": "If a nucleus emits an alpha particle and then a gamma photon, compared with the original nucleus the final \\(A\\) is:",
+    "opt_a": "\\(A-4\\)",
+    "opt_b": "\\(A-1\\)",
+    "opt_c": "\\(A\\)",
+    "opt_d": "\\(A+4\\)",
+    "answer": "A",
+    "explanation": "Gamma emission does not change nucleon number; only alpha emission reduces \\(A\\) by four."
+  },
+  {
+    "qnum": 158,
+    "question": "If a nucleus undergoes three \\(\\beta^-\\) decays without other decay, its atomic number becomes:",
+    "opt_a": "\\(Z-3\\)",
+    "opt_b": "\\(Z+3\\)",
+    "opt_c": "\\(Z\\)",
+    "opt_d": "\\(Z+6\\)",
+    "answer": "B",
+    "explanation": "Each beta-minus decay increases \\(Z\\) by one."
+  },
+  {
+    "qnum": 159,
+    "question": "A parent nucleus with \\(A=210\\) undergoes two alpha decays. Its final mass number is:",
+    "opt_a": "206",
+    "opt_b": "204",
+    "opt_c": "202",
+    "opt_d": "200",
+    "answer": "C",
+    "explanation": "Two alpha particles remove \\(2\\times4=8\\) nucleons: \\(210-8=202\\)."
+  },
+  {
+    "qnum": 160,
+    "question": "A parent nucleus with \\(Z=88\\) undergoes two alpha decays and one beta-minus decay. Final \\(Z\\) is:",
+    "opt_a": "88",
+    "opt_b": "86",
+    "opt_c": "83",
+    "opt_d": "85",
+    "answer": "D",
+    "explanation": "\\(88-4+1=85\\)."
+  },
+  {
+    "qnum": 161,
+    "question": "A \\(1000\\) Bq source with half-life 2 h will have activity after 6 h of:",
+    "opt_a": "125 Bq",
+    "opt_b": "250 Bq",
+    "opt_c": "500 Bq",
+    "opt_d": "62.5 Bq",
+    "answer": "A",
+    "explanation": "Six hours equals three half-lives: \\(1000/8=125\\) Bq."
+  },
+  {
+    "qnum": 162,
+    "question": "A sample falls from 48 mg to 6 mg in 15 days. Its half-life is:",
+    "opt_a": "3 days",
+    "opt_b": "5 days",
+    "opt_c": "7.5 days",
+    "opt_d": "15 days",
+    "answer": "B",
+    "explanation": "\\(48\\to24\\to12\\to6\\) is three half-lives, so \\(15/3=5\\) days."
+  },
+  {
+    "qnum": 163,
+    "question": "A source has \\(4\\times10^8\\) radioactive nuclei and \\(\\lambda=2\\times10^{-4}\\,s^{-1}\\). Its activity is:",
+    "opt_a": "\\(2\\times10^4\\) Bq",
+    "opt_b": "\\(4\\times10^4\\) Bq",
+    "opt_c": "\\(8\\times10^4\\) Bq",
+    "opt_d": "\\(8\\times10^{12}\\) Bq",
+    "answer": "C",
+    "explanation": "\\(R=\\lambda N=(2\\times10^{-4})(4\\times10^8)=8\\times10^4\\) Bq."
+  },
+  {
+    "qnum": 164,
+    "question": "A sample's activity becomes \\(1/32\\) of its initial activity after 20 days. Its half-life is:",
+    "opt_a": "20 days",
+    "opt_b": "10 days",
+    "opt_c": "5 days",
+    "opt_d": "4 days",
+    "answer": "D",
+    "explanation": "\\(1/32=(1/2)^5\\), so five half-lives occur in 20 days: \\(20/5=4\\) days."
+  },
+  {
+    "qnum": 165,
+    "question": "If a nucleus has mass defect \\(0.03\\,u\\), its binding energy is closest to:",
+    "opt_a": "27.95 MeV",
+    "opt_b": "3.1 MeV",
+    "opt_c": "93.15 MeV",
+    "opt_d": "279.5 MeV",
+    "answer": "A",
+    "explanation": "\\(0.03\\times931.5\\approx27.95\\) MeV."
+  },
+  {
+    "qnum": 166,
+    "question": "A nucleus with \\(A=4\\) and binding energy \\(28.4\\) MeV has \\(BE/A\\):",
+    "opt_a": "28.4 MeV",
+    "opt_b": "7.1 MeV",
+    "opt_c": "113.6 MeV",
+    "opt_d": "4.0 MeV",
+    "answer": "B",
+    "explanation": "\\(28.4/4=7.1\\) MeV per nucleon."
+  },
+  {
+    "qnum": 167,
+    "question": "Two nuclei have \\(BE/A\\) values of 6 MeV and 8 MeV. The more tightly bound nucleus is generally the one with:",
+    "opt_a": "6 MeV",
+    "opt_b": "Their stability must be equal",
+    "opt_c": "8 MeV",
+    "opt_d": "Zero mass defect",
+    "answer": "C",
+    "explanation": "Larger average binding energy indicates greater resistance to separation into nucleons."
+  },
+  {
+    "qnum": 168,
+    "question": "If \\(0.001\\,kg\\) of mass were completely converted to energy, the energy would be:",
+    "opt_a": "\\(3\\times10^5\\) J",
+    "opt_b": "\\(9\\times10^{16}\\) J",
+    "opt_c": "\\(3\\times10^{13}\\) J",
+    "opt_d": "\\(9\\times10^{13}\\) J",
+    "answer": "D",
+    "explanation": "\\(E=mc^2=(10^{-3})(3\\times10^8)^2=9\\times10^{13}\\) J."
+  },
+  {
+    "qnum": 169,
+    "question": "Why can fission of a very heavy nucleus release energy?",
+    "opt_a": "The fragments are generally more tightly bound per nucleon",
+    "opt_b": "Electrons are destroyed",
+    "opt_c": "Charge is not conserved",
+    "opt_d": "Neutrons have no mass",
+    "answer": "A",
+    "explanation": "Fission products lie closer to the region of higher binding energy per nucleon."
+  },
+  {
+    "qnum": 170,
+    "question": "Why can fusion of light nuclei release energy?",
+    "opt_a": "Mass number is not conserved",
+    "opt_b": "The product generally has greater binding energy per nucleon",
+    "opt_c": "Protons disappear completely",
+    "opt_d": "Electrons become neutrons",
+    "answer": "B",
+    "explanation": "A more tightly bound product has lower total mass-energy, and the difference is released."
+  },
+  {
+    "qnum": 171,
+    "question": "Both fission of heavy nuclei and fusion of light nuclei tend toward nuclei with:",
+    "opt_a": "Zero nuclear force",
+    "opt_b": "Lower binding energy per nucleon",
+    "opt_c": "Greater binding energy per nucleon",
+    "opt_d": "Infinite atomic number",
+    "answer": "C",
+    "explanation": "Energy-producing nuclear processes move toward more stable, more tightly bound configurations."
+  },
+  {
+    "qnum": 172,
+    "question": "The energy released in fission appears chiefly as kinetic energy of fragments/neutrons and:",
+    "opt_a": "Loss of charge",
+    "opt_b": "Creation of mass only",
+    "opt_c": "Gravitational potential",
+    "opt_d": "Radiation",
+    "answer": "D",
+    "explanation": "Nuclear energy is distributed among energetic products and radiation."
+  },
+  {
+    "qnum": 173,
+    "question": "If a reactor becomes supercritical, the neutron population tends to:",
+    "opt_a": "Increase with successive generations",
+    "opt_b": "Remain exactly constant",
+    "opt_c": "Become zero immediately",
+    "opt_d": "Produce only gamma rays",
+    "answer": "A",
+    "explanation": "Supercriticality means each generation produces more effective fissions than the preceding one."
+  },
+  {
+    "qnum": 174,
+    "question": "If a reactor is subcritical, its chain reaction tends to:",
+    "opt_a": "Grow exponentially",
+    "opt_b": "Decrease and die away",
+    "opt_c": "Remain exactly steady",
+    "opt_d": "Become fusion",
+    "answer": "B",
+    "explanation": "Too few neutrons survive to sustain subsequent fission generations."
+  },
+  {
+    "qnum": 175,
+    "question": "For steady reactor power, the desirable operating condition is approximately:",
+    "opt_a": "Highly supercritical",
+    "opt_b": "Highly subcritical",
+    "opt_c": "Critical",
+    "opt_d": "No neutrons present",
+    "answer": "C",
+    "explanation": "Critical operation maintains a nearly constant neutron population and hence stable power."
+  },
+  {
+    "qnum": 176,
+    "question": "The safest interpretation of a control rod being inserted deeper into the reactor core is that neutron absorption:",
+    "opt_a": "Decreases",
+    "opt_b": "Becomes zero",
+    "opt_c": "Has no effect",
+    "opt_d": "Increases",
+    "answer": "D",
+    "explanation": "More absorbing material in the core captures more neutrons and reduces reactivity."
+  },
+  {
+    "qnum": 177,
+    "question": "A radioactive sample has half-life \\(T\\). After time \\(4T\\), the percentage remaining is:",
+    "opt_a": "6.25%",
+    "opt_b": "12.5%",
+    "opt_c": "25%",
+    "opt_d": "3.125%",
+    "answer": "A",
+    "explanation": "\\((1/2)^4=1/16=6.25\\%\\)."
+  },
+  {
+    "qnum": 178,
+    "question": "If 93.75% of a sample has decayed, the number of half-lives elapsed is:",
+    "opt_a": "3",
+    "opt_b": "4",
+    "opt_c": "5",
+    "opt_d": "6",
+    "answer": "B",
+    "explanation": "6.25% remains, which is \\(1/16=(1/2)^4\\)."
+  },
+  {
+    "qnum": 179,
+    "question": "A 640-g sample becomes 20 g. Number of half-lives elapsed is:",
+    "opt_a": "4",
+    "opt_b": "6",
+    "opt_c": "5",
+    "opt_d": "32",
+    "answer": "C",
+    "explanation": "\\(640/20=32=2^5\\), so five half-lives have elapsed."
+  },
+  {
+    "qnum": 180,
+    "question": "A sample has half-life 12 h. The time required for its amount to become \\(1/16\\) is:",
+    "opt_a": "24 h",
+    "opt_b": "36 h",
+    "opt_c": "60 h",
+    "opt_d": "48 h",
+    "answer": "D",
+    "explanation": "\\(1/16=(1/2)^4\\); therefore \\(t=4(12)=48\\) h."
+  },
+  {
+    "qnum": 181,
+    "question": "A nucleus initially has \\(A=238,Z=92\\). After two alpha decays its values are:",
+    "opt_a": "\\(A=230,Z=88\\)",
+    "opt_b": "\\(A=234,Z=90\\)",
+    "opt_c": "\\(A=230,Z=90\\)",
+    "opt_d": "\\(A=238,Z=88\\)",
+    "answer": "A",
+    "explanation": "Two alpha decays reduce \\(A\\) by 8 and \\(Z\\) by 4."
+  },
+  {
+    "qnum": 182,
+    "question": "The nucleus in Question 181 then undergoes two \\(\\beta^-\\) decays. Its new \\(Z\\) is:",
+    "opt_a": "88",
+    "opt_b": "90",
+    "opt_c": "86",
+    "opt_d": "94",
+    "answer": "B",
+    "explanation": "After two alpha decays \\(Z=88\\); two beta-minus decays raise it to \\(90\\)."
+  },
+  {
+    "qnum": 183,
+    "question": "A nucleus undergoes three alpha and four \\(\\beta^-\\) decays. Net change in \\(Z\\) is:",
+    "opt_a": "\\(-6\\)",
+    "opt_b": "\\(+4\\)",
+    "opt_c": "\\(-2\\)",
+    "opt_d": "\\(+2\\)",
+    "answer": "C",
+    "explanation": "Three alpha decays give \\(-6\\), while four beta-minus decays give \\(+4\\), hence net \\(-2\\)."
+  },
+  {
+    "qnum": 184,
+    "question": "In Question 183, the net change in mass number is:",
+    "opt_a": "\\(-3\\)",
+    "opt_b": "\\(-4\\)",
+    "opt_c": "\\(-8\\)",
+    "opt_d": "\\(-12\\)",
+    "answer": "D",
+    "explanation": "Only alpha decay changes mass number: \\(3(-4)=-12\\)."
+  },
+  {
+    "qnum": 185,
+    "question": "A detector records 1600 counts/min from a source initially. Ignoring background, after three half-lives it should record:",
+    "opt_a": "200 counts/min",
+    "opt_b": "400 counts/min",
+    "opt_c": "800 counts/min",
+    "opt_d": "100 counts/min",
+    "answer": "A",
+    "explanation": "\\(1600/2^3=200\\) counts/min."
+  },
+  {
+    "qnum": 186,
+    "question": "A source gives 960 counts/min initially and 120 counts/min later. The elapsed interval equals:",
+    "opt_a": "Two half-lives",
+    "opt_b": "Three half-lives",
+    "opt_c": "Four half-lives",
+    "opt_d": "Eight half-lives",
+    "answer": "B",
+    "explanation": "\\(960\\to480\\to240\\to120\\): three half-lives."
+  },
+  {
+    "qnum": 187,
+    "question": "If a source has half-life 4 min, its activity after 12 min relative to the original is:",
+    "opt_a": "\\(1/4\\)",
+    "opt_b": "\\(1/16\\)",
+    "opt_c": "\\(1/8\\)",
+    "opt_d": "\\(1/3\\)",
+    "answer": "C",
+    "explanation": "Twelve minutes equals three half-lives, giving \\(A/A_0=1/8\\)."
+  },
+  {
+    "qnum": 188,
+    "question": "A radionuclide's half-life cannot ordinarily be substantially changed by:",
+    "opt_a": "Nuclear reactions",
+    "opt_b": "Changing the nuclide itself",
+    "opt_c": "Transforming its nucleus",
+    "opt_d": "Heating or cooling the sample",
+    "answer": "D",
+    "explanation": "Radioactive decay is a nuclear process and is essentially insensitive to ordinary temperature changes."
+  },
+  {
+    "qnum": 189,
+    "question": "A reaction has a mass loss of \\(0.005\\,u\\). Approximate released energy is:",
+    "opt_a": "4.66 MeV",
+    "opt_b": "46.6 MeV",
+    "opt_c": "0.466 MeV",
+    "opt_d": "931.5 MeV",
+    "answer": "A",
+    "explanation": "\\(Q=0.005(931.5)\\approx4.66\\) MeV."
+  },
+  {
+    "qnum": 190,
+    "question": "If a nuclear reaction releases 18.63 MeV, the corresponding mass decrease is approximately:",
+    "opt_a": "\\(0.2\\,u\\)",
+    "opt_b": "\\(0.020\\,u\\)",
+    "opt_c": "\\(2\\,u\\)",
+    "opt_d": "\\(0.002\\,u\\)",
+    "answer": "B",
+    "explanation": "\\(\\Delta m=18.63/931.5=0.020\\,u\\)."
+  },
+  {
+    "qnum": 191,
+    "question": "A nucleus with \\(A=20\\) has total binding energy 160 MeV. Another with \\(A=10\\) has 70 MeV. The respective \\(BE/A\\) values are:",
+    "opt_a": "160 and 70 MeV",
+    "opt_b": "16 and 7 MeV",
+    "opt_c": "8 and 7 MeV",
+    "opt_d": "8 and 14 MeV",
+    "answer": "C",
+    "explanation": "\\(160/20=8\\) MeV and \\(70/10=7\\) MeV."
+  },
+  {
+    "qnum": 192,
+    "question": "From Question 191, based only on \\(BE/A\\), the first nucleus is:",
+    "opt_a": "Less massive necessarily",
+    "opt_b": "Radioactive necessarily",
+    "opt_c": "Less tightly bound",
+    "opt_d": "More tightly bound on average",
+    "answer": "D",
+    "explanation": "Its binding energy per nucleon is larger: 8 MeV compared with 7 MeV."
+  },
+  {
+    "qnum": 193,
+    "question": "A reactor's power rises because too many neutrons survive each generation. The most direct corrective action is to:",
+    "opt_a": "Increase neutron absorption using control rods",
+    "opt_b": "Remove all shielding",
+    "opt_c": "Increase fuel temperature deliberately",
+    "opt_d": "Remove the coolant",
+    "answer": "A",
+    "explanation": "Increasing control-rod insertion absorbs more neutrons and reduces the fission rate."
+  },
+  {
+    "qnum": 194,
+    "question": "If the moderator suddenly became ineffective, a thermal reactor would generally have fewer neutrons at energies favorable for:",
+    "opt_a": "Gamma emission",
+    "opt_b": "Inducing U-235 fission",
+    "opt_c": "Electron ionization",
+    "opt_d": "Chemical combustion",
+    "answer": "B",
+    "explanation": "The moderator slows fast neutrons to energies at which U-235 fission is more readily induced."
+  },
+  {
+    "qnum": 195,
+    "question": "A neutron is preferable to a proton for penetrating a positively charged nucleus because the neutron:",
+    "opt_a": "Is lighter than an electron",
+    "opt_b": "Has negative charge",
+    "opt_c": "Has no electric charge",
+    "opt_d": "Has infinite energy",
+    "answer": "C",
+    "explanation": "It does not face the electrostatic Coulomb barrier experienced by a positively charged projectile."
+  },
+  {
+    "qnum": 196,
+    "question": "If every fission produces several neutrons but only one, on average, produces another fission, the chain reaction is:",
+    "opt_a": "Impossible",
+    "opt_b": "Rapidly dying",
+    "opt_c": "Rapidly increasing",
+    "opt_d": "Steady/critical",
+    "answer": "D",
+    "explanation": "One effective successor per fission maintains a constant fission generation."
+  },
+  {
+    "qnum": 197,
+    "question": "A fossil retains \\(12.5\\%\\) of its original C-14. If the C-14 half-life is represented by \\(T\\), the fossil's age is approximately:",
+    "opt_a": "\\(3T\\)",
+    "opt_b": "\\(2T\\)",
+    "opt_c": "\\(4T\\)",
+    "opt_d": "\\(8T\\)",
+    "answer": "A",
+    "explanation": "\\(12.5\\%=1/8=(1/2)^3\\), so three half-lives have elapsed."
+  },
+  {
+    "qnum": 198,
+    "question": "A radioactive sample has 25% remaining after 20 years. Its half-life is:",
+    "opt_a": "20 years",
+    "opt_b": "10 years",
+    "opt_c": "5 years",
+    "opt_d": "40 years",
+    "answer": "B",
+    "explanation": "25% is \\(1/4\\), corresponding to two half-lives. Thus \\(T_{1/2}=20/2=10\\) years."
+  },
+  {
+    "qnum": 199,
+    "question": "A sample has an initial activity of 3200 Bq and half-life 5 years. After 20 years its activity is:",
+    "opt_a": "800 Bq",
+    "opt_b": "100 Bq",
+    "opt_c": "200 Bq",
+    "opt_d": "400 Bq",
+    "answer": "C",
+    "explanation": "Twenty years is four half-lives: \\(3200/2^4=3200/16=200\\) Bq."
+  },
+  {
+    "qnum": 200,
+    "question": "A radioactive sample has \\(6.4\\times10^7\\) nuclei initially. After six half-lives, the number remaining is:",
+    "opt_a": "\\(6.4\\times10^6\\)",
+    "opt_b": "\\(3.2\\times10^6\\)",
+    "opt_c": "\\(2.0\\times10^6\\)",
+    "opt_d": "\\(1.0\\times10^6\\)",
+    "answer": "D",
+    "explanation": "\\(N=N_0/2^6=(6.4\\times10^7)/64=1.0\\times10^6\\)."
+  }
+]

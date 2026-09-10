@@ -1,0 +1,2002 @@
+[
+  {
+    "qnum": 1,
+    "question": "According to the Standard Model discussion, the universe is fundamentally made up of:",
+    "opt_a": "Matter and radiation",
+    "opt_b": "Only matter",
+    "opt_c": "Only radiation",
+    "opt_d": "Space and time only",
+    "answer": "A",
+    "explanation": "The chapter describes the universe as consisting of matter particles and radiation/force-related particles."
+  },
+  {
+    "qnum": 2,
+    "question": "The particles that constitute matter are called:",
+    "opt_a": "Bosons",
+    "opt_b": "Fermions",
+    "opt_c": "Photons",
+    "opt_d": "Gluons",
+    "answer": "B",
+    "explanation": "Fermions are described as matter particles."
+  },
+  {
+    "qnum": 3,
+    "question": "Particles that mediate fundamental interactions are generally called:",
+    "opt_a": "Leptons",
+    "opt_b": "Hadrons",
+    "opt_c": "Bosons",
+    "opt_d": "Baryons",
+    "answer": "C",
+    "explanation": "Bosons act as force-carrying or field particles."
+  },
+  {
+    "qnum": 4,
+    "question": "Which fundamental interaction is not successfully incorporated into the Standard Model described in the chapter?",
+    "opt_a": "Strong force",
+    "opt_b": "Weak force",
+    "opt_c": "Electromagnetic force",
+    "opt_d": "Gravitational force",
+    "answer": "D",
+    "explanation": "The Standard Model explains strong, weak and electromagnetic interactions, while gravity remains outside it."
+  },
+  {
+    "qnum": 5,
+    "question": "The weakest of the four fundamental forces is:",
+    "opt_a": "Gravitational force",
+    "opt_b": "Weak nuclear force",
+    "opt_c": "Electromagnetic force",
+    "opt_d": "Strong nuclear force",
+    "answer": "A",
+    "explanation": "The textbook ranks gravity as the weakest fundamental force."
+  },
+  {
+    "qnum": 6,
+    "question": "The field particles associated with the weak nuclear force are:",
+    "opt_a": "Photons",
+    "opt_b": "W+, W− and Z bosons",
+    "opt_c": "Gluons",
+    "opt_d": "Gravitons",
+    "answer": "B",
+    "explanation": "W+, W− and Z bosons mediate the weak interaction."
+  },
+  {
+    "qnum": 7,
+    "question": "The field particle associated with electromagnetic force is the:",
+    "opt_a": "Gluon",
+    "opt_b": "Graviton",
+    "opt_c": "Photon",
+    "opt_d": "Neutrino",
+    "answer": "C",
+    "explanation": "Electromagnetic interactions are mediated by photons."
+  },
+  {
+    "qnum": 8,
+    "question": "The force carrier of the strong nuclear force is the:",
+    "opt_a": "Photon",
+    "opt_b": "W boson",
+    "opt_c": "Graviton",
+    "opt_d": "Gluon",
+    "answer": "D",
+    "explanation": "Gluons mediate the strong interaction between quarks."
+  },
+  {
+    "qnum": 9,
+    "question": "Which is the strongest fundamental force according to the textbook table?",
+    "opt_a": "Strong nuclear force",
+    "opt_b": "Electromagnetic force",
+    "opt_c": "Weak nuclear force",
+    "opt_d": "Gravitational force",
+    "answer": "A",
+    "explanation": "The strong interaction is assigned relative strength 1, the largest value in the table."
+  },
+  {
+    "qnum": 10,
+    "question": "The hypothetical field particle associated with gravity is called the:",
+    "opt_a": "Photon",
+    "opt_b": "Graviton",
+    "opt_c": "Gluon",
+    "opt_d": "Neutrino",
+    "answer": "B",
+    "explanation": "The chapter identifies the graviton as the hypothetical carrier of gravitational interaction."
+  },
+  {
+    "qnum": 11,
+    "question": "A photon is described as:",
+    "opt_a": "Massive and positively charged",
+    "opt_b": "Massive and neutral",
+    "opt_c": "Massless and chargeless",
+    "opt_d": "Negatively charged",
+    "answer": "C",
+    "explanation": "Photons have no electric charge and are listed as massless."
+  },
+  {
+    "qnum": 12,
+    "question": "The textbook table gives the approximate mass associated with W and Z bosons as:",
+    "opt_a": "0.511 MeV",
+    "opt_b": "1 GeV",
+    "opt_c": "931 MeV",
+    "opt_d": "80.91 GeV",
+    "answer": "D",
+    "explanation": "The chapter's elementary-boson table lists about 80.91 GeV for the weak-force bosons."
+  },
+  {
+    "qnum": 13,
+    "question": "A particle having half-integral spin belongs to the class of:",
+    "opt_a": "Fermions",
+    "opt_b": "Bosons",
+    "opt_c": "Photons only",
+    "opt_d": "Gluons only",
+    "answer": "A",
+    "explanation": "Fermions have half-integer spin values such as 1/2 and 3/2."
+  },
+  {
+    "qnum": 14,
+    "question": "Particles with integral spin values are classified as:",
+    "opt_a": "Fermions",
+    "opt_b": "Bosons",
+    "opt_c": "Leptons only",
+    "opt_d": "Quarks only",
+    "answer": "B",
+    "explanation": "Bosons have integer spin values such as 0, 1 or 2."
+  },
+  {
+    "qnum": 15,
+    "question": "The two major groups of elementary fermions are:",
+    "opt_a": "Baryons and mesons",
+    "opt_b": "Photons and gluons",
+    "opt_c": "Quarks and leptons",
+    "opt_d": "Protons and neutrons",
+    "answer": "C",
+    "explanation": "Elementary matter particles are divided into quarks and leptons."
+  },
+  {
+    "qnum": 16,
+    "question": "Which is an example of a composite boson discussed in the chapter?",
+    "opt_a": "Electron",
+    "opt_b": "Proton",
+    "opt_c": "Neutrino",
+    "opt_d": "Meson",
+    "answer": "D",
+    "explanation": "Mesons are composite bosons consisting of a quark and an antiquark."
+  },
+  {
+    "qnum": 17,
+    "question": "The total number of lepton types shown in the three generations is:",
+    "opt_a": "6",
+    "opt_b": "3",
+    "opt_c": "9",
+    "opt_d": "12",
+    "answer": "A",
+    "explanation": "There are three charged leptons and three corresponding neutrinos."
+  },
+  {
+    "qnum": 18,
+    "question": "Generation I leptons are:",
+    "opt_a": "Muon and muon-neutrino",
+    "opt_b": "Electron and electron-neutrino",
+    "opt_c": "Tau and tau-neutrino",
+    "opt_d": "Up and down",
+    "answer": "B",
+    "explanation": "Electron and electron-neutrino form the first lepton generation."
+  },
+  {
+    "qnum": 19,
+    "question": "Generation II leptons are:",
+    "opt_a": "Electron and electron-neutrino",
+    "opt_b": "Tau and tau-neutrino",
+    "opt_c": "Muon and muon-neutrino",
+    "opt_d": "Charm and strange",
+    "answer": "C",
+    "explanation": "The muon and its neutrino belong to Generation II."
+  },
+  {
+    "qnum": 20,
+    "question": "Generation III leptons are:",
+    "opt_a": "Electron and neutrino",
+    "opt_b": "Muon and neutrino",
+    "opt_c": "Top and bottom",
+    "opt_d": "Tau and tau-neutrino",
+    "answer": "D",
+    "explanation": "Tau and tau-neutrino constitute Generation III leptons."
+  },
+  {
+    "qnum": 21,
+    "question": "The electric charge of an up quark is:",
+    "opt_a": "+2/3 e",
+    "opt_b": "−2/3 e",
+    "opt_c": "+1/3 e",
+    "opt_d": "−1/3 e",
+    "answer": "A",
+    "explanation": "Up-type quarks carry fractional charge +2/3 e."
+  },
+  {
+    "qnum": 22,
+    "question": "The charge on a down quark is:",
+    "opt_a": "+2/3 e",
+    "opt_b": "−1/3 e",
+    "opt_c": "+1 e",
+    "opt_d": "0",
+    "answer": "B",
+    "explanation": "Down-type quarks carry charge −1/3 e."
+  },
+  {
+    "qnum": 23,
+    "question": "How many quark flavors are given in the Standard Model table?",
+    "opt_a": "2",
+    "opt_b": "3",
+    "opt_c": "6",
+    "opt_d": "12",
+    "answer": "C",
+    "explanation": "They are up, down, charm, strange, top and bottom."
+  },
+  {
+    "qnum": 24,
+    "question": "The quarks described as stable in ordinary matter are:",
+    "opt_a": "Charm and strange",
+    "opt_b": "Top and bottom",
+    "opt_c": "Up and charm",
+    "opt_d": "Up and down",
+    "answer": "D",
+    "explanation": "Ordinary protons and neutrons consist of up and down quarks."
+  },
+  {
+    "qnum": 25,
+    "question": "How many types of color charge are assigned to quarks?",
+    "opt_a": "Three",
+    "opt_b": "Two",
+    "opt_c": "Four",
+    "opt_d": "Six",
+    "answer": "A",
+    "explanation": "The chapter identifies red, green and blue color charges."
+  },
+  {
+    "qnum": 26,
+    "question": "The three quark colors are conventionally called:",
+    "opt_a": "Red, yellow and blue",
+    "opt_b": "Red, green and blue",
+    "opt_c": "Black, white and red",
+    "opt_d": "Cyan, magenta and yellow",
+    "answer": "B",
+    "explanation": "Red, green and blue are the three color-charge labels."
+  },
+  {
+    "qnum": 27,
+    "question": "The fact that individual quarks are not normally found isolated is known as:",
+    "opt_a": "Pair production",
+    "opt_b": "Annihilation",
+    "opt_c": "Quark confinement",
+    "opt_d": "Radioactivity",
+    "answer": "C",
+    "explanation": "Quarks remain confined inside larger particles such as hadrons."
+  },
+  {
+    "qnum": 28,
+    "question": "Particles composed of quarks are collectively called:",
+    "opt_a": "Leptons",
+    "opt_b": "Photons",
+    "opt_c": "Bosons only",
+    "opt_d": "Hadrons",
+    "answer": "D",
+    "explanation": "Hadrons are composite particles made of quarks."
+  },
+  {
+    "qnum": 29,
+    "question": "A baryon consists of:",
+    "opt_a": "Three quarks",
+    "opt_b": "Two quarks",
+    "opt_c": "One quark",
+    "opt_d": "A quark and an antiquark",
+    "answer": "A",
+    "explanation": "Baryons such as protons and neutrons consist of three quarks."
+  },
+  {
+    "qnum": 30,
+    "question": "A meson consists of:",
+    "opt_a": "Three quarks",
+    "opt_b": "One quark and one antiquark",
+    "opt_c": "Three antiquarks",
+    "opt_d": "Two leptons",
+    "answer": "B",
+    "explanation": "Mesons are quark-antiquark composites."
+  },
+  {
+    "qnum": 31,
+    "question": "The quark composition of a proton is:",
+    "opt_a": "udd",
+    "opt_b": "ddd",
+    "opt_c": "uud",
+    "opt_d": "uuu",
+    "answer": "C",
+    "explanation": "A proton contains two up quarks and one down quark."
+  },
+  {
+    "qnum": 32,
+    "question": "The quark composition of a neutron is:",
+    "opt_a": "uud",
+    "opt_b": "uuu",
+    "opt_c": "ddd",
+    "opt_d": "udd",
+    "answer": "D",
+    "explanation": "A neutron consists of one up and two down quarks."
+  },
+  {
+    "qnum": 33,
+    "question": "Adding the quark charges of a proton gives:",
+    "opt_a": "+1 e",
+    "opt_b": "0",
+    "opt_c": "−1 e",
+    "opt_d": "+2 e",
+    "answer": "A",
+    "explanation": "+2/3 + 2/3 − 1/3 = +1."
+  },
+  {
+    "qnum": 34,
+    "question": "The net electric charge obtained from the quarks of a neutron is:",
+    "opt_a": "+1 e",
+    "opt_b": "0",
+    "opt_c": "−1 e",
+    "opt_d": "+2/3 e",
+    "answer": "B",
+    "explanation": "+2/3 − 1/3 − 1/3 = 0."
+  },
+  {
+    "qnum": 35,
+    "question": "During beta-minus decay at quark level, a:",
+    "opt_a": "Up quark changes to top",
+    "opt_b": "Charm quark changes to strange",
+    "opt_c": "Down quark changes to an up quark",
+    "opt_d": "Quark changes into a photon",
+    "answer": "C",
+    "explanation": "The neutron-to-proton change involves transformation of a down quark into an up quark."
+  },
+  {
+    "qnum": 36,
+    "question": "The W− boson produced in the textbook's beta-minus description subsequently produces:",
+    "opt_a": "Positron and neutrino",
+    "opt_b": "Proton and neutron",
+    "opt_c": "Photon and gluon",
+    "opt_d": "Electron and antineutrino",
+    "answer": "D",
+    "explanation": "W− decay produces an electron and an antineutrino in the process shown."
+  },
+  {
+    "qnum": 37,
+    "question": "In beta-plus decay at quark level, an:",
+    "opt_a": "Up quark changes into a down quark",
+    "opt_b": "Down quark changes into an up quark",
+    "opt_c": "Electron changes into a proton",
+    "opt_d": "Gluon changes into a photon",
+    "answer": "A",
+    "explanation": "Proton-to-neutron conversion requires an up quark to become a down quark."
+  },
+  {
+    "qnum": 38,
+    "question": "W+ subsequently produces a:",
+    "opt_a": "Proton and electron",
+    "opt_b": "Positron and neutrino",
+    "opt_c": "Neutron and photon",
+    "opt_d": "Gluon and electron",
+    "answer": "B",
+    "explanation": "The chapter's beta-plus diagram shows W+ producing a positron and neutrino."
+  },
+  {
+    "qnum": 39,
+    "question": "The total charge of a quark and its corresponding antiquark is:",
+    "opt_a": "+1 e",
+    "opt_b": "−1 e",
+    "opt_c": "Zero",
+    "opt_d": "+2/3 e",
+    "answer": "C",
+    "explanation": "An antiparticle has opposite charge to its corresponding particle."
+  },
+  {
+    "qnum": 40,
+    "question": "Since a down quark has charge −1/3 e, an anti-down quark has charge:",
+    "opt_a": "−2/3 e",
+    "opt_b": "−1/3 e",
+    "opt_c": "+2/3 e",
+    "opt_d": "+1/3 e",
+    "answer": "D",
+    "explanation": "The antiquark has equal magnitude but opposite charge."
+  },
+  {
+    "qnum": 41,
+    "question": "The principal purpose of a radiation detector is to:",
+    "opt_a": "Detect and measure ionizing radiation",
+    "opt_b": "Produce radioactivity",
+    "opt_c": "Generate gravitational waves",
+    "opt_d": "Create quarks",
+    "answer": "A",
+    "explanation": "Radiation detectors detect, measure or identify ionizing particles and radiation."
+  },
+  {
+    "qnum": 42,
+    "question": "Gas-filled detectors work mainly by converting:",
+    "opt_a": "Heat into radiation",
+    "opt_b": "Ionization into electrical signals",
+    "opt_c": "Light into mass",
+    "opt_d": "Pressure into gravity",
+    "answer": "B",
+    "explanation": "Radiation ionizes the gas, producing charged particles that generate measurable electrical signals."
+  },
+  {
+    "qnum": 43,
+    "question": "A Wilson cloud chamber is primarily a:",
+    "opt_a": "Nuclear reactor",
+    "opt_b": "Force detector",
+    "opt_c": "Tracking detector",
+    "opt_d": "Particle accelerator",
+    "answer": "C",
+    "explanation": "It makes the paths of charged particles visible."
+  },
+  {
+    "qnum": 44,
+    "question": "The vapor inside a working Wilson cloud chamber is maintained in a:",
+    "opt_a": "Completely dry state",
+    "opt_b": "Solid state",
+    "opt_c": "Plasma state",
+    "opt_d": "Supersaturated state",
+    "answer": "D",
+    "explanation": "Charged-particle tracks become visible by condensation in supersaturated vapor."
+  },
+  {
+    "qnum": 45,
+    "question": "Visible tracks in a Wilson chamber are produced when vapor droplets condense around:",
+    "opt_a": "Ions formed by the passing particle",
+    "opt_b": "Neutrons only",
+    "opt_c": "Mirrors",
+    "opt_d": "Magnets",
+    "answer": "A",
+    "explanation": "Ionization provides centers around which vapor condenses."
+  },
+  {
+    "qnum": 46,
+    "question": "The Wilson cloud chamber is named after:",
+    "opt_a": "Ernest Rutherford",
+    "opt_b": "Charles Thomson Rees Wilson",
+    "opt_c": "James Chadwick",
+    "opt_d": "Niels Bohr",
+    "answer": "B",
+    "explanation": "The chapter credits C. T. R. Wilson with its invention."
+  },
+  {
+    "qnum": 47,
+    "question": "The textbook gives the year associated with Wilson's cloud chamber as:",
+    "opt_a": "1898",
+    "opt_b": "1905",
+    "opt_c": "1912",
+    "opt_d": "1928",
+    "answer": "C",
+    "explanation": "The chapter states that Wilson developed the device in 1912."
+  },
+  {
+    "qnum": 48,
+    "question": "To obtain a permanent record of cloud-chamber tracks, they can be:",
+    "opt_a": "Heated",
+    "opt_b": "Electrically neutralized",
+    "opt_c": "Melted",
+    "opt_d": "Photographed",
+    "answer": "D",
+    "explanation": "Illuminated tracks can be photographed for later analysis."
+  },
+  {
+    "qnum": 49,
+    "question": "Particle identification using a cloud chamber depends largely on examining:",
+    "opt_a": "Particle tracks",
+    "opt_b": "Chemical color changes",
+    "opt_c": "Sound intensity",
+    "opt_d": "Temperature alone",
+    "answer": "A",
+    "explanation": "Track characteristics help distinguish different ionizing particles."
+  },
+  {
+    "qnum": 50,
+    "question": "Which detector is particularly useful for studying tracks produced by cosmic rays?",
+    "opt_a": "Transformer",
+    "opt_b": "Wilson cloud chamber",
+    "opt_c": "Galvanometer",
+    "opt_d": "Thermometer",
+    "answer": "B",
+    "explanation": "Cosmic-ray studies are among the applications listed for cloud chambers."
+  },
+  {
+    "qnum": 51,
+    "question": "A listed research application of the Wilson chamber is:",
+    "opt_a": "Measuring gravitational constant",
+    "opt_b": "Chemical titration",
+    "opt_c": "Nuclear physics research",
+    "opt_d": "Measuring resistance",
+    "answer": "C",
+    "explanation": "It permits charged-particle trajectories from nuclear processes to be observed."
+  },
+  {
+    "qnum": 52,
+    "question": "A cloud chamber used to demonstrate particle tracks to students is an example of its use in:",
+    "opt_a": "Power production",
+    "opt_b": "Weather prediction",
+    "opt_c": "Telecommunications",
+    "opt_d": "Education and outreach",
+    "answer": "D",
+    "explanation": "The chapter lists educational demonstrations among its uses."
+  },
+  {
+    "qnum": 53,
+    "question": "A Geiger-Müller counter is designed mainly to:",
+    "opt_a": "Detect ionizing radiation",
+    "opt_b": "Produce X-rays",
+    "opt_c": "Accelerate protons",
+    "opt_d": "Generate magnetic fields",
+    "answer": "A",
+    "explanation": "A GM counter is a gas-filled ionizing-radiation detector."
+  },
+  {
+    "qnum": 54,
+    "question": "The Geiger-Müller counter is associated with:",
+    "opt_a": "Wilson and Bohr",
+    "opt_b": "Hans Geiger and Walther Müller",
+    "opt_c": "Einstein and Planck",
+    "opt_d": "Rutherford and Chadwick",
+    "answer": "B",
+    "explanation": "The device takes its name from Hans Geiger and Walther Müller."
+  },
+  {
+    "qnum": 55,
+    "question": "The textbook associates development of the GM counter with the year:",
+    "opt_a": "1912",
+    "opt_b": "1900",
+    "opt_c": "1928",
+    "opt_d": "1964",
+    "answer": "C",
+    "explanation": "The chapter gives 1928."
+  },
+  {
+    "qnum": 56,
+    "question": "In a GM counter, the hollow metallic chamber normally acts as the:",
+    "opt_a": "Anode",
+    "opt_b": "Insulator",
+    "opt_c": "Window",
+    "opt_d": "Cathode",
+    "answer": "D",
+    "explanation": "The outer metallic chamber functions as the cathode."
+  },
+  {
+    "qnum": 57,
+    "question": "The thin wire running along the axis of a GM tube acts as the:",
+    "opt_a": "Anode",
+    "opt_b": "Cathode",
+    "opt_c": "Moderator",
+    "opt_d": "Detector window",
+    "answer": "A",
+    "explanation": "The central wire is the positively biased anode."
+  },
+  {
+    "qnum": 58,
+    "question": "The gas inside the GM tube is generally:",
+    "opt_a": "Water vapor at high pressure",
+    "opt_b": "An inert gas at low pressure",
+    "opt_c": "Liquid helium only",
+    "opt_d": "Atmospheric air at very high pressure",
+    "answer": "B",
+    "explanation": "The textbook describes a low-pressure inert gas inside the detector."
+  },
+  {
+    "qnum": 59,
+    "question": "Radiation commonly enters the GM chamber through a:",
+    "opt_a": "Thick steel wall",
+    "opt_b": "Magnetic pole",
+    "opt_c": "Sealed window",
+    "opt_d": "Heating coil",
+    "answer": "C",
+    "explanation": "The window permits radiation to enter the gas-filled tube."
+  },
+  {
+    "qnum": 60,
+    "question": "For a GM counter to operate, a high potential difference is applied between:",
+    "opt_a": "Two magnets",
+    "opt_b": "Two windows",
+    "opt_c": "Gas and vacuum",
+    "opt_d": "Anode and cathode",
+    "answer": "D",
+    "explanation": "The electric field drives charges produced by ionization."
+  },
+  {
+    "qnum": 61,
+    "question": "When radiation enters a GM tube, its first important effect on the gas is:",
+    "opt_a": "Ionization",
+    "opt_b": "Condensation",
+    "opt_c": "Freezing",
+    "opt_d": "Fusion",
+    "answer": "A",
+    "explanation": "Incoming radiation produces ions and electrons in the gas."
+  },
+  {
+    "qnum": 62,
+    "question": "Electrons created inside the GM tube move primarily toward the:",
+    "opt_a": "Cathode",
+    "opt_b": "Anode",
+    "opt_c": "Window",
+    "opt_d": "Outer casing only",
+    "answer": "B",
+    "explanation": "The electric field causes electrons to move toward the positively charged anode."
+  },
+  {
+    "qnum": 63,
+    "question": "The ionization process in the GM counter ultimately produces a measurable:",
+    "opt_a": "Gravitational field",
+    "opt_b": "Nuclear chain reaction",
+    "opt_c": "Electrical pulse",
+    "opt_d": "Chemical reaction",
+    "answer": "C",
+    "explanation": "The detector converts an ionizing event into an electrical signal."
+  },
+  {
+    "qnum": 64,
+    "question": "At very low applied voltage in the initial region, a GM counter gives:",
+    "opt_a": "Maximum count rate",
+    "opt_b": "Continuous discharge",
+    "opt_c": "Constant high count",
+    "opt_d": "Very low count rate",
+    "answer": "D",
+    "explanation": "The voltage is insufficient for effective detection and amplification."
+  },
+  {
+    "qnum": 65,
+    "question": "As voltage reaches the threshold region, the GM count rate:",
+    "opt_a": "Begins to rise sharply",
+    "opt_b": "Becomes exactly zero",
+    "opt_c": "Becomes negative",
+    "opt_d": "Remains permanently constant",
+    "answer": "A",
+    "explanation": "Detection becomes increasingly effective after threshold."
+  },
+  {
+    "qnum": 66,
+    "question": "The preferred operational region of a GM counter is the:",
+    "opt_a": "Initial region",
+    "opt_b": "Geiger plateau",
+    "opt_c": "Continuous-discharge region",
+    "opt_d": "Zero-voltage region",
+    "answer": "B",
+    "explanation": "The detector operates reliably along the Geiger plateau."
+  },
+  {
+    "qnum": 67,
+    "question": "Over the Geiger plateau, the count rate is approximately:",
+    "opt_a": "Zero",
+    "opt_b": "Infinite",
+    "opt_c": "Relatively constant",
+    "opt_d": "Rapidly decreasing",
+    "answer": "C",
+    "explanation": "Small voltage variations produce comparatively little change in the observed count."
+  },
+  {
+    "qnum": 68,
+    "question": "If the GM voltage becomes excessively high, the tube enters the:",
+    "opt_a": "Initial region",
+    "opt_b": "Threshold region",
+    "opt_c": "Plateau only",
+    "opt_d": "Continuous-discharge region",
+    "answer": "D",
+    "explanation": "Excessive voltage causes continuous discharge and invalid detector operation."
+  },
+  {
+    "qnum": 69,
+    "question": "GM counters used in nuclear plants and laboratories are performing:",
+    "opt_a": "Radiation monitoring",
+    "opt_b": "Particle acceleration",
+    "opt_c": "Nuclear fusion",
+    "opt_d": "Quark confinement",
+    "answer": "A",
+    "explanation": "Routine radiation monitoring is an important GM-counter application."
+  },
+  {
+    "qnum": 70,
+    "question": "Measuring radiation levels in the surrounding environment is called:",
+    "opt_a": "Nuclear transmutation",
+    "opt_b": "Environmental monitoring",
+    "opt_c": "Pair annihilation",
+    "opt_d": "Hadronization",
+    "answer": "B",
+    "explanation": "GM counters can monitor environmental radiation levels."
+  },
+  {
+    "qnum": 71,
+    "question": "Monitoring the radiation exposure of people working around radioactive material belongs to:",
+    "opt_a": "Quantum optics",
+    "opt_b": "Thermodynamics",
+    "opt_c": "Health physics",
+    "opt_d": "Fluid mechanics",
+    "answer": "C",
+    "explanation": "Personal and workplace radiation monitoring is a health-physics application."
+  },
+  {
+    "qnum": 72,
+    "question": "A GM counter used after a radioactive-material accident is being applied in:",
+    "opt_a": "Semiconductor fabrication",
+    "opt_b": "Astronomy only",
+    "opt_c": "Fluid dynamics",
+    "opt_d": "Radiological emergency monitoring",
+    "answer": "D",
+    "explanation": "Detecting contamination after radiological incidents is a listed application."
+  },
+  {
+    "qnum": 73,
+    "question": "If the relative strength of the strong interaction is normalized to 1, its strength is:",
+    "opt_a": "1",
+    "opt_b": "10^−2",
+    "opt_c": "10^−7",
+    "opt_d": "10^−39",
+    "answer": "A",
+    "explanation": "Strong interaction is used as the reference strength in the chapter's table."
+  },
+  {
+    "qnum": 74,
+    "question": "The approximate relative strength given for electromagnetic force is:",
+    "opt_a": "1",
+    "opt_b": "10^−2",
+    "opt_c": "10^−7",
+    "opt_d": "10^−39",
+    "answer": "B",
+    "explanation": "The table gives electromagnetic strength as about 10^−2 relative to strong force."
+  },
+  {
+    "qnum": 75,
+    "question": "The textbook gives the relative strength of weak force as approximately:",
+    "opt_a": "1",
+    "opt_b": "10^−2",
+    "opt_c": "10^−7",
+    "opt_d": "10^−39",
+    "answer": "C",
+    "explanation": "Weak interaction is much weaker than the strong and electromagnetic interactions."
+  },
+  {
+    "qnum": 76,
+    "question": "The relative strength listed for gravity is approximately:",
+    "opt_a": "10^−2",
+    "opt_b": "10^−7",
+    "opt_c": "1",
+    "opt_d": "10^−39",
+    "answer": "D",
+    "explanation": "Gravity is enormously weaker at the particle scale."
+  },
+  {
+    "qnum": 77,
+    "question": "Using the listed strengths, strong force is approximately how many times stronger than electromagnetic force?",
+    "opt_a": "100",
+    "opt_b": "10",
+    "opt_c": "10^5",
+    "opt_d": "10^7",
+    "answer": "A",
+    "explanation": "1/(10^−2) = 10^2 = 100."
+  },
+  {
+    "qnum": 78,
+    "question": "Electromagnetic force is approximately how many times stronger than weak force using the table?",
+    "opt_a": "10^2",
+    "opt_b": "10^5",
+    "opt_c": "10^7",
+    "opt_d": "10^32",
+    "answer": "B",
+    "explanation": "10^−2 / 10^−7 = 10^5."
+  },
+  {
+    "qnum": 79,
+    "question": "Weak force is approximately how many times stronger than gravity using the listed relative strengths?",
+    "opt_a": "10^7",
+    "opt_b": "10^30",
+    "opt_c": "10^32",
+    "opt_d": "10^39",
+    "answer": "C",
+    "explanation": "10^−7 / 10^−39 = 10^32."
+  },
+  {
+    "qnum": 80,
+    "question": "Which ordering from strongest to weakest agrees with the chapter?",
+    "opt_a": "Gravity > weak > electromagnetic > strong",
+    "opt_b": "Electromagnetic > strong > gravity > weak",
+    "opt_c": "Strong > weak > gravity > electromagnetic",
+    "opt_d": "Strong > electromagnetic > weak > gravity",
+    "answer": "D",
+    "explanation": "Their listed strengths are 1, 10^−2, 10^−7 and 10^−39 respectively."
+  },
+  {
+    "qnum": 81,
+    "question": "What is the total charge of a hypothetical three-quark combination uuu?",
+    "opt_a": "+2 e",
+    "opt_b": "+1 e",
+    "opt_c": "0",
+    "opt_d": "−1 e",
+    "answer": "A",
+    "explanation": "3(+2/3 e) = +2 e."
+  },
+  {
+    "qnum": 82,
+    "question": "The charge of the three-quark combination ddd is:",
+    "opt_a": "0",
+    "opt_b": "−1 e",
+    "opt_c": "+1 e",
+    "opt_d": "−2 e",
+    "answer": "B",
+    "explanation": "3(−1/3 e) = −1 e."
+  },
+  {
+    "qnum": 83,
+    "question": "The charge of a meson containing an up quark and an anti-down quark is:",
+    "opt_a": "0",
+    "opt_b": "−1 e",
+    "opt_c": "+1 e",
+    "opt_d": "+1/3 e",
+    "answer": "C",
+    "explanation": "+2/3 + 1/3 = +1."
+  },
+  {
+    "qnum": 84,
+    "question": "A down quark combined with an anti-up quark has total charge:",
+    "opt_a": "0",
+    "opt_b": "+1 e",
+    "opt_c": "+1/3 e",
+    "opt_d": "−1 e",
+    "answer": "D",
+    "explanation": "−1/3 − 2/3 = −1."
+  },
+  {
+    "qnum": 85,
+    "question": "The net charge of an up quark and an anti-up quark is:",
+    "opt_a": "Zero",
+    "opt_b": "+1 e",
+    "opt_c": "−1 e",
+    "opt_d": "+4/3 e",
+    "answer": "A",
+    "explanation": "Their charges +2/3 and −2/3 cancel."
+  },
+  {
+    "qnum": 86,
+    "question": "The charge of a down quark–anti-down quark pair is:",
+    "opt_a": "−2/3 e",
+    "opt_b": "Zero",
+    "opt_c": "+2/3 e",
+    "opt_d": "−1 e",
+    "answer": "B",
+    "explanation": "−1/3 + 1/3 = 0."
+  },
+  {
+    "qnum": 87,
+    "question": "A three-quark state udd has charge:",
+    "opt_a": "+2 e",
+    "opt_b": "+1 e",
+    "opt_c": "Zero",
+    "opt_d": "−1 e",
+    "answer": "C",
+    "explanation": "+2/3 − 1/3 − 1/3 = 0."
+  },
+  {
+    "qnum": 88,
+    "question": "The total charge of uud is:",
+    "opt_a": "0",
+    "opt_b": "−1 e",
+    "opt_c": "+2 e",
+    "opt_d": "+1 e",
+    "answer": "D",
+    "explanation": "+2/3 + 2/3 − 1/3 = +1."
+  },
+  {
+    "qnum": 89,
+    "question": "The electric charge of an anti-up quark is:",
+    "opt_a": "−2/3 e",
+    "opt_b": "+2/3 e",
+    "opt_c": "−1/3 e",
+    "opt_d": "+1/3 e",
+    "answer": "A",
+    "explanation": "Antiparticles possess opposite electric charge to their corresponding particles."
+  },
+  {
+    "qnum": 90,
+    "question": "The charge of an anti-down quark is:",
+    "opt_a": "−1/3 e",
+    "opt_b": "+1/3 e",
+    "opt_c": "−2/3 e",
+    "opt_d": "+2/3 e",
+    "answer": "B",
+    "explanation": "It is opposite to the down-quark charge."
+  },
+  {
+    "qnum": 91,
+    "question": "Since a charm quark has +2/3 e charge, its antiquark has:",
+    "opt_a": "+1/3 e",
+    "opt_b": "+2/3 e",
+    "opt_c": "−2/3 e",
+    "opt_d": "−1/3 e",
+    "answer": "C",
+    "explanation": "An anti-charm has the opposite charge of the charm quark."
+  },
+  {
+    "qnum": 92,
+    "question": "An anti-strange quark has charge:",
+    "opt_a": "−2/3 e",
+    "opt_b": "−1/3 e",
+    "opt_c": "+2/3 e",
+    "opt_d": "+1/3 e",
+    "answer": "D",
+    "explanation": "Strange is a −1/3 e quark, so anti-strange is +1/3 e."
+  },
+  {
+    "qnum": 93,
+    "question": "When a down quark changes into an up quark, the quark's charge changes by:",
+    "opt_a": "+1 e",
+    "opt_b": "−1 e",
+    "opt_c": "+1/3 e",
+    "opt_d": "+2/3 e",
+    "answer": "A",
+    "explanation": "(+2/3) − (−1/3) = +1."
+  },
+  {
+    "qnum": 94,
+    "question": "When an up quark changes into a down quark, its electric charge changes by:",
+    "opt_a": "+1 e",
+    "opt_b": "−1 e",
+    "opt_c": "−1/3 e",
+    "opt_d": "−2/3 e",
+    "answer": "B",
+    "explanation": "−1/3 − 2/3 = −1."
+  },
+  {
+    "qnum": 95,
+    "question": "Conversion of udd into uud corresponds macroscopically to:",
+    "opt_a": "Proton becoming neutron",
+    "opt_b": "Meson becoming baryon",
+    "opt_c": "Neutron becoming proton",
+    "opt_d": "Electron becoming proton",
+    "answer": "C",
+    "explanation": "udd is a neutron while uud is a proton."
+  },
+  {
+    "qnum": 96,
+    "question": "Conversion of uud into udd corresponds to:",
+    "opt_a": "Neutron becoming proton",
+    "opt_b": "Electron becoming neutrino",
+    "opt_c": "Photon becoming gluon",
+    "opt_d": "Proton becoming neutron",
+    "answer": "D",
+    "explanation": "uud represents a proton and udd a neutron."
+  },
+  {
+    "qnum": 97,
+    "question": "Which pair is produced by W− decay in the beta-minus process shown in the chapter?",
+    "opt_a": "Electron and antineutrino",
+    "opt_b": "Positron and neutrino",
+    "opt_c": "Two photons",
+    "opt_d": "Proton and neutron",
+    "answer": "A",
+    "explanation": "The W− boson produces an electron and an antineutrino."
+  },
+  {
+    "qnum": 98,
+    "question": "The W+ boson in the beta-plus process produces:",
+    "opt_a": "Electron and antineutrino",
+    "opt_b": "Positron and neutrino",
+    "opt_c": "Two gluons",
+    "opt_d": "Proton and photon",
+    "answer": "B",
+    "explanation": "That pair is shown in the textbook's beta-plus description."
+  },
+  {
+    "qnum": 99,
+    "question": "A color-neutral three-quark baryon is represented in the textbook as containing:",
+    "opt_a": "Three red quarks",
+    "opt_b": "Two blue and one red",
+    "opt_c": "Red, green and blue",
+    "opt_d": "No color charges",
+    "answer": "C",
+    "explanation": "Combining the three different color charges produces an overall color-neutral state."
+  },
+  {
+    "qnum": 100,
+    "question": "The absence of isolated colored quarks in ordinary observations is explained by:",
+    "opt_a": "Weak interaction",
+    "opt_b": "Pair production",
+    "opt_c": "Radioactive decay",
+    "opt_d": "Quark confinement",
+    "answer": "D",
+    "explanation": "Quarks remain bound within hadrons."
+  },
+  {
+    "qnum": 101,
+    "question": "Four baryons contain a total of how many constituent quarks?",
+    "opt_a": "12",
+    "opt_b": "8",
+    "opt_c": "6",
+    "opt_d": "4",
+    "answer": "A",
+    "explanation": "Each baryon contains three quarks, so 4 × 3 = 12."
+  },
+  {
+    "qnum": 102,
+    "question": "Five mesons contain how many total quark/antiquark constituents?",
+    "opt_a": "5",
+    "opt_b": "10",
+    "opt_c": "15",
+    "opt_d": "20",
+    "answer": "B",
+    "explanation": "Each meson contains two constituents, giving 5 × 2 = 10."
+  },
+  {
+    "qnum": 103,
+    "question": "Three baryons and one meson contain a total of:",
+    "opt_a": "8 constituents",
+    "opt_b": "9 constituents",
+    "opt_c": "11 constituents",
+    "opt_d": "12 constituents",
+    "answer": "C",
+    "explanation": "3(3) + 1(2) = 11."
+  },
+  {
+    "qnum": 104,
+    "question": "Two baryons and three mesons contain a total of:",
+    "opt_a": "8 quark constituents",
+    "opt_b": "9 quark constituents",
+    "opt_c": "10 quark constituents",
+    "opt_d": "12 quark/antiquark constituents",
+    "answer": "D",
+    "explanation": "2(3) + 3(2) = 12."
+  },
+  {
+    "qnum": 105,
+    "question": "Three lepton generations, each containing one charged lepton and one neutrino, contain:",
+    "opt_a": "Six leptons",
+    "opt_b": "Three leptons",
+    "opt_c": "Nine leptons",
+    "opt_d": "Twelve leptons",
+    "answer": "A",
+    "explanation": "3 generations × 2 leptons = 6."
+  },
+  {
+    "qnum": 106,
+    "question": "If six quark flavors are arranged as two flavors in each generation, the number of generations is:",
+    "opt_a": "2",
+    "opt_b": "3",
+    "opt_c": "6",
+    "opt_d": "12",
+    "answer": "B",
+    "explanation": "6/2 = 3 generations."
+  },
+  {
+    "qnum": 107,
+    "question": "Which group contains only +2/3 e quarks?",
+    "opt_a": "Down, strange, bottom",
+    "opt_b": "Up, strange, top",
+    "opt_c": "Up, charm, top",
+    "opt_d": "Charm, strange, bottom",
+    "answer": "C",
+    "explanation": "Up, charm and top are the three up-type quarks."
+  },
+  {
+    "qnum": 108,
+    "question": "Which group contains only −1/3 e quarks?",
+    "opt_a": "Up, charm, top",
+    "opt_b": "Up, down, charm",
+    "opt_c": "Charm, strange, top",
+    "opt_d": "Down, strange, bottom",
+    "answer": "D",
+    "explanation": "Down, strange and bottom form the −1/3 e group."
+  },
+  {
+    "qnum": 109,
+    "question": "Which set contains only spin-1 force particles in the textbook table?",
+    "opt_a": "Gluon, photon and W/Z bosons",
+    "opt_b": "Graviton, photon and electron",
+    "opt_c": "Proton, neutron and photon",
+    "opt_d": "Graviton, Higgs and electron",
+    "answer": "A",
+    "explanation": "Gluon, photon and weak W/Z bosons are assigned spin 1 in the table."
+  },
+  {
+    "qnum": 110,
+    "question": "Which listed force carrier has spin 2?",
+    "opt_a": "Photon",
+    "opt_b": "Graviton",
+    "opt_c": "Gluon",
+    "opt_d": "W boson",
+    "answer": "B",
+    "explanation": "The hypothetical graviton is assigned spin 2."
+  },
+  {
+    "qnum": 111,
+    "question": "Which group is listed as massless force carriers in the chapter's table?",
+    "opt_a": "W, Z and photon",
+    "opt_b": "Electron, photon and gluon",
+    "opt_c": "Gluon, photon and graviton",
+    "opt_d": "Proton, neutron and photon",
+    "answer": "C",
+    "explanation": "These three are indicated as massless in the table."
+  },
+  {
+    "qnum": 112,
+    "question": "Which listed force particles have significant rest mass rather than being listed as massless?",
+    "opt_a": "Photon",
+    "opt_b": "Gluon",
+    "opt_c": "Graviton",
+    "opt_d": "W and Z bosons",
+    "answer": "D",
+    "explanation": "The weak-force bosons are assigned an approximate mass of 80.91 GeV."
+  },
+  {
+    "qnum": 113,
+    "question": "From the textbook strength values, strong force is approximately how many times stronger than gravity?",
+    "opt_a": "10^39",
+    "opt_b": "10^37",
+    "opt_c": "10^32",
+    "opt_d": "10^7",
+    "answer": "A",
+    "explanation": "1/(10^−39) = 10^39."
+  },
+  {
+    "qnum": 114,
+    "question": "Strong force is approximately how many times stronger than weak force?",
+    "opt_a": "10^5",
+    "opt_b": "10^7",
+    "opt_c": "10^32",
+    "opt_d": "10^39",
+    "answer": "B",
+    "explanation": "1/(10^−7) = 10^7."
+  },
+  {
+    "qnum": 115,
+    "question": "Electromagnetic force is approximately how many times stronger than gravity?",
+    "opt_a": "10^2",
+    "opt_b": "10^32",
+    "opt_c": "10^37",
+    "opt_d": "10^41",
+    "answer": "C",
+    "explanation": "10^−2 / 10^−39 = 10^37."
+  },
+  {
+    "qnum": 116,
+    "question": "Which strength relationship is correct?",
+    "opt_a": "Gravity > strong > weak > electromagnetic",
+    "opt_b": "Weak > strong > electromagnetic > gravity",
+    "opt_c": "Electromagnetic > strong > weak > gravity",
+    "opt_d": "Strong > electromagnetic > weak > gravity",
+    "answer": "D",
+    "explanation": "This follows directly from their listed relative strengths."
+  },
+  {
+    "qnum": 117,
+    "question": "The Standard Model is described as incomplete with respect to:",
+    "opt_a": "Gravity",
+    "opt_b": "Electromagnetism",
+    "opt_c": "Strong interaction",
+    "opt_d": "Weak interaction",
+    "answer": "A",
+    "explanation": "Gravity is not incorporated into the Standard Model framework described in the chapter."
+  },
+  {
+    "qnum": 118,
+    "question": "A newly discovered particle identified primarily as a constituent of matter would most naturally belong to the broad class:",
+    "opt_a": "Boson",
+    "opt_b": "Fermion",
+    "opt_c": "Photon",
+    "opt_d": "Gluon",
+    "answer": "B",
+    "explanation": "Fermions are the matter-particle category."
+  },
+  {
+    "qnum": 119,
+    "question": "A particle whose role is to mediate a fundamental interaction belongs broadly to:",
+    "opt_a": "Leptons",
+    "opt_b": "Baryons",
+    "opt_c": "Bosons",
+    "opt_d": "Nucleons",
+    "answer": "C",
+    "explanation": "Force-carrying particles are bosons."
+  },
+  {
+    "qnum": 120,
+    "question": "The broad Standard Model classification used in the chapter divides elementary particles into:",
+    "opt_a": "Protons and neutrons",
+    "opt_b": "Atoms and molecules",
+    "opt_c": "Quarks and hadrons only",
+    "opt_d": "Fermions and bosons",
+    "answer": "D",
+    "explanation": "Matter particles are fermions while interaction carriers belong to the boson class."
+  },
+  {
+    "qnum": 121,
+    "question": "Why does a charged particle leave a visible line in a Wilson cloud chamber?",
+    "opt_a": "Vapor condenses around ions created along its path",
+    "opt_b": "It melts the chamber wall",
+    "opt_c": "It generates visible light directly at all times",
+    "opt_d": "It turns the gas into a solid",
+    "answer": "A",
+    "explanation": "Ionization creates condensation centers in the supersaturated vapor."
+  },
+  {
+    "qnum": 122,
+    "question": "If the vapor in a Wilson chamber were not supersaturated, the most likely result would be:",
+    "opt_a": "Stronger tracks",
+    "opt_b": "Poor or absent visible condensation tracks",
+    "opt_c": "More quarks",
+    "opt_d": "Increased gravitational interaction",
+    "answer": "B",
+    "explanation": "Supersaturation is necessary for droplets to form readily around ions."
+  },
+  {
+    "qnum": 123,
+    "question": "Rapid expansion of the chamber gas primarily causes its pressure and temperature to:",
+    "opt_a": "Both increase",
+    "opt_b": "Remain fixed",
+    "opt_c": "Decrease",
+    "opt_d": "Become infinite",
+    "answer": "C",
+    "explanation": "Expansion cools the vapor and helps establish the supersaturated condition."
+  },
+  {
+    "qnum": 124,
+    "question": "If a particle passing through the cloud chamber produced no ionization, then:",
+    "opt_a": "The track would become much thicker",
+    "opt_b": "The particle would turn into a photon",
+    "opt_c": "The chamber would become a GM counter",
+    "opt_d": "A condensation trail would not readily form",
+    "answer": "D",
+    "explanation": "Ionization supplies the centers on which droplets condense."
+  },
+  {
+    "qnum": 125,
+    "question": "A GM counter is operated far below its threshold voltage. Its count rate will most likely be:",
+    "opt_a": "Very low",
+    "opt_b": "Maximum",
+    "opt_c": "Constant and ideal",
+    "opt_d": "Infinite",
+    "answer": "A",
+    "explanation": "The initial region does not provide adequate ionization amplification."
+  },
+  {
+    "qnum": 126,
+    "question": "For reliable routine operation, a GM counter should normally be operated in the:",
+    "opt_a": "Continuous-discharge region",
+    "opt_b": "Geiger plateau region",
+    "opt_c": "Zero-voltage region",
+    "opt_d": "Initial region",
+    "answer": "B",
+    "explanation": "The plateau gives a comparatively stable count rate."
+  },
+  {
+    "qnum": 127,
+    "question": "If the operating voltage is raised far beyond the Geiger plateau, the counter may enter:",
+    "opt_a": "The cloud region",
+    "opt_b": "The initial region",
+    "opt_c": "Continuous discharge",
+    "opt_d": "Nuclear fusion",
+    "answer": "C",
+    "explanation": "Excessive voltage makes the tube discharge continuously."
+  },
+  {
+    "qnum": 128,
+    "question": "An engineer opens a GM tube and identifies a fine central wire. It is the:",
+    "opt_a": "Cathode",
+    "opt_b": "Radiation source",
+    "opt_c": "Window",
+    "opt_d": "Anode",
+    "answer": "D",
+    "explanation": "The central axial wire serves as the anode."
+  },
+  {
+    "qnum": 129,
+    "question": "If the high voltage across a GM tube is removed, reliable counting becomes impossible mainly because:",
+    "opt_a": "The ionization charge is no longer effectively collected/amplified",
+    "opt_b": "The gas turns into a liquid",
+    "opt_c": "Gravity disappears",
+    "opt_d": "Photons gain mass",
+    "answer": "A",
+    "explanation": "The electric field is needed to move and multiply the ionization charges."
+  },
+  {
+    "qnum": 130,
+    "question": "Which filling is most consistent with the GM counter described in the textbook?",
+    "opt_a": "Water at high pressure",
+    "opt_b": "Low-pressure inert gas",
+    "opt_c": "Liquid mercury",
+    "opt_d": "Vacuum only",
+    "answer": "B",
+    "explanation": "The tube contains a low-pressure inert gas."
+  },
+  {
+    "qnum": 131,
+    "question": "A radiation particle normally gains access to the sensitive gas volume through the:",
+    "opt_a": "Anode wire",
+    "opt_b": "Power supply",
+    "opt_c": "Detector window",
+    "opt_d": "Counter display",
+    "answer": "C",
+    "explanation": "The window is provided so incident radiation can enter the chamber."
+  },
+  {
+    "qnum": 132,
+    "question": "The outer metallic body of the gas chamber acts as the:",
+    "opt_a": "Anode",
+    "opt_b": "Radiation source",
+    "opt_c": "Amplifier only",
+    "opt_d": "Cathode",
+    "answer": "D",
+    "explanation": "The outer metal chamber is the cathode while the center wire is the anode."
+  },
+  {
+    "qnum": 133,
+    "question": "If a GM tube is correctly operated on its plateau, a small increase in voltage should cause:",
+    "opt_a": "Only a small change in count rate",
+    "opt_b": "The count rate to become zero",
+    "opt_c": "Immediate continuous discharge",
+    "opt_d": "The gas to freeze",
+    "answer": "A",
+    "explanation": "The plateau is characterized by a relatively stable counting rate."
+  },
+  {
+    "qnum": 134,
+    "question": "An experimenter observes a rapid rise in count rate as voltage is first increased sufficiently. This corresponds to the:",
+    "opt_a": "Plateau region",
+    "opt_b": "Threshold region",
+    "opt_c": "Continuous-discharge region",
+    "opt_d": "Zero-charge region",
+    "answer": "B",
+    "explanation": "Near threshold the detector begins responding strongly to ionizing events."
+  },
+  {
+    "qnum": 135,
+    "question": "A GM counter gives meaningless readings because current flows continuously even without separate radiation pulses. It is operating in the:",
+    "opt_a": "Plateau",
+    "opt_b": "Threshold region",
+    "opt_c": "Continuous-discharge region",
+    "opt_d": "Initial region",
+    "answer": "C",
+    "explanation": "At excessive voltage the discharge is no longer tied to individual radiation events."
+  },
+  {
+    "qnum": 136,
+    "question": "To directly observe the trajectory of a charged particle rather than merely count events, the better choice is a:",
+    "opt_a": "GM counter",
+    "opt_b": "Ammeter",
+    "opt_c": "Voltmeter",
+    "opt_d": "Wilson cloud chamber",
+    "answer": "D",
+    "explanation": "A cloud chamber visually displays particle paths."
+  },
+  {
+    "qnum": 137,
+    "question": "A technician wants a portable device mainly to count ionizing-radiation events. The appropriate instrument is the:",
+    "opt_a": "GM counter",
+    "opt_b": "Cloud chamber only",
+    "opt_c": "Spectrometer only",
+    "opt_d": "Barometer",
+    "answer": "A",
+    "explanation": "The GM counter is a practical portable radiation detector."
+  },
+  {
+    "qnum": 138,
+    "question": "To photograph tracks produced by cosmic-ray particles, a researcher would prefer a:",
+    "opt_a": "Transformer",
+    "opt_b": "Wilson cloud chamber",
+    "opt_c": "Potentiometer",
+    "opt_d": "Wheatstone bridge",
+    "answer": "B",
+    "explanation": "Cosmic-ray track observation is a listed cloud-chamber application."
+  },
+  {
+    "qnum": 139,
+    "question": "A survey team checking radiation contamination in an outdoor area would most appropriately use a:",
+    "opt_a": "Cloud chamber piston",
+    "opt_b": "Particle accelerator",
+    "opt_c": "GM counter",
+    "opt_d": "Galvanometer only",
+    "answer": "C",
+    "explanation": "Environmental radiation monitoring is a standard GM-counter application."
+  },
+  {
+    "qnum": 140,
+    "question": "For a classroom demonstration where students should actually see particle trails, the most suitable device is:",
+    "opt_a": "GM counter only",
+    "opt_b": "Reactor",
+    "opt_c": "Cyclotron",
+    "opt_d": "Wilson cloud chamber",
+    "answer": "D",
+    "explanation": "Visible tracks make the cloud chamber useful for education and outreach."
+  },
+  {
+    "qnum": 141,
+    "question": "A fundamental matter particle that does not participate in the strong interaction belongs to the:",
+    "opt_a": "Lepton family",
+    "opt_b": "Quark family",
+    "opt_c": "Baryon family",
+    "opt_d": "Gluon family",
+    "answer": "A",
+    "explanation": "Leptons are distinguished from quarks by not experiencing the strong interaction."
+  },
+  {
+    "qnum": 142,
+    "question": "According to the chapter, quarks can participate in:",
+    "opt_a": "Gravity only",
+    "opt_b": "Strong, weak and electromagnetic interactions",
+    "opt_c": "Electromagnetism only",
+    "opt_d": "Weak interaction only",
+    "answer": "B",
+    "explanation": "Quarks carry properties allowing them to experience all three Standard Model interactions."
+  },
+  {
+    "qnum": 143,
+    "question": "A particle is observed to act as the carrier of the strong force. It is most consistent with a:",
+    "opt_a": "Photon",
+    "opt_b": "Graviton",
+    "opt_c": "Gluon",
+    "opt_d": "Neutrino",
+    "answer": "C",
+    "explanation": "Gluons mediate the strong interaction."
+  },
+  {
+    "qnum": 144,
+    "question": "A particle mediating radioactive beta-decay processes would belong to the group:",
+    "opt_a": "Photons",
+    "opt_b": "Gluons",
+    "opt_c": "Gravitons",
+    "opt_d": "W/Z bosons",
+    "answer": "D",
+    "explanation": "Weak nuclear interactions are mediated by W and Z bosons."
+  },
+  {
+    "qnum": 145,
+    "question": "Which is a negatively charged elementary lepton?",
+    "opt_a": "Electron",
+    "opt_b": "Up quark",
+    "opt_c": "Neutrino",
+    "opt_d": "Gluon",
+    "answer": "A",
+    "explanation": "The electron is the charged lepton of Generation I."
+  },
+  {
+    "qnum": 146,
+    "question": "Which particle is electrically neutral and belongs to the lepton group?",
+    "opt_a": "Electron",
+    "opt_b": "Neutrino",
+    "opt_c": "Up quark",
+    "opt_d": "Proton",
+    "answer": "B",
+    "explanation": "Neutrinos are neutral leptons and interact weakly."
+  },
+  {
+    "qnum": 147,
+    "question": "A proton can simultaneously be classified as a:",
+    "opt_a": "Lepton and boson",
+    "opt_b": "Elementary fermion",
+    "opt_c": "Composite fermion, baryon and hadron",
+    "opt_d": "Photon and hadron",
+    "answer": "C",
+    "explanation": "It is a three-quark composite matter particle."
+  },
+  {
+    "qnum": 148,
+    "question": "A meson is best classified as a:",
+    "opt_a": "Lepton",
+    "opt_b": "Elementary fermion",
+    "opt_c": "Baryon",
+    "opt_d": "Composite boson and hadron",
+    "answer": "D",
+    "explanation": "Mesons consist of a quark-antiquark pair."
+  },
+  {
+    "qnum": 149,
+    "question": "A newly observed hadron is established to contain exactly three quarks. It should be classified as a:",
+    "opt_a": "Baryon",
+    "opt_b": "Meson",
+    "opt_c": "Lepton",
+    "opt_d": "Photon",
+    "answer": "A",
+    "explanation": "Three-quark hadrons are baryons."
+  },
+  {
+    "qnum": 150,
+    "question": "A hadron consisting of exactly one quark and one antiquark is a:",
+    "opt_a": "Baryon",
+    "opt_b": "Meson",
+    "opt_c": "Lepton",
+    "opt_d": "Nucleon only",
+    "answer": "B",
+    "explanation": "This is the defining composition of a meson."
+  },
+  {
+    "qnum": 151,
+    "question": "For a conventional three-quark baryon to satisfy the color-neutral description in the chapter, its quarks should combine as:",
+    "opt_a": "Red-red-red",
+    "opt_b": "Blue-blue-blue",
+    "opt_c": "Red-green-blue",
+    "opt_d": "Red-red-green",
+    "answer": "C",
+    "explanation": "The three distinct color charges combine into a color-neutral baryon."
+  },
+  {
+    "qnum": 152,
+    "question": "Why would observation of a permanently isolated free quark conflict with the chapter's discussion?",
+    "opt_a": "Quarks have no mass",
+    "opt_b": "Quarks are photons",
+    "opt_c": "Quarks cannot carry charge",
+    "opt_d": "It would contradict quark confinement",
+    "answer": "D",
+    "explanation": "The chapter states that quarks are confined inside hadrons."
+  },
+  {
+    "qnum": 153,
+    "question": "An elementary particle with spin 1/2 would be classified as a:",
+    "opt_a": "Fermion",
+    "opt_b": "Boson",
+    "opt_c": "Photon necessarily",
+    "opt_d": "Graviton necessarily",
+    "answer": "A",
+    "explanation": "Half-integral spin corresponds to fermions."
+  },
+  {
+    "qnum": 154,
+    "question": "A particle with spin 1 belongs to the general statistical class of:",
+    "opt_a": "Fermions",
+    "opt_b": "Bosons",
+    "opt_c": "Baryons only",
+    "opt_d": "Leptons only",
+    "answer": "B",
+    "explanation": "Spin 1 is an integer-spin value."
+  },
+  {
+    "qnum": 155,
+    "question": "A hypothetical particle with spin 2 is classified in the chapter's scheme as a:",
+    "opt_a": "Fermion",
+    "opt_b": "Lepton",
+    "opt_c": "Boson",
+    "opt_d": "Baryon",
+    "answer": "C",
+    "explanation": "Integer-spin particles are bosons; the graviton is listed with spin 2."
+  },
+  {
+    "qnum": 156,
+    "question": "A particle having spin 3/2 would belong to:",
+    "opt_a": "Bosons",
+    "opt_b": "Photons only",
+    "opt_c": "Gluons only",
+    "opt_d": "Fermions",
+    "answer": "D",
+    "explanation": "3/2 is a half-integral spin."
+  },
+  {
+    "qnum": 157,
+    "question": "A force acting universally on objects because they possess mass corresponds to:",
+    "opt_a": "Gravity",
+    "opt_b": "Weak force",
+    "opt_c": "Strong force",
+    "opt_d": "Electromagnetic force",
+    "answer": "A",
+    "explanation": "The chapter describes gravity as acting on mass."
+  },
+  {
+    "qnum": 158,
+    "question": "The interaction most directly associated in the chapter with radioactive decay is:",
+    "opt_a": "Strong interaction",
+    "opt_b": "Weak nuclear interaction",
+    "opt_c": "Electromagnetic interaction",
+    "opt_d": "Gravitational interaction",
+    "answer": "B",
+    "explanation": "Beta decay is a weak-interaction process."
+  },
+  {
+    "qnum": 159,
+    "question": "The force primarily responsible for binding quarks inside hadrons is:",
+    "opt_a": "Gravity",
+    "opt_b": "Electromagnetism",
+    "opt_c": "Strong interaction",
+    "opt_d": "Weak interaction",
+    "answer": "C",
+    "explanation": "Quarks interact strongly through gluon exchange."
+  },
+  {
+    "qnum": 160,
+    "question": "Interactions between electrically charged particles are principally associated with:",
+    "opt_a": "Gravity",
+    "opt_b": "Strong force",
+    "opt_c": "Weak force",
+    "opt_d": "Electromagnetic force",
+    "answer": "D",
+    "explanation": "Electromagnetism acts between charged particles."
+  },
+  {
+    "qnum": 161,
+    "question": "Starting with neutron composition udd, if one down quark changes into an up quark, the new composition is:",
+    "opt_a": "uud",
+    "opt_b": "ddd",
+    "opt_c": "uuu",
+    "opt_d": "ud",
+    "answer": "A",
+    "explanation": "udd → uud, corresponding to neutron-to-proton conversion."
+  },
+  {
+    "qnum": 162,
+    "question": "Starting with a proton uud, if one up quark changes into a down quark, the result is:",
+    "opt_a": "uuu",
+    "opt_b": "udd",
+    "opt_c": "ddd",
+    "opt_d": "uu",
+    "answer": "B",
+    "explanation": "uud → udd, giving neutron quark composition."
+  },
+  {
+    "qnum": 163,
+    "question": "A down-to-up flavor change alters the quark charge from −1/3 e to +2/3 e. The increase is:",
+    "opt_a": "+1/3 e",
+    "opt_b": "+2/3 e",
+    "opt_c": "+1 e",
+    "opt_d": "+4/3 e",
+    "answer": "C",
+    "explanation": "+2/3 − (−1/3) = +1."
+  },
+  {
+    "qnum": 164,
+    "question": "An up-to-down transformation changes charge from +2/3 e to −1/3 e. The net change is:",
+    "opt_a": "+1 e",
+    "opt_b": "+1/3 e",
+    "opt_c": "−1/3 e",
+    "opt_d": "−1 e",
+    "answer": "D",
+    "explanation": "−1/3 − 2/3 = −1."
+  },
+  {
+    "qnum": 165,
+    "question": "Which boson must appear in the textbook quark-level description of beta-minus decay?",
+    "opt_a": "W−",
+    "opt_b": "W+",
+    "opt_c": "Photon",
+    "opt_d": "Gluon",
+    "answer": "A",
+    "explanation": "The d → u transformation emits a W− boson."
+  },
+  {
+    "qnum": 166,
+    "question": "Which weak boson appears in the corresponding beta-plus quark transformation?",
+    "opt_a": "W−",
+    "opt_b": "W+",
+    "opt_c": "Photon",
+    "opt_d": "Graviton",
+    "answer": "B",
+    "explanation": "The u → d transformation is associated with emission of W+."
+  },
+  {
+    "qnum": 167,
+    "question": "A particle has the same mass-type identity as a down quark but opposite electric charge. Its charge must be:",
+    "opt_a": "−2/3 e",
+    "opt_b": "−1/3 e",
+    "opt_c": "+1/3 e",
+    "opt_d": "+2/3 e",
+    "answer": "C",
+    "explanation": "It is an anti-down quark."
+  },
+  {
+    "qnum": 168,
+    "question": "A down quark and anti-down quark are combined. Their total electric charge is:",
+    "opt_a": "+2/3 e",
+    "opt_b": "−2/3 e",
+    "opt_c": "+1 e",
+    "opt_d": "Zero",
+    "answer": "D",
+    "explanation": "−1/3 + 1/3 = 0."
+  },
+  {
+    "qnum": 169,
+    "question": "If strong-force strength is represented by 1, the gravitational-force strength given in the chapter is:",
+    "opt_a": "10^−39",
+    "opt_b": "10^−7",
+    "opt_c": "10^−2",
+    "opt_d": "10^39",
+    "answer": "A",
+    "explanation": "The table normalizes strong interaction to 1 and gives gravity as 10^−39."
+  },
+  {
+    "qnum": 170,
+    "question": "How many orders of magnitude separate electromagnetic strength 10^−2 from gravitational strength 10^−39?",
+    "opt_a": "32",
+    "opt_b": "37",
+    "opt_c": "39",
+    "opt_d": "41",
+    "answer": "B",
+    "explanation": "(−2) − (−39) = 37 orders of magnitude."
+  },
+  {
+    "qnum": 171,
+    "question": "Weak force at 10^−7 is stronger than gravity at 10^−39 by:",
+    "opt_a": "10^7",
+    "opt_b": "10^30",
+    "opt_c": "10^32",
+    "opt_d": "10^46",
+    "answer": "C",
+    "explanation": "10^−7 / 10^−39 = 10^32."
+  },
+  {
+    "qnum": 172,
+    "question": "Strong force exceeds weak force by how many orders of magnitude?",
+    "opt_a": "2",
+    "opt_b": "5",
+    "opt_c": "39",
+    "opt_d": "7",
+    "answer": "D",
+    "explanation": "1/10^−7 = 10^7."
+  },
+  {
+    "qnum": 173,
+    "question": "Strong interaction is stronger than electromagnetic interaction by:",
+    "opt_a": "Two orders of magnitude",
+    "opt_b": "Five orders",
+    "opt_c": "Seven orders",
+    "opt_d": "Thirty-nine orders",
+    "answer": "A",
+    "explanation": "1/10^−2 = 10^2."
+  },
+  {
+    "qnum": 174,
+    "question": "A GM counter on the Geiger plateau reads 500 counts/min. A small permissible voltage increase should ideally produce:",
+    "opt_a": "Zero counts",
+    "opt_b": "A count rate still close to 500 counts/min",
+    "opt_c": "Infinite counts",
+    "opt_d": "Continuous discharge immediately",
+    "answer": "B",
+    "explanation": "Count rate varies relatively little across the plateau."
+  },
+  {
+    "qnum": 175,
+    "question": "A detector is operated at such high voltage that pulses are no longer individually distinguishable and current flows continuously. This indicates:",
+    "opt_a": "Initial region",
+    "opt_b": "Threshold only",
+    "opt_c": "Continuous-discharge region",
+    "opt_d": "Ideal plateau operation",
+    "answer": "C",
+    "explanation": "Excessive voltage causes continuous discharge."
+  },
+  {
+    "qnum": 176,
+    "question": "During a GM experiment the count rate begins increasing sharply as voltage is raised from a low value. The detector is most likely in the:",
+    "opt_a": "Continuous-discharge region",
+    "opt_b": "Final saturation region",
+    "opt_c": "Plateau region",
+    "opt_d": "Threshold region",
+    "answer": "D",
+    "explanation": "The sharp rise characterizes the threshold part of the response curve."
+  },
+  {
+    "qnum": 177,
+    "question": "A charged particle passes through a Wilson chamber but somehow produces no ions. What would most directly be affected?",
+    "opt_a": "Formation of its visible droplet trail",
+    "opt_b": "Gravitational force",
+    "opt_c": "Its quark composition",
+    "opt_d": "Its rest mass",
+    "answer": "A",
+    "explanation": "Condensation requires ions along the trajectory."
+  },
+  {
+    "qnum": 178,
+    "question": "A piston is rapidly moved so that the cloud-chamber gas expands. The useful physical consequence is:",
+    "opt_a": "Pressure and temperature increase",
+    "opt_b": "Pressure and temperature decrease, promoting supersaturation",
+    "opt_c": "The gas becomes nuclear fuel",
+    "opt_d": "Quarks become free",
+    "answer": "B",
+    "explanation": "Rapid expansion cools the vapor and establishes conditions for track formation."
+  },
+  {
+    "qnum": 179,
+    "question": "Ionization and condensation occur normally, but illumination and photography are absent. The most likely consequence is:",
+    "opt_a": "No ions can form",
+    "opt_b": "No particles can enter",
+    "opt_c": "Tracks may form but become difficult to observe and record",
+    "opt_d": "The chamber becomes a GM tube",
+    "answer": "C",
+    "explanation": "Light and cameras are used to observe and record the condensation tracks."
+  },
+  {
+    "qnum": 180,
+    "question": "Which statement best distinguishes a Wilson cloud chamber from a GM counter?",
+    "opt_a": "Both only measure temperature",
+    "opt_b": "GM shows tracks while Wilson only counts",
+    "opt_c": "Neither detects ionization",
+    "opt_d": "Wilson visualizes particle paths, while GM primarily counts ionizing events",
+    "answer": "D",
+    "explanation": "Their principal outputs are different: visible trajectories versus electrical counts."
+  },
+  {
+    "qnum": 181,
+    "question": "An instrument converts gas ionization directly into electrical pulses but does not normally display the trajectory. It is most likely a:",
+    "opt_a": "GM counter",
+    "opt_b": "Wilson cloud chamber",
+    "opt_c": "Reactor",
+    "opt_d": "Spectroscope",
+    "answer": "A",
+    "explanation": "This describes the operating principle of the GM detector."
+  },
+  {
+    "qnum": 182,
+    "question": "A detector requires a supersaturated vapor so that droplets form along particle paths. It must be a:",
+    "opt_a": "GM tube",
+    "opt_b": "Wilson cloud chamber",
+    "opt_c": "Transformer",
+    "opt_d": "Semiconductor diode",
+    "answer": "B",
+    "explanation": "Supersaturated vapor is the characteristic operating medium of the cloud chamber."
+  },
+  {
+    "qnum": 183,
+    "question": "An experiment requires researchers to compare the shapes and trajectories of several charged-particle tracks. The most appropriate detector is:",
+    "opt_a": "GM counter",
+    "opt_b": "Thermometer",
+    "opt_c": "Wilson cloud chamber",
+    "opt_d": "Ammeter",
+    "answer": "C",
+    "explanation": "It is a tracking detector designed to make trajectories visible."
+  },
+  {
+    "qnum": 184,
+    "question": "A hospital laboratory needs routine numerical monitoring of radiation levels rather than photographs of tracks. The more appropriate choice is:",
+    "opt_a": "Wilson chamber",
+    "opt_b": "Optical telescope",
+    "opt_c": "Calorimeter only",
+    "opt_d": "GM counter",
+    "answer": "D",
+    "explanation": "GM counters are widely used for radiation-level monitoring."
+  },
+  {
+    "qnum": 185,
+    "question": "Starting with udd, suppose both down quarks hypothetically undergo d → u transformations. The resulting uuu combination has total charge:",
+    "opt_a": "+2 e",
+    "opt_b": "+1 e",
+    "opt_c": "0",
+    "opt_d": "−1 e",
+    "answer": "A",
+    "explanation": "Three up quarks give 3 × (+2/3) = +2 e."
+  },
+  {
+    "qnum": 186,
+    "question": "Starting from uud, suppose both up quarks change into down quarks. The resulting ddd combination has charge:",
+    "opt_a": "0",
+    "opt_b": "−1 e",
+    "opt_c": "+1 e",
+    "opt_d": "−2 e",
+    "answer": "B",
+    "explanation": "3 × (−1/3) = −1 e."
+  },
+  {
+    "qnum": 187,
+    "question": "A u-anti-d meson initially has charge +1 e. If its u quark changes to d while the anti-down remains unchanged, the new d-anti-d pair has zero charge. The charge change is:",
+    "opt_a": "+1 e",
+    "opt_b": "+1/3 e",
+    "opt_c": "−1 e",
+    "opt_d": "−2 e",
+    "answer": "C",
+    "explanation": "The total charge changes from +1 e to 0, a decrease of 1 e."
+  },
+  {
+    "qnum": 188,
+    "question": "An u-anti-u pair is electrically neutral. Replacing anti-u by anti-down changes the total charge to:",
+    "opt_a": "−1 e",
+    "opt_b": "0",
+    "opt_c": "+1/3 e",
+    "opt_d": "+1 e",
+    "answer": "D",
+    "explanation": "+2/3 + 1/3 = +1 e."
+  },
+  {
+    "qnum": 189,
+    "question": "A three-quark particle has zero electric charge. Which of the following compositions satisfies this using only up and down quarks?",
+    "opt_a": "udd",
+    "opt_b": "uud",
+    "opt_c": "uuu",
+    "opt_d": "ddd",
+    "answer": "A",
+    "explanation": "+2/3 − 1/3 − 1/3 = 0."
+  },
+  {
+    "qnum": 190,
+    "question": "Which set contains the three negatively charged leptons, one from each generation?",
+    "opt_a": "Electron, neutrino, muon",
+    "opt_b": "Electron, muon, tau",
+    "opt_c": "Up, charm, top",
+    "opt_d": "Electron-neutrino, muon-neutrino, tau-neutrino",
+    "answer": "B",
+    "explanation": "Electron, muon and tau are the three charged leptons."
+  },
+  {
+    "qnum": 191,
+    "question": "Which set contains only the electrically neutral lepton partners?",
+    "opt_a": "Electron, muon, tau",
+    "opt_b": "Up, charm, top",
+    "opt_c": "Electron-neutrino, muon-neutrino, tau-neutrino",
+    "opt_d": "Down, strange, bottom",
+    "answer": "C",
+    "explanation": "The three neutrinos are the neutral members of the lepton generations."
+  },
+  {
+    "qnum": 192,
+    "question": "Which pairing correctly represents all three quark generations?",
+    "opt_a": "Up/charm, down/strange, top/bottom",
+    "opt_b": "Up/top, charm/bottom, down/strange",
+    "opt_c": "Electron/up, muon/charm, tau/top",
+    "opt_d": "Up/down, charm/strange, top/bottom",
+    "answer": "D",
+    "explanation": "Those are the three generation pairs given in the chapter."
+  },
+  {
+    "qnum": 193,
+    "question": "If each of the six quark flavors may carry any one of three color charges, how many flavor-color combinations are possible?",
+    "opt_a": "18",
+    "opt_b": "9",
+    "opt_c": "6",
+    "opt_d": "3",
+    "answer": "A",
+    "explanation": "6 flavors × 3 colors = 18 possible flavor-color combinations."
+  },
+  {
+    "qnum": 194,
+    "question": "An event produces two baryons and three mesons. Counting all constituent quarks and antiquarks, how many constituents are present?",
+    "opt_a": "10",
+    "opt_b": "12",
+    "opt_c": "14",
+    "opt_d": "15",
+    "answer": "B",
+    "explanation": "Two baryons contain 6 quarks and three mesons contain 6 constituents, totaling 12."
+  },
+  {
+    "qnum": 195,
+    "question": "Four baryons and four mesons together contain how many quark/antiquark constituents?",
+    "opt_a": "12",
+    "opt_b": "16",
+    "opt_c": "20",
+    "opt_d": "24",
+    "answer": "C",
+    "explanation": "4(3) + 4(2) = 12 + 8 = 20."
+  },
+  {
+    "qnum": 196,
+    "question": "If six quarks are divided completely into ordinary three-quark baryons, the greatest number of complete baryons that can be formed is:",
+    "opt_a": "6",
+    "opt_b": "3",
+    "opt_c": "1",
+    "opt_d": "2",
+    "answer": "D",
+    "explanation": "Each baryon requires three quarks, so 6/3 = 2."
+  },
+  {
+    "qnum": 197,
+    "question": "An experimenter needs to identify an unknown charged particle partly from the geometry of its visible trajectory. Which instrument best matches this requirement?",
+    "opt_a": "Wilson cloud chamber",
+    "opt_b": "GM counter",
+    "opt_c": "Voltmeter",
+    "opt_d": "Transformer",
+    "answer": "A",
+    "explanation": "The cloud chamber provides visible tracks that can be analyzed for particle identification."
+  },
+  {
+    "qnum": 198,
+    "question": "An experimenter studies how radiation count varies as detector voltage is raised through threshold, plateau and continuous-discharge regions. Which instrument is being tested?",
+    "opt_a": "Wilson cloud chamber",
+    "opt_b": "Geiger-Müller counter",
+    "opt_c": "Particle accelerator",
+    "opt_d": "Reactor",
+    "answer": "B",
+    "explanation": "Those voltage-response regions belong to the GM-counter characteristic curve."
+  },
+  {
+    "qnum": 199,
+    "question": "An unknown force particle is massless in the textbook table, has spin 1, and carries the strongest interaction. It must be the:",
+    "opt_a": "Photon",
+    "opt_b": "Graviton",
+    "opt_c": "Gluon",
+    "opt_d": "W boson",
+    "answer": "C",
+    "explanation": "The gluon is the massless spin-1 carrier of strong interaction."
+  },
+  {
+    "qnum": 200,
+    "question": "A hypothetical field particle is described as massless, spin 2, and associated with the weakest fundamental interaction. It is the:",
+    "opt_a": "Photon",
+    "opt_b": "Gluon",
+    "opt_c": "Z boson",
+    "opt_d": "Graviton",
+    "answer": "D",
+    "explanation": "These are the properties assigned to the hypothetical graviton in the chapter."
+  }
+]

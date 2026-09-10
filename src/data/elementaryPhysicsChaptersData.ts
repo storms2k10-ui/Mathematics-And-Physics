@@ -1071,8 +1071,8 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     name: '10. Relativity',
     description: 'Galilean relativity and reference frames, Michelson-Morley experiment and constancy of speed of light, Einstein\'s two postulates of Special Relativity, Lorentz transformations, relativity of simultaneity, relativistic time dilation $\\Delta t = \\gamma \\Delta t_0$, Lorentz length contraction $L = L_0/\\gamma$, relativistic momentum $\\mathbf{p} = \\gamma m_0 \\mathbf{v}$, mass-energy equivalence $E = mc^2 = \\gamma m_0 c^2$, and the energy-momentum invariant $E^2 = p^2 c^2 + m_0^2 c^4$.',
     category: 'Modern Physics & Quantum Theory',
-    questionCount: 0,
-    difficulty: 'Mixed',
+    questionCount: 200,
+    difficulty: 'Normal',
     keyTopics: [
       'Postulates of Special Relativity & Invariance of the Speed of Light ($c$)',
       'Lorentz Factor: $\\gamma = \\frac{1}{\\sqrt{1 - v^2/c^2}}$',
@@ -1117,8 +1117,8 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     name: '11. Quantum Physics',
     description: 'Blackbody radiation curves and Planck\'s quantum hypothesis $E = h\\nu$, photoelectric effect observations and Einstein\'s photoelectric equation $K_{\\max} = h\\nu - \\Phi_0 = e V_0$, Compton scattering and Compton shift $\\Delta\\lambda = \\frac{h}{m_e c}(1 - \\cos\\theta)$, pair production and annihilation, de Broglie matter waves $\\lambda = \\frac{h}{p}$, Davisson-Germer electron diffraction, and Heisenberg\'s Uncertainty Principle $\\Delta x \\Delta p \\ge \\frac{\\hbar}{2}$.',
     category: 'Modern Physics & Quantum Theory',
-    questionCount: 0,
-    difficulty: 'Mixed',
+    questionCount: 200,
+    difficulty: 'Normal',
     keyTopics: [
       'Blackbody Radiation & Planck\'s Quantization of Energy ($E = h\\nu$)',
       'Photoelectric Effect: Work Function $\\Phi_0$, Stopping Potential $V_0$, and Photons',
@@ -1163,7 +1163,7 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     name: '12. Atomic Physics',
     description: 'Rutherford\'s alpha scattering experiment and nuclear atom model, atomic spectra and emission/absorption series, Rydberg formula $\\frac{1}{\\lambda} = R_H\\left(\\frac{1}{n_1^2} - \\frac{1}{n_2^2}\\right)$, Bohr\'s quantum postulates of hydrogen atom ($L = mvr = \\frac{nh}{2\\pi}$), Bohr radii $r_n = n^2 a_0$, quantized energy levels $E_n = -\\frac{13.6}{n^2}\\text{ eV}$, spectral series (Lyman, Balmer, Paschen), X-ray production (characteristic and Bremsstrahlung, Moseley\'s law), and lasers (stimulated emission and population inversion).',
     category: 'Modern Physics & Quantum Theory',
-    questionCount: 0,
+    questionCount: 200,
     difficulty: 'Mixed',
     keyTopics: [
       'Rutherford Alpha Scattering Experiment & Nuclear Atom Model',
@@ -1209,7 +1209,7 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     name: '13. Nuclear Physics',
     description: 'Nuclear composition (protons, neutrons, nucleons, isotopes), nuclear radius $R = R_0 A^{1/3}$ and density, strong nuclear force, mass defect $\\Delta m$ and binding energy $E_b = \\Delta m c^2$, binding energy per nucleon curve ($E_b/A$) and nuclear stability, radioactive decay law $N(t) = N_0 e^{-\\lambda t}$, half-life $T_{1/2} = \\frac{\\ln 2}{\\lambda}$ and activity $A = \\lambda N$, nuclear fission of Uranium-235 and chain reactions, nuclear reactors, and thermonuclear fusion in stars.',
     category: 'Modern Physics & Quantum Theory',
-    questionCount: 0,
+    questionCount: 200,
     difficulty: 'Mixed',
     keyTopics: [
       'Nuclear Radius ($R = R_0 A^{1/3}$), Constant Nuclear Density & Strong Nuclear Force',
@@ -1255,7 +1255,7 @@ export const ELEMENTARY_PHYSICS_12_CHAPTERS: Chapter[] = [
     name: '14. Particle Physics',
     description: 'Four fundamental interactions of nature (gravity, electromagnetism, weak force, strong force) and exchange bosons, matter particles: leptons and quarks, quark flavors (up, down, charm, strange, top, bottom) and fractional electric charges ($+2/3e, -1/3e$), hadrons: baryons ($qqq$) and mesons ($q\\bar{q}$), antiparticles and annihilation, fundamental conservation laws (baryon number, lepton number, strangeness, charge), the Standard Model, and the Higgs boson.',
     category: 'Modern Physics & Quantum Theory',
-    questionCount: 0,
+    questionCount: 200,
     difficulty: 'Mixed',
     keyTopics: [
       'Four Fundamental Forces & Exchange Gauge Bosons (Photon, Gluons, $W^\\pm, Z^0$, Graviton)',
