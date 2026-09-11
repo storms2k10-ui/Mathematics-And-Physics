@@ -4,9 +4,6 @@ import {
   ArrowRight, 
   X, 
   BookOpen,
-  Sparkles,
-  Zap,
-  Target,
   Lock,
   CheckCircle2,
   AlertCircle
@@ -43,7 +40,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
   const [selectedClass, setSelectedClass] = useState<ClassLevel>(defaultClass);
   const [selectedTrack, setSelectedTrack] = useState<'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus'>(defaultTrack);
   const [difficultyTier, setDifficultyTier] = useState<PracticeDifficulty>(defaultDifficulty);
-  const [questionCount, setQuestionCount] = useState<number>(15);
+  const [questionCount, setQuestionCount] = useState<number>(30);
   const [error, setError] = useState<string | null>(null);
 
   const isNameFixed = Boolean(userProfile?.displayName || currentUser?.displayName);
@@ -80,7 +77,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
 
   const isClass11or12 = defaultClass === 11 || defaultClass === 12;
   const effectiveDifficultyTier = isClass11or12 ? difficultyTier : 'Normal';
-  const availableQuestionCounts = [15, 20, 25];
+  const availableQuestionCounts = [15, 20, 25, 30];
   const isUserSignedIn = Boolean(currentUser || (userProfile && userProfile.email && userProfile.email.includes('@')));
 
   // Check how many questions exist dynamically for Normal and Advanced
@@ -126,13 +123,19 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
       return;
     }
 
+    const chosenCount = Math.min(questionCount, currentTierCount);
+    const chosenSecondsPerQ = 90; // Default 90 seconds for each question
+    const chosenDurationMinutes = Math.round((chosenCount * chosenSecondsPerQ) / 60);
+
     onStartTest({
       student: {
         name: finalName,
         classLevel: defaultClass, // strictly fixed to the selected chapter's class
       },
       mode: 'practice',
-      questionCount: Math.min(questionCount, currentTierCount),
+      questionCount: chosenCount,
+      timeLimitMinutes: chosenDurationMinutes,
+      secondsPerQuestion: chosenSecondsPerQ,
       track: selectedTrack,
       difficultyTier: effectiveDifficultyTier,
     });
@@ -377,19 +380,14 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
             </div>
           )}
 
-          {/* Dynamic Question Count Selector: 15, 20, and 25 MCQs (Only active when questions exist) */}
+          {/* Dynamic Question Count Selector: 15, 20, 25, and 30 MCQs (Only active when questions exist) */}
           {!isTierLocked && (
             <div className="space-y-1.5">
-              <div className="flex items-center justify-between">
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-                  Number of MCQs
-                </label>
-                <span className="text-[10px] font-semibold text-indigo-600 dark:text-indigo-400">
-                  Select duration
-                </span>
-              </div>
+              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                Number of MCQs
+              </label>
               
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
                 {availableQuestionCounts.map((count) => {
                   const isSelected = questionCount === count;
 
@@ -397,32 +395,18 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
                     <button
                       type="button"
                       key={count}
+                      id={`practice-count-${count}-btn`}
                       onClick={() => setQuestionCount(count)}
-                      className={`relative p-2 rounded-xl border transition-all text-left cursor-pointer flex flex-col justify-between ${
+                      className={`relative py-2.5 px-2 rounded-xl border transition-all text-center cursor-pointer flex items-center justify-center gap-1.5 hover:scale-[1.02] active:scale-[0.98] ${
                         isSelected
-                          ? 'bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-700 border-indigo-500 text-white shadow-xs ring-1.5 ring-indigo-400/80'
-                          : 'bg-slate-50 dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-300 dark:hover:border-indigo-600 hover:bg-indigo-50/40 dark:hover:bg-slate-800'
+                          ? 'bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-700 border-indigo-400 text-white shadow-md shadow-indigo-600/30 ring-2 ring-indigo-400'
+                          : 'bg-slate-50 dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-300 dark:hover:border-indigo-600 hover:bg-indigo-50/40 dark:hover:bg-slate-800/80 shadow-2xs'
                       }`}
                     >
-                      <div className="flex items-center justify-between mb-0.5">
-                        <div className="flex items-center gap-1">
-                          {count === 15 ? (
-                            <Zap className={`w-3 h-3 ${isSelected ? 'text-amber-300 fill-amber-300' : 'text-indigo-500 dark:text-indigo-400'}`} />
-                          ) : count === 20 ? (
-                            <Sparkles className={`w-3 h-3 ${isSelected ? 'text-yellow-300 fill-yellow-300' : 'text-amber-500 dark:text-amber-400'}`} />
-                          ) : (
-                            <Target className={`w-3 h-3 ${isSelected ? 'text-cyan-300' : 'text-purple-500 dark:text-purple-400'}`} />
-                          )}
-                          <span className="font-extrabold text-xs tracking-tight whitespace-nowrap">
-                            {count} MCQs
-                          </span>
-                        </div>
-                        <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300' : 'bg-slate-300 dark:bg-slate-600'}`} />
-                      </div>
-
-                      <p className={`text-[9px] leading-tight ${isSelected ? 'text-indigo-100' : 'text-slate-500 dark:text-slate-400'}`}>
-                        {count === 15 ? '15 Mins' : count === 20 ? '20 Mins' : '25 Mins'}
-                      </p>
+                      <span className="font-black text-xs sm:text-sm tracking-tight whitespace-nowrap">
+                        {count} MCQs
+                      </span>
+                      <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${isSelected ? 'bg-amber-300' : 'bg-slate-300 dark:bg-slate-600'}`} />
                     </button>
                   );
                 })}

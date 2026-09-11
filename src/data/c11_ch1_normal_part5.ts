@@ -228,23 +228,23 @@ export const C11_CH1_NORMAL_PART5: Question[] = [
     subject: "Mathematics",
     chapter_id: "c11-ch1",
     chapter: "Complex Numbers",
-    question: "If $z = x + iy$ and $|z - 2| = |z + 2|$, the locus of $z$ on the Argand plane is:",
+    question: "If $z = x + iy$ satisfies $|z - 2| = |z + 2|$, then algebraically:",
     options: {
-      A: "The imaginary axis ($x=0$)",
-      B: "The real axis ($y=0$)",
-      C: "A circle of radius $2$",
-      D: "The line $y=x$"
+      A: "$x = 0$",
+      B: "$y = 0$",
+      C: "$x = 2$",
+      D: "$y = 2$"
     },
-    option_a: "The imaginary axis ($x=0$)",
-    option_b: "The real axis ($y=0$)",
-    option_c: "A circle of radius $2$",
-    option_d: "The line $y=x$",
+    option_a: "$x = 0$",
+    option_b: "$y = 0$",
+    option_c: "$x = 2$",
+    option_d: "$y = 2$",
     correct_answer: "A",
     correct_option: "A",
-    explanation: "$|z-2|=|z+2| \\implies (x-2)^2 + y^2 = (x+2)^2 + y^2 \\implies -4x = 4x \\implies x=0$, which is the imaginary axis ($y$-axis).",
+    explanation: "$|z-2|^2 = |z+2|^2 \\implies (x-2)^2 + y^2 = (x+2)^2 + y^2 \\implies -4x = 4x \\implies 8x = 0 \\implies x = 0$.",
     difficulty: "Medium",
     difficulty_tier: "Normal",
-    formula: "|z-z_1| = |z-z_2|"
+    formula: "|z-2|=|z+2|"
   },
   {
     id: "c11-ch1-normal-q211",
@@ -516,23 +516,23 @@ export const C11_CH1_NORMAL_PART5: Question[] = [
     subject: "Mathematics",
     chapter_id: "c11-ch1",
     chapter: "Complex Numbers",
-    question: "If $|z - 3 + 4i| = 5$, the maximum distance of $z$ from the origin is:",
+    question: "If $z = 3 - 4i$, then the value of $z^2$ is:",
     options: {
-      A: "$10$",
-      B: "$5$",
-      C: "$25$",
-      D: "$0$"
+      A: "$-7 - 24i$",
+      B: "$-7 + 24i$",
+      C: "$25 - 24i$",
+      D: "$7 - 24i$"
     },
-    option_a: "$10$",
-    option_b: "$5$",
-    option_c: "$25$",
-    option_d: "$0$",
+    option_a: "$-7 - 24i$",
+    option_b: "$-7 + 24i$",
+    option_c: "$25 - 24i$",
+    option_d: "$7 - 24i$",
     correct_answer: "A",
     correct_option: "A",
-    explanation: "By the triangle inequality, $|z| = |(z - 3 + 4i) + (3 - 4i)| \\le |z - 3 + 4i| + |3 - 4i| = 5 + \\sqrt{3^2+(-4)^2} = 5 + 5 = 10$.",
+    explanation: "$z^2 = (3-4i)^2 = 9 - 24i + (4i)^2 = 9 - 24i - 16 = -7 - 24i$.",
     difficulty: "Hard",
     difficulty_tier: "Normal",
-    formula: "|z|_{\\max} = |z_0| + r"
+    formula: "(a-bi)^2"
   },
   {
     id: "c11-ch1-normal-q223",
@@ -540,23 +540,23 @@ export const C11_CH1_NORMAL_PART5: Question[] = [
     subject: "Mathematics",
     chapter_id: "c11-ch1",
     chapter: "Complex Numbers",
-    question: "If $|z - 3 + 4i| = 5$, the minimum distance of $z$ from the origin is:",
+    question: "The value of $(1+\\omega^2)^4$ where $\\omega$ is a complex cube root of unity is:",
     options: {
-      A: "$0$",
-      B: "$5$",
+      A: "$\\omega$",
+      B: "$\\omega^2$",
       C: "$1$",
-      D: "$10$"
+      D: "$-\\omega$"
     },
-    option_a: "$0$",
-    option_b: "$5$",
+    option_a: "$\\omega$",
+    option_b: "$\\omega^2$",
     option_c: "$1$",
-    option_d: "$10$",
+    option_d: "$-\\omega$",
     correct_answer: "A",
     correct_option: "A",
-    explanation: "The locus of $z$ is a circle centered at $(3,-4)$ with radius $5$. The distance from the origin to the center is $\\sqrt{3^2+(-4)^2} = 5$. Since this distance equals the radius, the circle passes through the origin, giving a minimum distance of $|5 - 5| = 0$.",
+    explanation: "Since $1+\\omega^2 = -\\omega$, $(1+\\omega^2)^4 = (-\\omega)^4 = \\omega^4 = \\omega^3 \\cdot \\omega = \\omega$.",
     difficulty: "Hard",
     difficulty_tier: "Normal",
-    formula: "|z|_{\\min} = ||z_0| - r|"
+    formula: "(-\\omega)^4=\\omega"
   },
   {
     id: "c11-ch1-normal-q224",
@@ -588,23 +588,23 @@ export const C11_CH1_NORMAL_PART5: Question[] = [
     subject: "Mathematics",
     chapter_id: "c11-ch1",
     chapter: "Complex Numbers",
-    question: "The area of the triangle formed by $z$, $iz$, and $z+iz$ on the Argand plane is:",
+    question: "The product $(1+i)(2+i)(3+i)$ equals:",
     options: {
-      A: "$\\frac{1}{2}|z|^2$",
-      B: "$|z|^2$",
-      C: "$\\frac{1}{4}|z|^2$",
-      D: "$2|z|^2$"
+      A: "$10i$",
+      B: "$-10i$",
+      C: "$10$",
+      D: "$-10$"
     },
-    option_a: "$\\frac{1}{2}|z|^2$",
-    option_b: "$|z|^2$",
-    option_c: "$\\frac{1}{4}|z|^2$",
-    option_d: "$2|z|^2$",
+    option_a: "$10i$",
+    option_b: "$-10i$",
+    option_c: "$10$",
+    option_d: "$-10$",
     correct_answer: "A",
     correct_option: "A",
-    explanation: "Multiplication by $i$ rotates a vector by $90^\\circ$ without changing its magnitude. Thus the vectors $z$ and $iz$ are perpendicular with lengths $|z|$. The triangle formed by $z$, $iz$, and $z+iz$ has right angle and side lengths $|z|$, so its area is $\\frac{1}{2}|z|^2$.",
+    explanation: "$(1+i)(2+i) = 2+i+2i-1 = 1+3i$. Then $(1+3i)(3+i) = 3+i+9i-3 = 10i$.",
     difficulty: "Hard",
     difficulty_tier: "Normal",
-    formula: "\\text{Area} = \\frac{1}{2}|z_1||z_2|"
+    formula: "(1+3i)(3+i)=10i"
   },
   {
     id: "c11-ch1-normal-q226",
@@ -660,23 +660,23 @@ export const C11_CH1_NORMAL_PART5: Question[] = [
     subject: "Mathematics",
     chapter_id: "c11-ch1",
     chapter: "Complex Numbers",
-    question: "The condition for two nonzero complex numbers $z_1$ and $z_2$ to be perpendicular vectors on the Argand plane is:",
+    question: "If $z_1 = 3+i$ and $z_2 = 2-i$, then $\\frac{z_1}{z_2}$ in $a+bi$ form is:",
     options: {
-      A: "$\\operatorname{Re}(z_1 \\bar{z_2}) = 0$",
-      B: "$\\operatorname{Im}(z_1 \\bar{z_2}) = 0$",
-      C: "$|z_1| = |z_2|$",
-      D: "$z_1 z_2 = 1$"
+      A: "$1 + i$",
+      B: "$1 - i$",
+      C: "$\\frac{7+5i}{5}$",
+      D: "$\\frac{5+5i}{5}$"
     },
-    option_a: "$\\operatorname{Re}(z_1 \\bar{z_2}) = 0$",
-    option_b: "$\\operatorname{Im}(z_1 \\bar{z_2}) = 0$",
-    option_c: "$|z_1| = |z_2|$",
-    option_d: "$z_1 z_2 = 1$",
+    option_a: "$1 + i$",
+    option_b: "$1 - i$",
+    option_c: "$\\frac{7+5i}{5}$",
+    option_d: "$\\frac{5+5i}{5}$",
     correct_answer: "A",
     correct_option: "A",
-    explanation: "The dot product of vectors representing $z_1$ and $z_2$ is $x_1 x_2 + y_1 y_2 = \\operatorname{Re}(z_1 \\bar{z_2})$. Perpendicularity implies dot product $= 0$.",
+    explanation: "$\\frac{3+i}{2-i} = \\frac{(3+i)(2+i)}{(2-i)(2+i)} = \\frac{6 + 3i + 2i - 1}{4 + 1} = \\frac{5+5i}{5} = 1+i$.",
     difficulty: "Hard",
     difficulty_tier: "Normal",
-    formula: "\\operatorname{Re}(z_1 \\bar{z_2}) = 0"
+    formula: "\\frac{z_1}{z_2}"
   },
   {
     id: "c11-ch1-normal-q229",
@@ -684,23 +684,23 @@ export const C11_CH1_NORMAL_PART5: Question[] = [
     subject: "Mathematics",
     chapter_id: "c11-ch1",
     chapter: "Complex Numbers",
-    question: "The condition for two nonzero complex numbers $z_1$ and $z_2$ to be parallel (collinear with origin) on the Argand plane is:",
+    question: "If $z = -2 + 2i\\sqrt{3}$, then the modulus $|z|$ is:",
     options: {
-      A: "$\\operatorname{Im}(z_1 \\bar{z_2}) = 0$",
-      B: "$\\operatorname{Re}(z_1 \\bar{z_2}) = 0$",
-      C: "$z_1 + z_2 = 0$",
-      D: "$|z_1| = |z_2|$"
+      A: "$4$",
+      B: "$2$",
+      C: "$16$",
+      D: "$2\\sqrt{3}$"
     },
-    option_a: "$\\operatorname{Im}(z_1 \\bar{z_2}) = 0$",
-    option_b: "$\\operatorname{Re}(z_1 \\bar{z_2}) = 0$",
-    option_c: "$z_1 + z_2 = 0$",
-    option_d: "$|z_1| = |z_2|$",
+    option_a: "$4$",
+    option_b: "$2$",
+    option_c: "$16$",
+    option_d: "$2\\sqrt{3}$",
     correct_answer: "A",
     correct_option: "A",
-    explanation: "Collinear vectors have zero cross product: $x_1 y_2 - x_2 y_1 = 0$, which is $-\\operatorname{Im}(z_1 \\bar{z_2}) = 0$, or $\\frac{z_1}{z_2}$ is purely real.",
+    explanation: "$|z| = \\sqrt{(-2)^2 + (2\\sqrt{3})^2} = \\sqrt{4 + 12} = \\sqrt{16} = 4$.",
     difficulty: "Hard",
     difficulty_tier: "Normal",
-    formula: "\\operatorname{Im}(z_1 \\bar{z_2}) = 0"
+    formula: "|z|=\\sqrt{a^2+b^2}"
   },
   {
     id: "c11-ch1-normal-q230",
@@ -708,23 +708,23 @@ export const C11_CH1_NORMAL_PART5: Question[] = [
     subject: "Mathematics",
     chapter_id: "c11-ch1",
     chapter: "Complex Numbers",
-    question: "If $\\left|\\frac{z-i}{z+i}\\right| = 1$, then $z$ lies on:",
+    question: "If $z = x+iy$ satisfies $\\left|\\frac{z-i}{z+i}\\right| = 1$, then algebraically:",
     options: {
-      A: "The real axis ($y=0$)",
-      B: "The imaginary axis ($x=0$)",
-      C: "A circle of radius $1$",
-      D: "The line $y=1$"
+      A: "$y = 0$",
+      B: "$x = 0$",
+      C: "$x = 1$",
+      D: "$y = 1$"
     },
-    option_a: "The real axis ($y=0$)",
-    option_b: "The imaginary axis ($x=0$)",
-    option_c: "A circle of radius $1$",
-    option_d: "The line $y=1$",
+    option_a: "$y = 0$",
+    option_b: "$x = 0$",
+    option_c: "$x = 1$",
+    option_d: "$y = 1$",
     correct_answer: "A",
     correct_option: "A",
-    explanation: "$|z-i| = |z+i| \\implies$ the distance from $z$ to $(0,1)$ equals the distance from $z$ to $(0,-1)$. The perpendicular bisector of the line segment joining $(0,1)$ and $(0,-1)$ is the real axis ($y=0$).",
+    explanation: "$|z-i| = |z+i| \\implies x^2 + (y-1)^2 = x^2 + (y+1)^2 \\implies -2y = 2y \\implies y = 0$.",
     difficulty: "Medium",
     difficulty_tier: "Normal",
-    formula: "|z-i| = |z+i|"
+    formula: "|z-i|=|z+i|"
   },
   {
     id: "c11-ch1-normal-q231",
@@ -732,23 +732,23 @@ export const C11_CH1_NORMAL_PART5: Question[] = [
     subject: "Mathematics",
     chapter_id: "c11-ch1",
     chapter: "Complex Numbers",
-    question: "If $\\operatorname{Arg}(z) = \\frac{\\pi}{4}$, then the locus of $z$ is:",
+    question: "If $z = 1+i$, then the principal argument $\\operatorname{Arg}(z)$ is:",
     options: {
-      A: "A ray originating from the origin into the first quadrant at $45^\\circ$",
-      B: "The entire line $y=x$",
-      C: "A circle of radius $1$",
-      D: "A line segment of finite length"
+      A: "$\\frac{\\pi}{4}$",
+      B: "$\\frac{\\pi}{2}$",
+      C: "$\\frac{\\pi}{3}$",
+      D: "$\\frac{\\pi}{6}$"
     },
-    option_a: "A ray originating from the origin into the first quadrant at $45^\\circ$",
-    option_b: "The entire line $y=x$",
-    option_c: "A circle of radius $1$",
-    option_d: "A line segment of finite length",
+    option_a: "$\\frac{\\pi}{4}$",
+    option_b: "$\\frac{\\pi}{2}$",
+    option_c: "$\\frac{\\pi}{3}$",
+    option_d: "$\\frac{\\pi}{6}$",
     correct_answer: "A",
     correct_option: "A",
-    explanation: "$\\operatorname{Arg}(z) = \\frac{\\pi}{4}$ represents the open ray starting from $(0,0)$ (excluding the origin) into the first quadrant at an angle of $\\frac{\\pi}{4}$.",
+    explanation: "Since both $x=1 > 0$ and $y=1 > 0$, $\\operatorname{Arg}(z) = \\tan^{-1}\\left(\\frac{1}{1}\\right) = \\frac{\\pi}{4}$.",
     difficulty: "Easy",
     difficulty_tier: "Normal",
-    formula: "\\operatorname{Arg}(z) = \\theta"
+    formula: "\\operatorname{Arg}(z)"
   },
   {
     id: "c11-ch1-normal-q232",

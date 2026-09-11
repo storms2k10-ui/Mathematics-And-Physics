@@ -34,6 +34,8 @@ export interface CreateAttemptParams {
   mode?: 'practice' | 'exam';
   difficultyTier?: PracticeDifficulty;
   questionCount?: number;
+  timeLimitMinutes?: number;
+  secondsPerQuestion?: number;
   student?: StudentProfile;
   userId?: string | null;
   userEmail?: string | null;
@@ -142,7 +144,7 @@ export class TestAttemptService {
     const track = params.track || 'Elementary Mathematics';
     const difficultyTier = params.difficultyTier || 'Normal';
     const mode = params.mode || 'practice';
-    const count = params.questionCount || 15;
+    const count = params.questionCount || 30;
 
     // 1. Get pool of available questions
     let rawPool: Question[] = [];
@@ -187,6 +189,9 @@ export class TestAttemptService {
 
     const studentName = params.student?.name || params.userEmail?.split('@')[0] || 'Student Candidate';
 
+    const calculatedSecsPerQ = params.secondsPerQuestion || 90;
+    const durationMinutes = params.timeLimitMinutes || Math.round((count * calculatedSecsPerQ) / 60);
+
     const testAttempt: TestAttempt = {
       id: attemptId,
       userId: params.userId || auth.currentUser?.uid || null,
@@ -207,6 +212,8 @@ export class TestAttemptService {
       skippedCount: 0,
       scorePercentage: 0,
       timeSpentSeconds: 0,
+      timeLimitMinutes: durationMinutes,
+      secondsPerQuestion: calculatedSecsPerQ,
       createdAt: now,
       updatedAt: now,
     };

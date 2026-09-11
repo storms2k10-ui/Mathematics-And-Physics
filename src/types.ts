@@ -148,6 +148,8 @@ export interface TestAttempt {
   skippedCount: number;
   scorePercentage: number;
   timeSpentSeconds: number;
+  timeLimitMinutes?: number;
+  secondsPerQuestion?: number;
   createdAt: number;
   updatedAt: number;
   completedAt?: number;
@@ -164,6 +166,7 @@ export interface TestSessionConfig {
   student: StudentProfile;
   mode: 'practice' | 'exam'; // 'practice' = immediate step-by-step feedback; 'exam' = timed mock exam
   timeLimitMinutes?: number;
+  secondsPerQuestion?: number;
   questionCount?: number;
   difficultyTier?: PracticeDifficulty;
 }

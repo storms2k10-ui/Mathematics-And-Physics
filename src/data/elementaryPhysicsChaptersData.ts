@@ -11,7 +11,7 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     name: 'Physics and Measurements',
     description: 'Fundamental physical quantities, SI base & derived units, dimensional analysis $[M^a L^b T^c]$, errors (systematic & random), uncertainty propagation, and significant figures.',
     category: 'Mechanics & Kinematics',
-    questionCount: 120,
+    questionCount: 270,
     difficulty: 'Mixed',
     keyTopics: [
       'Physical Quantities: Base and Derived Units',
@@ -56,7 +56,7 @@ export const ELEMENTARY_PHYSICS_11_CHAPTERS: Chapter[] = [
     name: 'Kinematics',
     description: 'Rectilinear motion, displacement vs distance, speed and instantaneous velocity, uniform and non-uniform acceleration, kinematic equations of motion, and graphical analysis ($x-t, v-t$).',
     category: 'Mechanics & Kinematics',
-    questionCount: 70,
+    questionCount: 220,
     difficulty: 'Mixed',
     keyTopics: [
       'Displacement, Speed, and Velocity Vectors',

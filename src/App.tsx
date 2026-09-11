@@ -77,6 +77,8 @@ export default function App() {
   const [activeInitialAnswers, setActiveInitialAnswers] = useState<Record<number, UserAnswer>>({});
   const [activeInitialTime, setActiveInitialTime] = useState<number>(0);
   const [activeInitialIndex, setActiveInitialIndex] = useState<number>(0);
+  const [activeTimeLimitMinutes, setActiveTimeLimitMinutes] = useState<number | undefined>(undefined);
+  const [activeSecondsPerQuestion, setActiveSecondsPerQuestion] = useState<number | undefined>(undefined);
   const [forceMobileDemo, setForceMobileDemo] = useState(false);
 
   // Pending Quiz Results (held when not signed in yet)
@@ -145,6 +147,8 @@ export default function App() {
             setActiveInitialAnswers(attempt.userAnswers || {});
             setActiveInitialTime(attempt.timeSpentSeconds || 0);
             setActiveInitialIndex(attempt.currentQuestionIndex || 0);
+            setActiveTimeLimitMinutes(attempt.timeLimitMinutes);
+            setActiveSecondsPerQuestion(attempt.secondsPerQuestion);
             setCurrentView('quiz');
           }
         }
@@ -313,6 +317,10 @@ export default function App() {
     setPendingDifficultyTier(difficultyTierToUse);
     const chTitle = pendingQuizTitle || (targetChapter ? targetChapter.name : `Class ${config.student.classLevel} Practice`);
 
+    const chosenCount = config.questionCount || 30;
+    const calculatedSecsPerQ = config.secondsPerQuestion || 90;
+    const durationMinutes = config.timeLimitMinutes || Math.round((chosenCount * calculatedSecsPerQ) / 60);
+
     try {
       const { attempt, questionsForQuiz } = await TestAttemptService.createAttempt({
         chapterId: targetChapter?.id,
@@ -321,7 +329,9 @@ export default function App() {
         track: trackToUse,
         mode: config.mode,
         difficultyTier: difficultyTierToUse,
-        questionCount: config.questionCount || 15,
+        questionCount: chosenCount,
+        timeLimitMinutes: durationMinutes,
+        secondsPerQuestion: calculatedSecsPerQ,
         student: config.student,
         userId: currentUser?.uid || userProfile?.uid,
         userEmail: currentUser?.email || userProfile?.email,
@@ -338,6 +348,8 @@ export default function App() {
       setActiveInitialAnswers({});
       setActiveInitialTime(0);
       setActiveInitialIndex(0);
+      setActiveTimeLimitMinutes(durationMinutes);
+      setActiveSecondsPerQuestion(calculatedSecsPerQ);
       setCurrentView('quiz');
     } catch (err) {
       console.error('Failed to create test attempt:', err);
@@ -526,7 +538,7 @@ export default function App() {
         track: trackToUse,
         mode: activeTestMode,
         difficultyTier: difficultyTierToUse,
-        questionCount: 15,
+        questionCount: activeQuizQuestions.length || 30,
         student,
         userId: currentUser?.uid || userProfile?.uid,
         userEmail: currentUser?.email || userProfile?.email,
@@ -646,6 +658,8 @@ export default function App() {
             mode={activeTestMode}
             difficultyTier={pendingDifficultyTier}
             attemptId={activeAttemptId}
+            timeLimitMinutes={activeTimeLimitMinutes}
+            secondsPerQuestion={activeSecondsPerQuestion}
             initialAnswers={activeInitialAnswers}
             initialTimeSeconds={activeInitialTime}
             initialQuestionIndex={activeInitialIndex}
@@ -658,6 +672,8 @@ export default function App() {
               setActiveInitialAnswers({});
               setActiveInitialTime(0);
               setActiveInitialIndex(0);
+              setActiveTimeLimitMinutes(undefined);
+              setActiveSecondsPerQuestion(undefined);
               if (activeTab === 'classes') {
                 setCurrentView('class-page');
               } else {

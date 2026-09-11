@@ -34,6 +34,8 @@ interface QuizViewProps {
   mode?: 'practice' | 'exam';
   difficultyTier?: 'Normal' | 'Advanced';
   attemptId?: string;
+  timeLimitMinutes?: number;
+  secondsPerQuestion?: number;
   initialAnswers?: Record<number, {
     questionId: string;
     selectedOption: 'A' | 'B' | 'C' | 'D' | null;
@@ -71,6 +73,8 @@ export const QuizView: React.FC<QuizViewProps> = ({
   mode = 'practice',
   difficultyTier,
   attemptId,
+  timeLimitMinutes,
+  secondsPerQuestion,
   initialAnswers = {},
   initialTimeSeconds = 0,
   initialQuestionIndex = 0,
@@ -95,7 +99,8 @@ export const QuizView: React.FC<QuizViewProps> = ({
     timedOut?: boolean;
   }>>(initialAnswers || {});
   
-  const QUESTION_TIMEOUT = 60; // 1 minute per question exact
+  // Default time for each question is 90 seconds (1 minute 30 seconds)
+  const QUESTION_TIMEOUT = secondsPerQuestion || 90;
   const [questionTimeLeft, setQuestionTimeLeft] = useState(QUESTION_TIMEOUT);
   const [questionTimer, setQuestionTimer] = useState(0);
   const [totalTimer, setTotalTimer] = useState(initialTimeSeconds || 0);
@@ -187,7 +192,7 @@ export const QuizView: React.FC<QuizViewProps> = ({
         selectedOption: selectedOption || null,
         isCorrect: false, // Marked WRONG on timeout
         isSkipped: false,
-        timeSpentSeconds: 60,
+        timeSpentSeconds: QUESTION_TIMEOUT,
         timedOut: true,
       },
     };
@@ -261,7 +266,7 @@ export const QuizView: React.FC<QuizViewProps> = ({
     setIsFeedbackDelay(false);
     setQuestionTimer(0);
     setQuestionTimeLeft(QUESTION_TIMEOUT);
-  }, [currentIndex]);
+  }, [currentIndex, QUESTION_TIMEOUT]);
 
   // Handle option selection:
   // 1. Evaluates answer using standardized evaluateAnswer from answerValidation.ts
@@ -459,23 +464,23 @@ export const QuizView: React.FC<QuizViewProps> = ({
                       cy="22"
                       r="18"
                       className={`transition-all duration-1000 ease-linear ${
-                        questionTimeLeft > 20
+                        questionTimeLeft > Math.round(QUESTION_TIMEOUT * 0.35)
                           ? 'stroke-indigo-600 dark:stroke-indigo-400'
-                          : questionTimeLeft > 8
+                          : questionTimeLeft > Math.round(QUESTION_TIMEOUT * 0.15)
                           ? 'stroke-amber-500'
                           : 'stroke-rose-500 animate-pulse'
                       }`}
                       strokeWidth="3.5"
                       strokeDasharray={113.1}
-                      strokeDashoffset={113.1 - (113.1 * Math.max(0, questionTimeLeft)) / 60}
+                      strokeDashoffset={113.1 - (113.1 * Math.max(0, questionTimeLeft)) / QUESTION_TIMEOUT}
                       strokeLinecap="round"
                       fill="transparent"
                     />
                   </svg>
                   <span className={`absolute font-mono font-black text-[11px] sm:text-xs ${
-                    questionTimeLeft > 20
+                    questionTimeLeft > Math.round(QUESTION_TIMEOUT * 0.35)
                       ? 'text-indigo-700 dark:text-indigo-300'
-                      : questionTimeLeft > 8
+                      : questionTimeLeft > Math.round(QUESTION_TIMEOUT * 0.15)
                       ? 'text-amber-600 dark:text-amber-400'
                       : 'text-rose-600 dark:text-rose-400'
                   }`}>
