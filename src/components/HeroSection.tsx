@@ -12,7 +12,8 @@ import {
   BookOpen,
   Layers,
   Lightbulb,
-  ChevronRight
+  ChevronRight,
+  TrendingUp
 } from 'lucide-react';
 import { ClassLevel } from '../types';
 import { MathText } from './MathText';
@@ -21,7 +22,8 @@ export type SubjectTrack =
   | 'Elementary Mathematics' 
   | 'Chemistry' 
   | 'Elementary Physics' 
-  | 'Pre Calculas';
+  | 'Pre Calculas'
+  | 'Calculus';
 
 interface HeroSectionProps {
   onSelectClass: (classLevel: ClassLevel, track?: SubjectTrack, precalcSection?: 'Ron Larson' | 'James Stewart') => void;
@@ -228,6 +230,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       badgeBorder: 'border-violet-200 dark:border-violet-800',
       buttonBg: 'bg-violet-600 hover:bg-violet-700 shadow-violet-600/25',
       features: ['Ron Larson', 'James Stewart', 'Functions & Trig', 'Analytic Geometry'],
+    },
+    {
+      id: 'Calculus',
+      title: 'Calculas',
+      subtitle: 'Classes 11 & 12',
+      description: 'Calculus curriculum covering Limits, Derivatives, Integration, and Differential Equations for engineering admissions.',
+      classes: [11, 12],
+      icon: TrendingUp,
+      accentColor: 'blue',
+      badgeBg: 'bg-blue-50 dark:bg-blue-950/70',
+      badgeText: 'text-blue-700 dark:text-blue-300',
+      badgeBorder: 'border-blue-200 dark:border-blue-800',
+      buttonBg: 'bg-blue-600 hover:bg-blue-700 shadow-blue-600/25',
+      features: ['Limits & Continuity', 'Derivatives', 'Definite Integrals', 'Differential Equations'],
     },
   ];
 
@@ -440,8 +456,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </p>
           </div>
 
-          {/* 4 Track Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {/* 5 Academic Track Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
             {tracks.map((track) => {
               const IconComp = track.icon;
               return (

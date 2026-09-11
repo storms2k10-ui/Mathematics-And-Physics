@@ -22,6 +22,7 @@ import {
   Sparkles,
   Zap,
   FlaskConical,
+  TrendingUp,
   Settings
 } from 'lucide-react';
 import { ClassLevel } from '../types';
@@ -74,6 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [isChemistryExpandedInSubject, setIsChemistryExpandedInSubject] = useState(false);
   const [isPhysicsExpandedInSubject, setIsPhysicsExpandedInSubject] = useState(false);
   const [isPreCalculasExpandedInSubject, setIsPreCalculasExpandedInSubject] = useState(false);
+  const [isCalculusExpandedInSubject, setIsCalculusExpandedInSubject] = useState(false);
 
   const [isMathExpandedInContent, setIsMathExpandedInContent] = useState(false);
   const [isPhysicsExpandedInContent, setIsPhysicsExpandedInContent] = useState(false);
@@ -115,6 +117,13 @@ export const Navbar: React.FC<NavbarProps> = ({
     };
   }, []);
 
+  const calculusChapterCounts = useMemo(() => {
+    return {
+      11: ALL_CHAPTERS.filter((c) => c.class === 11 && c.track === 'Calculus').length,
+      12: ALL_CHAPTERS.filter((c) => c.class === 12 && c.track === 'Calculus').length,
+    };
+  }, []);
+
   const handleClassSelect = (lvl: ClassLevel, track: 'Elementary Mathematics' | 'Chemistry' = 'Elementary Mathematics') => {
     onNavigate('classes', lvl, track);
     setSubjectDropdownOpen(false);
@@ -122,8 +131,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     setMobileMenuOpen(false);
   };
 
-  const handleSubjectSelect = (_subject: 'physics' | 'precalculas', track: 'Elementary Physics' | 'Pre Calculas' = 'Elementary Physics', lvl?: ClassLevel) => {
-    onNavigate('classes', lvl || 11, track);
+  const handleSubjectSelect = (_subject: 'physics' | 'precalculas' | 'calculus', track: 'Elementary Physics' | 'Pre Calculas' | 'Calculus' = 'Elementary Physics', lvl?: ClassLevel) => {
+    onNavigate('classes', lvl || 12, track);
     setSubjectDropdownOpen(false);
     setContentDropdownOpen(false);
     setMobileMenuOpen(false);
@@ -260,7 +269,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }`}
               >
                 <BookOpen className="w-4 h-4 text-slate-300" />
-                <span>Subject</span>
+                <span>Subjects</span>
                 <ChevronDown className={`w-3.5 h-3.5 opacity-70 transition-transform ${subjectDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
@@ -442,6 +451,50 @@ export const Navbar: React.FC<NavbarProps> = ({
                               {preCalculasChapterCounts['James Stewart']} Ch
                             </span>
                           </button>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* 5. CALCULAS */}
+                    <div>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setIsCalculusExpandedInSubject(!isCalculusExpandedInSubject);
+                        }}
+                        className="w-full text-left px-3 py-2.5 rounded-xl text-xs sm:text-sm flex items-center justify-between hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-800 dark:text-slate-100"
+                      >
+                        <span className="flex items-center gap-2 font-bold text-blue-700 dark:text-blue-300">
+                          <span className="w-7 h-7 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 flex items-center justify-center text-xs font-bold shrink-0">
+                            <TrendingUp className="w-4 h-4" />
+                          </span>
+                          <span>Calculas</span>
+                        </span>
+                        <div className="flex items-center gap-1.5 text-xs text-slate-400">
+                          <span className="text-[10px] font-bold">2 Classes</span>
+                          <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isCalculusExpandedInSubject ? 'rotate-180' : ''}`} />
+                        </div>
+                      </button>
+
+                      {isCalculusExpandedInSubject && (
+                        <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-blue-200 dark:border-blue-800 ml-4 animate-in fade-in duration-150">
+                          {([11, 12] as ClassLevel[]).map((lvl) => (
+                            <button
+                              key={lvl}
+                              onClick={() => handleSubjectSelect('calculus', 'Calculus', lvl)}
+                              className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs flex items-center justify-between hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors cursor-pointer ${
+                                activeTab === 'classes' && selectedClass === lvl && activeTrack === 'Calculus'
+                                  ? 'text-blue-600 dark:text-blue-400 font-bold bg-blue-50/80 dark:bg-slate-800/80'
+                                  : 'text-slate-700 dark:text-slate-300'
+                              }`}
+                            >
+                              <span className="font-semibold">Class {lvl} Calculas</span>
+                              <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 font-bold">
+                                {calculusChapterCounts[lvl]} Ch
+                              </span>
+                            </button>
+                          ))}
                         </div>
                       )}
                     </div>
@@ -1071,6 +1124,34 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   James Stewart
                 </button>
+              </div>
+            </div>
+
+            {/* 5. Calculas */}
+            <div className="rounded-xl border border-blue-200/80 dark:border-blue-900/50 bg-blue-50/40 dark:bg-blue-950/20 p-2.5 space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 flex items-center justify-center text-xs">
+                    <TrendingUp className="w-3.5 h-3.5" />
+                  </span>
+                  <span className="text-xs font-bold text-blue-950 dark:text-blue-200">Calculas</span>
+                </div>
+                <span className="text-[10px] font-bold text-blue-600 dark:text-blue-400">Intermediate</span>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                {([11, 12] as ClassLevel[]).map((lvl) => (
+                  <button
+                    key={lvl}
+                    onClick={() => handleSubjectSelect('calculus', 'Calculus', lvl)}
+                    className={`py-2 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${
+                      activeTab === 'classes' && activeTrack === 'Calculus' && selectedClass === lvl
+                        ? 'bg-blue-600 text-white shadow-sm'
+                        : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-blue-50'
+                    }`}
+                  >
+                    Class {lvl} Calculas ({calculusChapterCounts[lvl]} Ch)
+                  </button>
+                ))}
               </div>
             </div>
           </div>
