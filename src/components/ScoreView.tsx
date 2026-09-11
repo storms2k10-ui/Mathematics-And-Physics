@@ -612,7 +612,7 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                           )}
                           {ans?.timedOut && !isSkipped && (
                             <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
-                              ⏱️ 1-Min Timed Out (Marked Wrong)
+                              ⏱️ Timed Out (Marked Wrong)
                             </span>
                           )}
                           {!ans?.selectedOption && !ans?.timedOut && !isCorrect && !isSkipped && (

@@ -141,7 +141,27 @@ export const QuizView: React.FC<QuizViewProps> = ({
   const isCurrentSkipped = Boolean(currentAnswer?.isSkipped);
   const isCurrentAnswered = Boolean(currentAnswer && !currentAnswer.isSkipped && currentAnswer.selectedOption !== null);
 
-  // Overall timer
+  // Ref tracking latest state values to prevent stale closures in async timer intervals
+  const stateRef = React.useRef({
+    currentIndex,
+    currentQuestion,
+    userAnswers,
+    selectedOption,
+    totalTimer,
+    totalQuestions,
+  });
+  useEffect(() => {
+    stateRef.current = {
+      currentIndex,
+      currentQuestion,
+      userAnswers,
+      selectedOption,
+      totalTimer,
+      totalQuestions,
+    };
+  });
+
+  // Overall test timer
   useEffect(() => {
     const interval = setInterval(() => {
       setTotalTimer((t) => t + 1);
@@ -150,17 +170,15 @@ export const QuizView: React.FC<QuizViewProps> = ({
     return () => clearInterval(interval);
   }, []);
 
-  // Per-question EXACT 1-Minute (60s) countdown timer
+  // Per-question countdown timer: Pure decrementer
   useEffect(() => {
-    // If answer already submitted or skipped, pause countdown
-    if (isSubmitted || isCurrentSkipped) return;
+    // If answer already submitted or skipped or in feedback delay, pause countdown
+    if (isSubmitted || isCurrentSkipped || isFeedbackDelay) return;
 
     const countdownInterval = setInterval(() => {
       setQuestionTimeLeft((prev) => {
         if (prev <= 1) {
           clearInterval(countdownInterval);
-          // 1 Minute Expired: Automatically advance question!
-          handleAutoAdvanceOnTimeout();
           return 0;
         }
         return prev - 1;
@@ -168,7 +186,7 @@ export const QuizView: React.FC<QuizViewProps> = ({
     }, 1000);
 
     return () => clearInterval(countdownInterval);
-  }, [currentIndex, isSubmitted, isCurrentSkipped, mode]);
+  }, [currentIndex, isSubmitted, isCurrentSkipped, isFeedbackDelay, mode]);
 
   // Clean up any pending advance timer on unmount
   useEffect(() => {
@@ -179,17 +197,26 @@ export const QuizView: React.FC<QuizViewProps> = ({
     };
   }, []);
 
-  // Handle 1-minute timeout automatic advance: marks question as WRONG
+  // Handle question timeout automatic advance: marks question as WRONG
   const handleAutoAdvanceOnTimeout = () => {
     if (advanceTimerRef.current) {
       clearTimeout(advanceTimerRef.current);
     }
+    const {
+      currentIndex: curIdx,
+      currentQuestion: curQ,
+      userAnswers: curAnswers,
+      selectedOption: curOpt,
+      totalTimer: curTotal,
+      totalQuestions: totQ,
+    } = stateRef.current;
+
     // If not answered yet, record as WRONG
     const updatedAnswers = {
-      ...userAnswers,
-      [currentIndex]: {
-        questionId: currentQuestion.id,
-        selectedOption: selectedOption || null,
+      ...curAnswers,
+      [curIdx]: {
+        questionId: curQ.id,
+        selectedOption: curOpt || null,
         isCorrect: false, // Marked WRONG on timeout
         isSkipped: false,
         timeSpentSeconds: QUESTION_TIMEOUT,
@@ -201,9 +228,9 @@ export const QuizView: React.FC<QuizViewProps> = ({
     if (attemptId) {
       TestAttemptService.recordQuestionAnswer(
         attemptId,
-        currentIndex,
-        updatedAnswers[currentIndex],
-        totalTimer
+        curIdx,
+        updatedAnswers[curIdx],
+        curTotal
       ).catch(() => {});
     }
 
@@ -212,12 +239,19 @@ export const QuizView: React.FC<QuizViewProps> = ({
     setIsSubmitted(false);
     setIsFeedbackDelay(false);
 
-    if (currentIndex < totalQuestions - 1) {
+    if (curIdx < totQ - 1) {
       setCurrentIndex((prev) => prev + 1);
     } else {
       finalizeAndSubmitQuiz(updatedAnswers);
     }
   };
+
+  // Safe effect: triggers timeout auto-advance when countdown reaches 0
+  useEffect(() => {
+    if (questionTimeLeft === 0 && !isSubmitted && !isCurrentSkipped && !isFeedbackDelay) {
+      handleAutoAdvanceOnTimeout();
+    }
+  }, [questionTimeLeft, isSubmitted, isCurrentSkipped, isFeedbackDelay]);
 
   // Finalize quiz helper
   const finalizeAndSubmitQuiz = (customAnswers?: typeof userAnswers) => {

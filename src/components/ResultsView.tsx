@@ -25,9 +25,11 @@ interface ResultsViewProps {
   questions: Question[];
   userAnswers: Record<number, {
     questionId: string;
-    selectedOption: 'A' | 'B' | 'C' | 'D';
+    selectedOption: 'A' | 'B' | 'C' | 'D' | null;
     isCorrect: boolean;
+    isSkipped?: boolean;
     timeSpentSeconds: number;
+    timedOut?: boolean;
   }>;
   totalTimeSeconds: number;
   onTryAgain: () => void;
@@ -280,6 +282,14 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
                             <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 dark:text-emerald-400">
                               <CheckCircle2 className="w-4 h-4" />
                               <span>Correct</span>
+                            </span>
+                          ) : answer?.isSkipped ? (
+                            <span className="inline-flex items-center gap-1 text-xs font-bold text-slate-700 dark:text-slate-300">
+                              <span>⏭️ Skipped</span>
+                            </span>
+                          ) : answer?.timedOut ? (
+                            <span className="inline-flex items-center gap-1 text-xs font-bold text-amber-600 dark:text-amber-400">
+                              <span>⏱️ Timed Out</span>
                             </span>
                           ) : (
                             <span className="inline-flex items-center gap-1 text-xs font-bold text-rose-600 dark:text-rose-400">
