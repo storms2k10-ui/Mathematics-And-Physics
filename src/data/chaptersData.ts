@@ -843,20 +843,25 @@ export const ELEMENTARY_CHAPTERS: Chapter[] = [
   },
 ];
 
-export const PRE_CALCULAS_CHAPTERS: Chapter[] = ELEMENTARY_CHAPTERS
-  .filter((ch) => ch.class === 11)
-  .map((ch) => ({
-    ...ch,
-    id: `precalc-${ch.id}`,
-    track: 'Pre Calculas' as const,
-  }));
+import {
+  RON_LARSON_PRECALCULUS_CHAPTERS,
+  JAMES_STEWART_PRECALCULUS_CHAPTERS,
+  PRE_CALCULAS_CHAPTERS,
+} from "./precalculusChaptersData";
 
 import { CHEMISTRY_CHAPTERS } from "./chemistryChaptersData";
 import { ELEMENTARY_PHYSICS_11_CHAPTERS, ELEMENTARY_PHYSICS_12_CHAPTERS } from "./elementaryPhysicsChaptersData";
 
-export { CHEMISTRY_CHAPTERS, ELEMENTARY_PHYSICS_11_CHAPTERS, ELEMENTARY_PHYSICS_12_CHAPTERS };
+export {
+  RON_LARSON_PRECALCULUS_CHAPTERS,
+  JAMES_STEWART_PRECALCULUS_CHAPTERS,
+  PRE_CALCULAS_CHAPTERS,
+  CHEMISTRY_CHAPTERS,
+  ELEMENTARY_PHYSICS_11_CHAPTERS,
+  ELEMENTARY_PHYSICS_12_CHAPTERS,
+};
 
-// Master Chapters List covering Mathematics, Physics, Chemistry, and Pre Calculas tracks
+// Master Chapters List covering Mathematics, Physics, Chemistry, and Pre Calculas tracks (Ron Larson & James Stewart)
 export const ALL_CHAPTERS: Chapter[] = [
   ...ELEMENTARY_CHAPTERS,
   ...CHEMISTRY_CHAPTERS,

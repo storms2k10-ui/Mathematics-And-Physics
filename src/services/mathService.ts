@@ -44,10 +44,13 @@ export class MathService {
   /**
    * Retrieves chapters for a specific class or all tracks
    */
-  static async getChapters(classLevel?: ClassLevel, track: string = 'Elementary Mathematics'): Promise<Chapter[]> {
+  static async getChapters(classLevel?: ClassLevel, track: string = 'Elementary Mathematics', section?: string): Promise<Chapter[]> {
     await new Promise((resolve) => setTimeout(resolve, 20));
     if (track === 'Pre Calculas') {
-      return CHAPTERS_DATA.filter((ch) => ch.track === 'Pre Calculas' && (!classLevel || ch.class === classLevel));
+      return CHAPTERS_DATA.filter((ch) => ch.track === 'Pre Calculas' && (!section || ch.section === section));
+    }
+    if (track === 'Calculus') {
+      return CHAPTERS_DATA.filter((ch) => ch.track === 'Calculus');
     }
     if (track === 'Elementary Physics') {
       return CHAPTERS_DATA.filter((ch) => ch.track === 'Elementary Physics' && (!classLevel || ch.class === classLevel));
@@ -86,7 +89,8 @@ export class MathService {
 
     const isPhysics = track.toLowerCase().includes('physic');
     const isChemistry = track.toLowerCase().includes('chem');
-    const isPreCalculas = track.toLowerCase().includes('calculas') || track.toLowerCase().includes('calculus');
+    const isCalculus = track.toLowerCase() === 'calculus';
+    const isPreCalculas = !isCalculus && (track.toLowerCase().includes('calculas') || track.toLowerCase().includes('pre-calcul') || track.toLowerCase().includes('precalcul'));
     let pool: Question[] = [];
 
     if (actualChapterId) {
@@ -101,19 +105,24 @@ export class MathService {
         if (isChemistry) {
           return q.subject === 'Chemistry' || q.chapter_id.startsWith('chem');
         }
-        if (isPreCalculas) {
-          return q.class === 11 && (q.subject === 'Mathematics' || (!q.subject && !q.chapter_id.startsWith('el-phy') && !q.chapter_id.startsWith('chem')));
+        if (isCalculus) {
+          return q.subject === 'Calculus' || q.chapter_id.startsWith('calc-');
         }
-        return q.subject !== 'Physics' && q.subject !== 'Chemistry';
+        if (isPreCalculas) {
+          return q.subject === 'Pre Calculas' || q.chapter_id.startsWith('precalc-');
+        }
+        return q.subject !== 'Physics' && q.subject !== 'Chemistry' && q.subject !== 'Pre Calculas' && q.subject !== 'Calculus';
       });
     } else {
       pool = isPhysics 
         ? QUESTIONS_DATA.filter((q) => q.subject === 'Physics' || q.chapter_id.startsWith('el-phy'))
         : isChemistry
         ? QUESTIONS_DATA.filter((q) => q.subject === 'Chemistry' || q.chapter_id.startsWith('chem'))
+        : isCalculus
+        ? QUESTIONS_DATA.filter((q) => q.subject === 'Calculus' || q.chapter_id.startsWith('calc-'))
         : isPreCalculas
-        ? QUESTIONS_DATA.filter((q) => q.class === 11 && (q.subject === 'Mathematics' || (!q.subject && !q.chapter_id.startsWith('el-phy') && !q.chapter_id.startsWith('chem'))))
-        : QUESTIONS_DATA.filter((q) => q.subject !== 'Physics' && q.subject !== 'Chemistry');
+        ? QUESTIONS_DATA.filter((q) => q.subject === 'Pre Calculas' || q.chapter_id.startsWith('precalc-'))
+        : QUESTIONS_DATA.filter((q) => q.subject !== 'Physics' && q.subject !== 'Chemistry' && q.subject !== 'Pre Calculas' && q.subject !== 'Calculus');
     }
 
     if (difficultyTier === 'Advanced') {

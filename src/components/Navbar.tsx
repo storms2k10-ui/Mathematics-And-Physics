@@ -39,11 +39,12 @@ interface NavbarProps {
   selectedClass: ClassLevel | null;
   activeContentSection?: ContentSection;
   activePhilosopherType?: 'mathematicians' | 'physicists';
-  activeTrack?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas';
-  onNavigate: (tab: NavTab, classLevel?: ClassLevel, track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas') => void;
+  activeTrack?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus';
+  selectedPrecalcSection?: 'Ron Larson' | 'James Stewart';
+  onNavigate: (tab: NavTab, classLevel?: ClassLevel, track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus', precalcSection?: 'Ron Larson' | 'James Stewart') => void;
   onNavigateContentSection?: (section: ContentSection, subject?: ContentSubject) => void;
   onSelectPhilosopherType?: (type: 'mathematicians' | 'physicists') => void;
-  onOpenLeaderboard?: (track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas') => void;
+  onOpenLeaderboard?: (track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus') => void;
   onOpenAuth?: () => void;
   onOpenProfile?: () => void;
 }
@@ -54,6 +55,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   activeContentSection = 'definitions',
   activePhilosopherType = 'mathematicians',
   activeTrack = 'Elementary Mathematics',
+  selectedPrecalcSection = 'Ron Larson',
   onNavigate,
   onNavigateContentSection,
   onSelectPhilosopherType,
@@ -108,7 +110,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const preCalculasChapterCounts = useMemo(() => {
     return {
-      11: ALL_CHAPTERS.filter((c) => c.class === 11 && c.track === 'Pre Calculas').length,
+      'Ron Larson': ALL_CHAPTERS.filter((c) => c.track === 'Pre Calculas' && c.section === 'Ron Larson').length,
+      'James Stewart': ALL_CHAPTERS.filter((c) => c.track === 'Pre Calculas' && c.section === 'James Stewart').length,
     };
   }, []);
 
@@ -121,6 +124,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const handleSubjectSelect = (_subject: 'physics' | 'precalculas', track: 'Elementary Physics' | 'Pre Calculas' = 'Elementary Physics', lvl?: ClassLevel) => {
     onNavigate('classes', lvl || 11, track);
+    setSubjectDropdownOpen(false);
+    setContentDropdownOpen(false);
+    setMobileMenuOpen(false);
+  };
+
+  const handlePrecalcSectionSelect = (section: 'Ron Larson' | 'James Stewart') => {
+    onNavigate('classes', 11, 'Pre Calculas', section);
     setSubjectDropdownOpen(false);
     setContentDropdownOpen(false);
     setMobileMenuOpen(false);
@@ -407,7 +417,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                           <span>Pre Calculas</span>
                         </span>
                         <div className="flex items-center gap-1.5 text-xs text-slate-400">
-                          <span className="text-[10px] font-bold">1 Class</span>
+                          <span className="text-[10px] font-bold">2 Sections</span>
                           <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isPreCalculasExpandedInSubject ? 'rotate-180' : ''}`} />
                         </div>
                       </button>
@@ -415,12 +425,21 @@ export const Navbar: React.FC<NavbarProps> = ({
                       {isPreCalculasExpandedInSubject && (
                         <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-violet-200 dark:border-violet-800 ml-4 animate-in fade-in duration-150">
                           <button
-                            onClick={() => handleSubjectSelect('precalculas', 'Pre Calculas', 11)}
+                            onClick={() => handlePrecalcSectionSelect('Ron Larson')}
                             className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs flex items-center justify-between hover:bg-violet-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
                           >
-                            <span className="font-semibold">Class 11 Pre Calculas</span>
+                            <span className="font-semibold">Ron Larson</span>
                             <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 font-bold">
-                              {preCalculasChapterCounts[11]} Ch
+                              {preCalculasChapterCounts['Ron Larson']} Ch
+                            </span>
+                          </button>
+                          <button
+                            onClick={() => handlePrecalcSectionSelect('James Stewart')}
+                            className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs flex items-center justify-between hover:bg-violet-50 dark:hover:bg-slate-800 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
+                          >
+                            <span className="font-semibold">James Stewart</span>
+                            <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 font-bold">
+                              {preCalculasChapterCounts['James Stewart']} Ch
                             </span>
                           </button>
                         </div>
@@ -1029,18 +1048,28 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </span>
                   <span className="text-xs font-bold text-violet-950 dark:text-violet-200">Pre Calculas</span>
                 </div>
-                <span className="text-[10px] font-bold text-violet-600 dark:text-violet-400">Class 11</span>
+                <span className="text-[10px] font-bold text-violet-600 dark:text-violet-400">2 Sections</span>
               </div>
-              <div className="grid grid-cols-1 gap-2">
+              <div className="grid grid-cols-2 gap-2">
                 <button
-                  onClick={() => handleSubjectSelect('precalculas', 'Pre Calculas', 11)}
+                  onClick={() => handlePrecalcSectionSelect('Ron Larson')}
                   className={`py-2 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${
-                    activeTab === 'classes' && selectedClass === 11 && activeTrack === 'Pre Calculas'
+                    activeTab === 'classes' && activeTrack === 'Pre Calculas' && selectedPrecalcSection === 'Ron Larson'
                       ? 'bg-violet-600 text-white shadow-sm'
                       : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-violet-50'
                   }`}
                 >
-                  Class 11 Pre Calculas ({preCalculasChapterCounts[11]} Ch)
+                  Ron Larson
+                </button>
+                <button
+                  onClick={() => handlePrecalcSectionSelect('James Stewart')}
+                  className={`py-2 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${
+                    activeTab === 'classes' && activeTrack === 'Pre Calculas' && selectedPrecalcSection === 'James Stewart'
+                      ? 'bg-violet-600 text-white shadow-sm'
+                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-violet-50'
+                  }`}
+                >
+                  James Stewart
                 </button>
               </div>
             </div>

@@ -7,7 +7,9 @@ export type PracticeDifficulty = 'Normal' | 'Advanced';
 export type MathCategory = 
   | 'Number Systems & Logarithms'
   | 'Algebra & Polynomials'
+  | 'Algebra & Functions'
   | 'Geometry & Triangles'
+  | 'Geometry & Topology'
   | 'Circles & Tangents'
   | 'Coordinate & Analytic Geometry'
   | 'Trigonometry'
@@ -47,10 +49,13 @@ export interface ChapterOverview {
   keyTheorems?: { title: string; statement: string; importance: string }[];
 }
 
+export type PrecalculusSection = 'Ron Larson' | 'James Stewart';
+
 export interface Chapter {
   id: string;
   class: ClassLevel;
-  track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas';
+  track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus';
+  section?: PrecalculusSection | string;
   name: string;
   description: string;
   category: MathCategory;
@@ -269,7 +274,7 @@ export interface LeaderboardEntry {
   chapterId?: string;
   chapterName: string;
   mode: 'practice' | 'exam';
-  track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | string;
+  track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus' | string;
   difficultyTier?: PracticeDifficulty;
   correctCount: number;
   totalQuestions: number;

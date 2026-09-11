@@ -88,8 +88,10 @@ import {
 } from './el_phy12_chapters8_14_data';
 
 import { C11_CH1_QUESTIONS } from './c11_chapter1_data';
+import { PRECALCULUS_QUESTIONS } from './precalculusQuestionsData';
 
 const RAW_ALL_QUESTIONS: Question[] = [
+  ...PRECALCULUS_QUESTIONS,
   ...C9_CH1_QUESTIONS,
   ...C9_CH2_QUESTIONS,
   ...C9_CH3_QUESTIONS,

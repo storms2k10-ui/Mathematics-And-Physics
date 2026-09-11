@@ -44,7 +44,8 @@ import {
   CheckCircle,
   FlaskConical,
   Compass,
-  Share2
+  Share2,
+  TrendingUp
 } from 'lucide-react';
 import { ClassLevel, Chapter } from '../types';
 import { useAuth } from '../context/AuthContext';
@@ -105,10 +106,12 @@ const BlueFacetPatternSvg: React.FC = () => (
 );
 
 interface MobileAppViewProps {
-  activeTrack: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas';
+  activeTrack: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus';
   selectedClass: ClassLevel;
-  onSelectTrack: (track: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas') => void;
-  onSelectClass: (lvl: ClassLevel, track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas') => void;
+  onSelectTrack: (track: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus') => void;
+  onSelectClass: (lvl: ClassLevel, track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus') => void;
+  selectedPrecalcSection?: 'Ron Larson' | 'James Stewart';
+  onSelectPrecalcSection?: (section: 'Ron Larson' | 'James Stewart') => void;
   onStartChapterPractice: (chapter: Chapter) => void;
   onStartClassPractice: (lvl: ClassLevel) => void;
   onOpenChapterDetails?: (chapter: Chapter) => void;
@@ -123,6 +126,8 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
   selectedClass,
   onSelectTrack,
   onSelectClass,
+  selectedPrecalcSection,
+  onSelectPrecalcSection,
   onStartChapterPractice,
   onStartClassPractice,
   onOpenChapterDetails,
@@ -136,8 +141,18 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
   const { isOnline, isOffline, isConnectionStable, indicatorDotClass, statusLabel } = useOffline();
   const [mobileTab, setMobileTab] = useState<MobileTab>('studio');
   const [selectedStyleId, setSelectedStyleId] = useState<string>('elem-math');
+  const [internalPrecalcSection, setInternalPrecalcSection] = useState<'Ron Larson' | 'James Stewart'>('Ron Larson');
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isAboutMeOpen, setIsAboutMeOpen] = useState(false);
+
+  const currentPrecalcSec = selectedPrecalcSection || internalPrecalcSection;
+
+  const handleSelectPrecalcSection = (sec: 'Ron Larson' | 'James Stewart') => {
+    setInternalPrecalcSection(sec);
+    if (onSelectPrecalcSection) {
+      onSelectPrecalcSection(sec);
+    }
+  };
 
   // Content of Mathematics & Physics state
   const [contentSubject, setContentSubject] = useState<'mathematics' | 'physics'>('mathematics');
@@ -172,7 +187,10 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
       return ALL_CHAPTERS.filter((ch) => ch.class === selectedClass && ch.track === 'Elementary Physics');
     }
     if (activeTrack === 'Pre Calculas') {
-      return ALL_CHAPTERS.filter((ch) => ch.class === selectedClass && ch.track === 'Pre Calculas');
+      return ALL_CHAPTERS.filter((ch) => ch.track === 'Pre Calculas' && ch.section === currentPrecalcSec);
+    }
+    if (activeTrack === 'Calculus') {
+      return ALL_CHAPTERS.filter((ch) => ch.track === 'Calculus');
     }
     // Elementary Mathematics (Standard)
     return ALL_CHAPTERS.filter((ch) => {
@@ -414,12 +432,24 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
       bgGradient: 'from-violet-400/20 via-purple-400/20 to-indigo-400/20',
       activeRing: 'border-violet-500 shadow-violet-500/30',
       iconColor: 'text-violet-600 dark:text-violet-400',
-      description: 'Class 11 Pre-Calculus Foundations',
+      description: 'Ron Larson & James Stewart Sections',
       sampleTopic: 'Functions, Trigonometry & Geometry',
+    },
+    {
+      id: 'calculus',
+      trackName: 'Calculus' as const,
+      label: 'Calculus',
+      badge: 'Adv',
+      icon: TrendingUp,
+      bgGradient: 'from-blue-400/20 via-indigo-400/20 to-purple-400/20',
+      activeRing: 'border-blue-500 shadow-blue-500/30',
+      iconColor: 'text-blue-600 dark:text-blue-400',
+      description: 'Limits, Derivatives & Integrals',
+      sampleTopic: 'Calculus & Differential Equations',
     },
   ];
 
-  // 4 Core Academic Tracks
+  // Core Academic Tracks
   const styleGridItems = [
     {
       id: 'elem-math',
@@ -452,10 +482,19 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
       id: 'pre-calculas',
       track: 'Pre Calculas' as const,
       title: 'Pre Calculas',
-      subtitle: 'Class 11 Foundation',
+      subtitle: 'Ron Larson & James Stewart',
       icon: Calculator,
       gradient: 'from-violet-100 to-purple-200 dark:from-violet-950/40 dark:to-purple-900/40',
       action: () => onSelectTrack('Pre Calculas'),
+    },
+    {
+      id: 'calculus',
+      track: 'Calculus' as const,
+      title: 'Calculus',
+      subtitle: 'Limits & Integrals',
+      icon: TrendingUp,
+      gradient: 'from-blue-100 to-indigo-200 dark:from-blue-950/40 dark:to-indigo-900/40',
+      action: () => onSelectTrack('Calculus'),
     },
   ];
 
@@ -553,51 +592,98 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
         {mobileTab === 'studio' && (
           <div className="space-y-3.5 animate-fade-in">
 
-            {/* 1. CLASS LEVEL SELECTION CARD */}
-            <div className="p-3 sm:p-3.5 rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 shadow-lg shadow-emerald-500/5 space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-                  Select Class Level
-                </span>
-                <span className="text-[11px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800/60">
-                  Class {selectedClass} Selected
-                </span>
-              </div>
+            {/* 1. CLASS OR SECTION LEVEL SELECTION CARD */}
+            {activeTrack === 'Pre Calculas' ? (
+              <div className="p-3 sm:p-3.5 rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 shadow-lg shadow-violet-500/5 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                    Select Section
+                  </span>
+                  <span className="text-[11px] font-bold text-violet-700 dark:text-violet-300 bg-violet-50 dark:bg-violet-950/50 px-2 py-0.5 rounded-full border border-violet-200/60 dark:border-violet-800/60">
+                    {currentPrecalcSec} Selected
+                  </span>
+                </div>
 
-              {/* Class Chips with Dynamic Connected State */}
-              <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
-                {([9, 10, 11, 12] as ClassLevel[]).map((lvl) => {
-                  const isSelected = selectedClass === lvl;
-                  return (
-                    <button
-                      key={lvl}
-                      id={`mobile-class-select-${lvl}`}
-                      onClick={() => onSelectClass(lvl, activeTrack)}
-                      style={
-                        isSelected
-                          ? {
-                              background: 'linear-gradient(90deg, #00e599 0%, #00a8ff 55%, #0066ff 100%)',
-                            }
-                          : undefined
-                      }
-                      className={`h-9 sm:h-10 py-2 px-1 rounded-full font-bold transition-all duration-300 flex items-center justify-center cursor-pointer relative overflow-hidden group ${
-                        isSelected
-                          ? 'text-white shadow-md shadow-blue-500/30 scale-102 border-0 ring-0'
-                          : 'bg-slate-100/90 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 border border-slate-200/80 dark:border-slate-700/80 hover:scale-105 active:scale-95'
-                      }`}
-                    >
-                      <span className="text-xs sm:text-sm font-black group-hover:tracking-wider transition-all duration-300">Class {lvl}</span>
-                      {isSelected && (
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full duration-1000 transition-transform pointer-events-none" />
-                      )}
-                    </button>
-                  );
-                })}
+                {/* Pre Calculas Section Chips */}
+                <div className="grid grid-cols-2 gap-2">
+                  {(['Ron Larson', 'James Stewart'] as const).map((sec) => {
+                    const isSelected = currentPrecalcSec === sec;
+                    const count = sec === 'Ron Larson' ? 12 : 13;
+                    return (
+                      <button
+                        key={sec}
+                        id={`mobile-precalc-section-${sec.toLowerCase().replace(/\s+/g, '-')}`}
+                        onClick={() => handleSelectPrecalcSection(sec)}
+                        style={
+                          isSelected
+                            ? {
+                                background: 'linear-gradient(90deg, #8b5cf6 0%, #6366f1 55%, #3b82f6 100%)',
+                              }
+                            : undefined
+                        }
+                        className={`h-9 sm:h-10 py-2 px-2 rounded-full font-bold transition-all duration-300 flex items-center justify-center cursor-pointer relative overflow-hidden group ${
+                          isSelected
+                            ? 'text-white shadow-md shadow-violet-500/30 scale-102 border-0 ring-0'
+                            : 'bg-slate-100/90 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 border border-slate-200/80 dark:border-slate-700/80 hover:scale-105 active:scale-95'
+                        }`}
+                      >
+                        <span className="text-xs sm:text-sm font-black group-hover:tracking-wider transition-all duration-300">
+                          {sec}
+                        </span>
+                        {isSelected && (
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full duration-1000 transition-transform pointer-events-none" />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="p-3 sm:p-3.5 rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 shadow-lg shadow-emerald-500/5 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                    Select Class Level
+                  </span>
+                  <span className="text-[11px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800/60">
+                    Class {selectedClass} Selected
+                  </span>
+                </div>
 
-            {/* 2. CHOOSE TRACK & STUDY MODE 4-TRACK GRID */}
-            <div className="p-3 sm:p-3.5 rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 shadow-lg shadow-emerald-500/5 space-y-2">
+                {/* Class Chips with Dynamic Connected State */}
+                <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
+                  {([9, 10, 11, 12] as ClassLevel[]).map((lvl) => {
+                    const isSelected = selectedClass === lvl;
+                    return (
+                      <button
+                        key={lvl}
+                        id={`mobile-class-select-${lvl}`}
+                        onClick={() => onSelectClass(lvl, activeTrack)}
+                        style={
+                          isSelected
+                            ? {
+                                background: 'linear-gradient(90deg, #00e599 0%, #00a8ff 55%, #0066ff 100%)',
+                              }
+                            : undefined
+                        }
+                        className={`h-9 sm:h-10 py-2 px-1 rounded-full font-bold transition-all duration-300 flex items-center justify-center cursor-pointer relative overflow-hidden group ${
+                          isSelected
+                            ? 'text-white shadow-md shadow-blue-500/30 scale-102 border-0 ring-0'
+                            : 'bg-slate-100/90 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 border border-slate-200/80 dark:border-slate-700/80 hover:scale-105 active:scale-95'
+                        }`}
+                      >
+                        <span className="text-xs sm:text-sm font-black group-hover:tracking-wider transition-all duration-300">Class {lvl}</span>
+                        {isSelected && (
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full duration-1000 transition-transform pointer-events-none" />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* 2. CHOOSE TRACK & STUDY MODE GRID (3 IN ONE ROW, 6 IN TWO ROWS) */}
+            <div className="p-2.5 sm:p-3 rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/80 dark:border-slate-800 shadow-lg shadow-emerald-500/5 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300">
                   Choose Track &amp; Study Mode
@@ -607,8 +693,8 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                 </span>
               </div>
 
-              {/* 2x2 Grid of the 4 Main Academic Tracks connected to Chapter List */}
-              <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
+              {/* 3-Column Grid accommodating 3 buttons in one row and up to 6 across two rows */}
+              <div className="grid grid-cols-3 gap-1 sm:gap-1.5">
                 {styleGridItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = activeTrack === item.track;
@@ -621,7 +707,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                         setSelectedStyleId(item.id);
                         item.action();
                       }}
-                      className={`h-8.5 sm:h-9 py-1 px-2.5 sm:py-1.5 sm:px-3 rounded-full transition-all duration-150 ease-out flex items-center gap-1.5 sm:gap-2 text-left cursor-pointer relative overflow-hidden group select-none active:scale-90 active:brightness-110 active:shadow-inner ${
+                      className={`h-7.5 sm:h-8 py-0.5 px-1.5 sm:px-2 rounded-full transition-all duration-150 ease-out flex items-center gap-1 sm:gap-1.5 text-left cursor-pointer relative overflow-hidden group select-none active:scale-90 active:brightness-110 active:shadow-inner ${
                         isActive
                           ? 'text-white shadow-md shadow-blue-600/35 scale-[1.01] border-0 ring-2 ring-blue-400/40 ring-offset-1 dark:ring-offset-slate-900'
                           : 'bg-slate-100/90 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 hover:scale-[1.02] hover:bg-white dark:hover:bg-slate-800 hover:shadow-xs'
@@ -635,14 +721,14 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
 
                       {/* Icon Thumbnail */}
                       <div
-                        className={`w-5.5 h-5.5 sm:w-6.5 sm:h-6.5 rounded-full flex items-center justify-center shrink-0 shadow-xs transition-all duration-150 z-10 group-active:scale-90 group-active:rotate-[-8deg] ${
+                        className={`w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full flex items-center justify-center shrink-0 shadow-xs transition-all duration-150 z-10 group-active:scale-90 group-active:rotate-[-8deg] ${
                           isActive
                             ? 'bg-white/20 border border-white/40 text-white'
                             : `bg-gradient-to-br ${item.gradient} border border-white/60 dark:border-slate-700 text-slate-800 dark:text-slate-200 group-hover:scale-105`
                         }`}
                       >
                         <Icon
-                          className={`w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.2] transition-transform duration-150 ${
+                          className={`w-2.5 h-2.5 sm:w-3 sm:h-3 stroke-[2.2] transition-transform duration-150 ${
                             isActive ? 'text-white scale-110' : 'text-slate-800 dark:text-slate-200'
                           }`}
                         />
@@ -650,7 +736,7 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
                       
                       <div className="min-w-0 flex-1 z-10">
                         <span
-                          className={`text-[11px] sm:text-xs font-black block truncate transition-colors duration-150 ${
+                          className={`text-[9.5px] sm:text-[10.5px] font-bold block truncate transition-colors duration-150 ${
                             isActive
                               ? 'text-white font-black drop-shadow-xs'
                               : 'text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400'
@@ -712,15 +798,28 @@ export const MobileAppView: React.FC<MobileAppViewProps> = ({
               ) : (
                 <div className="py-6 px-4 text-center space-y-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-dashed border-slate-300 dark:border-slate-700">
                   <BookOpen className="w-8 h-8 mx-auto text-slate-400" />
-                  <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                    {activeTrack === 'Elementary Mathematics' ? 'Mathematics' : activeTrack === 'Elementary Physics' ? 'Physics' : activeTrack} is available in Intermediate Classes (11 & 12).
-                  </p>
-                  <button
-                    onClick={() => onSelectClass(11, activeTrack)}
-                    className="px-4 py-2 rounded-xl bg-purple-600 text-white font-bold text-xs hover:bg-purple-700 transition-colors cursor-pointer"
-                  >
-                    Switch to Class 11
-                  </button>
+                  {activeTrack === 'Calculus' || activeTrack === 'Pre Calculas' ? (
+                    <div className="space-y-1">
+                      <p className="text-xs font-bold text-slate-800 dark:text-slate-200">
+                        {activeTrack === 'Calculus' ? 'Calculus' : `Pre Calculas (${currentPrecalcSec})`}
+                      </p>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
+                        This section is currently empty. Chapters and questions will be added soon.
+                      </p>
+                    </div>
+                  ) : (
+                    <>
+                      <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                        {activeTrack === 'Elementary Mathematics' ? 'Mathematics' : activeTrack === 'Elementary Physics' ? 'Physics' : activeTrack} is available in Intermediate Classes (11 & 12).
+                      </p>
+                      <button
+                        onClick={() => onSelectClass(11, activeTrack)}
+                        className="px-4 py-2 rounded-xl bg-purple-600 text-white font-bold text-xs hover:bg-purple-700 transition-colors cursor-pointer"
+                      >
+                        Switch to Class 11
+                      </button>
+                    </>
+                  )}
                 </div>
               )}
             </div>

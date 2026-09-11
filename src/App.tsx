@@ -37,8 +37,9 @@ export default function App() {
   const { isOffline, queueOfflineAttempt } = useOffline();
   // Navigation / View state
   const [activeTab, setActiveTab] = useState<NavTab>('home');
-  const [activeTrack, setActiveTrack] = useState<'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas'>('Elementary Mathematics');
+  const [activeTrack, setActiveTrack] = useState<'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus'>('Elementary Mathematics');
   const [selectedClass, setSelectedClass] = useState<ClassLevel>(9);
+  const [selectedPrecalcSection, setSelectedPrecalcSection] = useState<'Ron Larson' | 'James Stewart'>('Ron Larson');
   const [activeContentSection, setActiveContentSection] = useState<ContentSection>('definitions');
   const [activeContentSubject, setActiveContentSubject] = useState<ContentSubject>('mathematics');
   const [activePhilosopherType, setActivePhilosopherType] = useState<'mathematicians' | 'physicists'>('mathematicians');
@@ -179,17 +180,18 @@ export default function App() {
   // Update chapters when selectedClass or activeTrack changes
   useEffect(() => {
     const loadChapters = async () => {
-      const chapters = await MathService.getChapters(selectedClass, activeTrack);
+      const chapters = await MathService.getChapters(selectedClass, activeTrack, selectedPrecalcSection);
       setCurrentChapters(chapters);
     };
     loadChapters();
-  }, [selectedClass, activeTrack]);
+  }, [selectedClass, activeTrack, selectedPrecalcSection]);
 
   // Handler to navigate between main tabs
   const handleNavigate = (
     tab: NavTab, 
     classLevel?: ClassLevel, 
-    track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas'
+    track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus',
+    precalcSection?: 'Ron Larson' | 'James Stewart'
   ) => {
     setActiveTab(tab);
     if (track) {
@@ -197,6 +199,9 @@ export default function App() {
     }
     if (classLevel) {
       setSelectedClass(classLevel);
+    }
+    if (precalcSection) {
+      setSelectedPrecalcSection(precalcSection);
     }
 
     if (tab === 'classes') {
@@ -228,11 +233,15 @@ export default function App() {
   // Handler to select a class from subject dropdown or hero
   const handleSelectClass = (
     lvl: ClassLevel,
-    track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas'
+    track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus',
+    precalcSection?: 'Ron Larson' | 'James Stewart'
   ) => {
     setSelectedClass(lvl);
     if (track) {
       setActiveTrack(track);
+    }
+    if (precalcSection) {
+      setSelectedPrecalcSection(precalcSection);
     }
     setActiveTab('classes');
     setCurrentView('class-page');
@@ -240,7 +249,7 @@ export default function App() {
   };
 
   // Dedicated Ranking Page navigation handlers
-  const handleOpenLeaderboard = (track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas') => {
+  const handleOpenLeaderboard = (track?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus') => {
     if (track) {
       setActiveTrack(track);
     }
@@ -584,6 +593,7 @@ export default function App() {
             activeTab={activeTab}
             selectedClass={selectedClass}
             activeTrack={activeTrack}
+            precalcSection={selectedPrecalcSection}
             activeContentSection={activeContentSection}
             activePhilosopherType={activePhilosopherType}
             onNavigate={handleNavigate}
@@ -607,6 +617,7 @@ export default function App() {
             activeTab={activeTab}
             selectedClass={selectedClass}
             activeTrack={activeTrack}
+            precalcSection={selectedPrecalcSection}
             activeContentSection={activeContentSection}
             activePhilosopherType={activePhilosopherType}
             onNavigate={handleNavigate}
@@ -723,6 +734,8 @@ export default function App() {
             classInfo={currentClassInfo}
             chapters={currentChapters}
             track={activeTrack}
+            section={selectedPrecalcSection}
+            onSelectSection={(sec) => setSelectedPrecalcSection(sec)}
             onSelectChapter={handlePrepareChapterTest}
             onOpenChapterDetails={handleOpenChapterDetails}
             onClassChange={(lvl) => setSelectedClass(lvl)}
@@ -774,6 +787,8 @@ export default function App() {
                   <MobileAppView
                     activeTrack={activeTrack}
                     selectedClass={selectedClass}
+                    selectedPrecalcSection={selectedPrecalcSection}
+                    onSelectPrecalcSection={(sec) => setSelectedPrecalcSection(sec)}
                     onSelectTrack={(track) => {
                       setActiveTrack(track);
                     }}
@@ -797,6 +812,7 @@ export default function App() {
                 {/* Desktop Layout: Rendered on larger screens when not in forced demo mode */}
                 <div className={forceMobileDemo ? 'hidden' : 'hidden md:block'}>
                   <HeroSection
+                    precalcSection={selectedPrecalcSection}
                     onSelectClass={handleSelectClass}
                     onStartPracticing={() => handleSelectClass(9)}
                   />

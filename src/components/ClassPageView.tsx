@@ -19,6 +19,8 @@ interface ClassPageViewProps {
   classInfo: ClassInfo;
   chapters: Chapter[];
   track?: string;
+  section?: 'Ron Larson' | 'James Stewart';
+  onSelectSection?: (section: 'Ron Larson' | 'James Stewart') => void;
   onSelectChapter: (chapter: Chapter, difficulty?: PracticeDifficulty) => void;
   onOpenChapterDetails: (chapter: Chapter, difficulty?: PracticeDifficulty) => void;
   onClassChange: (lvl: ClassLevel) => void;
@@ -30,12 +32,20 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
   currentClass,
   chapters,
   track = 'Elementary Mathematics',
+  section = 'Ron Larson',
+  onSelectSection,
   onSelectChapter,
   onOpenChapterDetails,
   onBackToHome,
 }) => {
   const [selectedDifficulty, setSelectedDifficulty] = useState<PracticeDifficulty>('Normal');
+  const isPreCalculas = track === 'Pre Calculas';
   const displayTrack = track === 'Elementary Mathematics' ? 'Mathematics' : track === 'Elementary Physics' ? 'Physics' : track;
+
+  // Filter chapters by section if Pre Calculas
+  const displayedChapters = isPreCalculas
+    ? chapters.filter((c) => c.section === section)
+    : chapters;
 
   // Question counts for current class and difficulty
   const normalQuestionsCount = MathService.getQuestionCountByDifficulty(currentClass, undefined, 'Normal', track);
@@ -60,13 +70,62 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
           
           <div className="flex items-center gap-2">
             <span className="text-xs font-black text-slate-900 dark:text-white">
-              {displayTrack} — Class {currentClass}
+              {isPreCalculas ? `Pre Calculas — ${section}` : `${displayTrack} — Class ${currentClass}`}
             </span>
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">
-              {chapters.length} Chapters
+              {displayedChapters.length} Chapters
             </span>
           </div>
         </div>
+
+        {/* Pre Calculas Section Selector: Ron Larson vs James Stewart */}
+        {isPreCalculas && (
+          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-violet-200 dark:border-violet-900/50 p-4 sm:p-5 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-2xl bg-violet-100 dark:bg-violet-950/80 text-violet-700 dark:text-violet-300 flex items-center justify-center font-bold shrink-0">
+                <BookOpen className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h3 className="text-sm font-black text-slate-900 dark:text-white">
+                    Pre Calculas Curriculum
+                  </h3>
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300">
+                    Textbook Sections
+                  </span>
+                </div>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                  Select between Ron Larson and James Stewart textbook curricula. Chapters and questions will be added soon.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center bg-slate-100 dark:bg-slate-800 p-1.5 rounded-2xl border border-slate-200 dark:border-slate-700 shrink-0">
+              <button
+                type="button"
+                onClick={() => onSelectSection && onSelectSection('Ron Larson')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  section === 'Ron Larson'
+                    ? 'bg-violet-600 text-white shadow-sm'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                Ron Larson
+              </button>
+              <button
+                type="button"
+                onClick={() => onSelectSection && onSelectSection('James Stewart')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  section === 'James Stewart'
+                    ? 'bg-violet-600 text-white shadow-sm'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                James Stewart
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Difficulty Level Selector Bar (Strictly for Class 11 and Class 12 across all subjects) */}
         {isClass11or12 && (
@@ -178,14 +237,14 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
         )}
 
         {/* Chapters Cards Grid or Empty State */}
-        {chapters.length === 0 ? (
+        {displayedChapters.length === 0 ? (
           <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-12 text-center max-w-xl mx-auto space-y-4 shadow-sm">
             <div className="w-16 h-16 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 mx-auto flex items-center justify-center">
               <BookOpen className="w-8 h-8" />
             </div>
             <div className="space-y-1.5">
               <h3 className="text-lg font-black text-slate-900 dark:text-white">
-                {displayTrack} — Class {currentClass}
+                {isPreCalculas ? `Pre Calculas — ${section}` : `${displayTrack} — Class ${currentClass}`}
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
                 This section is currently empty. Questions and chapters will be added later. Practice sessions and scores will automatically connect to the <strong>{displayTrack}</strong> Academic Ranking.
@@ -194,7 +253,7 @@ export const ClassPageView: React.FC<ClassPageViewProps> = ({
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {chapters.map((chapter, idx) => {
+            {displayedChapters.map((chapter, idx) => {
               const chapterNormalCount = MathService.getQuestionCountByDifficulty(chapter.class, chapter.id, 'Normal', track);
               const chapterAdvancedCount = MathService.getQuestionCountByDifficulty(chapter.class, chapter.id, 'Advanced', track);
               const isChapterUnlocked = selectedDifficulty === 'Advanced' ? chapterAdvancedCount > 0 : chapterNormalCount > 0;

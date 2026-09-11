@@ -11,7 +11,8 @@ import {
   Award, 
   ChevronRight, 
   BookOpen,
-  ArrowLeft
+  ArrowLeft,
+  TrendingUp
 } from 'lucide-react';
 import { LeaderboardEntry, ClassLevel, CandidateRankingProfile } from '../types';
 import { MathService } from '../services/mathService';
@@ -24,7 +25,8 @@ export type LeaderboardTrack =
   | 'Elementary Mathematics' 
   | 'Chemistry' 
   | 'Elementary Physics' 
-  | 'Pre Calculas';
+  | 'Pre Calculas'
+  | 'Calculus';
 
 interface RankingPageViewProps {
   initialClass?: ClassLevel | 'all';
@@ -520,13 +522,14 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
           {/* Controls Bar: Track Selector + Class Switcher with dynamic compact text-fitted buttons */}
           <div className="p-2 sm:p-2.5 bg-slate-50 dark:bg-slate-950/60 border-b border-slate-200 dark:border-slate-800 space-y-1.5">
             
-            {/* 4 Track Options — Content-Fitted Dynamic Width (Compact) */}
+            {/* Track Options — Content-Fitted Dynamic Width (Compact) */}
             <div className="flex flex-wrap items-center gap-1 p-0.5 bg-slate-200/60 dark:bg-slate-800/60 rounded-lg">
               {([
                 { id: 'Elementary Mathematics', label: 'Mathematics', icon: Sigma },
                 { id: 'Chemistry', label: 'Chemistry', icon: FlaskConical },
                 { id: 'Elementary Physics', label: 'Physics', icon: Atom },
                 { id: 'Pre Calculas', label: 'Pre Calculas', icon: Calculator },
+                { id: 'Calculus', label: 'Calculus', icon: TrendingUp },
               ] as { id: LeaderboardTrack; label: string; icon: any }[]).map((tr) => {
                 const Icon = tr.icon;
                 return (
@@ -536,6 +539,8 @@ export const RankingPageView: React.FC<RankingPageViewProps> = ({
                       setSelectedTrack(tr.id);
                       if (tr.id === 'Pre Calculas' || tr.id === 'Chemistry') {
                         setSelectedClass(11);
+                      } else if (tr.id === 'Calculus') {
+                        setSelectedClass(12);
                       }
                       setSelectedCandidate(null);
                     }}

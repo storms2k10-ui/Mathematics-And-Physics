@@ -21,7 +21,7 @@ interface StudentEntryModalProps {
   defaultClass: ClassLevel;
   chapterId?: string;
   chapterTitle?: string;
-  defaultTrack?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas';
+  defaultTrack?: 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus';
   defaultDifficulty?: PracticeDifficulty;
   onStartTest: (config: TestSessionConfig & { track?: string }) => void;
   onOpenAuth?: () => void;
@@ -41,7 +41,7 @@ export const StudentEntryModal: React.FC<StudentEntryModalProps> = ({
   const { currentUser, userProfile } = useAuth();
   const [name, setName] = useState('');
   const [selectedClass, setSelectedClass] = useState<ClassLevel>(defaultClass);
-  const [selectedTrack, setSelectedTrack] = useState<'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas'>(defaultTrack);
+  const [selectedTrack, setSelectedTrack] = useState<'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus'>(defaultTrack);
   const [difficultyTier, setDifficultyTier] = useState<PracticeDifficulty>(defaultDifficulty);
   const [questionCount, setQuestionCount] = useState<number>(15);
   const [error, setError] = useState<string | null>(null);

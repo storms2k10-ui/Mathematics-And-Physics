@@ -24,7 +24,7 @@ export type SubjectTrack =
   | 'Pre Calculas';
 
 interface HeroSectionProps {
-  onSelectClass: (classLevel: ClassLevel, track?: SubjectTrack) => void;
+  onSelectClass: (classLevel: ClassLevel, track?: SubjectTrack, precalcSection?: 'Ron Larson' | 'James Stewart') => void;
   onStartPracticing: () => void;
 }
 
@@ -218,7 +218,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     {
       id: 'Pre Calculas',
       title: 'Pre Calculas',
-      subtitle: 'Class 11',
+      subtitle: 'Ron Larson & James Stewart',
       description: 'Pre-calculus foundations: polynomial & rational functions, trigonometry, analytic geometry, sequences, series, and introductory analysis.',
       classes: [11],
       icon: Calculator,
@@ -227,7 +227,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       badgeText: 'text-violet-700 dark:text-violet-300',
       badgeBorder: 'border-violet-200 dark:border-violet-800',
       buttonBg: 'bg-violet-600 hover:bg-violet-700 shadow-violet-600/25',
-      features: ['Functions & Relations', 'Trigonometry', 'Limits & Continuity', 'Analytic Geometry'],
+      features: ['Ron Larson', 'James Stewart', 'Functions & Trig', 'Analytic Geometry'],
     },
   ];
 
@@ -489,27 +489,53 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     </div>
                   </div>
 
-                  {/* Class Selection Buttons */}
+                  {/* Class or Section Selection Buttons */}
                   <div className="pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
-                      Select Class:
-                    </span>
-                    <div className={`grid ${track.classes.length === 4 ? 'grid-cols-4' : 'grid-cols-2'} gap-1.5`}>
-                      {track.classes.map((lvl) => (
-                        <button
-                          key={lvl}
-                          type="button"
-                          onClick={() => onSelectClass(lvl, track.id)}
-                          className="py-1.5 px-2 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white text-slate-700 dark:text-slate-200 transition-colors text-center cursor-pointer border border-slate-200/60 dark:border-slate-700/60"
-                        >
-                          Class {lvl}
-                        </button>
-                      ))}
-                    </div>
+                    {track.id === 'Pre Calculas' ? (
+                      <>
+                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                          Select Section:
+                        </span>
+                        <div className="grid grid-cols-2 gap-1.5">
+                          <button
+                            type="button"
+                            onClick={() => onSelectClass(11, 'Pre Calculas', 'Ron Larson')}
+                            className="py-1.5 px-2 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-violet-600 hover:text-white dark:hover:bg-violet-600 dark:hover:text-white text-slate-700 dark:text-slate-200 transition-colors text-center cursor-pointer border border-slate-200/60 dark:border-slate-700/60"
+                          >
+                            Ron Larson
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => onSelectClass(11, 'Pre Calculas', 'James Stewart')}
+                            className="py-1.5 px-2 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-violet-600 hover:text-white dark:hover:bg-violet-600 dark:hover:text-white text-slate-700 dark:text-slate-200 transition-colors text-center cursor-pointer border border-slate-200/60 dark:border-slate-700/60"
+                          >
+                            James Stewart
+                          </button>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                          Select Class:
+                        </span>
+                        <div className={`grid ${track.classes.length === 4 ? 'grid-cols-4' : 'grid-cols-2'} gap-1.5`}>
+                          {track.classes.map((lvl) => (
+                            <button
+                              key={lvl}
+                              type="button"
+                              onClick={() => onSelectClass(lvl, track.id)}
+                              className="py-1.5 px-2 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white text-slate-700 dark:text-slate-200 transition-colors text-center cursor-pointer border border-slate-200/60 dark:border-slate-700/60"
+                            >
+                              Class {lvl}
+                            </button>
+                          ))}
+                        </div>
+                      </>
+                    )}
 
                     <button
                       type="button"
-                      onClick={() => onSelectClass(track.classes[0], track.id)}
+                      onClick={() => onSelectClass(track.classes[0], track.id, track.id === 'Pre Calculas' ? 'Ron Larson' : undefined)}
                       className={`w-full py-2 px-3 rounded-xl text-xs font-bold text-white ${track.buttonBg} transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-sm`}
                     >
                       <BookOpen className="w-3.5 h-3.5" />

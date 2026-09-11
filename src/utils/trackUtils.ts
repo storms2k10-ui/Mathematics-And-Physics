@@ -1,6 +1,6 @@
 import { ClassLevel } from '../types';
 
-export type SubjectTrack = 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | string;
+export type SubjectTrack = 'Elementary Mathematics' | 'Chemistry' | 'Elementary Physics' | 'Pre Calculas' | 'Calculus' | string;
 
 /**
  * Normalizes any quiz/test/history record to its exact subject track and class level,
@@ -87,8 +87,16 @@ export function normalizeTrackAndClass(record: {
   }
 
   if (
+    rawTrack.toLowerCase() === 'calculus' ||
+    chapterId.startsWith('calc-')
+  ) {
+    return { track: 'Calculus', classLevel: (classLevel === 9 ? 12 : classLevel) };
+  }
+
+  if (
     rawTrack.toLowerCase().includes('calculas') ||
-    rawTrack.toLowerCase().includes('calculus') ||
+    rawTrack.toLowerCase().includes('pre-calcul') ||
+    rawTrack.toLowerCase().includes('precalcul') ||
     chapterName.includes('pre calculas') ||
     chapterName.includes('pre calculus')
   ) {
