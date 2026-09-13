@@ -294,7 +294,7 @@ export const C11_CH9_ADVANCED_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch9",
     "chapter": "Linear Programming",
-    "question": "If profit per table is $$50$ and profit per chair is $$30$, the objective function $Z$ to maximize is:",
+    "question": "If profit per table is $50$ and profit per chair is $30$, the objective function $Z$ to maximize is:",
     "options": {
       "A": "$Z=50x+30y$",
       "B": "$Z=30x+50y$",

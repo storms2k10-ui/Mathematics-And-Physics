@@ -587,7 +587,7 @@ export const C11_CH5_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch5",
     "chapter": "Miscellaneous Series",
-    "question": "In\n\n$$\n\\frac1{(ak+b)(ak+a+b)},\n$$\n\nthe two factors differ by:",
+    "question": "In\n$$\\frac1{(ak+b)(ak+a+b)},$$ the two factors differ by:",
     "options": {
       "A": "$a$",
       "B": "$b$",
@@ -610,7 +610,7 @@ export const C11_CH5_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch5",
     "chapter": "Miscellaneous Series",
-    "question": "Therefore,\n\n$$\n\\frac1{(ak+b)(ak+a+b)}\n$$\n\nequals:",
+    "question": "Therefore,\n$$\\frac1{(ak+b)(ak+a+b)}$$ equals:",
     "options": {
       "A": "$\\frac1a\\left(\\frac1{ak+b}-\\frac1{ak+a+b}\\right)$",
       "B": "$a\\left(\\frac1{ak+b}-\\frac1{ak+a+b}\\right)$",
@@ -909,7 +909,7 @@ export const C11_CH5_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch5",
     "chapter": "Miscellaneous Series",
-    "question": "The sum\n\n$$\n2(1^2)+4(2^2)+6(3^2)+\\cdots+2n(n^2)\n$$\n\nis:",
+    "question": "The sum\n$$2(1^2)+4(2^2)+6(3^2)+\\cdots+2n(n^2)$$ is:",
     "options": {
       "A": "$\\frac{n^2(n+1)^2}{2}$",
       "B": "$\\frac{n(n+1)(2n+1)}3$",
@@ -1001,7 +1001,7 @@ export const C11_CH5_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch5",
     "chapter": "Miscellaneous Series",
-    "question": "The remainder after the first five terms of\n\n$$\n1+\\frac22+\\frac3{2^2}+\\cdots\n$$\n\nis:",
+    "question": "The remainder after the first five terms of\n$$1+\\frac22+\\frac3{2^2}+\\cdots$$ is:",
     "options": {
       "A": "$\\frac3{16}$",
       "B": "$\\frac5{16}$",
@@ -1024,7 +1024,7 @@ export const C11_CH5_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch5",
     "chapter": "Miscellaneous Series",
-    "question": "The sum of the first five terms of\n\n$$\n\\frac1{1\\cdot3}+\\frac1{3\\cdot5}+\\frac1{5\\cdot7}+\\cdots\n$$\n\nis:",
+    "question": "The sum of the first five terms of\n$$\\frac1{1\\cdot3}+\\frac1{3\\cdot5}+\\frac1{5\\cdot7}+\\cdots$$ is:",
     "options": {
       "A": "$\\frac4{9}$",
       "B": "$\\frac5{11}$",
@@ -1070,7 +1070,7 @@ export const C11_CH5_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch5",
     "chapter": "Miscellaneous Series",
-    "question": "The first five terms of\n\n$$\n\\frac1{1\\cdot5}+\\frac1{5\\cdot9}+\\frac1{9\\cdot13}+\\cdots\n$$\n\nsum to:",
+    "question": "The first five terms of\n$$\\frac1{1\\cdot5}+\\frac1{5\\cdot9}+\\frac1{9\\cdot13}+\\cdots$$ sum to:",
     "options": {
       "A": "$\\frac4{17}$",
       "B": "$\\frac5{21}$",
@@ -1116,7 +1116,7 @@ export const C11_CH5_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch5",
     "chapter": "Miscellaneous Series",
-    "question": "If\n\n$$\n\\sum_{k=1}^{n}\\frac1{(3k-2)(3k+1)}=\\frac4{13},\n$$\n\nthen $n=$:",
+    "question": "If\n$$\\sum_{k=1}^{n}\\frac1{(3k-2)(3k+1)}=\\frac4{13},$$ then $n=$:",
     "options": {
       "A": "$3$",
       "B": "$4$",
@@ -1139,7 +1139,7 @@ export const C11_CH5_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch5",
     "chapter": "Miscellaneous Series",
-    "question": "Evaluate\n\n$$\n\\sum_{k=1}^{10}\\left[(2k-1)+\\frac1{k(k+1)}\\right].\n$$",
+    "question": "Evaluate\n$$\\sum_{k=1}^{10}\\left[(2k-1)+\\frac1{k(k+1)}\\right].$$",
     "options": {
       "A": "$100$",
       "B": "$101$",

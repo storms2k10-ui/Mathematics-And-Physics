@@ -8,10 +8,10 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
     "chapter_id": "c11-ch8",
     "question": "Which relation from $A=\\{1,2,3\\}$ to $B=\\{a,b\\}$ represents a function?",
     "options": {
-      "A": "$\\{$1,a$,$1,b$,$2,a$,$3,b$\\}$",
-      "B": "$\\{$1,a$,$2,a$,$3,b$\\}$",
-      "C": "$\\{$1,a$,$2,b$\\}$",
-      "D": "$\\{$1,a$,$2,a$,$2,b$,$3,b$\\}$"
+      "A": "$\\{(1,a),(1,b),(2,a),(3,b)\\}$",
+      "B": "$\\{(1,a),(2,a),(3,b)\\}$",
+      "C": "$\\{(1,a),(2,b)\\}$",
+      "D": "$\\{(1,a),(2,a),(2,b),(3,b)\\}$"
     },
     "correct_answer": "B",
     "explanation": "A relation is a function when every element of the domain has exactly one image. In B, each of $1,2,3$ occurs exactly once as a first component.",
@@ -188,10 +188,10 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
     "chapter_id": "c11-ch8",
     "question": "Which set of ordered pairs does not represent a function?",
     "options": {
-      "A": "$\\{$1,2$,$2,3$,$3,4$\\}$",
-      "B": "$\\{$1,2$,$2,2$,$3,2$\\}$",
-      "C": "$\\{$1,2$,$1,3$,$2,4$\\}$",
-      "D": "$\\{$-1,1$,$0,0$,$1,1$\\}$"
+      "A": "$\\{(1,2),(2,3),(3,4)\\}$",
+      "B": "$\\{(1,2),(2,2),(3,2)\\}$",
+      "C": "$\\{(1,2),(1,3),(2,4)\\}$",
+      "D": "$\\{(-1,1),(0,0),(1,1)\\}$"
     },
     "correct_answer": "C",
     "explanation": "The input $1$ has two different outputs, $2$ and $3$, violating the definition of a function.",
@@ -410,7 +410,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "Line $y=x$"
     },
     "correct_answer": "B",
-    "explanation": "For an even function, $f(-x) = f(x), meaning points $(x,y)$ and $-x,y$ both lie on the graph, giving reflectional symmetry across the $y$-axis.",
+    "explanation": "For an even function, $f(-x) = f(x)$, meaning points $(x,y)$ and $(-x,y)$ both lie on the graph, giving reflectional symmetry across the $y$-axis.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f(-x) = f(x) \\; (\\text{Even}), \\quad f(-x) = -f(x) \\; (\\text{Odd})"
@@ -428,7 +428,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "Line $y=-x$"
     },
     "correct_answer": "A",
-    "explanation": "For an odd function, $f(-x) = -f(x), meaning $(x,y)$ and $-x,-y$ both lie on the graph, giving $180^\\circ$ rotational symmetry about the origin.",
+    "explanation": "For an odd function, $f(-x) = -f(x)$, meaning $(x,y)$ and $(-x,-y)$ both lie on the graph, giving $180^\\circ$ rotational symmetry about the origin.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f(-x) = f(x) \\; (\\text{Even}), \\quad f(-x) = -f(x) \\; (\\text{Odd})"
@@ -628,7 +628,7 @@ export const C11_CH8_ADVANCED_PART1: Question[] = [
       "D": "Its range is empty"
     },
     "correct_answer": "B",
-    "explanation": "By definition, $f$ is injective $one-to-one$ if f(x_1) = f(x_2) \\implies x_1=x_2$, i.e. distinct inputs have distinct outputs.",
+    "explanation": "By definition, $f$ is injective (one-to-one) if $f(x_1) = f(x_2) \\implies x_1=x_2$, i.e. distinct inputs have distinct outputs.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"

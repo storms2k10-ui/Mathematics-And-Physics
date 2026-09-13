@@ -35,7 +35,7 @@ export const C11_CH5_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch5",
     "chapter": "Miscellaneous Series",
-    "question": "The value of\n\n$$\n\\frac{\\sum_{k=1}^{n}k^3}{\\left(\\sum_{k=1}^{n}k\\right)^2}\n$$\n\nis:",
+    "question": "The value of\n$$\\frac{\\sum_{k=1}^{n}k^3}{\\left(\\sum_{k=1}^{n}k\\right)^2}$$ is:",
     "options": {
       "A": "$0$",
       "B": "$1$",
@@ -1093,7 +1093,7 @@ export const C11_CH5_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch5",
     "chapter": "Miscellaneous Series",
-    "question": "For $r\\ne1$,\n\n$$\n\\sum_{k=1}^{n}kr^{k-1}\n$$\n\nequals:",
+    "question": "For $r\ e1$,\n$$\\sum_{k=1}^{n}kr^{k-1}$$ equals:",
     "options": {
       "A": "$\\frac{1-r^n}{1-r}$",
       "B": "$\\frac{1-(n+1)r^n+nr^{n+1}}{(1-r)^2}$",

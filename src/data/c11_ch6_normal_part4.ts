@@ -1152,7 +1152,7 @@ export const C11_CH6_NORMAL_PART4: Question[] = [
     "option_d": "$2/5$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$\frac{{}^{4} C_2{}^{6} C_1}{{}^{10} C_3}=\frac{36}{120}=\frac3{10}$.",
+    "explanation": "$\\frac{{}^{4} C_2{}^{6} C_1}{{}^{10} C_3}=\\frac{36}{120}=\frac3{10}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   }

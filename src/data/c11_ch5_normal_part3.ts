@@ -863,7 +863,7 @@ export const C11_CH5_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch5",
     "chapter": "Miscellaneous Series",
-    "question": "The general result\n\n$$\n\\sum_{k=1}^{n}k(k+1)\\cdots(k+r-1)\n$$\n\nis:",
+    "question": "The general result\n$$\\sum_{k=1}^{n}k(k+1)\\cdots(k+r-1)$$ is:",
     "options": {
       "A": "$\\frac{n(n+1)\\cdots(n+r)}{r+1}$",
       "B": "$\\frac{n(n+1)\\cdots(n+r-1)}r$",

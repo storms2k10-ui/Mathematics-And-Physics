@@ -6,7 +6,7 @@ export const C11_CH7_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find the coefficient of $x^5$ in $1+x+x^2$^2$.",
+    "question": "Find the coefficient of $x^5$ in $(1+x+x^2)^2$.",
     "options": {
       "A": "$1$",
       "B": "$2$",
@@ -32,7 +32,7 @@ export const C11_CH7_ADVANCED_PART4: Question[] = [
       "D": "$35$"
     },
     "correct_answer": "D",
-    "explanation": "Combine the factors to obtain $(1+x)^{7}$, whose $x^3$ coefficient is $\binom{7}{3}=35$.",
+    "explanation": "Combine the factors to obtain $(1+x)^{7}$, whose $x^3$ coefficient is $\\binom{7}{3}=35$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -50,7 +50,7 @@ export const C11_CH7_ADVANCED_PART4: Question[] = [
       "D": "$-5$"
     },
     "correct_answer": "A",
-    "explanation": "The product is $1-x^2$^5$; $x^4$ corresponds to $\binom{5}{2}(-1)^2=10$.",
+    "explanation": "The product is $(1-x^2)^5$; $x^4$ corresponds to $\\binom{5}{2}(-1)^2=10$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(1+x)^m = 1 + mx + \\dfrac{m(m-1)}{2!}x^2 + \\cdots, \\quad |x| < 1"
@@ -68,7 +68,7 @@ export const C11_CH7_ADVANCED_PART4: Question[] = [
       "D": "$-6$"
     },
     "correct_answer": "C",
-    "explanation": "The product is $1-x^2$^4$; $x^6$ corresponds to $r=3$, giving $(-1)^3\\binom{4}{3}=-4$.",
+    "explanation": "The product is $(1-x^2)^4$; $x^6$ corresponds to $r=3$, giving $(-1)^3\\binom{4}{3}=-4$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(1+x)^m = 1 + mx + \\dfrac{m(m-1)}{2!}x^2 + \\cdots, \\quad |x| < 1"
@@ -86,7 +86,7 @@ export const C11_CH7_ADVANCED_PART4: Question[] = [
       "D": "$56$"
     },
     "correct_answer": "A",
-    "explanation": "The even-power coefficients add, so the result is $2\binom{8}{4}=140$.",
+    "explanation": "The even-power coefficients add, so the result is $2\\binom{8}{4}=140$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(1+x)^m = 1 + mx + \\dfrac{m(m-1)}{2!}x^2 + \\cdots, \\quad |x| < 1"
@@ -122,7 +122,7 @@ export const C11_CH7_ADVANCED_PART4: Question[] = [
       "D": "$28$"
     },
     "correct_answer": "C",
-    "explanation": "Odd-power coefficients subtract to $2\binom{8}{3}=112$.",
+    "explanation": "Odd-power coefficients subtract to $2\\binom{8}{3}=112$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(1+x)^m = 1 + mx + \\dfrac{m(m-1)}{2!}x^2 + \\cdots, \\quad |x| < 1"
@@ -392,7 +392,7 @@ export const C11_CH7_ADVANCED_PART4: Question[] = [
       "D": "$m^2$"
     },
     "correct_answer": "B",
-    "explanation": "It equals the generalized binomial coefficient $\binom{m}{2}$.",
+    "explanation": "It equals the generalized binomial coefficient $\\binom{m}{2}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(1+x)^m = 1 + mx + \\dfrac{m(m-1)}{2!}x^2 + \\dfrac{m(m-1)(m-2)}{3!}x^3 + \\dots"
@@ -410,7 +410,7 @@ export const C11_CH7_ADVANCED_PART4: Question[] = [
       "D": "$m^3$"
     },
     "correct_answer": "C",
-    "explanation": "It is the generalized coefficient $\binom{m}{3}$.",
+    "explanation": "It is the generalized coefficient $\\binom{m}{3}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(1+x)^m = 1 + mx + \\dfrac{m(m-1)}{2!}x^2 + \\dfrac{m(m-1)(m-2)}{3!}x^3 + \\dots"
@@ -680,7 +680,7 @@ export const C11_CH7_ADVANCED_PART4: Question[] = [
       "D": "$20$"
     },
     "correct_answer": "B",
-    "explanation": "The coefficient is $\\binom{3+3-1}{3}=\binom{5}{3}=10$.",
+    "explanation": "The coefficient is $\\binom{3+3-1}{3}=\\binom{5}{3}=10$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(1+x)^m = 1 + mx + \\dfrac{m(m-1)}{2!}x^2 + \\dfrac{m(m-1)(m-2)}{3!}x^3 + \\dots"
@@ -734,7 +734,7 @@ export const C11_CH7_ADVANCED_PART4: Question[] = [
       "D": "$10$"
     },
     "correct_answer": "A",
-    "explanation": "The product is $1-x^2$^5$; the $x^2$ coefficient is $-\binom{5}{1}=-5$.",
+    "explanation": "The product is $(1-x^2)^5$; the $x^2$ coefficient is $-\\binom{5}{1}=-5$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(1+x)^m = 1 + mx + \\dfrac{m(m-1)}{2!}x^2 + \\cdots, \\quad |x| < 1"
@@ -834,7 +834,7 @@ export const C11_CH7_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "If $(1+x)^{n}$ has two equal middle coefficients $\binom{n}{4}$ and $\binom{n}{5}$, find $n$.",
+    "question": "If $(1+x)^{n}$ has two equal middle coefficients $\\binom{n}{4}$ and $\\binom{n}{5}$, find $n$.",
     "options": {
       "A": "$8$",
       "B": "$10$",
@@ -860,7 +860,7 @@ export const C11_CH7_ADVANCED_PART4: Question[] = [
       "D": "$n+22^{n-1}$"
     },
     "correct_answer": "D",
-    "explanation": "$sum r\binom{n}{r}=n2^{n-1}$ and $sum\binom{n}{r}=2^n$; adding gives $(n+2)2^{n-1}$.",
+    "explanation": "$sum r\\binom{n}{r}=n2^{n-1}$ and $sum\\binom{n}{r}=2^n$; adding gives $(n+2)2^{n-1}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\sum_{r=0}^n r\\binom{n}{r} = n 2^{n-1}, \\quad \\sum_{r=0}^n r(r-1)\\binom{n}{r} = n(n-1)2^{n-2}"
@@ -870,7 +870,7 @@ export const C11_CH7_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}r\binom{n}{r}$.",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}r\\binom{n}{r}$.",
     "options": {
       "A": "$n2^{n-1}$",
       "B": "$2^n$",
@@ -888,7 +888,7 @@ export const C11_CH7_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}r(r-1)\binom{n}{r}$.",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}r(r-1)\\binom{n}{r}$.",
     "options": {
       "A": "$n2^{n-1}$",
       "B": "$nn-12^{n-2}$",

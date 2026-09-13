@@ -312,7 +312,7 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
 
                   {/* Expanded Body */}
                   {isExpanded && (
-                    <div className="p-4 sm:p-5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 space-y-4">
+                    <div className="p-4 sm:p-5 bg-slate-50/50 dark:bg-slate-900/90 border-t border-slate-200 dark:border-slate-800 space-y-4">
                       {/* Full Question */}
                       <div className="text-sm font-bold text-slate-900 dark:text-white">
                         <MathText text={question.question} />

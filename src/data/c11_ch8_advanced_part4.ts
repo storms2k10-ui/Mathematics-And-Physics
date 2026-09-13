@@ -78,7 +78,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If $f(x+1) = 2x+5$, find the expression for f(x)$.",
+    "question": "If $f(x+1) = 2x+5$, find the expression for $f(x)$.",
     "options": {
       "A": "$2x+3$",
       "B": "$2x+5$",
@@ -104,7 +104,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$12x-1$"
     },
     "correct_answer": "B",
-    "explanation": "Let $u=2x \\implies x=u/2$. Then $f(u)=6$u/2$-1=3u-1$. Thus $f(x) = 3x-1$.",
+    "explanation": "Let $u=2x \\implies x=u/2$. Then $f(u)=6(u/2)-1=3u-1$. Thus $f(x) = 3x-1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -114,7 +114,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If $f(x-2) = x^2-4x+7$, find f(x)$.",
+    "question": "If $f(x-2) = x^2-4x+7$, find $f(x)$.",
     "options": {
       "A": "$x^2+3$",
       "B": "$x^2-4$",
@@ -214,7 +214,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "No restriction"
     },
     "correct_answer": "B",
-    "explanation": "Restricting the domain of $f$ to $[0,\\infty)$ makes $f$ bijective onto $[0,\\infty)$, where $\\sqrt{x^2}=x$ and $\\sqrt{x}$^2=x$.",
+    "explanation": "Restricting the domain of $f$ to $[0,\\infty)$ makes $f$ bijective onto $[0,\\infty)$, where $\\sqrt{x^2}=x$ and $(\\sqrt{x})^2=x$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -224,7 +224,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If $f(x) = \\dfrac{x-1}{x+1}$, then $($(f\\circ f)()(x))$ equals:",
+    "question": "If $f(x) = \\dfrac{x-1}{x+1}$, then $(f\\circ f)(x)$ equals:",
     "options": {
       "A": "$x$",
       "B": "$-\\dfrac{1}{x}$",
@@ -260,7 +260,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If $f^{-1}(x)$=2x+3$, then $f(x) = $:",
+    "question": "If $f^{-1}(x) = 2x+3$, then $f(x) = $:",
     "options": {
       "A": "$\\dfrac{x-3}{2}$",
       "B": "$\\dfrac{x+3}{2}$",
@@ -278,7 +278,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "If $f(x) = \\dfrac{3x-2}{5}$, then $f^{-1}(4)$=$:",
+    "question": "If $f(x) = \\dfrac{3x-2}{5}$, then $f^{-1}(4) = $:",
     "options": {
       "A": "$6$",
       "B": "$\\dfrac{18}{5}$",
@@ -304,7 +304,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$8$"
     },
     "correct_answer": "A",
-    "explanation": "Setting $f(x) = 7 \\implies x^3-1=7 \\implies x^3=8 \\implies x=2$. Thus $f^{-1}(7)$=2$.",
+    "explanation": "Setting $f(x) = 7 \\implies x^3-1=7 \\implies x^3=8 \\implies x=2$. Thus $f^{-1}(7) = 2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad y = f(x) \\iff x = f^{-1}(y)"
@@ -412,7 +412,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "Constant"
     },
     "correct_answer": "B",
-    "explanation": "$(f+g)(-x) = f(-x)+g(-x) = -f(x)-g(x)=-(f(x)+g(x)) = -(f+g)(x).",
+    "explanation": "$(f+g)(-x) = f(-x)+g(-x) = -f(x)-g(x)=-(f(x)+g(x)) = -(f+g)(x)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f(-x) = f(x) \\; (\\text{Even}), \\quad f(-x) = -f(x) \\; (\\text{Odd})"
@@ -628,7 +628,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
       "D": "$\\mathbb{R}$"
     },
     "correct_answer": "A",
-    "explanation": "Completing the square: $f(x) = $(x-2)^2+3$. Since $(x-2)^2\\ge 0$, f(x)$\\ge3$. Thus range is $[3,\\infty)$.",
+    "explanation": "Completing the square: $f(x) = (x-2)^2+3$. Since $(x-2)^2\\ge 0$, $f(x)\\ge3$. Thus range is $[3,\\infty)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "\\text{Range}(f) = \\{f(x) : x \\in \\text{Dom}(f)\\}"
@@ -710,7 +710,7 @@ export const C11_CH8_ADVANCED_PART4: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch8",
-    "question": "The domain of $($(f\\circ g)()(x))$, where $f(x) = \\sqrt{x}$ and $g(x) = x^2-9$, is:",
+    "question": "The domain of $(f\\circ g)(x)$, where $f(x) = \\sqrt{x}$ and $g(x) = x^2-9$, is:",
     "options": {
       "A": "$[-3,3]$",
       "B": "$(-\\infty,-3]\\cup[3,\\infty)$",

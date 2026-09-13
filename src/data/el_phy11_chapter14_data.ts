@@ -598,7 +598,7 @@ export const EL_PHY11_CH14_QUESTIONS: Question[] = [
     subject: 'Physics',
     chapter_id: 'el-phy11-ch14',
     chapter: 'Chapter 14 — Optical Instruments & Communication',
-    question: 'A Single-Mode Optical Fiber (SMF) has an extremely narrow core diameter ($\approx 8\\text{--}10\\,\\mu\\text{m}$) and transmits:',
+    question: 'A Single-Mode Optical Fiber (SMF) has an extremely narrow core diameter ($\\approx 8\\text{--}10\\,\\mu\\text{m}$) and transmits:',
     option_a: 'Only a single ray/mode of light, eliminating modal dispersion',
     option_b: 'Thousands of zigzagging modes simultaneously',
     option_c: 'Sound waves only',

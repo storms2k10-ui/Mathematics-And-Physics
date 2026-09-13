@@ -129,7 +129,7 @@ export const C11_CH2_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "Evaluate\n$$\n\\begin{vmatrix}1&0\\\\5&6\\end{vmatrix}\n-\n\\begin{vmatrix}1&2\\\\3&4\\end{vmatrix}.\n$$",
+    "question": "Evaluate$$\\begin{vmatrix}1&0\\\\5&6\\end{vmatrix}-\\begin{vmatrix}1&2\\\\3&4\\end{vmatrix}.$$",
     "options": {
       "A": "$4$",
       "B": "$8$",
@@ -365,7 +365,7 @@ export const C11_CH2_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "If\n$$\n\\begin{vmatrix}a&b\\\\0&7\\end{vmatrix}\n=\n\\begin{vmatrix}2&3\\\\1&-9\\end{vmatrix},\n$$\nthen $a=$:",
+    "question": "If$$\\begin{vmatrix}a&b\\\\0&7\\end{vmatrix}=\\begin{vmatrix}2&3\\\\1&-9\\end{vmatrix},$$then $a=$:",
     "options": {
       "A": "$-3$",
       "B": "$3$",
@@ -459,7 +459,7 @@ export const C11_CH2_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "For\n$$\nA=\\begin{bmatrix}1&2&4\\\\-1&2&5\\\\0&1&-1\\end{bmatrix},\n$$\nthe cofactor $A_{22}$ is:",
+    "question": "For$$A=\\begin{bmatrix}1&2&4\\\\-1&2&5\\\\0&1&-1\\end{bmatrix},$$the cofactor $A_{22}$ is:",
     "options": {
       "A": "$0$",
       "B": "$-1$",
@@ -650,12 +650,12 @@ export const C11_CH2_NORMAL_PART1: Question[] = [
       "A": "All entries are equal",
       "B": "All entries are zero",
       "C": "$m=n$",
-      "D": "$m\\neq n$"
+      "D": "$m\ eq n$"
     },
     "option_a": "All entries are equal",
     "option_b": "All entries are zero",
     "option_c": "$m=n$",
-    "option_d": "$m\\neq n$",
+    "option_d": "$m\ eq n$",
     "correct_answer": "D",
     "correct_option": "D",
     "explanation": "A rectangular matrix has unequal numbers of rows and columns.",

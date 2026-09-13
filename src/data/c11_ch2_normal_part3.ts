@@ -176,7 +176,7 @@ export const C11_CH2_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "For\n$$\nA=\\begin{bmatrix}1&2&3\\\\0&4&5\\\\1&0&6\\end{bmatrix},\n$$\nthe minor $M_{12}$ is:",
+    "question": "For$$A=\\begin{bmatrix}1&2&3\\\\0&4&5\\\\1&0&6\\end{bmatrix},$$the minor $M_{12}$ is:",
     "options": {
       "A": "$5$",
       "B": "$6$",
@@ -224,7 +224,7 @@ export const C11_CH2_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "The determinant of\n$$\n\\begin{bmatrix}2&1&4\\\\0&-1&3\\\\0&0&3\\end{bmatrix}\n$$\nis:",
+    "question": "The determinant of$$\\begin{bmatrix}2&1&4\\\\0&-1&3\\\\0&0&3\\end{bmatrix}$$is:",
     "options": {
       "A": "$6$",
       "B": "$-3$",
@@ -437,7 +437,7 @@ export const C11_CH2_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "If $k\\neq0$ and $A$ is invertible, then:",
+    "question": "If $k\ eq0$ and $A$ is invertible, then:",
     "options": {
       "A": "$(kA)^{-1}=kA^{-1}$",
       "B": "$(kA)^{-1}=\\frac{1}{k}A^{-1}$",
@@ -901,7 +901,7 @@ export const C11_CH2_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "The rank of\n$$\n\\begin{bmatrix}1&2&0\\\\0&1&3\\\\0&0&0\\end{bmatrix}\n$$\nis:",
+    "question": "The rank of$$\\begin{bmatrix}1&2&0\\\\0&1&3\\\\0&0&0\\end{bmatrix}$$is:",
     "options": {
       "A": "$1$",
       "B": "$2$",

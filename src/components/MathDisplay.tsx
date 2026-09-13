@@ -43,50 +43,89 @@ export const KATEX_CONFIG: katex.KatexOptions = {
 
 /**
  * Sanitizes and normalizes LaTeX source strings to fix common escaping artifacts,
- * primes, degree symbols, scientific notations, and limit/summation boundaries.
+ * primes, degree symbols, scientific notations, fractions, powers, and limit/summation boundaries.
  */
 export function sanitizeLatex(str: string): string {
   if (!str) return '';
   let s = str.trim();
 
-  // Fix escaped single quotes used for primes (e.g., f\'(x) -> f'(x), y\'\' -> y'')
+  // 1. Fix JS string control characters (0x01-0x1F) caused by single-backslash escapes
+  s = s.replace(/\x08inom\b/g, '\\binom');
+  s = s.replace(/\x08eta\b/g, '\\beta');
+  s = s.replace(/\x08egin\b/g, '\\begin');
+  s = s.replace(/\x08ar\b/g, '\\bar');
+  s = s.replace(/\x08mathbf\b/g, '\\mathbf');
+  s = s.replace(/\x08mathbb\b/g, '\\mathbb');
+  s = s.replace(/\x08/g, '\\b');
+
+  s = s.replace(/\x0Crac\b/g, '\\frac');
+  s = s.replace(/\x0Corall\b/g, '\\forall');
+  s = s.replace(/\x0C/g, '\\f');
+
+  s = s.replace(/\x0Barnothing\b/g, '\\varnothing');
+  s = s.replace(/\x0Bec\b/g, '\\vec');
+  s = s.replace(/\x0B/g, '\\v');
+
+  s = s.replace(/\x07pprox\b/g, '\\approx');
+  s = s.replace(/\x07lpha\b/g, '\\alpha');
+  s = s.replace(/\x07/g, '\\a');
+
+  s = s.replace(/\x0Dight\b/g, '\\right');
+  s = s.replace(/\x0Dho\b/g, '\\rho');
+  s = s.replace(/\r/g, ' ');
+
+  s = s.replace(/\t(heta|times|text|tan|to|tau)\b/g, '\\$1');
+  s = s.replace(/\t/g, ' ');
+
+  s = s.replace(/\n(eq|notin)\b/g, '\\$1');
+  s = s.replace(/\\n\b/g, ' ').replace(/\\n/g, ' ');
+  s = s.replace(/\n/g, ' ');
+
+  // 2. Fix primes (e.g., f\'(x) -> f'(x), y\'\' -> y'')
   s = s.replace(/\\'/g, "'");
 
-  // Fix literal escaped letters that were intended to be LaTeX keywords
-  s = s.replace(/\neq\b/g, '\\neq ');
-  s = s.replace(/\notin\b/g, '\\notin ');
+  // 3. Matrix newline fix: \\ followed by letter must have space in LaTeX
+  s = s.replace(/\\\\([a-zA-Z])/g, '\\\\ $1');
 
-  // Fix accidental double backslashes before common LaTeX keywords
-  s = s.replace(/\\\\([a-zA-Z]+)/g, '\\$1');
+  // 4. Missing backslash before left/right delimiters
+  s = s.replace(/(^|[^\\])\bleft(\[|\(|\.|\\\{|\|)/g, '$1\\left$2');
+  s = s.replace(/(^|[^\\])\bright(\]|\)|\.|\\\}|\|)/g, '$1\\right$2');
 
-  // Normalize degree symbols
+  // 5. Fix set delimiters: \left\\{ -> \left\{
+  s = s.replace(/\\left\\\\\{/g, '\\left\\{').replace(/\\right\\\\}/g, '\\right\\}');
+
+  // 6. Degree symbols
   s = s.replace(/(\d+)\^\\circ/g, '$1^{\\circ}');
   s = s.replace(/(\d+)\^\{\\circ\}/g, '$1^{\\circ}');
   s = s.replace(/(\d+)°/g, '$1^{\\circ}');
 
-  // Normalize scientific exponents (e.g. 10^-19 -> 10^{-19}, 10^9 -> 10^{9})
-  s = s.replace(/10\^(-?\d+)/g, '10^{$1}');
+  // 7. Trig function powers without space: \cos^215^\circ -> \cos^2 15^{\circ}
+  s = s.replace(/\\(sin|cos|tan|cot|sec|csc)\^(\d)(\d+)\^/g, '\\$1^{$2} $3^');
 
-  // Normalize unbraced limits (e.g. \lim_x\to 0 -> \lim_{x \to 0})
-  s = s.replace(/\\lim_([a-zA-Z0-9]+)\\to([a-zA-Z0-9\\infty]+)/g, '\\lim_{$1 \\to $2}');
-  s = s.replace(/\\lim_([a-zA-Z0-9]+)->([a-zA-Z0-9\\infty]+)/g, '\\lim_{$1 \\to $2}');
+  // 8. Fractions: \frac 1 2 or \frac 12 -> \frac{1}{2}, \frac1{...} -> \frac{1}{...}
+  s = s.replace(/\\frac\s*(\d)\s*(\d)\b/g, '\\frac{$1}{$2}');
+  s = s.replace(/\\frac\s*(\d)\s*\{/g, '\\frac{$1}{');
+
+  // 9. Scientific and negative powers / exponents: 10^-19 -> 10^{-19}, x^-1 -> x^{-1}, e^-x -> e^{-x}
+  s = s.replace(/10\^(-?\d+)/g, '10^{$1}');
+  s = s.replace(/([a-zA-Z0-9\)\}])\^(-[a-zA-Z0-9]+)\b/g, '$1^{$2}');
+
+  // 10. Limits
+  s = s.replace(/\\lim_([a-zA-Z0-9]+)\\to([a-zA-Z0-9]+|\\infty)/g, '\\lim_{$1 \\to $2}');
+  s = s.replace(/\\lim_([a-zA-Z0-9]+)->([a-zA-Z0-9]+|\\infty)/g, '\\lim_{$1 \\to $2}');
   s = s.replace(/\\lim_\{([^}]+)->([^}]+)\}/g, '\\lim_{$1 \\to $2}');
   s = s.replace(/\\lim_\{([^}]+)→([^}]+)\}/g, '\\lim_{$1 \\to $2}');
-
-  // Ensure limit subscripts are always placed directly underneath "lim" in authentic mathematical script
   s = s.replace(/\\lim(?![a-zA-Z\\])(?!\\limits)/g, '\\lim\\limits');
   s = s.replace(/\\limsup(?![a-zA-Z\\])(?!\\limits)/g, '\\limsup\\limits');
   s = s.replace(/\\liminf(?![a-zA-Z\\])(?!\\limits)/g, '\\liminf\\limits');
 
-  // Normalize unbraced integrals (e.g. \int_0^1 -> \int_{0}^{1})
-  s = s.replace(/\\int_([a-zA-Z0-9]+)\^([a-zA-Z0-9\\infty]+)/g, '\\int_{$1}^{$2}');
-
-  // Normalize unbraced summation lower and upper limits
-  s = s.replace(/\\sum_([a-zA-Z0-9]+)=([a-zA-Z0-9]+)\^([a-zA-Z0-9\\infty]+)/g, '\\sum_{$1=$2}^{$3}');
+  // 11. Integrals & Summations
+  s = s.replace(/\\int_([a-zA-Z0-9]+)\^([a-zA-Z0-9]+|\\infty)/g, '\\int_{$1}^{$2}');
+  s = s.replace(/\\sum_([a-zA-Z0-9]+)=([a-zA-Z0-9]+)\^([a-zA-Z0-9]+|\\infty)\b/g, '\\sum_{$1=$2}^{$3}');
   s = s.replace(/\\sum_([a-zA-Z0-9]+)=([a-zA-Z0-9]+)\^\{([^}]+)\}/g, '\\sum_{$1=$2}^{$3}');
-  s = s.replace(/\\sum_\{([^}]+)\}\^([a-zA-Z0-9\\infty]+)(?!\{)/g, '\\sum_{$1}^{$2}');
+  s = s.replace(/\\sum_\{([^}]+)\}\^([a-zA-Z0-9]+|\\infty)(?!\{)/g, '\\sum_{$1}^{$2}');
 
-  // Fix trailing % or \%
+  // 12. Fix trailing % or \%
   s = s.replace(/\\%$/, '\\%');
 
   return s;

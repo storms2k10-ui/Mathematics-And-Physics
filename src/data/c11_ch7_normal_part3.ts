@@ -48,7 +48,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "option_d": "$1024$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$\\sum\binom nr^2=\binom{2n}n=\binom{12}6=924$.",
+    "explanation": "$\\sum\\binom nr^2=\\binom{2n}n=\\binom{12}6=924$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -71,7 +71,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "option_d": "$5005$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The corresponding identity gives $\binom{14}6=3003$.",
+    "explanation": "The corresponding identity gives $\\binom{14}6=3003$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -150,7 +150,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "The coefficient of $x^6$ in $\\left(x+\frac1x\right)^{10}$ is:",
+    "question": "The coefficient of $x^6$ in $\\left(x+\frac1x\\right)^{10}$ is:",
     "options": {
       "A": "$10$",
       "B": "$45$",
@@ -163,7 +163,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "option_d": "$210$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$10-2r=6\\Rightarrow r=2$, giving $\binom{10}2=45$.",
+    "explanation": "$10-2r=6\\Rightarrow r=2$, giving $\\binom{10}2=45$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -173,7 +173,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "The constant term in $\\left(x+\frac1x\right)^8$ is:",
+    "question": "The constant term in $\\left(x+\frac1x\\right)^8$ is:",
     "options": {
       "A": "$28$",
       "B": "$56$",
@@ -196,7 +196,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "The constant term in $\\left(x^2+\frac1x\right)^6$ is:",
+    "question": "The constant term in $\\left(x^2+\frac1x\\right)^6$ is:",
     "options": {
       "A": "$10$",
       "B": "$15$",
@@ -219,7 +219,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "The constant term in $\\left(x^3+\frac1x\right)^8$ is:",
+    "question": "The constant term in $\\left(x^3+\frac1x\\right)^8$ is:",
     "options": {
       "A": "$8$",
       "B": "$28$",
@@ -242,7 +242,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "The constant term in $\\left(x+\frac2x\right)^8$ is:",
+    "question": "The constant term in $\\left(x+\frac2x\\right)^8$ is:",
     "options": {
       "A": "$560$",
       "B": "$840$",
@@ -265,7 +265,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "The coefficient of $x^3$ in $\\left(2x^2-\frac1x\right)^6$ is:",
+    "question": "The coefficient of $x^3$ in $\\left(2x^2-\frac1x\\right)^6$ is:",
     "options": {
       "A": "$-320$",
       "B": "$-160$",
@@ -288,7 +288,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "The constant term in $\\left(x^2+\frac2x\right)^9$ is:",
+    "question": "The constant term in $\\left(x^2+\frac2x\\right)^9$ is:",
     "options": {
       "A": "$2688$",
       "B": "$4032$",
@@ -380,7 +380,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "Does $\\left(x^2+\frac1x\right)^5$ contain a constant term?",
+    "question": "Does $\\left(x^2+\frac1x\\right)^5$ contain a constant term?",
     "options": {
       "A": "Yes, $5$",
       "B": "Yes, $10$",
@@ -428,18 +428,18 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "chapter": "Mathematical Induction and Binomial Theorem",
     "question": "The coefficient of $x^3$ in $(1+x)^n$ is:",
     "options": {
-      "A": "$\frac{n(n-1)}2$",
-      "B": "$\frac{n(n-1)(n-2)}6$",
+      "A": "$\\frac{n(n-1)}2$",
+      "B": "$\\frac{n(n-1)(n-2)}6$",
       "C": "$n(n-1)(n-2)$",
       "D": "$n^3$"
     },
-    "option_a": "$\frac{n(n-1)}2$",
-    "option_b": "$\frac{n(n-1)(n-2)}6$",
+    "option_a": "$\\frac{n(n-1)}2$",
+    "option_b": "$\\frac{n(n-1)(n-2)}6$",
     "option_c": "$n(n-1)(n-2)$",
     "option_d": "$n^3$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The coefficient is $\binom n3$.",
+    "explanation": "The coefficient is $\\binom n3$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -452,13 +452,13 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "question": "The third term in $(a+b)^n$ is:",
     "options": {
       "A": "$na^{n-1}b$",
-      "B": "$\binom n2a^{n-2}b^2$",
-      "C": "$\binom n3a^{n-3}b^3$",
+      "B": "$\\binom n2a^{n-2}b^2$",
+      "C": "$\\binom n3a^{n-3}b^3$",
       "D": "$a^{n-2}b^2$"
     },
     "option_a": "$na^{n-1}b$",
-    "option_b": "$\binom n2a^{n-2}b^2$",
-    "option_c": "$\binom n3a^{n-3}b^3$",
+    "option_b": "$\\binom n2a^{n-2}b^2$",
+    "option_c": "$\\binom n3a^{n-3}b^3$",
     "option_d": "$a^{n-2}b^2$",
     "correct_answer": "B",
     "correct_option": "B",
@@ -633,7 +633,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "The middle term of $\\left(2x+\frac1x\right)^{10}$ is:",
+    "question": "The middle term of $\\left(2x+\frac1x\\right)^{10}$ is:",
     "options": {
       "A": "$4032$",
       "B": "$8064$",
@@ -646,7 +646,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "option_d": "$8064x$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$T_6=\binom{10}5(2x)^5x^{-5}=252(32)=8064$.",
+    "explanation": "$T_6=\\binom{10}5(2x)^5x^{-5}=252(32)=8064$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -656,7 +656,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "The middle term of $\\left(x^2+\frac1x\right)^8$ is:",
+    "question": "The middle term of $\\left(x^2+\frac1x\\right)^8$ is:",
     "options": {
       "A": "$56x^4$",
       "B": "$70x^4$",
@@ -692,7 +692,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "option_d": "$1024$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The central coefficient is $\binom{10}5=252$.",
+    "explanation": "The central coefficient is $\\binom{10}5=252$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -727,13 +727,13 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "chapter": "Mathematical Induction and Binomial Theorem",
     "question": "Consecutive terms increase in magnitude when:",
     "options": {
-      "A": "$\\left|\frac{T_{r+2}}{T_{r+1}}\right|<1$",
-      "B": "$\\left|\frac{T_{r+2}}{T_{r+1}}\right|>1$",
+      "A": "$\\left|\\frac{T_{r+2}}{T_{r+1}}\\right|<1$",
+      "B": "$\\left|\\frac{T_{r+2}}{T_{r+1}}\\right|>1$",
       "C": "$T_{r+1}=0$",
       "D": "$r=n$"
     },
-    "option_a": "$\\left|\frac{T_{r+2}}{T_{r+1}}\right|<1$",
-    "option_b": "$\\left|\frac{T_{r+2}}{T_{r+1}}\right|>1$",
+    "option_a": "$\\left|\\frac{T_{r+2}}{T_{r+1}}\\right|<1$",
+    "option_b": "$\\left|\\frac{T_{r+2}}{T_{r+1}}\\right|>1$",
     "option_c": "$T_{r+1}=0$",
     "option_d": "$r=n$",
     "correct_answer": "B",
@@ -807,7 +807,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "option_d": "$1287x^5$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$\binom{12}5=792$.",
+    "explanation": "$\\binom{12}5=792$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -830,7 +830,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "option_d": "$210a^6b^4$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$T_7=\binom{10}6a^4b^6=210a^4b^6$.",
+    "explanation": "$T_7=\\binom{10}6a^4b^6=210a^4b^6$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -886,7 +886,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "The term containing $x^{-2}$ in $\\left(x+\frac1x\right)^6$ is:",
+    "question": "The term containing $x^{-2}$ in $\\left(x+\frac1x\\right)^6$ is:",
     "options": {
       "A": "$T_3$",
       "B": "$T_4$",
@@ -955,7 +955,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "The constant term in $\\left(x+\frac1{x^2}\right)^9$ is:",
+    "question": "The constant term in $\\left(x+\frac1{x^2}\\right)^9$ is:",
     "options": {
       "A": "$36$",
       "B": "$84$",
@@ -978,7 +978,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "The constant term in $\\left(2x+\frac1{x^2}\right)^9$ is:",
+    "question": "The constant term in $\\left(2x+\frac1{x^2}\\right)^9$ is:",
     "options": {
       "A": "$2688$",
       "B": "$4032$",
@@ -1001,7 +1001,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "The coefficient of $x^4$ in $\\left(x+\frac1x\right)^{10}$ is:",
+    "question": "The coefficient of $x^4$ in $\\left(x+\frac1x\\right)^{10}$ is:",
     "options": {
       "A": "$45$",
       "B": "$120$",
@@ -1014,7 +1014,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "option_d": "$252$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$10-2r=4\\Rightarrow r=3$, giving $\binom{10}3=120$.",
+    "explanation": "$10-2r=4\\Rightarrow r=3$, giving $\\binom{10}3=120$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -1024,7 +1024,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "The coefficient of $x$ in $\\left(x^2+\frac1x\right)^5$ is:",
+    "question": "The coefficient of $x$ in $\\left(x^2+\frac1x\\right)^5$ is:",
     "options": {
       "A": "$5$",
       "B": "$10$",
@@ -1047,7 +1047,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
     "chapter": "Mathematical Induction and Binomial Theorem",
-    "question": "The expansion of $\\left(x^3+\frac1x\right)^7$ has:",
+    "question": "The expansion of $\\left(x^3+\frac1x\\right)^7$ has:",
     "options": {
       "A": "Constant term $7$",
       "B": "Constant term $21$",
@@ -1072,14 +1072,14 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "chapter": "Mathematical Induction and Binomial Theorem",
     "question": "The middle coefficient of $(1+x)^{2m}$ is:",
     "options": {
-      "A": "$\binom{2m}{m-1}$",
-      "B": "$\binom{2m}m$",
-      "C": "$\binom m2$",
+      "A": "$\\binom{2m}{m-1}$",
+      "B": "$\\binom{2m}m$",
+      "C": "$\\binom m2$",
       "D": "$2^m$"
     },
-    "option_a": "$\binom{2m}{m-1}$",
-    "option_b": "$\binom{2m}m$",
-    "option_c": "$\binom m2$",
+    "option_a": "$\\binom{2m}{m-1}$",
+    "option_b": "$\\binom{2m}m$",
+    "option_c": "$\\binom m2$",
     "option_d": "$2^m$",
     "correct_answer": "B",
     "correct_option": "B",
@@ -1096,17 +1096,17 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "question": "The two middle coefficients of $(1+x)^{2m+1}$ are:",
     "options": {
       "A": "Unequal",
-      "B": "Both $\binom{2m+1}m$",
+      "B": "Both $\\binom{2m+1}m$",
       "C": "Both $2^m$",
       "D": "Both one"
     },
     "option_a": "Unequal",
-    "option_b": "Both $\binom{2m+1}m$",
+    "option_b": "Both $\\binom{2m+1}m$",
     "option_c": "Both $2^m$",
     "option_d": "Both one",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Symmetry gives $\binom{2m+1}m=\binom{2m+1}{m+1}$.",
+    "explanation": "Symmetry gives $\\binom{2m+1}m=\\binom{2m+1}{m+1}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

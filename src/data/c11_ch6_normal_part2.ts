@@ -472,7 +472,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch6",
     "chapter": "Permutation and Combination and Probability",
-    "question": "If $\frac{n!}{(n-2)!}=56$, then $n=$:",
+    "question": "If $\\frac{n!}{(n-2)!}=56$, then $n=$:",
     "options": {
       "A": "$7$",
       "B": "$8$",
@@ -495,7 +495,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch6",
     "chapter": "Permutation and Combination and Probability",
-    "question": "$\frac{10!}{8!}$ equals:",
+    "question": "$\\frac{10!}{8!}$ equals:",
     "options": {
       "A": "$72$",
       "B": "$80$",
@@ -518,7 +518,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch6",
     "chapter": "Permutation and Combination and Probability",
-    "question": "$\frac{8!}{5!}$ equals:",
+    "question": "$\\frac{8!}{5!}$ equals:",
     "options": {
       "A": "$56$",
       "B": "$168$",
@@ -889,13 +889,13 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "question": "The value of ${}^{n} C_2$ is:",
     "options": {
       "A": "$n(n-1)$",
-      "B": "$\frac{n(n-1)}2$",
-      "C": "$\frac{n(n+1)}2$",
+      "B": "$\\frac{n(n-1)}2$",
+      "C": "$\\frac{n(n+1)}2$",
       "D": "$n^2$"
     },
     "option_a": "$n(n-1)$",
-    "option_b": "$\frac{n(n-1)}2$",
-    "option_c": "$\frac{n(n+1)}2$",
+    "option_b": "$\\frac{n(n-1)}2$",
+    "option_c": "$\\frac{n(n+1)}2$",
     "option_d": "$n^2$",
     "correct_answer": "B",
     "correct_option": "B",

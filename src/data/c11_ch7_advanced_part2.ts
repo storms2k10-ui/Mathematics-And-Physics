@@ -194,7 +194,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$12$"
     },
     "correct_answer": "B",
-    "explanation": "The coefficient is $\binom{4}{2}=6$.",
+    "explanation": "The coefficient is $\\binom{4}{2}=6$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -212,7 +212,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$15$"
     },
     "correct_answer": "C",
-    "explanation": "The power of $y$ is $2$, so the coefficient is $\binom{5}{2}=10$.",
+    "explanation": "The power of $y$ is $2$, so the coefficient is $\\binom{5}{2}=10$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -230,7 +230,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$15$"
     },
     "correct_answer": "D",
-    "explanation": "The coefficient is $\binom{6}{4}=\binom{6}{2}=15$.",
+    "explanation": "The coefficient is $\\binom{6}{4}=\\binom{6}{2}=15$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -248,7 +248,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$1$"
     },
     "correct_answer": "A",
-    "explanation": "The coefficient is $\binom{5}{3}=10$.",
+    "explanation": "The coefficient is $\\binom{5}{3}=10$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -266,7 +266,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$7$"
     },
     "correct_answer": "B",
-    "explanation": "$\binom{7}{4}=\binom{7}{3}=35$.",
+    "explanation": "$\\binom{7}{4}=\\binom{7}{3}=35$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -284,7 +284,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$16$"
     },
     "correct_answer": "C",
-    "explanation": "The term is $\binom{4}{2}(2x)^2=6(4)x^2=24x^2$.",
+    "explanation": "The term is $\\binom{4}{2}(2x)^2=6(4)x^2=24x^2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -302,7 +302,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$270$"
     },
     "correct_answer": "D",
-    "explanation": "$\binom{5}{3} 3^3=10(27)=270$.",
+    "explanation": "$\\binom{5}{3} 3^3=10(27)=270$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -320,7 +320,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$160$"
     },
     "correct_answer": "A",
-    "explanation": "$\binom{5}{2} 2^3x^2=10(8)x^2$.",
+    "explanation": "$\\binom{5}{2} 2^3x^2=10(8)x^2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -338,7 +338,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$240$"
     },
     "correct_answer": "B",
-    "explanation": "$\binom{6}{3} 2^3=20(8)=160$.",
+    "explanation": "$\\binom{6}{3} 2^3=20(8)=160$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -356,7 +356,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$270$"
     },
     "correct_answer": "C",
-    "explanation": "$\binom{6}{4} 3^2=15(9)=135$.",
+    "explanation": "$\\binom{6}{4} 3^2=15(9)=135$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -446,7 +446,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$40x^2y^3$"
     },
     "correct_answer": "D",
-    "explanation": "$T_4=\binom{5}{3}(2x)^2y^3=10(4)x^2y^3=40x^2y^3$.",
+    "explanation": "$T_4=\\binom{5}{3}(2x)^2y^3=10(4)x^2y^3=40x^2y^3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -464,7 +464,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$15x^4y^2$"
     },
     "correct_answer": "A",
-    "explanation": "$T_3=\binom{62}{x}^4(2y)^2=15(4)x^4y^2=60x^4y^2$.",
+    "explanation": "$T_3=\\binom{62}{x}^4(2y)^2=15(4)x^4y^2=60x^4y^2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -482,7 +482,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$80x^2y^3$"
     },
     "correct_answer": "B",
-    "explanation": "$T_4=\binom{53}{x}^2(-2y)^3=10(-8)x^2y^3=-80x^2y^3$.",
+    "explanation": "$T_4=\\binom{53}{x}^2(-2y)^3=10(-8)x^2y^3=-80x^2y^3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -500,7 +500,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$216x^2y^2$"
     },
     "correct_answer": "D",
-    "explanation": "$\binom{4}{2}(2x)^2(-3y)^2=6(4)(9)x^2y^2=216x^2y^2$.",
+    "explanation": "$\\binom{4}{2}(2x)^2(-3y)^2=6(4)(9)x^2y^2=216x^2y^2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -572,7 +572,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "Symmetric"
     },
     "correct_answer": "D",
-    "explanation": "$\binom{n}{r}=\binom{n}{n}-r}$.",
+    "explanation": "$\\binom{n}{r}=\\binom{n}{n-r}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(x+y)^n = \\sum_{r=0}^n \\binom{n}{r} x^{n-r} y^r, \\quad T_{r+1} = \\binom{n}{r} x^{n-r} y^r"
@@ -608,7 +608,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$1,6,6,1$"
     },
     "correct_answer": "B",
-    "explanation": "They are $\binom{6}{0},\binom{6}{1},\ldots,\binom{6}{6}$.",
+    "explanation": "They are $\\binom{6}{0},\\binom{6}{1},\ldots,\\binom{6}{6}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -636,7 +636,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate $\binom{8}{0}+\binom{8}{1}+\\cdots+\binom{8}{8}$.",
+    "question": "Evaluate $\\binom{8}{0}+\\binom{8}{1}+\\cdots+\\binom{8}{8}$.",
     "options": {
       "A": "$128$",
       "B": "$512$",
@@ -672,7 +672,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The alternating sum\n\n$\n\\binom{n}{0} - \\binom{n}{1} + \\binom{n}{2} - \\cdots\n$\n\nequals, for $nge1$:",
+    "question": "The alternating sum\n$\\binom{n}{0} - \\binom{n}{1} + \\binom{n}{2} - \\cdots$ equals, for $nge1$:",
     "options": {
       "A": "$2^n$",
       "B": "$0$",
@@ -726,7 +726,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate $\binom{7}{0}+\binom{7}{2}+\binom{7}{4}+\binom{7}{6}$.",
+    "question": "Evaluate $\\binom{7}{0}+\\binom{7}{2}+\\binom{7}{4}+\\binom{7}{6}$.",
     "options": {
       "A": "$64$",
       "B": "$128$",
@@ -744,7 +744,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate $\binom{7}{1}+\binom{7}{3}+\binom{7}{5}+\binom{7}{7}$.",
+    "question": "Evaluate $\\binom{7}{1}+\\binom{7}{3}+\\binom{7}{5}+\\binom{7}{7}$.",
     "options": {
       "A": "$32$",
       "B": "$64$",
@@ -762,7 +762,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}(-1)^r\binom{n}{r}$.",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}(-1)^r\\binom{n}{r}$.",
     "options": {
       "A": "$1$",
       "B": "$2^n$",
@@ -780,7 +780,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}2^r\binom{n}{r}$.",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}2^r\\binom{n}{r}$.",
     "options": {
       "A": "$2^n$",
       "B": "$4^n$",
@@ -798,7 +798,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}3^r\binom{n}{r}$.",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}3^r\\binom{n}{r}$.",
     "options": {
       "A": "$4^n$",
       "B": "$3^n$",
@@ -816,7 +816,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}(-2)^r\binom{n}{r}$.",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{n}(-2)^r\\binom{n}{r}$.",
     "options": {
       "A": "$2^n$",
       "B": "$(-1)^{n}$",
@@ -834,7 +834,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{5}\binom{5}{r}$.",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{5}\\binom{5}{r}$.",
     "options": {
       "A": "$16$",
       "B": "$64$",
@@ -852,7 +852,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{6}2^r\binom{6}{r}$.",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{6}2^r\\binom{6}{r}$.",
     "options": {
       "A": "$64$",
       "B": "$216$",
@@ -878,7 +878,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
       "D": "$\\binom{n}{r+1}$"
     },
     "correct_answer": "A",
-    "explanation": "The general term is $\binom{n}{r} x^r$.",
+    "explanation": "The general term is $\\binom{n}{r} x^r$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(x+y)^n = \\sum_{r=0}^n \\binom{n}{r} x^{n-r} y^r, \\quad T_{r+1} = \\binom{n}{r} x^{n-r} y^r"
@@ -892,7 +892,7 @@ export const C11_CH7_ADVANCED_PART2: Question[] = [
     "options": {
       "A": "$\\binom{n}{r}$",
       "B": "$-1^r\\binom{n}{r}$",
-      "C": "$-\binom{n}{r}$ always",
+      "C": "$-\\binom{n}{r}$ always",
       "D": "$-1^n\\binom{n}{r}$"
     },
     "correct_answer": "B",

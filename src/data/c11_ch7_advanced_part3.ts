@@ -14,7 +14,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$21$"
     },
     "correct_answer": "C",
-    "explanation": "$(-1)^3\binom{7}{3}=-35$.",
+    "explanation": "$(-1)^3\\binom{7}{3}=-35$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -32,7 +32,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$70$"
     },
     "correct_answer": "D",
-    "explanation": "The power is even, so the coefficient is $+\binom{8}{4}=70$.",
+    "explanation": "The power is even, so the coefficient is $+\\binom{8}{4}=70$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -50,7 +50,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$-216$"
     },
     "correct_answer": "A",
-    "explanation": "$\binom{4}{2}(2)^2(-3)^2=6(4)(9)=216$.",
+    "explanation": "$\\binom{4}{2}(2)^2(-3)^2=6(4)(9)=216$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -68,7 +68,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$540$"
     },
     "correct_answer": "B",
-    "explanation": "$\binom{5}{3}(2)^2(-3)^3=10(4)(-27)=-1080$.",
+    "explanation": "$\\binom{5}{3}(2)^2(-3)^3=10(4)(-27)=-1080$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -86,7 +86,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$360$"
     },
     "correct_answer": "C",
-    "explanation": "$\binom{5}{2} 3^3 2^2=10(27)(4)=1080$.",
+    "explanation": "$\\binom{5}{2} 3^3 2^2=10(27)(4)=1080$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -104,7 +104,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$160$"
     },
     "correct_answer": "D",
-    "explanation": "$\binom{6}{3} 2^3=20(8)=160$.",
+    "explanation": "$\\binom{6}{3} 2^3=20(8)=160$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -122,7 +122,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$112$"
     },
     "correct_answer": "A",
-    "explanation": "$\binom{8}{5} 2^3=56(8)=448$.",
+    "explanation": "$\\binom{8}{5} 2^3=56(8)=448$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -258,7 +258,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "In $x^a+x^{-b}$^n$, a constant term occurs when:",
+    "question": "In $(x^a+x^{-b})^n$, a constant term occurs when:",
     "options": {
       "A": "$r=\\dfrac{n}{a+b}$",
       "B": "$r=\\frac{an}{a+b}$ is an integer",
@@ -446,7 +446,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$15x^2y^4$"
     },
     "correct_answer": "A",
-    "explanation": "The middle is $T_4=\binom{63}{x}^3y^3=20x^3y^3$.",
+    "explanation": "The middle is $T_4=\\binom{63}{x}^3y^3=20x^3y^3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "T_{\\text{middle}} = T_{\\dfrac{n}{2}+1} \\; (n \\text{ even}), \\quad T_{\\dfrac{n+1}{2}}, T_{\\dfrac{n+3}{2}} \\; (n \\text{ odd})"
@@ -464,7 +464,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$56x^3y^5$"
     },
     "correct_answer": "B",
-    "explanation": "The middle is $T_5=\binom{84}{x}^4y^4=70x^4y^4$.",
+    "explanation": "The middle is $T_5=\\binom{84}{x}^4y^4=70x^4y^4$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "T_{\\text{middle}} = T_{\\dfrac{n}{2}+1} \\; (n \\text{ even}), \\quad T_{\\dfrac{n+1}{2}}, T_{\\dfrac{n+3}{2}} \\; (n \\text{ odd})"
@@ -518,7 +518,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$6x^2y^2$"
     },
     "correct_answer": "A",
-    "explanation": "$T_3=\binom{4}{2}(2x)^2y^2=6(4)x^2y^2$.",
+    "explanation": "$T_3=\\binom{4}{2}(2x)^2y^2=6(4)x^2y^2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "T_{\\text{middle}} = T_{\\dfrac{n}{2}+1} \\; (n \\text{ even}), \\quad T_{\\dfrac{n+1}{2}}, T_{\\dfrac{n+3}{2}} \\; (n \\text{ odd})"
@@ -536,7 +536,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$-80x^3y^3$"
     },
     "correct_answer": "B",
-    "explanation": "$T_4=\binom{63}{x}^3(-2y)^3=20(-8)x^3y^3=-160x^3y^3$.",
+    "explanation": "$T_4=\\binom{63}{x}^3(-2y)^3=20(-8)x^3y^3=-160x^3y^3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "T_{\\text{middle}} = T_{\\dfrac{n}{2}+1} \\; (n \\text{ even}), \\quad T_{\\dfrac{n+1}{2}}, T_{\\dfrac{n+3}{2}} \\; (n \\text{ odd})"
@@ -554,7 +554,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$35$"
     },
     "correct_answer": "C",
-    "explanation": "The largest coefficient for even $n$ is the central coefficient $\binom{8}{4}=70$.",
+    "explanation": "The largest coefficient for even $n$ is the central coefficient $\\binom{8}{4}=70$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(x+y)^n = \\sum_{r=0}^n \\binom{n}{r} x^{n-r} y^r, \\quad T_{r+1} = \\binom{n}{r} x^{n-r} y^r"
@@ -572,7 +572,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$35$"
     },
     "correct_answer": "D",
-    "explanation": "The two equal central coefficients are $\binom{7}{3}=\binom{7}{4}=35$.",
+    "explanation": "The two equal central coefficients are $\\binom{7}{3}=\\binom{7}{4}=35$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(x+y)^n = \\sum_{r=0}^n \\binom{n}{r} x^{n-r} y^r, \\quad T_{r+1} = \\binom{n}{r} x^{n-r} y^r"
@@ -582,7 +582,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find $\binom{10}{5}$.",
+    "question": "Find $\\binom{10}{5}$.",
     "options": {
       "A": "$252$",
       "B": "$210$",
@@ -590,7 +590,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$1024$"
     },
     "correct_answer": "A",
-    "explanation": "$\binom{10}{5}=\\frac{10!}{5!5!}=252$.",
+    "explanation": "$\\binom{10}{5}=\\frac{10!}{5!5!}=252$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -600,7 +600,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find $\binom{12}{6}$.",
+    "question": "Find $\\binom{12}{6}$.",
     "options": {
       "A": "$462$",
       "B": "$924$",
@@ -654,7 +654,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "If $\binom{n}{3}=\binom{n}{5}$, then:",
+    "question": "If $\\binom{n}{3}=\\binom{n}{5}$, then:",
     "options": {
       "A": "$1$",
       "B": "$1$",
@@ -672,7 +672,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "If $\binom{n}{2}=\binom{n}{7}$, find $n$.",
+    "question": "If $\\binom{n}{2}=\\binom{n}{7}$, find $n$.",
     "options": {
       "A": "$7$",
       "B": "$9$",
@@ -690,7 +690,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find $n$ if $\binom{n}{2}=28$.",
+    "question": "Find $n$ if $\\binom{n}{2}=28$.",
     "options": {
       "A": "$7$",
       "B": "$9$",
@@ -708,7 +708,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find $n$ if $\binom{n}{3}=20$.",
+    "question": "Find $n$ if $\\binom{n}{3}=20$.",
     "options": {
       "A": "$5$",
       "B": "$4$",
@@ -716,7 +716,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$6$"
     },
     "correct_answer": "D",
-    "explanation": "$\binom{6}{3}=20$.",
+    "explanation": "$\\binom{6}{3}=20$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -752,7 +752,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$5$"
     },
     "correct_answer": "B",
-    "explanation": "$\binom{7}{3}=35$.",
+    "explanation": "$\\binom{7}{3}=35$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(x+y)^n = \\sum_{r=0}^n \\binom{n}{r} x^{n-r} y^r, \\quad T_{r+1} = \\binom{n}{r} x^{n-r} y^r"
@@ -834,7 +834,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "In $x^2+y$^8$, the term containing $x^{10}$ is:",
+    "question": "In $(x^2+y)^8$, the term containing $x^{10}$ is:",
     "options": {
       "A": "$T_2$",
       "B": "$T_3$",
@@ -852,7 +852,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "In $x^3+y$^6$, the term containing $x^9$ is:",
+    "question": "In $(x^3+y)^6$, the term containing $x^9$ is:",
     "options": {
       "A": "$T_3$",
       "B": "$T_5$",
@@ -870,7 +870,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find the coefficient of $x^6$ in $1+x^2$^5$.",
+    "question": "Find the coefficient of $x^6$ in $(1+x^2)^5$.",
     "options": {
       "A": "$10$",
       "B": "$5$",
@@ -888,7 +888,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Find the coefficient of $x^8$ in $1+x^2$^6$.",
+    "question": "Find the coefficient of $x^8$ in $(1+x^2)^6$.",
     "options": {
       "A": "$20$",
       "B": "$15$",

@@ -176,7 +176,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "Doubling every $x$-coordinate"
     },
     "correct_answer": "B",
-    "explanation": "Multiplying f(x)$ by $2$ multiplies all $y$-values by $2$, creating a vertical stretch by a factor of $2$.",
+    "explanation": "Multiplying $f(x)$ by $2$ multiplies all $y$-values by $2$, creating a vertical stretch by a factor of $2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "y = A f(Bx - h) + k \\implies (x,y) \\mapsto \\left(\\dfrac{x}{B}+h, Ay+k\\right)"
@@ -266,7 +266,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$-2,3$"
     },
     "correct_answer": "C",
-    "explanation": "In the standard form $y=a|x-h|+k$, the vertex is $(h,k)=$3,2$.",
+    "explanation": "In the standard form $y=a|x-h|+k$, the vertex is $(h,k) = (3,2)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
@@ -464,7 +464,7 @@ export const C11_CH8_ADVANCED_PART3: Question[] = [
       "D": "$\\dfrac{1}{x^3}$"
     },
     "correct_answer": "C",
-    "explanation": "Solving $y=x^3$ for $x$ gives $x=\\sqrt[3]{y}$. Thus $f^{-1}(x)$=\\sqrt[3]{x}$.",
+    "explanation": "Solving $y=x^3$ for $x$ gives $x=\\sqrt[3]{y}$. Thus $f^{-1}(x) = \\sqrt[3]{x}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"

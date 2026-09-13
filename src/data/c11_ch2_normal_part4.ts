@@ -61,12 +61,12 @@ export const C11_CH2_NORMAL_PART4: Question[] = [
     "question": "A homogeneous system with $n$ unknowns has nontrivial solutions when:",
     "options": {
       "A": "$\\operatorname{rank}(A)=n$",
-      "B": "$|A|\\neq0$",
+      "B": "$|A|\ eq0$",
       "C": "$\\operatorname{rank}(A)<n$",
       "D": "$A=I$"
     },
     "option_a": "$\\operatorname{rank}(A)=n$",
-    "option_b": "$|A|\\neq0$",
+    "option_b": "$|A|\ eq0$",
     "option_c": "$\\operatorname{rank}(A)<n$",
     "option_d": "$A=I$",
     "correct_answer": "C",
@@ -106,12 +106,12 @@ export const C11_CH2_NORMAL_PART4: Question[] = [
     "chapter": "Matrices and Determinants",
     "question": "A system $AX=B$ is nonhomogeneous when:",
     "options": {
-      "A": "$B\\neq O$",
+      "A": "$B\ eq O$",
       "B": "$A=I$",
       "C": "$X=O$",
       "D": "$A=O$"
     },
-    "option_a": "$B\\neq O$",
+    "option_a": "$B\ eq O$",
     "option_b": "$A=I$",
     "option_c": "$X=O$",
     "option_d": "$A=O$",
@@ -175,12 +175,12 @@ export const C11_CH2_NORMAL_PART4: Question[] = [
     "chapter": "Matrices and Determinants",
     "question": "A system of $n$ unknowns has a unique solution when:",
     "options": {
-      "A": "$\\operatorname{rank}(A)\\neq\\operatorname{rank}(A_b)$",
+      "A": "$\\operatorname{rank}(A)\ eq\\operatorname{rank}(A_b)$",
       "B": "$\\operatorname{rank}(A)=0$",
       "C": "$\\operatorname{rank}(A)<n$",
       "D": "$\\operatorname{rank}(A)=\\operatorname{rank}(A_b)=n$"
     },
-    "option_a": "$\\operatorname{rank}(A)\\neq\\operatorname{rank}(A_b)$",
+    "option_a": "$\\operatorname{rank}(A)\ eq\\operatorname{rank}(A_b)$",
     "option_b": "$\\operatorname{rank}(A)=0$",
     "option_c": "$\\operatorname{rank}(A)<n$",
     "option_d": "$\\operatorname{rank}(A)=\\operatorname{rank}(A_b)=n$",
@@ -199,14 +199,14 @@ export const C11_CH2_NORMAL_PART4: Question[] = [
     "question": "A system has infinitely many solutions when:",
     "options": {
       "A": "$\\operatorname{rank}(A)=\\operatorname{rank}(A_b)<n$",
-      "B": "$\\operatorname{rank}(A)\\neq\\operatorname{rank}(A_b)$",
+      "B": "$\\operatorname{rank}(A)\ eq\\operatorname{rank}(A_b)$",
       "C": "$\\operatorname{rank}(A)=n$",
-      "D": "$|A|\\neq0$"
+      "D": "$|A|\ eq0$"
     },
     "option_a": "$\\operatorname{rank}(A)=\\operatorname{rank}(A_b)<n$",
-    "option_b": "$\\operatorname{rank}(A)\\neq\\operatorname{rank}(A_b)$",
+    "option_b": "$\\operatorname{rank}(A)\ eq\\operatorname{rank}(A_b)$",
     "option_c": "$\\operatorname{rank}(A)=n$",
-    "option_d": "$|A|\\neq0$",
+    "option_d": "$|A|\ eq0$",
     "correct_answer": "A",
     "correct_option": "A",
     "explanation": "Equal ranks give consistency, while rank less than $n$ gives free variables.",
@@ -223,12 +223,12 @@ export const C11_CH2_NORMAL_PART4: Question[] = [
     "question": "A system is inconsistent when:",
     "options": {
       "A": "Both ranks are zero",
-      "B": "$\\operatorname{rank}(A)\\neq\\operatorname{rank}(A_b)$",
+      "B": "$\\operatorname{rank}(A)\ eq\\operatorname{rank}(A_b)$",
       "C": "Both ranks equal $n$",
       "D": "$\\operatorname{rank}(A)=\\operatorname{rank}(A_b)<n$"
     },
     "option_a": "Both ranks are zero",
-    "option_b": "$\\operatorname{rank}(A)\\neq\\operatorname{rank}(A_b)$",
+    "option_b": "$\\operatorname{rank}(A)\ eq\\operatorname{rank}(A_b)$",
     "option_c": "Both ranks equal $n$",
     "option_d": "$\\operatorname{rank}(A)=\\operatorname{rank}(A_b)<n$",
     "correct_answer": "B",
@@ -340,12 +340,12 @@ export const C11_CH2_NORMAL_PART4: Question[] = [
     "question": "Cramer’s rule requires:",
     "options": {
       "A": "$D=0$",
-      "B": "$D\\neq0$",
+      "B": "$D\ eq0$",
       "C": "$A=O$",
       "D": "$B=O$"
     },
     "option_a": "$D=0$",
-    "option_b": "$D\\neq0$",
+    "option_b": "$D\ eq0$",
     "option_c": "$A=O$",
     "option_d": "$B=O$",
     "correct_answer": "B",
@@ -573,7 +573,7 @@ export const C11_CH2_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "Solve\n$$\nx+y+z=6,\\quad x+y-z=0,\\quad x-y+z=2.\n$$",
+    "question": "Solve$$x+y+z=6,\\quad x+y-z=0,\\quad x-y+z=2.$$",
     "options": {
       "A": "$(2,1,3)$",
       "B": "$(3,2,1)$",
@@ -715,7 +715,7 @@ export const C11_CH2_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "Solve\n$$\n\\begin{bmatrix}2&1\\\\1&1\\end{bmatrix}\n\\begin{bmatrix}x\\\\y\\end{bmatrix}\n=\n\\begin{bmatrix}5\\\\3\\end{bmatrix}.\n$$",
+    "question": "Solve$$\\begin{bmatrix}2&1\\\\1&1\\end{bmatrix}\\begin{bmatrix}x\\\\y\\end{bmatrix}=\\begin{bmatrix}5\\\\3\\end{bmatrix}.$$",
     "options": {
       "A": "$x=1,y=2$",
       "B": "$x=2,y=1$",
@@ -789,12 +789,12 @@ export const C11_CH2_NORMAL_PART4: Question[] = [
     "chapter": "Matrices and Determinants",
     "question": "A square homogeneous system may have a nontrivial solution when:",
     "options": {
-      "A": "$|A|\\neq0$",
+      "A": "$|A|\ eq0$",
       "B": "$|A|=0$",
       "C": "$A=I$",
       "D": "$\\operatorname{rank}(A)=n$"
     },
-    "option_a": "$|A|\\neq0$",
+    "option_a": "$|A|\ eq0$",
     "option_b": "$|A|=0$",
     "option_c": "$A=I$",
     "option_d": "$\\operatorname{rank}(A)=n$",
@@ -833,7 +833,7 @@ export const C11_CH2_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "A row $[0\\ 0\\ 0\\mid c]$, where $c\\neq0$, in an augmented matrix indicates:",
+    "question": "A row $[0\\ 0\\ 0\\mid c]$, where $c\ eq0$, in an augmented matrix indicates:",
     "options": {
       "A": "An inconsistent system",
       "B": "A unique solution",

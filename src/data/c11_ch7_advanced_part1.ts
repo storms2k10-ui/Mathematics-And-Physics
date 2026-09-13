@@ -135,7 +135,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "question": "Simplify $\\frac{k(k+1)}{2}+(k+1)$.",
     "options": {
       "A": "$\\dfrac{kk+2}{2}$",
-      "B": "$(k+1)^2",
+      "B": "$(k+1)^2$",
       "C": "$\\dfrac{kk+1}{2}$",
       "D": "$\\dfrac{k+1k+2}{2}$"
     },
@@ -190,7 +190,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "options": {
       "A": "$kk+1$",
       "B": "$k^2+1$",
-      "C": "$(k+1)^2",
+      "C": "$(k+1)^2$",
       "D": "$(k+2)^{2}$"
     },
     "correct_answer": "C",
@@ -262,11 +262,11 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "options": {
       "A": "$k^2$",
       "B": "$2k+1$",
-      "C": "$(k+1)^2",
+      "C": "$(k+1)^2$",
       "D": "$k+1$"
     },
     "correct_answer": "C",
-    "explanation": "The $(k+1)$th square is $(k+1)^2.",
+    "explanation": "The $(k+1)$th square is $(k+1)^2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "1^2 + 2^2 + \\dots + n^2 = \\dfrac{n(n+1)(2n+1)}{6}"
@@ -276,12 +276,12 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "For $1^3+2^3+\\cdots+n^3=left[\\frac{n(n+1)}{2}\right]^2$, the base case gives:",
+    "question": "For $1^3+2^3+\\cdots+n^3=\\left[\\frac{n(n+1)}{2}\\right]^2$, the base case gives:",
     "options": {
       "A": "$1=0$",
       "B": "$1=4$",
       "C": "$0=1$",
-      "D": "$1=left$\\frac{1cdot2}{2}\right$^2$"
+      "D": "$1=\\left[\\frac{1\\cdot 2}{2}\\right]^2$"
     },
     "correct_answer": "D",
     "explanation": "Both sides equal $1$.",
@@ -366,7 +366,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "To prove $3mid$2^{2n}-1$, the base case $P(1)$ gives:",
+    "question": "To prove $3 \\mid (2^{2n}-1)$, the base case $P(1)$ gives:",
     "options": {
       "A": "$2^2-1=3$",
       "B": "$2-1=1$",
@@ -456,7 +456,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "To prove $4mid$5^n-1$, the base case is:",
+    "question": "To prove $4 \\mid (5^n-1)$, the base case is:",
     "options": {
       "A": "$5^0-1=0$ only",
       "B": "$5^1-1=4$",
@@ -528,7 +528,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "The base case of $8mid$3^{2n}-1$ gives:",
+    "question": "The base case of $8 \\mid (3^{2n}-1)$ gives:",
     "options": {
       "A": "$3-1=2$",
       "B": "$3^2-1=8$",
@@ -654,7 +654,7 @@ export const C11_CH7_ADVANCED_PART1: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "Evaluating the difference $[(k+1)^3-(k+1)]-$k^3-k$ gives:",
+    "question": "Evaluating the difference $[(k+1)^3-(k+1)]-(k^3-k)$ gives:",
     "options": {
       "A": "$3k+1$",
       "B": "$3kk+1$",

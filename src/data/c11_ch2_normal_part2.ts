@@ -236,10 +236,10 @@ export const C11_CH2_NORMAL_PART2: Question[] = [
     "option_d": "Not commutative",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Even when both products exist, usually $AB\\neq BA$.",
+    "explanation": "Even when both products exist, usually $AB\ eq BA$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "AB\\neq BA"
+    "formula": "AB\ eq BA"
   },
   {
     "id": "c11-ch2-normal-q61",
@@ -517,7 +517,7 @@ export const C11_CH2_NORMAL_PART2: Question[] = [
     "option_d": "Not defined",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Matrix multiplication $BA$ requires the number of columns of $B$ ($4$) to equal the number of rows of $A$ ($2$). Since $4 \\neq 2$, $BA$ is not defined.",
+    "explanation": "Matrix multiplication $BA$ requires the number of columns of $B$ ($4$) to equal the number of rows of $A$ ($2$). Since $4 \ eq 2$, $BA$ is not defined.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "BA"
@@ -528,7 +528,7 @@ export const C11_CH2_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "If\n$$\nA=\\begin{bmatrix}1&2\\\\3&4\\end{bmatrix},\\quad\nB=\\begin{bmatrix}2&0\\\\-1&5\\end{bmatrix},\n$$\nthen $A+B=$:",
+    "question": "If$$A=\\begin{bmatrix}1&2\\\\3&4\\end{bmatrix},\\quad B=\\begin{bmatrix}2&0\\\\-1&5\\end{bmatrix},$$then $A+B=$:",
     "options": {
       "A": "$\\begin{bmatrix}3&2\\\\2&9\\end{bmatrix}$",
       "B": "$\\begin{bmatrix}3&0\\\\-3&20\\end{bmatrix}$",
@@ -599,7 +599,7 @@ export const C11_CH2_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "If\n$$\nA=\\begin{bmatrix}1&2\\\\0&1\\end{bmatrix},\\quad\nB=\\begin{bmatrix}2&1\\\\3&0\\end{bmatrix},\n$$\nthen $AB=$:",
+    "question": "If$$A=\\begin{bmatrix}1&2\\\\0&1\\end{bmatrix},\\quad B=\\begin{bmatrix}2&1\\\\3&0\\end{bmatrix},$$then $AB=$:",
     "options": {
       "A": "$\\begin{bmatrix}2&1\\\\3&0\\end{bmatrix}$",
       "B": "$\\begin{bmatrix}5&1\\\\3&2\\end{bmatrix}$",
@@ -905,12 +905,12 @@ export const C11_CH2_NORMAL_PART2: Question[] = [
     "question": "A square matrix is nonsingular when:",
     "options": {
       "A": "Every entry is nonzero",
-      "B": "$|A|\\neq0$",
+      "B": "$|A|\ eq0$",
       "C": "$|A|=0$",
       "D": "$A^2=A$"
     },
     "option_a": "Every entry is nonzero",
-    "option_b": "$|A|\\neq0$",
+    "option_b": "$|A|\ eq0$",
     "option_c": "$|A|=0$",
     "option_d": "$A^2=A$",
     "correct_answer": "B",
@@ -971,7 +971,7 @@ export const C11_CH2_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch2",
     "chapter": "Matrices and Determinants",
-    "question": "For $|A|\\neq0$, the inverse is:",
+    "question": "For $|A|\ eq0$, the inverse is:",
     "options": {
       "A": "$A^{-1}=\\frac{\\operatorname{adj}{A}}{|A|}$",
       "B": "$A^{-1}=|A|\\operatorname{adj}A$",
