@@ -284,8 +284,8 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
                               <span>Correct</span>
                             </span>
                           ) : answer?.isSkipped ? (
-                            <span className="inline-flex items-center gap-1 text-xs font-bold text-slate-700 dark:text-slate-300">
-                              <span>⏭️ Skipped</span>
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-bold bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
+                              <span>Skipped</span>
                             </span>
                           ) : answer?.timedOut ? (
                             <span className="inline-flex items-center gap-1 text-xs font-bold text-amber-600 dark:text-amber-400">

@@ -3,7 +3,6 @@ import {
   CheckCircle2, 
   XCircle, 
   ArrowRight, 
-  ArrowLeft, 
   Clock, 
   Award, 
   AlertCircle,
@@ -135,8 +134,15 @@ export const QuizView: React.FC<QuizViewProps> = ({
 
   const currentQuestion = questions[currentIndex] || questions[0];
   const totalQuestions = questions.length;
-  const answeredCount = Object.keys(userAnswers).length;
-  const progressPercent = Math.round(((answeredCount) / totalQuestions) * 100);
+  const answeredCount = Object.keys(userAnswers).filter(k => {
+    const a = userAnswers[Number(k)];
+    return a && !a.isSkipped && a.selectedOption !== null;
+  }).length;
+  const skippedCount = Object.keys(userAnswers).filter(k => {
+    const a = userAnswers[Number(k)];
+    return Boolean(a?.isSkipped);
+  }).length;
+  const progressPercent = Math.round(((answeredCount + skippedCount) / totalQuestions) * 100);
   const currentAnswer = userAnswers[currentIndex];
   const isCurrentSkipped = Boolean(currentAnswer?.isSkipped);
   const isCurrentAnswered = Boolean(currentAnswer && !currentAnswer.isSkipped && currentAnswer.selectedOption !== null);
@@ -421,28 +427,6 @@ export const QuizView: React.FC<QuizViewProps> = ({
     }
   };
 
-  const handlePrevious = () => {
-    if (advanceTimerRef.current) {
-      clearTimeout(advanceTimerRef.current);
-    }
-    setSelectedOption(null);
-    setIsSubmitted(false);
-    setIsFeedbackDelay(false);
-    if (currentIndex > 0) {
-      setCurrentIndex((i) => i - 1);
-    }
-  };
-
-  const handleJumpToQuestion = (idx: number) => {
-    if (advanceTimerRef.current) {
-      clearTimeout(advanceTimerRef.current);
-    }
-    setSelectedOption(null);
-    setIsSubmitted(false);
-    setIsFeedbackDelay(false);
-    setCurrentIndex(idx);
-  };
-
   const formatTime = (secs: number) => {
     const mins = Math.floor(secs / 60);
     const remainingSecs = secs % 60;
@@ -646,9 +630,9 @@ export const QuizView: React.FC<QuizViewProps> = ({
                 <button
                   key={`${currentIndex}-${opt}`}
                   onClick={() => handleSelectOption(opt)}
-                  disabled={isCurrentSkipped || isSubmitted}
+                  disabled={isCurrentSkipped || isSubmitted || isFeedbackDelay}
                   className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl border text-left flex items-center gap-3 sm:gap-3.5 transition-all duration-200 ${staggerClass} ${optionClasses} ${
-                    isCurrentSkipped || isSubmitted ? 'cursor-default' : 'cursor-pointer hover:shadow-xs active:scale-[0.99]'
+                    isCurrentSkipped || isSubmitted || isFeedbackDelay ? 'cursor-default' : 'cursor-pointer hover:shadow-xs active:scale-[0.99]'
                   }`}
                 >
                   <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl font-bold text-xs flex items-center justify-center shrink-0 transition-all ${badgeClasses}`}>
@@ -662,28 +646,16 @@ export const QuizView: React.FC<QuizViewProps> = ({
             })}
           </div>
 
-          {/* Action Control Buttons */}
-          <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
+          {/* Action Control Buttons: Strictly Forward-Only */}
+          <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-end gap-3">
             
-            <button
-              onClick={handlePrevious}
-              disabled={currentIndex === 0}
-              className={`px-4 py-2.5 rounded-xl border text-xs font-bold flex items-center gap-2 transition-all ${
-                currentIndex === 0
-                  ? 'opacity-40 cursor-not-allowed border-slate-200 dark:border-slate-800 text-slate-400'
-                  : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer'
-              }`}
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Previous</span>
-            </button>
-
             <div className="flex items-center gap-2">
               {/* If question is NOT yet answered and NOT skipped: Show prominent SKIP QUESTION */}
               {!isCurrentAnswered && !isCurrentSkipped && (
                 <button
                   id="quiz-skip-question-btn"
                   onClick={handleSkipQuestion}
+                  title="Skip this question (will be marked as wrong and cannot be re-attempted)"
                   className="px-5 py-2.5 rounded-xl bg-black hover:bg-slate-900 text-white text-xs font-bold shadow-md shadow-black/20 transition-all flex items-center gap-2 cursor-pointer hover:scale-105 active:scale-95 border border-slate-800"
                 >
                   <SkipForward className="w-4 h-4 text-white" />
@@ -691,7 +663,7 @@ export const QuizView: React.FC<QuizViewProps> = ({
                 </button>
               )}
 
-              {/* If question IS already answered or skipped (e.g. revisiting via Previous/Palette): Show Next / Finish & Review */}
+              {/* If question IS already answered or skipped: Show Next / Finish & Review */}
               {(isCurrentAnswered || isCurrentSkipped) && (
                 <button
                   onClick={handleNext}
@@ -707,10 +679,10 @@ export const QuizView: React.FC<QuizViewProps> = ({
 
         </div>
 
-        {/* Quick Question Navigation Palette */}
+        {/* Question Progress Tracker (Non-Navigable: Enforces Forward-Only Flow) */}
         <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800 shadow-xs space-y-3">
           <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
-            <span>Question Palette ({totalQuestions} MCQs)</span>
+            <span>Question Progress ({totalQuestions} MCQs)</span>
             <div className="flex items-center gap-3 text-[11px] font-normal text-slate-500">
               <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" /> Correct</span>
               <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block" /> Incorrect</span>
@@ -726,28 +698,27 @@ export const QuizView: React.FC<QuizViewProps> = ({
               const isCurrent = idx === currentIndex;
               const isCorrect = ans?.isCorrect;
 
-              let btnClass = 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200';
+              let tileClass = 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300';
 
               if (isCurrent) {
-                btnClass = 'bg-indigo-600 text-white ring-2 ring-indigo-400 font-bold';
+                tileClass = 'bg-indigo-600 text-white ring-2 ring-indigo-400 font-bold';
               } else if (isSkipped) {
                 // Distinctive Black Background with White Text for Skipped Questions
-                btnClass = 'bg-black text-white font-bold border border-slate-800 shadow-xs dark:bg-black dark:text-white dark:border-slate-700';
+                tileClass = 'bg-black text-white font-bold border border-slate-800 shadow-xs dark:bg-black dark:text-white dark:border-slate-700';
               } else if (isAnswered) {
-                btnClass = isCorrect 
+                tileClass = isCorrect 
                   ? 'bg-emerald-600 text-white font-bold shadow-xs' 
                   : 'bg-rose-600 text-white font-bold shadow-xs';
               }
 
               return (
-                <button
+                <div
                   key={q.id}
-                  onClick={() => handleJumpToQuestion(idx)}
-                  className={`w-8 h-8 rounded-xl text-xs font-medium flex items-center justify-center transition-all cursor-pointer ${btnClass}`}
-                  title={isSkipped ? `Question ${idx + 1}: Skipped` : isAnswered ? `Question ${idx + 1}: ${isCorrect ? 'Correct' : 'Incorrect'}` : `Question ${idx + 1}`}
+                  className={`w-8 h-8 rounded-xl text-xs font-medium flex items-center justify-center transition-all select-none cursor-default ${tileClass}`}
+                  title={isSkipped ? `Question ${idx + 1}: Skipped` : isAnswered ? `Question ${idx + 1}: ${isCorrect ? 'Correct' : 'Incorrect'}` : isCurrent ? `Question ${idx + 1}: Current` : `Question ${idx + 1}`}
                 >
                   {idx + 1}
-                </button>
+                </div>
               );
             })}
           </div>
@@ -836,7 +807,7 @@ export const QuizView: React.FC<QuizViewProps> = ({
                 onClick={() => setShowSubmitModal(false)}
                 className="py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold text-xs hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
               >
-                Review Questions
+                Cancel
               </button>
               <button
                 onClick={() => {

@@ -474,7 +474,7 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                     {skippedCount} / {totalQuestions} Skipped
                   </span>
                   <span className="text-[9px] sm:text-[9.5px] text-[#DCE6F5] font-medium block leading-tight">
-                    Unattempted
+                    Skipped Questions
                   </span>
                 </div>
               </div>
@@ -557,7 +557,7 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                 onClick={() => setFilterType('skipped')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   filterType === 'skipped'
-                    ? 'bg-black text-white dark:bg-black dark:text-white shadow-xs'
+                    ? 'bg-amber-600 text-white shadow-xs'
                     : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -579,15 +579,21 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                   key={q.id}
                   className={`rounded-2xl border transition-all ${
                     isSkipped
-                      ? 'border-slate-300 dark:border-slate-700 bg-slate-100/80 dark:bg-slate-900/80'
+                      ? isExpanded
+                        ? 'border-slate-300 dark:border-slate-600 bg-slate-100/90 dark:bg-slate-900 shadow-xs'
+                        : 'border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-900/60'
                       : isCorrect
-                      ? 'border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/20 dark:bg-emerald-950/10'
-                      : 'border-rose-200 dark:border-rose-900/60 bg-rose-50/20 dark:bg-rose-950/10'
+                      ? isExpanded
+                        ? 'border-emerald-300 dark:border-emerald-700/80 bg-emerald-50/40 dark:bg-emerald-950/25 shadow-xs'
+                        : 'border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/25 dark:bg-emerald-950/10'
+                      : isExpanded
+                      ? 'border-rose-300 dark:border-rose-700/80 bg-rose-50/40 dark:bg-rose-950/25 shadow-xs'
+                      : 'border-rose-200 dark:border-rose-900/60 bg-rose-50/25 dark:bg-rose-950/10'
                   }`}
                 >
                   <div
                     onClick={() => setExpandedIndex(isExpanded ? null : idx)}
-                    className="p-4 sm:p-5 flex items-start justify-between gap-4 cursor-pointer select-none"
+                    className="p-4 sm:p-5 flex items-start justify-between gap-4 cursor-pointer select-none hover:bg-slate-500/5 dark:hover:bg-white/5 rounded-2xl transition-colors"
                   >
                     <div className="flex items-start gap-3">
                       <div className="mt-0.5 shrink-0">
@@ -602,12 +608,12 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
 
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                          <span className="text-xs font-bold text-slate-600 dark:text-slate-400">
                             Question {idx + 1}
                           </span>
                           {isSkipped && (
-                            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-black text-white dark:bg-black dark:text-white border border-slate-700">
-                              ⏭️ Skipped Question
+                            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
+                              Skipped
                             </span>
                           )}
                           {ans?.timedOut && !isSkipped && (
@@ -616,7 +622,7 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                             </span>
                           )}
                           {!ans?.selectedOption && !ans?.timedOut && !isCorrect && !isSkipped && (
-                            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+                            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-200/70 text-slate-700 dark:bg-slate-800 dark:text-slate-300">
                               Unattempted (Marked Wrong)
                             </span>
                           )}
@@ -627,31 +633,45 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                       </div>
                     </div>
 
-                    <button className="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 shrink-0 cursor-pointer">
-                      {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-                    </button>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className={`text-[11px] font-bold flex items-center gap-1 px-2.5 py-1 rounded-lg transition-colors ${
+                        isExpanded
+                          ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-950/80 dark:text-indigo-300'
+                          : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-300'
+                      }`}>
+                        <Lightbulb className="w-3.5 h-3.5" />
+                        <span className="hidden sm:inline">{isExpanded ? 'Hide Solution' : 'View Explanation'}</span>
+                      </span>
+                      <button
+                        type="button"
+                        className="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
+                        aria-label={isExpanded ? 'Collapse solution' : 'Expand solution'}
+                      >
+                        {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      </button>
+                    </div>
                   </div>
 
                   {/* Expanded Solution View */}
                   {isExpanded && (
-                    <div className="p-4 sm:p-5 pt-0 border-t border-slate-200/50 dark:border-slate-800 space-y-4">
+                    <div className="p-4 sm:p-5 pt-0 border-t border-slate-200/70 dark:border-slate-800/80 space-y-4">
                       
                       {/* Options Review Grid */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
                         {(['A', 'B', 'C', 'D'] as const).map((opt) => {
                           const isUserChoice = ans?.selectedOption === opt;
                           const isAnswer = q.correct_answer === opt;
                           const optText = q.options?.[opt] || q[`option_${opt.toLowerCase() as 'a' | 'b' | 'c' | 'd'}`] || '';
 
-                          let itemStyle = 'bg-slate-50/80 dark:bg-slate-800/40 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300';
-                          let badgeStyle = 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300';
+                          let itemStyle = 'bg-white/90 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200';
+                          let badgeStyle = 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-600';
 
                           if (isAnswer) {
-                            itemStyle = 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-400 dark:border-emerald-500 text-emerald-950 dark:text-emerald-200 font-semibold ring-1 ring-emerald-400/50';
-                            badgeStyle = 'bg-emerald-600 text-white font-bold';
+                            itemStyle = 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-400 dark:border-emerald-500 text-emerald-950 dark:text-emerald-100 font-semibold ring-1 ring-emerald-400/50';
+                            badgeStyle = 'bg-emerald-600 text-white font-bold border-transparent';
                           } else if (isUserChoice && !isAnswer) {
-                            itemStyle = 'bg-rose-50 dark:bg-rose-950/60 border-rose-400 dark:border-rose-500 text-rose-950 dark:text-rose-200 font-semibold ring-1 ring-rose-400/50';
-                            badgeStyle = 'bg-rose-600 text-white font-bold';
+                            itemStyle = 'bg-rose-50 dark:bg-rose-950/60 border-rose-400 dark:border-rose-500 text-rose-950 dark:text-rose-100 font-semibold ring-1 ring-rose-400/50';
+                            badgeStyle = 'bg-rose-600 text-white font-bold border-transparent';
                           }
 
                           return (
@@ -666,13 +686,13 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                                 <MathText text={optText} />
                               </div>
                               {isAnswer && (
-                                <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 shrink-0">
+                                <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-700 dark:text-emerald-400 shrink-0">
                                   <CheckCircle2 className="w-4 h-4" />
                                   <span className="hidden sm:inline">Correct Answer</span>
                                 </span>
                               )}
                               {isUserChoice && !isAnswer && (
-                                <span className="flex items-center gap-1 text-[11px] font-bold text-rose-600 dark:text-rose-400 shrink-0">
+                                <span className="flex items-center gap-1 text-[11px] font-bold text-rose-700 dark:text-rose-400 shrink-0">
                                   <XCircle className="w-4 h-4" />
                                   <span className="hidden sm:inline">Your Selection</span>
                                 </span>
@@ -682,15 +702,27 @@ export const ScoreView: React.FC<ScoreViewProps> = ({
                         })}
                       </div>
 
-                      {/* Explanation box with KaTeX */}
-                      <div className="p-4 rounded-2xl bg-slate-900 text-slate-100 border border-indigo-500/30 space-y-2">
-                        <span className="text-[11px] font-bold text-cyan-300 uppercase tracking-wider flex items-center gap-1.5">
-                          <Lightbulb className="w-3.5 h-3.5" />
-                          Complete Step-by-Step Mathematical Derivation:
-                        </span>
-                        <div className="text-xs sm:text-sm text-slate-200 leading-relaxed font-sans">
+                      {/* Explanation box with KaTeX: Robust Day & Dark mode contrast */}
+                      <div className="p-4 sm:p-5 rounded-2xl bg-indigo-50/70 dark:bg-slate-900/95 border border-indigo-200/90 dark:border-indigo-500/30 text-slate-800 dark:text-slate-100 space-y-2.5 shadow-xs transition-colors">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="text-[11px] font-bold text-indigo-900 dark:text-cyan-300 uppercase tracking-wider flex items-center gap-1.5">
+                            <Lightbulb className="w-4 h-4 text-amber-500 dark:text-amber-400 shrink-0" />
+                            Complete Step-by-Step Mathematical Derivation:
+                          </span>
+                        </div>
+                        <div className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-sans">
                           <MathText text={q.explanation} />
                         </div>
+                        {q.formula && (
+                          <div className="pt-2 border-t border-indigo-200/70 dark:border-indigo-900/60 flex flex-wrap items-center gap-2">
+                            <span className="text-[11px] font-bold text-indigo-950 dark:text-indigo-300">
+                              Formula / Core Identity:
+                            </span>
+                            <span className="font-mono text-xs bg-white dark:bg-slate-800 px-2.5 py-1 rounded-lg border border-indigo-200 dark:border-indigo-800 text-indigo-950 dark:text-indigo-200 inline-block shadow-2xs">
+                              <MathText text={q.formula} />
+                            </span>
+                          </div>
+                        )}
                       </div>
 
                     </div>
