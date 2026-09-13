@@ -336,7 +336,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$6$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$|z-w|\\leq|z|+|w|=5$.",
+    "explanation": "By the triangle inequality, $|z - w| \\le |z| + |-w| = |z| + |w|$. Substituting the moduli yields $|z-w|\\leq|z|+|w|=5$. Thus the maximum possible value is $5$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
     "formula": "|z-w|\\leq|z|+|w|=5"
@@ -716,7 +716,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$z=-1$ only",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Multiplying by $z$ gives $z^2-1=0$.",
+    "explanation": "Given $z - \\frac{1}{z} = 0$, multiplying both sides by $z$ gives $z^2 - 1 = 0 \\implies z^2 = 1 \\implies z = \\pm 1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
     "formula": "z"
@@ -1147,7 +1147,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$32$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$|z^5|=|z|^5=2^5=32$.",
+    "explanation": "Using the complex power modulus property $|z^n| = |z|^n$: $|z^5|=|z|^5=2^5=32$. Thus the value is $32$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
     "formula": "|z^5|=|z|^5=2^5=32"

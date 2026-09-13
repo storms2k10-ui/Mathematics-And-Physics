@@ -29,7 +29,7 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "option_c": "$2|z|$",
     "option_d": "$|z|^2$",
     "correct_answer": "D",
-    "explanation": "$a^2+b^2 = |z|^2$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $a^2+b^2 = |z|^2$. Thus the value is $|z|^2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },

@@ -773,7 +773,7 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_c": "$8,10,12$",
     "option_d": "$4,10,16$",
     "correct_answer": "C",
-    "explanation": "Write them as $10-d,10,10+d$; the product equation gives $d=2$.",
+    "explanation": "Let the three consecutive AP terms be $a - d, a, a + d$. Their sum is $(a - d) + a + (a + d) = 3a = 30 \\implies a = 10$. Their product is $(10 - d)(10)(10 + d) = 10(100 - d^2) = 960 \\implies 100 - d^2 = 96 \\implies d^2 = 4 \\implies d = 2$. Thus the terms are $10 - 2 = 8$, $10$, and $10 + 2 = 12$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -789,7 +789,7 @@ export const C11_CH4_ADVANCED_PART2: Question[] = [
     "option_c": "$4,7,10$",
     "option_d": "$5,7,9$",
     "correct_answer": "D",
-    "explanation": "The middle term is $7$, and $(7-d)(7+d)=45$ gives $d=2$.",
+    "explanation": "Let the three AP terms be $a - d, a, a + d$. Their sum is $3a = 21 \\implies a = 7$. The product of the first and third terms is $(7 - d)(7 + d) = 49 - d^2 = 45 \\implies d^2 = 49 - 45 = 4 \\implies d = 2$. Therefore, the terms are $7 - 2 = 5$, $7$, and $7 + 2 = 9$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },

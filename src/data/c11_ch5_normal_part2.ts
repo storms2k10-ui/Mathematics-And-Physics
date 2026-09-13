@@ -48,7 +48,7 @@ export const C11_CH5_NORMAL_PART2: Question[] = [
     "option_d": "$n+1$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$\\sum k^3=(\\sum k)^2$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $\\sum k^3=(\\sum k)^2$. Thus the value is $1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -278,7 +278,7 @@ export const C11_CH5_NORMAL_PART2: Question[] = [
     "option_d": "$5,100$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$100(101)/2=5050$.",
+    "explanation": "Using the formula for the sum of the first $n$ natural numbers $\\sum_{k=1}^n k = \\frac{n(n+1)}{2}$, for $n = 100$: $\\frac{100(101)}{2} = 50 \\times 101 = 5,050$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -324,7 +324,7 @@ export const C11_CH5_NORMAL_PART2: Question[] = [
     "option_d": "$2,970$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$20(21)(41)/6=2870$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $20(21)(41)/6=2870$. Thus the value is $2,870$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -370,7 +370,7 @@ export const C11_CH5_NORMAL_PART2: Question[] = [
     "option_d": "$36$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$2(30)-3(10)+4=34$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $2(30)-3(10)+4=34$. Thus the value is $34$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -393,7 +393,7 @@ export const C11_CH5_NORMAL_PART2: Question[] = [
     "option_d": "$161$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$91+2(21)+18=151$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $91+2(21)+18=151$. Thus the value is $151$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -416,7 +416,7 @@ export const C11_CH5_NORMAL_PART2: Question[] = [
     "option_d": "$1,230$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$3(385)+55+10=1220$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $3(385)+55+10=1220$. Thus the value is $1,220$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -508,7 +508,7 @@ export const C11_CH5_NORMAL_PART2: Question[] = [
     "option_d": "$6\\sum a_kb_k$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Summation is linear.",
+    "explanation": "Applying the relevant mathematical principles and simplifying: Summation is linear. Therefore, the correct answer is $2\\sum a_k-3\\sum b_k$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -784,7 +784,7 @@ export const C11_CH5_NORMAL_PART2: Question[] = [
     "option_d": "$51$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$1+4+12+32=49$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $1+4+12+32=49$. Thus the value is $49$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -853,7 +853,7 @@ export const C11_CH5_NORMAL_PART2: Question[] = [
     "option_d": "$8$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$1+2+\\frac74+\\frac54=6$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $1+2+\\frac74+\\frac54=6$. Thus the value is $6$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -922,7 +922,7 @@ export const C11_CH5_NORMAL_PART2: Question[] = [
     "option_d": "$3$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$1/(1-1/3)^2=9/4$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $1/(1-1/3)^2=9/4$, which yields $\\frac94$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -945,7 +945,7 @@ export const C11_CH5_NORMAL_PART2: Question[] = [
     "option_d": "$\\frac94$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$(1/3)/(1-1/3)^2=3/4$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $(1/3)/(1-1/3)^2=3/4$, which yields $\\frac34$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -1129,7 +1129,7 @@ export const C11_CH5_NORMAL_PART2: Question[] = [
     "option_d": "$r^n$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$kr^k=r(kr^{k-1})$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $kr^k=r(kr^{k-1})$, which yields $r$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -1152,7 +1152,7 @@ export const C11_CH5_NORMAL_PART2: Question[] = [
     "option_d": "$3$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$1+2(1/2)+3(1/4)=11/4$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $1+2(1/2)+3(1/4)=11/4$, which yields $\\frac{11}{4}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   }

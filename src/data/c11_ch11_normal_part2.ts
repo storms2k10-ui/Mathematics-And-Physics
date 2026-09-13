@@ -117,7 +117,7 @@ export const C11_CH11_NORMAL_PART2: Question[] = [
     "option_d": "$12$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$r=\\Delta/s=24/12=2$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $r=\\Delta/s=24/12=2$, which yields $2$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -370,7 +370,7 @@ export const C11_CH11_NORMAL_PART2: Question[] = [
     "option_d": "$6$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$c^2=25+49-70(1/2)=39$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $c^2=25+49-70(1/2)=39$, which yields $\\sqrt{39}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -393,7 +393,7 @@ export const C11_CH11_NORMAL_PART2: Question[] = [
     "option_d": "$20$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$s=(13+14+15)/2=21$.",
+    "explanation": "The semiperimeter $s$ of a triangle with side lengths $a, b, c$ is $s = \\frac{a+b+c}{2}$: $s=(13+14+15)/2=21$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -439,7 +439,7 @@ export const C11_CH11_NORMAL_PART2: Question[] = [
     "option_d": "$7$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$r=\\Delta/s=84/21=4$.",
+    "explanation": "The semiperimeter $s$ of a triangle with side lengths $a, b, c$ is $s = \\frac{a+b+c}{2}$: $r=\\Delta/s=84/21=4$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -853,7 +853,7 @@ export const C11_CH11_NORMAL_PART2: Question[] = [
     "option_d": "$a=2b$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The numerator $\\tan((A-B)/2)$ is zero, so $a-b=0$.",
+    "explanation": "By the Law of Tangents, $\\frac{a - b}{a + b} = \\frac{\\tan\\left(\\frac{A - B}{2}\\right)}{\\tan\\left(\\frac{A + B}{2}\\right)}$. When $A = B$, $\\frac{A - B}{2} = 0$, so $\\tan(0) = 0 \\implies a - b = 0 \\implies a = b$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -968,7 +968,7 @@ export const C11_CH11_NORMAL_PART2: Question[] = [
     "option_d": "$2$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$r=\\Delta/s=36/18=2$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $r=\\Delta/s=36/18=2$, which yields $2$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

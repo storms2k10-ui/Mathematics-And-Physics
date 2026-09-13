@@ -784,7 +784,7 @@ export const C11_CH6_NORMAL_PART4: Question[] = [
     "option_d": "$72$ outcomes",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Each die has six possibilities, giving $6^2=36$.",
+    "explanation": "Each standard six-sided die has $6$ possible independent outcomes. By the fundamental counting principle, two distinguishable dice have $6 \\times 6 = 6^2 = 36$ total outcomes in their sample space.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -807,7 +807,7 @@ export const C11_CH6_NORMAL_PART4: Question[] = [
     "option_d": "$12$ total outcomes",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The multiplication principle gives $2^3=8$.",
+    "explanation": "By the fundamental multiplication principle of combinatorics, for three successive experiments each having $2$ outcomes, the total number of combined outcomes is $2 \\times 2 \\times 2 = 2^3 = 8$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

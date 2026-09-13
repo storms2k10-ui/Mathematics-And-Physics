@@ -165,7 +165,7 @@ export const C11_CH2_NORMAL_PART3: Question[] = [
     "option_d": "$5$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$4(3)-(-1)(2)=12+2=14$.",
+    "explanation": "Evaluating the $2 \\times 2$ determinant using $\\begin{vmatrix}a&b\\\\c&d\\end{vmatrix} = ad - bc$: $4(3)-(-1)(2)=12+2=14$. Thus the determinant is $14$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "4(3)-(-1)(2)=12+2=14"
@@ -261,7 +261,7 @@ export const C11_CH2_NORMAL_PART3: Question[] = [
     "option_d": "Involutory",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Its determinant is $4-4=0$.",
+    "explanation": "Evaluating the determinant of the $2 \\times 2$ matrix: $\\det(A) = (1)(4) - (2)(2) = 4 - 4 = 0$. A square matrix with determinant equal to zero is Singular.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "4-4=0"
@@ -474,7 +474,7 @@ export const C11_CH2_NORMAL_PART3: Question[] = [
     "option_d": "$-\\frac{1}{2}$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$|A^{-1}|=1/|A|=-1/2$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $|A^{-1}|=1/|A|=-1/2$, which yields $-\\frac{1}{2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "|A^{-1}|=1/|A|=-1/2"

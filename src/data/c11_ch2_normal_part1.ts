@@ -1075,7 +1075,7 @@ export const C11_CH2_NORMAL_PART1: Question[] = [
     "option_d": "Involutory",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$(A+A^t)^t=A^t+A=A+A^t$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $(A+A^t)^t=A^t+A=A+A^t$, which yields $Symmetric$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "(A+A^t)^t=A^t+A=A+A^t"

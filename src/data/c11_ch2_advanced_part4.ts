@@ -633,7 +633,7 @@ export const C11_CH2_ADVANCED_PART4: Question[] = [
     "option_c": "$A-I$",
     "option_d": "$A$",
     "correct_answer": "A",
-    "explanation": "$(I+A)(I-A)=I-A^2=I$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $(I+A)(I-A)=I-A^2=I$. Thus the value is $I-A$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -697,7 +697,7 @@ export const C11_CH2_ADVANCED_PART4: Question[] = [
     "option_c": "Idempotent",
     "option_d": "Involutory",
     "correct_answer": "D",
-    "explanation": "$(2A-I)^2=4A^2-4A+I=I$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $(2A-I)^2=4A^2-4A+I=I$, which yields $Involutory$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },

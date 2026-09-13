@@ -1,0 +1,5079 @@
+[
+  {
+    "id": "c11-ch1-normal-q24",
+    "chapter": "Complex Numbers",
+    "question": "$(1+i)^2=$:",
+    "options": {
+      "A": "$-2$",
+      "B": "$2i$",
+      "C": "$2$",
+      "D": "$-2i$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$2i$",
+    "current_exp": "$1+2i+i^2=1+2i-1=2i$.",
+    "formula": "1+2i+i^2=1+2i-1=2i"
+  },
+  {
+    "id": "c11-ch1-normal-q25",
+    "chapter": "Complex Numbers",
+    "question": "$(1-i)^2=$:",
+    "options": {
+      "A": "$2$",
+      "B": "$2i$",
+      "C": "$-2i$",
+      "D": "$-2$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$-2i$",
+    "current_exp": "$1-2i+i^2=1-2i-1=-2i$.",
+    "formula": "1-2i+i^2=1-2i-1=-2i"
+  },
+  {
+    "id": "c11-ch1-normal-q41",
+    "chapter": "Complex Numbers",
+    "question": "$(2+i)^2=$:",
+    "options": {
+      "A": "$5+4i$",
+      "B": "$3-4i$",
+      "C": "$3+4i$",
+      "D": "$5-4i$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$3+4i$",
+    "current_exp": "$4+4i+i^2=3+4i$.",
+    "formula": "4+4i+i^2=3+4i"
+  },
+  {
+    "id": "c11-ch1-normal-q69",
+    "chapter": "Complex Numbers",
+    "question": "If $|z|=2$ and $|w|=3$, then $|zw|=$:",
+    "options": {
+      "A": "$1$",
+      "B": "$5$",
+      "C": "$6$",
+      "D": "$9$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$6$",
+    "current_exp": "$|zw|=|z||w|=2(3)=6$.",
+    "formula": "|zw|=|z||w|=2(3)=6"
+  },
+  {
+    "id": "c11-ch1-normal-q82",
+    "chapter": "Complex Numbers",
+    "question": "The multiplicative inverse of $-i$ is:",
+    "options": {
+      "A": "$-1$",
+      "B": "$1$",
+      "C": "$-i$",
+      "D": "$i$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$i$",
+    "current_exp": "Since $(-i)(i)=-i^2=1$.",
+    "formula": "(-i)(i)=-i^2=1"
+  },
+  {
+    "id": "c11-ch1-normal-q91",
+    "chapter": "Complex Numbers",
+    "question": "If $z=1+i$, then $\\frac{z}{\\bar{z}}=$:",
+    "options": {
+      "A": "$i$",
+      "B": "$-i$",
+      "C": "$1$",
+      "D": "$-1$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$i$",
+    "current_exp": "$\\frac{1+i}{1-i}=i$.",
+    "formula": "\\frac{1+i}{1-i}=i"
+  },
+  {
+    "id": "c11-ch1-normal-q92",
+    "chapter": "Complex Numbers",
+    "question": "If $z=1+i$, then $\\frac{\\bar{z}}{z}=$:",
+    "options": {
+      "A": "$i$",
+      "B": "$1$",
+      "C": "$-i$",
+      "D": "$-1$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$-i$",
+    "current_exp": "$\\frac{1-i}{1+i}=-i$.",
+    "formula": "\\frac{1-i}{1+i}=-i"
+  },
+  {
+    "id": "c11-ch1-normal-q112",
+    "chapter": "Complex Numbers",
+    "question": "If $(1-i)z=2+2i$, then $z=$:",
+    "options": {
+      "A": "$2$",
+      "B": "$-2i$",
+      "C": "$2i$",
+      "D": "$1+i$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$2i$",
+    "current_exp": "$z=\\frac{2+2i}{1-i}=2i$.",
+    "formula": "z=\\frac{2+2i}{1-i}=2i"
+  },
+  {
+    "id": "c11-ch1-normal-q118",
+    "chapter": "Complex Numbers",
+    "question": "If $x+iy=(1+i)^2$, then:",
+    "options": {
+      "A": "$(x,y)=(2,0)$",
+      "B": "$(-2,0)$",
+      "C": "$(0,-2)$",
+      "D": "$(0,2)$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$(0,2)$",
+    "current_exp": "Since $(1+i)^2=2i=0+2i$.",
+    "formula": "(1+i)^2=2i=0+2i"
+  },
+  {
+    "id": "c11-ch1-normal-q122",
+    "chapter": "Complex Numbers",
+    "question": "If $\\frac{x+iy}{1+i}=2-i$, then:",
+    "options": {
+      "A": "$(x,y)=(1,3)$",
+      "B": "$(2,-1)$",
+      "C": "$(1,-3)$",
+      "D": "$(3,1)$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$(3,1)$",
+    "current_exp": "$x+iy=(2-i)(1+i)=3+i$.",
+    "formula": "x+iy=(2-i)(1+i)=3+i"
+  },
+  {
+    "id": "c11-ch1-normal-q127",
+    "chapter": "Complex Numbers",
+    "question": "The solutions of $z^2=1$ are:",
+    "options": {
+      "A": "$z=\\pm1$",
+      "B": "$z=\\pm i$",
+      "C": "$z=1$ only",
+      "D": "$z=-1$ only"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$z=\\pm1$",
+    "current_exp": "$z^2-1=(z-1)(z+1)=0$.",
+    "formula": "z^2-1=(z-1)(z+1)=0"
+  },
+  {
+    "id": "c11-ch1-normal-q136",
+    "chapter": "Complex Numbers",
+    "question": "The product of the roots of $x^2-4x+13=0$ is:",
+    "options": {
+      "A": "$4$",
+      "B": "$-4$",
+      "C": "$13$",
+      "D": "$-13$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$13$",
+    "current_exp": "The product is $c/a=13$.",
+    "formula": "c/a=13"
+  },
+  {
+    "id": "c11-ch1-normal-q164",
+    "chapter": "Complex Numbers",
+    "question": "If $|z|=2$ and $|w|=3$, the maximum possible value of $|z-w|$ is:",
+    "options": {
+      "A": "$1$",
+      "B": "$3$",
+      "C": "$5$",
+      "D": "$6$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$5$",
+    "current_exp": "$|z-w|\\leq|z|+|w|=5$.",
+    "formula": "|z-w|\\leq|z|+|w|=5"
+  },
+  {
+    "id": "c11-ch1-normal-q198",
+    "chapter": "Complex Numbers",
+    "question": "If $|z|=2$, then $|z^5|=$:",
+    "options": {
+      "A": "$10$",
+      "B": "$16$",
+      "C": "$25$",
+      "D": "$32$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$32$",
+    "current_exp": "$|z^5|=|z|^5=2^5=32$.",
+    "formula": "|z^5|=|z|^5=2^5=32"
+  },
+  {
+    "id": "c11-ch1-adv-q102",
+    "chapter": "Complex Numbers",
+    "question": "If $z=a+ib$, evaluate $(\\operatorname{Re}(z))^2 + (\\operatorname{Im}(z))^2$.",
+    "options": {
+      "A": "$|z|$",
+      "B": "$z^2$",
+      "C": "$2|z|$",
+      "D": "$|z|^2$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$|z|^2$",
+    "current_exp": "$a^2+b^2 = |z|^2$."
+  },
+  {
+    "id": "c11-ch2-normal-q46",
+    "chapter": "Matrices and Determinants",
+    "question": "For any square matrix $A$, $A+A^t$ is:",
+    "options": {
+      "A": "Skew-symmetric",
+      "B": "Symmetric",
+      "C": "Nilpotent",
+      "D": "Involutory"
+    },
+    "correct_answer": "B",
+    "correct_opt": "Symmetric",
+    "current_exp": "$(A+A^t)^t=A^t+A=A+A^t$.",
+    "formula": "(A+A^t)^t=A^t+A=A+A^t"
+  },
+  {
+    "id": "c11-ch2-normal-q64",
+    "chapter": "Matrices and Determinants",
+    "question": "The additive identity for matrices is the:",
+    "options": {
+      "A": "Identity matrix",
+      "B": "Scalar matrix",
+      "C": "Diagonal matrix",
+      "D": "Null matrix"
+    },
+    "correct_answer": "D",
+    "correct_opt": "Null matrix",
+    "current_exp": "$A+O=O+A=A$.",
+    "formula": "A+O=O+A=A"
+  },
+  {
+    "id": "c11-ch2-normal-q65",
+    "chapter": "Matrices and Determinants",
+    "question": "The additive inverse of $A$ is:",
+    "options": {
+      "A": "$-A$",
+      "B": "$A^{-1}$",
+      "C": "$A^t$",
+      "D": "$O$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$-A$",
+    "current_exp": "$A+(-A)=O$.",
+    "formula": "A+(-A)=O"
+  },
+  {
+    "id": "c11-ch2-normal-q66",
+    "chapter": "Matrices and Determinants",
+    "question": "The multiplicative identity for square matrices is:",
+    "options": {
+      "A": "$O$",
+      "B": "$I$",
+      "C": "$-A$",
+      "D": "$A^t$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$I$",
+    "current_exp": "$AI=IA=A$.",
+    "formula": "AI=IA=A"
+  },
+  {
+    "id": "c11-ch2-normal-q107",
+    "chapter": "Matrices and Determinants",
+    "question": "Evaluate $\\begin{vmatrix}4&-1\\\\2&3\\end{vmatrix}$.",
+    "options": {
+      "A": "$14$",
+      "B": "$10$",
+      "C": "$-14$",
+      "D": "$5$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$14$",
+    "current_exp": "$4(3)-(-1)(2)=12+2=14$.",
+    "formula": "4(3)-(-1)(2)=12+2=14"
+  },
+  {
+    "id": "c11-ch2-normal-q120",
+    "chapter": "Matrices and Determinants",
+    "question": "If $|A|=-2$, then $|A^{-1}|=$:",
+    "options": {
+      "A": "$2$",
+      "B": "$-2$",
+      "C": "$\\frac{1}{2}$",
+      "D": "$-\\frac{1}{2}$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$-\\frac{1}{2}$",
+    "current_exp": "$|A^{-1}|=1/|A|=-1/2$.",
+    "formula": "|A^{-1}|=1/|A|=-1/2"
+  },
+  {
+    "id": "c11-ch2-normal-q163",
+    "chapter": "Matrices and Determinants",
+    "question": "The matrix-inversion method applies directly when the coefficient matrix is:",
+    "options": {
+      "A": "Singular",
+      "B": "Null",
+      "C": "Rectangular",
+      "D": "Nonsingular"
+    },
+    "correct_answer": "D",
+    "correct_opt": "Nonsingular",
+    "current_exp": "$A^{-1}$ must exist.",
+    "formula": "A^{-1}"
+  },
+  {
+    "id": "c11-ch2-adv-q40",
+    "chapter": "Matrices and Determinants",
+    "question": "If $A^2=A$, then $A^3$ equals:",
+    "options": {
+      "A": "$A$",
+      "B": "$A^2+A$",
+      "C": "$I$",
+      "D": "$O$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$A$",
+    "current_exp": "$A^3=A(A^2)=AA=A^2=A$."
+  },
+  {
+    "id": "c11-ch2-adv-q53",
+    "chapter": "Matrices and Determinants",
+    "question": "If $A$ is symmetric, then $A^2$ is:",
+    "options": {
+      "A": "Symmetric",
+      "B": "Skew-symmetric",
+      "C": "Zero",
+      "D": "Rectangular"
+    },
+    "correct_answer": "A",
+    "correct_opt": "Symmetric",
+    "current_exp": "$(A^2)^T=(A^T)^2=A^2$."
+  },
+  {
+    "id": "c11-ch2-adv-q60",
+    "chapter": "Matrices and Determinants",
+    "question": "Which matrix is involutory?",
+    "options": {
+      "A": "$-I$",
+      "B": "$2I$",
+      "C": "$O$",
+      "D": "$\\begin{bmatrix}1&1\\\\0&1\\end{bmatrix}$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$-I$",
+    "current_exp": "$(-I)^2=I$."
+  },
+  {
+    "id": "c11-ch2-adv-q62",
+    "chapter": "Matrices and Determinants",
+    "question": "If $A$ is idempotent, then $I-A$ is:",
+    "options": {
+      "A": "Nilpotent",
+      "B": "Involutory",
+      "C": "Idempotent",
+      "D": "Skew-symmetric"
+    },
+    "correct_answer": "C",
+    "correct_opt": "Idempotent",
+    "current_exp": "$(I-A)^2=I-2A+A^2=I-A$."
+  },
+  {
+    "id": "c11-ch2-adv-q80",
+    "chapter": "Matrices and Determinants",
+    "question": "If $|A|=-3$, find $|A^2|$.",
+    "options": {
+      "A": "$9$",
+      "B": "$-9$",
+      "C": "$6$",
+      "D": "$-6$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$9$",
+    "current_exp": "$|A^2|=|A||A|=(-3)^2=9$."
+  },
+  {
+    "id": "c11-ch2-adv-q81",
+    "chapter": "Matrices and Determinants",
+    "question": "If $A$ is $2\\times2$ and $|A|=4$, find $|3A|$.",
+    "options": {
+      "A": "$12$",
+      "B": "$36$",
+      "C": "$24$",
+      "D": "$81$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$36$",
+    "current_exp": "$|3A|=3^2|A|=9(4)=36$."
+  },
+  {
+    "id": "c11-ch2-adv-q88",
+    "chapter": "Matrices and Determinants",
+    "question": "Find $x$ if $\\begin{vmatrix}x&2\\\\3&6\\end{vmatrix}=0$.",
+    "options": {
+      "A": "$x=0$",
+      "B": "$x=1$",
+      "C": "$x=2$",
+      "D": "$x=3$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$x=1$",
+    "current_exp": "$6x-6=0$, so $x=1$."
+  },
+  {
+    "id": "c11-ch2-adv-q93",
+    "chapter": "Matrices and Determinants",
+    "question": "If $|A|=2$ and $|B|=-3$, find $|AB|$.",
+    "options": {
+      "A": "$6$",
+      "B": "$-6$",
+      "C": "$-1$",
+      "D": "$5$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$-6$",
+    "current_exp": "$|AB|=|A||B|=2(-3)=-6$."
+  },
+  {
+    "id": "c11-ch2-adv-q94",
+    "chapter": "Matrices and Determinants",
+    "question": "If $|A|=2$, find $|A^3|$.",
+    "options": {
+      "A": "$8$",
+      "B": "$6$",
+      "C": "$4$",
+      "D": "$9$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$8$",
+    "current_exp": "$|A^3|=|A|^3=2^3=8$."
+  },
+  {
+    "id": "c11-ch2-adv-q98",
+    "chapter": "Matrices and Determinants",
+    "question": "If $A$ is $3\\times3$ and $|A|=2$, find $|-A|$.",
+    "options": {
+      "A": "$2$",
+      "B": "$-2$",
+      "C": "$6$",
+      "D": "$-8$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$-2$",
+    "current_exp": "$|-A|=(-1)^3|A|=-2$."
+  },
+  {
+    "id": "c11-ch2-adv-q99",
+    "chapter": "Matrices and Determinants",
+    "question": "If $A$ is $4\\times4$ and $|A|=3$, find $|-A|$.",
+    "options": {
+      "A": "$-3$",
+      "B": "$12$",
+      "C": "$3$",
+      "D": "$-12$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$3$",
+    "current_exp": "$|-A|=(-1)^4|A|=3$."
+  },
+  {
+    "id": "c11-ch2-adv-q125",
+    "file": "c11_ch2_advanced_part3.ts",
+    "chapter": "Matrices and Determinants",
+    "question": "If $A^2=4I$, then $A^{-1}$ equals:",
+    "options": {
+      "A": "$4A$",
+      "B": "$A/2$",
+      "C": "$A/4$",
+      "D": "$4I-A$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$A/4$",
+    "current_exp": "$A(A/4)=A^2/4=I$."
+  },
+  {
+    "id": "c11-ch2-adv-q127",
+    "file": "c11_ch2_advanced_part3.ts",
+    "chapter": "Matrices and Determinants",
+    "question": "If $A^4=I$, then $A^{-1}$ equals:",
+    "options": {
+      "A": "$A^4$",
+      "B": "$A^3$",
+      "C": "$A^2$",
+      "D": "$A$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$A^3$",
+    "current_exp": "$AA^3=A^4=I$."
+  },
+  {
+    "id": "c11-ch2-adv-q189",
+    "chapter": "Matrices and Determinants",
+    "question": "If $A^2=O$, find $(I+A)^{-1}$.",
+    "options": {
+      "A": "$I-A$",
+      "B": "$I+A$",
+      "C": "$A-I$",
+      "D": "$A$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$I-A$",
+    "current_exp": "$(I+A)(I-A)=I-A^2=I$."
+  },
+  {
+    "id": "c11-ch2-adv-q193",
+    "chapter": "Matrices and Determinants",
+    "question": "If $A$ is idempotent, then $2A-I$ is:",
+    "options": {
+      "A": "Nilpotent",
+      "B": "Singular always",
+      "C": "Idempotent",
+      "D": "Involutory"
+    },
+    "correct_answer": "D",
+    "correct_opt": "Involutory",
+    "current_exp": "$(2A-I)^2=4A^2-4A+I=I$."
+  },
+  {
+    "id": "c11-ch3-adv-q53",
+    "chapter": "Vectors",
+    "question": "If $(x,6)$ is parallel to $(2,3)$, find $x$.",
+    "options": {
+      "A": "$2$",
+      "B": "$3$",
+      "C": "$4$",
+      "D": "$6$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$4$",
+    "current_exp": "$x/2=6/3=2$, so $x=4$."
+  },
+  {
+    "id": "c11-ch3-adv-q65",
+    "chapter": "Vectors",
+    "question": "Which vector is parallel to $(1,-2,3)$?",
+    "options": {
+      "A": "$(2,-4,6)$",
+      "B": "$(2,-4,5)$",
+      "C": "$(-1,-2,3)$",
+      "D": "$(1,2,-3)$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$(2,-4,6)$",
+    "current_exp": "$(2,-4,6)=2(1,-2,3)$."
+  },
+  {
+    "id": "c11-ch3-adv-q79",
+    "chapter": "Vectors",
+    "question": "Evaluate $(2\\mathbf{i}+3\\mathbf{j})\\cdot(4\\mathbf{i}-\\mathbf{j})$.",
+    "options": {
+      "A": "$11$",
+      "B": "$8$",
+      "C": "$5$",
+      "D": "$-5$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$5$",
+    "current_exp": "$2(4)+3(-1)=8-3=5$."
+  },
+  {
+    "id": "c11-ch3-adv-q106",
+    "chapter": "Vectors",
+    "question": "If force and displacement are perpendicular, the work done is:",
+    "options": {
+      "A": "Maximum",
+      "B": "Negative",
+      "C": "Equal to force",
+      "D": "Zero"
+    },
+    "correct_answer": "D",
+    "correct_opt": "Zero",
+    "current_exp": "$W=Fd\\cos90^\\circ=0$."
+  },
+  {
+    "id": "c11-ch3-adv-q129",
+    "chapter": "Vectors",
+    "question": "If $|\\mathbf{a}|=3,\\ |\\mathbf{b}|=4$, and their angle is $90^\\circ$, find $|\\mathbf{a}\\times\\mathbf{b}|$.",
+    "options": {
+      "A": "$12$",
+      "B": "$7$",
+      "C": "$1$",
+      "D": "$0$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$12$",
+    "current_exp": "$3(4)\\sin90^\\circ=12$."
+  },
+  {
+    "id": "c11-ch4-normal-q12",
+    "chapter": "Sequence and Series",
+    "question": "If $a_{n-1},a_n,a_{n+1}$ are consecutive terms of an A.P., then $a_n$ is:",
+    "options": {
+      "A": "Their geometric mean",
+      "B": "The arithmetic mean of the adjacent terms",
+      "C": "Their harmonic mean",
+      "D": "Their product"
+    },
+    "correct_answer": "B",
+    "correct_opt": "The arithmetic mean of the adjacent terms",
+    "current_exp": "$2a_n=a_{n-1}+a_{n+1}$."
+  },
+  {
+    "id": "c11-ch4-normal-q28",
+    "chapter": "Sequence and Series",
+    "question": "The recurrence relation for the factorial sequence is:",
+    "options": {
+      "A": "$a_n=a_{n-1}+n$",
+      "B": "$a_n=na_{n-1}$",
+      "C": "$a_n=2a_{n-1}$",
+      "D": "$a_n=a_{n-1}-n$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$a_n=na_{n-1}$",
+    "current_exp": "$n!=n(n-1)!$."
+  },
+  {
+    "id": "c11-ch4-normal-q31",
+    "chapter": "Sequence and Series",
+    "question": "The $n$th term of $3,7,11,15,\\ldots$ is:",
+    "options": {
+      "A": "$4n-1$",
+      "B": "$4n+1$",
+      "C": "$3n+1$",
+      "D": "$n+3$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$4n-1$",
+    "current_exp": "$a_n=3+(n-1)4=4n-1$."
+  },
+  {
+    "id": "c11-ch4-normal-q32",
+    "chapter": "Sequence and Series",
+    "question": "The 15th term of $2,5,8,\\ldots$ is:",
+    "options": {
+      "A": "$41$",
+      "B": "$42$",
+      "C": "$44$",
+      "D": "$47$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$44$",
+    "current_exp": "$a_{15}=2+14(3)=44$."
+  },
+  {
+    "id": "c11-ch4-normal-q33",
+    "chapter": "Sequence and Series",
+    "question": "If the fifth term of an A.P. is $18$ and $d=4$, its first term is:",
+    "options": {
+      "A": "$2$",
+      "B": "$4$",
+      "C": "$6$",
+      "D": "$8$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$2$",
+    "current_exp": "$18=a+4(4)$, so $a=2$."
+  },
+  {
+    "id": "c11-ch4-normal-q34",
+    "chapter": "Sequence and Series",
+    "question": "If $a=7$ and $d=-2$, then $a_{10}$ is:",
+    "options": {
+      "A": "$-9$",
+      "B": "$-11$",
+      "C": "$11$",
+      "D": "$25$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$-11$",
+    "current_exp": "$a_{10}=7+9(-2)=-11$."
+  },
+  {
+    "id": "c11-ch4-normal-q40",
+    "chapter": "Sequence and Series",
+    "question": "The arithmetic mean between $7$ and $21$ is:",
+    "options": {
+      "A": "$12$",
+      "B": "$13$",
+      "C": "$14$",
+      "D": "$15$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$14$",
+    "current_exp": "$(7+21)/2=14$."
+  },
+  {
+    "id": "c11-ch4-normal-q41",
+    "chapter": "Sequence and Series",
+    "question": "If $x,10,18$ are consecutive A.P. terms, then $x=$:",
+    "options": {
+      "A": "$2$",
+      "B": "$4$",
+      "C": "$6$",
+      "D": "$8$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$2$",
+    "current_exp": "$2(10)=x+18$, so $x=2$."
+  },
+  {
+    "id": "c11-ch4-normal-q45",
+    "chapter": "Sequence and Series",
+    "question": "The sum of the first 30 natural numbers is:",
+    "options": {
+      "A": "$435$",
+      "B": "$450$",
+      "C": "$465$",
+      "D": "$480$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$465$",
+    "current_exp": "$30(31)/2=465$."
+  },
+  {
+    "id": "c11-ch4-normal-q46",
+    "chapter": "Sequence and Series",
+    "question": "The sum $1^2+2^2+\\cdots+10^2$ is:",
+    "options": {
+      "A": "$285$",
+      "B": "$355$",
+      "C": "$385$",
+      "D": "$425$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$385$",
+    "current_exp": "$10(11)(21)/6=385$."
+  },
+  {
+    "id": "c11-ch4-normal-q48",
+    "chapter": "Sequence and Series",
+    "question": "If $S_n=3n^2+2n$, then $a_n$ is:",
+    "options": {
+      "A": "$3n+2$",
+      "B": "$5n-1$",
+      "C": "$6n-1$",
+      "D": "$6n+1$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$6n-1$",
+    "current_exp": "$a_n=S_n-S_{n-1}=6n-1$."
+  },
+  {
+    "id": "c11-ch4-normal-q49",
+    "chapter": "Sequence and Series",
+    "question": "If $S_n=n^2$, the corresponding sequence is:",
+    "options": {
+      "A": "$1,2,3,4,\\ldots$",
+      "B": "$1,3,5,7,\\ldots$",
+      "C": "$2,4,6,8,\\ldots$",
+      "D": "$1,4,9,16,\\ldots$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$1,3,5,7,\\ldots$",
+    "current_exp": "$a_n=n^2-(n-1)^2=2n-1$."
+  },
+  {
+    "id": "c11-ch4-normal-q50",
+    "chapter": "Sequence and Series",
+    "question": "The sum of the first eight terms of $2,5,8,\\ldots$ is:",
+    "options": {
+      "A": "$92$",
+      "B": "$96$",
+      "C": "$100$",
+      "D": "$104$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$100$",
+    "current_exp": "$S_8=4[4+7(3)]=100$."
+  },
+  {
+    "id": "c11-ch4-normal-q56",
+    "chapter": "Sequence and Series",
+    "question": "The 15th triangular number is:",
+    "options": {
+      "A": "$105$",
+      "B": "$110$",
+      "C": "$120$",
+      "D": "$125$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$120$",
+    "current_exp": "$T_{15}=15(16)/2=120$."
+  },
+  {
+    "id": "c11-ch4-normal-q62",
+    "chapter": "Sequence and Series",
+    "question": "The sum of the entries in the Pascal row corresponding to $(a+b)^6$ is:",
+    "options": {
+      "A": "$32$",
+      "B": "$36$",
+      "C": "$64$",
+      "D": "$128$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$64$",
+    "current_exp": "The sum is $2^6=64$."
+  },
+  {
+    "id": "c11-ch4-normal-q67",
+    "chapter": "Sequence and Series",
+    "question": "If $a_n=\\frac{n}{n+1}$, then $a_5=$:",
+    "options": {
+      "A": "$\\frac{4}{5}$",
+      "B": "$\\frac{5}{6}$",
+      "C": "$\\frac{6}{5}$",
+      "D": "$\\frac{1}{6}$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$\\frac{5}{6}$",
+    "current_exp": "Substitute $n=5$."
+  },
+  {
+    "id": "c11-ch4-normal-q68",
+    "chapter": "Sequence and Series",
+    "question": "If $a_n=2^n+1$, then $a_4=$:",
+    "options": {
+      "A": "$9$",
+      "B": "$16$",
+      "C": "$17$",
+      "D": "$18$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$17$",
+    "current_exp": "$2^4+1=17$."
+  },
+  {
+    "id": "c11-ch4-normal-q69",
+    "chapter": "Sequence and Series",
+    "question": "If $a_n=n^2-n$, then $a_6=$:",
+    "options": {
+      "A": "$24$",
+      "B": "$30$",
+      "C": "$32$",
+      "D": "$36$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$30$",
+    "current_exp": "$6^2-6=30$."
+  },
+  {
+    "id": "c11-ch4-normal-q70",
+    "chapter": "Sequence and Series",
+    "question": "In an A.P., the common difference in terms of $a_p$ and $a_q$ is:",
+    "options": {
+      "A": "$\\frac{a_q+a_p}{q-p}$",
+      "B": "$\\frac{a_q-a_p}{q-p}$",
+      "C": "$\\frac{a_qa_p}{q-p}$",
+      "D": "$\\frac{q-p}{a_q-a_p}$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$\\frac{a_q-a_p}{q-p}$",
+    "current_exp": "$a_q-a_p=(q-p)d$."
+  },
+  {
+    "id": "c11-ch4-normal-q72",
+    "chapter": "Sequence and Series",
+    "question": "The $n$th term of $5,15,45,\\ldots$ is:",
+    "options": {
+      "A": "$5(2^{n-1})$",
+      "B": "$5(3^{n-1})$",
+      "C": "$3(5^{n-1})$",
+      "D": "$5+3(n-1)$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$5(3^{n-1})$",
+    "current_exp": "Here $a=5$ and $r=3$."
+  },
+  {
+    "id": "c11-ch4-normal-q73",
+    "chapter": "Sequence and Series",
+    "question": "The seventh term of $2,6,18,\\ldots$ is:",
+    "options": {
+      "A": "$486$",
+      "B": "$729$",
+      "C": "$1458$",
+      "D": "$2187$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$1458$",
+    "current_exp": "$a_7=2(3^6)=1458$."
+  },
+  {
+    "id": "c11-ch4-normal-q74",
+    "chapter": "Sequence and Series",
+    "question": "If $a_4=54$ and $r=3$, the first term is:",
+    "options": {
+      "A": "$1$",
+      "B": "$2$",
+      "C": "$3$",
+      "D": "$6$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$2$",
+    "current_exp": "$54=a(3^3)$, so $a=2$."
+  },
+  {
+    "id": "c11-ch4-normal-q76",
+    "chapter": "Sequence and Series",
+    "question": "If $x,6,18$ are consecutive terms of a G.P., then $x=$:",
+    "options": {
+      "A": "$1$",
+      "B": "$2$",
+      "C": "$3$",
+      "D": "$4$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$2$",
+    "current_exp": "$6^2=18x$, giving $x=2$."
+  },
+  {
+    "id": "c11-ch4-normal-q80",
+    "chapter": "Sequence and Series",
+    "question": "The positive geometric mean between $4$ and $25$ is:",
+    "options": {
+      "A": "$9$",
+      "B": "$10$",
+      "C": "$12$",
+      "D": "$14.5$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$10$",
+    "current_exp": "$G=\\sqrt{4(25)}=10$."
+  },
+  {
+    "id": "c11-ch4-normal-q84",
+    "chapter": "Sequence and Series",
+    "question": "The sum of the first eight terms of $1,2,4,\\ldots$ is:",
+    "options": {
+      "A": "$127$",
+      "B": "$128$",
+      "C": "$255$",
+      "D": "$256$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$255$",
+    "current_exp": "$S_8=2^8-1=255$."
+  },
+  {
+    "id": "c11-ch4-normal-q90",
+    "chapter": "Sequence and Series",
+    "question": "The sum $1+0.2+0.04+\\cdots$ is:",
+    "options": {
+      "A": "$1.20$",
+      "B": "$1.25$",
+      "C": "$1.40$",
+      "D": "$1.50$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$1.25$",
+    "current_exp": "$1/(1-0.2)=1.25$."
+  },
+  {
+    "id": "c11-ch4-normal-q96",
+    "chapter": "Sequence and Series",
+    "question": "A G.P. has $r=1/3$ and sum to infinity $15$. Its first term is:",
+    "options": {
+      "A": "$5$",
+      "B": "$8$",
+      "C": "$10$",
+      "D": "$12$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$10$",
+    "current_exp": "$a=15(1-1/3)=10$."
+  },
+  {
+    "id": "c11-ch4-normal-q98",
+    "chapter": "Sequence and Series",
+    "question": "The sum of the first four terms of $8,4,2,1,\\ldots$ is:",
+    "options": {
+      "A": "$14$",
+      "B": "$15$",
+      "C": "$16$",
+      "D": "$17$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$15$",
+    "current_exp": "$8+4+2+1=15$."
+  },
+  {
+    "id": "c11-ch4-normal-q99",
+    "chapter": "Sequence and Series",
+    "question": "The sum of the first five terms of $1,3,9,\\ldots$ is:",
+    "options": {
+      "A": "$81$",
+      "B": "$120$",
+      "C": "$121$",
+      "D": "$243$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$121$",
+    "current_exp": "$1+3+9+27+81=121$."
+  },
+  {
+    "id": "c11-ch4-normal-q103",
+    "chapter": "Sequence and Series",
+    "question": "A population of $100$ doubles after each period. After five periods it becomes:",
+    "options": {
+      "A": "$1,600$",
+      "B": "$2,400$",
+      "C": "$3,200$",
+      "D": "$6,400$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$3,200$",
+    "current_exp": "$100(2^5)=3200$."
+  },
+  {
+    "id": "c11-ch4-normal-q104",
+    "chapter": "Sequence and Series",
+    "question": "A machine worth Rs. 80,000 retains $90\\%$ of its value each year. After two years its value is:",
+    "options": {
+      "A": "Rs. 62,000",
+      "B": "Rs. 64,800",
+      "C": "Rs. 68,000",
+      "D": "Rs. 72,000"
+    },
+    "correct_answer": "B",
+    "correct_opt": "Rs. 64,800",
+    "current_exp": "$80000(0.9)^2=64800$."
+  },
+  {
+    "id": "c11-ch4-normal-q105",
+    "chapter": "Sequence and Series",
+    "question": "A culture initially contains $50$ cells and triples four times. The final number is:",
+    "options": {
+      "A": "$1,350$",
+      "B": "$2,700$",
+      "C": "$4,050$",
+      "D": "$8,100$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$4,050$",
+    "current_exp": "$50(3^4)=4050$."
+  },
+  {
+    "id": "c11-ch4-normal-q114",
+    "chapter": "Sequence and Series",
+    "question": "The harmonic mean between $6$ and $12$ is:",
+    "options": {
+      "A": "$8$",
+      "B": "$9$",
+      "C": "$10$",
+      "D": "$12$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$8$",
+    "current_exp": "$H=2(6)(12)/(6+12)=8$."
+  },
+  {
+    "id": "c11-ch4-normal-q117",
+    "chapter": "Sequence and Series",
+    "question": "One harmonic mean between $4$ and $12$ is:",
+    "options": {
+      "A": "$5$",
+      "B": "$6$",
+      "C": "$8$",
+      "D": "$9$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$6$",
+    "current_exp": "$H=2(4)(12)/(4+12)=6$."
+  },
+  {
+    "id": "c11-ch4-normal-q118",
+    "chapter": "Sequence and Series",
+    "question": "The harmonic mean between $3$ and $6$ is:",
+    "options": {
+      "A": "$4$",
+      "B": "$4.5$",
+      "C": "$5$",
+      "D": "$\\frac{9}{2}$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$4$",
+    "current_exp": "$H=36/9=4$."
+  },
+  {
+    "id": "c11-ch4-normal-q127",
+    "chapter": "Sequence and Series",
+    "question": "If $A=10$ and $G=8$, then $H=$:",
+    "options": {
+      "A": "$\\frac{16}{5}$",
+      "B": "$\\frac{24}{5}$",
+      "C": "$\\frac{32}{5}$",
+      "D": "$\\frac{40}{5}$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$\\frac{32}{5}$",
+    "current_exp": "$H=G^2/A=64/10=32/5$."
+  },
+  {
+    "id": "c11-ch4-normal-q128",
+    "chapter": "Sequence and Series",
+    "question": "If $A=13$ and $G=12$, then $H=$:",
+    "options": {
+      "A": "$\\frac{132}{13}$",
+      "B": "$\\frac{144}{13}$",
+      "C": "$\\frac{156}{13}$",
+      "D": "$12$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$\\frac{144}{13}$",
+    "current_exp": "$H=G^2/A=144/13$."
+  },
+  {
+    "id": "c11-ch4-normal-q135",
+    "chapter": "Sequence and Series",
+    "question": "If $G=6$ and $H=4$, then $A=$:",
+    "options": {
+      "A": "$8$",
+      "B": "$9$",
+      "C": "$10$",
+      "D": "$12$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$9$",
+    "current_exp": "$A=G^2/H=36/4=9$."
+  },
+  {
+    "id": "c11-ch4-normal-q140",
+    "chapter": "Sequence and Series",
+    "question": "If $a_3+a_9=20$ in an A.P., then $a_6=$:",
+    "options": {
+      "A": "$5$",
+      "B": "$10$",
+      "C": "$15$",
+      "D": "$20$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$10$",
+    "current_exp": "$a_3+a_9=2a_6$."
+  },
+  {
+    "id": "c11-ch4-normal-q142",
+    "chapter": "Sequence and Series",
+    "question": "If $a_2+a_8=30$ in an A.P., then $a_5=$:",
+    "options": {
+      "A": "$10$",
+      "B": "$12$",
+      "C": "$15$",
+      "D": "$20$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$15$",
+    "current_exp": "$a_2+a_8=2a_5$."
+  },
+  {
+    "id": "c11-ch4-normal-q153",
+    "chapter": "Sequence and Series",
+    "question": "If the product of the first and third positive G.P. terms is $100$, the middle term is:",
+    "options": {
+      "A": "$5$",
+      "B": "$10$",
+      "C": "$20$",
+      "D": "$50$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$10$",
+    "current_exp": "$b^2=ac=100$, so $b=10$."
+  },
+  {
+    "id": "c11-ch4-normal-q156",
+    "chapter": "Sequence and Series",
+    "question": "The sum of the first $n$ terms of $1,2,4,8,\\ldots$ is:",
+    "options": {
+      "A": "$2^n$",
+      "B": "$2^n-1$",
+      "C": "$2^{n-1}$",
+      "D": "$n^2$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$2^n-1$",
+    "current_exp": "$S_n=(2^n-1)/(2-1)$."
+  },
+  {
+    "id": "c11-ch4-normal-q163",
+    "chapter": "Sequence and Series",
+    "question": "A convergent G.P. has sum to infinity $12$ and ratio $1/4$. Its first term is:",
+    "options": {
+      "A": "$3$",
+      "B": "$6$",
+      "C": "$9$",
+      "D": "$10$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$9$",
+    "current_exp": "$a=12(1-1/4)=9$."
+  },
+  {
+    "id": "c11-ch4-normal-q166",
+    "chapter": "Sequence and Series",
+    "question": "The sum of the first five terms of the G.P. $3,6,12,\\ldots$ is:",
+    "options": {
+      "A": "$63$",
+      "B": "$90$",
+      "C": "$93$",
+      "D": "$96$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$93$",
+    "current_exp": "$3+6+12+24+48=93$."
+  },
+  {
+    "id": "c11-ch4-normal-q167",
+    "chapter": "Sequence and Series",
+    "question": "The sum of the first five terms of $81,27,9,\\ldots$ is:",
+    "options": {
+      "A": "$117$",
+      "B": "$120$",
+      "C": "$121$",
+      "D": "$123$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$121$",
+    "current_exp": "$81+27+9+3+1=121$."
+  },
+  {
+    "id": "c11-ch4-normal-q170",
+    "chapter": "Sequence and Series",
+    "question": "The sixth term of a G.P. with $a=2,r=3$ is:",
+    "options": {
+      "A": "$162$",
+      "B": "$243$",
+      "C": "$486$",
+      "D": "$729$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$486$",
+    "current_exp": "$a_6=2(3^5)=486$."
+  },
+  {
+    "id": "c11-ch4-normal-q171",
+    "chapter": "Sequence and Series",
+    "question": "The positive geometric mean between $9$ and $16$ is:",
+    "options": {
+      "A": "$10$",
+      "B": "$12$",
+      "C": "$13$",
+      "D": "$14$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$12$",
+    "current_exp": "$\\sqrt{9(16)}=12$."
+  },
+  {
+    "id": "c11-ch4-normal-q178",
+    "chapter": "Sequence and Series",
+    "question": "If $n$ positive geometric means are inserted between positive $a$ and $b$, then:",
+    "options": {
+      "A": "$r=\\left(\\frac{b}{a}\\right)^{1/n}$",
+      "B": "$r=\\left(\\frac{b}{a}\\right)^{1/(n+1)}$",
+      "C": "$r=(a+b)^{1/n}$",
+      "D": "$r=\\frac{b-a}{n+1}$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$r=\\left(\\frac{b}{a}\\right)^{1/(n+1)}$",
+    "current_exp": "$ar^{n+1}=b$."
+  },
+  {
+    "id": "c11-ch4-normal-q182",
+    "chapter": "Sequence and Series",
+    "question": "The sum $1^2+2^2+\\cdots+20^2$ is:",
+    "options": {
+      "A": "$2,470$",
+      "B": "$2,670$",
+      "C": "$2,870$",
+      "D": "$3,070$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$2,870$",
+    "current_exp": "$20(21)(41)/6=2870$."
+  },
+  {
+    "id": "c11-ch4-normal-q187",
+    "chapter": "Sequence and Series",
+    "question": "The value of $\\frac{8!}{7!}$ is:",
+    "options": {
+      "A": "$7$",
+      "B": "$8$",
+      "C": "$56$",
+      "D": "$40320$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$8$",
+    "current_exp": "$8!=8(7!)$."
+  },
+  {
+    "id": "c11-ch4-normal-q188",
+    "chapter": "Sequence and Series",
+    "question": "The Pascal-triangle number $\\frac{6!}{4!2!}$ is:",
+    "options": {
+      "A": "$10$",
+      "B": "$12$",
+      "C": "$15$",
+      "D": "$20$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$15$",
+    "current_exp": "$\\frac{6\\cdot5}{2}=15$."
+  },
+  {
+    "id": "c11-ch4-normal-q189",
+    "chapter": "Sequence and Series",
+    "question": "If $a_1=2$ and $a_n=a_{n-1}+3$, then $a_{20}=$:",
+    "options": {
+      "A": "$56$",
+      "B": "$57$",
+      "C": "$59$",
+      "D": "$62$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$59$",
+    "current_exp": "$a_{20}=2+19(3)=59$."
+  },
+  {
+    "id": "c11-ch4-normal-q191",
+    "chapter": "Sequence and Series",
+    "question": "If $a_1=2$ and $a_n=a_{n-1}+n$, then $a_5=$:",
+    "options": {
+      "A": "$12$",
+      "B": "$14$",
+      "C": "$16$",
+      "D": "$18$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$16$",
+    "current_exp": "$a_5=2+2+3+4+5=16$."
+  },
+  {
+    "id": "c11-ch4-normal-q194",
+    "chapter": "Sequence and Series",
+    "question": "A monthly salary starts at Rs. 30,000 and increases by Rs. 1,500 each year. The monthly salary in the fifth year is:",
+    "options": {
+      "A": "Rs. 34,500",
+      "B": "Rs. 36,000",
+      "C": "Rs. 37,500",
+      "D": "Rs. 39,000"
+    },
+    "correct_answer": "B",
+    "correct_opt": "Rs. 36,000",
+    "current_exp": "$30000+4(1500)=36000$."
+  },
+  {
+    "id": "c11-ch4-normal-q196",
+    "chapter": "Sequence and Series",
+    "question": "A quantity of $200$ increases by $5\\%$ during each of three periods. Its final value is:",
+    "options": {
+      "A": "$220.50$",
+      "B": "$225.00$",
+      "C": "$231.525$",
+      "D": "$240.00$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$231.525$",
+    "current_exp": "$200(1.05)^3=231.525$."
+  },
+  {
+    "id": "c11-ch4-normal-q197",
+    "chapter": "Sequence and Series",
+    "question": "A quantity of $160$ is halved during each period. After four periods it becomes:",
+    "options": {
+      "A": "$5$",
+      "B": "$10$",
+      "C": "$20$",
+      "D": "$40$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$10$",
+    "current_exp": "$160(1/2)^4=10$."
+  },
+  {
+    "id": "c11-ch4-adv-q9",
+    "chapter": "Sequence and Series",
+    "question": "Find the fifth term when $a_n=n^2+1$.",
+    "options": {
+      "A": "$25$",
+      "B": "$26$",
+      "C": "$24$",
+      "D": "$36$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$26$",
+    "current_exp": "$a_5=5^2+1=26$."
+  },
+  {
+    "id": "c11-ch4-adv-q10",
+    "chapter": "Sequence and Series",
+    "question": "Find $a_7$ if $a_n=3n-2$.",
+    "options": {
+      "A": "$19$",
+      "B": "$21$",
+      "C": "$17$",
+      "D": "$23$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$19$",
+    "current_exp": "$a_7=3(7)-2=19$."
+  },
+  {
+    "id": "c11-ch4-adv-q13",
+    "chapter": "Sequence and Series",
+    "question": "Find the fourth triangular number.",
+    "options": {
+      "A": "$10$",
+      "B": "$6$",
+      "C": "$15$",
+      "D": "$8$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$10$",
+    "current_exp": "$T_4=\\frac{4(5)}{2}=10$."
+  },
+  {
+    "id": "c11-ch4-adv-q15",
+    "chapter": "Sequence and Series",
+    "question": "Find the sixth triangular number.",
+    "options": {
+      "A": "$15$",
+      "B": "$18$",
+      "C": "$21$",
+      "D": "$28$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$21$",
+    "current_exp": "$T_6=\\frac{6(7)}{2}=21$."
+  },
+  {
+    "id": "c11-ch4-adv-q20",
+    "chapter": "Sequence and Series",
+    "question": "The third row $1,2,1$ of Pascal’s triangle has sum:",
+    "options": {
+      "A": "$3$",
+      "B": "$2$",
+      "C": "$6$",
+      "D": "$4$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$4$",
+    "current_exp": "$1+2+1=4=2^2$."
+  },
+  {
+    "id": "c11-ch4-adv-q22",
+    "chapter": "Sequence and Series",
+    "question": "The common difference of $7,11,15,19,\\ldots$ is:",
+    "options": {
+      "A": "$3$",
+      "B": "$4$",
+      "C": "$7$",
+      "D": "$11$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$4$",
+    "current_exp": "$11-7=15-11=4$."
+  },
+  {
+    "id": "c11-ch4-adv-q25",
+    "chapter": "Sequence and Series",
+    "question": "Find the tenth term of $3,7,11,15,\\ldots$.",
+    "options": {
+      "A": "$39$",
+      "B": "$43$",
+      "C": "$40$",
+      "D": "$35$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$39$",
+    "current_exp": "$a_{10}=3+9(4)=39$."
+  },
+  {
+    "id": "c11-ch4-adv-q26",
+    "chapter": "Sequence and Series",
+    "question": "Find the twentieth term of the AP $5,8,11,\\ldots$.",
+    "options": {
+      "A": "$59$",
+      "B": "$62$",
+      "C": "$65$",
+      "D": "$68$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$62$",
+    "current_exp": "$a_{20}=5+19(3)=62$."
+  },
+  {
+    "id": "c11-ch4-adv-q28",
+    "chapter": "Sequence and Series",
+    "question": "Find the $n$th term of $2,5,8,11,\\ldots$.",
+    "options": {
+      "A": "$2n+1$",
+      "B": "$3n+2$",
+      "C": "$3n+1$",
+      "D": "$3n-1$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$3n-1$",
+    "current_exp": "$a_n=2+(n-1)3=3n-1$."
+  },
+  {
+    "id": "c11-ch4-adv-q35",
+    "chapter": "Sequence and Series",
+    "question": "If the first term is $7$ and $d=5$, find $a_8$.",
+    "options": {
+      "A": "$37$",
+      "B": "$47$",
+      "C": "$42$",
+      "D": "$40$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$42$",
+    "current_exp": "$a_8=7+7(5)=42$."
+  },
+  {
+    "id": "c11-ch4-adv-q36",
+    "chapter": "Sequence and Series",
+    "question": "If $a=20$, $d=-2$, find $a_{12}$.",
+    "options": {
+      "A": "$0$",
+      "B": "$-4$",
+      "C": "$2$",
+      "D": "$-2$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$-2$",
+    "current_exp": "$a_{12}=20+11(-2)=-2$."
+  },
+  {
+    "id": "c11-ch4-adv-q37",
+    "chapter": "Sequence and Series",
+    "question": "If $a_5=18$ and $d=3$, find $a$.",
+    "options": {
+      "A": "$6$",
+      "B": "$3$",
+      "C": "$9$",
+      "D": "$12$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$6$",
+    "current_exp": "$a+4(3)=18$, so $a=6$."
+  },
+  {
+    "id": "c11-ch4-adv-q38",
+    "chapter": "Sequence and Series",
+    "question": "If $a_7=31$ and $a=7$, find $d$.",
+    "options": {
+      "A": "$3$",
+      "B": "$4$",
+      "C": "$5$",
+      "D": "$6$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$4$",
+    "current_exp": "$7+6d=31$, so $d=4$."
+  },
+  {
+    "id": "c11-ch4-adv-q45",
+    "chapter": "Sequence and Series",
+    "question": "If $a_n=12-3n$, find the first term.",
+    "options": {
+      "A": "$9$",
+      "B": "$12$",
+      "C": "$15$",
+      "D": "$6$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$9$",
+    "current_exp": "Set $n=1$: $a_1=12-3=9$."
+  },
+  {
+    "id": "c11-ch4-adv-q61",
+    "chapter": "Sequence and Series",
+    "question": "Find $1+2+3+\\cdots+20$.",
+    "options": {
+      "A": "$200$",
+      "B": "$220$",
+      "C": "$210$",
+      "D": "$190$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$210$",
+    "current_exp": "$\\frac{20(21)}{2}=210$."
+  },
+  {
+    "id": "c11-ch4-adv-q71",
+    "chapter": "Sequence and Series",
+    "question": "Find the sum of the first $n$ positive odd numbers.",
+    "options": {
+      "A": "$n^2$",
+      "B": "$n(n+1)$",
+      "C": "$2n-1$",
+      "D": "$n^2+n$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$n^2$",
+    "current_exp": "$1+3+\\cdots+(2n-1)=n^2$."
+  },
+  {
+    "id": "c11-ch4-adv-q73",
+    "chapter": "Sequence and Series",
+    "question": "If $S_n=n^2$, find the $n$th term.",
+    "options": {
+      "A": "$n$",
+      "B": "$2n$",
+      "C": "$2n-1$",
+      "D": "$n+1$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$2n-1$",
+    "current_exp": "$a_n=n^2-(n-1)^2=2n-1$."
+  },
+  {
+    "id": "c11-ch4-adv-q75",
+    "chapter": "Sequence and Series",
+    "question": "If $S_n=2n^2+3n$, find $a_1$.",
+    "options": {
+      "A": "$5$",
+      "B": "$2$",
+      "C": "$3$",
+      "D": "$7$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$5$",
+    "current_exp": "$a_1=S_1=2(1)^2+3(1)=5$."
+  },
+  {
+    "id": "c11-ch4-adv-q87",
+    "chapter": "Sequence and Series",
+    "question": "If a worker saves Rs $100$ in the first month and increases savings by Rs $50$ monthly, the saving in the 12th month is:",
+    "options": {
+      "A": "Rs $650$",
+      "B": "Rs $600$",
+      "C": "Rs $700$",
+      "D": "Rs $750$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "Rs $650$",
+    "current_exp": "$a_{12}=100+11(50)=650$."
+  },
+  {
+    "id": "c11-ch4-adv-q89",
+    "chapter": "Sequence and Series",
+    "question": "A theatre has $20$ seats in the first row and $2$ more in each following row. Seats in the 15th row are:",
+    "options": {
+      "A": "$46$",
+      "B": "$50$",
+      "C": "$48$",
+      "D": "$52$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$48$",
+    "current_exp": "$a_{15}=20+14(2)=48$."
+  },
+  {
+    "id": "c11-ch4-adv-q91",
+    "chapter": "Sequence and Series",
+    "question": "A ball travels $50$ m in the first second and $5$ m less each succeeding second. Distance in the sixth second is:",
+    "options": {
+      "A": "$25$ m",
+      "B": "$30$ m",
+      "C": "$20$ m",
+      "D": "$35$ m"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$25$ m",
+    "current_exp": "$a_6=50+5(-5)=25$."
+  },
+  {
+    "id": "c11-ch4-adv-q102",
+    "chapter": "Sequence and Series",
+    "question": "Find the common ratio of $2,6,18,54,\\ldots$.",
+    "options": {
+      "A": "$2$",
+      "B": "$6$",
+      "C": "$3$",
+      "D": "$9$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$3$",
+    "current_exp": "$6/2=18/6=3$."
+  },
+  {
+    "id": "c11-ch4-adv-q106",
+    "chapter": "Sequence and Series",
+    "question": "Find the sixth term of $2,6,18,\\ldots$.",
+    "options": {
+      "A": "$162$",
+      "B": "$243$",
+      "C": "$486$",
+      "D": "$324$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$486$",
+    "current_exp": "$a_6=2(3^5)=2(243)=486$."
+  },
+  {
+    "id": "c11-ch4-adv-q107",
+    "chapter": "Sequence and Series",
+    "question": "Find the eighth term of $1,2,4,8,\\ldots$.",
+    "options": {
+      "A": "$64$",
+      "B": "$256$",
+      "C": "$32$",
+      "D": "$128$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$128$",
+    "current_exp": "$a_8=1(2^7)=128$."
+  },
+  {
+    "id": "c11-ch4-adv-q111",
+    "chapter": "Sequence and Series",
+    "question": "Find the seventh term of the GP with $a=3,r=2$.",
+    "options": {
+      "A": "$96$",
+      "B": "$384$",
+      "C": "$64$",
+      "D": "$192$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$192$",
+    "current_exp": "$a_7=3(2^6)=192$."
+  },
+  {
+    "id": "c11-ch4-adv-q112",
+    "chapter": "Sequence and Series",
+    "question": "If $a=64,r=\\frac{1}{2}$, find $a_6$.",
+    "options": {
+      "A": "$2$",
+      "B": "$4$",
+      "C": "$1$",
+      "D": "$8$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$2$",
+    "current_exp": "$a_6=64(1/2)^5=64/32=2$."
+  },
+  {
+    "id": "c11-ch4-adv-q118",
+    "chapter": "Sequence and Series",
+    "question": "If $a_3=12$ and $a_5=48$, find $r^2$.",
+    "options": {
+      "A": "$2$",
+      "B": "$8$",
+      "C": "$4$",
+      "D": "$16$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$4$",
+    "current_exp": "$a_5/a_3=r^2=48/12=4$."
+  },
+  {
+    "id": "c11-ch4-adv-q144",
+    "chapter": "Sequence and Series",
+    "question": "If $S_n=3(2^n-1)$, find the first term.",
+    "options": {
+      "A": "$3$",
+      "B": "$2$",
+      "C": "$6$",
+      "D": "$1$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$3$",
+    "current_exp": "$S_1=3(2-1)=3$."
+  },
+  {
+    "id": "c11-ch4-adv-q180",
+    "chapter": "Sequence and Series",
+    "question": "If $G=6$ and $H=4$, find $A$.",
+    "options": {
+      "A": "$9$",
+      "B": "$6$",
+      "C": "$8$",
+      "D": "$12$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$9$",
+    "current_exp": "$A=G^2/H=36/4=9$."
+  },
+  {
+    "id": "c11-ch4-adv-q193",
+    "chapter": "Sequence and Series",
+    "question": "A ball rebounds to half its previous height. Dropped from $16$ m, its height after the fourth rebound is:",
+    "options": {
+      "A": "$1$ m",
+      "B": "$2$ m",
+      "C": "$4$ m",
+      "D": "$0.5$ m"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$1$ m",
+    "current_exp": "$16(1/2)^4=1$."
+  },
+  {
+    "id": "c11-ch4-adv-q195",
+    "chapter": "Sequence and Series",
+    "question": "A person saves Rs $1,000$ in the first month and doubles it monthly. The amount saved in the sixth month is:",
+    "options": {
+      "A": "Rs $16,000$",
+      "B": "Rs $64,000$",
+      "C": "Rs $32,000$",
+      "D": "Rs $8,000$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "Rs $32,000$",
+    "current_exp": "$a_6=1000(2^5)=32,000$."
+  },
+  {
+    "id": "c11-ch5-normal-q7",
+    "chapter": "Miscellaneous Series",
+    "question": "The value of $\\displaystyle\\sum_{k=1}^{5}k$ is:",
+    "options": {
+      "A": "$10$",
+      "B": "$15$",
+      "C": "$20$",
+      "D": "$25$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$15$",
+    "current_exp": "$1+2+3+4+5=15$."
+  },
+  {
+    "id": "c11-ch5-normal-q8",
+    "chapter": "Miscellaneous Series",
+    "question": "The value of $\\displaystyle\\sum_{k=1}^{4}k^2$ is:",
+    "options": {
+      "A": "$20$",
+      "B": "$24$",
+      "C": "$30$",
+      "D": "$36$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$30$",
+    "current_exp": "$1+4+9+16=30$."
+  },
+  {
+    "id": "c11-ch5-normal-q9",
+    "chapter": "Miscellaneous Series",
+    "question": "The value of $\\displaystyle\\sum_{k=1}^{3}k^3$ is:",
+    "options": {
+      "A": "$27$",
+      "B": "$30$",
+      "C": "$36$",
+      "D": "$42$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$36$",
+    "current_exp": "$1+8+27=36$."
+  },
+  {
+    "id": "c11-ch5-normal-q16",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{50}k$ equals:",
+    "options": {
+      "A": "$1,250$",
+      "B": "$1,274$",
+      "C": "$1,275$",
+      "D": "$1,280$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$1,275$",
+    "current_exp": "$50(51)/2=1275$."
+  },
+  {
+    "id": "c11-ch5-normal-q32",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{8}(3k-1)$ equals:",
+    "options": {
+      "A": "$92$",
+      "B": "$96$",
+      "C": "$100$",
+      "D": "$108$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$100$",
+    "current_exp": "$3(36)-8=100$."
+  },
+  {
+    "id": "c11-ch5-normal-q35",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{n}2k$ equals:",
+    "options": {
+      "A": "$n^2$",
+      "B": "$n(n+1)$",
+      "C": "$2n(n+1)$",
+      "D": "$n(n-1)$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$n(n+1)$",
+    "current_exp": "$2\\sum k=2[n(n+1)/2]$."
+  },
+  {
+    "id": "c11-ch5-normal-q38",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{5}(3k^2+2k+1)$ equals:",
+    "options": {
+      "A": "$180$",
+      "B": "$190$",
+      "C": "$200$",
+      "D": "$210$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$200$",
+    "current_exp": "$3(55)+2(15)+5=200$."
+  },
+  {
+    "id": "c11-ch5-normal-q39",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{10}(k^2+k)$ equals:",
+    "options": {
+      "A": "$420$",
+      "B": "$430$",
+      "C": "$440$",
+      "D": "$450$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$440$",
+    "current_exp": "$385+55=440$."
+  },
+  {
+    "id": "c11-ch5-normal-q41",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=4}^{10}k$ equals:",
+    "options": {
+      "A": "$45$",
+      "B": "$49$",
+      "C": "$52$",
+      "D": "$55$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$49$",
+    "current_exp": "$55-(1+2+3)=49$."
+  },
+  {
+    "id": "c11-ch5-normal-q42",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=11}^{20}k$ equals:",
+    "options": {
+      "A": "$145$",
+      "B": "$150$",
+      "C": "$155$",
+      "D": "$165$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$155$",
+    "current_exp": "$210-55=155$."
+  },
+  {
+    "id": "c11-ch5-normal-q43",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=5}^{10}k^2$ equals:",
+    "options": {
+      "A": "$325$",
+      "B": "$345$",
+      "C": "$355$",
+      "D": "$385$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$355$",
+    "current_exp": "$385-(1+4+9+16)=355$."
+  },
+  {
+    "id": "c11-ch5-normal-q44",
+    "chapter": "Miscellaneous Series",
+    "question": "$4^3+5^3+6^3$ equals:",
+    "options": {
+      "A": "$395$",
+      "B": "$400$",
+      "C": "$405$",
+      "D": "$415$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$405$",
+    "current_exp": "$64+125+216=405$."
+  },
+  {
+    "id": "c11-ch5-normal-q52",
+    "chapter": "Miscellaneous Series",
+    "question": "The value of\n$$\\frac{\\sum_{k=1}^{n}k^3}{\\left(\\sum_{k=1}^{n}k\\right)^2}$$ is:",
+    "options": {
+      "A": "$0$",
+      "B": "$1$",
+      "C": "$n$",
+      "D": "$n+1$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$1$",
+    "current_exp": "$\\sum k^3=(\\sum k)^2$."
+  },
+  {
+    "id": "c11-ch5-normal-q62",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{100}k$ equals:",
+    "options": {
+      "A": "$4,950$",
+      "B": "$5,000$",
+      "C": "$5,050$",
+      "D": "$5,100$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$5,050$",
+    "current_exp": "$100(101)/2=5050$."
+  },
+  {
+    "id": "c11-ch5-normal-q64",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{20}k^2$ equals:",
+    "options": {
+      "A": "$2,670$",
+      "B": "$2,770$",
+      "C": "$2,870$",
+      "D": "$2,970$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$2,870$",
+    "current_exp": "$20(21)(41)/6=2870$."
+  },
+  {
+    "id": "c11-ch5-normal-q66",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{4}(2k^2-3k+1)$ equals:",
+    "options": {
+      "A": "$30$",
+      "B": "$32$",
+      "C": "$34$",
+      "D": "$36$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$34$",
+    "current_exp": "$2(30)-3(10)+4=34$."
+  },
+  {
+    "id": "c11-ch5-normal-q67",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{6}(k^2+2k+3)$ equals:",
+    "options": {
+      "A": "$141$",
+      "B": "$145$",
+      "C": "$151$",
+      "D": "$161$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$151$",
+    "current_exp": "$91+2(21)+18=151$."
+  },
+  {
+    "id": "c11-ch5-normal-q68",
+    "chapter": "Miscellaneous Series",
+    "question": "If the $k$th term is $3k^2+k+1$, the sum of the first ten terms is:",
+    "options": {
+      "A": "$1,200$",
+      "B": "$1,210$",
+      "C": "$1,220$",
+      "D": "$1,230$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$1,220$",
+    "current_exp": "$3(385)+55+10=1220$."
+  },
+  {
+    "id": "c11-ch5-normal-q72",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{n}(2a_k-3b_k)$ equals:",
+    "options": {
+      "A": "$2\\sum a_k-3\\sum b_k$",
+      "B": "$2\\sum a_k+3\\sum b_k$",
+      "C": "$\\sum a_k-\\sum b_k$",
+      "D": "$6\\sum a_kb_k$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$2\\sum a_k-3\\sum b_k$",
+    "current_exp": "Summation is linear."
+  },
+  {
+    "id": "c11-ch5-normal-q84",
+    "chapter": "Miscellaneous Series",
+    "question": "The sum of the first four terms of $1+2x+3x^2+\\cdots$ at $x=2$ is:",
+    "options": {
+      "A": "$41$",
+      "B": "$45$",
+      "C": "$49$",
+      "D": "$51$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$49$",
+    "current_exp": "$1+4+12+32=49$."
+  },
+  {
+    "id": "c11-ch5-normal-q87",
+    "chapter": "Miscellaneous Series",
+    "question": "The first four terms of $1+\\frac42+\\frac7{2^2}+\\frac{10}{2^3}+\\cdots$ sum to:",
+    "options": {
+      "A": "$5$",
+      "B": "$6$",
+      "C": "$7$",
+      "D": "$8$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$6$",
+    "current_exp": "$1+2+\\frac74+\\frac54=6$."
+  },
+  {
+    "id": "c11-ch5-normal-q90",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{n=1}^{\\infty}\\frac{n}{3^{n-1}}$ equals:",
+    "options": {
+      "A": "$\\frac34$",
+      "B": "$\\frac32$",
+      "C": "$\\frac94$",
+      "D": "$3$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$\\frac94$",
+    "current_exp": "$1/(1-1/3)^2=9/4$."
+  },
+  {
+    "id": "c11-ch5-normal-q91",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{n=1}^{\\infty}\\frac{n}{3^n}$ equals:",
+    "options": {
+      "A": "$\\frac12$",
+      "B": "$\\frac23$",
+      "C": "$\\frac34$",
+      "D": "$\\frac94$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$\\frac34$",
+    "current_exp": "$(1/3)/(1-1/3)^2=3/4$."
+  },
+  {
+    "id": "c11-ch5-normal-q99",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{n}kr^k$ is obtained by multiplying the result in Question 98 by:",
+    "options": {
+      "A": "$n$",
+      "B": "$r$",
+      "C": "$1-r$",
+      "D": "$r^n$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$r$",
+    "current_exp": "$kr^k=r(kr^{k-1})$."
+  },
+  {
+    "id": "c11-ch5-normal-q100",
+    "chapter": "Miscellaneous Series",
+    "question": "The first three terms of $\\sum kr^{k-1}$ at $r=1/2$ sum to:",
+    "options": {
+      "A": "$\\frac94$",
+      "B": "$\\frac52$",
+      "C": "$\\frac{11}{4}$",
+      "D": "$3$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$\\frac{11}{4}$",
+    "current_exp": "$1+2(1/2)+3(1/4)=11/4$."
+  },
+  {
+    "id": "c11-ch5-normal-q102",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{\\infty}\\frac{2k+3}{2^k}$ equals:",
+    "options": {
+      "A": "$5$",
+      "B": "$6$",
+      "C": "$7$",
+      "D": "$8$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$7$",
+    "current_exp": "$2(2)+3(1)=7$."
+  },
+  {
+    "id": "c11-ch5-normal-q104",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{\\infty}\\frac{k-1}{2^k}$ equals:",
+    "options": {
+      "A": "$0$",
+      "B": "$1$",
+      "C": "$2$",
+      "D": "$3$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$1$",
+    "current_exp": "$2-1=1$."
+  },
+  {
+    "id": "c11-ch5-normal-q105",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{\\infty}\\frac{k}{4^k}$ equals:",
+    "options": {
+      "A": "$\\frac14$",
+      "B": "$\\frac13$",
+      "C": "$\\frac49$",
+      "D": "$\\frac12$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$\\frac49$",
+    "current_exp": "$(1/4)/(1-1/4)^2=4/9$."
+  },
+  {
+    "id": "c11-ch5-normal-q106",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{\\infty}\\frac{k}{5^{k-1}}$ equals:",
+    "options": {
+      "A": "$\\frac54$",
+      "B": "$\\frac{25}{16}$",
+      "C": "$\\frac52$",
+      "D": "$\\frac{16}{25}$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$\\frac{25}{16}$",
+    "current_exp": "$1/(1-1/5)^2=25/16$."
+  },
+  {
+    "id": "c11-ch5-normal-q107",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{\\infty}\\frac{2k-1}{3^k}$ equals:",
+    "options": {
+      "A": "$\\frac12$",
+      "B": "$1$",
+      "C": "$3/2$",
+      "D": "$2$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$1$",
+    "current_exp": "$2(3/4)-1/2=1$."
+  },
+  {
+    "id": "c11-ch5-normal-q108",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{\\infty}\\frac{3k+2}{3^k}$ equals:",
+    "options": {
+      "A": "$\\frac{11}{4}$",
+      "B": "$3$",
+      "C": "$\\frac{13}{4}$",
+      "D": "$\\frac72$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$\\frac{13}{4}$",
+    "current_exp": "$3(3/4)+2(1/2)=13/4$."
+  },
+  {
+    "id": "c11-ch5-normal-q115",
+    "chapter": "Miscellaneous Series",
+    "question": "The first three terms of $2+6x+10x^2+\\cdots$ at $x=1/2$ sum to:",
+    "options": {
+      "A": "$7$",
+      "B": "$\\frac{15}{2}$",
+      "C": "$8$",
+      "D": "$\\frac{17}{2}$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$\\frac{15}{2}$",
+    "current_exp": "$2+3+\\frac52=15/2$."
+  },
+  {
+    "id": "c11-ch5-normal-q119",
+    "chapter": "Miscellaneous Series",
+    "question": "At $x=1/3$, the series in Question 118 has sum:",
+    "options": {
+      "A": "$2$",
+      "B": "$\\frac52$",
+      "C": "$3$",
+      "D": "$\\frac72$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$3$",
+    "current_exp": "$(1+1/3)/(1-1/3)^2=3$."
+  },
+  {
+    "id": "c11-ch5-normal-q128",
+    "chapter": "Miscellaneous Series",
+    "question": "$(n+1)^2-n^2$ equals:",
+    "options": {
+      "A": "$2n-1$",
+      "B": "$2n+1$",
+      "C": "$n^2+1$",
+      "D": "$n+1$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$2n+1$",
+    "current_exp": "Expand $(n+1)^2$."
+  },
+  {
+    "id": "c11-ch5-normal-q136",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{n}k(k-1)$ equals:",
+    "options": {
+      "A": "$\\frac{n(n+1)(n-1)}3$",
+      "B": "$\\frac{n(n-1)}2$",
+      "C": "$\\frac{n(n+1)(n-1)}2$",
+      "D": "$n^3-n$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$\\frac{n(n+1)(n-1)}3$",
+    "current_exp": "Expand $k(k-1)=k^2-k$."
+  },
+  {
+    "id": "c11-ch5-normal-q139",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{5}k(k+1)$ equals:",
+    "options": {
+      "A": "$60$",
+      "B": "$65$",
+      "C": "$70$",
+      "D": "$75$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$70$",
+    "current_exp": "$5(6)(7)/3=70$."
+  },
+  {
+    "id": "c11-ch5-normal-q140",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{4}k(k+1)(k+2)$ equals:",
+    "options": {
+      "A": "$180$",
+      "B": "$200$",
+      "C": "$210$",
+      "D": "$240$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$210$",
+    "current_exp": "$4(5)(6)(7)/4=210$."
+  },
+  {
+    "id": "c11-ch5-normal-q141",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{5}k(k-1)$ equals:",
+    "options": {
+      "A": "$30$",
+      "B": "$35$",
+      "C": "$40$",
+      "D": "$45$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$40$",
+    "current_exp": "$0+2+6+12+20=40$."
+  },
+  {
+    "id": "c11-ch5-normal-q158",
+    "chapter": "Miscellaneous Series",
+    "question": "The forward difference of $n^2$ is:",
+    "options": {
+      "A": "$2n-1$",
+      "B": "$2n+1$",
+      "C": "$n+1$",
+      "D": "$n^2+1$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$2n+1$",
+    "current_exp": "$(n+1)^2-n^2=2n+1$."
+  },
+  {
+    "id": "c11-ch5-normal-q159",
+    "chapter": "Miscellaneous Series",
+    "question": "The forward difference of $n^3$ is:",
+    "options": {
+      "A": "$3n^2-3n+1$",
+      "B": "$3n^2+3n+1$",
+      "C": "$n^2+3n+1$",
+      "D": "$3n+1$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$3n^2+3n+1$",
+    "current_exp": "$(n+1)^3-n^3=3n^2+3n+1$."
+  },
+  {
+    "id": "c11-ch5-normal-q176",
+    "chapter": "Miscellaneous Series",
+    "question": "In\n$$\\frac1{(ak+b)(ak+a+b)},$$ the two factors differ by:",
+    "options": {
+      "A": "$a$",
+      "B": "$b$",
+      "C": "$ak$",
+      "D": "$a+b$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$a$",
+    "current_exp": "$(ak+a+b)-(ak+b)=a$."
+  },
+  {
+    "id": "c11-ch5-normal-q187",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{5}(2k^3+3k^2+k)$ equals:",
+    "options": {
+      "A": "$600$",
+      "B": "$615$",
+      "C": "$630$",
+      "D": "$645$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$630$",
+    "current_exp": "$2(225)+3(55)+15=630$."
+  },
+  {
+    "id": "c11-ch5-normal-q192",
+    "chapter": "Miscellaneous Series",
+    "question": "$\\displaystyle\\sum_{k=1}^{5}k2^{k-1}$ equals:",
+    "options": {
+      "A": "$113$",
+      "B": "$121$",
+      "C": "$129$",
+      "D": "$135$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$129$",
+    "current_exp": "$1+4+12+32+80=129$."
+  },
+  {
+    "id": "c11-ch5-normal-q196",
+    "chapter": "Miscellaneous Series",
+    "question": "The sum to infinity of the series in Question 195 is:",
+    "options": {
+      "A": "$\\frac13$",
+      "B": "$\\frac12$",
+      "C": "$1$",
+      "D": "$2$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$\\frac12$",
+    "current_exp": "$n/(2n+1)\\to1/2$."
+  },
+  {
+    "id": "c11-ch5-normal-q198",
+    "chapter": "Miscellaneous Series",
+    "question": "The sum to infinity of the series in Question 197 is:",
+    "options": {
+      "A": "$\\frac15$",
+      "B": "$\\frac14$",
+      "C": "$\\frac13$",
+      "D": "$\\frac12$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$\\frac14$",
+    "current_exp": "$n/(4n+1)\\to1/4$."
+  },
+  {
+    "id": "c11-ch5-adv-q15",
+    "chapter": "Miscellaneous Series",
+    "question": "Evaluate $\\displaystyle\\sum_{k=2}^{5}k$.",
+    "options": {
+      "A": "$10$",
+      "B": "$12$",
+      "C": "$14$",
+      "D": "$15$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$14$",
+    "current_exp": "$2+3+4+5 = 14$."
+  },
+  {
+    "id": "c11-ch5-adv-q45",
+    "chapter": "Miscellaneous Series",
+    "question": "Find $\\displaystyle\\sum_{k=1}^{10}(k^2+k)$.",
+    "options": {
+      "A": "$420$",
+      "B": "$440$",
+      "C": "$430$",
+      "D": "$450$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$440$",
+    "current_exp": "$385 + 55 = 440$."
+  },
+  {
+    "id": "c11-ch5-adv-q75",
+    "chapter": "Miscellaneous Series",
+    "question": "Evaluate $1+2(2)+3(2^2)+4(2^3)$.",
+    "options": {
+      "A": "$49$",
+      "B": "$39$",
+      "C": "$45$",
+      "D": "$32$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$49$",
+    "current_exp": "$1 + 4 + 12 + 32 = 49$."
+  },
+  {
+    "id": "c11-ch5-adv-q142",
+    "chapter": "Miscellaneous Series",
+    "question": "Evaluate $\\displaystyle\\sum_{k=1}^{\\infty}\\frac{2}{k(k+1)}$.",
+    "options": {
+      "A": "$1$",
+      "B": "$0$",
+      "C": "$4$",
+      "D": "$2$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$2$",
+    "current_exp": "$2(1) = 2$."
+  },
+  {
+    "id": "c11-ch5-adv-q158",
+    "chapter": "Miscellaneous Series",
+    "question": "Evaluate $\\displaystyle\\sum_{k=1}^{10}[k^4-(k-1)^4]$.",
+    "options": {
+      "A": "$1000$",
+      "B": "$100$",
+      "C": "$100000$",
+      "D": "$10000$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$10000$",
+    "current_exp": "$10^4 = 10000$."
+  },
+  {
+    "id": "c11-ch6-norm-q1",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "The value of $0!$ is:",
+    "options": {
+      "A": "$0$",
+      "B": "$1$",
+      "C": "Undefined",
+      "D": "$-1$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$1$",
+    "current_exp": "By definition, $0!=1$."
+  },
+  {
+    "id": "c11-ch6-norm-q3",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "The value of $5!$ is:",
+    "options": {
+      "A": "$25$",
+      "B": "$60$",
+      "C": "$120$",
+      "D": "$240$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$120$",
+    "current_exp": "$5!=5(4)(3)(2)(1)=120$."
+  },
+  {
+    "id": "c11-ch6-norm-q13",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "The value of ${}^{5} P_2$ is:",
+    "options": {
+      "A": "$10$",
+      "B": "$20$",
+      "C": "$25$",
+      "D": "$60$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$20$",
+    "current_exp": "${}^{5} P_2=5(4)=20$."
+  },
+  {
+    "id": "c11-ch6-norm-q15",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "Four different objects can be arranged in a row in:",
+    "options": {
+      "A": "$4$ ways",
+      "B": "$8$ ways",
+      "C": "$16$ ways",
+      "D": "$24$ ways"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$24$ ways",
+    "current_exp": "The number is $4!=24$."
+  },
+  {
+    "id": "c11-ch6-norm-q42",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "Seven people can stand in a line in:",
+    "options": {
+      "A": "$720$ ways",
+      "B": "$2,520$ ways",
+      "C": "$5,040$ ways",
+      "D": "$10,080$ ways"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$5,040$ ways",
+    "current_exp": "The number is $7!=5040$."
+  },
+  {
+    "id": "c11-ch6-norm-q44",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "Six people can sit around a circular table in:",
+    "options": {
+      "A": "$24$ ways",
+      "B": "$60$ ways",
+      "C": "$120$ ways",
+      "D": "$720$ ways"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$120$ ways",
+    "current_exp": "$(6-1)!=120$."
+  },
+  {
+    "id": "c11-ch6-norm-q54",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "If the two particular books in Question 53 must be separated, the arrangements number:",
+    "options": {
+      "A": "$240$",
+      "B": "$360$",
+      "C": "$480$",
+      "D": "$600$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$480$",
+    "current_exp": "$6!-240=480$."
+  },
+  {
+    "id": "c11-ch6-norm-q67",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "If ${}^{n} P_2=30$, then $n=$:",
+    "options": {
+      "A": "$5$",
+      "B": "$6$",
+      "C": "$7$",
+      "D": "$10$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$6$",
+    "current_exp": "$n(n-1)=30$ gives $n=6$."
+  },
+  {
+    "id": "c11-ch6-norm-q68",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "If ${}^{n} P_3=120$, then $n=$:",
+    "options": {
+      "A": "$5$",
+      "B": "$6$",
+      "C": "$7$",
+      "D": "$8$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$6$",
+    "current_exp": "$6(5)(4)=120$."
+  },
+  {
+    "id": "c11-ch6-norm-q71",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "If $\\frac{n!}{(n-2)!}=56$, then $n=$:",
+    "options": {
+      "A": "$7$",
+      "B": "$8$",
+      "C": "$9$",
+      "D": "$10$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$8$",
+    "current_exp": "$n(n-1)=56$, so $n=8$."
+  },
+  {
+    "id": "c11-ch6-norm-q72",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "$\\frac{10!}{8!}$ equals:",
+    "options": {
+      "A": "$72$",
+      "B": "$80$",
+      "C": "$90$",
+      "D": "$100$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$90$",
+    "current_exp": "$10!/8!=10(9)=90$."
+  },
+  {
+    "id": "c11-ch6-norm-q73",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "$\\frac{8!}{5!}$ equals:",
+    "options": {
+      "A": "$56$",
+      "B": "$168$",
+      "C": "$336$",
+      "D": "$672$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$336$",
+    "current_exp": "$8(7)(6)=336$."
+  },
+  {
+    "id": "c11-ch6-norm-q74",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "The letters AABBCC can be arranged in:",
+    "options": {
+      "A": "$60$ ways",
+      "B": "$90$ ways",
+      "C": "$120$ ways",
+      "D": "$720$ ways"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$90$ ways",
+    "current_exp": "$6!/(2!2!2!)=90$."
+  },
+  {
+    "id": "c11-ch6-norm-q81",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "Three students can be selected from eight in:",
+    "options": {
+      "A": "$24$ ways",
+      "B": "$48$ ways",
+      "C": "$56$ ways",
+      "D": "$336$ ways"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$56$ ways",
+    "current_exp": "${}^{8} C_3=56$."
+  },
+  {
+    "id": "c11-ch6-norm-q82",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "A committee of four is selected from ten people in:",
+    "options": {
+      "A": "$120$ ways",
+      "B": "$180$ ways",
+      "C": "$210$ ways",
+      "D": "$5,040$ ways"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$210$ ways",
+    "current_exp": "${}^{10} C_4=210$."
+  },
+  {
+    "id": "c11-ch6-norm-q84",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "The value of ${}^{12} C_2$ is:",
+    "options": {
+      "A": "$55$",
+      "B": "$60$",
+      "C": "$66$",
+      "D": "$72$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$66$",
+    "current_exp": "$12(11)/2=66$."
+  },
+  {
+    "id": "c11-ch6-norm-q86",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "The value of ${}^{8} C_3$ is:",
+    "options": {
+      "A": "$28$",
+      "B": "$56$",
+      "C": "$112$",
+      "D": "$336$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$56$",
+    "current_exp": "$8!/(3!5!)=56$."
+  },
+  {
+    "id": "c11-ch6-norm-q91",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "If ${}^{n} C_3=20$, then $n=$:",
+    "options": {
+      "A": "$5$",
+      "B": "$6$",
+      "C": "$7$",
+      "D": "$8$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$6$",
+    "current_exp": "${}^{6} C_3=20$."
+  },
+  {
+    "id": "c11-ch6-norm-q95",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "${}^{5} C_2+{}^{5} C_3$ equals:",
+    "options": {
+      "A": "$10$",
+      "B": "$15$",
+      "C": "$20$",
+      "D": "$25$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$20$",
+    "current_exp": "Both values are $10$."
+  },
+  {
+    "id": "c11-ch6-norm-q96",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "${}^{7} C_2+{}^{7} C_3$ equals:",
+    "options": {
+      "A": "$42$",
+      "B": "$48$",
+      "C": "$56$",
+      "D": "$70$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$56$",
+    "current_exp": "$21+35=56={}^{8} C_3$."
+  },
+  {
+    "id": "c11-ch6-norm-q97",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "A team of five is chosen from nine students in:",
+    "options": {
+      "A": "$84$ ways",
+      "B": "$126$ ways",
+      "C": "$252$ ways",
+      "D": "$15,120$ ways"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$126$ ways",
+    "current_exp": "${}^{9} C_5=126$."
+  },
+  {
+    "id": "c11-ch6-norm-q110",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "The number of diagonals in a hexagon is:",
+    "options": {
+      "A": "$6$",
+      "B": "$8$",
+      "C": "$9$",
+      "D": "$12$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$9$",
+    "current_exp": "${}^{6} C_2-6=15-6=9$."
+  },
+  {
+    "id": "c11-ch6-norm-q115",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "A set containing five elements has:",
+    "options": {
+      "A": "$10$ subsets",
+      "B": "$25$ subsets",
+      "C": "$32$ subsets",
+      "D": "$120$ subsets"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$32$ subsets",
+    "current_exp": "$2^5=32$."
+  },
+  {
+    "id": "c11-ch6-norm-q130",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "Three fair coins are tossed. The probability of all heads is:",
+    "options": {
+      "A": "$1/4$",
+      "B": "$1/6$",
+      "C": "$1/8$",
+      "D": "$3/8$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$1/8$",
+    "current_exp": "$(1/2)^3=1/8$."
+  },
+  {
+    "id": "c11-ch6-norm-q149",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "The probability of not drawing an ace is:",
+    "options": {
+      "A": "$1/13$",
+      "B": "$4/13$",
+      "C": "$9/13$",
+      "D": "$12/13$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$12/13$",
+    "current_exp": "$1-1/13=12/13$."
+  },
+  {
+    "id": "c11-ch6-norm-q154",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "Two cards are drawn without replacement. The probability that both are aces is:",
+    "options": {
+      "A": "$1/169$",
+      "B": "$1/221$",
+      "C": "$2/221$",
+      "D": "$1/52$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$1/221$",
+    "current_exp": "$(4/52)(3/51)=1/221$."
+  },
+  {
+    "id": "c11-ch6-norm-q155",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "Two cards drawn without replacement are both red with probability:",
+    "options": {
+      "A": "$1/4$",
+      "B": "$25/102$",
+      "C": "$13/51$",
+      "D": "$1/2$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$25/102$",
+    "current_exp": "$(26/52)(25/51)=25/102$."
+  },
+  {
+    "id": "c11-ch6-norm-q161",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "If $P(A)=0.4,\\ P(B)=0.5$ and $P(A\\cap B)=0.2$, then $P(A\\cup B)$ is:",
+    "options": {
+      "A": "$0.5$",
+      "B": "$0.6$",
+      "C": "$0.7$",
+      "D": "$0.9$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$0.7$",
+    "current_exp": "$0.4+0.5-0.2=0.7$."
+  },
+  {
+    "id": "c11-ch6-norm-q163",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "If $P(A)=0.65$, then $P(A')$ is:",
+    "options": {
+      "A": "$0.25$",
+      "B": "$0.35$",
+      "C": "$0.45$",
+      "D": "$0.65$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$0.35$",
+    "current_exp": "$P(A')=1-0.65=0.35$."
+  },
+  {
+    "id": "c11-ch6-norm-q165",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "If $P(A\\cap B)=0.18$ and $P(B)=0.6$, then $P(A\\mid B)$ is:",
+    "options": {
+      "A": "$0.2$",
+      "B": "$0.3$",
+      "C": "$0.4$",
+      "D": "$0.6$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$0.3$",
+    "current_exp": "$0.18/0.6=0.3$."
+  },
+  {
+    "id": "c11-ch6-norm-q168",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "Independent events have $P(A)=0.6$ and $P(B)=0.5$. Then $P(A\\cap B)$ is:",
+    "options": {
+      "A": "$0.1$",
+      "B": "$0.3$",
+      "C": "$0.5$",
+      "D": "$1.1$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$0.3$",
+    "current_exp": "$0.6(0.5)=0.3$."
+  },
+  {
+    "id": "c11-ch6-norm-q171",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "For the events in Question 170, the probability that at least one occurs is:",
+    "options": {
+      "A": "$0.21$",
+      "B": "$0.49$",
+      "C": "$0.70$",
+      "D": "$0.79$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$0.79$",
+    "current_exp": "$1-0.21=0.79$."
+  },
+  {
+    "id": "c11-ch6-norm-q173",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "Two counters are selected without replacement from the bag in Question 172. The probability both are red is:",
+    "options": {
+      "A": "$1/5$",
+      "B": "$3/10$",
+      "C": "$2/5$",
+      "D": "$9/25$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$3/10$",
+    "current_exp": "$(3/5)(2/4)=3/10$."
+  },
+  {
+    "id": "c11-ch6-norm-q186",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "An event occurs 37 times in 50 trials. Its experimental probability is:",
+    "options": {
+      "A": "$0.37$",
+      "B": "$0.50$",
+      "C": "$0.74$",
+      "D": "$0.87$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$0.74$",
+    "current_exp": "$37/50=0.74$."
+  },
+  {
+    "id": "c11-ch6-norm-q198",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "If $P(A)=0.4$, $P(B\\mid A)=0.5$, then $P(A\\cap B)$ is:",
+    "options": {
+      "A": "$0.1$",
+      "B": "$0.2$",
+      "C": "$0.4$",
+      "D": "$0.9$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$0.2$",
+    "current_exp": "Multiply $0.4$ by $0.5$."
+  },
+  {
+    "id": "c11-ch6-adv-q7",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "Simplify $\\dfrac{(n+1)!}{n!}$.",
+    "options": {
+      "A": "$n$",
+      "B": "$n!$",
+      "C": "$1$",
+      "D": "$n+1$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$n+1$",
+    "current_exp": "$(n+1)!=(n+1)n!$."
+  },
+  {
+    "id": "c11-ch6-adv-q8",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "Find $n$ if $n!=120$.",
+    "options": {
+      "A": "$5$",
+      "B": "$4$",
+      "C": "$6$",
+      "D": "$3$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$5$",
+    "current_exp": "$5!=120$."
+  },
+  {
+    "id": "c11-ch6-adv-q10",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "Evaluate $\\dfrac{10!}{8!\\,2!}$.",
+    "options": {
+      "A": "$90$",
+      "B": "$40$",
+      "C": "$45$",
+      "D": "$20$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$45$",
+    "current_exp": "$\\frac{10\\cdot9}{2}=45$."
+  },
+  {
+    "id": "c11-ch6-adv-q22",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "Evaluate $^{5}P_{2}$.",
+    "options": {
+      "A": "$10$",
+      "B": "$25$",
+      "C": "$20$",
+      "D": "$60$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$20$",
+    "current_exp": "$^{5}P_2=5\\cdot4=20$."
+  },
+  {
+    "id": "c11-ch6-adv-q32",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "How many three-digit numbers can be formed from $1,2,3,4,5$ without repetition?",
+    "options": {
+      "A": "$60$",
+      "B": "$125$",
+      "C": "$20$",
+      "D": "$15$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$60$",
+    "current_exp": "$^{5}P_3=60$."
+  },
+  {
+    "id": "c11-ch6-adv-q58",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "The number of distinct necklaces using $6$ distinct beads is:",
+    "options": {
+      "A": "$60$",
+      "B": "$24$",
+      "C": "$120$",
+      "D": "$60$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$60$",
+    "current_exp": "$(6-1)!/2=120/2=60$."
+  },
+  {
+    "id": "c11-ch6-adv-q59",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "Find $n$ if $^{n}P_2=20$.",
+    "options": {
+      "A": "$5$",
+      "B": "$4$",
+      "C": "$6$",
+      "D": "$10$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$5$",
+    "current_exp": "$n(n-1)=20$ gives $n=5$."
+  },
+  {
+    "id": "c11-ch6-adv-q72",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "How many teams of five can be selected from ten players?",
+    "options": {
+      "A": "$120$",
+      "B": "$30240$",
+      "C": "$50$",
+      "D": "$252$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$252$",
+    "current_exp": "$\\binom{10}{5}=252$."
+  },
+  {
+    "id": "c11-ch6-adv-q78",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "How many triangles can be formed from eight points when no three are collinear?",
+    "options": {
+      "A": "$28$",
+      "B": "$56$",
+      "C": "$336$",
+      "D": "$64$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$56$",
+    "current_exp": "$\\binom83=56$."
+  },
+  {
+    "id": "c11-ch6-adv-q89",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "Find $n$ if $\\binom n2=28$.",
+    "options": {
+      "A": "$8$",
+      "B": "$7$",
+      "C": "$9$",
+      "D": "$14$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$8$",
+    "current_exp": "$8\\cdot7/2=28$."
+  },
+  {
+    "id": "c11-ch6-adv-q133",
+    "chapter": "Permutation and Combination and Probability",
+    "question": "If an event has probability $0.82$, its probability of not occurring is:",
+    "options": {
+      "A": "$0.18$",
+      "B": "$0.82$",
+      "C": "$1.82$",
+      "D": "$0.28$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$0.18$",
+    "current_exp": "$1-0.82=0.18$."
+  },
+  {
+    "id": "c11-ch7-norm-q23",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The coefficient of $x^2$ in $(1+x)^5$ is:",
+    "options": {
+      "A": "$5$",
+      "B": "$10$",
+      "C": "$15$",
+      "D": "$20$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$10$",
+    "current_exp": "It is $\binom52=10$."
+  },
+  {
+    "id": "c11-ch7-norm-q41",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The expression $7^n-1$ is always divisible by:",
+    "options": {
+      "A": "$4$",
+      "B": "$5$",
+      "C": "$6$",
+      "D": "$8$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$6$",
+    "current_exp": "$7\\equiv1\\pmod6$."
+  },
+  {
+    "id": "c11-ch7-norm-q43",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "Which expression is divisible by $10$ for all positive integers $n$?",
+    "options": {
+      "A": "$11^n-1$",
+      "B": "$9^n-1$",
+      "C": "$5^n+1$",
+      "D": "$2^n-1$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$11^n-1$",
+    "current_exp": "$11\\equiv1\\pmod{10}$."
+  },
+  {
+    "id": "c11-ch7-norm-q44",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The expression $4^n-1$ is divisible by:",
+    "options": {
+      "A": "$2$ only",
+      "B": "$3$",
+      "C": "$4$",
+      "D": "$8$ for every $n$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$3$",
+    "current_exp": "$4\\equiv1\\pmod3$."
+  },
+  {
+    "id": "c11-ch7-norm-q58",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The sum of the first $n$ odd positive integers is:",
+    "options": {
+      "A": "$n(n+1)$",
+      "B": "$n^2$",
+      "C": "$2n$",
+      "D": "$n^3$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$n^2$",
+    "current_exp": "$1+3+\\cdots+(2n-1)=n^2$."
+  },
+  {
+    "id": "c11-ch7-norm-q63",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The expression $9^n-1$ is divisible by:",
+    "options": {
+      "A": "$6$",
+      "B": "$8$",
+      "C": "$9$",
+      "D": "$10$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$8$",
+    "current_exp": "$9\\equiv1\\pmod8$."
+  },
+  {
+    "id": "c11-ch7-norm-q72",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The coefficient of $x^3$ in $(1+x)^7$ is:",
+    "options": {
+      "A": "$21$",
+      "B": "$28$",
+      "C": "$35$",
+      "D": "$42$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$35$",
+    "current_exp": "$\binom73=35$."
+  },
+  {
+    "id": "c11-ch7-norm-q73",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The coefficient of $x^4$ in $(1+x)^7$ is:",
+    "options": {
+      "A": "$21$",
+      "B": "$28$",
+      "C": "$35$",
+      "D": "$70$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$35$",
+    "current_exp": "$\binom74=\binom73=35$."
+  },
+  {
+    "id": "c11-ch7-norm-q74",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The coefficient of $x^2$ in $(2+x)^5$ is:",
+    "options": {
+      "A": "$40$",
+      "B": "$60$",
+      "C": "$80$",
+      "D": "$160$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$80$",
+    "current_exp": "$\binom52 2^3=10(8)=80$."
+  },
+  {
+    "id": "c11-ch7-norm-q76",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The coefficient of $x^2$ in $(3x+2)^4$ is:",
+    "options": {
+      "A": "$108$",
+      "B": "$144$",
+      "C": "$216$",
+      "D": "$324$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$216$",
+    "current_exp": "$\binom42(3)^2(2)^2=216$."
+  },
+  {
+    "id": "c11-ch7-norm-q86",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The coefficient of $x^7$ in $(x+2)^8$ is:",
+    "options": {
+      "A": "$8$",
+      "B": "$16$",
+      "C": "$32$",
+      "D": "$64$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$16$",
+    "current_exp": "$\binom87(2)=8(2)=16$."
+  },
+  {
+    "id": "c11-ch7-norm-q87",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The coefficient of $x$ in $(3+2x)^5$ is:",
+    "options": {
+      "A": "$405$",
+      "B": "$540$",
+      "C": "$810$",
+      "D": "$1215$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$810$",
+    "current_exp": "$\binom51 3^4(2)=810$."
+  },
+  {
+    "id": "c11-ch7-norm-q88",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The coefficient of $x^4$ in $(1+x)^{10}$ is:",
+    "options": {
+      "A": "$120$",
+      "B": "$210$",
+      "C": "$252$",
+      "D": "$462$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$210$",
+    "current_exp": "$\\binom{10}4=210$."
+  },
+  {
+    "id": "c11-ch7-norm-q97",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The sum of even-indexed coefficients in $(1+x)^8$ is:",
+    "options": {
+      "A": "$64$",
+      "B": "$128$",
+      "C": "$256$",
+      "D": "$512$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$128$",
+    "current_exp": "It equals $2^{8-1}=128$."
+  },
+  {
+    "id": "c11-ch7-norm-q105",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The coefficient of $x^3$ in $(2-x)^5$ is:",
+    "options": {
+      "A": "$-80$",
+      "B": "$-40$",
+      "C": "$40$",
+      "D": "$80$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$-40$",
+    "current_exp": "$\binom53 2^2(-1)^3=-40$."
+  },
+  {
+    "id": "c11-ch7-norm-q126",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The middle term of $(x+1)^6$ is:",
+    "options": {
+      "A": "$15x^2$",
+      "B": "$20x^3$",
+      "C": "$15x^4$",
+      "D": "$6x^5$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$20x^3$",
+    "current_exp": "$T_4=\binom63x^3=20x^3$."
+  },
+  {
+    "id": "c11-ch7-norm-q135",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The term containing $x^5$ in $(1+x)^{12}$ is:",
+    "options": {
+      "A": "$495x^5$",
+      "B": "$792x^5$",
+      "C": "$924x^5$",
+      "D": "$1287x^5$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$792x^5$",
+    "current_exp": "$\\binom{12}5=792$."
+  },
+  {
+    "id": "c11-ch7-norm-q150",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The sum of the interior coefficients of $(1+x)^8$ is:",
+    "options": {
+      "A": "$126$",
+      "B": "$128$",
+      "C": "$254$",
+      "D": "$256$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$254$",
+    "current_exp": "$2^8-2=254$."
+  },
+  {
+    "id": "c11-ch7-norm-q155",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The value of $\\sum_{r=0}^{8}(-1)^r\binom8r$ is:",
+    "options": {
+      "A": "$-1$",
+      "B": "$0$",
+      "C": "$1$",
+      "D": "$256$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$0$",
+    "current_exp": "It equals $(1-1)^8=0$."
+  },
+  {
+    "id": "c11-ch7-norm-q165",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "If the sum of the coefficients of $(1+x)^n$ is $1024$, then $n=$:",
+    "options": {
+      "A": "$8$",
+      "B": "$9$",
+      "C": "$10$",
+      "D": "$11$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$10$",
+    "current_exp": "$2^n=1024=2^{10}$."
+  },
+  {
+    "id": "c11-ch7-norm-q166",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "If the greatest coefficient of $(1+x)^n$ is $70$ and $n$ is even, then $n=$:",
+    "options": {
+      "A": "$6$",
+      "B": "$8$",
+      "C": "$10$",
+      "D": "$12$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$8$",
+    "current_exp": "$\binom84=70$."
+  },
+  {
+    "id": "c11-ch7-norm-q179",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The coefficient of $x^4$ in $(1+x)^{-2}$ is:",
+    "options": {
+      "A": "$-5$",
+      "B": "$4$",
+      "C": "$5$",
+      "D": "$10$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$5$",
+    "current_exp": "$(-1)^4(4+1)=5$."
+  },
+  {
+    "id": "c11-ch7-norm-q180",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The coefficient of $x^3$ in $(1+x)^{-2}$ is:",
+    "options": {
+      "A": "$-4$",
+      "B": "$-3$",
+      "C": "$3$",
+      "D": "$4$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$-4$",
+    "current_exp": "$(-1)^3(3+1)=-4$."
+  },
+  {
+    "id": "c11-ch7-norm-q182",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The coefficient of $x^3$ in $(1+3x)^{-2}$ is:",
+    "options": {
+      "A": "$-108$",
+      "B": "$-81$",
+      "C": "$81$",
+      "D": "$108$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$-108$",
+    "current_exp": "$(-1)^3(4)3^3=-108$."
+  },
+  {
+    "id": "c11-ch7-norm-q184",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The coefficient of $x^3$ in $(1+x)^{-3}$ is:",
+    "options": {
+      "A": "$-10$",
+      "B": "$-6$",
+      "C": "$6$",
+      "D": "$10$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$-10$",
+    "current_exp": "$(-1)^3\binom52=-10$."
+  },
+  {
+    "id": "c11-ch7-norm-q186",
+    "chapter": "Mathematical Induction and Binomial Theorem",
+    "question": "The coefficient of $x^2$ in $(1+x)^{-4}$ is:",
+    "options": {
+      "A": "$6$",
+      "B": "$10$",
+      "C": "$15$",
+      "D": "$20$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$10$",
+    "current_exp": "$(-1)^2\binom52=10$."
+  },
+  {
+    "id": "c11-ch7-adv-q11",
+    "question": "Simplify $k^2+(2k+1)$.",
+    "options": {
+      "A": "$kk+1$",
+      "B": "$k^2+1$",
+      "C": "$(k+1)^2$",
+      "D": "$(k+2)^{2}$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$(k+1)^2$",
+    "current_exp": "$k^2+2k+1=(k+1)^2$.",
+    "formula": "1 + 3 + 5 + \\dots + (2n-1) = n^2"
+  },
+  {
+    "id": "c11-ch7-adv-q12",
+    "question": "The statement $2+4+\\cdots+2n = n(n+1)$ is true at $n=1$ because:",
+    "options": {
+      "A": "$2=1$",
+      "B": "$2=0$",
+      "C": "$1=2$",
+      "D": "$2=1(2)$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$2=1(2)$",
+    "current_exp": "Both sides equal $2$.",
+    "formula": "2 + 4 + \\dots + 2n = n(n+1)"
+  },
+  {
+    "id": "c11-ch7-adv-q16",
+    "question": "For $1^3+2^3+\\cdots+n^3=\\left[\\frac{n(n+1)}{2}\\right]^2$, the base case gives:",
+    "options": {
+      "A": "$1=0$",
+      "B": "$1=4$",
+      "C": "$0=1$",
+      "D": "$1=\\left[\\frac{1\\cdot 2}{2}\\right]^2$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$1=\\left[\\frac{1\\cdot 2}{2}\\right]^2$",
+    "current_exp": "Both sides equal $1$.",
+    "formula": "1^3 + 2^3 + \\dots + n^3 = \\left[\\dfrac{n(n+1)}{2}\\right]^2"
+  },
+  {
+    "id": "c11-ch7-adv-q31",
+    "question": "Which expression is divisible by $6$ for every positive integer $n$?",
+    "options": {
+      "A": "$5^n+1$",
+      "B": "$3^n-1$",
+      "C": "$7^n-1$",
+      "D": "$2^n+1$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$7^n-1$",
+    "current_exp": "(7equiv1pmod6).",
+    "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
+  },
+  {
+    "id": "c11-ch7-adv-q38",
+    "question": "The statement $2^nge n+1$ begins with equality at:",
+    "options": {
+      "A": "$1$ only",
+      "B": "$1$ only",
+      "C": "$1$",
+      "D": "$1$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$1$",
+    "current_exp": "At $n=1$, $2^1=2=1+1$.",
+    "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
+  },
+  {
+    "id": "c11-ch7-adv-q43",
+    "question": "Using $sum_{r=1}^nr=\\frac{n(n+1)}{2}$, find $sum_{r=1}^{30}r$.",
+    "options": {
+      "A": "$435$",
+      "B": "$450$",
+      "C": "$495$",
+      "D": "$465$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$465$",
+    "current_exp": "$\\frac{30(31)}{2}=465$.",
+    "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
+  },
+  {
+    "id": "c11-ch7-adv-q97",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{5}\\binom{5}{r}$.",
+    "options": {
+      "A": "$16$",
+      "B": "$64$",
+      "C": "$32$",
+      "D": "$25$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$32$",
+    "current_exp": "The sum equals $2^5=32$.",
+    "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
+  },
+  {
+    "id": "c11-ch7-adv-q98",
+    "question": "Evaluate $\\\\\\displaystyle\\sum_{r=0}^{6}2^r\\binom{6}{r}$.",
+    "options": {
+      "A": "$64$",
+      "B": "$216$",
+      "C": "$729$",
+      "D": "$729$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$729$",
+    "current_exp": "The sum is $3^6=729$.",
+    "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
+  },
+  {
+    "id": "c11-ch7-adv-q140",
+    "question": "Find $n$ if $\\binom{n}{3}=20$.",
+    "options": {
+      "A": "$5$",
+      "B": "$4$",
+      "C": "$7$",
+      "D": "$6$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$6$",
+    "current_exp": "$\\binom{6}{3}=20$.",
+    "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
+  },
+  {
+    "id": "c11-ch7-adv-q142",
+    "question": "If the coefficient of $x^3$ in $(1+x)^{n}$ is $35$, find $n$.",
+    "options": {
+      "A": "$6$",
+      "B": "$7$",
+      "C": "$8$",
+      "D": "$5$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$7$",
+    "current_exp": "$\\binom{7}{3}=35$.",
+    "formula": "(x+y)^n = \\sum_{r=0}^n \\binom{n}{r} x^{n-r} y^r, \\quad T_{r+1} = \\binom{n}{r} x^{n-r} y^r"
+  },
+  {
+    "id": "c11-ch7-adv-q144",
+    "question": "If $(x+y)^{n}$ has $21$ terms, find $n$.",
+    "options": {
+      "A": "$21$",
+      "B": "$19$",
+      "C": "$22$",
+      "D": "$20$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$20$",
+    "current_exp": "$n+1=21$, hence $n=20$.",
+    "formula": "(x+y)^n = \\sum_{r=0}^n \\binom{n}{r} x^{n-r} y^r, \\quad T_{r+1} = \\binom{n}{r} x^{n-r} y^r"
+  },
+  {
+    "id": "c11-ch8-norm-q31",
+    "chapter": "Functions and Graphs",
+    "question": "If $f(x)=2x+1$, then $f(3)=$:",
+    "options": {
+      "A": "$5$",
+      "B": "$6$",
+      "C": "$7$",
+      "D": "$8$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$7$",
+    "current_exp": "$f(3)=2(3)+1=7$."
+  },
+  {
+    "id": "c11-ch8-norm-q37",
+    "chapter": "Functions and Graphs",
+    "question": "If $f(x)=x+3$ and $g(x)=2x$, then $(f+g)(x)=$:",
+    "options": {
+      "A": "$2x+3$",
+      "B": "$3x+3$",
+      "C": "$2x^2+3$",
+      "D": "$3x$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$3x+3$",
+    "current_exp": "$(x+3)+2x=3x+3$."
+  },
+  {
+    "id": "c11-ch8-norm-q38",
+    "chapter": "Functions and Graphs",
+    "question": "For the same functions, $(fg)(x)=$:",
+    "options": {
+      "A": "$2x^2+6x$",
+      "B": "$3x+3$",
+      "C": "$2x^2+3$",
+      "D": "$2x+6$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$2x^2+6x$",
+    "current_exp": "$(x+3)(2x)=2x^2+6x$."
+  },
+  {
+    "id": "c11-ch8-norm-q39",
+    "chapter": "Functions and Graphs",
+    "question": "If $f(x)=x+1$ and $g(x)=x-1$, then $(f/g)(2)=$:",
+    "options": {
+      "A": "$1$",
+      "B": "$2$",
+      "C": "$3$",
+      "D": "$4$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$3$",
+    "current_exp": "$f(2)/g(2)=3/1=3$."
+  },
+  {
+    "id": "c11-ch8-norm-q40",
+    "chapter": "Functions and Graphs",
+    "question": "If $f(x)=x^2$ and $g(x)=x+1$, then $f(g(2))=$:",
+    "options": {
+      "A": "$4$",
+      "B": "$6$",
+      "C": "$8$",
+      "D": "$9$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$9$",
+    "current_exp": "$g(2)=3$, so $f(3)=9$."
+  },
+  {
+    "id": "c11-ch8-norm-q41",
+    "chapter": "Functions and Graphs",
+    "question": "For the same functions, $g(f(2))=$:",
+    "options": {
+      "A": "$3$",
+      "B": "$4$",
+      "C": "$5$",
+      "D": "$9$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$5$",
+    "current_exp": "$f(2)=4$, so $g(4)=5$."
+  },
+  {
+    "id": "c11-ch8-norm-q51",
+    "chapter": "Functions and Graphs",
+    "question": "The zeros of $f(x)=x^2-5x+6$ are:",
+    "options": {
+      "A": "$1,6$",
+      "B": "$2,3$",
+      "C": "$-2,-3$",
+      "D": "$3,6$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$2,3$",
+    "current_exp": "$x^2-5x+6=(x-2)(x-3)$."
+  },
+  {
+    "id": "c11-ch8-norm-q54",
+    "chapter": "Functions and Graphs",
+    "question": "The axis of symmetry of $y=2x^2+8x+1$ is:",
+    "options": {
+      "A": "$x=-4$",
+      "B": "$x=-2$",
+      "C": "$x=2$",
+      "D": "$x=4$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$x=-2$",
+    "current_exp": "$x=-b/(2a)=-8/4=-2$."
+  },
+  {
+    "id": "c11-ch8-norm-q58",
+    "chapter": "Functions and Graphs",
+    "question": "The graphs $y=x^2$ and $y=4$ intersect when:",
+    "options": {
+      "A": "$x=2$ only",
+      "B": "$x=-2$ only",
+      "C": "$x=\\pm2$",
+      "D": "$x=\\pm4$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$x=\\pm2$",
+    "current_exp": "$x^2=4$ gives $x=\\pm2$."
+  },
+  {
+    "id": "c11-ch8-norm-q59",
+    "chapter": "Functions and Graphs",
+    "question": "The graph $y=x^2-4$ crosses the $x$-axis at:",
+    "options": {
+      "A": "$x=\\pm1$",
+      "B": "$x=\\pm2$",
+      "C": "$x=\\pm4$",
+      "D": "$x=0,4$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$x=\\pm2$",
+    "current_exp": "$x^2-4=(x-2)(x+2)$."
+  },
+  {
+    "id": "c11-ch8-norm-q65",
+    "chapter": "Functions and Graphs",
+    "question": "The $y$-intercept of $y=2^x$ is:",
+    "options": {
+      "A": "$0$",
+      "B": "$1$",
+      "C": "$2$",
+      "D": "$-1$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$1$",
+    "current_exp": "At $x=0$, $2^0=1$."
+  },
+  {
+    "id": "c11-ch8-norm-q67",
+    "chapter": "Functions and Graphs",
+    "question": "Which function is even?",
+    "options": {
+      "A": "$x^2$",
+      "B": "$x^3$",
+      "C": "$x+1$",
+      "D": "$2x-1$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$x^2$",
+    "current_exp": "$f(-x)=(-x)^2=x^2=f(x)$."
+  },
+  {
+    "id": "c11-ch8-norm-q68",
+    "chapter": "Functions and Graphs",
+    "question": "Which function is odd?",
+    "options": {
+      "A": "$x^2$",
+      "B": "$x^3$",
+      "C": "$|x|$",
+      "D": "$x^2+1$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$x^3$",
+    "current_exp": "$f(-x)=-x^3=-f(x)$."
+  },
+  {
+    "id": "c11-ch8-norm-q69",
+    "chapter": "Functions and Graphs",
+    "question": "The function $f(x)=|x|$ is:",
+    "options": {
+      "A": "Odd",
+      "B": "Even",
+      "C": "Neither",
+      "D": "Constant"
+    },
+    "correct_answer": "B",
+    "correct_opt": "Even",
+    "current_exp": "$|-x|=|x|$."
+  },
+  {
+    "id": "c11-ch8-norm-q95",
+    "chapter": "Functions and Graphs",
+    "question": "The maximum value of $y=-(x-1)^2+9$ is:",
+    "options": {
+      "A": "$1$",
+      "B": "$3$",
+      "C": "$9$",
+      "D": "$10$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$9$",
+    "current_exp": "The vertex is $(1,9)$."
+  },
+  {
+    "id": "c11-ch8-norm-q99",
+    "chapter": "Functions and Graphs",
+    "question": "For $y=-(x-1)(x-4)$, the value at $x=0$ is:",
+    "options": {
+      "A": "$-4$",
+      "B": "$-1$",
+      "C": "$1$",
+      "D": "$4$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$-4$",
+    "current_exp": "$y=-(-1)(-4)=-4$."
+  },
+  {
+    "id": "c11-ch8-norm-q103",
+    "chapter": "Functions and Graphs",
+    "question": "The zeros of $f(x)=x^3-x$ are:",
+    "options": {
+      "A": "$0,1$",
+      "B": "$-1,0,1$",
+      "C": "$-1,1$",
+      "D": "$0,1,2$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$-1,0,1$",
+    "current_exp": "$x^3-x=x(x-1)(x+1)$."
+  },
+  {
+    "id": "c11-ch8-norm-q114",
+    "chapter": "Functions and Graphs",
+    "question": "The solution of $2^x=8$ is:",
+    "options": {
+      "A": "$1$",
+      "B": "$2$",
+      "C": "$3$",
+      "D": "$4$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$3$",
+    "current_exp": "$8=2^3$."
+  },
+  {
+    "id": "c11-ch8-norm-q115",
+    "chapter": "Functions and Graphs",
+    "question": "The graphs $y=2^x$ and $y=1$ intersect when:",
+    "options": {
+      "A": "$x=-1$",
+      "B": "$x=0$",
+      "C": "$x=1$",
+      "D": "$x=2$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$x=0$",
+    "current_exp": "$2^0=1$."
+  },
+  {
+    "id": "c11-ch8-norm-q152",
+    "chapter": "Functions and Graphs",
+    "question": "The maximum height in Question 151 is:",
+    "options": {
+      "A": "$16$",
+      "B": "$20$",
+      "C": "$21$",
+      "D": "$25$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$21$",
+    "current_exp": "$h(2)=-5(4)+40+1=21$."
+  },
+  {
+    "id": "c11-ch8-norm-q153",
+    "chapter": "Functions and Graphs",
+    "question": "A taxi charges $C(x)=100+25x$ rupees for $x$ kilometres. The cost of $8$ km is:",
+    "options": {
+      "A": "Rs 200",
+      "B": "Rs 250",
+      "C": "Rs 300",
+      "D": "Rs 325"
+    },
+    "correct_answer": "C",
+    "correct_opt": "Rs 300",
+    "current_exp": "$C(8)=100+25(8)=300$."
+  },
+  {
+    "id": "c11-ch8-norm-q154",
+    "chapter": "Functions and Graphs",
+    "question": "A temperature conversion is $F(C)=\\frac{9}{5}C+32$. Then $F(20)=$:",
+    "options": {
+      "A": "$52^{\\circ}$",
+      "B": "$60^{\\circ}$",
+      "C": "$68^{\\circ}$",
+      "D": "$72^{\\circ}$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$68^{\\circ}$",
+    "current_exp": "$F(20)=36+32=68$."
+  },
+  {
+    "id": "c11-ch8-norm-q155",
+    "chapter": "Functions and Graphs",
+    "question": "A population is modeled by $P(t)=500(2^t)$. Its value at $t=3$ is:",
+    "options": {
+      "A": "$1500$",
+      "B": "$2000$",
+      "C": "$3000$",
+      "D": "$4000$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$4000$",
+    "current_exp": "$P(3)=500(8)=4000$."
+  },
+  {
+    "id": "c11-ch8-norm-q156",
+    "chapter": "Functions and Graphs",
+    "question": "A quantity is modeled by $Q(t)=800(1/2)^t$. Then $Q(3)=$:",
+    "options": {
+      "A": "$50$",
+      "B": "$100$",
+      "C": "$200$",
+      "D": "$400$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$100$",
+    "current_exp": "$800(1/8)=100$."
+  },
+  {
+    "id": "c11-ch8-norm-q157",
+    "chapter": "Functions and Graphs",
+    "question": "A rectangle has length $x$ and width $10-x$. Its area is:",
+    "options": {
+      "A": "$10x$",
+      "B": "$x^2-10x$",
+      "C": "$10x-x^2$",
+      "D": "$x^2+10x$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$10x-x^2$",
+    "current_exp": "$A=x(10-x)=10x-x^2$."
+  },
+  {
+    "id": "c11-ch8-norm-q163",
+    "chapter": "Functions and Graphs",
+    "question": "A profit function is $P(x)=-x^2+20x-75$. The break-even quantities are:",
+    "options": {
+      "A": "$3,25$",
+      "B": "$5,15$",
+      "C": "$10,15$",
+      "D": "$5,20$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$5,15$",
+    "current_exp": "$P(x)=-(x-5)(x-15)$."
+  },
+  {
+    "id": "c11-ch8-norm-q181",
+    "chapter": "Functions and Graphs",
+    "question": "The graphs $y=2^x$ and $y=4$ intersect when:",
+    "options": {
+      "A": "$x=1$",
+      "B": "$x=2$",
+      "C": "$x=3$",
+      "D": "$x=4$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$x=2$",
+    "current_exp": "$4=2^2$."
+  },
+  {
+    "id": "c11-ch8-norm-q188",
+    "chapter": "Functions and Graphs",
+    "question": "Which family of functions is self-inverse?",
+    "options": {
+      "A": "$f(x)=a-x$",
+      "B": "$f(x)=a+x$",
+      "C": "$f(x)=ax$ for every $a$",
+      "D": "$f(x)=x^2+a$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$f(x)=a-x$",
+    "current_exp": "$f(f(x))=a-(a-x)=x$."
+  },
+  {
+    "id": "c11-ch8-norm-q197",
+    "chapter": "Functions and Graphs",
+    "question": "The graphs $y=x^2-4x+3$ and $y=0$ intersect at:",
+    "options": {
+      "A": "$(1,0),(3,0)$",
+      "B": "$(-1,0),(-3,0)$",
+      "C": "$(0,1),(0,3)$",
+      "D": "$(1,3),(3,1)$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$(1,0),(3,0)$",
+    "current_exp": "$x^2-4x+3=(x-1)(x-3)$."
+  },
+  {
+    "id": "c11-ch8-adv-q12",
+    "question": "If $f(x) = x^3$, then $f(-2)=$:",
+    "options": {
+      "A": "$-8$",
+      "B": "$-6$",
+      "C": "$6$",
+      "D": "$8$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$-8$",
+    "current_exp": "$f(-2)=(-2)^3=-8$.",
+    "formula": "f: A \\to B, \\quad \\forall x \\in A, \\; \\exists! y \\in B \\text{ such that } f(x) = y"
+  },
+  {
+    "id": "c11-ch9-norm-q22",
+    "chapter": "Linear Programming",
+    "question": "The $y$-intercept of $2x+y=6$ is:",
+    "options": {
+      "A": "$2$",
+      "B": "$3$",
+      "C": "$6$",
+      "D": "$12$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$6$",
+    "current_exp": "Put $x=0$, giving $y=6$."
+  },
+  {
+    "id": "c11-ch9-norm-q31",
+    "chapter": "Linear Programming",
+    "question": "The solution of $3x-5\\le7$ is:",
+    "options": {
+      "A": "$x\\le4$",
+      "B": "$x\\ge4$",
+      "C": "$x<2$",
+      "D": "$x>4$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$x\\le4$",
+    "current_exp": "$3x\\le12$, so $x\\le4$."
+  },
+  {
+    "id": "c11-ch9-norm-q33",
+    "chapter": "Linear Programming",
+    "question": "Does $(1,2)$ satisfy $2x+y\\le5$?",
+    "options": {
+      "A": "Yes",
+      "B": "No",
+      "C": "Only on the $x$-axis",
+      "D": "Only on the $y$-axis"
+    },
+    "correct_answer": "A",
+    "correct_opt": "Yes",
+    "current_exp": "$2(1)+2=4\\le5$."
+  },
+  {
+    "id": "c11-ch9-norm-q34",
+    "chapter": "Linear Programming",
+    "question": "Does $(2,2)$ satisfy $x+2y\\ge7$?",
+    "options": {
+      "A": "Yes",
+      "B": "No",
+      "C": "It lies on the boundary",
+      "D": "Only if $x=0$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "No",
+    "current_exp": "$2+2(2)=6<7$."
+  },
+  {
+    "id": "c11-ch9-norm-q44",
+    "chapter": "Linear Programming",
+    "question": "If $Z=3x+2y$, its value at $(2,3)$ is:",
+    "options": {
+      "A": "$10$",
+      "B": "$11$",
+      "C": "$12$",
+      "D": "$13$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$12$",
+    "current_exp": "$Z=3(2)+2(3)=12$."
+  },
+  {
+    "id": "c11-ch9-norm-q45",
+    "chapter": "Linear Programming",
+    "question": "For $Z=3x+2y$ at vertices $(0,0), (4,0), (0,3)$, the maximum is:",
+    "options": {
+      "A": "$6$",
+      "B": "$8$",
+      "C": "$12$",
+      "D": "$14$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$12$",
+    "current_exp": "The values are $0,12,6$."
+  },
+  {
+    "id": "c11-ch9-norm-q46",
+    "chapter": "Linear Programming",
+    "question": "For $Z=2x+5y$ at the same vertices, the maximum is:",
+    "options": {
+      "A": "$8$",
+      "B": "$10$",
+      "C": "$12$",
+      "D": "$15$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$15$",
+    "current_exp": "The values are $0,8,15$."
+  },
+  {
+    "id": "c11-ch9-norm-q53",
+    "chapter": "Linear Programming",
+    "question": "The line $x+y=6$ passes through:",
+    "options": {
+      "A": "$(2,2)$",
+      "B": "$(2,4)$",
+      "C": "$(3,4)$",
+      "D": "$(6,6)$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$(2,4)$",
+    "current_exp": "$2+4=6$."
+  },
+  {
+    "id": "c11-ch9-norm-q58",
+    "chapter": "Linear Programming",
+    "question": "The region $x,y\\ge0,\\ x+y\\le5$ is:",
+    "options": {
+      "A": "Empty",
+      "B": "Bounded",
+      "C": "Unbounded",
+      "D": "A single point"
+    },
+    "correct_answer": "B",
+    "correct_opt": "Bounded",
+    "current_exp": "It is a finite triangle."
+  },
+  {
+    "id": "c11-ch9-norm-q61",
+    "chapter": "Linear Programming",
+    "question": "If $Z=5x+4y$, then $Z(4,2)=$:",
+    "options": {
+      "A": "$24$",
+      "B": "$26$",
+      "C": "$28$",
+      "D": "$30$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$28$",
+    "current_exp": "$5(4)+4(2)=28$."
+  },
+  {
+    "id": "c11-ch9-norm-q66",
+    "chapter": "Linear Programming",
+    "question": "The minimum of $x+y$ over the region in Question 65 is:",
+    "options": {
+      "A": "$2$",
+      "B": "$3$",
+      "C": "$5$",
+      "D": "$6$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$3$",
+    "current_exp": "At $(1,2)$, $x+y=3$."
+  },
+  {
+    "id": "c11-ch9-norm-q68",
+    "chapter": "Linear Programming",
+    "question": "The maximum of $3x+y$ at $(1,2), (4,2), (1,5)$ is:",
+    "options": {
+      "A": "$6$",
+      "B": "$8$",
+      "C": "$12$",
+      "D": "$14$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$14$",
+    "current_exp": "The values are $5,14,8$."
+  },
+  {
+    "id": "c11-ch9-norm-q75",
+    "chapter": "Linear Programming",
+    "question": "The maximum of $Z=2x+3y$ over the region in Question 74 is:",
+    "options": {
+      "A": "$14$",
+      "B": "$15$",
+      "C": "$18$",
+      "D": "$21$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$18$",
+    "current_exp": "At $(3,4)$, $Z=6+12=18$."
+  },
+  {
+    "id": "c11-ch9-norm-q76",
+    "chapter": "Linear Programming",
+    "question": "The maximum of $Z=5x+y$ over the same region is:",
+    "options": {
+      "A": "$25$",
+      "B": "$30$",
+      "C": "$35$",
+      "D": "$40$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$35$",
+    "current_exp": "At $(7,0)$, $Z=35$."
+  },
+  {
+    "id": "c11-ch9-norm-q82",
+    "chapter": "Linear Programming",
+    "question": "The maximum of $Z=3x+4y$ over the region in Question 81 is:",
+    "options": {
+      "A": "$16$",
+      "B": "$18$",
+      "C": "$20$",
+      "D": "$24$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$20$",
+    "current_exp": "At $(4,2)$, $Z=12+8=20$."
+  },
+  {
+    "id": "c11-ch9-norm-q83",
+    "chapter": "Linear Programming",
+    "question": "The maximum of $Z=4x+3y$ over the same region is:",
+    "options": {
+      "A": "$20$",
+      "B": "$21$",
+      "C": "$22$",
+      "D": "$24$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$22$",
+    "current_exp": "At $(4,2)$, $Z=16+6=22$."
+  },
+  {
+    "id": "c11-ch9-norm-q87",
+    "chapter": "Linear Programming",
+    "question": "Is $(3,3)$ feasible for $2x+y\\le10,\\ x+2y\\le8$?",
+    "options": {
+      "A": "Yes",
+      "B": "No, it violates the first constraint",
+      "C": "No, it violates the second constraint",
+      "D": "No, both coordinates are negative"
+    },
+    "correct_answer": "C",
+    "correct_opt": "No, it violates the second constraint",
+    "current_exp": "$3+2(3)=9>8$."
+  },
+  {
+    "id": "c11-ch9-norm-q90",
+    "chapter": "Linear Programming",
+    "question": "The maximum of $Z=2x+3y$ over the region in Question 89 is:",
+    "options": {
+      "A": "$11$",
+      "B": "$12$",
+      "C": "$13$",
+      "D": "$15$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$13$",
+    "current_exp": "At $(2,3)$, $Z=4+9=13$."
+  },
+  {
+    "id": "c11-ch9-norm-q91",
+    "chapter": "Linear Programming",
+    "question": "The maximum of $Z=3x+2y$ over the same region is:",
+    "options": {
+      "A": "$12$",
+      "B": "$13$",
+      "C": "$14$",
+      "D": "$15$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$14$",
+    "current_exp": "At $(4,1)$, $Z=12+2=14$."
+  },
+  {
+    "id": "c11-ch9-norm-q112",
+    "chapter": "Linear Programming",
+    "question": "Which point lies on $2x+y=5$?",
+    "options": {
+      "A": "$(1,2)$",
+      "B": "$(2,1)$",
+      "C": "$(3,1)$",
+      "D": "$(0,4)$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$(2,1)$",
+    "current_exp": "$2(2)+1=5$."
+  },
+  {
+    "id": "c11-ch9-norm-q117",
+    "chapter": "Linear Programming",
+    "question": "Under $x\\ge0,\\ y\\ge0$, the point $(-1,2)$ is:",
+    "options": {
+      "A": "Feasible",
+      "B": "Infeasible",
+      "C": "Optimal",
+      "D": "On both axes"
+    },
+    "correct_answer": "B",
+    "correct_opt": "Infeasible",
+    "current_exp": "It violates $x\\ge0$."
+  },
+  {
+    "id": "c11-ch9-norm-q150",
+    "chapter": "Linear Programming",
+    "question": "The maximum of $Z=4x+y$ over the same region is:",
+    "options": {
+      "A": "$60$",
+      "B": "$70$",
+      "C": "$80$",
+      "D": "$100$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$80$",
+    "current_exp": "At $(20,0)$, $Z=80$."
+  },
+  {
+    "id": "c11-ch9-norm-q156",
+    "chapter": "Linear Programming",
+    "question": "Is $(5,3)$ feasible for the delivery constraints?",
+    "options": {
+      "A": "Yes",
+      "B": "No, it violates the first constraint",
+      "C": "No, it violates the second only",
+      "D": "It lies on both boundaries"
+    },
+    "correct_answer": "B",
+    "correct_opt": "No, it violates the first constraint",
+    "current_exp": "$2(5)+3=13>12$."
+  },
+  {
+    "id": "c11-ch9-norm-q160",
+    "chapter": "Linear Programming",
+    "question": "If the cost becomes $Z=2x+3y$, the minimum is:",
+    "options": {
+      "A": "$20$",
+      "B": "$24$",
+      "C": "$26$",
+      "D": "$42$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$20$",
+    "current_exp": "At $(10,0)$, $Z=20$."
+  },
+  {
+    "id": "c11-ch9-norm-q162",
+    "chapter": "Linear Programming",
+    "question": "Is $(5,5)$ feasible for the mixture problem?",
+    "options": {
+      "A": "Yes",
+      "B": "No, because $x+y<10$",
+      "C": "No, because $2x+y<14$",
+      "D": "No, because $x<0$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "Yes",
+    "current_exp": "$x+y=10$ and $2x+y=15$."
+  },
+  {
+    "id": "c11-ch9-norm-q163",
+    "chapter": "Linear Programming",
+    "question": "Is $(3,7)$ feasible for the same problem?",
+    "options": {
+      "A": "Yes",
+      "B": "No, because $x+y<10$",
+      "C": "No, because $2x+y<14$",
+      "D": "No, because $y<0$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "No, because $2x+y<14$",
+    "current_exp": "$2(3)+7=13<14$."
+  },
+  {
+    "id": "c11-ch9-norm-q190",
+    "chapter": "Linear Programming",
+    "question": "On $0\\le x\\le3,\\ 0\\le y\\le3$, the maximum of $x-y$ is:",
+    "options": {
+      "A": "$-3$",
+      "B": "$0$",
+      "C": "$3$",
+      "D": "$6$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$3$",
+    "current_exp": "It occurs at $(3,0)$."
+  },
+  {
+    "id": "c11-ch9-norm-q191",
+    "chapter": "Linear Programming",
+    "question": "On the same square, the minimum of $x-y$ is:",
+    "options": {
+      "A": "$-3$",
+      "B": "$0$",
+      "C": "$3$",
+      "D": "$-6$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$-3$",
+    "current_exp": "It occurs at $(0,3)$."
+  },
+  {
+    "id": "c11-ch9-adv-q170",
+    "question": "Evaluate $Z=2x+3y$ at $(0,6)$.",
+    "options": {
+      "A": "$18$",
+      "B": "$12$",
+      "C": "$15$",
+      "D": "$20$"
+    },
+    "correct_answer": "",
+    "correct_opt": "",
+    "current_exp": "$Z = 2(0)+3(6) = 18$.",
+    "formula": "Z = 2x + 3y"
+  },
+  {
+    "id": "c11-ch10-norm-q10",
+    "chapter": "Trigonometric Identities of Sum and Difference of Angles",
+    "question": "The value of $\\sin(-\\theta)$ is:",
+    "options": {
+      "A": "$\\sin\\theta$",
+      "B": "$-\\sin\\theta$",
+      "C": "$\\cos\\theta$",
+      "D": "$-\\cos\\theta$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$-\\sin\\theta$",
+    "current_exp": "Sine is an odd function."
+  },
+  {
+    "id": "c11-ch10-norm-q64",
+    "chapter": "Trigonometric Identities of Sum and Difference of Angles",
+    "question": "The minimum value of $3\\sin x+4\\cos x$ is:",
+    "options": {
+      "A": "$0$",
+      "B": "$-3$",
+      "C": "$-4$",
+      "D": "$-5$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$-5$",
+    "current_exp": "Its range is $[-5, 5]$."
+  },
+  {
+    "id": "c11-ch10-norm-q105",
+    "chapter": "Trigonometric Identities of Sum and Difference of Angles",
+    "question": "If $\\sin\\theta=\\frac{1}{2}$ and $\\theta=30^\\circ$, then $\\sin3\\theta=$:",
+    "options": {
+      "A": "$1$",
+      "B": "$\\frac{1}{2}$",
+      "C": "$0$",
+      "D": "$-1$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$1$",
+    "current_exp": "$3\\theta=90^\\circ$."
+  },
+  {
+    "id": "c11-ch10-norm-q106",
+    "chapter": "Trigonometric Identities of Sum and Difference of Angles",
+    "question": "If $\\cos\\theta=\\frac{1}{2}$ and $\\theta=60^\\circ$, then $\\cos3\\theta=$:",
+    "options": {
+      "A": "$1$",
+      "B": "$-1$",
+      "C": "$\\frac{1}{2}$",
+      "D": "$0$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$-1$",
+    "current_exp": "$3\\theta=180^\\circ$."
+  },
+  {
+    "id": "c11-ch10-norm-q107",
+    "chapter": "Trigonometric Identities of Sum and Difference of Angles",
+    "question": "If $\\cos\\theta=\\frac{\\sqrt{3}}{2}$ and $\\theta=30^\\circ$, then $\\cos3\\theta=$:",
+    "options": {
+      "A": "$1$",
+      "B": "$-1$",
+      "C": "$0$",
+      "D": "$\\frac{1}{2}$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$0$",
+    "current_exp": "$3\\theta=90^\\circ$."
+  },
+  {
+    "id": "c11-ch10-norm-q108",
+    "chapter": "Trigonometric Identities of Sum and Difference of Angles",
+    "question": "If $\\sin\\theta=\\frac{\\sqrt{3}}{2}$ and $\\theta=60^\\circ$, then $\\sin3\\theta=$:",
+    "options": {
+      "A": "$1$",
+      "B": "$-1$",
+      "C": "$\\frac{1}{2}$",
+      "D": "$0$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$0$",
+    "current_exp": "$3\\theta=180^\\circ$."
+  },
+  {
+    "id": "c11-ch10-norm-q122",
+    "chapter": "Trigonometric Identities of Sum and Difference of Angles",
+    "question": "The range of $3\\sin x+4\\cos x$ is:",
+    "options": {
+      "A": "$[-4, 4]$",
+      "B": "$[-5, 5]$",
+      "C": "$[-7, 7]$",
+      "D": "$[0, 5]$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$[-5, 5]$",
+    "current_exp": "Its amplitude is five."
+  },
+  {
+    "id": "c11-ch10-norm-q125",
+    "chapter": "Trigonometric Identities of Sum and Difference of Angles",
+    "question": "The minimum value of $2+3\\sin x-4\\cos x$ is:",
+    "options": {
+      "A": "$-3$",
+      "B": "$-2$",
+      "C": "$0$",
+      "D": "$3$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$-3$",
+    "current_exp": "The minimum is $2-5=-3$."
+  },
+  {
+    "id": "c11-ch10-norm-q143",
+    "chapter": "Trigonometric Identities of Sum and Difference of Angles",
+    "question": "If $\\tan2x=0$, then:",
+    "options": {
+      "A": "$x=45^\\circ+90^\\circ n$",
+      "B": "$x=180^\\circ n$",
+      "C": "$x=90^\\circ n$",
+      "D": "$x=30^\\circ+90^\\circ n$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$x=90^\\circ n$",
+    "current_exp": "$2x=180^\\circ n$."
+  },
+  {
+    "id": "c11-ch10-norm-q144",
+    "chapter": "Trigonometric Identities of Sum and Difference of Angles",
+    "question": "If $\\cos2x=1$, then:",
+    "options": {
+      "A": "$x=90^\\circ+180^\\circ n$",
+      "B": "$x=45^\\circ+90^\\circ n$",
+      "C": "$x=90^\\circ n$",
+      "D": "$x=180^\\circ n$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$x=180^\\circ n$",
+    "current_exp": "$2x=360^\\circ n$."
+  },
+  {
+    "id": "c11-ch10-norm-q173",
+    "chapter": "Trigonometric Identities of Sum and Difference of Angles",
+    "question": "If $A+B+C=180^\\circ$, then $\\sin(A+B)=$:",
+    "options": {
+      "A": "$\\sin C$",
+      "B": "$-\\sin C$",
+      "C": "$\\cos C$",
+      "D": "$-\\cos C$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$\\sin C$",
+    "current_exp": "$A+B=180^\\circ-C$."
+  },
+  {
+    "id": "c11-ch10-norm-q176",
+    "chapter": "Trigonometric Identities of Sum and Difference of Angles",
+    "question": "If $A+B+C=180^\\circ$, then $\\sin(A+B+C)=$:",
+    "options": {
+      "A": "$1$",
+      "B": "$-1$",
+      "C": "$\\frac{1}{2}$",
+      "D": "$0$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$0$",
+    "current_exp": "$\\sin180^\\circ=0$."
+  },
+  {
+    "id": "c11-ch11-norm-q31",
+    "chapter": "Application of Trigonometry",
+    "question": "A pole casts a $10$ m shadow when the sun’s elevation is $45^\\circ$. Its height is:",
+    "options": {
+      "A": "$5$ m",
+      "B": "$10\\sqrt{2}$ m",
+      "C": "$10$ m",
+      "D": "$20$ m"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$10$ m",
+    "current_exp": "$h=10\\tan45^\\circ=10$ m."
+  },
+  {
+    "id": "c11-ch11-norm-q36",
+    "chapter": "Application of Trigonometry",
+    "question": "If $b=3,\\ c=4,\\ A=90^\\circ$, then $a$ is:",
+    "options": {
+      "A": "$7$",
+      "B": "$\\sqrt{7}$",
+      "C": "$4$",
+      "D": "$5$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$5$",
+    "current_exp": "$a=\\sqrt{3^2+4^2}=5$."
+  },
+  {
+    "id": "c11-ch11-norm-q41",
+    "chapter": "Application of Trigonometry",
+    "question": "The semiperimeter of a triangle with sides $5,6,7$ is:",
+    "options": {
+      "A": "$9$",
+      "B": "$18$",
+      "C": "$8$",
+      "D": "$10$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$9$",
+    "current_exp": "$s=(5+6+7)/2=9$."
+  },
+  {
+    "id": "c11-ch11-norm-q55",
+    "chapter": "Application of Trigonometry",
+    "question": "If $\\Delta=24$ and $s=12$, then the inradius is:",
+    "options": {
+      "A": "$3$",
+      "B": "$4$",
+      "C": "$2$",
+      "D": "$12$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$2$",
+    "current_exp": "$r=\\Delta/s=24/12=2$."
+  },
+  {
+    "id": "c11-ch11-norm-q66",
+    "chapter": "Application of Trigonometry",
+    "question": "If sides $5$ and $7$ include an angle $60^\\circ$, the third side is:",
+    "options": {
+      "A": "$\\sqrt{29}$",
+      "B": "$\\sqrt{39}$",
+      "C": "$\\sqrt{74}$",
+      "D": "$6$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$\\sqrt{39}$",
+    "current_exp": "$c^2=25+49-70(1/2)=39$."
+  },
+  {
+    "id": "c11-ch11-norm-q67",
+    "chapter": "Application of Trigonometry",
+    "question": "A triangle with sides $13,14,15$ has semiperimeter:",
+    "options": {
+      "A": "$42$",
+      "B": "$28$",
+      "C": "$21$",
+      "D": "$20$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$21$",
+    "current_exp": "$s=(13+14+15)/2=21$."
+  },
+  {
+    "id": "c11-ch11-norm-q69",
+    "chapter": "Application of Trigonometry",
+    "question": "If the area is $84$ and semiperimeter is $21$, the inradius is:",
+    "options": {
+      "A": "$4$",
+      "B": "$3$",
+      "C": "$6$",
+      "D": "$7$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$4$",
+    "current_exp": "$r=\\Delta/s=84/21=4$."
+  },
+  {
+    "id": "c11-ch11-norm-q92",
+    "chapter": "Application of Trigonometry",
+    "question": "The inradius of the $9$-$10$-$17$ triangle is:",
+    "options": {
+      "A": "$1$",
+      "B": "$4$",
+      "C": "$3$",
+      "D": "$2$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$2$",
+    "current_exp": "$r=\\Delta/s=36/18=2$."
+  },
+  {
+    "id": "c11-ch11-norm-q109",
+    "chapter": "Application of Trigonometry",
+    "question": "If $a=7,b=9,C=60^\\circ$, then $c$ equals:",
+    "options": {
+      "A": "$\\sqrt{67}$",
+      "B": "$\\sqrt{193}$",
+      "C": "$8$",
+      "D": "$\\sqrt{130}$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$\\sqrt{67}$",
+    "current_exp": "$c^2=49+81-126(1/2)=67$."
+  },
+  {
+    "id": "c11-ch11-norm-q147",
+    "chapter": "Application of Trigonometry",
+    "question": "If $a=3,b=5$, then $(a-b)/(a+b)$ is:",
+    "options": {
+      "A": "$\\frac{1}{4}$",
+      "B": "$-\\frac{1}{2}$",
+      "C": "$-\\frac{1}{4}$",
+      "D": "$\\frac{1}{2}$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$-\\frac{1}{4}$",
+    "current_exp": "$(3-5)/(3+5)=-2/8=-1/4$."
+  },
+  {
+    "id": "c11-ch11-norm-q154",
+    "chapter": "Application of Trigonometry",
+    "question": "The inradius of a $5$-$12$-$13$ triangle is:",
+    "options": {
+      "A": "$1$",
+      "B": "$2$",
+      "C": "$3$",
+      "D": "$4$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$2$",
+    "current_exp": "$r=(5+12-13)/2=2$."
+  },
+  {
+    "id": "c11-ch11-norm-q159",
+    "chapter": "Application of Trigonometry",
+    "question": "If $R=5$ and $A=30^\\circ$, side $a$ is:",
+    "options": {
+      "A": "$10$",
+      "B": "$5\\sqrt{3}$",
+      "C": "$5$",
+      "D": "$\\frac{5}{2}$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$5$",
+    "current_exp": "$a=2R\\sin A=10(1/2)=5$."
+  },
+  {
+    "id": "c11-ch11-norm-q160",
+    "chapter": "Application of Trigonometry",
+    "question": "If $R=4$ and $A=90^\\circ$, side $a$ is:",
+    "options": {
+      "A": "$4$",
+      "B": "$2$",
+      "C": "$16$",
+      "D": "$8$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$8$",
+    "current_exp": "$a=2R\\sin90^\\circ=8$."
+  },
+  {
+    "id": "c11-ch11-norm-q166",
+    "chapter": "Application of Trigonometry",
+    "question": "If $\\Delta=48$ and $s=16$, then $r$ equals:",
+    "options": {
+      "A": "$4$",
+      "B": "$3$",
+      "C": "$2$",
+      "D": "$6$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$3$",
+    "current_exp": "$r=\\Delta/s=48/16=3$."
+  },
+  {
+    "id": "c11-ch11-norm-q174",
+    "chapter": "Application of Trigonometry",
+    "question": "Its inradius is:",
+    "options": {
+      "A": "$2$",
+      "B": "$3$",
+      "C": "$4$",
+      "D": "$6$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$3$",
+    "current_exp": "$s=16$, so $r=48/16=3$."
+  },
+  {
+    "id": "c11-ch11-norm-q178",
+    "chapter": "Application of Trigonometry",
+    "question": "A triangle has area $42$ and base $12$. Its corresponding altitude is:",
+    "options": {
+      "A": "$6$",
+      "B": "$7$",
+      "C": "$14$",
+      "D": "$3.5$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$7$",
+    "current_exp": "$h=2(42)/12=7$."
+  },
+  {
+    "id": "c11-ch11-norm-q191",
+    "chapter": "Application of Trigonometry",
+    "question": "The inradius of the $7$-$24$-$25$ triangle is:",
+    "options": {
+      "A": "$4$",
+      "B": "$2$",
+      "C": "$3$",
+      "D": "$6$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$3$",
+    "current_exp": "$r=(7+24-25)/2=3$."
+  },
+  {
+    "id": "c11-ch12-norm-q32",
+    "chapter": "Trigonometric Functions and Solutions of Trigonometric Equations",
+    "question": "The period of $y=\\cos3x$ is:",
+    "options": {
+      "A": "$3\\pi$",
+      "B": "$\\pi/3$",
+      "C": "$6\\pi$",
+      "D": "$2\\pi/3$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$2\\pi/3$",
+    "current_exp": "Period $=2\\pi/3$."
+  },
+  {
+    "id": "c11-ch12-norm-q65",
+    "chapter": "Trigonometric Functions and Solutions of Trigonometric Equations",
+    "question": "The maximum value of $3+4\\sin x$ is:",
+    "options": {
+      "A": "$7$",
+      "B": "$4$",
+      "C": "$3$",
+      "D": "$-1$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$7$",
+    "current_exp": "Set $\\sin x=1$."
+  },
+  {
+    "id": "c11-ch12-norm-q70",
+    "chapter": "Trigonometric Functions and Solutions of Trigonometric Equations",
+    "question": "The phase shift of $y=\\sin(2x-\\pi)$ is:",
+    "options": {
+      "A": "$\\pi$ right",
+      "B": "$\\pi/2$ right",
+      "C": "$\\pi/2$ left",
+      "D": "$2\\pi$ right"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$\\pi/2$ right",
+    "current_exp": "$2x-\\pi=2(x-\\pi/2)$."
+  },
+  {
+    "id": "c11-ch12-norm-q74",
+    "chapter": "Trigonometric Functions and Solutions of Trigonometric Equations",
+    "question": "The least positive period of $\\sin^2x$ is:",
+    "options": {
+      "A": "$2\\pi$",
+      "B": "$\\pi$",
+      "C": "$\\pi/2$",
+      "D": "$4\\pi$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$\\pi$",
+    "current_exp": "$\\sin^2(x+\\pi)=\\sin^2x$."
+  },
+  {
+    "id": "c11-ch12-norm-q117",
+    "chapter": "Trigonometric Functions and Solutions of Trigonometric Equations",
+    "question": "$\\tan^{-1}1+\\tan^{-1}1$ equals:",
+    "options": {
+      "A": "$\\pi/2$",
+      "B": "$\\pi/4$",
+      "C": "$\\pi$",
+      "D": "$0$"
+    },
+    "correct_answer": "A",
+    "correct_opt": "$\\pi/2$",
+    "current_exp": "Each term is $\\pi/4$."
+  },
+  {
+    "id": "c11-ch12-norm-q168",
+    "chapter": "Trigonometric Functions and Solutions of Trigonometric Equations",
+    "question": "$\\sin^{-1}(-x)$ equals:",
+    "options": {
+      "A": "$\\pi-\\sin^{-1}x$",
+      "B": "$\\pi+\\sin^{-1}x$",
+      "C": "$\\sin^{-1}x$",
+      "D": "$-\\sin^{-1}x$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$-\\sin^{-1}x$",
+    "current_exp": "Inverse sine is odd."
+  },
+  {
+    "id": "c11-ch12-norm-q170",
+    "chapter": "Trigonometric Functions and Solutions of Trigonometric Equations",
+    "question": "If $\\cos^{-1}x=2\\pi/3$, then $x$ equals:",
+    "options": {
+      "A": "$1/2$",
+      "B": "$-1/2$",
+      "C": "$-\\sqrt{3}/2$",
+      "D": "$\\sqrt{3}/2$"
+    },
+    "correct_answer": "B",
+    "correct_opt": "$-1/2$",
+    "current_exp": "$x=\\cos(2\\pi/3)=-1/2$."
+  },
+  {
+    "id": "c11-ch12-norm-q171",
+    "chapter": "Trigonometric Functions and Solutions of Trigonometric Equations",
+    "question": "If $\\tan^{-1}x=-\\pi/4$, then:",
+    "options": {
+      "A": "$x=1$",
+      "B": "$x=0$",
+      "C": "$x=-1$",
+      "D": "$x=\\sqrt{3}$"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$x=-1$",
+    "current_exp": "$x=\\tan(-\\pi/4)=-1$."
+  },
+  {
+    "id": "c11-ch12-norm-q183",
+    "chapter": "Trigonometric Functions and Solutions of Trigonometric Equations",
+    "question": "The equation $\\sin^{-1}x=\\pi/2$ has solution:",
+    "options": {
+      "A": "$x=0$",
+      "B": "$x=-1$",
+      "C": "$x=1$",
+      "D": "No solution"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$x=1$",
+    "current_exp": "Taking sine gives $x=1$."
+  },
+  {
+    "id": "c11-ch12-norm-q187",
+    "chapter": "Trigonometric Functions and Solutions of Trigonometric Equations",
+    "question": "If $\\cos^{-1}x=\\pi$, then:",
+    "options": {
+      "A": "$x=1$",
+      "B": "$x=0$",
+      "C": "$x=-1$",
+      "D": "No solution"
+    },
+    "correct_answer": "C",
+    "correct_opt": "$x=-1$",
+    "current_exp": "$\\cos\\pi=-1$."
+  },
+  {
+    "id": "c11-ch12-norm-q188",
+    "chapter": "Trigonometric Functions and Solutions of Trigonometric Equations",
+    "question": "If $\\cot^{-1}x=\\pi/2$, then:",
+    "options": {
+      "A": "$x=1$",
+      "B": "$x=-1$",
+      "C": "Undefined",
+      "D": "$x=0$"
+    },
+    "correct_answer": "D",
+    "correct_opt": "$x=0$",
+    "current_exp": "$\\cot(\\pi/2)=0$."
+  }
+]

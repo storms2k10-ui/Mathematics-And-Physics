@@ -509,7 +509,7 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "option_c": "$4$",
     "option_d": "$2$",
     "correct_answer": "D",
-    "explanation": "$|z+1| \\le |z| + 1 = 1+1 = 2$, attained when $z=1$.",
+    "explanation": "By the triangle inequality, $|z + 1| \\le |z| + |1| = 1 + 1 = 2$. This maximum value of $2$ is attained when $z = 1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -525,7 +525,7 @@ export const C11_CH1_ADVANCED_PART4: Question[] = [
     "option_c": "$\\sqrt{2}$",
     "option_d": "$2$",
     "correct_answer": "A",
-    "explanation": "$|z+1| \\ge ||z|-1| = |1-1| = 0$, attained when $z=-1$.",
+    "explanation": "By the reverse triangle inequality, $|z + 1| \\ge ||z| - 1| = |1 - 1| = 0$. This minimum value of $0$ is attained when $z = -1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },

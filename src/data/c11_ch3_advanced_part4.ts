@@ -705,7 +705,7 @@ export const C11_CH3_ADVANCED_PART4: Question[] = [
     "option_c": "$x=1$ only",
     "option_d": "$x=0$",
     "correct_answer": "A",
-    "explanation": "$x^2+4+4=9$, so $x^2=1$.",
+    "explanation": "The magnitude of vector $\\mathbf{a} = (x, 2, 2)$ is $|\\mathbf{a}| = \\sqrt{x^2 + 2^2 + 2^2} = \\sqrt{x^2 + 8} = 3$. Squaring both sides yields $x^2 + 8 = 9 \\implies x^2 = 1 \\implies x = \\pm 1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -737,7 +737,7 @@ export const C11_CH3_ADVANCED_PART4: Question[] = [
     "option_c": "$4$",
     "option_d": "$6$",
     "correct_answer": "B",
-    "explanation": "The second vector is twice the first, so $2k=6$.",
+    "explanation": "Two vectors are parallel if their components are proportional: $\\frac{2}{1} = \\frac{4}{2} = \\frac{6}{k} = 2$. Therefore, $\\frac{6}{k} = 2 \\implies 2k = 6 \\implies k = 3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },

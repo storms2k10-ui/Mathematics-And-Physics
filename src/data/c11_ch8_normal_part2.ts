@@ -140,7 +140,7 @@ export const C11_CH8_NORMAL_PART2: Question[] = [
     "option_d": "$6$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Put $y=0$, giving $3x=6$.",
+    "explanation": "To find the $x$-intercept, set $y = 0$ in the linear equation $3x + 2(0) = 6 \\implies 3x = 6 \\implies x = \\frac{6}{3} = 2$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },
@@ -163,7 +163,7 @@ export const C11_CH8_NORMAL_PART2: Question[] = [
     "option_d": "$6$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Put $x=0$, giving $2y=6$.",
+    "explanation": "To find the $y$-intercept, set $x = 0$ in the linear equation $3(0) + 2y = 6 \\implies 2y = 6 \\implies y = \\frac{6}{2} = 3$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },
@@ -278,7 +278,7 @@ export const C11_CH8_NORMAL_PART2: Question[] = [
     "option_d": "$(3,0)$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "The smallest permitted input is $x=3$.",
+    "explanation": "For $y = \\sqrt{x - 3}$ to yield real values, the radicand must be non-negative: $x - 3 \\ge 0 \\implies x \\ge 3$. At the endpoint $x = 3$, $y = \\sqrt{3 - 3} = 0$. Thus the graph begins at $(3, 0)$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },

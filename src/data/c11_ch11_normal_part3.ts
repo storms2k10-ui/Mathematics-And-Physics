@@ -209,7 +209,7 @@ export const C11_CH11_NORMAL_PART3: Question[] = [
     "option_d": "$\\sqrt{130}$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$c^2=49+81-126(1/2)=67$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $c^2=49+81-126(1/2)=67$, which yields $\\sqrt{67}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -600,7 +600,7 @@ export const C11_CH11_NORMAL_PART3: Question[] = [
     "option_d": "$100$ m",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "If original distance is $x$, $x/\\sqrt{3}=(x-50)\\sqrt{3}$, giving $x=75$.",
+    "explanation": "Let $h$ be the height of the building and $x$ the original distance. Then $\\tan 30^\\circ = \\frac{h}{x} \\implies h = \\frac{x}{\\sqrt{3}}$, and after moving $50\\text{ m}$ closer, $\\tan 60^\\circ = \\frac{h}{x - 50} \\implies h = (x - 50)\\sqrt{3}$. Equating the two expressions for $h$: $\\frac{x}{\\sqrt{3}} = (x - 50)\\sqrt{3} \\implies x = 3(x - 50) \\implies x = 3x - 150 \\implies 2x = 150 \\implies x = 75\\text{ m}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -1083,7 +1083,7 @@ export const C11_CH11_NORMAL_PART3: Question[] = [
     "option_d": "$\\frac{1}{2}$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$(3-5)/(3+5)=-2/8=-1/4$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $(3-5)/(3+5)=-2/8=-1/4$, which yields $-\\frac{1}{4}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

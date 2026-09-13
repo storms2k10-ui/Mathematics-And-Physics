@@ -98,7 +98,7 @@ export const C11_CH3_ADVANCED_PART3: Question[] = [
     "option_c": "Equal to force",
     "option_d": "Zero",
     "correct_answer": "D",
-    "explanation": "$W=Fd\\cos90^\\circ=0$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $W=Fd\\cos90^\\circ=0$, which yields $Zero$.",
     "difficulty": "Medium",
     "difficulty_tier": "Advanced"
   },
@@ -466,7 +466,7 @@ export const C11_CH3_ADVANCED_PART3: Question[] = [
     "option_c": "$1$",
     "option_d": "$0$",
     "correct_answer": "A",
-    "explanation": "$3(4)\\sin90^\\circ=12$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $3(4)\\sin90^\\circ=12$, which yields $12$.",
     "difficulty": "Medium",
     "difficulty_tier": "Advanced"
   },

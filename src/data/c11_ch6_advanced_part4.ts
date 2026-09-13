@@ -217,7 +217,7 @@ export const C11_CH6_ADVANCED_PART4: Question[] = [
     "option_c": "$\\frac{1}{6}$",
     "option_d": "$\\frac{1}{4}$",
     "correct_answer": "C",
-    "explanation": "Sums $10,11,12$ have $3+2+1=6$ outcomes, giving $6/36 = 1/6$.",
+    "explanation": "Two dice have $36$ outcomes. Sums greater than $9$ are: sum $10$ (3 pairs), sum $11$ (2 pairs), and sum $12$ (1 pair). The total favorable outcomes are $3 + 2 + 1 = 6$. Hence the probability is $\\frac{6}{36} = \\frac{1}{6}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -233,7 +233,7 @@ export const C11_CH6_ADVANCED_PART4: Question[] = [
     "option_c": "$\\frac{5}{36}$",
     "option_d": "$\\frac{1}{6}$",
     "correct_answer": "D",
-    "explanation": "Sums $2,3,4$ have $1+2+3=6$ outcomes, giving $6/36 = 1/6$.",
+    "explanation": "Two dice have $36$ outcomes. Sums at most $4$ are: sum $2$ (1 pair: $(1,1)$), sum $3$ (2 pairs: $(1,2),(2,1)$), and sum $4$ (3 pairs: $(1,3),(2,2),(3,1)$). Favorable outcomes are $1 + 2 + 3 = 6$. The probability is $\\frac{6}{36} = \\frac{1}{6}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -297,7 +297,7 @@ export const C11_CH6_ADVANCED_PART4: Question[] = [
     "option_c": "$\\frac{2}{5}$",
     "option_d": "$\\frac{1}{3}$",
     "correct_answer": "A",
-    "explanation": "Six numbers (5, 10, 15, 20, 25, 30) are divisible by $5$, so the probability is $6/30=1/5$.",
+    "explanation": "The numbers from $1$ to $30$ divisible by $5$ are $\\{5, 10, 15, 20, 25, 30\\}$, which are $6$ numbers. The probability is $\\frac{6}{30} = \\frac{1}{5}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -361,7 +361,7 @@ export const C11_CH6_ADVANCED_PART4: Question[] = [
     "option_c": "$\\frac{3}{13}$",
     "option_d": "$\\frac{4}{13}$",
     "correct_answer": "B",
-    "explanation": "There are four queens and four kings, giving $8/52=2/13$.",
+    "explanation": "In a standard 52-card deck, there are $4$ Queens and $4$ Kings, which are mutually exclusive events. The total number of favorable cards is $4 + 4 = 8$. Thus the probability is $\\frac{8}{52} = \\frac{2}{13}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -377,7 +377,7 @@ export const C11_CH6_ADVANCED_PART4: Question[] = [
     "option_c": "$\\frac{4}{13}$",
     "option_d": "$\\frac{17}{52}$",
     "correct_answer": "A",
-    "explanation": "$13+4-1=16$ cards are hearts or aces, so $16/52=4/13$.",
+    "explanation": "A standard deck has $13$ hearts and $4$ aces, with $1$ card being both (the ace of hearts). By the addition law of probability: $P(\\text{Heart} \\cup \\text{Ace}) = \\frac{13 + 4 - 1}{52} = \\frac{16}{52} = \\frac{4}{13}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -653,7 +653,7 @@ export const C11_CH6_ADVANCED_PART4: Question[] = [
     "option_c": "$\\frac{1}{625}$",
     "option_d": "$\\frac{1}{1024}$",
     "correct_answer": "D",
-    "explanation": "Each question has probability $1/4$ of being correct, so $(1/4)^5=1/1024$.",
+    "explanation": "For each independent question with four options, the probability of guessing correctly is $\\frac{1}{4}$. By the product rule for independent events, the probability of getting all $5$ questions correct is $\\left(\\frac{1}{4}\\right)^5 = \\frac{1}{1024}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -801,7 +801,7 @@ export const C11_CH6_ADVANCED_PART4: Question[] = [
     "option_c": "$\\frac{1}{4}$",
     "option_d": "$\\frac{1}{2}$",
     "correct_answer": "A",
-    "explanation": "It must end in $5$; favourable arrangements $=4\\cdot3=12$, total $=5\\cdot4\\cdot3=60$, so $12/60=1/5$.",
+    "explanation": "For a number formed from $\\{1, 2, 3, 4, 5\\}$ to be divisible by $5$, its last digit must be $5$ ($1$ choice). The remaining two positions can be filled by the other $4$ digits in $P(4, 2) = 4 \\times 3 = 12$ ways. Total 3-digit permutations are $P(5, 3) = 5 \\times 4 \\times 3 = 60$. Thus the probability is $\\frac{12}{60} = \\frac{1}{5}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -817,7 +817,7 @@ export const C11_CH6_ADVANCED_PART4: Question[] = [
     "option_c": "$\\frac{4}{9}$",
     "option_d": "$\\frac{5}{18}$",
     "correct_answer": "B",
-    "explanation": "An odd sum requires one odd and one even number. There are $5\\cdot5=25$ favourable pairs out of $\\binom{10}2=45$, giving $25/45 = 5/9$.",
+    "explanation": "The sum of two numbers is odd if and only if one number is even and the other is odd. In $\\{1, 2, \\dots, 10\\}$, there are $5$ odd and $5$ even numbers. The number of favorable pairs is $5 \\times 5 = 25$. The total number of pairs is $\\binom{10}{2} = \\frac{10 \\times 9}{2} = 45$. Thus the probability is $\\frac{25}{45} = \\frac{5}{9}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   }

@@ -968,7 +968,7 @@ export const C11_CH7_NORMAL_PART2: Question[] = [
     "option_d": "$9$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$\\binom n3=\\binom n4$ gives $n-3=4$.",
+    "explanation": "In $(1 + x)^n$, the coefficients of $x^3$ and $x^4$ are $\\binom{n}{3}$ and $\\binom{n}{4}$. Equating them: $\\binom{n}{3} = \\binom{n}{4} \\implies n = 3 + 4 = 7$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

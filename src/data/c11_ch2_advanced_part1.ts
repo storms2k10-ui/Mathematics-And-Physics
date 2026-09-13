@@ -645,7 +645,7 @@ export const C11_CH2_ADVANCED_PART1: Question[] = [
     "option_c": "$I$",
     "option_d": "$O$",
     "correct_answer": "A",
-    "explanation": "$A^3=A(A^2)=AA=A^2=A$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $A^3=A(A^2)=AA=A^2=A$. Thus the value is $A$.",
     "difficulty": "Medium",
     "difficulty_tier": "Advanced"
   },

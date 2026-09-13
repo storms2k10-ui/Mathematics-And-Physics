@@ -45,7 +45,7 @@ export const C11_CH3_ADVANCED_PART2: Question[] = [
     "option_c": "$4$",
     "option_d": "$6$",
     "correct_answer": "C",
-    "explanation": "$x/2=6/3=2$, so $x=4$.",
+    "explanation": "Two vectors are parallel if and only if their corresponding components are proportional: $x/2=6/3=2$, so $x=4$. Therefore, the required value is $4$.",
     "difficulty": "Easy",
     "difficulty_tier": "Advanced"
   },
@@ -241,7 +241,7 @@ export const C11_CH3_ADVANCED_PART2: Question[] = [
     "option_c": "$(-1,-2,3)$",
     "option_d": "$(1,2,-3)$",
     "correct_answer": "A",
-    "explanation": "$(2,-4,6)=2(1,-2,3)$.",
+    "explanation": "Two vectors are parallel if and only if their corresponding components are proportional: $(2,-4,6)=2(1,-2,3)$. Therefore, the required value is $(2,-4,6)$.",
     "difficulty": "Medium",
     "difficulty_tier": "Advanced"
   },
@@ -465,7 +465,7 @@ export const C11_CH3_ADVANCED_PART2: Question[] = [
     "option_c": "$5$",
     "option_d": "$-5$",
     "correct_answer": "C",
-    "explanation": "$2(4)+3(-1)=8-3=5$.",
+    "explanation": "The scalar (dot) product is computed by summing the products of corresponding components: $2(4)+3(-1)=8-3=5$. Hence the dot product is $5$.",
     "difficulty": "Medium",
     "difficulty_tier": "Advanced"
   },
@@ -593,7 +593,7 @@ export const C11_CH3_ADVANCED_PART2: Question[] = [
     "option_c": "Yes",
     "option_d": "Equal",
     "correct_answer": "C",
-    "explanation": "Their dot product is $1(2)+2(-1)=0$.",
+    "explanation": "Two vectors are perpendicular if and only if their scalar (dot) product is zero: $(1, 2) \\cdot (2, -1) = 1(2) + 2(-1) = 2 - 2 = 0$. Hence, the vectors are perpendicular (Yes).",
     "difficulty": "Medium",
     "difficulty_tier": "Advanced"
   },
@@ -609,7 +609,7 @@ export const C11_CH3_ADVANCED_PART2: Question[] = [
     "option_c": "$\\frac{2}{3}$",
     "option_d": "$-\\frac{2}{3}$",
     "correct_answer": "A",
-    "explanation": "Perpendicularity gives $2(3)+k(-4)=0$, so $k=3/2$.",
+    "explanation": "Two vectors are perpendicular when their dot product vanishes: $(2, k) \\cdot (3, -4) = 2(3) + k(-4) = 6 - 4k = 0 \\implies 4k = 6 \\implies k = \\frac{6}{4} = \\frac{3}{2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Advanced"
   },
@@ -673,7 +673,7 @@ export const C11_CH3_ADVANCED_PART2: Question[] = [
     "option_c": "$90^\\circ$",
     "option_d": "$180^\\circ$",
     "correct_answer": "C",
-    "explanation": "Their dot product is $1-1=0$.",
+    "explanation": "Computing the scalar product: $(1, 1) \\cdot (1, -1) = 1(1) + 1(-1) = 1 - 1 = 0$. A zero dot product between non-zero vectors implies they are orthogonal, so the angle between them is $90^\\circ$.",
     "difficulty": "Medium",
     "difficulty_tier": "Advanced"
   },

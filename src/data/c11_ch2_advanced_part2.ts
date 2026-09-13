@@ -45,7 +45,7 @@ export const C11_CH2_ADVANCED_PART2: Question[] = [
     "option_c": "Zero",
     "option_d": "Rectangular",
     "correct_answer": "A",
-    "explanation": "$(A^2)^T=(A^T)^2=A^2$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $(A^2)^T=(A^T)^2=A^2$. Thus the value is $Symmetric$.",
     "difficulty": "Medium",
     "difficulty_tier": "Advanced"
   },
@@ -157,7 +157,7 @@ export const C11_CH2_ADVANCED_PART2: Question[] = [
     "option_c": "$O$",
     "option_d": "$\\begin{bmatrix}1&1\\\\0&1\\end{bmatrix}$",
     "correct_answer": "A",
-    "explanation": "$(-I)^2=I$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $(-I)^2=I$, which yields $-I$.",
     "difficulty": "Medium",
     "difficulty_tier": "Advanced"
   },
@@ -189,7 +189,7 @@ export const C11_CH2_ADVANCED_PART2: Question[] = [
     "option_c": "Idempotent",
     "option_d": "Skew-symmetric",
     "correct_answer": "C",
-    "explanation": "$(I-A)^2=I-2A+A^2=I-A$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $(I-A)^2=I-2A+A^2=I-A$, which yields $Idempotent$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -477,7 +477,7 @@ export const C11_CH2_ADVANCED_PART2: Question[] = [
     "option_c": "$6$",
     "option_d": "$-6$",
     "correct_answer": "A",
-    "explanation": "$|A^2|=|A||A|=(-3)^2=9$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $|A^2|=|A||A|=(-3)^2=9$. Thus the value is $9$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -493,7 +493,7 @@ export const C11_CH2_ADVANCED_PART2: Question[] = [
     "option_c": "$24$",
     "option_d": "$81$",
     "correct_answer": "B",
-    "explanation": "$|3A|=3^2|A|=9(4)=36$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $|3A|=3^2|A|=9(4)=36$, which yields $36$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -609,7 +609,7 @@ export const C11_CH2_ADVANCED_PART2: Question[] = [
     "option_c": "$x=2$",
     "option_d": "$x=3$",
     "correct_answer": "B",
-    "explanation": "$6x-6=0$, so $x=1$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $6x-6=0$, so $x=1$, which yields $x=1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -689,7 +689,7 @@ export const C11_CH2_ADVANCED_PART2: Question[] = [
     "option_c": "$-1$",
     "option_d": "$5$",
     "correct_answer": "B",
-    "explanation": "$|AB|=|A||B|=2(-3)=-6$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $|AB|=|A||B|=2(-3)=-6$, which yields $-6$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -705,7 +705,7 @@ export const C11_CH2_ADVANCED_PART2: Question[] = [
     "option_c": "$4$",
     "option_d": "$9$",
     "correct_answer": "A",
-    "explanation": "$|A^3|=|A|^3=2^3=8$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $|A^3|=|A|^3=2^3=8$, which yields $8$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -769,7 +769,7 @@ export const C11_CH2_ADVANCED_PART2: Question[] = [
     "option_c": "$6$",
     "option_d": "$-8$",
     "correct_answer": "B",
-    "explanation": "$|-A|=(-1)^3|A|=-2$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $|-A|=(-1)^3|A|=-2$, which yields $-2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -785,7 +785,7 @@ export const C11_CH2_ADVANCED_PART2: Question[] = [
     "option_c": "$3$",
     "option_d": "$-12$",
     "correct_answer": "C",
-    "explanation": "$|-A|=(-1)^4|A|=3$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $|-A|=(-1)^4|A|=3$, which yields $3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },

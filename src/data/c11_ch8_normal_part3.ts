@@ -117,7 +117,7 @@ export const C11_CH8_NORMAL_PART3: Question[] = [
     "option_d": "$x=0,y=1$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The denominator gives $x=2$, while the ratio of leading coefficients gives $y=1$.",
+    "explanation": "The vertical asymptote occurs where the denominator is zero: $x - 2 = 0 \\implies x = 2$. Since numerator and denominator have the same degree, the horizontal asymptote is the ratio of leading coefficients: $y = \\frac{1}{1} = 1$. Thus the asymptotes are $x = 2, y = 1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -853,7 +853,7 @@ export const C11_CH8_NORMAL_PART3: Question[] = [
     "option_d": "$5$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$f^{-1}(5)=1$ means $f(1)=5$, so $k+3=5$.",
+    "explanation": "By definition of the inverse function, $f^{-1}(5) = 1$ is equivalent to $f(1) = 5$. Substituting into $f(x) = kx + 3$ gives $k(1) + 3 = 5 \\implies k = 5 - 3 = 2$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

@@ -324,7 +324,7 @@ export const C11_CH10_NORMAL_PART2: Question[] = [
     "option_d": "$-5$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Its range is $[-5, 5]$.",
+    "explanation": "Since $-1 \\le \\sin x, \\cos x \\le 1$, the minimum occurs at $-1$: Its range is $[-5, 5]$. Thus the minimum value is $-5$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },

@@ -876,7 +876,7 @@ export const C11_CH4_NORMAL_PART1: Question[] = [
     "option_d": "$6,12,15$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The common difference is $(18-2)/4=4$.",
+    "explanation": "Inserting $3$ arithmetic means between $a = 2$ and $b = 18$ forms an arithmetic progression of $n = 5$ terms. The common difference is $d = \\frac{b - a}{k + 1} = \\frac{18 - 2}{4} = 4$. Thus the three arithmetic means are $2 + 4 = 6$, $6 + 4 = 10$, and $10 + 4 = 14$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

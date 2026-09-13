@@ -393,7 +393,7 @@ export const C11_CH12_NORMAL_PART3: Question[] = [
     "option_d": "$0$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Each term is $\\pi/4$.",
+    "explanation": "Applying the relevant mathematical principles and simplifying: Each term is $\\pi/4$. Therefore, the correct answer is $\\pi/2$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -416,7 +416,7 @@ export const C11_CH12_NORMAL_PART3: Question[] = [
     "option_d": "$\\pi/2$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The tangent of the sum is $(1/2+1/3)/(1-1/6)=1$.",
+    "explanation": "Using the addition identity for inverse tangents $\\tan^{-1} x + \\tan^{-1} y = \\tan^{-1}\\left(\\frac{x + y}{1 - xy}\\right)$: here $\\frac{1/2 + 1/3}{1 - (1/2)(1/3)} = \\frac{5/6}{1 - 1/6} = \\frac{5/6}{5/6} = 1$. Since $xy = \\frac{1}{6} < 1$, the sum equals $\\tan^{-1}(1) = \\frac{\\pi}{4}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -439,7 +439,7 @@ export const C11_CH12_NORMAL_PART3: Question[] = [
     "option_d": "$\\pi/2$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The tangent of the difference is $(2-1/3)/(1+2/3)=1$.",
+    "explanation": "Using the subtraction identity $\\tan^{-1} x - \\tan^{-1} y = \\tan^{-1}\\left(\\frac{x - y}{1 + xy}\\right)$: here $\\frac{2 - 1/3}{1 + 2(1/3)} = \\frac{5/3}{5/3} = 1$. Since $xy = \\frac{2}{3} > -1$, the result is $\\tan^{-1}(1) = \\frac{\\pi}{4}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

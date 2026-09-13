@@ -311,7 +311,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$3$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$x^2+16=25$, so $x^2=9$.",
+    "explanation": "The modulus is $|x + 4i| = \\sqrt{x^2 + 4^2} = \\sqrt{x^2 + 16} = 5$. Squaring both sides yields $x^2 + 16 = 25 \\implies x^2 = 9 \\implies x = \\pm 3$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "x^2+16=25"
@@ -453,7 +453,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$9$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$|zw|=|z||w|=2(3)=6$.",
+    "explanation": "By the modulus multiplication property for complex numbers, $|zw| = |z||w|$. Substituting the given values: $|zw|=|z||w|=2(3)=6$. Hence $|zw| = 6$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "|zw|=|z||w|=2(3)=6"
@@ -765,7 +765,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$i$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Since $(-i)(i)=-i^2=1$.",
+    "explanation": "The multiplicative inverse $z^{-1}$ of a complex number $z$ satisfies $z \\cdot z^{-1} = 1$. Since $(-i)(i)=-i^2=1$, the inverse is $i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "(-i)(i)=-i^2=1"
@@ -981,7 +981,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$\\frac{1+i}{1-i}=i$.",
+    "explanation": "Multiplying numerator and denominator by the conjugate of the denominator: $\\frac{1+i}{1-i}=i$. Thus the value is $i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "\\frac{1+i}{1-i}=i"
@@ -1005,7 +1005,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$\\frac{1-i}{1+i}=-i$.",
+    "explanation": "Multiplying numerator and denominator by the conjugate of the denominator: $\\frac{1-i}{1+i}=-i$. Thus the value is $-i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "\\frac{1-i}{1+i}=-i"

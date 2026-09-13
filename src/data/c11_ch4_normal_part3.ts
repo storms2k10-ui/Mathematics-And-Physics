@@ -1083,7 +1083,7 @@ export const C11_CH4_NORMAL_PART3: Question[] = [
     "option_d": "$20$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Their sum is $4x=40$.",
+    "explanation": "Summing the four terms of the arithmetic progression: $(x - 3d) + (x - d) + (x + d) + (x + 3d) = 4x = 40 \\implies x = \\frac{40}{4} = 10$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

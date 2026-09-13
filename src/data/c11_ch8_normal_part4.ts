@@ -508,7 +508,7 @@ export const C11_CH8_NORMAL_PART4: Question[] = [
     "option_d": "$\\mathbb{R}$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The minimum value occurs when $x=-2$.",
+    "explanation": "Since $|x + 2| \\ge 0$ for all real $x$, the minimum value of $f(x) = |x + 2| - 3$ occurs when $|x + 2| = 0$ (at $x = -2$), yielding $f(-2) = -3$. As $x \\to \\pm\\infty$, $f(x) \\to \\infty$. Hence the range is $[-3, \\infty)$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -922,7 +922,7 @@ export const C11_CH8_NORMAL_PART4: Question[] = [
     "option_d": "$3$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Solve $x=(x+2)/3$, giving $2x=2$.",
+    "explanation": "A fixed point of a function satisfies $f(x) = x$. Solving $\\frac{x + 2}{3} = x \\implies x + 2 = 3x \\implies 2x = 2 \\implies x = 1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -1106,7 +1106,7 @@ export const C11_CH8_NORMAL_PART4: Question[] = [
     "option_d": "$1$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$x^2-2x-k=0$ is tangent when $4+4k=0$.",
+    "explanation": "Equating the line and parabola gives $x^2 = 2x + k \\implies x^2 - 2x - k = 0$. The line is tangent to the parabola when the discriminant of this quadratic equation is zero: $D = (-2)^2 - 4(1)(-k) = 4 + 4k = 0 \\implies 4k = -4 \\implies k = -1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

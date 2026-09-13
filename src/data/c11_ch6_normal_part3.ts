@@ -968,7 +968,7 @@ export const C11_CH6_NORMAL_PART3: Question[] = [
     "option_d": "$25/36$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The complement probability is $(5/6)^2=25/36$.",
+    "explanation": "The complement of obtaining at least one $6$ in two rolls is obtaining no $6$ on either roll. The probability of no $6$ on one roll is $\\frac{5}{6}$, so for two independent rolls it is $\\left(\\frac{5}{6}\\right)^2 = \\frac{25}{36}$. Therefore, $P(\\text{at least one } 6) = 1 - \\frac{25}{36} = \\frac{11}{36}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

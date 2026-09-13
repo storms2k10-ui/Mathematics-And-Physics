@@ -237,7 +237,7 @@ export const C11_CH6_ADVANCED_PART3: Question[] = [
     "option_c": "$\\frac{1}{2}$",
     "option_d": "$\\frac{1}{3}$",
     "correct_answer": "C",
-    "explanation": "The favourable faces are $2,4,6$, so the probability is $3/6 = 1/2$.",
+    "explanation": "A standard die has sample space $\\{1, 2, 3, 4, 5, 6\\}$ ($n(S) = 6$). The favorable even outcomes are $\\{2, 4, 6\\}$ ($n(E) = 3$). Thus the probability is $P(E) = \\frac{3}{6} = \\frac{1}{2}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -253,7 +253,7 @@ export const C11_CH6_ADVANCED_PART3: Question[] = [
     "option_c": "$\\frac{2}{3}$",
     "option_d": "$\\frac{1}{2}$",
     "correct_answer": "D",
-    "explanation": "The prime faces are $2,3,5$, giving $3/6=1/2$.",
+    "explanation": "The sample space of a fair die is $\\{1, 2, 3, 4, 5, 6\\}$ ($n(S) = 6$). The prime outcomes are $\\{2, 3, 5\\}$ ($n(E) = 3$). Thus the probability of rolling a prime number is $P(E) = \\frac{3}{6} = \\frac{1}{2}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -269,7 +269,7 @@ export const C11_CH6_ADVANCED_PART3: Question[] = [
     "option_c": "$\\frac{2}{3}$",
     "option_d": "$\\frac{1}{6}$",
     "correct_answer": "A",
-    "explanation": "The favourable faces are $5,6$, so the probability is $2/6=1/3$.",
+    "explanation": "The faces on a standard die greater than $4$ are $\\{5, 6\\}$, giving $2$ favorable outcomes out of $6$. Thus the probability is $\\frac{2}{6} = \\frac{1}{3}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -381,7 +381,7 @@ export const C11_CH6_ADVANCED_PART3: Question[] = [
     "option_c": "$\\frac{5}{36}$",
     "option_d": "$\\frac{1}{6}$",
     "correct_answer": "D",
-    "explanation": "Six ordered pairs have sum $7$: (1,6),(2,5),(3,4),(4,3),(5,2),(6,1), giving $6/36=1/6$.",
+    "explanation": "When two dice are rolled, there are $36$ equally likely outcomes. The pairs with sum equal to $7$ are $(1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1)$, giving $6$ favorable outcomes. Thus $P(\\text{sum} = 7) = \\frac{6}{36} = \\frac{1}{6}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -477,7 +477,7 @@ export const C11_CH6_ADVANCED_PART3: Question[] = [
     "option_c": "$\\frac{1}{13}$",
     "option_d": "$\\frac{12}{13}$",
     "correct_answer": "B",
-    "explanation": "There are $12$ face cards—jack, queen and king of four suits—so $12/52=3/13$.",
+    "explanation": "A standard 52-card deck contains $12$ face cards (Jack, Queen, King in each of the 4 suits). The probability of selecting a face card is $\\frac{12}{52} = \\frac{3}{13}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },

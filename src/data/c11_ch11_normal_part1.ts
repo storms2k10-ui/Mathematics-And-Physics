@@ -715,7 +715,7 @@ export const C11_CH11_NORMAL_PART1: Question[] = [
     "option_d": "$20$ m",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$h=10\\tan45^\\circ=10$ m.",
+    "explanation": "Using right-triangle trigonometry $\\tan\\theta = \\frac{\\text{opposite}}{\\text{adjacent}}$: $h=10\\tan45^\\circ=10$ m. Hence the required length is $$10$ m$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -830,7 +830,7 @@ export const C11_CH11_NORMAL_PART1: Question[] = [
     "option_d": "$5$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$a=\\sqrt{3^2+4^2}=5$.",
+    "explanation": "Applying the Pythagorean theorem $a^2 + b^2 = c^2$: $a=\\sqrt{3^2+4^2}=5$. Thus the side length is $5$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -945,7 +945,7 @@ export const C11_CH11_NORMAL_PART1: Question[] = [
     "option_d": "$10$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$s=(5+6+7)/2=9$.",
+    "explanation": "The semiperimeter $s$ of a triangle with side lengths $a, b, c$ is $s = \\frac{a+b+c}{2}$: $s=(5+6+7)/2=9$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

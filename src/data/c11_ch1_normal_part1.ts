@@ -356,7 +356,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "Necessarily zero",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "If $a+bi=a-bi$, then $2bi=0$, so $b=0$.",
+    "explanation": "For a complex number $z = a + bi$, the complex conjugate is $\\bar{z} = a - bi$. If $z = \\bar{z}$, then $a + bi = a - bi \\implies 2bi = 0 \\implies b = 0$. Since the imaginary part is zero, $z = a$, which is purely Real.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
     "formula": "a+bi=a-bi"
@@ -571,7 +571,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-2i$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$1+2i+i^2=1+2i-1=2i$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $1+2i+i^2=1+2i-1=2i$. Thus the value is $2i$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
     "formula": "1+2i+i^2=1+2i-1=2i"
@@ -595,7 +595,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-2$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$1-2i+i^2=1-2i-1=-2i$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $1-2i+i^2=1-2i-1=-2i$. Thus the value is $-2i$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
     "formula": "1-2i+i^2=1-2i-1=-2i"
@@ -979,7 +979,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$5-4i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$4+4i+i^2=3+4i$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $4+4i+i^2=3+4i$. Thus the value is $3+4i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "4+4i+i^2=3+4i"

@@ -94,7 +94,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$600$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$6!-240=480$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $6!-240=480$, which yields $480$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -393,7 +393,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$10$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$n(n-1)=30$ gives $n=6$.",
+    "explanation": "Using the permutation formula {}^n P_r = \\frac{n!}{(n-r)!}$, calculating gives $n(n-1)=30$ gives $n=6$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -416,7 +416,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$8$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$6(5)(4)=120$.",
+    "explanation": "By the permutation formula, ${}^n P_3 = n(n-1)(n-2) = 120$. Testing consecutive integers, $6 \\times 5 \\times 4 = 120$, which implies $n = 6$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -485,7 +485,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$10$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$n(n-1)=56$, so $n=8$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $n(n-1)=56$, so $n=8$, which yields $8$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -508,7 +508,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$100$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$10!/8!=10(9)=90$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $10!/8!=10(9)=90$, which yields $90$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -531,7 +531,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$672$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$8(7)(6)=336$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $8(7)(6)=336$, which yields $336$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -554,7 +554,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$720$ ways",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$6!/(2!2!2!)=90$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $6!/(2!2!2!)=90$, which yields $$90$ ways$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -715,7 +715,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$336$ ways",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "${}^{8} C_3=56$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: ${}^{8} C_3=56$, which yields $$56$ ways$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -738,7 +738,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$5,040$ ways",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "${}^{10} C_4=210$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: ${}^{10} C_4=210$, which yields $$210$ ways$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -784,7 +784,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$72$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$12(11)/2=66$.",
+    "explanation": "Using the combination formula {}^n C_r = \\binom{n}{r} = \\frac{n!}{r!(n-r)!}$, calculating gives $12(11)/2=66$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -830,7 +830,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$336$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$8!/(3!5!)=56$.",
+    "explanation": "Using the combination formula {}^n C_r = \\binom{n}{r} = \\frac{n!}{r!(n-r)!}$, calculating gives $8!/(3!5!)=56$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -945,7 +945,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$8$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "${}^{6} C_3=20$.",
+    "explanation": "Using the combination formula {}^n C_r = \\binom{n}{r} = \\frac{n!}{r!(n-r)!}$, calculating gives ${}^{6} C_3=20$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -991,7 +991,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$r=12$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The complementary index is $12-3=9$.",
+    "explanation": "Using the combination symmetry identity $\\binom{n}{r} = \\binom{n}{n-r}$, the equation $\\binom{12}{r} = \\binom{12}{3}$ has two solutions: $r = 3$ and the complementary index $r = 12 - 3 = 9$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -1037,7 +1037,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$25$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Both values are $10$.",
+    "explanation": "Using the combination formula {}^n C_r = \\binom{n}{r} = \\frac{n!}{r!(n-r)!}$, calculating gives Both values are $10$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -1060,7 +1060,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$70$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$21+35=56={}^{8} C_3$.",
+    "explanation": "Using the combination formula {}^n C_r = \\binom{n}{r} = \\frac{n!}{r!(n-r)!}$, calculating gives $21+35=56={}^{8} C_3$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -1083,7 +1083,7 @@ export const C11_CH6_NORMAL_PART2: Question[] = [
     "option_d": "$15,120$ ways",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "${}^{9} C_5=126$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: ${}^{9} C_5=126$, which yields $$126$ ways$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

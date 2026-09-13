@@ -654,15 +654,15 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
     "class": 11,
     "subject": "Mathematics",
     "chapter_id": "c11-ch7",
-    "question": "If $\\binom{n}{3}=\\binom{n}{5}$, then:",
+    "question": "If $\\binom{n}{3}=\\binom{n}{5}$, find $n$.",
     "options": {
-      "A": "$1$",
-      "B": "$1$",
-      "C": "$1$",
-      "D": "$1$"
+      "A": "$8$",
+      "B": "$6$",
+      "C": "$5$",
+      "D": "$4$"
     },
     "correct_answer": "A",
-    "explanation": "By symmetry, $3+5=n$, so $n=8$.",
+    "explanation": "Using the combinatorial symmetry identity $\\binom{n}{r} = \\binom{n}{n-r}$, if $\\binom{n}{3} = \\binom{n}{5}$, then $n = 3 + 5 = 8$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(a+b)^n = \\sum_{r=0}^n {^nC_r} a^{n-r} b^r"
@@ -770,7 +770,7 @@ export const C11_CH7_ADVANCED_PART3: Question[] = [
       "D": "$13$"
     },
     "correct_answer": "C",
-    "explanation": "The number of terms is $n+1=16$, so $n=15$.",
+    "explanation": "In the binomial expansion of $(x+y)^n$, the total number of terms is $n+1$. Setting $n+1 = 12$ gives $n = 12 - 1 = 11$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced",
     "formula": "(x+y)^n = \\sum_{r=0}^n \\binom{n}{r} x^{n-r} y^r, \\quad T_{r+1} = \\binom{n}{r} x^{n-r} y^r"

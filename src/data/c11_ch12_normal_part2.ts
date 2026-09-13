@@ -347,7 +347,7 @@ export const C11_CH12_NORMAL_PART2: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Set $\\sin x=1$.",
+    "explanation": "Since $-1 \\le \\sin x, \\cos x \\le 1$, the maximum occurs at $+1$: Set $\\sin x=1$. Thus the maximum value is $7$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -462,7 +462,7 @@ export const C11_CH12_NORMAL_PART2: Question[] = [
     "option_d": "$2\\pi$ right",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$2x-\\pi=2(x-\\pi/2)$.",
+    "explanation": "Writing the trigonometric argument in the standard form $k(x - c)$: $2x-\\pi=2(x-\\pi/2)$. The phase shift is $c = $$\\pi/2$ right$$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -554,7 +554,7 @@ export const C11_CH12_NORMAL_PART2: Question[] = [
     "option_d": "$4\\pi$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$\\sin^2(x+\\pi)=\\sin^2x$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $\\sin^2(x+\\pi)=\\sin^2x$. Thus the value is $\\pi$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

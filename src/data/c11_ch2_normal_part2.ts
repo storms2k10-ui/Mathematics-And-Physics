@@ -329,7 +329,7 @@ export const C11_CH2_NORMAL_PART2: Question[] = [
     "option_d": "Null matrix",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$A+O=O+A=A$.",
+    "explanation": "By matrix algebra properties, adding the zero (null) matrix $O$ of matching dimensions to any matrix $A$ satisfies $A + O = O + A = A$. Therefore, the null matrix is the additive identity.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "A+O=O+A=A"
@@ -353,7 +353,7 @@ export const C11_CH2_NORMAL_PART2: Question[] = [
     "option_d": "$O$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$A+(-A)=O$.",
+    "explanation": "By definition, the additive inverse of matrix $A$ is the matrix $-A$ such that $A + (-A) = O$, where $O$ is the null matrix.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "A+(-A)=O"
@@ -377,7 +377,7 @@ export const C11_CH2_NORMAL_PART2: Question[] = [
     "option_d": "$A^t$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$AI=IA=A$.",
+    "explanation": "For any square matrix $A$ of order $n$, multiplying by the identity matrix $I$ satisfies $A I = I A = A$. Hence the identity matrix $I$ is the multiplicative identity.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "AI=IA=A"

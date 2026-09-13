@@ -163,7 +163,7 @@ export const C11_CH5_NORMAL_PART1: Question[] = [
     "option_d": "$25$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$1+2+3+4+5=15$.",
+    "explanation": "Using the formula for the sum of the first $n$ natural numbers $\\sum_{k=1}^n k = \\frac{n(n+1)}{2}$, evaluating gives $1+2+3+4+5=15$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },
@@ -186,7 +186,7 @@ export const C11_CH5_NORMAL_PART1: Question[] = [
     "option_d": "$36$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$1+4+9+16=30$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $1+4+9+16=30$. Thus the value is $30$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },
@@ -209,7 +209,7 @@ export const C11_CH5_NORMAL_PART1: Question[] = [
     "option_d": "$42$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$1+8+27=36$.",
+    "explanation": "Using the formula for the sum of the first $n$ natural numbers $\\sum_{k=1}^n k = \\frac{n(n+1)}{2}$, evaluating gives $1+8+27=36$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },
@@ -370,7 +370,7 @@ export const C11_CH5_NORMAL_PART1: Question[] = [
     "option_d": "$1,280$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$50(51)/2=1275$.",
+    "explanation": "Using the formula for the sum of the first $n$ natural numbers $\\sum_{k=1}^n k = \\frac{n(n+1)}{2}$, for $n = 50$: $\\frac{50(51)}{2} = 25 \\times 51 = 1,275$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },
@@ -738,7 +738,7 @@ export const C11_CH5_NORMAL_PART1: Question[] = [
     "option_d": "$108$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$3(36)-8=100$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $3(36)-8=100$, which yields $100$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },
@@ -807,7 +807,7 @@ export const C11_CH5_NORMAL_PART1: Question[] = [
     "option_d": "$n(n-1)$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$2\\sum k=2[n(n+1)/2]$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $2\\sum k=2[n(n+1)/2]$, which yields $n(n+1)$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },
@@ -876,7 +876,7 @@ export const C11_CH5_NORMAL_PART1: Question[] = [
     "option_d": "$210$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$3(55)+2(15)+5=200$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $3(55)+2(15)+5=200$. Thus the value is $200$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },
@@ -899,7 +899,7 @@ export const C11_CH5_NORMAL_PART1: Question[] = [
     "option_d": "$450$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$385+55=440$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $385+55=440$. Thus the value is $440$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },
@@ -945,7 +945,7 @@ export const C11_CH5_NORMAL_PART1: Question[] = [
     "option_d": "$55$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$55-(1+2+3)=49$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $55-(1+2+3)=49$, which yields $49$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -968,7 +968,7 @@ export const C11_CH5_NORMAL_PART1: Question[] = [
     "option_d": "$165$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$210-55=155$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $210-55=155$, which yields $155$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -991,7 +991,7 @@ export const C11_CH5_NORMAL_PART1: Question[] = [
     "option_d": "$385$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$385-(1+4+9+16)=355$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $385-(1+4+9+16)=355$. Thus the value is $355$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -1014,7 +1014,7 @@ export const C11_CH5_NORMAL_PART1: Question[] = [
     "option_d": "$415$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$64+125+216=405$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $64+125+216=405$, which yields $405$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

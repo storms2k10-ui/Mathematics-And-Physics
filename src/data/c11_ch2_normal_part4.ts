@@ -303,7 +303,7 @@ export const C11_CH2_NORMAL_PART4: Question[] = [
     "option_d": "Nonsingular",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$A^{-1}$ must exist.",
+    "explanation": "Applying the relevant mathematical principles and simplifying: $A^{-1}$ must exist. Therefore, the correct answer is $Nonsingular$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
     "formula": "A^{-1}"

@@ -141,7 +141,7 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_c": "$\\frac{1}{3}$",
     "option_d": "$\\frac{1}{2}$",
     "correct_answer": "D",
-    "explanation": "$12=6/(1-r)$ gives $1-r=1/2$.",
+    "explanation": "The sum to infinity is $S_\\infty = \\frac{a}{1 - r}$. Setting $12 = \\frac{6}{1 - r} \\implies 1 - r = \\frac{6}{12} = \\frac{1}{2} \\implies r = 1 - \\frac{1}{2} = \\frac{1}{2}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -173,7 +173,7 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_c": "$-\\frac{1}{3}$",
     "option_d": "$\\frac{2}{3}$",
     "correct_answer": "B",
-    "explanation": "$6=4/(1-r)$ gives $1-r=2/3$, so $r=1/3$.",
+    "explanation": "The sum to infinity is $S_\\infty = \\frac{a}{1 - r}$. Setting $6 = \\frac{4}{1 - r} \\implies 1 - r = \\frac{4}{6} = \\frac{2}{3} \\implies r = 1 - \\frac{2}{3} = \\frac{1}{3}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -189,7 +189,7 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_c": "$\\frac{1}{2}$",
     "option_d": "$\\frac{1}{4}$",
     "correct_answer": "C",
-    "explanation": "The remaining sum is $ar/(1-r)$; setting it equal to $a$ gives $r=1/2$.",
+    "explanation": "The sum of all terms after the first term is $S_\\infty - a = \\frac{a}{1 - r} - a = \\frac{ar}{1 - r}$. Equating this to the first term $a$ gives $\\frac{ar}{1 - r} = a \\implies \\frac{r}{1 - r} = 1 \\implies r = 1 - r \\implies 2r = 1 \\implies r = \\frac{1}{2}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -221,7 +221,7 @@ export const C11_CH4_ADVANCED_PART4: Question[] = [
     "option_c": "$\\frac{3}{2}$",
     "option_d": "$\\frac{1}{3}$",
     "correct_answer": "A",
-    "explanation": "The total is $3/2$, so the remaining sum is $3/2-1=1/2$.",
+    "explanation": "For the series $1 + \\frac{1}{3} + \\frac{1}{9} + \\dots$, $a = 1$ and $r = \\frac{1}{3}$. The total sum to infinity is $S_\\infty = \\frac{1}{1 - 1/3} = \\frac{3}{2}$. The sum of all terms after the first term is $S_\\infty - a = \\frac{3}{2} - 1 = \\frac{1}{2}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },

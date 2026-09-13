@@ -216,7 +216,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$z=0$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Multiplying by $z$ gives $z^2+1=0$.",
+    "explanation": "Given $z + \\frac{1}{z} = 0$, multiplying by $z$ gives $z^2 + 1 = 0 \\implies z^2 = -1 \\implies z = \\pm\\sqrt{-1} = \\pm i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "z"
@@ -288,7 +288,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$1+i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$z=\\frac{2+2i}{1-i}=2i$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $z=\\frac{2+2i}{1-i}=2i$, which yields $2i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "z=\\frac{2+2i}{1-i}=2i"
@@ -432,7 +432,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$(0,2)$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Since $(1+i)^2=2i=0+2i$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: Since $(1+i)^2=2i=0+2i$. Thus the value is $(0,2)$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "(1+i)^2=2i=0+2i"
@@ -528,7 +528,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$(3,1)$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$x+iy=(2-i)(1+i)=3+i$.",
+    "explanation": "Simplifying the complex expression into standard rectangular form $a + bi$: $x+iy=(2-i)(1+i)=3+i$. Equating real and imaginary components yields $(x, y) = $(3,1)$$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "x+iy=(2-i)(1+i)=3+i"
@@ -552,7 +552,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$-5$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The imaginary parts cancel, leaving $2x=10$.",
+    "explanation": "Combining the terms: $(x + iy) + (x - iy) = 2x = 10 \\implies x = \\frac{10}{2} = 5$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "2x=10"
@@ -600,7 +600,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$4$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$16+y^2=25$, so $y^2=9$.",
+    "explanation": "The modulus is $|4 + yi| = \\sqrt{4^2 + y^2} = \\sqrt{16 + y^2} = 5$. Squaring both sides yields $16 + y^2 = 25 \\implies y^2 = 9 \\implies y = \\pm 3$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "16+y^2=25"
@@ -648,7 +648,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$z=-1$ only",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$z^2-1=(z-1)(z+1)=0$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $z^2-1=(z-1)(z+1)=0$. Thus the value is $z=\\pm1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "z^2-1=(z-1)(z+1)=0"
@@ -863,7 +863,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$-13$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The product is $c/a=13$.",
+    "explanation": "By Vieta's formulas, for any quadratic equation $ax^2 + bx + c = 0$, the product of the roots is given by $\\frac{c}{a}$: The product is $c/a=13$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
     "formula": "c/a=13"

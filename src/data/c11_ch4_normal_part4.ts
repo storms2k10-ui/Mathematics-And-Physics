@@ -324,7 +324,7 @@ export const C11_CH4_NORMAL_PART4: Question[] = [
     "option_d": "$\\frac{3}{2}$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$a/(1-r)=3a/2$, so $r=1/3$.",
+    "explanation": "The sum to infinity is $S_\\infty = \\frac{a}{1 - r} = \\frac{3a}{2}$. Dividing both sides by $a$ gives $\\frac{1}{1 - r} = \\frac{3}{2} \\implies 1 - r = \\frac{2}{3} \\implies r = 1 - \\frac{2}{3} = \\frac{1}{3}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal"
   },
@@ -347,7 +347,7 @@ export const C11_CH4_NORMAL_PART4: Question[] = [
     "option_d": "$2$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$a/(1-r)=2a$, giving $r=1/2$.",
+    "explanation": "Given $S_\\infty = \\frac{a}{1 - r} = 2a$. Dividing both sides by $a$ gives $\\frac{1}{1 - r} = 2 \\implies 1 - r = \\frac{1}{2} \\implies r = 1 - \\frac{1}{2} = \\frac{1}{2}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal"
   },
@@ -508,7 +508,7 @@ export const C11_CH4_NORMAL_PART4: Question[] = [
     "option_d": "$9,27$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$2r^3=54$, giving $r=3$.",
+    "explanation": "Inserting $2$ geometric means between $a = 2$ and $b = 54$ gives a GP with $a_4 = 2r^3 = 54 \\implies r^3 = 27 \\implies r = 3$. Thus the two geometric means are $2(3) = 6$ and $6(3) = 18$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal"
   },

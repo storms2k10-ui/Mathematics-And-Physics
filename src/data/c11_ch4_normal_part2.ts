@@ -25,7 +25,7 @@ export const C11_CH4_NORMAL_PART2: Question[] = [
     "option_d": "$12$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$\\frac{3n(n+1)}{2}=165$, so $n(n+1)=110$.",
+    "explanation": "The series is $3(1 + 2 + 3 + \\dots + n) = 3 \\cdot \\frac{n(n+1)}{2} = 165$. Dividing by $3$ gives $\\frac{n(n+1)}{2} = 55 \\implies n(n+1) = 110 \\implies n^2 + n - 110 = 0 \\implies (n - 10)(n + 11) = 0$. Since $n$ must be a positive integer, $n = 10$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -186,7 +186,7 @@ export const C11_CH4_NORMAL_PART2: Question[] = [
     "option_d": "$22$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$n(n+1)/2=210$, so $n(n+1)=420$.",
+    "explanation": "The formula for the $n$-th triangular number is $T_n = \\frac{n(n+1)}{2} = 210$. Multiplying by $2$ gives $n(n+1) = 420 \\implies n^2 + n - 420 = 0 \\implies (n - 20)(n + 21) = 0$. Since $n > 0$, $n = 20$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -646,7 +646,7 @@ export const C11_CH4_NORMAL_PART2: Question[] = [
     "option_d": "$3,9,27$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$2r^4=162$, so $r=3$.",
+    "explanation": "Inserting $3$ geometric means between $a = 2$ and $b = 162$ gives a GP of $5$ terms where $a_5 = ar^4 = 162 \\implies 2r^4 = 162 \\implies r^4 = 81 \\implies r = 3$. Hence the three geometric means are $2(3) = 6$, $6(3) = 18$, and $18(3) = 54$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -669,7 +669,7 @@ export const C11_CH4_NORMAL_PART2: Question[] = [
     "option_d": "$18,54$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$4r^3=108$, so $r=3$.",
+    "explanation": "Inserting $2$ geometric means between $a = 4$ and $b = 108$ gives a GP of $4$ terms where $a_4 = ar^3 = 108 \\implies 4r^3 = 108 \\implies r^3 = 27 \\implies r = 3$. Hence the two geometric means are $4(3) = 12$ and $12(3) = 36$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -1037,7 +1037,7 @@ export const C11_CH4_NORMAL_PART2: Question[] = [
     "option_d": "$\\frac{4}{5}$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$20=12/(1-r)$, giving $r=2/5$.",
+    "explanation": "The sum to infinity of a convergent geometric series is $S_\\infty = \\frac{a}{1 - r}$. Setting $20 = \\frac{12}{1 - r} \\implies 1 - r = \\frac{12}{20} = \\frac{3}{5} \\implies r = 1 - \\frac{3}{5} = \\frac{2}{5}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

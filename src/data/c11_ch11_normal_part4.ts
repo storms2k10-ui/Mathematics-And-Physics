@@ -94,7 +94,7 @@ export const C11_CH11_NORMAL_PART4: Question[] = [
     "option_d": "$4$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$r=(5+12-13)/2=2$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $r=(5+12-13)/2=2$, which yields $2$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -209,7 +209,7 @@ export const C11_CH11_NORMAL_PART4: Question[] = [
     "option_d": "$\\frac{5}{2}$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$a=2R\\sin A=10(1/2)=5$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $a=2R\\sin A=10(1/2)=5$, which yields $5$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -232,7 +232,7 @@ export const C11_CH11_NORMAL_PART4: Question[] = [
     "option_d": "$8$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$a=2R\\sin90^\\circ=8$.",
+    "explanation": "Applying the Pythagorean theorem $a^2 + b^2 = c^2$: $a=2R\\sin90^\\circ=8$. Thus the side length is $8$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -370,7 +370,7 @@ export const C11_CH11_NORMAL_PART4: Question[] = [
     "option_d": "$6$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$r=\\Delta/s=48/16=3$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $r=\\Delta/s=48/16=3$, which yields $3$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -554,7 +554,7 @@ export const C11_CH11_NORMAL_PART4: Question[] = [
     "option_d": "$6$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$s=16$, so $r=48/16=3$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $s=16$, so $r=48/16=3$, which yields $3$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -646,7 +646,7 @@ export const C11_CH11_NORMAL_PART4: Question[] = [
     "option_d": "$3.5$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$h=2(42)/12=7$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $h=2(42)/12=7$, which yields $7$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -761,7 +761,7 @@ export const C11_CH11_NORMAL_PART4: Question[] = [
     "option_d": "$6\\sqrt{3}$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$(\\sqrt{3}/4)a^2=9\\sqrt{3}$ gives $a^2=36$.",
+    "explanation": "The area of an equilateral triangle with side length $a$ is given by $A = \\frac{\\sqrt{3}}{4}a^2$. Setting $\\frac{\\sqrt{3}}{4}a^2 = 9\\sqrt{3} \\implies a^2 = 9 \\times 4 = 36 \\implies a = \\sqrt{36} = 6$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -945,7 +945,7 @@ export const C11_CH11_NORMAL_PART4: Question[] = [
     "option_d": "$6$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$r=(7+24-25)/2=3$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $r=(7+24-25)/2=3$, which yields $3$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

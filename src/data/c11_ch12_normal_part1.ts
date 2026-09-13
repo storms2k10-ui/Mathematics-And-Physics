@@ -738,7 +738,7 @@ export const C11_CH12_NORMAL_PART1: Question[] = [
     "option_d": "$2\\pi/3$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Period $=2\\pi/3$.",
+    "explanation": "The fundamental period of a sinusoidal function $f(x) = A\\cos(kx + \\phi)$ or $A\\sin(kx + \\phi)$ is $T = \\frac{2\\pi}{|k|}$. Here $k$ gives period $2\\pi/3$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

@@ -701,7 +701,7 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "option_c": "$x=1, y=5$",
     "option_d": "$x=5, y=1$",
     "correct_answer": "B",
-    "explanation": "$(x-y) + (x+y)i = 1+5i \\implies x-y=1$ and $x+y=5$. Adding gives $2x=6 \\implies x=3$, so $y=2$.",
+    "explanation": "Expanding the product: $(x + iy)(1 + i) = (x - y) + (x + y)i = 1 + 5i$. Equating real and imaginary parts gives $x - y = 1$ and $x + y = 5$. Adding these two equations yields $2x = 6 \\implies x = 3$, and substituting into $x + y = 5$ gives $y = 5 - 3 = 2$. Thus $x = 3, y = 2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },

@@ -141,7 +141,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$24$",
     "option_d": "$36$",
     "correct_answer": "B",
-    "explanation": "$a_5=5^2+1=26$.",
+    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $a_5=5^2+1=26$. Thus the value is $26$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -157,7 +157,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$17$",
     "option_d": "$23$",
     "correct_answer": "A",
-    "explanation": "$a_7=3(7)-2=19$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $a_7=3(7)-2=19$, which yields $19$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -205,7 +205,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$15$",
     "option_d": "$8$",
     "correct_answer": "A",
-    "explanation": "$T_4=\\frac{4(5)}{2}=10$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $T_4=\\frac{4(5)}{2}=10$, which yields $10$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -237,7 +237,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$21$",
     "option_d": "$28$",
     "correct_answer": "C",
-    "explanation": "$T_6=\\frac{6(7)}{2}=21$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $T_6=\\frac{6(7)}{2}=21$, which yields $21$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -317,7 +317,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$6$",
     "option_d": "$4$",
     "correct_answer": "D",
-    "explanation": "$1+2+1=4=2^2$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $1+2+1=4=2^2$, which yields $4$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -349,7 +349,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$7$",
     "option_d": "$11$",
     "correct_answer": "B",
-    "explanation": "$11-7=15-11=4$.",
+    "explanation": "In an arithmetic progression, the common difference $d$ is the difference between any term and its predecessor: $11-7=15-11=4$. Thus $d = $4$$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -397,7 +397,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$40$",
     "option_d": "$35$",
     "correct_answer": "A",
-    "explanation": "$a_{10}=3+9(4)=39$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $a_{10}=3+9(4)=39$, which yields $39$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -413,7 +413,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$65$",
     "option_d": "$68$",
     "correct_answer": "B",
-    "explanation": "$a_{20}=5+19(3)=62$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $a_{20}=5+19(3)=62$, which yields $62$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -445,7 +445,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$3n+1$",
     "option_d": "$3n-1$",
     "correct_answer": "D",
-    "explanation": "$a_n=2+(n-1)3=3n-1$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $a_n=2+(n-1)3=3n-1$, which yields $3n-1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -477,7 +477,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "13th",
     "option_d": "15th",
     "correct_answer": "B",
-    "explanation": "$4+(n-1)5=69$ gives $n-1=13$, so $n=14$.",
+    "explanation": "In the arithmetic progression $4, 9, 14, 19, \\dots$, the first term is $a = 4$ and common difference is $d = 5$. Using $a_n = a + (n-1)d = 69 \\implies 4 + 5(n-1) = 69 \\implies 5(n-1) = 65 \\implies n - 1 = 13 \\implies n = 14$. Thus $69$ is the 14th term.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -493,7 +493,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "15th",
     "option_d": "14th",
     "correct_answer": "C",
-    "explanation": "$3+4(n-1)=59$ gives $n=15$.",
+    "explanation": "In the arithmetic progression $3, 7, 11, \\dots$, $a = 3$ and $d = 4$. Using $a_n = 3 + 4(n-1) = 59 \\implies 4(n-1) = 56 \\implies n - 1 = 14 \\implies n = 15$. Thus $59$ is the 15th term.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -509,7 +509,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "17th",
     "option_d": "16th",
     "correct_answer": "D",
-    "explanation": "$20-3(n-1)=-25$ gives $n-1=15$, so $n=16$.",
+    "explanation": "In the progression $20, 17, 14, \\dots$, $a = 20$ and $d = -3$. Setting $a_n = 20 - 3(n-1) = -25 \\implies -3(n-1) = -45 \\implies n - 1 = 15 \\implies n = 16$. Thus $-25$ is the 16th term.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -557,7 +557,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$42$",
     "option_d": "$40$",
     "correct_answer": "C",
-    "explanation": "$a_8=7+7(5)=42$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $a_8=7+7(5)=42$, which yields $42$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -573,7 +573,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$2$",
     "option_d": "$-2$",
     "correct_answer": "D",
-    "explanation": "$a_{12}=20+11(-2)=-2$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $a_{12}=20+11(-2)=-2$, which yields $-2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -589,7 +589,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$9$",
     "option_d": "$12$",
     "correct_answer": "A",
-    "explanation": "$a+4(3)=18$, so $a=6$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $a+4(3)=18$, so $a=6$, which yields $6$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -605,7 +605,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$5$",
     "option_d": "$6$",
     "correct_answer": "B",
-    "explanation": "$7+6d=31$, so $d=4$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $7+6d=31$, so $d=4$, which yields $4$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -621,7 +621,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$4$",
     "option_d": "$3$",
     "correct_answer": "C",
-    "explanation": "Subtracting $a+3d=14$ from $a+8d=34$ gives $5d=20$.",
+    "explanation": "For an AP, $a_4 = a + 3d = 14$ and $a_9 = a + 8d = 34$. Subtracting the first equation from the second eliminates $a$: $(a + 8d) - (a + 3d) = 34 - 14 \\implies 5d = 20 \\implies d = \\frac{20}{5} = 4$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -721,7 +721,7 @@ export const C11_CH4_ADVANCED_PART1: Question[] = [
     "option_c": "$15$",
     "option_d": "$6$",
     "correct_answer": "A",
-    "explanation": "Set $n=1$: $a_1=12-3=9$.",
+    "explanation": "Applying the relevant mathematical principles and simplifying: Set $n=1$: $a_1=12-3=9$. Therefore, the correct answer is $9$.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },

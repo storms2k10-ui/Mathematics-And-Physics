@@ -749,7 +749,7 @@ export const C10_CH14_QUESTIONS: Question[] = [
     option_c: '$81$',
     option_d: '$4.5$',
     correct_answer: 'B',
-    explanation: '$r = \\sqrt{9} = 3$.',
+    explanation: 'Comparing the equation $x^2 + y^2 = 9$ with the standard form of a circle centered at origin $x^2 + y^2 = r^2$, we have $r^2 = 9 \\implies r = \\sqrt{9} = 3$.',
     difficulty: 'Easy',
     formula: 'r = 3',
   },

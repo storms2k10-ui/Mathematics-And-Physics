@@ -531,7 +531,7 @@ export const C11_CH10_NORMAL_PART4: Question[] = [
     "option_d": "$-\\cos C$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$A+B=180^\\circ-C$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $A+B=180^\\circ-C$, which yields $\\sin C$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -600,7 +600,7 @@ export const C11_CH10_NORMAL_PART4: Question[] = [
     "option_d": "$0$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$\\sin180^\\circ=0$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $\\sin180^\\circ=0$, which yields $0$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -1014,7 +1014,7 @@ export const C11_CH10_NORMAL_PART4: Question[] = [
     "option_d": "$-17$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The amplitude is $\\sqrt{7^2+24^2}=25$.",
+    "explanation": "The expression $7\\cos x - 24\\sin x$ can be written as $R\\cos(x + \\alpha)$ where amplitude $R = \\sqrt{7^2 + (-24)^2} = \\sqrt{49 + 576} = \\sqrt{625} = 25$. The minimum value is $-R = -25$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

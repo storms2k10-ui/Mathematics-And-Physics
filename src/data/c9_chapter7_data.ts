@@ -181,7 +181,7 @@ export const C9_CH7_QUESTIONS: Question[] = [
     option_c: '$(-, -)$',
     option_d: '$(+, -)$',
     correct_answer: 'C',
-    explanation: 'In Quadrant III (lower left), $x < 0$ and $y < 0$.',
+    explanation: 'In Quadrant III of the Cartesian plane, both coordinates are negative ($x < 0$ and $y < 0$), giving signs $(-,-)$.',
     difficulty: 'Easy',
   },
   {
@@ -196,7 +196,7 @@ export const C9_CH7_QUESTIONS: Question[] = [
     option_c: '$(-, -)$',
     option_d: '$(+, -)$',
     correct_answer: 'D',
-    explanation: 'In Quadrant IV (lower right), $x > 0$ and $y < 0$.',
+    explanation: 'In Quadrant IV of the Cartesian plane, the $x$-coordinate is positive ($x > 0$) and the $y$-coordinate is negative ($y < 0$), yielding signs of $(+, -)$.',
     difficulty: 'Easy',
   },
   {
@@ -526,7 +526,7 @@ export const C9_CH7_QUESTIONS: Question[] = [
     option_c: '$2$',
     option_d: '$3$',
     correct_answer: 'B',
-    explanation: '$y = 2(0) + 1 = 1$.',
+    explanation: 'Substitute $x = 0$ into the linear relation: $y = 2(0) + 1 = 0 + 1 = 1$.',
     difficulty: 'Easy',
   },
   {
@@ -541,7 +541,7 @@ export const C9_CH7_QUESTIONS: Question[] = [
     option_c: '$5$',
     option_d: '$6$',
     correct_answer: 'C',
-    explanation: '$y = 2(2) + 1 = 5$.',
+    explanation: 'Substitute $x = 2$ into the linear relation: $y = 2(2) + 1 = 4 + 1 = 5$.',
     difficulty: 'Easy',
   },
   {

@@ -370,7 +370,7 @@ export const C11_CH5_NORMAL_PART3: Question[] = [
     "option_d": "$\\frac23$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$1/(1-x)^2=9/4$ gives $1-x=2/3$.",
+    "explanation": "Using the standard series differentiation identity $\\sum_{n=1}^\\infty n x^{n-1} = \\frac{1}{(1-x)^2}$, the given equation is $\\frac{1}{(1-x)^2} = \\frac{9}{4} \\implies 1 - x = \\sqrt{\\frac{4}{9}} = \\frac{2}{3} \\implies x = 1 - \\frac{2}{3} = \\frac{1}{3}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

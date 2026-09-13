@@ -485,7 +485,7 @@ export const C11_CH9_NORMAL_PART1: Question[] = [
     "option_d": "$12$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Put $y=0$, giving $2x=6$.",
+    "explanation": "To find the $x$-intercept, substitute $y = 0$ into $2x + y = 6 \\implies 2x + 0 = 6 \\implies 2x = 6 \\implies x = \\frac{6}{2} = 3$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },
@@ -807,7 +807,7 @@ export const C11_CH9_NORMAL_PART1: Question[] = [
     "option_d": "$(12,0), (0,12)$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Setting $y=0$ gives $x=4$, and setting $x=0$ gives $y=6$.",
+    "explanation": "Setting $y = 0$ yields $3x = 12 \\implies x = 4$, giving the $x$-intercept $(4, 0)$. Setting $x = 0$ yields $2y = 12 \\implies y = 6$, giving the $y$-intercept $(0, 6)$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },

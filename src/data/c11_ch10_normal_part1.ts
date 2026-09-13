@@ -232,7 +232,7 @@ export const C11_CH10_NORMAL_PART1: Question[] = [
     "option_d": "$-\\cos\\theta$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Sine is an odd function.",
+    "explanation": "By the symmetry properties of trigonometric functions on the Cartesian circle, sine is an odd function satisfying $\\sin(-\\theta) = -\\sin\\theta$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },

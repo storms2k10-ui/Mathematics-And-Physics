@@ -205,7 +205,7 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_c": "7th",
     "option_d": "8th",
     "correct_answer": "B",
-    "explanation": "$2(3^{n-1})=486$ gives $3^{n-1}=243=3^5$, so $n=6$.",
+    "explanation": "In the geometric sequence $2, 6, 18, \\dots$, first term $a = 2$ and common ratio $r = 3$. Setting $a_n = a r^{n-1} = 2(3^{n-1}) = 486 \\implies 3^{n-1} = 243 = 3^5 \\implies n - 1 = 5 \\implies n = 6$. Hence $486$ is the 6th term.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },
@@ -221,7 +221,7 @@ export const C11_CH4_ADVANCED_PART3: Question[] = [
     "option_c": "9th",
     "option_d": "10th",
     "correct_answer": "C",
-    "explanation": "$256=2^8$, and the $n$th term is $2^{n-1}$, so $n=9$.",
+    "explanation": "In the geometric progression $1, 2, 4, 8, \\dots$, $a = 1$ and $r = 2$. The $n$-th term is $a_n = 2^{n-1} = 256 = 2^8 \\implies n - 1 = 8 \\implies n = 9$. Thus $256$ is the 9th term.",
     "difficulty": "Hard",
     "difficulty_tier": "Advanced"
   },

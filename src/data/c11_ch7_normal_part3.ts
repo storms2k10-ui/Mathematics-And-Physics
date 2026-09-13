@@ -324,7 +324,7 @@ export const C11_CH7_NORMAL_PART3: Question[] = [
     "option_d": "$15$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The exponent is $12-r$; setting it equal to seven gives $r=5$.",
+    "explanation": "The general term in $(x^2 + x)^6$ is $T_{r+1} = \\binom{6}{r}(x^2)^{6-r}(x)^r = \\binom{6}{r} x^{12-2r+r} = \\binom{6}{r} x^{12-r}$. Setting $12 - r = 7 \\implies r = 5$. Thus the coefficient of $x^7$ is $\\binom{6}{5} = 6$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

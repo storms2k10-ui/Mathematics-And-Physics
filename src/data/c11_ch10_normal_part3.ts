@@ -117,7 +117,7 @@ export const C11_CH10_NORMAL_PART3: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$3\\theta=90^\\circ$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $3\\theta=90^\\circ$, which yields $1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -140,7 +140,7 @@ export const C11_CH10_NORMAL_PART3: Question[] = [
     "option_d": "$0$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$3\\theta=180^\\circ$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $3\\theta=180^\\circ$, which yields $-1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -163,7 +163,7 @@ export const C11_CH10_NORMAL_PART3: Question[] = [
     "option_d": "$\\frac{1}{2}$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$3\\theta=90^\\circ$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $3\\theta=90^\\circ$, which yields $0$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -186,7 +186,7 @@ export const C11_CH10_NORMAL_PART3: Question[] = [
     "option_d": "$0$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$3\\theta=180^\\circ$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $3\\theta=180^\\circ$, which yields $0$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -416,7 +416,7 @@ export const C11_CH10_NORMAL_PART3: Question[] = [
     "option_d": "$-7$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Its amplitude is $\\sqrt{64+225}=17$.",
+    "explanation": "An expression of the linear combination form $a\\sin x + b\\cos x$ has amplitude $R = \\sqrt{a^2 + b^2} = \\sqrt{8^2 + (-15)^2} = \\sqrt{64 + 225} = \\sqrt{289} = 17$. The minimum value is $-R = -17$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -508,7 +508,7 @@ export const C11_CH10_NORMAL_PART3: Question[] = [
     "option_d": "$[0, 5]$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Its amplitude is five.",
+    "explanation": "Determining the extrema: the maximum and minimum values bound the range as Its amplitude is five, giving range $[-5, 5]$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -577,7 +577,7 @@ export const C11_CH10_NORMAL_PART3: Question[] = [
     "option_d": "$3$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The minimum is $2-5=-3$.",
+    "explanation": "Since $-1 \\le \\sin x, \\cos x \\le 1$, the minimum occurs at $-1$: The minimum is $2-5=-3$. Thus the minimum value is $-3$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -738,7 +738,7 @@ export const C11_CH10_NORMAL_PART3: Question[] = [
     "option_d": "$-\\frac{1}{8}$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Squaring gives $\\frac{3}{4}=1+2\\sin x\\cos x$.",
+    "explanation": "Squaring both sides of $\\sin x + \\cos x = \\frac{\\sqrt{3}}{2}$ gives $(\\sin x + \\cos x)^2 = \\left(\\frac{\\sqrt{3}}{2}\\right)^2 \\implies \\sin^2 x + \\cos^2 x + 2\\sin x\\cos x = \\frac{3}{4}$. Since $\\sin^2 x + \\cos^2 x = 1$, we have $1 + 2\\sin x\\cos x = \\frac{3}{4} \\implies 2\\sin x\\cos x = \\frac{3}{4} - 1 = -\\frac{1}{4} \\implies \\sin x\\cos x = -\\frac{1}{8}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -991,7 +991,7 @@ export const C11_CH10_NORMAL_PART3: Question[] = [
     "option_d": "$x=30^\\circ+90^\\circ n$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$2x=180^\\circ n$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $2x=180^\\circ n$, which yields $x=90^\\circ n$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -1014,7 +1014,7 @@ export const C11_CH10_NORMAL_PART3: Question[] = [
     "option_d": "$x=180^\\circ n$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$2x=360^\\circ n$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $2x=360^\\circ n$, which yields $x=180^\\circ n$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },

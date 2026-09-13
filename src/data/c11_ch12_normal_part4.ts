@@ -416,7 +416,7 @@ export const C11_CH12_NORMAL_PART4: Question[] = [
     "option_d": "$-\\sin^{-1}x$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Inverse sine is odd.",
+    "explanation": "Applying the relevant mathematical principles and simplifying: Inverse sine is odd. Therefore, the correct answer is $-\\sin^{-1}x$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal"
   },
@@ -462,7 +462,7 @@ export const C11_CH12_NORMAL_PART4: Question[] = [
     "option_d": "$\\sqrt{3}/2$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$x=\\cos(2\\pi/3)=-1/2$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $x=\\cos(2\\pi/3)=-1/2$, which yields $-1/2$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -485,7 +485,7 @@ export const C11_CH12_NORMAL_PART4: Question[] = [
     "option_d": "$x=\\sqrt{3}$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$x=\\tan(-\\pi/4)=-1$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $x=\\tan(-\\pi/4)=-1$, which yields $x=-1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -761,7 +761,7 @@ export const C11_CH12_NORMAL_PART4: Question[] = [
     "option_d": "No solution",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Taking sine gives $x=1$.",
+    "explanation": "Applying the relevant mathematical principles and simplifying: Taking sine gives $x=1$. Therefore, the correct answer is $x=1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -853,7 +853,7 @@ export const C11_CH12_NORMAL_PART4: Question[] = [
     "option_d": "No solution",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$\\cos\\pi=-1$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $\\cos\\pi=-1$, which yields $x=-1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -876,7 +876,7 @@ export const C11_CH12_NORMAL_PART4: Question[] = [
     "option_d": "$x=0$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$\\cot(\\pi/2)=0$.",
+    "explanation": "Evaluating the mathematical expression step-by-step: $\\cot(\\pi/2)=0$, which yields $x=0$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
@@ -899,7 +899,7 @@ export const C11_CH12_NORMAL_PART4: Question[] = [
     "option_d": "Infinitely many",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The only real intersection of $y=\\sin x$ and $y=x$ is $x=0$.",
+    "explanation": "Consider $f(x) = x - \\sin x$. Its derivative is $f'(x) = 1 - \\cos x \\ge 0$, which vanishes only at isolated points $x = 2k\\pi$, meaning $f(x)$ is strictly monotonically increasing on $\\mathbb{R}$. Since $f(0) = 0 - \\sin(0) = 0$, $x = 0$ is the unique real solution (One solution).",
     "difficulty": "Medium",
     "difficulty_tier": "Normal"
   },
