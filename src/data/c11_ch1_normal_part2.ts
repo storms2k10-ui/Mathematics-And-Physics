@@ -1,10 +1,5 @@
-import { Question } from '../types';
+import { Question } from "../types";
 
-/**
- * Class 11 Mathematics - Chapter 1: Complex Numbers
- * Difficulty: Normal
- * Part 2 (Q51 - Q100) (50 MCQs)
- */
 export const C11_CH1_NORMAL_PART2: Question[] = [
   {
     "id": "c11-ch1-normal-q51",
@@ -12,7 +7,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$|3+4i|=$:",
+    "question": "Evaluate $|3+4i|$:",
     "options": {
       "A": "$5$",
       "B": "$7$",
@@ -25,10 +20,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$1$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$|3+4i|=\\sqrt{3^2+4^2}=5$.",
+    "explanation": "For a complex number $z = a + bi$, the modulus is defined as $|z| = \\sqrt{a^2 + b^2}$. For $z = 3 + 4i$, $|3 + 4i| = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "|3+4i|=\\sqrt{3^2+4^2}=5"
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q52",
@@ -36,7 +31,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$|-5+12i|=$:",
+    "question": "Evaluate $|-5+12i|$:",
     "options": {
       "A": "$7$",
       "B": "$17$",
@@ -49,10 +44,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$169$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$\\sqrt{(-5)^2+12^2}=\\sqrt{169}=13$.",
+    "explanation": "For $z = -5 + 12i$, the modulus is $|z| = \\sqrt{(-5)^2 + 12^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\sqrt{(-5)^2+12^2}=\\sqrt{169}=13"
+    "formula": "$|-a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q53",
@@ -60,7 +55,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$|1-i|=$:",
+    "question": "Evaluate $|1-i|$:",
     "options": {
       "A": "$1$",
       "B": "$\\sqrt2$",
@@ -73,10 +68,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$0$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$|1-i|=\\sqrt{1^2+(-1)^2}=\\sqrt2$.",
+    "explanation": "For $z = 1 - i$, the real part is $1$ and the imaginary part is $-1$. Thus $|1 - i| = \\sqrt{1^2 + (-1)^2} = \\sqrt{1 + 1} = \\sqrt{2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "|1-i|=\\sqrt{1^2+(-1)^2}=\\sqrt2"
+    "formula": "$|a - bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q54",
@@ -84,7 +79,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$|(1+i)^2|=$:",
+    "question": "Evaluate $|(1+i)^2|$:",
     "options": {
       "A": "$4$",
       "B": "$\\sqrt2$",
@@ -97,10 +92,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$2$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Since $(1+i)^2=2i$, its modulus is $2$.",
+    "explanation": "Using the property $|z^n| = |z|^n$: $|1 + i| = \\sqrt{1^2 + 1^2} = \\sqrt{2}$. Therefore, $|(1 + i)^2| = |1 + i|^2 = (\\sqrt{2})^2 = 2$. Alternatively, $(1 + i)^2 = 2i \\implies |2i| = 2$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(1+i)^2=2i"
+    "formula": "$|z^n| = |z|^n$"
   },
   {
     "id": "c11-ch1-normal-q55",
@@ -108,7 +103,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z\\bar{z}=25$, then $|z|=$:",
+    "question": "If $z\\bar{z}=25$, then $|z|$ equals:",
     "options": {
       "A": "$5$",
       "B": "$25$",
@@ -121,10 +116,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$625$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Since $z\\bar{z}=|z|^2$, $|z|=\\sqrt{25}=5$; modulus cannot be negative.",
+    "explanation": "For any complex number $z$, $z\\bar{z} = |z|^2$. Given $z\\bar{z} = 25$, we have $|z|^2 = 25$. Since the modulus is always non-negative ($|z| \\ge 0$), $|z| = \\sqrt{25} = 5$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z\\bar{z}=|z|^2"
+    "formula": "$z\\bar{z} = |z|^2 \\implies |z| = \\sqrt{z\\bar{z}}$"
   },
   {
     "id": "c11-ch1-normal-q56",
@@ -132,7 +127,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$|z_1z_2|=$:",
+    "question": "Evaluate $|z_1z_2|$:",
     "options": {
       "A": "$|z_1|+|z_2|$",
       "B": "$|z_1|-|z_2|$",
@@ -145,9 +140,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$\\frac{|z_1|}{|z_2|}$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The modulus of a product equals the product of the moduli.",
+    "explanation": "By the multiplicative property of the modulus, the modulus of a product of two complex numbers is the product of their individual moduli: $|z_1 z_2| = |z_1||z_2|$.",
     "difficulty": "Medium",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$|z_1 z_2| = |z_1| \\cdot |z_2|$"
   },
   {
     "id": "c11-ch1-normal-q57",
@@ -155,7 +151,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "For $z_2\\neq0$, $\\left|\\frac{z_1}{z_2}\\right|=$:",
+    "question": "For $z_2\\neq0$, $\\left|\\frac{z_1}{z_2}\\right|$ equals:",
     "options": {
       "A": "$|z_1||z_2|$",
       "B": "$\\frac{|z_1|}{|z_2|}$",
@@ -168,9 +164,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$|z_1|+|z_2|$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The modulus of a quotient equals the quotient of the moduli.",
+    "explanation": "For any two complex numbers $z_1$ and $z_2$ with $z_2 \\neq 0$, the modulus of a quotient is the quotient of the moduli: $\\left|\\frac{z_1}{z_2}\\right| = \\frac{|z_1|}{|z_2|}$.",
     "difficulty": "Medium",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$\\left|\\frac{z_1}{z_2}\\right| = \\frac{|z_1|}{|z_2|}$"
   },
   {
     "id": "c11-ch1-normal-q58",
@@ -191,10 +188,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$|\\bar{z}|=|z|$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Changing the sign of the imaginary part does not change $a^2+b^2$.",
+    "explanation": "For $z = a + bi$, $|z| = \\sqrt{a^2 + b^2}$. Its conjugate is $\\bar{z} = a - bi$, whose modulus is $|\\bar{z}| = \\sqrt{a^2 + (-b)^2} = \\sqrt{a^2 + b^2} = |z|$. Thus $|\\bar{z}| = |z|$ holds for all $z \\in \\mathbb{C}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "a^2+b^2"
+    "formula": "$|z| = |\\bar{z}| = |-z| = |-\\bar{z}|$"
   },
   {
     "id": "c11-ch1-normal-q59",
@@ -202,7 +199,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "For $z\\neq0$, $|z^{-1}|=$:",
+    "question": "For $z\\neq0$, $|z^{-1}|$ equals:",
     "options": {
       "A": "$\\frac{1}{|z|}$",
       "B": "$-|z|$",
@@ -215,10 +212,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$|z|^2$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Using the quotient rule, $\\left|\\frac{1}{z}\\right|=\\frac{|1|}{|z|}=\\frac{1}{|z|}$.",
+    "explanation": "For any non-zero complex number $z \\neq 0$, $z \\cdot z^{-1} = 1$. Taking the modulus on both sides gives $|z| |z^{-1}| = |1| = 1 \\implies |z^{-1}| = \\frac{1}{|z|}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\left|\\frac{1}{z}\\right|=\\frac{|1|}{|z|}=\\frac{1}{|z|}"
+    "formula": "$|z^{-1}| = \\frac{1}{|z|}$"
   },
   {
     "id": "c11-ch1-normal-q60",
@@ -226,7 +223,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$|2z|=$:",
+    "question": "Evaluate $|2z|$:",
     "options": {
       "A": "$|z|$",
       "B": "$4|z|$",
@@ -239,10 +236,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$|z|^2$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The modulus property gives $|2z|=|2||z|=2|z|$.",
+    "explanation": "For any complex number $z$ and real scalar $k \\ge 0$, $|kz| = k|z|$. Here $k = 2$, so $|2z| = 2|z|$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "|2z|=|2||z|=2|z|"
+    "formula": "$|k z| = |k| \\cdot |z| \\quad (k \\in \\mathbb{R})$"
   },
   {
     "id": "c11-ch1-normal-q61",
@@ -250,7 +247,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=a+bi$, then $|z|=$:",
+    "question": "If $z=a+bi$, then $|z|$ equals:",
     "options": {
       "A": "$a+b$",
       "B": "$\\sqrt{a^2+b^2}$",
@@ -263,10 +260,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$\\sqrt{a^2-b^2}$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The modulus is the distance of $(a,b)$ from the origin.",
+    "explanation": "By definition, the modulus (absolute value) of a complex number $z = a + bi$ represents the Euclidean distance from the origin $(0, 0)$ in the complex plane, given by $|z| = \\sqrt{a^2 + b^2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(a,b)"
+    "formula": "$|z| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q62",
@@ -274,7 +271,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $|3+yi|=5$, then $y=$:",
+    "question": "If $|3+yi|=5$, then $y$ equals:",
     "options": {
       "A": "$4$",
       "B": "$-4$",
@@ -287,10 +284,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$\\pm4$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$9+y^2=25$, so $y^2=16$ and $y=\\pm4$.",
+    "explanation": "Given $|3 + yi| = 5$, we have $\\sqrt{3^2 + y^2} = 5$. Squaring both sides: $9 + y^2 = 25 \\implies y^2 = 16 \\implies y = \\pm 4$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "9+y^2=25"
+    "formula": "$|x + iy|^2 = x^2 + y^2$"
   },
   {
     "id": "c11-ch1-normal-q63",
@@ -298,7 +295,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $|x+4i|=5$, then $x=$:",
+    "question": "If $|x+4i|=5$, then $x$ equals:",
     "options": {
       "A": "$\\pm3$",
       "B": "$\\pm4$",
@@ -311,10 +308,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$3$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The modulus is $|x + 4i| = \\sqrt{x^2 + 4^2} = \\sqrt{x^2 + 16} = 5$. Squaring both sides yields $x^2 + 16 = 25 \\implies x^2 = 9 \\implies x = \\pm 3$.",
+    "explanation": "Given $|x + 4i| = 5$, we have $\\sqrt{x^2 + 4^2} = 5$. Squaring both sides: $x^2 + 16 = 25 \\implies x^2 = 9 \\implies x = \\pm 3$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "x^2+16=25"
+    "formula": "$|x + iy|^2 = x^2 + y^2$"
   },
   {
     "id": "c11-ch1-normal-q64",
@@ -335,10 +332,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$1+\\sqrt3$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$\\sqrt{1^2+(\\sqrt3)^2}=\\sqrt4=2$.",
+    "explanation": "For $z = 1 + \\sqrt{3}i$, the modulus is $|z| = \\sqrt{1^2 + (\\sqrt{3})^2} = \\sqrt{1 + 3} = \\sqrt{4} = 2$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\sqrt{1^2+(\\sqrt3)^2}=\\sqrt4=2"
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q65",
@@ -359,10 +356,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$5i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Their moduli are $5,\\sqrt{32},6,5$, respectively, and $6$ is greatest.",
+    "explanation": "Evaluating the modulus of each candidate: $|3 + 4i| = \\sqrt{9 + 16} = 5$, $|-5| = 5$, $|6| = 6$, and $|2 + 3i| = \\sqrt{4 + 9} = \\sqrt{13} \\approx 3.61$. Among these, $6$ has the greatest modulus.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "5,\\sqrt{32},6,5"
+    "formula": "$|z| = \\sqrt{\\operatorname{Re}(z)^2 + \\operatorname{Im}(z)^2}$"
   },
   {
     "id": "c11-ch1-normal-q66",
@@ -370,7 +367,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$|z|^2=$:",
+    "question": "Evaluate $|z|^2$:",
     "options": {
       "A": "$z+\\bar{z}$",
       "B": "$z-\\bar{z}$",
@@ -383,10 +380,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$z\\bar{z}$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "For $z=a+bi$, both expressions equal $a^2+b^2$.",
+    "explanation": "For $z = a + bi$, its conjugate is $\\bar{z} = a - bi$. Multiplying them gives $z\\bar{z} = (a + bi)(a - bi) = a^2 + b^2$. Since $|z| = \\sqrt{a^2 + b^2}$, we have $|z|^2 = a^2 + b^2 = z\\bar{z}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z=a+bi"
+    "formula": "$|z|^2 = z\\bar{z} = a^2 + b^2$"
   },
   {
     "id": "c11-ch1-normal-q67",
@@ -407,9 +404,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$|z+w|=|z-w|$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The length of a sum cannot exceed the sum of the individual lengths.",
+    "explanation": "The triangle inequality in the complex plane states that for any two complex numbers $z, w \\in \\mathbb{C}$, the length of any side of a triangle cannot exceed the sum of the lengths of the other two sides: $|z + w| \\le |z| + |w|$.",
     "difficulty": "Medium",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$|z_1 + z_2| \\le |z_1| + |z_2|$"
   },
   {
     "id": "c11-ch1-normal-q68",
@@ -430,9 +428,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$|z-w|\\leq|z|-|w|$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The difference between two moduli cannot exceed the modulus of their difference.",
+    "explanation": "The reverse triangle inequality states that the modulus of the difference of two complex numbers is at least the difference of their moduli: $||z| - |w|| \\le |z - w|$.",
     "difficulty": "Medium",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$|z_1 + z_2| \\ge \\big||z_1| - |z_2|\\big|$"
   },
   {
     "id": "c11-ch1-normal-q69",
@@ -440,7 +439,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $|z|=2$ and $|w|=3$, then $|zw|=$:",
+    "question": "If $|z|=2$ and $|w|=3$, then $|zw|$ equals:",
     "options": {
       "A": "$1$",
       "B": "$5$",
@@ -453,10 +452,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$9$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "By the modulus multiplication property for complex numbers, $|zw| = |z||w|$. Substituting the given values: $|zw|=|z||w|=2(3)=6$. Hence $|zw| = 6$.",
+    "explanation": "By the product rule for moduli: $|zw| = |z||w|$. Substituting $|z| = 2$ and $|w| = 3$ gives $|zw| = 2 \\times 3 = 6$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "|zw|=|z||w|=2(3)=6"
+    "formula": "$|z_1 z_2| = |z_1| \\cdot |z_2|$"
   },
   {
     "id": "c11-ch1-normal-q70",
@@ -464,7 +463,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $|z|=6$ and $|w|=2$, then $\\left|\\frac{z}{w}\\right|=$:",
+    "question": "If $|z|=6$ and $|w|=2$, then $\\left|\\frac{z}{w}\\right|$ equals:",
     "options": {
       "A": "$12$",
       "B": "$4$",
@@ -477,10 +476,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$3$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$\\left|\\frac{z}{w}\\right|=\\frac{6}{2}=3$.",
+    "explanation": "By the quotient rule for moduli: $\\left|\\frac{z}{w}\\right| = \\frac{|z|}{|w|}$. Substituting $|z| = 6$ and $|w| = 2$ gives $\\frac{6}{2} = 3$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\left|\\frac{z}{w}\\right|=\\frac{6}{2}=3"
+    "formula": "$\\left|\\frac{z_1}{z_2}\\right| = \\frac{|z_1|}{|z_2|}$"
   },
   {
     "id": "c11-ch1-normal-q71",
@@ -488,7 +487,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\operatorname{Re}(z)=$:",
+    "question": "For any complex number $z$, $\\operatorname{Re}(z)$ equals:",
     "options": {
       "A": "$\\frac{z+\\bar{z}}{2}$",
       "B": "$\\frac{z-\\bar{z}}{2}$",
@@ -501,10 +500,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$z+\\bar{z}$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Since $z+\\bar{z}=2\\operatorname{Re}(z)$, divide by $2$.",
+    "explanation": "Let $z = a + bi$. Then $\\bar{z} = a - bi$. Adding both yields $z + \\bar{z} = 2a = 2\\operatorname{Re}(z) \\implies \\operatorname{Re}(z) = \\frac{z + \\bar{z}}{2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z+\\bar{z}=2\\operatorname{Re}(z)"
+    "formula": "$\\operatorname{Re}(z) = \\frac{z + \\bar{z}}{2}$"
   },
   {
     "id": "c11-ch1-normal-q72",
@@ -512,7 +511,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\operatorname{Im}(z)=$:",
+    "question": "For any complex number $z$, $\\operatorname{Im}(z)$ equals:",
     "options": {
       "A": "$\\frac{z+\\bar{z}}{2i}$",
       "B": "$\\frac{z-\\bar{z}}{2}$",
@@ -525,10 +524,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$z-\\bar{z}$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Since $z-\\bar{z}=2i\\operatorname{Im}(z)$, divide by $2i$.",
+    "explanation": "Let $z = a + bi$. Then $\\bar{z} = a - bi$. Subtracting both yields $z - \\bar{z} = 2bi = 2i\\operatorname{Im}(z) \\implies \\operatorname{Im}(z) = \\frac{z - \\bar{z}}{2i}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z-\\bar{z}=2i\\operatorname{Im}(z)"
+    "formula": "$\\operatorname{Im}(z) = \\frac{z - \\bar{z}}{2i}$"
   },
   {
     "id": "c11-ch1-normal-q73",
@@ -536,7 +535,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$|z+\\bar{z}|=$:",
+    "question": "Evaluate $|z+\\bar{z}|$:",
     "options": {
       "A": "$2|\\operatorname{Im}z|$",
       "B": "$2|\\operatorname{Re}z|$",
@@ -549,10 +548,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$2|z|$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$z+\\bar{z}=2\\operatorname{Re}(z)$; taking modulus gives $2|\\operatorname{Re}(z)|$.",
+    "explanation": "Since $z + \\bar{z} = 2\\operatorname{Re}(z)$ is a purely real quantity, its modulus is $|z + \\bar{z}| = |2\\operatorname{Re}(z)| = 2|\\operatorname{Re}(z)|$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z+\\bar{z}=2\\operatorname{Re}(z)"
+    "formula": "$z + \\bar{z} = 2\\operatorname{Re}(z) \\implies |z + \\bar{z}| = 2|\\operatorname{Re}(z)|$"
   },
   {
     "id": "c11-ch1-normal-q74",
@@ -560,7 +559,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$|z-\\bar{z}|=$:",
+    "question": "Evaluate $|z-\\bar{z}|$:",
     "options": {
       "A": "$2|\\operatorname{Re}z|$",
       "B": "$|z|^2$",
@@ -573,10 +572,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$2|\\operatorname{Im}z|$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$z-\\bar{z}=2i\\operatorname{Im}(z)$, whose modulus is $2|\\operatorname{Im}(z)|$.",
+    "explanation": "Since $z - \\bar{z} = 2i\\operatorname{Im}(z)$, taking the modulus gives $|z - \\bar{z}| = |2i\\operatorname{Im}(z)| = |2i| |\\operatorname{Im}(z)| = 2|\\operatorname{Im}(z)|$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z-\\bar{z}=2i\\operatorname{Im}(z)"
+    "formula": "$z - \\bar{z} = 2i\\operatorname{Im}(z) \\implies |z - \\bar{z}| = 2|\\operatorname{Im}(z)|$"
   },
   {
     "id": "c11-ch1-normal-q75",
@@ -584,7 +583,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=3-4i$, then $\\frac{z}{|z|}=$:",
+    "question": "If $z=3-4i$, then $\\frac{z}{|z|}$ equals:",
     "options": {
       "A": "$\\frac{3}{5}-\\frac{4}{5}i$",
       "B": "$\\frac{4}{5}-\\frac{3}{5}i$",
@@ -597,10 +596,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$\\frac{3}{5}+\\frac{4}{5}i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Since $|z|=5$, divide both parts of $z$ by $5$.",
+    "explanation": "For $z = 3 - 4i$, the modulus is $|z| = \\sqrt{3^2 + (-4)^2} = 5$. Dividing by $|z|$ yields the unit complex number $\\frac{z}{|z|} = \\frac{3 - 4i}{5} = \\frac{3}{5} - \\frac{4}{5}i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "|z|=5"
+    "formula": "$\\hat{z} = \\frac{z}{|z|}, \\quad |\\hat{z}| = 1$"
   },
   {
     "id": "c11-ch1-normal-q76",
@@ -621,10 +620,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$z^2=1$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Unit modulus means $|z|=1$, so $z\\bar{z}=|z|^2=1$.",
+    "explanation": "A complex number has unit modulus if $|z| = 1$. Squaring gives $|z|^2 = 1$. Since $|z|^2 = z\\bar{z}$, this condition is $z\\bar{z} = 1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "|z|=1"
+    "formula": "$|z| = 1 \\iff z\\bar{z} = 1$"
   },
   {
     "id": "c11-ch1-normal-q77",
@@ -645,10 +644,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$7$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The difference is $3+4i$, whose modulus is $5$.",
+    "explanation": "The distance between two points $z_1 = 1 + 2i$ and $z_2 = 4 + 6i$ in the Argand plane is $|z_2 - z_1| = |(4 + 6i) - (1 + 2i)| = |3 + 4i| = \\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "3+4i"
+    "formula": "$d(z_1, z_2) = |z_1 - z_2| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$"
   },
   {
     "id": "c11-ch1-normal-q78",
@@ -669,10 +668,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$3+i$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Average the coordinates: $\\left(\\frac{1+5}{2},\\frac{3-1}{2}\\right)=(3,1)$.",
+    "explanation": "The midpoint of the line segment joining $z_1 = 1 + 3i$ and $z_2 = 5 - i$ is given by the average: $\\frac{z_1 + z_2}{2} = \\frac{(1 + 3i) + (5 - i)}{2} = \\frac{6 + 2i}{2} = 3 + i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\left(\\frac{1+5}{2},\\frac{3-1}{2}\\right)=(3,1)"
+    "formula": "$z_{\\text{mid}} = \\frac{z_1 + z_2}{2}$"
   },
   {
     "id": "c11-ch1-normal-q79",
@@ -693,10 +692,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$iz$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Reflection in the real axis changes $(a,b)$ to $(a,-b)$.",
+    "explanation": "Reflecting a complex number $z = a + bi$ across the real axis inverts the sign of its imaginary component from $b$ to $-b$, yielding $a - bi = \\bar{z}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(a,b)"
+    "formula": "$z \\mapsto \\bar{z} = a - bi \\quad \\text{(Reflection in real axis)}$"
   },
   {
     "id": "c11-ch1-normal-q80",
@@ -717,10 +716,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$iz$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Reflection changes $(a,b)$ to $(-a,b)$, represented by $-a+bi=-\\bar{z}$.",
+    "explanation": "Reflecting $z = a + bi$ across the imaginary axis inverts the sign of its real component from $a$ to $-a$, yielding $-a + bi = -(a - bi) = -\\bar{z}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(a,b)"
+    "formula": "$z \\mapsto -\\bar{z} = -a + bi \\quad \\text{(Reflection in imaginary axis)}$"
   },
   {
     "id": "c11-ch1-normal-q81",
@@ -741,10 +740,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$\\frac{-2+3i}{13}$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$\\frac{1}{2+3i}=\\frac{2-3i}{2^2+3^2}=\\frac{2-3i}{13}$.",
+    "explanation": "The multiplicative inverse of $z = 2 + 3i$ is $z^{-1} = \\frac{\\bar{z}}{|z|^2}$. Here $\\bar{z} = 2 - 3i$ and $|z|^2 = 2^2 + 3^2 = 13$, so $z^{-1} = \\frac{2 - 3i}{13}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{1}{2+3i}=\\frac{2-3i}{2^2+3^2}=\\frac{2-3i}{13}"
+    "formula": "$z^{-1} = \\frac{\\bar{z}}{|z|^2} = \\frac{a - bi}{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q82",
@@ -765,10 +764,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$i$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "The multiplicative inverse $z^{-1}$ of a complex number $z$ satisfies $z \\cdot z^{-1} = 1$. Since $(-i)(i)=-i^2=1$, the inverse is $i$.",
+    "explanation": "The multiplicative inverse of $-i$ is the number $w$ such that $(-i)w = 1$. Multiplying both sides by $i$: $(-i^2)w = i \\implies -(-1)w = i \\implies w = i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(-i)(i)=-i^2=1"
+    "formula": "$(-i)^{-1} = \\frac{1}{-i} = i$"
   },
   {
     "id": "c11-ch1-normal-q83",
@@ -776,7 +775,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac{1}{i}=$:",
+    "question": "Evaluate $\\frac{1}{i}$:",
     "options": {
       "A": "$-i$",
       "B": "$i$",
@@ -789,10 +788,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Multiply by $\\frac{i}{i}$: $\\frac{i}{i^2}=\\frac{i}{-1}=-i$.",
+    "explanation": "Multiplying numerator and denominator by $-i$: $\\frac{1}{i} = \\frac{-i}{i(-i)} = \\frac{-i}{-i^2} = \\frac{-i}{1} = -i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{i}{i}"
+    "formula": "$\\frac{1}{i} = -i$"
   },
   {
     "id": "c11-ch1-normal-q84",
@@ -800,7 +799,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac{i}{1+i}=$:",
+    "question": "Evaluate $\\frac{i}{1+i}$:",
     "options": {
       "A": "$\\frac{1-i}{2}$",
       "B": "$-\\frac{1+i}{2}$",
@@ -813,10 +812,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$\\frac{i(1-i)}{(1+i)(1-i)}=\\frac{i-i^2}{2}=\\frac{1+i}{2}$.",
+    "explanation": "Multiplying numerator and denominator by the conjugate $1 - i$: $\\frac{i}{1+i} = \\frac{i(1-i)}{(1+i)(1-i)} = \\frac{i - i^2}{1^2 - i^2} = \\frac{i - (-1)}{1 - (-1)} = \\frac{1 + i}{2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{i(1-i)}{(1+i)(1-i)}=\\frac{i-i^2}{2}=\\frac{1+i}{2}"
+    "formula": "$\\frac{z_1}{z_2} = \\frac{z_1 \\bar{z}_2}{|z_2|^2}$"
   },
   {
     "id": "c11-ch1-normal-q85",
@@ -824,7 +823,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac{3+4i}{1-2i}=$:",
+    "question": "Evaluate $\\frac{3+4i}{1-2i}$:",
     "options": {
       "A": "$1-2i$",
       "B": "$-1+2i$",
@@ -837,10 +836,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$2+i$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Multiply by $1+2i$: $\\frac{-5+10i}{5}=-1+2i$.",
+    "explanation": "Multiplying numerator and denominator by the conjugate $1 + 2i$: $\\frac{3+4i}{1-2i} = \\frac{(3+4i)(1+2i)}{(1-2i)(1+2i)} = \\frac{3 + 6i + 4i + 8i^2}{1^2 - (2i)^2} = \\frac{3 + 10i - 8}{1 + 4} = \\frac{-5 + 10i}{5} = -1 + 2i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "1+2i"
+    "formula": "$\\frac{z_1}{z_2} = \\frac{z_1 \\bar{z}_2}{|z_2|^2}$"
   },
   {
     "id": "c11-ch1-normal-q86",
@@ -848,7 +847,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac{5-i}{2+i}=$:",
+    "question": "Evaluate $\\frac{5-i}{2+i}$:",
     "options": {
       "A": "$\\frac{9+7i}{5}$",
       "B": "$\\frac{11-3i}{5}$",
@@ -861,10 +860,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$\\frac{9-7i}{5}$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Multiply by $2-i$: $\\frac{(5-i)(2-i)}{5}=\\frac{9-7i}{5}$.",
+    "explanation": "Multiplying numerator and denominator by the conjugate $2 - i$: $\\frac{5-i}{2+i} = \\frac{(5-i)(2-i)}{(2+i)(2-i)} = \\frac{10 - 5i - 2i + i^2}{2^2 - i^2} = \\frac{10 - 7i - 1}{4 + 1} = \\frac{9 - 7i}{5}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "2-i"
+    "formula": "$\\frac{z_1}{z_2} = \\frac{z_1 \\bar{z}_2}{|z_2|^2}$"
   },
   {
     "id": "c11-ch1-normal-q87",
@@ -872,7 +871,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac{1-i}{1+i}=$:",
+    "question": "Evaluate $\\frac{1-i}{1+i}$:",
     "options": {
       "A": "$i$",
       "B": "$1$",
@@ -885,10 +884,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$\\frac{(1-i)^2}{2}=\\frac{-2i}{2}=-i$.",
+    "explanation": "Multiplying numerator and denominator by $1 - i$: $\\frac{1-i}{1+i} = \\frac{(1-i)^2}{(1+i)(1-i)} = \\frac{1 - 2i + i^2}{1^2 - i^2} = \\frac{1 - 2i - 1}{1 + 1} = \\frac{-2i}{2} = -i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{(1-i)^2}{2}=\\frac{-2i}{2}=-i"
+    "formula": "$\\frac{1 - i}{1 + i} = -i$"
   },
   {
     "id": "c11-ch1-normal-q88",
@@ -896,7 +895,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac{1+i}{1-i}=$:",
+    "question": "Evaluate $\\frac{1+i}{1-i}$:",
     "options": {
       "A": "$i$",
       "B": "$-i$",
@@ -909,10 +908,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$\\frac{(1+i)^2}{2}=\\frac{2i}{2}=i$.",
+    "explanation": "Multiplying numerator and denominator by $1 + i$: $\\frac{1+i}{1-i} = \\frac{(1+i)^2}{(1-i)(1+i)} = \\frac{1 + 2i + i^2}{1^2 - i^2} = \\frac{1 + 2i - 1}{1 + 1} = \\frac{2i}{2} = i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{(1+i)^2}{2}=\\frac{2i}{2}=i"
+    "formula": "$\\frac{1 + i}{1 - i} = i$"
   },
   {
     "id": "c11-ch1-normal-q89",
@@ -920,7 +919,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=a+bi\\neq0$, then $z^{-1}=$:",
+    "question": "If $z=a+bi\\neq0$, then $z^{-1}$ equals:",
     "options": {
       "A": "$\\frac{a+bi}{a^2+b^2}$",
       "B": "$\\frac{a-bi}{a^2+b^2}$",
@@ -933,10 +932,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$\\frac{1}{a+b}i$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Rationalizing $\\frac{1}{a+bi}$ gives $\\frac{a-bi}{a^2+b^2}$.",
+    "explanation": "For any non-zero complex number $z = a + bi$, the multiplicative inverse is $z^{-1} = \\frac{1}{z} = \\frac{\\bar{z}}{|z|^2} = \\frac{a - bi}{a^2 + b^2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{1}{a+bi}"
+    "formula": "$z^{-1} = \\frac{\\bar{z}}{|z|^2}$"
   },
   {
     "id": "c11-ch1-normal-q90",
@@ -944,7 +943,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z^{-1}=2-i$, then $z=$:",
+    "question": "If $z^{-1}=2-i$, then $z$ equals:",
     "options": {
       "A": "$2+i$",
       "B": "$\\frac{2-i}{5}$",
@@ -957,10 +956,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$\\frac{2+i}{5}$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$z=\\frac{1}{2-i}=\\frac{2+i}{(2-i)(2+i)}=\\frac{2+i}{5}$.",
+    "explanation": "Since $z = (z^{-1})^{-1}$, we take the inverse of $2 - i$: $z = \\frac{1}{2-i} = \\frac{2+i}{(2-i)(2+i)} = \\frac{2+i}{2^2 + (-1)^2} = \\frac{2+i}{5}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z=\\frac{1}{2-i}=\\frac{2+i}{(2-i)(2+i)}=\\frac{2+i}{5}"
+    "formula": "$(z^{-1})^{-1} = z$"
   },
   {
     "id": "c11-ch1-normal-q91",
@@ -968,7 +967,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=1+i$, then $\\frac{z}{\\bar{z}}=$:",
+    "question": "If $z=1+i$, then $\\frac{z}{\\bar{z}}$ equals:",
     "options": {
       "A": "$i$",
       "B": "$-i$",
@@ -981,10 +980,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Multiplying numerator and denominator by the conjugate of the denominator: $\\frac{1+i}{1-i}=i$. Thus the value is $i$.",
+    "explanation": "For $z = 1 + i$, its conjugate is $\\bar{z} = 1 - i$. Then $\\frac{z}{\\bar{z}} = \\frac{1+i}{1-i} = \\frac{(1+i)^2}{1 - i^2} = \\frac{2i}{2} = i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{1+i}{1-i}=i"
+    "formula": "$\\frac{z}{\\bar{z}} = \\frac{z^2}{|z|^2}$"
   },
   {
     "id": "c11-ch1-normal-q92",
@@ -992,7 +991,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=1+i$, then $\\frac{\\bar{z}}{z}=$:",
+    "question": "If $z=1+i$, then $\\frac{\\bar{z}}{z}$ equals:",
     "options": {
       "A": "$i$",
       "B": "$1$",
@@ -1005,10 +1004,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Multiplying numerator and denominator by the conjugate of the denominator: $\\frac{1-i}{1+i}=-i$. Thus the value is $-i$.",
+    "explanation": "For $z = 1 + i$, its conjugate is $\\bar{z} = 1 - i$. Then $\\frac{\\bar{z}}{z} = \\frac{1-i}{1+i} = \\frac{(1-i)^2}{1 - i^2} = \\frac{-2i}{2} = -i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{1-i}{1+i}=-i"
+    "formula": "$\\frac{\\bar{z}}{z} = \\left(\\frac{z}{\\bar{z}}\\right)^{-1}$"
   },
   {
     "id": "c11-ch1-normal-q93",
@@ -1016,7 +1015,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=a+bi\\neq0$, then $\\frac{1}{z}+\\frac{1}{\\bar{z}}=$:",
+    "question": "If $z=a+bi\\neq0$, then $\\frac{1}{z}+\\frac{1}{\\bar{z}}$ equals:",
     "options": {
       "A": "$\\frac{2b}{a^2+b^2}$",
       "B": "$\\frac{2a}{a^2+b^2}$",
@@ -1029,10 +1028,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$2a$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Adding $\\frac{a-bi}{a^2+b^2}$ and $\\frac{a+bi}{a^2+b^2}$ gives the result.",
+    "explanation": "Combining terms with a common denominator: $\\frac{1}{z} + \\frac{1}{\\bar{z}} = \\frac{\\bar{z} + z}{z\\bar{z}}$. Substituting $z + \\bar{z} = 2a$ and $z\\bar{z} = a^2 + b^2$ gives $\\frac{2a}{a^2 + b^2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{a-bi}{a^2+b^2}"
+    "formula": "$\\frac{1}{z} + \\frac{1}{\\bar{z}} = \\frac{2\\operatorname{Re}(z)}{|z|^2}$"
   },
   {
     "id": "c11-ch1-normal-q94",
@@ -1040,7 +1039,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=a+bi\\neq0$, then $\\frac{1}{z}-\\frac{1}{\\bar{z}}=$:",
+    "question": "If $z=a+bi\\neq0$, then $\\frac{1}{z}-\\frac{1}{\\bar{z}}$ equals:",
     "options": {
       "A": "$\\frac{2a}{a^2+b^2}$",
       "B": "$\\frac{2bi}{a^2+b^2}$",
@@ -1053,10 +1052,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$\\frac{-2bi}{a^2+b^2}$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Subtracting the two reciprocals gives $\\frac{-2bi}{a^2+b^2}$.",
+    "explanation": "Combining terms with a common denominator: $\\frac{1}{z} - \\frac{1}{\\bar{z}} = \\frac{\\bar{z} - z}{z\\bar{z}}$. For $z = a + bi$ and $\\bar{z} = a - bi$, $\\bar{z} - z = -2bi$. Thus $\\frac{1}{z} - \\frac{1}{\\bar{z}} = \\frac{-2bi}{a^2 + b^2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{-2bi}{a^2+b^2}"
+    "formula": "$\\frac{1}{z} - \\frac{1}{\\bar{z}} = -\\frac{2i\\operatorname{Im}(z)}{|z|^2}$"
   },
   {
     "id": "c11-ch1-normal-q95",
@@ -1064,7 +1063,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "For $z=3+2i$, $\\frac{z+\\bar{z}}{z-\\bar{z}}=$:",
+    "question": "For $z=3+2i$, $\\frac{z+\\bar{z}}{z-\\bar{z}}$ equals:",
     "options": {
       "A": "$-\\frac{3}{2}i$",
       "B": "$\\frac{3}{2}i$",
@@ -1077,10 +1076,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$\\frac{2}{3}i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$\\frac{6}{4i}=\\frac{3}{2i}=-\\frac{3}{2}i$.",
+    "explanation": "For $z = 3 + 2i$, $z + \\bar{z} = 2\\operatorname{Re}(z) = 6$ and $z - \\bar{z} = 2i\\operatorname{Im}(z) = 4i$. Then $\\frac{z+\\bar{z}}{z-\\bar{z}} = \\frac{6}{4i} = \\frac{3}{2i} = \\frac{3(-i)}{2} = -\\frac{3}{2}i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{6}{4i}=\\frac{3}{2i}=-\\frac{3}{2}i"
+    "formula": "$\\frac{z + \\bar{z}}{z - \\bar{z}} = -i\\frac{\\operatorname{Re}(z)}{\\operatorname{Im}(z)}$"
   },
   {
     "id": "c11-ch1-normal-q96",
@@ -1088,7 +1087,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac{2+2i}{1+i}=$:",
+    "question": "Evaluate $\\frac{2+2i}{1+i}$:",
     "options": {
       "A": "$1$",
       "B": "$1+i$",
@@ -1101,10 +1100,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$2i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Since $2+2i=2(1+i)$, the common factor cancels.",
+    "explanation": "Factoring out $2$ in the numerator gives $\\frac{2+2i}{1+i} = \\frac{2(1+i)}{1+i} = 2$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "2+2i=2(1+i)"
+    "formula": "$\\frac{k z}{z} = k$"
   },
   {
     "id": "c11-ch1-normal-q97",
@@ -1112,7 +1111,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac{3-3i}{1-i}=$:",
+    "question": "Evaluate $\\frac{3-3i}{1-i}$:",
     "options": {
       "A": "$3i$",
       "B": "$3$",
@@ -1125,10 +1124,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$1-i$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Since $3-3i=3(1-i)$, division gives $3$.",
+    "explanation": "Factoring out $3$ in the numerator gives $\\frac{3-3i}{1-i} = \\frac{3(1-i)}{1-i} = 3$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "3-3i=3(1-i)"
+    "formula": "$\\frac{k z}{z} = k$"
   },
   {
     "id": "c11-ch1-normal-q98",
@@ -1136,7 +1135,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac{4+2i}{2+i}=$:",
+    "question": "Evaluate $\\frac{4+2i}{2+i}$:",
     "options": {
       "A": "$1+i$",
       "B": "$2+i$",
@@ -1149,10 +1148,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$2$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "The numerator equals $2(2+i)$.",
+    "explanation": "Factoring out $2$ in the numerator gives $\\frac{4+2i}{2+i} = \\frac{2(2+i)}{2+i} = 2$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "2(2+i)"
+    "formula": "$\\frac{k z}{z} = k$"
   },
   {
     "id": "c11-ch1-normal-q99",
@@ -1160,7 +1159,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(1+i)^3=$:",
+    "question": "Evaluate $(1+i)^3$:",
     "options": {
       "A": "$-2+2i$",
       "B": "$2+2i$",
@@ -1173,10 +1172,10 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$2-2i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$(1+i)^3=(1+i)(2i)=-2+2i$.",
+    "explanation": "Using the identity $(1 + i)^2 = 2i$: $(1 + i)^3 = (1 + i)^2(1 + i) = 2i(1 + i) = 2i + 2i^2 = 2i - 2 = -2 + 2i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(1+i)^3=(1+i)(2i)=-2+2i"
+    "formula": "$(1 + i)^3 = (1 + i)^2(1 + i) = 2i(1 + i) = -2 + 2i$"
   },
   {
     "id": "c11-ch1-normal-q100",
@@ -1184,7 +1183,7 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(2-i)^3=$:",
+    "question": "Evaluate $(2-i)^3$:",
     "options": {
       "A": "$2+11i$",
       "B": "$11-2i$",
@@ -1197,9 +1196,9 @@ export const C11_CH1_NORMAL_PART2: Question[] = [
     "option_d": "$-2-11i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "First $(2-i)^2=3-4i$; multiplying by $2-i$ gives $2-11i$.",
+    "explanation": "Expanding using the binomial cube formula $(a - b)^3 = a^3 - 3a^2 b + 3ab^2 - b^3$: $(2 - i)^3 = 2^3 - 3(2^2)(i) + 3(2)(i^2) - i^3 = 8 - 12i + 6(-1) - (-i) = 8 - 12i - 6 + i = 2 - 11i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(2-i)^2=3-4i"
+    "formula": "$(a - bi)^3 = a^3 - 3a^2(bi) + 3a(bi)^2 - (bi)^3$"
   }
 ];

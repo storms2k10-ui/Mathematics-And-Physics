@@ -8,14 +8,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z=a+ib$, evaluate $|z|^2 - (\\operatorname{Im}(z))^2$.",
+    "options": {
+      "A": "$b^2$",
+      "B": "$a^2+b^2$",
+      "C": "$a^2$",
+      "D": "$2ab$"
+    },
     "option_a": "$b^2$",
     "option_b": "$a^2+b^2$",
     "option_c": "$a^2$",
     "option_d": "$2ab$",
     "correct_answer": "C",
+    "correct_option": "C",
     "explanation": "$|z|^2 = a^2+b^2$ and $(\\operatorname{Im}(z))^2 = b^2$. Thus $(a^2+b^2) - b^2 = a^2$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-adv-q102",
@@ -24,14 +32,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z=a+ib$, evaluate $(\\operatorname{Re}(z))^2 + (\\operatorname{Im}(z))^2$.",
+    "options": {
+      "A": "$|z|$",
+      "B": "$z^2$",
+      "C": "$2|z|$",
+      "D": "$|z|^2$"
+    },
     "option_a": "$|z|$",
     "option_b": "$z^2$",
     "option_c": "$2|z|$",
     "option_d": "$|z|^2$",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $a^2+b^2 = |z|^2$. Thus the value is $|z|^2$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q103",
@@ -40,14 +56,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z^2$ is purely real and negative, then $z$ is:",
+    "options": {
+      "A": "Purely imaginary",
+      "B": "Purely real",
+      "C": "Real positive",
+      "D": "Zero"
+    },
     "option_a": "Purely imaginary",
     "option_b": "Purely real",
     "option_c": "Real positive",
     "option_d": "Zero",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "Let $z=a+ib$. $z^2 = a^2-b^2+2abi$. If $z^2$ is real, $2ab=0$. Since $z^2 < 0$, $a=0$ and $b \\ne 0$, so $z$ is purely imaginary.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-adv-q104",
@@ -56,14 +80,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z^2$ is purely imaginary and $z \\ne 0$, then:",
+    "options": {
+      "A": "$z$ is real",
+      "B": "$z$ is imaginary",
+      "C": "$\\operatorname{Re}(z)=\\operatorname{Im}(z)$ only",
+      "D": "$|\\operatorname{Re}(z)| = |\\operatorname{Im}(z)|$"
+    },
     "option_a": "$z$ is real",
     "option_b": "$z$ is imaginary",
     "option_c": "$\\operatorname{Re}(z)=\\operatorname{Im}(z)$ only",
     "option_d": "$|\\operatorname{Re}(z)| = |\\operatorname{Im}(z)|$",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "For $z=a+ib$, $\\operatorname{Re}(z^2) = a^2-b^2 = 0 \\implies a^2=b^2 \\implies a=\\pm b$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-adv-q105",
@@ -72,14 +104,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z^2$ is purely real, then:",
+    "options": {
+      "A": "$\\operatorname{Re}(z)=0$ or $\\operatorname{Im}(z)=0$",
+      "B": "$\\operatorname{Re}(z)=\\operatorname{Im}(z)$",
+      "C": "$z$ is real only",
+      "D": "$z=0$ only"
+    },
     "option_a": "$\\operatorname{Re}(z)=0$ or $\\operatorname{Im}(z)=0$",
     "option_b": "$\\operatorname{Re}(z)=\\operatorname{Im}(z)$",
     "option_c": "$z$ is real only",
     "option_d": "$z=0$ only",
     "correct_answer": "A",
-    "explanation": "$\\operatorname{Im}(z^2) = 2xy = 0 \\implies x=0$ or $y=0$.",
+    "correct_option": "A",
+    "explanation": "Let $z = x + iy$ where $x, y \\in \\mathbb{R}$. Squaring $z$:\n$$z^2 = (x + iy)^2 = (x^2 - y^2) + 2xyi$$\nFor $z^2$ to be purely real, its imaginary part must be zero:\n$$\\operatorname{Im}(z^2) = 2xy = 0$$\nThis product is zero if and only if $x = 0$ or $y = 0$ (or both):\n- If $x = \\operatorname{Re}(z) = 0$, $z$ is purely imaginary, so $z^2 = (iy)^2 = -y^2 \\in \\mathbb{R}$.\n- If $y = \\operatorname{Im}(z) = 0$, $z$ is purely real, so $z^2 = x^2 \\in \\mathbb{R}$.\nHence, $\\operatorname{Re}(z) = 0$ or $\\operatorname{Im}(z) = 0$, which corresponds to Option A.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-adv-q106",
@@ -88,14 +128,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Evaluate $(2+i)^3$.",
+    "options": {
+      "A": "$2+11i$",
+      "B": "$11+2i$",
+      "C": "$2-11i$",
+      "D": "$-2+11i$"
+    },
     "option_a": "$2+11i$",
     "option_b": "$11+2i$",
     "option_c": "$2-11i$",
     "option_d": "$-2+11i$",
     "correct_answer": "A",
-    "explanation": "$(2+i)^3 = 2^3 + 3(2^2)(i) + 3(2)(i^2) + i^3 = 8 + 12i - 6 - i = 2+11i$.",
+    "correct_option": "A",
+    "explanation": "To expand $(2 + i)^3$, use the binomial expansion $(a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$ with $a = 2$ and $b = i$:\n$$(2 + i)^3 = 2^3 + 3(2^2)(i) + 3(2)(i^2) + i^3$$\nSubstitute powers of $i$ ($i^2 = -1$, $i^3 = -i$):\n$$= 8 + 3(4)(i) + 6(-1) + (-i)$$\n$$= 8 + 12i - 6 - i = (8 - 6) + (12 - 1)i = 2 + 11i$$\nTherefore, $(2 + i)^3 = 2 + 11i$, matching Option A.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q107",
@@ -104,14 +152,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Evaluate $(1-2i)^3$.",
+    "options": {
+      "A": "$-11+2i$",
+      "B": "$-11-2i$",
+      "C": "$11-2i$",
+      "D": "$1-8i$"
+    },
     "option_a": "$-11+2i$",
     "option_b": "$-11-2i$",
     "option_c": "$11-2i$",
     "option_d": "$1-8i$",
     "correct_answer": "A",
-    "explanation": "$(1-2i)^3 = 1 - 3(1)(2i) + 3(1)(4i^2) - 8i^3 = 1 - 6i - 12 + 8i = -11+2i$.",
+    "correct_option": "A",
+    "explanation": "To expand $(1 - 2i)^3$, use the binomial formula $(a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3$ with $a = 1$ and $b = 2i$:\n$$(1 - 2i)^3 = 1^3 - 3(1^2)(2i) + 3(1)(2i)^2 - (2i)^3$$\nCalculate each term:\n1) $1^3 = 1$\n2) $-3(1)(2i) = -6i$\n3) $3(4i^2) = 3(4(-1)) = -12$\n4) $-(8i^3) = -(8(-i)) = +8i$\nSumming all terms:\n$$= 1 - 6i - 12 + 8i = (1 - 12) + (-6 + 8)i = -11 + 2i$$\nThus, $(1 - 2i)^3 = -11 + 2i$, corresponding to Option A.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q108",
@@ -120,14 +176,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z^2=15-8i$, with $\\operatorname{Re}(z)>0$ and $\\operatorname{Im}(z)<0$, find $z$.",
+    "options": {
+      "A": "$4+i$",
+      "B": "$1-4i$",
+      "C": "$4-i$",
+      "D": "$2-4i$"
+    },
     "option_a": "$4+i$",
     "option_b": "$1-4i$",
     "option_c": "$4-i$",
     "option_d": "$2-4i$",
     "correct_answer": "C",
+    "correct_option": "C",
     "explanation": "$(4-i)^2 = 16 - 8i - 1 = 15-8i$. Since $\\operatorname{Re}(z)=4>0$ and $\\operatorname{Im}(z)=-1<0$, $z=4-i$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-adv-q109",
@@ -136,14 +200,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z^3=1$ and $z \\ne 1$, then:",
+    "options": {
+      "A": "$1+z+z^2=0$",
+      "B": "$z$ is real",
+      "C": "$z$ is imaginary",
+      "D": "$z=1$ only"
+    },
     "option_a": "$1+z+z^2=0$",
     "option_b": "$z$ is real",
     "option_c": "$z$ is imaginary",
     "option_d": "$z=1$ only",
     "correct_answer": "A",
-    "explanation": "$z^3-1 = (z-1)(z^2+z+1) = 0$. Since $z \\ne 1$, $z^2+z+1=0$.",
+    "correct_option": "A",
+    "explanation": "The equation $z^3 = 1$ can be rewritten as $z^3 - 1 = 0$. Factoring the difference of cubes:\n$$z^3 - 1 = (z - 1)(z^2 + z + 1) = 0$$\nSince we are given that $z \\ne 1$, the factor $(z - 1)$ cannot be zero. Therefore, the quadratic factor must vanish:\n$$z^2 + z + 1 = 0 \\iff 1 + z + z^2 = 0$$\nThus, the identity satisfied is $1 + z + z^2 = 0$, matching Option A.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-adv-q110",
@@ -152,14 +224,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $\\omega$ is a non-real cube root of unity, evaluate $1+\\omega+\\omega^2$.",
+    "options": {
+      "A": "$1$",
+      "B": "$-1$",
+      "C": "$0$",
+      "D": "$\\omega$"
+    },
     "option_a": "$1$",
     "option_b": "$-1$",
     "option_c": "$0$",
     "option_d": "$\\omega$",
     "correct_answer": "C",
-    "explanation": "The sum of all roots of $z^3-1=0$ is zero, hence $1+\\omega+\\omega^2=0$.",
+    "correct_option": "C",
+    "explanation": "A cube root of unity satisfies $z^3 - 1 = 0$. Factoring gives $(z - 1)(z^2 + z + 1) = 0$.\nSince $\\omega$ is a non-real root, $\\omega \\ne 1$, which means $\\omega$ must satisfy the quadratic equation:\n$$\\omega^2 + \\omega + 1 = 0 \\iff 1 + \\omega + \\omega^2 = 0$$\nGeometrically, the three cube roots of unity form the vertices of an equilateral triangle inscribed in the unit circle centred at the origin, so their centroid (and hence their vector sum) is zero.\nTherefore, $1 + \\omega + \\omega^2 = 0$, corresponding to Option C.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$1 + \\omega + \\omega^2 = 0 \\implies 1 + \\omega = -\\omega^2$"
   },
   {
     "id": "c11-ch1-adv-q111",
@@ -168,14 +248,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $\\omega$ is a non-real cube root of unity, evaluate $\\omega^3$.",
+    "options": {
+      "A": "$0$",
+      "B": "$-1$",
+      "C": "$i$",
+      "D": "$1$"
+    },
     "option_a": "$0$",
     "option_b": "$-1$",
     "option_c": "$i$",
     "option_d": "$1$",
     "correct_answer": "D",
-    "explanation": "By definition of cube root of unity, $\\omega^3=1$.",
+    "correct_option": "D",
+    "explanation": "By definition, a cube root of unity is a complex solution to the equation $z^3 = 1$.\nSince $\\omega$ is defined as one of the cube roots of unity, substituting $z = \\omega$ into the defining equation gives:\n$$\\omega^3 = 1$$\nTherefore, the value of $\\omega^3$ is $1$, matching Option D.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\omega^3 = 1, \\quad 1 + \\omega + \\omega^2 = 0$"
   },
   {
     "id": "c11-ch1-adv-q112",
@@ -184,14 +272,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Evaluate $\\left(\\dfrac{1+i}{1-i}\\right)^{2025}$.",
+    "options": {
+      "A": "$-1$",
+      "B": "$i$",
+      "C": "$-i$",
+      "D": "$1$"
+    },
     "option_a": "$-1$",
     "option_b": "$i$",
     "option_c": "$-i$",
     "option_d": "$1$",
     "correct_answer": "B",
+    "correct_option": "B",
     "explanation": "$\\dfrac{1+i}{1-i} = i$, and since $2025 = 4(506)+1$, $i^{2025} = i^1 = i$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q113",
@@ -200,14 +296,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Evaluate $(1+i)^{10}$.",
+    "options": {
+      "A": "$32$",
+      "B": "$32i$",
+      "C": "$-32i$",
+      "D": "$-32$"
+    },
     "option_a": "$32$",
     "option_b": "$32i$",
     "option_c": "$-32i$",
     "option_d": "$-32$",
     "correct_answer": "B",
+    "correct_option": "B",
     "explanation": "$(1+i)^{10} = \\left((1+i)^2\\right)^5 = (2i)^5 = 32i^5 = 32i$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q114",
@@ -216,14 +320,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Evaluate $\\dfrac{(1+i)^8}{(1-i)^6}$.",
+    "options": {
+      "A": "$-2i$",
+      "B": "$2i$",
+      "C": "$2$",
+      "D": "$-2$"
+    },
     "option_a": "$-2i$",
     "option_b": "$2i$",
     "option_c": "$2$",
     "option_d": "$-2$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "$(1+i)^8 = ((1+i)^2)^4 = (2i)^4 = 16$. $(1-i)^6 = ((1-i)^2)^3 = (-2i)^3 = 8i$. Thus $\\frac{16}{8i} = \\frac{2}{i} = -2i$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q115",
@@ -232,14 +344,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z=1+i$, find the least positive integer $n$ for which $z^n$ is a negative real number.",
+    "options": {
+      "A": "$4$",
+      "B": "$2$",
+      "C": "$6$",
+      "D": "$8$"
+    },
     "option_a": "$4$",
     "option_b": "$2$",
     "option_c": "$6$",
     "option_d": "$8$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "$\\operatorname{Arg}(z) = \\frac{\\pi}{4}$. For $z^n$ to be negative real, $\\operatorname{Arg}(z^n) = n\\frac{\\pi}{4} = \\pi \\implies n=4$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\operatorname{Arg}(x) = \\pi \\quad (x < 0)$"
   },
   {
     "id": "c11-ch1-adv-q116",
@@ -248,14 +368,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z=\\sqrt{3}+i$, find the least positive integer $n$ for which $z^n$ is a negative real number.",
+    "options": {
+      "A": "$2$",
+      "B": "$3$",
+      "C": "$4$",
+      "D": "$6$"
+    },
     "option_a": "$2$",
     "option_b": "$3$",
     "option_c": "$4$",
     "option_d": "$6$",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "$\\operatorname{Arg}(z) = \\frac{\\pi}{6}$. For $z^n$ to be negative real, $n\\frac{\\pi}{6} = \\pi \\implies n=6$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\operatorname{Arg}(x) = \\pi \\quad (x < 0)$"
   },
   {
     "id": "c11-ch1-adv-q117",
@@ -264,14 +392,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z=-1+i$, find the least positive integer $n$ for which $z^n$ is a positive real number.",
+    "options": {
+      "A": "$8$",
+      "B": "$2$",
+      "C": "$3$",
+      "D": "$4$"
+    },
     "option_a": "$8$",
     "option_b": "$2$",
     "option_c": "$3$",
     "option_d": "$4$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "$\\operatorname{Arg}(z) = \\frac{3\\pi}{4}$. For $z^n > 0$, $n\\frac{3\\pi}{4} = 2k\\pi \\implies 3n = 8k$. The least positive integer is $n=8$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\operatorname{Arg}(x + iy) = \\operatorname{atan2}(y, x) \\in (-\\pi, \\pi]$"
   },
   {
     "id": "c11-ch1-adv-q118",
@@ -280,14 +416,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $\\dfrac{z-1}{z+1}=i$, find $z$.",
+    "options": {
+      "A": "$i$",
+      "B": "$-i$",
+      "C": "$-1$",
+      "D": "$1$"
+    },
     "option_a": "$i$",
     "option_b": "$-i$",
     "option_c": "$-1$",
     "option_d": "$1$",
     "correct_answer": "A",
-    "explanation": "$z-1 = i(z+1) \\implies z(1-i) = 1+i \\implies z = \\frac{1+i}{1-i} = i$.",
+    "correct_option": "A",
+    "explanation": "Given the equation $\\dfrac{z - 1}{z + 1} = i$, cross-multiply by $(z + 1)$:\n$$z - 1 = i(z + 1) = iz + i$$\nRearrange to group all terms containing $z$ on the left side:\n$$z - iz = 1 + i \\implies z(1 - i) = 1 + i$$\nSolve for $z$ by dividing by $(1 - i)$:\n$$z = \\dfrac{1 + i}{1 - i}$$\nMultiply numerator and denominator by the conjugate $(1 + i)$:\n$$z = \\dfrac{(1 + i)^2}{(1 - i)(1 + i)} = \\dfrac{1 + 2i - 1}{1 - i^2} = \\dfrac{2i}{2} = i$$\nTherefore, $z = i$, matching Option A.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-adv-q119",
@@ -296,14 +440,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $\\dfrac{z-i}{z+i}=-i$, find $z$.",
+    "options": {
+      "A": "$-1$",
+      "B": "$i$",
+      "C": "$1$",
+      "D": "$-i$"
+    },
     "option_a": "$-1$",
     "option_b": "$i$",
     "option_c": "$1$",
     "option_d": "$-i$",
     "correct_answer": "C",
-    "explanation": "$z-i = -i(z+i) = -iz+1 \\implies z(1+i) = 1+i \\implies z = 1$.",
+    "correct_option": "C",
+    "explanation": "Given $\\dfrac{z - i}{z + i} = -i$, cross-multiply by $(z + i)$:\n$$z - i = -i(z + i) = -iz - i^2$$\nSince $i^2 = -1$, $-i^2 = 1$:\n$$z - i = -iz + 1$$\nRearrange all terms in $z$ to the left side and constants to the right side:\n$$z + iz = 1 + i \\implies z(1 + i) = 1 + i$$\nDivide both sides by $(1 + i)$:\n$$z = \\dfrac{1 + i}{1 + i} = 1$$\nThus, $z = 1$, corresponding to Option C.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q120",
@@ -312,14 +464,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $\\dfrac{z-1}{z+1}$ is purely imaginary, then the locus of $z$ is:",
+    "options": {
+      "A": "Real axis",
+      "B": "Imaginary axis",
+      "C": "Circle $|z|=2$",
+      "D": "Unit circle $|z|=1$ (excluding $z=-1$)"
+    },
     "option_a": "Real axis",
     "option_b": "Imaginary axis",
     "option_c": "Circle $|z|=2$",
     "option_d": "Unit circle $|z|=1$ (excluding $z=-1$)",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "Let $z=x+iy$. $\\operatorname{Re}\\left(\\frac{z-1}{z+1}\\right) = \\frac{x^2+y^2-1}{(x+1)^2+y^2} = 0 \\implies x^2+y^2=1$ with $z \\ne -1$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q121",
@@ -328,14 +488,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $\\dfrac{z-i}{z+i}$ is purely real, then $z$ lies on the:",
+    "options": {
+      "A": "Imaginary axis (excluding $z=-i$)",
+      "B": "Real axis",
+      "C": "Unit circle",
+      "D": "Line $y=1$"
+    },
     "option_a": "Imaginary axis (excluding $z=-i$)",
     "option_b": "Real axis",
     "option_c": "Unit circle",
     "option_d": "Line $y=1$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "Let $z=x+iy$. $\\operatorname{Im}\\left(\\frac{z-i}{z+i}\\right) = \\frac{-2x}{x^2+(y+1)^2} = 0 \\implies x=0$, which is the imaginary axis.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q122",
@@ -344,14 +512,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z-2|=|z+2|$, then:",
+    "options": {
+      "A": "$\\operatorname{Im}(z)=0$",
+      "B": "$|z|=2$",
+      "C": "$\\operatorname{Re}(z)=0$",
+      "D": "$z=0$ only"
+    },
     "option_a": "$\\operatorname{Im}(z)=0$",
     "option_b": "$|z|=2$",
     "option_c": "$\\operatorname{Re}(z)=0$",
     "option_d": "$z=0$ only",
     "correct_answer": "C",
+    "correct_option": "C",
     "explanation": "The locus is the perpendicular bisector of $2$ and $-2$, which is the imaginary axis $x=0$, so $\\operatorname{Re}(z)=0$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z - z_1| = |z - z_2| \\iff \\text{Perpendicular bisector of } [z_1, z_2]$"
   },
   {
     "id": "c11-ch1-adv-q123",
@@ -360,14 +536,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z-i|=|z+i|$, then:",
+    "options": {
+      "A": "$\\operatorname{Re}(z)=0$",
+      "B": "$|z|=1$",
+      "C": "$\\operatorname{Im}(z)=1$",
+      "D": "$\\operatorname{Im}(z)=0$"
+    },
     "option_a": "$\\operatorname{Re}(z)=0$",
     "option_b": "$|z|=1$",
     "option_c": "$\\operatorname{Im}(z)=1$",
     "option_d": "$\\operatorname{Im}(z)=0$",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "The locus is the perpendicular bisector of $i$ and $-i$, which is the real axis $y=0$, so $\\operatorname{Im}(z)=0$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z - z_1| = |z - z_2| \\iff \\text{Perpendicular bisector of } [z_1, z_2]$"
   },
   {
     "id": "c11-ch1-adv-q124",
@@ -376,14 +560,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Find the equation of the locus represented by $|z-1|=2|z+1|$.",
+    "options": {
+      "A": "$3x^2+3y^2+10x+3=0$",
+      "B": "$x^2+y^2-2x=0$",
+      "C": "$3x^2+3y^2-10x+3=0$",
+      "D": "$x^2+y^2=1$"
+    },
     "option_a": "$3x^2+3y^2+10x+3=0$",
     "option_b": "$x^2+y^2-2x=0$",
     "option_c": "$3x^2+3y^2-10x+3=0$",
     "option_d": "$x^2+y^2=1$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "$(x-1)^2+y^2 = 4\\left((x+1)^2+y^2\\right) \\implies x^2-2x+1+y^2 = 4x^2+8x+4+4y^2 \\implies 3x^2+3y^2+10x+3=0$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q125",
@@ -392,14 +584,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z-1|=|z-i|$, find the equation of the locus.",
+    "options": {
+      "A": "$x+y=0$",
+      "B": "$y=x$",
+      "C": "$x=1$",
+      "D": "$y=1$"
+    },
     "option_a": "$x+y=0$",
     "option_b": "$y=x$",
     "option_c": "$x=1$",
     "option_d": "$y=1$",
     "correct_answer": "B",
-    "explanation": "$(x-1)^2+y^2 = x^2+(y-1)^2 \\implies -2x+1 = -2y+1 \\implies y=x$.",
+    "correct_option": "B",
+    "explanation": "Let $z = x + iy$. The equation $|z - 1| = |z - i|$ represents the locus of points equidistant from $z_1 = 1 = 1 + 0i$ and $z_2 = i = 0 + 1i$.\nExpress the squared distances in Cartesian coordinates:\n$$|z - 1|^2 = (x - 1)^2 + y^2 = x^2 - 2x + 1 + y^2$$\n$$|z - i|^2 = x^2 + (y - 1)^2 = x^2 + y^2 - 2y + 1$$\nEquating the two expressions:\n$$x^2 - 2x + 1 + y^2 = x^2 + y^2 - 2y + 1$$\nSubtracting $x^2 + y^2 + 1$ from both sides:\n$$-2x = -2y \\implies y = x$$\nThis is the perpendicular bisector of the segment joining $(1, 0)$ and $(0, 1)$, which is the line $y = x$. Thus, the locus is $y = x$, matching Option B.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z - z_1| = |z - z_2| \\iff \\text{Perpendicular bisector of } [z_1, z_2]$"
   },
   {
     "id": "c11-ch1-adv-q126",
@@ -408,14 +608,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z-3|+|z+3|=6$, then the locus of $z$ is:",
+    "options": {
+      "A": "Imaginary axis",
+      "B": "A circle of radius $3$",
+      "C": "The real segment from $-3$ to $3$",
+      "D": "The entire real axis"
+    },
     "option_a": "Imaginary axis",
     "option_b": "A circle of radius $3$",
     "option_c": "The real segment from $-3$ to $3$",
     "option_d": "The entire real axis",
     "correct_answer": "C",
+    "correct_option": "C",
     "explanation": "Distance between $3$ and $-3$ is $6$. Since $|z-3|+|z+3|=6$, $z$ lies on the line segment connecting $(-3,0)$ and $(3,0)$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$d(z_1, z_2) = |z_1 - z_2| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$"
   },
   {
     "id": "c11-ch1-adv-q127",
@@ -424,14 +632,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z-1|+|z+1|=2$, find the greatest possible value of $|z|$.",
+    "options": {
+      "A": "$1$",
+      "B": "$2$",
+      "C": "$\\sqrt{2}$",
+      "D": "$0$"
+    },
     "option_a": "$1$",
     "option_b": "$2$",
     "option_c": "$\\sqrt{2}$",
     "option_d": "$0$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "The locus is the line segment $[-1,1]$ on the real axis. The maximum distance from origin is $1$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z| = \\sqrt{x^2 + y^2}$"
   },
   {
     "id": "c11-ch1-adv-q128",
@@ -440,14 +656,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z-2|=3$, find the maximum value of $|z|$.",
+    "options": {
+      "A": "$3$",
+      "B": "$1$",
+      "C": "$6$",
+      "D": "$5$"
+    },
     "option_a": "$3$",
     "option_b": "$1$",
     "option_c": "$6$",
     "option_d": "$5$",
     "correct_answer": "D",
-    "explanation": "$|z| = |(z-2)+2| \\le |z-2| + 2 = 3+2 = 5$.",
+    "correct_option": "D",
+    "explanation": "Writing $|z| = |(z - 2) + 2|$ and applying the triangle inequality: $|z| \\le |z - 2| + |2| = 3 + 2 = 5$. Thus the maximum possible value of $|z|$ is $5$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z_1 + z_2| \\le |z_1| + |z_2|$"
   },
   {
     "id": "c11-ch1-adv-q129",
@@ -456,14 +680,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z-2|=3$, find the minimum value of $|z|$.",
+    "options": {
+      "A": "$1$",
+      "B": "$5$",
+      "C": "$3$",
+      "D": "$0$"
+    },
     "option_a": "$1$",
     "option_b": "$5$",
     "option_c": "$3$",
     "option_d": "$0$",
     "correct_answer": "A",
-    "explanation": "$|z| = |(z-2)+2| \\ge ||z-2|-2| = |3-2| = 1$.",
+    "correct_option": "A",
+    "explanation": "Writing $|z| = |(z - 2) + 2|$ and applying the reverse triangle inequality: $|z| \\ge ||z - 2| - |2|| = |3 - 2| = 1$. Thus the minimum possible value of $|z|$ is $1$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z_1 + z_2| \\ge \\big||z_1| - |z_2|\\big|$"
   },
   {
     "id": "c11-ch1-adv-q130",
@@ -472,14 +704,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z-(3-4i)|=2$, find the maximum value of $|z|$.",
+    "options": {
+      "A": "$5$",
+      "B": "$7$",
+      "C": "$3$",
+      "D": "$\\sqrt{29}$"
+    },
     "option_a": "$5$",
     "option_b": "$7$",
     "option_c": "$3$",
     "option_d": "$\\sqrt{29}$",
     "correct_answer": "B",
+    "correct_option": "B",
     "explanation": "The centre is $z_0=3-4i$ with $|z_0|=5$. Max $|z| = |z_0| + r = 5+2=7$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-adv-q131",
@@ -488,14 +728,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z-(3-4i)|=2$, find the minimum value of $|z|$.",
+    "options": {
+      "A": "$7$",
+      "B": "$2$",
+      "C": "$3$",
+      "D": "$5$"
+    },
     "option_a": "$7$",
     "option_b": "$2$",
     "option_c": "$3$",
     "option_d": "$5$",
     "correct_answer": "C",
-    "explanation": "Min $|z| = |z_0| - r = 5-2 = 3$.",
+    "correct_option": "C",
+    "explanation": "Geometrically, $|z - (3 - 4i)| = 2$ represents a circle centered at $z_0 = 3 - 4i$ with radius $r = 2$. The distance from the origin to the center is $|z_0| = \\sqrt{3^2 + (-4)^2} = 5$. The minimum distance from the origin to any point on the circle is $|z_0| - r = 5 - 2 = 3$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z| = \\sqrt{x^2 + y^2}$"
   },
   {
     "id": "c11-ch1-adv-q132",
@@ -504,14 +752,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z-1|<|z+1|$, then:",
+    "options": {
+      "A": "$\\operatorname{Re}(z)<0$",
+      "B": "$\\operatorname{Im}(z)>0$",
+      "C": "$|z|<1$",
+      "D": "$\\operatorname{Re}(z)>0$"
+    },
     "option_a": "$\\operatorname{Re}(z)<0$",
     "option_b": "$\\operatorname{Im}(z)>0$",
     "option_c": "$|z|<1$",
     "option_d": "$\\operatorname{Re}(z)>0$",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "$|z-1|<|z+1| \\implies (x-1)^2+y^2 < (x+1)^2+y^2 \\implies -2x < 2x \\implies x>0$, so $\\operatorname{Re}(z)>0$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q133",
@@ -520,14 +776,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z-i|>|z+i|$, then:",
+    "options": {
+      "A": "$\\operatorname{Im}(z)<0$",
+      "B": "$\\operatorname{Im}(z)>0$",
+      "C": "$\\operatorname{Re}(z)>0$",
+      "D": "$|z|>1$"
+    },
     "option_a": "$\\operatorname{Im}(z)<0$",
     "option_b": "$\\operatorname{Im}(z)>0$",
     "option_c": "$\\operatorname{Re}(z)>0$",
     "option_d": "$|z|>1$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "$x^2+(y-1)^2 > x^2+(y+1)^2 \\implies -2y > 2y \\implies y<0$, so $\\operatorname{Im}(z)<0$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q134",
@@ -536,14 +800,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z+2|=4$ and $z$ is purely real, find all possible values of $z$.",
+    "options": {
+      "A": "$2, -2$",
+      "B": "$2, -6$",
+      "C": "$4, -4$",
+      "D": "$6, -2$"
+    },
     "option_a": "$2, -2$",
     "option_b": "$2, -6$",
     "option_c": "$4, -4$",
     "option_d": "$6, -2$",
     "correct_answer": "B",
-    "explanation": "For real $z=x$, $|x+2|=4 \\implies x+2 = \\pm 4 \\implies x = 2$ or $x = -6$.",
+    "correct_option": "B",
+    "explanation": "We are given that $z$ is purely real, which means $\\operatorname{Im}(z) = 0$, so $z = x$ for some $x \\in \\mathbb{R}$.\nSubstitute $z = x$ into $|z + 2| = 4$:\n$$|x + 2| = 4$$\nBy the definition of the absolute value for real numbers:\n$$x + 2 = 4 \\quad \\text{or} \\quad x + 2 = -4$$\nSolving both linear equations:\n1) $x = 4 - 2 = 2$\n2) $x = -4 - 2 = -6$\nTherefore, the possible real values for $z$ are $2$ and $-6$, which corresponds to Option B.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q135",
@@ -552,14 +824,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z|=5$ and $\\operatorname{Re}(z)=4$, find $z$.",
+    "options": {
+      "A": "$5\\pm 4i$",
+      "B": "$3\\pm 4i$",
+      "C": "$4\\pm 3i$",
+      "D": "$4\\pm 5i$"
+    },
     "option_a": "$5\\pm 4i$",
     "option_b": "$3\\pm 4i$",
     "option_c": "$4\\pm 3i$",
     "option_d": "$4\\pm 5i$",
     "correct_answer": "C",
-    "explanation": "$z = 4+iy \\implies 4^2+y^2=25 \\implies y^2=9 \\implies y=\\pm 3$, so $z=4\\pm 3i$.",
+    "correct_option": "C",
+    "explanation": "Let $z = x + iy$ where $x, y \\in \\mathbb{R}$. We are given that $\\operatorname{Re}(z) = x = 4$.\nNow use the modulus equation $|z| = 5$:\n$$|z| = \\sqrt{x^2 + y^2} = 5 \\implies x^2 + y^2 = 25$$\nSubstitute $x = 4$ into this equation:\n$$4^2 + y^2 = 25 \\implies 16 + y^2 = 25$$\n$$y^2 = 25 - 16 = 9 \\implies y = \\pm 3$$\nSince $z = x + iy$, we have $z = 4 \\pm 3i$.\nTherefore, the values of $z$ are $4 \\pm 3i$, which corresponds to Option C.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z - z_0| = r \\iff (x - x_0)^2 + (y - y_0)^2 = r^2$"
   },
   {
     "id": "c11-ch1-adv-q136",
@@ -568,14 +848,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z|=10$ and $z+\\bar{z}=12$, find $z-\\bar{z}$.",
+    "options": {
+      "A": "$\\pm 12i$",
+      "B": "$\\pm 10i$",
+      "C": "$\\pm 20i$",
+      "D": "$\\pm 16i$"
+    },
     "option_a": "$\\pm 12i$",
     "option_b": "$\\pm 10i$",
     "option_c": "$\\pm 20i$",
     "option_d": "$\\pm 16i$",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "$2x=12 \\implies x=6$. Since $x^2+y^2=100$, $36+y^2=100 \\implies y=\\pm 8$. Thus $z-\\bar{z} = 2iy = \\pm 16i$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z + \\bar{z} = 2\\operatorname{Re}(z)$"
   },
   {
     "id": "c11-ch1-adv-q137",
@@ -584,14 +872,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Find the locus defined by $z\\bar{z}+z+\\bar{z}=0$.",
+    "options": {
+      "A": "$(x+1)^2+y^2=1$",
+      "B": "$x^2+y^2=1$",
+      "C": "$(x-1)^2+y^2=1$",
+      "D": "$x^2+(y+1)^2=1$"
+    },
     "option_a": "$(x+1)^2+y^2=1$",
     "option_b": "$x^2+y^2=1$",
     "option_c": "$(x-1)^2+y^2=1$",
     "option_d": "$x^2+(y+1)^2=1$",
     "correct_answer": "A",
-    "explanation": "$x^2+y^2+2x=0 \\implies (x+1)^2+y^2=1$.",
+    "correct_option": "A",
+    "explanation": "Let $z = x + iy$. Then $z\\bar{z} = x^2 + y^2$ and $z + \\bar{z} = 2x$. Substituting into $z\\bar{z} + z + \\bar{z} = 0$ yields $x^2 + y^2 + 2x = 0$. Completing the square gives $(x + 1)^2 + y^2 = 1$, which represents a circle with center $(-1, 0)$ and radius $1$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z - z_0| = r \\iff (x - x_0)^2 + (y - y_0)^2 = r^2$"
   },
   {
     "id": "c11-ch1-adv-q138",
@@ -600,14 +896,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Find the locus defined by $z\\bar{z}-z-\\bar{z}=0$.",
+    "options": {
+      "A": "A straight line",
+      "B": "$(x-1)^2+y^2=1$",
+      "C": "$(x+1)^2+y^2=1$",
+      "D": "$x^2+y^2=2$"
+    },
     "option_a": "A straight line",
     "option_b": "$(x-1)^2+y^2=1$",
     "option_c": "$(x+1)^2+y^2=1$",
     "option_d": "$x^2+y^2=2$",
     "correct_answer": "B",
-    "explanation": "$x^2+y^2-2x=0 \\implies (x-1)^2+y^2=1$.",
+    "correct_option": "B",
+    "explanation": "Let $z = x + iy$. Then $z\\bar{z} = x^2 + y^2$ and $z + \\bar{z} = 2x$. Substituting into $z\\bar{z} - (z + \\bar{z}) = 0$ gives $x^2 + y^2 - 2x = 0$. Completing the square gives $(x - 1)^2 + y^2 = 1$, which is a circle with center $(1, 0)$ and radius $1$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z - z_0| = r \\iff (x - x_0)^2 + (y - y_0)^2 = r^2$"
   },
   {
     "id": "c11-ch1-adv-q139",
@@ -616,14 +920,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Find the locus defined by $z\\bar{z}+iz-i\\bar{z}=0$.",
+    "options": {
+      "A": "$x^2+(y-1)^2=1$",
+      "B": "$x^2+(y+1)^2=1$",
+      "C": "$(x-1)^2+y^2=1$",
+      "D": "$x^2+y^2=1$"
+    },
     "option_a": "$x^2+(y-1)^2=1$",
     "option_b": "$x^2+(y+1)^2=1$",
     "option_c": "$(x-1)^2+y^2=1$",
     "option_d": "$x^2+y^2=1$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "$z\\bar{z}+i(z-\\bar{z}) = x^2+y^2+i(2iy) = x^2+y^2-2y = 0 \\implies x^2+(y-1)^2=1$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z\\bar{z} = |z|^2 = a^2 + b^2$"
   },
   {
     "id": "c11-ch1-adv-q140",
@@ -632,14 +944,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z=a+ib$ satisfies $z^2+\\bar{z}^2=0$, then:",
+    "options": {
+      "A": "$a=0$ only",
+      "B": "$b=0$ only",
+      "C": "$a=b$ only",
+      "D": "$a=\\pm b$"
+    },
     "option_a": "$a=0$ only",
     "option_b": "$b=0$ only",
     "option_c": "$a=b$ only",
     "option_d": "$a=\\pm b$",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "$z^2+\\bar{z}^2 = (a^2-b^2+2abi) + (a^2-b^2-2abi) = 2(a^2-b^2) = 0 \\implies a^2=b^2 \\implies a=\\pm b$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-adv-q141",
@@ -648,14 +968,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z^2-\\bar{z}^2=0$, then $z$ lies on the:",
+    "options": {
+      "A": "Real or imaginary axis",
+      "B": "Line $y=x$",
+      "C": "Unit circle",
+      "D": "Line $y=-x$"
+    },
     "option_a": "Real or imaginary axis",
     "option_b": "Line $y=x$",
     "option_c": "Unit circle",
     "option_d": "Line $y=-x$",
     "correct_answer": "A",
-    "explanation": "$z^2-\\bar{z}^2 = 4iab = 0 \\implies a=0$ (imaginary axis) or $b=0$ (real axis).",
+    "correct_option": "A",
+    "explanation": "Let $z = a + bi$ where $a, b \\in \\mathbb{R}$. Its conjugate is $\\bar{z} = a - bi$.\nFactor the given equation $z^2 - \\bar{z}^2 = 0$ as a difference of squares:\n$$(z - \\bar{z})(z + \\bar{z}) = 0$$\nWe know that $z - \\bar{z} = 2bi$ and $z + \\bar{z} = 2a$. Substituting these expressions:\n$$(2bi)(2a) = 4abi = 0$$\nDividing by $4i$ gives:\n$$ab = 0$$\nThis holds if and only if $a = 0$ or $b = 0$:\n- If $a = 0$, then $z = bi$ lies on the imaginary axis.\n- If $b = 0$, then $z = a$ lies on the real axis.\nTherefore, $z$ lies on either the real or the imaginary axis, matching Option A.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z + \\bar{z} = 2\\operatorname{Re}(z)$"
   },
   {
     "id": "c11-ch1-adv-q142",
@@ -664,14 +992,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z+\\bar{z}=z\\bar{z}$, identify the locus in the Argand plane.",
+    "options": {
+      "A": "Centre $(-1,0)$, radius $1$",
+      "B": "Centre $(1,0)$, radius $1$",
+      "C": "Centre $(0,1)$, radius $1$",
+      "D": "Centre $(0,-1)$, radius $1$"
+    },
     "option_a": "Centre $(-1,0)$, radius $1$",
     "option_b": "Centre $(1,0)$, radius $1$",
     "option_c": "Centre $(0,1)$, radius $1$",
     "option_d": "Centre $(0,-1)$, radius $1$",
     "correct_answer": "B",
+    "correct_option": "B",
     "explanation": "$2x = x^2+y^2 \\implies x^2-2x+y^2=0 \\implies (x-1)^2+y^2=1$, which is a circle with centre $(1,0)$ and radius $1$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z - z_0| = r \\iff (x - x_0)^2 + (y - y_0)^2 = r^2$"
   },
   {
     "id": "c11-ch1-adv-q143",
@@ -680,14 +1016,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z\\bar{z}=2(z+\\bar{z})$, find the radius of the circle.",
+    "options": {
+      "A": "$4$",
+      "B": "$1$",
+      "C": "$2$",
+      "D": "$\\sqrt{2}$"
+    },
     "option_a": "$4$",
     "option_b": "$1$",
     "option_c": "$2$",
     "option_d": "$\\sqrt{2}$",
     "correct_answer": "C",
-    "explanation": "$x^2+y^2 = 4x \\implies (x-2)^2+y^2 = 4 = 2^2$, so the radius is $2$.",
+    "correct_option": "C",
+    "explanation": "Let $z = x + iy$. Then $z\\bar{z} = |z|^2 = x^2 + y^2$, and $z + \\bar{z} = 2x$.\nSubstitute these into the equation $z\\bar{z} = 2(z + \\bar{z})$:\n$$x^2 + y^2 = 2(2x) = 4x$$\nRearrange into standard circle form by completing the square for $x$:\n$$x^2 - 4x + y^2 = 0$$\n$$(x - 2)^2 - 4 + y^2 = 0 \\implies (x - 2)^2 + y^2 = 4 = 2^2$$\nThis is the standard equation of a circle $(x - h)^2 + (y - k)^2 = r^2$ with centre $(2, 0)$ and radius $r = 2$.\nTherefore, the radius of the circle is $2$, corresponding to Option C.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z - z_0| = r \\iff (x - x_0)^2 + (y - y_0)^2 = r^2$"
   },
   {
     "id": "c11-ch1-adv-q144",
@@ -696,14 +1040,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z+\\bar{z}=2$ and $z\\bar{z}=5$, find $z^2+\\bar{z}^2$.",
+    "options": {
+      "A": "$10$",
+      "B": "$4$",
+      "C": "$-4$",
+      "D": "$-6$"
+    },
     "option_a": "$10$",
     "option_b": "$4$",
     "option_c": "$-4$",
     "option_d": "$-6$",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "$z^2+\\bar{z}^2 = (z+\\bar{z})^2 - 2z\\bar{z} = 2^2 - 2(5) = 4 - 10 = -6$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z\\bar{z} = |z|^2 = a^2 + b^2$"
   },
   {
     "id": "c11-ch1-adv-q145",
@@ -712,14 +1064,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z+\\bar{z}=4$ and $z\\bar{z}=10$, find $z^3+\\bar{z}^3$.",
+    "options": {
+      "A": "$-56$",
+      "B": "$64$",
+      "C": "$40$",
+      "D": "$-16$"
+    },
     "option_a": "$-56$",
     "option_b": "$64$",
     "option_c": "$40$",
     "option_d": "$-16$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "$z^3+\\bar{z}^3 = (z+\\bar{z})^3 - 3z\\bar{z}(z+\\bar{z}) = 4^3 - 3(10)(4) = 64 - 120 = -56$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z\\bar{z} = |z|^2 = a^2 + b^2$"
   },
   {
     "id": "c11-ch1-adv-q146",
@@ -728,14 +1088,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z+\\bar{z}=6$ and $z\\bar{z}=13$, find $z^2+\\bar{z}^2$.",
+    "options": {
+      "A": "$36$",
+      "B": "$10$",
+      "C": "$26$",
+      "D": "$12$"
+    },
     "option_a": "$36$",
     "option_b": "$10$",
     "option_c": "$26$",
     "option_d": "$12$",
     "correct_answer": "B",
-    "explanation": "$z^2+\\bar{z}^2 = (z+\\bar{z})^2 - 2z\\bar{z} = 6^2 - 2(13) = 36 - 26 = 10$.",
+    "correct_option": "B",
+    "explanation": "Using the algebraic identity relating the sum of squares to the square of a sum:\n$$z^2 + \\bar{z}^2 = (z + \\bar{z})^2 - 2z\\bar{z}$$\nWe are given the following values:\n1) $z + \\bar{z} = 6$\n2) $z\\bar{z} = 13$\nSubstituting these values directly into the identity:\n$$z^2 + \\bar{z}^2 = 6^2 - 2(13) = 36 - 26 = 10$$\nTherefore, $z^2 + \\bar{z}^2 = 10$, matching Option B.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z\\bar{z} = |z|^2 = a^2 + b^2$"
   },
   {
     "id": "c11-ch1-adv-q147",
@@ -744,14 +1112,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z+\\dfrac{1}{z}=3$, find $z^2+\\dfrac{1}{z^2}$.",
+    "options": {
+      "A": "$9$",
+      "B": "$5$",
+      "C": "$7$",
+      "D": "$11$"
+    },
     "option_a": "$9$",
     "option_b": "$5$",
     "option_c": "$7$",
     "option_d": "$11$",
     "correct_answer": "C",
+    "correct_option": "C",
     "explanation": "$z^2+\\frac{1}{z^2} = \\left(z+\\frac{1}{z}\\right)^2 - 2 = 3^2 - 2 = 7$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-adv-q148",
@@ -760,14 +1136,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z-\\dfrac{1}{z}=2$, find $z^2+\\dfrac{1}{z^2}$.",
+    "options": {
+      "A": "$2$",
+      "B": "$4$",
+      "C": "$8$",
+      "D": "$6$"
+    },
     "option_a": "$2$",
     "option_b": "$4$",
     "option_c": "$8$",
     "option_d": "$6$",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "$z^2+\\frac{1}{z^2} = \\left(z-\\frac{1}{z}\\right)^2 + 2 = 2^2 + 2 = 6$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-adv-q149",
@@ -776,14 +1160,22 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z+\\dfrac{1}{z}=1$, find $z^3+\\dfrac{1}{z^3}$.",
+    "options": {
+      "A": "$-2$",
+      "B": "$1$",
+      "C": "$0$",
+      "D": "$2$"
+    },
     "option_a": "$-2$",
     "option_b": "$1$",
     "option_c": "$0$",
     "option_d": "$2$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "$z^3+\\frac{1}{z^3} = \\left(z+\\frac{1}{z}\\right)^3 - 3\\left(z+\\frac{1}{z}\\right) = 1^3 - 3(1) = -2$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q150",
@@ -792,13 +1184,21 @@ export const C11_CH1_ADVANCED_PART3: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z+\\dfrac{1}{z}=2i$, find $z^2+\\dfrac{1}{z^2}$.",
+    "options": {
+      "A": "$-4$",
+      "B": "$-6$",
+      "C": "$6$",
+      "D": "$2$"
+    },
     "option_a": "$-4$",
     "option_b": "$-6$",
     "option_c": "$6$",
     "option_d": "$2$",
     "correct_answer": "B",
+    "correct_option": "B",
     "explanation": "$z^2+\\frac{1}{z^2} = \\left(z+\\frac{1}{z}\\right)^2 - 2 = (2i)^2 - 2 = -4 - 2 = -6$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   }
 ];

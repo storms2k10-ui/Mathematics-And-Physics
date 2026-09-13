@@ -1,10 +1,5 @@
-import { Question } from '../types';
+import { Question } from "../types";
 
-/**
- * Class 11 Mathematics - Chapter 1: Complex Numbers
- * Difficulty: Normal
- * Part 1 (Q1 - Q50) (50 MCQs)
- */
 export const C11_CH1_NORMAL_PART1: Question[] = [
   {
     "id": "c11-ch1-normal-q1",
@@ -25,10 +20,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-3$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "In $a+bi$, the real part is $a$. Therefore, $\\operatorname{Re}(3-4i)=3$.",
+    "explanation": "For any complex number $z = a + bi$ where $a, b \\in \\mathbb{R}$, the real part is denoted by $\\operatorname{Re}(z) = a$. For $z = 3 - 4i$, $a = 3$ and $b = -4$, so $\\operatorname{Re}(3 - 4i) = 3$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "a+bi"
+    "formula": "$\\operatorname{Re}(a + bi) = a$"
   },
   {
     "id": "c11-ch1-normal-q2",
@@ -49,10 +44,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-3$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The imaginary part is the coefficient of $i$, which is $-4$.",
+    "explanation": "For any complex number $z = a + bi$ with $a, b \\in \\mathbb{R}$, the imaginary part is the real coefficient of $i$, denoted by $\\operatorname{Im}(z) = b$. For $z = 3 - 4i$, the coefficient of $i$ is $-4$, so $\\operatorname{Im}(3 - 4i) = -4$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "i"
+    "formula": "$\\operatorname{Im}(a + bi) = b$"
   },
   {
     "id": "c11-ch1-normal-q3",
@@ -73,9 +68,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$2-5i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The conjugate changes the sign of the imaginary part only.",
+    "explanation": "For a complex number $z = a + bi$, its complex conjugate is defined as $\\bar{z} = a - bi$. For $z = -2 + 5i$, reversing the sign of the imaginary part yields $\\bar{z} = -2 - 5i$.",
     "difficulty": "Easy",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-normal-q4",
@@ -96,10 +92,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$(4,-7)$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Equal complex numbers have equal real and imaginary parts, so $x=4$ and $y=-7$.",
+    "explanation": "Two complex numbers $x + iy$ and $a + ib$ are equal if and only if their real and imaginary parts are respectively equal: $x = a$ and $y = b$. Equating parts from $x + iy = 4 - 7i$ gives $x = 4$ and $y = -7$, so $(x, y) = (4, -7)$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "x=4"
+    "formula": "$x + iy = a + bi \\iff x = a \\text{ and } y = b$"
   },
   {
     "id": "c11-ch1-normal-q5",
@@ -120,10 +116,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$a=3$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "A purely real number has zero imaginary part: $3a-6=0$, giving $a=2$.",
+    "explanation": "A complex number $z = X + Yi$ is purely real if and only if its imaginary part is zero, i.e., $\\operatorname{Im}(z) = 0$. Here, the imaginary part is $3a - 6$. Setting $3a - 6 = 0 \\implies 3a = 6 \\implies a = 2$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "3a-6=0"
+    "formula": "$z \\in \\mathbb{R} \\iff \\operatorname{Im}(z) = 0$"
   },
   {
     "id": "c11-ch1-normal-q6",
@@ -144,10 +140,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$x=4$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "A purely imaginary number has zero real part: $2x-6=0$, so $x=3$.",
+    "explanation": "A complex number $z = X + Yi$ is purely imaginary if and only if its real part is zero, i.e., $\\operatorname{Re}(z) = 0$. Here, the real part is $2x - 6$. Setting $2x - 6 = 0 \\implies 2x = 6 \\implies x = 3$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "2x-6=0"
+    "formula": "$z \\text{ is purely imaginary} \\iff \\operatorname{Re}(z) = 0$"
   },
   {
     "id": "c11-ch1-normal-q7",
@@ -168,10 +164,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$a=-2,b=3$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Both real and imaginary parts must be zero: $a-2=0$ and $b+3=0$.",
+    "explanation": "A complex number equals zero if and only if both its real and imaginary parts are zero. For $(a - 2) + (b + 3)i = 0 + 0i$, equating parts yields $a - 2 = 0 \\implies a = 2$ and $b + 3 = 0 \\implies b = -3$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "a-2=0"
+    "formula": "$a + bi = 0 \\iff a = 0 \\text{ and } b = 0$"
   },
   {
     "id": "c11-ch1-normal-q8",
@@ -179,7 +175,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=a+bi$, then $z+\\bar{z}=$:",
+    "question": "If $z=a+bi$, then $z+\\bar{z}$ equals:",
     "options": {
       "A": "$2a$",
       "B": "$2bi$",
@@ -192,10 +188,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$0$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Since $\\bar{z}=a-bi$, $z+\\bar{z}=(a+bi)+(a-bi)=2a$.",
+    "explanation": "For $z = a + bi$, the complex conjugate is $\\bar{z} = a - bi$. Adding them yields $z + \\bar{z} = (a + bi) + (a - bi) = (a + a) + (b - b)i = 2a = 2\\operatorname{Re}(z)$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "\\bar{z}=a-bi"
+    "formula": "$z + \\bar{z} = 2\\operatorname{Re}(z)$"
   },
   {
     "id": "c11-ch1-normal-q9",
@@ -203,7 +199,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=a+bi$, then $z-\\bar{z}=$:",
+    "question": "If $z=a+bi$, then $z-\\bar{z}$ equals:",
     "options": {
       "A": "$2a$",
       "B": "$2bi$",
@@ -216,10 +212,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$a^2+b^2$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Subtracting gives $(a+bi)-(a-bi)=2bi$.",
+    "explanation": "For $z = a + bi$, the complex conjugate is $\\bar{z} = a - bi$. Subtracting them yields $z - \\bar{z} = (a + bi) - (a - bi) = (a - a) + (b - (-b))i = 2bi = 2i\\operatorname{Im}(z)$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "(a+bi)-(a-bi)=2bi"
+    "formula": "$z - \\bar{z} = 2i\\operatorname{Im}(z)$"
   },
   {
     "id": "c11-ch1-normal-q10",
@@ -240,10 +236,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$a+b$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$(a+bi)(a-bi)=a^2-b^2i^2=a^2+b^2$.",
+    "explanation": "For $z = a + bi$, its conjugate is $\\bar{z} = a - bi$. Multiplying them gives $z\\bar{z} = (a + bi)(a - bi) = a^2 - (bi)^2 = a^2 - b^2 i^2 = a^2 - b^2(-1) = a^2 + b^2 = |z|^2$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "(a+bi)(a-bi)=a^2-b^2i^2=a^2+b^2"
+    "formula": "$z\\bar{z} = |z|^2 = a^2 + b^2$"
   },
   {
     "id": "c11-ch1-normal-q11",
@@ -264,9 +260,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$|z|$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Taking the conjugate twice restores the original imaginary sign.",
+    "explanation": "Let $z = a + bi$. Its conjugate is $\\bar{z} = a - bi$. Taking the conjugate a second time yields $\\overline{\\bar{z}} = \\overline{a - bi} = a - (-b)i = a + bi = z$.",
     "difficulty": "Easy",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$\\overline{\\bar{z}} = z$"
   },
   {
     "id": "c11-ch1-normal-q12",
@@ -287,9 +284,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$\\overline{z_1+z_2}=z_1+z_2$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The conjugate of a sum equals the sum of the conjugates.",
+    "explanation": "Let $z_1 = a_1 + b_1 i$ and $z_2 = a_2 + b_2 i$. Then $z_1 + z_2 = (a_1 + a_2) + (b_1 + b_2)i$. Conjugating gives $\\overline{z_1 + z_2} = (a_1 + a_2) - (b_1 + b_2)i = (a_1 - b_1 i) + (a_2 - b_2 i) = \\bar{z}_1 + \\bar{z}_2$.",
     "difficulty": "Easy",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$\\overline{z_1 + z_2} = \\bar{z}_1 + \\bar{z}_2$"
   },
   {
     "id": "c11-ch1-normal-q13",
@@ -310,9 +308,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$\\bar{z}_1\\bar{z}_2$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Conjugation distributes over multiplication.",
+    "explanation": "By the algebraic properties of complex conjugation, the conjugate of a product is the product of the conjugates: $\\overline{z_1 z_2} = \\bar{z}_1 \\bar{z}_2$.",
     "difficulty": "Easy",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$\\overline{z_1 z_2} = \\bar{z}_1 \\bar{z}_2$"
   },
   {
     "id": "c11-ch1-normal-q14",
@@ -320,7 +319,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "For $z_2\\neq0$, $\\overline{\\left(\\frac{z_1}{z_2}\\right)}=$:",
+    "question": "For $z_2\\neq0$, $\\overline{\\left(\\frac{z_1}{z_2}\\right)}$ equals:",
     "options": {
       "A": "$\\frac{z_1}{\\bar{z}_2}$",
       "B": "$\\frac{\\bar{z}_1}{\\bar{z}_2}$",
@@ -333,9 +332,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$\\frac{z_2}{z_1}$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Conjugation distributes over division when the denominator is nonzero.",
+    "explanation": "For any two complex numbers $z_1$ and $z_2$ with $z_2 \\neq 0$, the conjugate of a quotient is the quotient of the conjugates: $\\overline{\\left(\\frac{z_1}{z_2}\\right)} = \\frac{\\bar{z}_1}{\\bar{z}_2}$.",
     "difficulty": "Easy",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$\\overline{\\left(\\frac{z_1}{z_2}\\right)} = \\frac{\\bar{z}_1}{\\bar{z}_2}$"
   },
   {
     "id": "c11-ch1-normal-q15",
@@ -356,10 +356,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "Necessarily zero",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "For a complex number $z = a + bi$, the complex conjugate is $\\bar{z} = a - bi$. If $z = \\bar{z}$, then $a + bi = a - bi \\implies 2bi = 0 \\implies b = 0$. Since the imaginary part is zero, $z = a$, which is purely Real.",
+    "explanation": "For a complex number $z = a + bi$, the conjugate is $\\bar{z} = a - bi$. If $z = \\bar{z}$, then $a + bi = a - bi \\implies 2bi = 0 \\implies b = 0$. Since $\\operatorname{Im}(z) = 0$, $z = a \\in \\mathbb{R}$, which is purely real.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "a+bi=a-bi"
+    "formula": "$z = \\bar{z} \\iff z \\in \\mathbb{R}$"
   },
   {
     "id": "c11-ch1-normal-q16",
@@ -380,10 +380,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "Nonzero real",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "From $a+bi=-a+bi$, we obtain $a=0$.",
+    "explanation": "Let $z = a + bi$ where $a, b \\in \\mathbb{R}$. Then $\\bar{z} = a - bi$ and $-\\bar{z} = -a + bi$. The condition $z = -\\bar{z}$ gives $a + bi = -a + bi \\implies 2a = 0 \\implies a = 0$. Thus $z = 0 + bi = bi$, which is purely imaginary.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "a+bi=-a+bi"
+    "formula": "$z = -\\bar{z} \\iff \\operatorname{Re}(z) = 0$"
   },
   {
     "id": "c11-ch1-normal-q17",
@@ -404,9 +404,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$|z|=0\\iff z=0$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "The modulus is nonnegative and equals zero only when both real and imaginary parts are zero.",
+    "explanation": "For $z = a + bi$, the modulus is $|z| = \\sqrt{a^2 + b^2} \\ge 0$. Here $|z| = 0 \\iff \\sqrt{a^2 + b^2} = 0 \\iff a^2 + b^2 = 0 \\iff a = 0 \\text{ and } b = 0$, which is equivalent to $z = 0$.",
     "difficulty": "Easy",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$\\overline{z_1 - z_2} = \\bar{z}_1 - \\bar{z}_2$"
   },
   {
     "id": "c11-ch1-normal-q18",
@@ -427,10 +428,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$(-3,-4)$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The real part gives the $x$-coordinate and the imaginary part gives the $y$-coordinate.",
+    "explanation": "In the Argand plane, a complex number $z = x + iy$ is represented by the Cartesian coordinates $(x, y)$. For $z = -3 + 4i$, the real part is $x = -3$ and the imaginary part is $y = 4$, corresponding to the point $(-3, 4)$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "x"
+    "formula": "$z = x + iy \\longleftrightarrow (x, y) \\in \\mathbb{R}^2$"
   },
   {
     "id": "c11-ch1-normal-q19",
@@ -451,10 +452,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$25$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The distance is $\\sqrt{(-3)^2+4^2}=\\sqrt{25}=5$.",
+    "explanation": "The distance of a complex number $z = x + iy$ from the origin $(0, 0)$ is given by its modulus $|z| = \\sqrt{x^2 + y^2}$. For $z = -3 + 4i$, the distance is $|-3 + 4i| = \\sqrt{(-3)^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "\\sqrt{(-3)^2+4^2}=\\sqrt{25}=5"
+    "formula": "$|z| = \\sqrt{x^2 + y^2}$"
   },
   {
     "id": "c11-ch1-normal-q20",
@@ -475,10 +476,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "Fourth quadrant",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Both coordinates $(-2,-5)$ are negative.",
+    "explanation": "For $z = -2 - 5i$, the corresponding point in the Argand plane is $(x, y) = (-2, -5)$. Since both coordinates are strictly negative ($x < 0$ and $y < 0$), the point lies in the third quadrant (Quadrant III).",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "(-2,-5)"
+    "formula": "$x < 0, y < 0 \\implies (x, y) \\in \\text{Quadrant III}$"
   },
   {
     "id": "c11-ch1-normal-q21",
@@ -486,7 +487,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(3+2i)+(1-5i)=$:",
+    "question": "Evaluate $(3+2i)+(1-5i)$:",
     "options": {
       "A": "$4+7i$",
       "B": "$2-3i$",
@@ -499,10 +500,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$4+3i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Add corresponding parts: $3+1=4$ and $2i-5i=-3i$.",
+    "explanation": "To add two complex numbers, add their real parts and imaginary parts separately: $(3 + 2i) + (1 - 5i) = (3 + 1) + (2 - 5)i = 4 - 3i$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "3+1=4"
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-normal-q22",
@@ -510,7 +511,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(5-3i)-(2+4i)=$:",
+    "question": "Evaluate $(5-3i)-(2+4i)$:",
     "options": {
       "A": "$7+i$",
       "B": "$3+i$",
@@ -523,10 +524,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$3-7i$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Subtract corresponding parts: $5-2=3$ and $-3i-4i=-7i$.",
+    "explanation": "To subtract two complex numbers, subtract their real parts and imaginary parts separately: $(5 - 3i) - (2 + 4i) = (5 - 2) + (-3 - 4)i = 3 - 7i$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "5-2=3"
+    "formula": "$(a + bi) - (c + di) = (a - c) + (b - d)i$"
   },
   {
     "id": "c11-ch1-normal-q23",
@@ -534,7 +535,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(2+i)(3-2i)=$:",
+    "question": "Evaluate $(2+i)(3-2i)$:",
     "options": {
       "A": "$8-i$",
       "B": "$4-i$",
@@ -547,10 +548,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$4+i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Expanding gives $6-4i+3i-2i^2=8-i$.",
+    "explanation": "Using the distributive property with $i^2 = -1$: $(2 + i)(3 - 2i) = 2(3) + 2(-2i) + i(3) - 2i^2 = 6 - 4i + 3i - 2(-1) = 6 - i + 2 = 8 - i$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "6-4i+3i-2i^2=8-i"
+    "formula": "$(a + bi)(c + di) = (ac - bd) + (ad + bc)i$"
   },
   {
     "id": "c11-ch1-normal-q24",
@@ -558,7 +559,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(1+i)^2=$:",
+    "question": "Evaluate $(1+i)^2$:",
     "options": {
       "A": "$-2$",
       "B": "$2i$",
@@ -571,10 +572,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-2i$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $1+2i+i^2=1+2i-1=2i$. Thus the value is $2i$.",
+    "explanation": "Expanding using the binomial square formula with $i^2 = -1$: $(1 + i)^2 = 1^2 + 2(1)(i) + i^2 = 1 + 2i - 1 = 2i$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "1+2i+i^2=1+2i-1=2i"
+    "formula": "$(1 + i)^2 = 2i$"
   },
   {
     "id": "c11-ch1-normal-q25",
@@ -582,7 +583,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(1-i)^2=$:",
+    "question": "Evaluate $(1-i)^2$:",
     "options": {
       "A": "$2$",
       "B": "$2i$",
@@ -595,10 +596,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-2$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $1-2i+i^2=1-2i-1=-2i$. Thus the value is $-2i$.",
+    "explanation": "Expanding using the binomial square formula with $i^2 = -1$: $(1 - i)^2 = 1^2 - 2(1)(i) + i^2 = 1 - 2i - 1 = -2i$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "1-2i+i^2=1-2i-1=-2i"
+    "formula": "$(1 - i)^2 = -2i$"
   },
   {
     "id": "c11-ch1-normal-q26",
@@ -606,7 +607,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(2+3i)(2-3i)=$:",
+    "question": "Evaluate $(2+3i)(2-3i)$:",
     "options": {
       "A": "$5$",
       "B": "$9$",
@@ -619,10 +620,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$13$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "These are conjugates, so the product is $2^2+3^2=13$.",
+    "explanation": "Using the difference of squares identity with $i^2 = -1$: $(2 + 3i)(2 - 3i) = 2^2 - (3i)^2 = 4 - 9i^2 = 4 - 9(-1) = 4 + 9 = 13$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "2^2+3^2=13"
+    "formula": "$(a + bi)(a - bi) = a^2 + b^2$"
   },
   {
     "id": "c11-ch1-normal-q27",
@@ -630,7 +631,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac{3+4i}{3-4i}=$:",
+    "question": "Evaluate $\\frac{3+4i}{3-4i}$:",
     "options": {
       "A": "$\\frac{7+24i}{25}$",
       "B": "$\\frac{-7+24i}{25}$",
@@ -643,10 +644,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$1$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Multiply by $\\frac{3+4i}{3+4i}$: $\\frac{(3+4i)^2}{25}=\\frac{-7+24i}{25}$.",
+    "explanation": "Multiplying numerator and denominator by the conjugate $3 + 4i$: $\\frac{3+4i}{3-4i} = \\frac{(3+4i)(3+4i)}{(3-4i)(3+4i)} = \\frac{9 + 24i + 16i^2}{3^2 - (4i)^2} = \\frac{9 + 24i - 16}{9 + 16} = \\frac{-7 + 24i}{25}$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{3+4i}{3+4i}"
+    "formula": "$\\frac{z_1}{z_2} = \\frac{z_1 \\bar{z}_2}{|z_2|^2}$"
   },
   {
     "id": "c11-ch1-normal-q28",
@@ -654,7 +655,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac{1}{1+i}=$:",
+    "question": "Evaluate $\\frac{1}{1+i}$:",
     "options": {
       "A": "$\\frac{1-i}{2}$",
       "B": "$\\frac{1+i}{2}$",
@@ -667,10 +668,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Multiply numerator and denominator by $1-i$: $\\frac{1-i}{(1+i)(1-i)}=\\frac{1-i}{2}$.",
+    "explanation": "Multiplying numerator and denominator by the complex conjugate $1 - i$: $\\frac{1}{1+i} = \\frac{1(1-i)}{(1+i)(1-i)} = \\frac{1-i}{1^2 - i^2} = \\frac{1-i}{1 - (-1)} = \\frac{1-i}{2}$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "1-i"
+    "formula": "$\\frac{1}{a + bi} = \\frac{a - bi}{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q29",
@@ -678,7 +679,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$i^{23}=$:",
+    "question": "Evaluate $i^{23}$:",
     "options": {
       "A": "$1$",
       "B": "$-1$",
@@ -691,10 +692,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-i$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Since $23=4(5)+3$, $i^{23}=i^3=-i$.",
+    "explanation": "Using the division algorithm, $23 = 4 \\times 5 + 3$. Since $i^4 = 1$: $i^{23} = (i^4)^5 \\cdot i^3 = (1)^5 \\cdot (-i) = -i$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "23=4(5)+3"
+    "formula": "$i^{4k+r} = (i^4)^k \\cdot i^r = i^r$"
   },
   {
     "id": "c11-ch1-normal-q30",
@@ -702,7 +703,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$i^{2026}=$:",
+    "question": "Evaluate $i^{2026}$:",
     "options": {
       "A": "$1$",
       "B": "$-1$",
@@ -715,10 +716,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-i$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Since $2026\\equiv2\\pmod4$, $i^{2026}=i^2=-1$.",
+    "explanation": "Dividing the exponent by $4$: $2026 = 4 \\times 506 + 2$. Since $i^4 = 1$: $i^{2026} = (i^4)^{506} \\cdot i^2 = (1)^{506} \\cdot (-1) = -1$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "2026\\equiv2\\pmod4"
+    "formula": "$i^{4k+r} = (i^4)^k \\cdot i^r = i^r$"
   },
   {
     "id": "c11-ch1-normal-q31",
@@ -726,7 +727,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(-i)^{15}=$:",
+    "question": "Evaluate $(-i)^{15}$:",
     "options": {
       "A": "$i$",
       "B": "$-i$",
@@ -739,10 +740,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Powers of $-i$ repeat every four terms, and $15\\equiv3\\pmod4$.",
+    "explanation": "Using properties of powers: $(-i)^{15} = (-1)^{15} \\cdot i^{15} = -1 \\cdot (i^4)^3 \\cdot i^3 = -1 \\cdot (1)^3 \\cdot (-i) = i$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "-i"
+    "formula": "$(-i)^n = (-1)^n i^n$"
   },
   {
     "id": "c11-ch1-normal-q32",
@@ -750,7 +751,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "For every integer $n$, $i^n+i^{n+2}=$:",
+    "question": "For every integer $n$, $i^n+i^{n+2}$ equals:",
     "options": {
       "A": "$1$",
       "B": "$2i^n$",
@@ -763,10 +764,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$i^{n+2}=i^ni^2=-i^n$, so the terms cancel.",
+    "explanation": "Factoring out $i^n$: $i^n + i^{n+2} = i^n(1 + i^2) = i^n(1 + (-1)) = i^n(0) = 0$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "i^{n+2}=i^ni^2=-i^n"
+    "formula": "$i^n + i^{n+2} = i^n(1 + i^2) = 0$"
   },
   {
     "id": "c11-ch1-normal-q33",
@@ -774,7 +775,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $n=4k+r$, then $i^n=$:",
+    "question": "If $n=4k+r$, then $i^n$ equals:",
     "options": {
       "A": "$i^k$",
       "B": "$i^r$",
@@ -787,10 +788,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$1$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Since $i^{4k}=(i^4)^k=1$, only the remainder $r$ matters.",
+    "explanation": "Using laws of exponents with $i^4 = 1$: $i^n = i^{4k+r} = (i^4)^k \\cdot i^r = (1)^k \\cdot i^r = i^r$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "i^{4k}=(i^4)^k=1"
+    "formula": "$i^n = i^{4k+r} = i^r$"
   },
   {
     "id": "c11-ch1-normal-q34",
@@ -798,7 +799,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$1+i+i^2+i^3=$:",
+    "question": "Evaluate $1+i+i^2+i^3$:",
     "options": {
       "A": "$1$",
       "B": "$i$",
@@ -811,10 +812,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$0$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Substitute $i^2=-1$ and $i^3=-i$: $1+i-1-i=0$.",
+    "explanation": "Evaluating each term using $i^2 = -1$ and $i^3 = -i$: $1 + i + i^2 + i^3 = 1 + i + (-1) + (-i) = (1 - 1) + (i - i) = 0$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "i^2=-1"
+    "formula": "$1 + i + i^2 + i^3 = 0$"
   },
   {
     "id": "c11-ch1-normal-q35",
@@ -822,7 +823,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$i^{-1}=$:",
+    "question": "Evaluate $i^{-1}$:",
     "options": {
       "A": "$i$",
       "B": "$1$",
@@ -835,10 +836,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Since $i(-i)=-i^2=1$, the reciprocal of $i$ is $-i$.",
+    "explanation": "Multiplying numerator and denominator by $-i$: $i^{-1} = \\frac{1}{i} = \\frac{-i}{i(-i)} = \\frac{-i}{-i^2} = \\frac{-i}{1} = -i$.",
     "difficulty": "Easy",
     "difficulty_tier": "Normal",
-    "formula": "i(-i)=-i^2=1"
+    "formula": "$i^{-1} = \\frac{1}{i} = -i$"
   },
   {
     "id": "c11-ch1-normal-q36",
@@ -846,7 +847,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$i^{-17}=$:",
+    "question": "Evaluate $i^{-17}$:",
     "options": {
       "A": "$1$",
       "B": "$i$",
@@ -859,10 +860,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$i^{17}=i$, so $i^{-17}=\\frac{1}{i}=-i$.",
+    "explanation": "Using the division algorithm, $17 = 4 \\times 4 + 1 \\implies i^{17} = (i^4)^4 \\cdot i = 1 \\cdot i = i$. Therefore $i^{-17} = \\frac{1}{i^{17}} = \\frac{1}{i} = -i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "i^{17}=i"
+    "formula": "$i^{-n} = \\frac{1}{i^n}$"
   },
   {
     "id": "c11-ch1-normal-q37",
@@ -870,7 +871,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(1+i)^4=$:",
+    "question": "Evaluate $(1+i)^4$:",
     "options": {
       "A": "$-4$",
       "B": "$4$",
@@ -883,10 +884,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-4i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Since $(1+i)^2=2i$, its square is $(2i)^2=-4$.",
+    "explanation": "Since $(1+i)^2 = 2i$, we have $(1+i)^4 = ((1+i)^2)^2 = (2i)^2 = 4i^2 = 4(-1) = -4$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(1+i)^2=2i"
+    "formula": "$(1 + i)^4 = ((1 + i)^2)^2 = (2i)^2 = -4$"
   },
   {
     "id": "c11-ch1-normal-q38",
@@ -894,7 +895,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(1-i)^6=$:",
+    "question": "Evaluate $(1-i)^6$:",
     "options": {
       "A": "$-8i$",
       "B": "$8$",
@@ -907,10 +908,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$8i$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Since $(1-i)^2=-2i$, $(1-i)^6=(-2i)^3=8i$.",
+    "explanation": "Since $(1-i)^2 = -2i$, we have $(1-i)^6 = ((1-i)^2)^3 = (-2i)^3 = (-2)^3 i^3 = -8(-i) = 8i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(1-i)^2=-2i"
+    "formula": "$(1 - i)^6 = ((1 - i)^2)^3 = (-2i)^3 = 8i$"
   },
   {
     "id": "c11-ch1-normal-q39",
@@ -918,7 +919,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$i^{101}+i^{103}=$:",
+    "question": "Evaluate $i^{101}+i^{103}$:",
     "options": {
       "A": "$2i$",
       "B": "$0$",
@@ -931,10 +932,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$2$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$i^{101}=i$ and $i^{103}=-i$.",
+    "explanation": "Evaluating powers of $i$: $i^{101} = (i^4)^{25} \\cdot i = 1 \\cdot i = i$, and $i^{103} = (i^4)^{25} \\cdot i^3 = 1 \\cdot (-i) = -i$. Thus $i^{101} + i^{103} = i + (-i) = 0$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "i^{101}=i"
+    "formula": "$i^n + i^{n+2} = 0$"
   },
   {
     "id": "c11-ch1-normal-q40",
@@ -942,7 +943,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$i^5+i^{10}+i^{15}+i^{20}=$:",
+    "question": "Evaluate $i^5+i^{10}+i^{15}+i^{20}$:",
     "options": {
       "A": "$0$",
       "B": "$1$",
@@ -955,10 +956,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The terms are $i,-1,-i,1$, whose sum is zero.",
+    "explanation": "Evaluating each power: $i^5 = i$, $i^{10} = (i^2)^5 = (-1)^5 = -1$, $i^{15} = (i^4)^3 \\cdot i^3 = -i$, and $i^{20} = (i^4)^5 = 1$. Summing gives $i + (-1) + (-i) + 1 = 0$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "i,-1,-i,1"
+    "formula": "$\\sum_{k=1}^4 i^k = 0$"
   },
   {
     "id": "c11-ch1-normal-q41",
@@ -966,7 +967,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(2+i)^2=$:",
+    "question": "Evaluate $(2+i)^2$:",
     "options": {
       "A": "$5+4i$",
       "B": "$3-4i$",
@@ -979,10 +980,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$5-4i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $4+4i+i^2=3+4i$. Thus the value is $3+4i$.",
+    "explanation": "Expanding using the binomial formula with $i^2 = -1$: $(2 + i)^2 = 2^2 + 2(2)(i) + i^2 = 4 + 4i - 1 = 3 + 4i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "4+4i+i^2=3+4i"
+    "formula": "$(a + bi)^2 = (a^2 - b^2) + 2abi$"
   },
   {
     "id": "c11-ch1-normal-q42",
@@ -990,7 +991,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(3-2i)^2=$:",
+    "question": "Evaluate $(3-2i)^2$:",
     "options": {
       "A": "$13-12i$",
       "B": "$5+12i$",
@@ -1003,10 +1004,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$5-12i$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$9-12i+4i^2=9-12i-4=5-12i$.",
+    "explanation": "Expanding using the binomial formula with $i^2 = -1$: $(3 - 2i)^2 = 3^2 - 2(3)(2i) + (2i)^2 = 9 - 12i + 4(-1) = 9 - 12i - 4 = 5 - 12i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "9-12i+4i^2=9-12i-4=5-12i"
+    "formula": "$(a - bi)^2 = (a^2 - b^2) - 2abi$"
   },
   {
     "id": "c11-ch1-normal-q43",
@@ -1014,7 +1015,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(1+2i)(2-i)=$:",
+    "question": "Evaluate $(1+2i)(2-i)$:",
     "options": {
       "A": "$4-3i$",
       "B": "$4+3i$",
@@ -1027,10 +1028,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$3+4i$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Expanding gives $2-i+4i-2i^2=4+3i$.",
+    "explanation": "Expanding using the distributive law: $(1 + 2i)(2 - i) = 1(2) - 1(i) + 2i(2) - 2i^2 = 2 - i + 4i - 2(-1) = 2 + 3i + 2 = 4 + 3i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "2-i+4i-2i^2=4+3i"
+    "formula": "$(a + bi)(c + di) = (ac - bd) + (ad + bc)i$"
   },
   {
     "id": "c11-ch1-normal-q44",
@@ -1038,7 +1039,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(4+i)(1-2i)=$:",
+    "question": "Evaluate $(4+i)(1-2i)$:",
     "options": {
       "A": "$6-7i$",
       "B": "$2-7i$",
@@ -1051,10 +1052,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$2+7i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Expanding gives $4-8i+i-2i^2=6-7i$.",
+    "explanation": "Expanding using the distributive law: $(4 + i)(1 - 2i) = 4(1) - 4(2i) + i(1) - 2i^2 = 4 - 8i + i - 2(-1) = 4 - 7i + 2 = 6 - 7i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "4-8i+i-2i^2=6-7i"
+    "formula": "$(a + bi)(c + di) = (ac - bd) + (ad + bc)i$"
   },
   {
     "id": "c11-ch1-normal-q45",
@@ -1062,7 +1063,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac{2-i}{1+i}=$:",
+    "question": "Evaluate $\\frac{2-i}{1+i}$:",
     "options": {
       "A": "$\\frac{3-i}{2}$",
       "B": "$\\frac{1+3i}{2}$",
@@ -1075,10 +1076,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$\\frac{3+i}{2}$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Multiply by $1-i$: $\\frac{(2-i)(1-i)}{2}=\\frac{1-3i}{2}$.",
+    "explanation": "Multiplying numerator and denominator by $1 - i$: $\\frac{2-i}{1+i} = \\frac{(2-i)(1-i)}{(1+i)(1-i)} = \\frac{2 - 2i - i + i^2}{1^2 - i^2} = \\frac{2 - 3i - 1}{1 - (-1)} = \\frac{1 - 3i}{2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "1-i"
+    "formula": "$\\frac{z_1}{z_2} = \\frac{z_1 \\bar{z}_2}{|z_2|^2}$"
   },
   {
     "id": "c11-ch1-normal-q46",
@@ -1086,7 +1087,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac{1+3i}{2-i}=$:",
+    "question": "Evaluate $\\frac{1+3i}{2-i}$:",
     "options": {
       "A": "$\\frac{1+7i}{5}$",
       "B": "$\\frac{-1-7i}{5}$",
@@ -1099,10 +1100,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$\\frac{-1+7i}{5}$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Multiplication by $2+i$ gives $\\frac{(1+3i)(2+i)}{5}=\\frac{-1+7i}{5}$.",
+    "explanation": "Multiplying numerator and denominator by $2 + i$: $\\frac{1+3i}{2-i} = \\frac{(1+3i)(2+i)}{(2-i)(2+i)} = \\frac{2 + i + 6i + 3i^2}{2^2 - i^2} = \\frac{2 + 7i - 3}{4 - (-1)} = \\frac{-1 + 7i}{5}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "2+i"
+    "formula": "$\\frac{z_1}{z_2} = \\frac{z_1 \\bar{z}_2}{|z_2|^2}$"
   },
   {
     "id": "c11-ch1-normal-q47",
@@ -1110,7 +1111,7 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(a+bi)(a-bi)=$:",
+    "question": "Evaluate $(a+bi)(a-bi)$:",
     "options": {
       "A": "$a^2-b^2$",
       "B": "$a^2+b^2$",
@@ -1123,9 +1124,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$a+b$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The two factors are conjugates, and their product is the squared modulus.",
+    "explanation": "Multiplying conjugate pairs gives the sum of squares: $(a + bi)(a - bi) = a^2 - (bi)^2 = a^2 - b^2 i^2 = a^2 - b^2(-1) = a^2 + b^2$.",
     "difficulty": "Medium",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$(a + bi)(a - bi) = a^2 + b^2 = |z|^2$"
   },
   {
     "id": "c11-ch1-normal-q48",
@@ -1146,9 +1148,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "Inverse property",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The grouping changes, but the order of the numbers remains unchanged.",
+    "explanation": "The equation $(z_1 + z_2) + z_3 = z_1 + (z_2 + z_3)$ shows that grouping of complex numbers does not alter their sum, which is the Associative property of addition in $\\mathbb{C}$.",
     "difficulty": "Medium",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$(z_1 + z_2) + z_3 = z_1 + (z_2 + z_3)$"
   },
   {
     "id": "c11-ch1-normal-q49",
@@ -1169,10 +1172,10 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Multiplying any complex number by $1$ leaves it unchanged.",
+    "explanation": "For any complex number $z = a + bi \\in \\mathbb{C}$, $(a + bi)(1 + 0i) = a + bi = z$. Thus, $1 + 0i = 1$ is the multiplicative identity element in $\\mathbb{C}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "1"
+    "formula": "$z \\cdot 1 = 1 \\cdot z = z$"
   },
   {
     "id": "c11-ch1-normal-q50",
@@ -1193,8 +1196,9 @@ export const C11_CH1_NORMAL_PART1: Question[] = [
     "option_d": "$-4+7i$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "The additive inverse changes the signs of both parts so their sum becomes zero.",
+    "explanation": "The additive inverse of a complex number $z = a + bi$ is $-z = -(a + bi) = -a - bi$, such that $z + (-z) = 0$. For $z = 4 - 7i$, the additive inverse is $-(4 - 7i) = -4 + 7i$.",
     "difficulty": "Medium",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$z + (-z) = 0 \\implies -(a + bi) = -a - bi$"
   }
 ];

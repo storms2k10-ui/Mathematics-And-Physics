@@ -466,6 +466,7 @@ export class TestAttemptService {
       option_c: aq.options.C,
       option_d: aq.options.D,
       correct_answer: aq.correctAnswer,
+      correct_option: aq.correctAnswer,
       explanation: aq.explanation,
       difficulty: aq.difficulty,
       difficulty_tier: aq.difficultyTier,

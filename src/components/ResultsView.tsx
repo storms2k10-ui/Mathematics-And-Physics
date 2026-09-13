@@ -380,9 +380,12 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
                             <MathText text={question.explanation} />
                           </div>
                           {question.formula && (
-                            <div className="mt-2 pt-2 border-t border-indigo-200/50 dark:border-indigo-900/50">
-                              <span className="font-mono text-xs bg-white dark:bg-slate-900 px-2 py-0.5 rounded border border-indigo-200 dark:border-indigo-800 text-indigo-900 dark:text-indigo-200 inline-block">
-                                Formula: <MathText text={question.formula} />
+                            <div className="mt-2.5 pt-2 border-t border-indigo-200/50 dark:border-indigo-900/50 flex flex-wrap items-center gap-2">
+                              <span className="text-[11px] font-bold text-indigo-900 dark:text-indigo-300 uppercase tracking-wider">
+                                Formula / Core Identity:
+                              </span>
+                              <span className="text-xs sm:text-sm bg-white dark:bg-slate-900 px-2.5 py-1 rounded-lg border border-indigo-200 dark:border-indigo-800 text-indigo-900 dark:text-indigo-200 inline-block shadow-2xs max-w-full overflow-x-auto">
+                                <MathText text={question.formula} />
                               </span>
                             </div>
                           )}

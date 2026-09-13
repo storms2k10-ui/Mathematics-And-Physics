@@ -8,14 +8,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Express $1+i$ in polar form.",
+    "options": {
+      "A": "$\\sqrt{2}\\left(\\cos\\frac{\\pi}{4}+i\\sin\\frac{\\pi}{4}\\right)$",
+      "B": "$(1+i)^2$",
+      "C": "$\\cos\\frac{\\pi}{4}+i\\sin\\frac{\\pi}{4}$",
+      "D": "$i(1+i)$"
+    },
     "option_a": "$\\sqrt{2}\\left(\\cos\\frac{\\pi}{4}+i\\sin\\frac{\\pi}{4}\\right)$",
     "option_b": "$(1+i)^2$",
     "option_c": "$\\cos\\frac{\\pi}{4}+i\\sin\\frac{\\pi}{4}$",
     "option_d": "$i(1+i)$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "$r = |1+i| = \\sqrt{2}$ and $\\theta = \\frac{\\pi}{4}$, so $1+i = \\sqrt{2}\\left(\\cos\\frac{\\pi}{4}+i\\sin\\frac{\\pi}{4}\\right)$.",
     "difficulty": "Medium",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z = r(\\cos\\theta + i\\sin\\theta), \\quad r = |z|, \\; \\theta = \\operatorname{Arg}(z)$"
   },
   {
     "id": "c11-ch1-adv-q52",
@@ -24,14 +32,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Express $1-i$ in polar form.",
+    "options": {
+      "A": "$\\sqrt{2}\\left(\\cos\\left(-\\frac{\\pi}{4}\\right)+i\\sin\\left(-\\frac{\\pi}{4}\\right)\\right)$",
+      "B": "$\\sqrt{2}\\left(\\cos\\frac{\\pi}{4}+i\\sin\\frac{\\pi}{4}\\right)$",
+      "C": "$2\\left(\\cos\\left(-\\frac{\\pi}{4}\\right)+i\\sin\\left(-\\frac{\\pi}{4}\\right)\\right)$",
+      "D": "$(1+i)^2$"
+    },
     "option_a": "$\\sqrt{2}\\left(\\cos\\left(-\\frac{\\pi}{4}\\right)+i\\sin\\left(-\\frac{\\pi}{4}\\right)\\right)$",
     "option_b": "$\\sqrt{2}\\left(\\cos\\frac{\\pi}{4}+i\\sin\\frac{\\pi}{4}\\right)$",
     "option_c": "$2\\left(\\cos\\left(-\\frac{\\pi}{4}\\right)+i\\sin\\left(-\\frac{\\pi}{4}\\right)\\right)$",
     "option_d": "$(1+i)^2$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "$r = \\sqrt{2}$ and principal argument $\\theta = -\\frac{\\pi}{4}$, so $1-i = \\sqrt{2}\\left(\\cos(-\\frac{\\pi}{4})+i\\sin(-\\frac{\\pi}{4})\\right)$.",
     "difficulty": "Medium",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z = r(\\cos\\theta + i\\sin\\theta), \\quad r = |z|, \\; \\theta = \\operatorname{Arg}(z)$"
   },
   {
     "id": "c11-ch1-adv-q53",
@@ -40,14 +56,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Express $-1-i$ in polar form with principal argument.",
+    "options": {
+      "A": "$\\sqrt{2}\\left(\\cos\\left(-\\frac{3\\pi}{4}\\right)+i\\sin\\left(-\\frac{3\\pi}{4}\\right)\\right)$",
+      "B": "$\\sqrt{2}\\left(\\cos\\frac{3\\pi}{4}+i\\sin\\frac{3\\pi}{4}\\right)$",
+      "C": "$2\\left(\\cos\\left(-\\frac{3\\pi}{4}\\right)+i\\sin\\left(-\\frac{3\\pi}{4}\\right)\\right)$",
+      "D": "$\\sqrt{2}\\left(\\cos\\frac{5\\pi}{4}+i\\sin\\frac{5\\pi}{4}\\right)$"
+    },
     "option_a": "$\\sqrt{2}\\left(\\cos\\left(-\\frac{3\\pi}{4}\\right)+i\\sin\\left(-\\frac{3\\pi}{4}\\right)\\right)$",
     "option_b": "$\\sqrt{2}\\left(\\cos\\frac{3\\pi}{4}+i\\sin\\frac{3\\pi}{4}\\right)$",
     "option_c": "$2\\left(\\cos\\left(-\\frac{3\\pi}{4}\\right)+i\\sin\\left(-\\frac{3\\pi}{4}\\right)\\right)$",
     "option_d": "$\\sqrt{2}\\left(\\cos\\frac{5\\pi}{4}+i\\sin\\frac{5\\pi}{4}\\right)$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "$r = \\sqrt{2}$ and point $(-1,-1)$ lies in Quadrant III, where principal argument $\\theta = -\\pi + \\frac{\\pi}{4} = -\\frac{3\\pi}{4}$.",
     "difficulty": "Medium",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z = r(\\cos\\theta + i\\sin\\theta), \\quad r = |z|, \\; \\theta = \\operatorname{Arg}(z)$"
   },
   {
     "id": "c11-ch1-adv-q54",
@@ -56,14 +80,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Express $-1+i$ in polar form.",
+    "options": {
+      "A": "$\\sqrt{2}\\left(\\cos\\frac{3\\pi}{4}+i\\sin\\frac{3\\pi}{4}\\right)$",
+      "B": "$\\sqrt{2}\\left(\\cos\\left(-\\frac{3\\pi}{4}\\right)+i\\sin\\left(-\\frac{3\\pi}{4}\\right)\\right)$",
+      "C": "$\\cos\\frac{3\\pi}{4}+i\\sin\\frac{3\\pi}{4}$",
+      "D": "$2\\left(\\cos\\frac{3\\pi}{4}+i\\sin\\frac{3\\pi}{4}\\right)$"
+    },
     "option_a": "$\\sqrt{2}\\left(\\cos\\frac{3\\pi}{4}+i\\sin\\frac{3\\pi}{4}\\right)$",
     "option_b": "$\\sqrt{2}\\left(\\cos\\left(-\\frac{3\\pi}{4}\\right)+i\\sin\\left(-\\frac{3\\pi}{4}\\right)\\right)$",
     "option_c": "$\\cos\\frac{3\\pi}{4}+i\\sin\\frac{3\\pi}{4}$",
     "option_d": "$2\\left(\\cos\\frac{3\\pi}{4}+i\\sin\\frac{3\\pi}{4}\\right)$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "$r = \\sqrt{2}$ and $(-1,1)$ lies in Quadrant II, so $\\theta = \\pi - \\frac{\\pi}{4} = \\frac{3\\pi}{4}$.",
     "difficulty": "Medium",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z = r(\\cos\\theta + i\\sin\\theta), \\quad r = |z|, \\; \\theta = \\operatorname{Arg}(z)$"
   },
   {
     "id": "c11-ch1-adv-q55",
@@ -72,14 +104,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z=2(\\cos\\theta+i\\sin\\theta)$, find $|z|$.",
+    "options": {
+      "A": "$4$",
+      "B": "$\\sqrt{2}$",
+      "C": "$1$",
+      "D": "$2$"
+    },
     "option_a": "$4$",
     "option_b": "$\\sqrt{2}$",
     "option_c": "$1$",
     "option_d": "$2$",
     "correct_answer": "D",
-    "explanation": "In standard polar form $z=r(\\cos\\theta+i\\sin\\theta)$, the modulus is $|z|=r=2$.",
+    "correct_option": "D",
+    "explanation": "The polar representation of a complex number is given by $z = r(\\cos\\theta + i\\sin\\theta)$, where $r = |z| \\ge 0$ is the modulus and $\\theta = \\arg(z)$ is the argument.\nComparing the given number $z = 2(\\cos\\theta + i\\sin\\theta)$ to standard polar form:\n$$r = |z| = 2$$\nWe can also verify: $|z| = |2| \\cdot |\\cos\\theta + i\\sin\\theta| = 2 \\cdot \\sqrt{\\cos^2\\theta + \\sin^2\\theta} = 2 \\cdot 1 = 2$.\nThus, $|z| = 2$, which corresponds to Option D.",
     "difficulty": "Medium",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(\\cos\\theta + i\\sin\\theta)^n = \\cos(n\\theta) + i\\sin(n\\theta)$"
   },
   {
     "id": "c11-ch1-adv-q56",
@@ -88,14 +128,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Convert $2\\left(\\cos\\left(-\\frac{\\pi}{2}\\right)+i\\sin\\left(-\\frac{\\pi}{2}\\right)\\right)$ to Cartesian form.",
+    "options": {
+      "A": "$2$",
+      "B": "$-2$",
+      "C": "$2i$",
+      "D": "$-2i$"
+    },
     "option_a": "$2$",
     "option_b": "$-2$",
     "option_c": "$2i$",
     "option_d": "$-2i$",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "$\\cos(-\\frac{\\pi}{2}) = 0$ and $\\sin(-\\frac{\\pi}{2}) = -1$, so $2(0 - i) = -2i$.",
     "difficulty": "Medium",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\frac{a + bi}{c + di} = \\frac{(a + bi)(c - di)}{c^2 + d^2}$"
   },
   {
     "id": "c11-ch1-adv-q57",
@@ -104,14 +152,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Convert $4\\left(\\cos\\frac{\\pi}{3}+i\\sin\\frac{\\pi}{3}\\right)$ to Cartesian form.",
+    "options": {
+      "A": "$2+2\\sqrt{3}i$",
+      "B": "$2\\sqrt{3}+2i$",
+      "C": "$4+2i$",
+      "D": "$2-2\\sqrt{3}i$"
+    },
     "option_a": "$2+2\\sqrt{3}i$",
     "option_b": "$2\\sqrt{3}+2i$",
     "option_c": "$4+2i$",
     "option_d": "$2-2\\sqrt{3}i$",
     "correct_answer": "A",
-    "explanation": "$4\\left(\\frac{1}{2}+i\\frac{\\sqrt{3}}{2}\\right) = 2+2\\sqrt{3}i$.",
+    "correct_option": "A",
+    "explanation": "To convert the polar form $z = 4\\left(\\cos\\dfrac{\\pi}{3} + i\\sin\\dfrac{\\pi}{3}\\right)$ to Cartesian form $x + iy$, evaluate the trigonometric values at $\\theta = \\dfrac{\\pi}{3}$ ($60^\\circ$):\n$$\\cos\\dfrac{\\pi}{3} = \\dfrac{1}{2}, \\quad \\sin\\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$$\nSubstitute these values back into the expression:\n$$z = 4\\left(\\dfrac{1}{2} + i\\dfrac{\\sqrt{3}}{2}\\right) = 4 \\cdot \\dfrac{1}{2} + 4 \\cdot \\dfrac{\\sqrt{3}}{2}i = 2 + 2\\sqrt{3}i$$\nTherefore, the Cartesian form is $2 + 2\\sqrt{3}i$, matching Option A.",
     "difficulty": "Medium",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z = r(\\cos\\theta + i\\sin\\theta), \\quad r = |z|, \\; \\theta = \\operatorname{Arg}(z)$"
   },
   {
     "id": "c11-ch1-adv-q58",
@@ -120,14 +176,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Find the modulus of $-\\sqrt{3}+i$.",
+    "options": {
+      "A": "$\\sqrt{2}$",
+      "B": "$2$",
+      "C": "$4$",
+      "D": "$\\sqrt{3}$"
+    },
     "option_a": "$\\sqrt{2}$",
     "option_b": "$2$",
     "option_c": "$4$",
     "option_d": "$\\sqrt{3}$",
     "correct_answer": "B",
-    "explanation": "$|-\\sqrt{3}+i| = \\sqrt{(-\\sqrt{3})^2 + 1^2} = \\sqrt{3+1} = \\sqrt{4} = 2$.",
+    "correct_option": "B",
+    "explanation": "The modulus of a complex number $z = x + iy$ is defined as $|z| = \\sqrt{x^2 + y^2}$.\nHere $z = -\\sqrt{3} + i$, so the real part is $x = -\\sqrt{3}$ and the imaginary part is $y = 1$:\n$$|-\\sqrt{3} + i| = \\sqrt{(-\\sqrt{3})^2 + 1^2} = \\sqrt{3 + 1} = \\sqrt{4} = 2$$\nThus, the modulus is $2$, which corresponds to Option B.",
     "difficulty": "Medium",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-adv-q59",
@@ -136,14 +200,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Find the principal argument of $1-\\sqrt{3}i$.",
+    "options": {
+      "A": "$\\frac{\\pi}{3}$",
+      "B": "$\\frac{2\\pi}{3}$",
+      "C": "$-\\frac{\\pi}{3}$",
+      "D": "$-\\frac{2\\pi}{3}$"
+    },
     "option_a": "$\\frac{\\pi}{3}$",
     "option_b": "$\\frac{2\\pi}{3}$",
     "option_c": "$-\\frac{\\pi}{3}$",
     "option_d": "$-\\frac{2\\pi}{3}$",
     "correct_answer": "C",
+    "correct_option": "C",
     "explanation": "The point $(1,-\\sqrt{3})$ lies in Quadrant IV with reference angle $\\alpha = \\frac{\\pi}{3}$, so $\\operatorname{Arg}(z) = -\\frac{\\pi}{3}$.",
     "difficulty": "Medium",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\operatorname{Arg}(x + iy) = \\operatorname{atan2}(y, x) \\in (-\\pi, \\pi]$"
   },
   {
     "id": "c11-ch1-adv-q60",
@@ -152,14 +224,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Find the complex number with modulus $3$ and argument $\\pi$.",
+    "options": {
+      "A": "$3i$",
+      "B": "$3$",
+      "C": "$-3i$",
+      "D": "$-3$"
+    },
     "option_a": "$3i$",
     "option_b": "$3$",
     "option_c": "$-3i$",
     "option_d": "$-3$",
     "correct_answer": "D",
-    "explanation": "$z = 3(\\cos\\pi+i\\sin\\pi) = 3(-1+0i) = -3$.",
+    "correct_option": "D",
+    "explanation": "In polar form, $z = r(\\cos\\theta + i\\sin\\theta)$. For modulus $r = 3$ and argument $\\theta = \\pi$: $z = 3(\\cos\\pi + i\\sin\\pi) = 3(-1 + 0i) = -3$.",
     "difficulty": "Medium",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(\\cos\\theta + i\\sin\\theta)^n = \\cos(n\\theta) + i\\sin(n\\theta)$"
   },
   {
     "id": "c11-ch1-adv-q61",
@@ -168,14 +248,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Which complex number represents the point $(-2,5)$ in the Argand plane?",
+    "options": {
+      "A": "$-2+5i$",
+      "B": "$5-2i$",
+      "C": "$2-5i$",
+      "D": "$-5+2i$"
+    },
     "option_a": "$-2+5i$",
     "option_b": "$5-2i$",
     "option_c": "$2-5i$",
     "option_d": "$-5+2i$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "A point $(x,y)$ on the Argand plane corresponds to the complex number $x+iy = -2+5i$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(x, y) \\longleftrightarrow z = x + iy$"
   },
   {
     "id": "c11-ch1-adv-q62",
@@ -184,14 +272,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Find the reflection of $3-4i$ in the real axis.",
+    "options": {
+      "A": "$-3-4i$",
+      "B": "$3+4i$",
+      "C": "$-3+4i$",
+      "D": "$4+3i$"
+    },
     "option_a": "$-3-4i$",
     "option_b": "$3+4i$",
     "option_c": "$-3+4i$",
     "option_d": "$4+3i$",
     "correct_answer": "B",
+    "correct_option": "B",
     "explanation": "Reflection across the real axis corresponds to complex conjugation: $\\overline{3-4i} = 3+4i$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z \\mapsto \\bar{z} = a - bi \\quad \\text{(Reflection across real axis)}$"
   },
   {
     "id": "c11-ch1-adv-q63",
@@ -200,14 +296,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Find the reflection of $3-4i$ in the imaginary axis.",
+    "options": {
+      "A": "$3+4i$",
+      "B": "$-3+4i$",
+      "C": "$-3-4i$",
+      "D": "$4-3i$"
+    },
     "option_a": "$3+4i$",
     "option_b": "$-3+4i$",
     "option_c": "$-3-4i$",
     "option_d": "$4-3i$",
     "correct_answer": "C",
+    "correct_option": "C",
     "explanation": "Reflection across the imaginary axis negates the real part while keeping the imaginary part: $-3-4i$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\operatorname{Re}(a + bi) = a$"
   },
   {
     "id": "c11-ch1-adv-q64",
@@ -216,14 +320,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Multiplication of a complex number by $i$ represents a geometric transformation of:",
+    "options": {
+      "A": "$180^\\circ\\text{ clockwise}$",
+      "B": "$90^\\circ\\text{ clockwise}$",
+      "C": "$360^\\circ$",
+      "D": "$90^\\circ\\text{ anticlockwise}$"
+    },
     "option_a": "$180^\\circ\\text{ clockwise}$",
     "option_b": "$90^\\circ\\text{ clockwise}$",
     "option_c": "$360^\\circ$",
     "option_d": "$90^\\circ\\text{ anticlockwise}$",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "Since $i = 1\\cdot e^{i\\pi/2}$, multiplying by $i$ rotates the vector by $+90^\\circ$ (anticlockwise) without changing modulus.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$e^{i\\theta} = \\cos\\theta + i\\sin\\theta$"
   },
   {
     "id": "c11-ch1-adv-q65",
@@ -232,14 +344,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Multiply $2+i$ by $i$.",
+    "options": {
+      "A": "$-1+2i$",
+      "B": "$1-2i$",
+      "C": "$2-i$",
+      "D": "$-2+i$"
+    },
     "option_a": "$-1+2i$",
     "option_b": "$1-2i$",
     "option_c": "$2-i$",
     "option_d": "$-2+i$",
     "correct_answer": "A",
-    "explanation": "$i(2+i) = 2i + i^2 = 2i - 1 = -1+2i$.",
+    "correct_option": "A",
+    "explanation": "To multiply $(2 + i)$ by $i$, distribute $i$ across both terms inside the parenthesis:\n$$i(2 + i) = i \\cdot 2 + i \\cdot i = 2i + i^2$$\nRecall that $i^2 = -1$ by definition. Substituting this in:\n$$2i + (-1) = -1 + 2i$$\nTherefore, the resulting complex number is $-1 + 2i$, which corresponds to Option A.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q66",
@@ -248,14 +368,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Multiply $1+2i$ by $-1$.",
+    "options": {
+      "A": "$1-2i$",
+      "B": "$-1-2i$",
+      "C": "$-1+2i$",
+      "D": "$2+i$"
+    },
     "option_a": "$1-2i$",
     "option_b": "$-1-2i$",
     "option_c": "$-1+2i$",
     "option_d": "$2+i$",
     "correct_answer": "B",
+    "correct_option": "B",
     "explanation": "$-1(1+2i) = -1-2i$, which geometrically corresponds to a half-turn ($180^\\circ$ rotation) about the origin.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q67",
@@ -264,14 +392,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z_1=2+i$ and $z_2=1-3i$, find $z_1-z_2$.",
+    "options": {
+      "A": "$3-2i$",
+      "B": "$1-2i$",
+      "C": "$1+4i$",
+      "D": "$3+4i$"
+    },
     "option_a": "$3-2i$",
     "option_b": "$1-2i$",
     "option_c": "$1+4i$",
     "option_d": "$3+4i$",
     "correct_answer": "C",
-    "explanation": "$z_1-z_2 = (2+i) - (1-3i) = (2-1) + (1-(-3))i = 1+4i$.",
+    "correct_option": "C",
+    "explanation": "To subtract $z_2 = 1 - 3i$ from $z_1 = 2 + i$:\n$$z_1 - z_2 = (2 + i) - (1 - 3i)$$\nDistribute the negative sign across the second term:\n$$z_1 - z_2 = 2 + i - 1 + 3i = (2 - 1) + (1 + 3)i = 1 + 4i$$\nThus, $z_1 - z_2 = 1 + 4i$, matching Option C.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) - (c + di) = (a - c) + (b - d)i$"
   },
   {
     "id": "c11-ch1-adv-q68",
@@ -280,14 +416,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Evaluate $\\dfrac{1+i}{1-i}$.",
+    "options": {
+      "A": "$1$",
+      "B": "$-i$",
+      "C": "$-1$",
+      "D": "$i$"
+    },
     "option_a": "$1$",
     "option_b": "$-i$",
     "option_c": "$-1$",
     "option_d": "$i$",
     "correct_answer": "D",
-    "explanation": "$\\dfrac{1+i}{1-i} = \\dfrac{(1+i)^2}{(1-i)(1+i)} = \\dfrac{2i}{2} = i$.",
+    "correct_option": "D",
+    "explanation": "To evaluate the quotient $\\dfrac{1 + i}{1 - i}$, multiply both numerator and denominator by the conjugate of the denominator, $(1 + i)$:\n$$\\dfrac{1 + i}{1 - i} = \\dfrac{(1 + i)(1 + i)}{(1 - i)(1 + i)} = \\dfrac{(1 + i)^2}{1^2 - i^2}$$\nExpand the numerator: $(1 + i)^2 = 1 + 2i + i^2 = 1 + 2i - 1 = 2i$.\nThe denominator is: $1 - (-1) = 2$.\n$$\\dfrac{2i}{2} = i$$\nTherefore, $\\dfrac{1 + i}{1 - i} = i$, corresponding to Option D.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-adv-q69",
@@ -296,14 +440,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Evaluate $\\dfrac{1-i}{1+i}$.",
+    "options": {
+      "A": "$-i$",
+      "B": "$i$",
+      "C": "$1$",
+      "D": "$-1$"
+    },
     "option_a": "$-i$",
     "option_b": "$i$",
     "option_c": "$1$",
     "option_d": "$-1$",
     "correct_answer": "A",
-    "explanation": "$\\dfrac{1-i}{1+i} = \\dfrac{(1-i)^2}{(1+i)(1-i)} = \\dfrac{-2i}{2} = -i$.",
+    "correct_option": "A",
+    "explanation": "To evaluate $\\dfrac{1 - i}{1 + i}$, multiply both numerator and denominator by the conjugate of the denominator, $(1 - i)$:\n$$\\dfrac{1 - i}{1 + i} = \\dfrac{(1 - i)(1 - i)}{(1 + i)(1 - i)} = \\dfrac{(1 - i)^2}{1^2 - i^2}$$\nExpand the numerator: $(1 - i)^2 = 1 - 2i + i^2 = 1 - 2i - 1 = -2i$.\nThe denominator is: $1 - (-1) = 2$.\n$$\\dfrac{-2i}{2} = -i$$\nTherefore, $\\dfrac{1 - i}{1 + i} = -i$, corresponding to Option A.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-adv-q70",
@@ -312,14 +464,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z=1+i$, find $z^3$.",
+    "options": {
+      "A": "$2+2i$",
+      "B": "$-2+2i$",
+      "C": "$-2-2i$",
+      "D": "$2-2i$"
+    },
     "option_a": "$2+2i$",
     "option_b": "$-2+2i$",
     "option_c": "$-2-2i$",
     "option_d": "$2-2i$",
     "correct_answer": "B",
-    "explanation": "$z^3 = (1+i)(1+i)^2 = (1+i)(2i) = 2i - 2 = -2+2i$.",
+    "correct_option": "B",
+    "explanation": "Given $z = 1 + i$, we compute $z^3 = z \\cdot z^2$. First compute $z^2$:\n$$z^2 = (1 + i)^2 = 1 + 2i + i^2 = 1 + 2i - 1 = 2i$$\nNow multiply this result by $z$:\n$$z^3 = z^2 \\cdot z = 2i(1 + i) = 2i + 2i^2 = 2i + 2(-1) = -2 + 2i$$\nAlternatively, using the binomial theorem:\n$$(1 + i)^3 = 1^3 + 3(1^2)(i) + 3(1)(i^2) + i^3 = 1 + 3i - 3 - i = -2 + 2i$$\nTherefore, $z^3 = -2 + 2i$, which corresponds to Option B.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q71",
@@ -328,14 +488,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Evaluate $i+i^2+i^3+i^4$.",
+    "options": {
+      "A": "$1$",
+      "B": "$-1$",
+      "C": "$0$",
+      "D": "$i$"
+    },
     "option_a": "$1$",
     "option_b": "$-1$",
     "option_c": "$0$",
     "option_d": "$i$",
     "correct_answer": "C",
-    "explanation": "$i + (-1) + (-i) + 1 = 0$.",
+    "correct_option": "C",
+    "explanation": "Evaluating consecutive powers of $i$: $i^1 = i$, $i^2 = -1$, $i^3 = -i$, and $i^4 = 1$. Adding them yields $i + (-1) + (-i) + 1 = (1 - 1) + (i - i) = 0$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$i^{4k+r} = (i^4)^k \\cdot i^r = i^r \\quad (i^2 = -1, i^4 = 1)$"
   },
   {
     "id": "c11-ch1-adv-q72",
@@ -344,14 +512,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Evaluate $i^{100}+i^{101}+i^{102}+i^{103}$.",
+    "options": {
+      "A": "$4$",
+      "B": "$-4$",
+      "C": "$2i$",
+      "D": "$0$"
+    },
     "option_a": "$4$",
     "option_b": "$-4$",
     "option_c": "$2i$",
     "option_d": "$0$",
     "correct_answer": "D",
-    "explanation": "Any four consecutive powers of $i$ sum to zero: $1 + i - 1 - i = 0$.",
+    "correct_option": "D",
+    "explanation": "Notice that powers of $i$ follow a cyclical pattern with period $4$:\n$$i^1 = i, \\quad i^2 = -1, \\quad i^3 = -i, \\quad i^4 = 1$$\nNow evaluate each power from $i^{100}$ to $i^{103}$:\n1) $i^{100} = (i^4)^{25} = 1^{25} = 1$\n2) $i^{101} = i^{100} \\cdot i = 1 \\cdot i = i$\n3) $i^{102} = i^{100} \\cdot i^2 = 1 \\cdot (-1) = -1$\n4) $i^{103} = i^{100} \\cdot i^3 = 1 \\cdot (-i) = -i$\nSumming these values:\n$$i^{100} + i^{101} + i^{102} + i^{103} = 1 + i - 1 - i = 0$$\nIn general, the sum of any four consecutive integral powers of $i$ is identically zero. Thus, the sum is $0$, corresponding to Option D.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$i^{4k+r} = (i^4)^k \\cdot i^r = i^r \\quad (i^2 = -1, i^4 = 1)$"
   },
   {
     "id": "c11-ch1-adv-q73",
@@ -360,14 +536,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Solve $z^2=1$ over the complex numbers.",
+    "options": {
+      "A": "$z=\\pm 1$",
+      "B": "$z=\\pm i$",
+      "C": "$z=1$ only",
+      "D": "$z=i$ only"
+    },
     "option_a": "$z=\\pm 1$",
     "option_b": "$z=\\pm i$",
     "option_c": "$z=1$ only",
     "option_d": "$z=i$ only",
     "correct_answer": "A",
-    "explanation": "$z^2-1=0 \\implies (z-1)(z+1)=0 \\implies z=\\pm 1$.",
+    "correct_option": "A",
+    "explanation": "Factoring as a difference of squares: $z^2 - 1 = 0 \\implies (z - 1)(z + 1) = 0$. Thus the solutions over the complex numbers are $z = 1$ or $z = -1$, written compactly as $z = \\pm 1$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-adv-q74",
@@ -376,14 +560,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Solve $z^2+1=0$ over the complex numbers.",
+    "options": {
+      "A": "$z=\\pm 1$",
+      "B": "$z=\\pm i$",
+      "C": "$z=-1$",
+      "D": "$z=0$"
+    },
     "option_a": "$z=\\pm 1$",
     "option_b": "$z=\\pm i$",
     "option_c": "$z=-1$",
     "option_d": "$z=0$",
     "correct_answer": "B",
-    "explanation": "$z^2 = -1 \\implies z = \\pm i$.",
+    "correct_option": "B",
+    "explanation": "Subtracting $1$ from both sides gives $z^2 = -1$. Taking the square root yields $z = \\pm\\sqrt{-1} = \\pm i$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\sqrt{a + bi} = \\pm\\left(\\sqrt{\\frac{|z|+a}{2}} + i\\operatorname{sgn}(b)\\sqrt{\\frac{|z|-a}{2}}\\right)$"
   },
   {
     "id": "c11-ch1-adv-q75",
@@ -392,14 +584,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Find the quadratic equation whose roots are $2+i$ and $2-i$.",
+    "options": {
+      "A": "$x^2+4x+5=0$",
+      "B": "$x^2-2x+5=0$",
+      "C": "$x^2-4x+5=0$",
+      "D": "$x^2-4x-5=0$"
+    },
     "option_a": "$x^2+4x+5=0$",
     "option_b": "$x^2-2x+5=0$",
     "option_c": "$x^2-4x+5=0$",
     "option_d": "$x^2-4x-5=0$",
     "correct_answer": "C",
+    "correct_option": "C",
     "explanation": "Sum of roots $= 4$, Product of roots $= 2^2+1^2 = 5$. The equation is $x^2-4x+5=0$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\alpha + \\beta = -\\frac{b}{a}$"
   },
   {
     "id": "c11-ch1-adv-q76",
@@ -408,14 +608,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Find the quadratic equation whose roots are $3i$ and $-3i$.",
+    "options": {
+      "A": "$x^2-9=0$",
+      "B": "$x^2+3=0$",
+      "C": "$x^2-3=0$",
+      "D": "$x^2+9=0$"
+    },
     "option_a": "$x^2-9=0$",
     "option_b": "$x^2+3=0$",
     "option_c": "$x^2-3=0$",
     "option_d": "$x^2+9=0$",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "Sum of roots $= 0$, Product of roots $= (3i)(-3i) = -9i^2 = 9$. Equation: $x^2+9=0$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\alpha + \\beta = -\\frac{b}{a}$"
   },
   {
     "id": "c11-ch1-adv-q77",
@@ -424,14 +632,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z=1+2i$, evaluate $z^2-2z$.",
+    "options": {
+      "A": "$-5$",
+      "B": "$-4$",
+      "C": "$5$",
+      "D": "$4i$"
+    },
     "option_a": "$-5$",
     "option_b": "$-4$",
     "option_c": "$5$",
     "option_d": "$4i$",
     "correct_answer": "A",
+    "correct_option": "A",
     "explanation": "$z-1 = 2i \\implies (z-1)^2 = (2i)^2 \\implies z^2-2z+1 = -4 \\implies z^2-2z = -5$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-adv-q78",
@@ -440,14 +656,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z=2-i$, evaluate $z\\bar{z}+\\bar{z}$.",
+    "options": {
+      "A": "$7-i$",
+      "B": "$7+i$",
+      "C": "$5+2i$",
+      "D": "$3+i$"
+    },
     "option_a": "$7-i$",
     "option_b": "$7+i$",
     "option_c": "$5+2i$",
     "option_d": "$3+i$",
     "correct_answer": "B",
+    "correct_option": "B",
     "explanation": "$z\\bar{z} = |z|^2 = 2^2+(-1)^2 = 5$, and $\\bar{z} = 2+i$. Thus $z\\bar{z}+\\bar{z} = 5 + (2+i) = 7+i$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z\\bar{z} = |z|^2 = a^2 + b^2$"
   },
   {
     "id": "c11-ch1-adv-q79",
@@ -456,14 +680,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "For any nonzero complex number $z \\ne 0$, find $\\left|\\dfrac{\\bar{z}}{z}\\right|$.",
+    "options": {
+      "A": "$|z|^2$",
+      "B": "$\\frac{1}{|z|}$",
+      "C": "$1$",
+      "D": "$|z|$"
+    },
     "option_a": "$|z|^2$",
     "option_b": "$\\frac{1}{|z|}$",
     "option_c": "$1$",
     "option_d": "$|z|$",
     "correct_answer": "C",
+    "correct_option": "C",
     "explanation": "$\\left|\\dfrac{\\bar{z}}{z}\\right| = \\dfrac{|\\bar{z}|}{|z|} = \\dfrac{|z|}{|z|} = 1$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-adv-q80",
@@ -472,14 +704,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z|=3$, find $z\\bar{z}$.",
+    "options": {
+      "A": "$3$",
+      "B": "$6$",
+      "C": "$\\sqrt{3}$",
+      "D": "$9$"
+    },
     "option_a": "$3$",
     "option_b": "$6$",
     "option_c": "$\\sqrt{3}$",
     "option_d": "$9$",
     "correct_answer": "D",
-    "explanation": "$z\\bar{z} = |z|^2 = 3^2 = 9$.",
+    "correct_option": "D",
+    "explanation": "For any complex number $z$, the product of $z$ and its complex conjugate $\\bar{z}$ is equal to the square of its modulus: $z\\bar{z} = |z|^2$. For $|z| = 3$, $z\\bar{z} = 3^2 = 9$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z\\bar{z} = |z|^2 = a^2 + b^2$"
   },
   {
     "id": "c11-ch1-adv-q81",
@@ -488,14 +728,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Which equation represents the imaginary axis in the complex plane?",
+    "options": {
+      "A": "$z+\\bar{z}=0$",
+      "B": "$z-\\bar{z}=0$",
+      "C": "$|z|=1$",
+      "D": "$z\\bar{z}=1$"
+    },
     "option_a": "$z+\\bar{z}=0$",
     "option_b": "$z-\\bar{z}=0$",
     "option_c": "$|z|=1$",
     "option_d": "$z\\bar{z}=1$",
     "correct_answer": "A",
-    "explanation": "$z+\\bar{z} = 2x = 0 \\implies x=0$, which is the equation of the imaginary axis.",
+    "correct_option": "A",
+    "explanation": "Let a general point in the complex plane be $z = x + iy$ with conjugate $\\bar{z} = x - iy$.\nThe imaginary axis consists of all points where the real part is zero ($x = 0$).\nNow observe that:\n$$z + \\bar{z} = (x + iy) + (x - iy) = 2x$$\nSetting $z + \\bar{z} = 0$ yields:\n$$2x = 0 \\iff x = 0$$\nSince $x = 0$ is the equation of the imaginary axis, the equation $z + \\bar{z} = 0$ represents the imaginary axis. This corresponds to Option A.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z + \\bar{z} = 2\\operatorname{Re}(z)$"
   },
   {
     "id": "c11-ch1-adv-q82",
@@ -504,14 +752,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Which equation represents the real axis in the complex plane?",
+    "options": {
+      "A": "$z+\\bar{z}=0$",
+      "B": "$z-\\bar{z}=0$",
+      "C": "$|z|=0$",
+      "D": "$z+\\bar{z}=1$"
+    },
     "option_a": "$z+\\bar{z}=0$",
     "option_b": "$z-\\bar{z}=0$",
     "option_c": "$|z|=0$",
     "option_d": "$z+\\bar{z}=1$",
     "correct_answer": "B",
-    "explanation": "$z-\\bar{z} = 2iy = 0 \\implies y=0$, which is the equation of the real axis.",
+    "correct_option": "B",
+    "explanation": "Let $z = x + iy$ with conjugate $\\bar{z} = x - iy$.\nThe real axis consists of all points where the imaginary part is zero ($y = 0$).\nTaking the difference between $z$ and its conjugate:\n$$z - \\bar{z} = (x + iy) - (x - iy) = 2iy$$\nSetting $z - \\bar{z} = 0$ gives:\n$$2iy = 0 \\iff y = 0$$\nSince $y = 0$ defines the horizontal real axis, the equation $z - \\bar{z} = 0$ represents the real axis. This corresponds to Option B.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$z - \\bar{z} = 2i\\operatorname{Im}(z)$"
   },
   {
     "id": "c11-ch1-adv-q83",
@@ -520,14 +776,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "A point $z$ is equidistant from $1$ and $-1$. Its locus is the:",
+    "options": {
+      "A": "Real axis",
+      "B": "Unit circle",
+      "C": "Imaginary axis",
+      "D": "Line $x=1$"
+    },
     "option_a": "Real axis",
     "option_b": "Unit circle",
     "option_c": "Imaginary axis",
     "option_d": "Line $x=1$",
     "correct_answer": "C",
+    "correct_option": "C",
     "explanation": "The perpendicular bisector of $(-1,0)$ and $(1,0)$ is the line $x=0$, which is the imaginary axis.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z - z_1| = |z - z_2| \\iff \\text{Perpendicular bisector of } [z_1, z_2]$"
   },
   {
     "id": "c11-ch1-adv-q84",
@@ -536,14 +800,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "A complex number $z$ satisfying $|z-1|=|z+1|$ lies on the:",
+    "options": {
+      "A": "Line $x=1$",
+      "B": "Line $y=1$",
+      "C": "Real axis",
+      "D": "Imaginary axis"
+    },
     "option_a": "Line $x=1$",
     "option_b": "Line $y=1$",
     "option_c": "Real axis",
     "option_d": "Imaginary axis",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "$|z-1|=|z+1| \\implies (x-1)^2+y^2 = (x+1)^2+y^2 \\implies -2x = 2x \\implies x=0$ (the imaginary axis).",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q85",
@@ -552,14 +824,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z=3+4i$, find its distance from the origin.",
+    "options": {
+      "A": "$5$",
+      "B": "$7$",
+      "C": "$25$",
+      "D": "$1$"
+    },
     "option_a": "$5$",
     "option_b": "$7$",
     "option_c": "$25$",
     "option_d": "$1$",
     "correct_answer": "A",
-    "explanation": "The distance from origin is $|z| = \\sqrt{3^2+4^2} = \\sqrt{25} = 5$.",
+    "correct_option": "A",
+    "explanation": "The distance of any complex number $z = x + iy$ from the origin in the Argand plane is given by its modulus $|z| = \\sqrt{x^2 + y^2}$.\nFor $z = 3 + 4i$, the real component is $x = 3$ and the imaginary component is $y = 4$:\n$$|z| = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$$\nTherefore, the distance from the origin is $5$ units, matching Option A.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z| = \\sqrt{x^2 + y^2}$"
   },
   {
     "id": "c11-ch1-adv-q86",
@@ -568,14 +848,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Find the distance between $3+4i$ and its conjugate in the Argand plane.",
+    "options": {
+      "A": "$6$",
+      "B": "$8$",
+      "C": "$10$",
+      "D": "$4$"
+    },
     "option_a": "$6$",
     "option_b": "$8$",
     "option_c": "$10$",
     "option_d": "$4$",
     "correct_answer": "B",
-    "explanation": "Distance $= |(3+4i) - (3-4i)| = |8i| = 8$.",
+    "correct_option": "B",
+    "explanation": "The complex conjugate of $z = 3 + 4i$ is $\\bar{z} = 3 - 4i$. The distance between them in the complex Argand plane is $|z - \\bar{z}| = |(3 + 4i) - (3 - 4i)| = |8i| = \\sqrt{0^2 + 8^2} = 8$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$d(z_1, z_2) = |z_1 - z_2| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$"
   },
   {
     "id": "c11-ch1-adv-q87",
@@ -584,14 +872,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z-4|=0$, find $z$.",
+    "options": {
+      "A": "$-4$",
+      "B": "$4i$",
+      "C": "$4$",
+      "D": "$0$"
+    },
     "option_a": "$-4$",
     "option_b": "$4i$",
     "option_c": "$4$",
     "option_d": "$0$",
     "correct_answer": "C",
-    "explanation": "$|z-4|=0 \\implies z-4=0 \\implies z=4$.",
+    "correct_option": "C",
+    "explanation": "The modulus of a complex number is zero if and only if the number itself is zero. Therefore, $|z - 4| = 0 \\implies z - 4 = 0 \\implies z = 4$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-adv-q88",
@@ -600,14 +896,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z|=0$, then:",
+    "options": {
+      "A": "$z=1$",
+      "B": "$z=i$",
+      "C": "$z$ is imaginary",
+      "D": "$z=0$"
+    },
     "option_a": "$z=1$",
     "option_b": "$z=i$",
     "option_c": "$z$ is imaginary",
     "option_d": "$z=0$",
     "correct_answer": "D",
-    "explanation": "The only complex number with modulus zero is $z=0+0i=0$.",
+    "correct_option": "D",
+    "explanation": "Let $z = x + iy$ where $x, y \\in \\mathbb{R}$. The modulus of $z$ is defined as $|z| = \\sqrt{x^2 + y^2}$.\nIf $|z| = 0$:\n$$\\sqrt{x^2 + y^2} = 0 \\implies x^2 + y^2 = 0$$\nSince $x^2 \\ge 0$ and $y^2 \\ge 0$ for all real numbers, the sum of their squares can be zero if and only if both $x = 0$ and $y = 0$ simultaneously.\nTherefore, $z = 0 + 0i = 0$. Thus, $|z| = 0 \\iff z = 0$, matching Option D.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-adv-q89",
@@ -616,14 +920,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z_1=3+4i$ and $z_2=-3-4i$, find $|z_1+z_2|$.",
+    "options": {
+      "A": "$0$",
+      "B": "$5$",
+      "C": "$10$",
+      "D": "$25$"
+    },
     "option_a": "$0$",
     "option_b": "$5$",
     "option_c": "$10$",
     "option_d": "$25$",
     "correct_answer": "A",
-    "explanation": "$z_1+z_2 = (3+4i) + (-3-4i) = 0$, so $|z_1+z_2|=0$.",
+    "correct_option": "A",
+    "explanation": "First compute the sum $z_1 + z_2$ of the two complex numbers:\n$$z_1 + z_2 = (3 + 4i) + (-3 - 4i) = (3 - 3) + (4 - 4)i = 0 + 0i = 0$$\nNow evaluate the modulus of this sum:\n$$|z_1 + z_2| = |0| = 0$$\nHence, $|z_1 + z_2| = 0$, which corresponds to Option A.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-adv-q90",
@@ -632,14 +944,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z_1|=3$ and $|z_2|=5$, find the maximum possible value of $|z_1+z_2|$.",
+    "options": {
+      "A": "$2$",
+      "B": "$8$",
+      "C": "$15$",
+      "D": "$\\sqrt{34}$"
+    },
     "option_a": "$2$",
     "option_b": "$8$",
     "option_c": "$15$",
     "option_d": "$\\sqrt{34}$",
     "correct_answer": "B",
-    "explanation": "By triangle inequality, $|z_1+z_2| \\le |z_1| + |z_2| = 3+5 = 8$.",
+    "correct_option": "B",
+    "explanation": "According to the triangle inequality for complex numbers, the modulus of a sum is at most the sum of the moduli:\n$$|z_1 + z_2| \\le |z_1| + |z_2|$$\nEquality holds when $z_1$ and $z_2$ have the same argument (i.e., they lie on the same ray from the origin).\nGiven $|z_1| = 3$ and $|z_2| = 5$:\n$$\\max |z_1 + z_2| = |z_1| + |z_2| = 3 + 5 = 8$$\nTherefore, the maximum possible value is $8$, which corresponds to Option B.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z_1 + z_2| \\le |z_1| + |z_2|$"
   },
   {
     "id": "c11-ch1-adv-q91",
@@ -648,14 +968,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z_1|=3$ and $|z_2|=5$, find the minimum possible value of $|z_1+z_2|$.",
+    "options": {
+      "A": "$8$",
+      "B": "$0$",
+      "C": "$2$",
+      "D": "$15$"
+    },
     "option_a": "$8$",
     "option_b": "$0$",
     "option_c": "$2$",
     "option_d": "$15$",
     "correct_answer": "C",
-    "explanation": "By reverse triangle inequality, $|z_1+z_2| \\ge ||z_1| - |z_2|| = |3-5| = 2$.",
+    "correct_option": "C",
+    "explanation": "According to the reverse triangle inequality for complex numbers, the modulus of a sum is at least the absolute difference of their moduli:\n$$|z_1 + z_2| \\ge \\big||z_1| - |z_2|\\big|$$\nEquality holds when $z_1$ and $z_2$ have opposite directions (arguments differing by $\\pi$).\nGiven $|z_1| = 3$ and $|z_2| = 5$:\n$$\\min |z_1 + z_2| = |3 - 5| = |-2| = 2$$\nTherefore, the minimum possible value is $2$, matching Option C.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|z_1 + z_2| \\ge \\big||z_1| - |z_2|\\big|$"
   },
   {
     "id": "c11-ch1-adv-q92",
@@ -664,14 +992,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $|z_1+z_2|=|z_1|+|z_2|$ for nonzero complex numbers $z_1, z_2$, then $z_1$ and $z_2$ have:",
+    "options": {
+      "A": "Opposite directions",
+      "B": "Equal moduli only",
+      "C": "Zero arguments only",
+      "D": "The same direction"
+    },
     "option_a": "Opposite directions",
     "option_b": "Equal moduli only",
     "option_c": "Zero arguments only",
     "option_d": "The same direction",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "Equality in the triangle inequality holds if and only if $\\operatorname{Arg}(z_1) = \\operatorname{Arg}(z_2)$, meaning they point in the same direction.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\operatorname{Arg}(x + iy) = \\operatorname{atan2}(y, x) \\in (-\\pi, \\pi]$"
   },
   {
     "id": "c11-ch1-adv-q93",
@@ -680,14 +1016,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Evaluate $\\dfrac{2+2i}{1+i}$.",
+    "options": {
+      "A": "$2$",
+      "B": "$2i$",
+      "C": "$1+i$",
+      "D": "$4$"
+    },
     "option_a": "$2$",
     "option_b": "$2i$",
     "option_c": "$1+i$",
     "option_d": "$4$",
     "correct_answer": "A",
-    "explanation": "$\\dfrac{2+2i}{1+i} = \\dfrac{2(1+i)}{1+i} = 2$.",
+    "correct_option": "A",
+    "explanation": "Factoring out $2$ from the numerator: $\\frac{2 + 2i}{1 + i} = \\frac{2(1 + i)}{1 + i} = 2$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q94",
@@ -696,14 +1040,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Find real $(x,y)$ if $(x+iy)(1+i)=1+5i$.",
+    "options": {
+      "A": "$x=2, y=3$",
+      "B": "$x=3, y=2$",
+      "C": "$x=1, y=5$",
+      "D": "$x=5, y=1$"
+    },
     "option_a": "$x=2, y=3$",
     "option_b": "$x=3, y=2$",
     "option_c": "$x=1, y=5$",
     "option_d": "$x=5, y=1$",
     "correct_answer": "B",
+    "correct_option": "B",
     "explanation": "Expanding the product: $(x + iy)(1 + i) = (x - y) + (x + y)i = 1 + 5i$. Equating real and imaginary parts gives $x - y = 1$ and $x + y = 5$. Adding these two equations yields $2x = 6 \\implies x = 3$, and substituting into $x + y = 5$ gives $y = 5 - 3 = 2$. Thus $x = 3, y = 2$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi)(c + di) = (ac - bd) + (ad + bc)i$"
   },
   {
     "id": "c11-ch1-adv-q95",
@@ -712,14 +1064,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z+\\dfrac{1}{z}=2$, find $z$.",
+    "options": {
+      "A": "$-1$",
+      "B": "$i$",
+      "C": "$1$",
+      "D": "$-i$"
+    },
     "option_a": "$-1$",
     "option_b": "$i$",
     "option_c": "$1$",
     "option_d": "$-i$",
     "correct_answer": "C",
-    "explanation": "$z^2-2z+1=0 \\implies (z-1)^2=0 \\implies z=1$.",
+    "correct_option": "C",
+    "explanation": "Multiplying $z + \\frac{1}{z} = 2$ by $z$ gives $z^2 + 1 = 2z \\implies z^2 - 2z + 1 = 0$. Recognizing the perfect square: $(z - 1)^2 = 0 \\implies z = 1$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q96",
@@ -728,14 +1088,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z+\\dfrac{1}{z}=0$, find $z$.",
+    "options": {
+      "A": "$\\pm 1$",
+      "B": "$0$",
+      "C": "$1$",
+      "D": "$\\pm i$"
+    },
     "option_a": "$\\pm 1$",
     "option_b": "$0$",
     "option_c": "$1$",
     "option_d": "$\\pm i$",
     "correct_answer": "D",
-    "explanation": "$z^2+1=0 \\implies z^2=-1 \\implies z=\\pm i$.",
+    "correct_option": "D",
+    "explanation": "Multiplying $z + \\frac{1}{z} = 0$ by $z$ gives $z^2 + 1 = 0 \\implies z^2 = -1 \\implies z = \\pm\\sqrt{-1} = \\pm i$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-adv-q97",
@@ -744,14 +1112,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z=2+i$, find $(\\bar{z})^2$.",
+    "options": {
+      "A": "$3-4i$",
+      "B": "$3+4i$",
+      "C": "$5-4i$",
+      "D": "$4-3i$"
+    },
     "option_a": "$3-4i$",
     "option_b": "$3+4i$",
     "option_c": "$5-4i$",
     "option_d": "$4-3i$",
     "correct_answer": "A",
-    "explanation": "$\\bar{z} = 2-i$, so $(\\bar{z})^2 = (2-i)^2 = 4 - 4i - 1 = 3-4i$.",
+    "correct_option": "A",
+    "explanation": "Given $z = 2 + i$, the complex conjugate is $\\bar{z} = 2 - i$.\nNow square the conjugate using the algebraic identity $(a - b)^2 = a^2 - 2ab + b^2$:\n$$(\\bar{z})^2 = (2 - i)^2 = 2^2 - 2(2)(i) + i^2 = 4 - 4i + (-1) = 3 - 4i$$\nNotice also that $(\\bar{z})^2 = \\overline{z^2} = \\overline{(2+i)^2} = \\overline{3+4i} = 3-4i$. Thus, the answer is $3 - 4i$, matching Option A.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-adv-q98",
@@ -760,14 +1136,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "Evaluate $(2+i)(2-i) + (1+i)(1-i)$.",
+    "options": {
+      "A": "$5$",
+      "B": "$7$",
+      "C": "$6$",
+      "D": "$3$"
+    },
     "option_a": "$5$",
     "option_b": "$7$",
     "option_c": "$6$",
     "option_d": "$3$",
     "correct_answer": "B",
-    "explanation": "$(2^2+1^2) + (1^2+1^2) = 5 + 2 = 7$.",
+    "correct_option": "B",
+    "explanation": "Each product is a pair of complex conjugates of the form $(a + bi)(a - bi) = a^2 + b^2$. Thus $(2 + i)(2 - i) = 2^2 + 1^2 = 5$, and $(1 + i)(1 - i) = 1^2 + 1^2 = 2$. Adding both gives $5 + 2 = 7$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$\\overline{z_1 z_2} = \\bar{z}_1 \\bar{z}_2$"
   },
   {
     "id": "c11-ch1-adv-q99",
@@ -776,14 +1160,22 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z=ai$ where $a \\in \\mathbb{R}$, then $z^2$ is always:",
+    "options": {
+      "A": "Positive real",
+      "B": "Purely imaginary",
+      "C": "Non-positive real",
+      "D": "Always zero"
+    },
     "option_a": "Positive real",
     "option_b": "Purely imaginary",
     "option_c": "Non-positive real",
     "option_d": "Always zero",
     "correct_answer": "C",
-    "explanation": "$z^2 = (ai)^2 = -a^2 \\le 0$, which is always a non-positive real number.",
+    "correct_option": "C",
+    "explanation": "Let $z = ai$, where $a \\in \\mathbb{R}$. Squaring both sides:\n$$z^2 = (ai)^2 = a^2 \\cdot i^2 = a^2(-1) = -a^2$$\nSince $a$ is real, $a^2 \\ge 0$. Therefore, $-a^2 \\le 0$.\nThis means $z^2$ is always a real number that is less than or equal to zero (i.e., a non-positive real number).\nTherefore, $z^2$ is always a non-positive real, corresponding to Option C.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-adv-q100",
@@ -792,13 +1184,21 @@ export const C11_CH1_ADVANCED_PART2: Question[] = [
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
     "question": "If $z=a+ib$, evaluate $|z|^2 - (\\operatorname{Re}(z))^2$.",
+    "options": {
+      "A": "$a^2$",
+      "B": "$a^2+b^2$",
+      "C": "$2ab$",
+      "D": "$b^2$"
+    },
     "option_a": "$a^2$",
     "option_b": "$a^2+b^2$",
     "option_c": "$2ab$",
     "option_d": "$b^2$",
     "correct_answer": "D",
+    "correct_option": "D",
     "explanation": "$|z|^2 = a^2+b^2$ and $(\\operatorname{Re}(z))^2 = a^2$. Thus $(a^2+b^2) - a^2 = b^2$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Advanced"
+    "difficulty_tier": "Advanced",
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   }
 ];

@@ -1,10 +1,5 @@
-import { Question } from '../types';
+import { Question } from "../types";
 
-/**
- * Class 11 Mathematics - Chapter 1: Complex Numbers
- * Difficulty: Normal
- * Part 4 (Q151 - Q200) (50 MCQs)
- */
 export const C11_CH1_NORMAL_PART4: Question[] = [
   {
     "id": "c11-ch1-normal-q151",
@@ -25,10 +20,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$-1 + i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$z^{-1} = \\frac{\\bar{z}}{|z|^2} = \\frac{1-i}{1^2+1^2} = \\frac{1-i}{2} = \\frac{1}{2} - \\frac{1}{2}i$.",
+    "explanation": "The multiplicative inverse is $z^{-1} = \\frac{\\bar{z}}{|z|^2}$. For $z = 1 + i$, $\\bar{z} = 1 - i$ and $|z|^2 = 1^2 + 1^2 = 2$. Thus $z^{-1} = \\frac{1-i}{2} = \\frac{1}{2} - \\frac{1}{2}i$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "z^{-1}=\\frac{\\bar{z}}{|z|^2}"
+    "formula": "$z^{-1} = \\frac{\\bar{z}}{|z|^2} = \\frac{a - bi}{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q152",
@@ -49,10 +44,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$0$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Since $z+\\bar{z} = (x+iy) + (x-iy) = 2x$, the equation $2x=6$ yields $x = 3$.",
+    "explanation": "For $z = x + iy$, its conjugate is $\\bar{z} = x - iy$. Adding them gives $z + \\bar{z} = (x + iy) + (x - iy) = 2x$. Given $2x = 6$, dividing by $2$ yields $x = 3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "z+\\bar{z}=2x"
+    "formula": "$z + \\bar{z} = 2\\operatorname{Re}(z)$"
   },
   {
     "id": "c11-ch1-normal-q153",
@@ -73,10 +68,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$1$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Since $z-\\bar{z} = (x+iy) - (x-iy) = 2iy$, the equation $2iy=4i$ yields $y = 2$.",
+    "explanation": "For $z = x + iy$, its conjugate is $\\bar{z} = x - iy$. Subtracting them gives $z - \\bar{z} = (x + iy) - (x - iy) = 2iy$. Given $2iy = 4i$, dividing by $2i$ yields $y = 2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "z-\\bar{z}=2iy"
+    "formula": "$z - \\bar{z} = 2i\\operatorname{Im}(z)$"
   },
   {
     "id": "c11-ch1-normal-q154",
@@ -97,10 +92,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$z=3$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "A modulus is zero only when its complex-number argument is zero: $z-3=0$.",
+    "explanation": "The modulus of a complex number is zero if and only if the complex number itself is zero: $|w| = 0 \\iff w = 0$. Setting $z - 3 = 0$ gives $z = 3$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "z-3=0"
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q155",
@@ -121,10 +116,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$8i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$(1+i)^2 = 2i \\implies (1+i)^6 = (2i)^3 = -8i$. Also $(1-i)^2 = -2i \\implies (1-i)^6 = (-2i)^3 = 8i$. Sum is $-8i + 8i = 0$.",
+    "explanation": "Using $(1 + i)^2 = 2i$ and $(1 - i)^2 = -2i$: $(1 + i)^6 = [(1 + i)^2]^3 = (2i)^3 = 8i^3 = -8i$. Similarly, $(1 - i)^6 = [(1 - i)^2]^3 = (-2i)^3 = -8i^3 = 8i$. Adding both yields $(-8i) + 8i = 0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "(2i)^3+(-2i)^3"
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-normal-q156",
@@ -145,10 +140,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$\\sqrt{34}$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "By the triangle inequality, $|z_1 + z_2| \\leq |z_1| + |z_2| = 3 + 5 = 8$.",
+    "explanation": "By the triangle inequality, for any complex numbers $z_1, z_2 \\in \\mathbb{C}$, $|z_1 + z_2| \\le |z_1| + |z_2|$. Substituting $|z_1| = 3$ and $|z_2| = 5$ gives $|z_1 + z_2| \\le 3 + 5 = 8$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "|z_1+z_2|\\leq|z_1|+|z_2|"
+    "formula": "$|z_1 + z_2| \\le |z_1| + |z_2|$"
   },
   {
     "id": "c11-ch1-normal-q157",
@@ -169,10 +164,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$0$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "By the reverse triangle inequality, $|z_1 - z_2| \\geq ||z_1| - |z_2|| = |7 - 3| = 4$.",
+    "explanation": "By the reverse triangle inequality, $|z_1 - z_2| \\ge ||z_1| - |z_2||$. Substituting $|z_1| = 7$ and $|z_2| = 3$ gives $|z_1 - z_2| \\ge |7 - 3| = 4$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "|z_1-z_2|\\geq||z_1|-|z_2||"
+    "formula": "$|z_1 + z_2| \\ge \\big||z_1| - |z_2|\\big|$"
   },
   {
     "id": "c11-ch1-normal-q158",
@@ -193,10 +188,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$\\bar{z}=\\frac{1}{z}$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Since $z\\bar{z}=1$, dividing by $z$ gives $\\bar{z}=\\frac{1}{z}$.",
+    "explanation": "For any complex number, $z\\bar{z} = |z|^2$. When $|z| = 1$, this becomes $z\\bar{z} = 1$. Dividing both sides by $z$ (since $z \\neq 0$) yields $\\bar{z} = \\frac{1}{z}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "z\\bar{z}=1"
+    "formula": "$z\\bar{z} = |z|^2 = a^2 + b^2$"
   },
   {
     "id": "c11-ch1-normal-q159",
@@ -217,9 +212,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "Equal to $1$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Its conjugate equals its negative, which is the condition for a purely imaginary number.",
+    "explanation": "Let $w = \\frac{1-z}{1+z}$. Taking the complex conjugate: $\\bar{w} = \\frac{1-\\bar{z}}{1+\\bar{z}}$. Since $|z| = 1$, $\\bar{z} = \\frac{1}{z}$. Substituting gives $\\bar{w} = \\frac{1 - \\frac{1}{z}}{1 + \\frac{1}{z}} = \\frac{z - 1}{z + 1} = -\\frac{1 - z}{1 + z} = -w$. Since $\\bar{w} = -w$, $w$ is purely imaginary.",
     "difficulty": "Hard",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q160",
@@ -227,7 +223,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $|z|=1$, then $|z+1|^2=$:",
+    "question": "If $|z|=1$, then $|z+1|^2$ equals:",
     "options": {
       "A": "$1+\\operatorname{Re}(z)$",
       "B": "$2-2\\operatorname{Re}(z)$",
@@ -240,10 +236,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$1+|z|^2$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$|z+1|^2=(z+1)(\\bar{z}+1)=1+z+\\bar{z}+1=2+2\\operatorname{Re}(z)$.",
+    "explanation": "Expanding using $|w|^2 = w\\bar{w}$: $|z + 1|^2 = (z + 1)(\\overline{z + 1}) = (z + 1)(\\bar{z} + 1) = z\\bar{z} + z + \\bar{z} + 1$. Since $|z| = 1 \\implies z\\bar{z} = 1$ and $z + \\bar{z} = 2\\operatorname{Re}(z)$, we get $|z + 1|^2 = 1 + 2\\operatorname{Re}(z) + 1 = 2 + 2\\operatorname{Re}(z)$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "|z+1|^2=(z+1)(\\bar{z}+1)=1+z+\\bar{z}+1=2+2\\operatorname{Re}(z)"
+    "formula": "$z\\bar{z} = |z|^2 = a^2 + b^2$"
   },
   {
     "id": "c11-ch1-normal-q161",
@@ -264,10 +260,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$[0,1]$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Since $z+\\bar{z}=2\\operatorname{Re}(z)$ and $-1\\leq\\operatorname{Re}(z)\\leq1$.",
+    "explanation": "For $z = \\cos\\theta + i\\sin\\theta$ on the unit circle $|z| = 1$, $\\bar{z} = \\cos\\theta - i\\sin\\theta$. Then $z + \\bar{z} = 2\\cos\\theta = 2\\operatorname{Re}(z)$. Since $-1 \\le \\cos\\theta \\le 1$, multiplying by $2$ gives $-2 \\le z + \\bar{z} \\le 2$. Thus the range is $[-2, 2]$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "z+\\bar{z}=2\\operatorname{Re}(z)"
+    "formula": "$|z - z_0| = r \\iff (x - x_0)^2 + (y - y_0)^2 = r^2$"
   },
   {
     "id": "c11-ch1-normal-q162",
@@ -288,10 +284,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$5$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "By the triangle inequality, $|z+w|\\leq2+3=5$, with equality when they have the same direction.",
+    "explanation": "By the triangle inequality, $|z + w| \\le |z| + |w|$. Substituting $|z| = 2$ and $|w| = 3$ gives $|z + w| \\le 2 + 3 = 5$, with equality achieved when $z$ and $w$ have the same direction (same argument).",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "|z+w|\\leq2+3=5"
+    "formula": "$|z_1 + z_2| \\le |z_1| + |z_2|$"
   },
   {
     "id": "c11-ch1-normal-q163",
@@ -312,10 +308,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$5$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The reverse triangle inequality gives $|z+w|\\geq|3-2|=1$.",
+    "explanation": "By the reverse triangle inequality, $|z + w| \\ge ||z| - |w||$. Substituting $|z| = 2$ and $|w| = 3$ gives $|z + w| \\ge |2 - 3| = |-1| = 1$, with equality when $z$ and $w$ point in opposite directions.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "|z+w|\\geq|3-2|=1"
+    "formula": "$|z_1 + z_2| \\ge \\big||z_1| - |z_2|\\big|$"
   },
   {
     "id": "c11-ch1-normal-q164",
@@ -336,10 +332,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$6$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "By the triangle inequality, $|z - w| \\le |z| + |-w| = |z| + |w|$. Substituting the moduli yields $|z-w|\\leq|z|+|w|=5$. Thus the maximum possible value is $5$.",
+    "explanation": "By the triangle inequality, $|z - w| \\le |z| + |-w| = |z| + |w|$. Substituting $|z| = 2$ and $|w| = 3$ gives $|z - w| \\le 2 + 3 = 5$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "|z-w|\\leq|z|+|w|=5"
+    "formula": "$|z_1 + z_2| \\le |z_1| + |z_2|$"
   },
   {
     "id": "c11-ch1-normal-q165",
@@ -360,10 +356,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$5$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The reverse triangle inequality gives $|z-w|\\geq||z|-|w||=1$.",
+    "explanation": "By the reverse triangle inequality, $|z - w| \\ge ||z| - |w||$. Substituting $|z| = 2$ and $|w| = 3$ gives $|z - w| \\ge |2 - 3| = 1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "|z-w|\\geq||z|-|w||=1"
+    "formula": "$|z_1 + z_2| \\ge \\big||z_1| - |z_2|\\big|$"
   },
   {
     "id": "c11-ch1-normal-q166",
@@ -384,9 +380,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$|z+w|=|z|+|w|$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Their vector lengths add directly when both point in the same direction.",
+    "explanation": "When two nonzero complex numbers $z$ and $w$ have the same direction (i.e., $\\arg(z) = \\arg(w)$), the angle between them is $0$. Therefore, their moduli add directly without vector cancellation: $|z + w| = |z| + |w|$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$\\operatorname{Arg}(z_1) = \\operatorname{Arg}(z_2) \\iff \\frac{z_1}{z_2} \\in \\mathbb{R}^+$"
   },
   {
     "id": "c11-ch1-normal-q167",
@@ -407,9 +404,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "Non-real",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "A nonnegative real ratio means the two complex numbers have the same direction.",
+    "explanation": "Equality holds in $|z + w| \\le |z| + |w|$ if and only if $z = 0$, $w = 0$, or $\\arg(z) = \\arg(w)$. This condition is equivalent to $\\arg\\left(\\frac{z}{w}\\right) = 0$, which means $\\frac{z}{w}$ is a non-negative real number ($\\frac{z}{w} \\ge 0$).",
     "difficulty": "Hard",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q168",
@@ -430,10 +428,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$|\\operatorname{Re}z|<0$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Since $|z|=\\sqrt{a^2+b^2}\\geq\\sqrt{a^2}=|a|$.",
+    "explanation": "For any complex number $z = a + bi$, $|z| = \\sqrt{a^2 + b^2}$. Since $b^2 \\ge 0$, $a^2 + b^2 \\ge a^2 \\implies \\sqrt{a^2 + b^2} \\ge \\sqrt{a^2} = |a|$. Since $\\operatorname{Re}(z) = a \\le |a|$, we have $|\\operatorname{Re}(z)| \\le |z|$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "|z|=\\sqrt{a^2+b^2}\\geq\\sqrt{a^2}=|a|"
+    "formula": "$|z| = \\sqrt{a^2 + b^2} \\ge \\sqrt{a^2} = |\\operatorname{Re}(z)|$"
   },
   {
     "id": "c11-ch1-normal-q169",
@@ -454,10 +452,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$|\\operatorname{Im}z|<0$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$\\sqrt{a^2+b^2}\\geq\\sqrt{b^2}=|b|$.",
+    "explanation": "For any complex number $z = a + bi$, $|z| = \\sqrt{a^2 + b^2}$. Since $a^2 \\ge 0$, $a^2 + b^2 \\ge b^2 \\implies \\sqrt{a^2 + b^2} \\ge \\sqrt{b^2} = |b| = |\\operatorname{Im}(z)|$. Hence $|\\operatorname{Im}(z)| \\le |z|$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "\\sqrt{a^2+b^2}\\geq\\sqrt{b^2}=|b|"
+    "formula": "$|z| = \\sqrt{a^2 + b^2} \\ge \\sqrt{b^2} = |\\operatorname{Im}(z)|$"
   },
   {
     "id": "c11-ch1-normal-q170",
@@ -478,9 +476,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$|z|=|\\bar{z}|$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Conjugation changes only the sign of the imaginary part, not the modulus.",
+    "explanation": "For $z = a + bi$, $|z| = \\sqrt{a^2 + b^2}$. Its complex conjugate is $\\bar{z} = a - bi$, so $|\\bar{z}| = \\sqrt{a^2 + (-b)^2} = \\sqrt{a^2 + b^2} = |z|$. Thus $|z| = |\\bar{z}|$ is always true for all $z \\in \\mathbb{C}$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-normal-q171",
@@ -488,7 +487,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=\\frac{1+i}{1-i}$, then $z^8=$:",
+    "question": "If $z=\\frac{1+i}{1-i}$, then $z^8$ equals:",
     "options": {
       "A": "$1$",
       "B": "$-1$",
@@ -501,10 +500,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$-i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "First $z=i$, so $z^8=i^8=(i^4)^2=1$.",
+    "explanation": "Simplifying $z = \\frac{1+i}{1-i} = \\frac{(1+i)^2}{1 - i^2} = \\frac{2i}{2} = i$. Then $z^8 = i^8 = (i^4)^2 = 1^2 = 1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "z=i"
+    "formula": "$\\frac{1+i}{1-i} = i$"
   },
   {
     "id": "c11-ch1-normal-q172",
@@ -512,7 +511,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\left(\\frac{1+i}{1-i}\\right)^{15}=$:",
+    "question": "Evaluate $\\left(\\frac{1+i}{1-i}\\right)^{15}$:",
     "options": {
       "A": "$1$",
       "B": "$i$",
@@ -525,10 +524,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The fraction equals $i$, and $i^{15}=i^3=-i$.",
+    "explanation": "Simplifying the base: $\\frac{1+i}{1-i} = \\frac{(1+i)^2}{1 - i^2} = \\frac{2i}{2} = i$. Then $\\left(\\frac{1+i}{1-i}\\right)^{15} = i^{15} = (i^4)^3 \\cdot i^3 = 1^3 \\cdot (-i) = -i$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "i"
+    "formula": "$\\frac{1+i}{1-i} = i$"
   },
   {
     "id": "c11-ch1-normal-q173",
@@ -536,7 +535,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(1+i)^{20}=$:",
+    "question": "Evaluate $(1+i)^{20}$:",
     "options": {
       "A": "$1024$",
       "B": "$-1024$",
@@ -549,10 +548,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$-1024i$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Since $(1+i)^4=-4$, $(1+i)^{20}=(-4)^5=-1024$.",
+    "explanation": "Since $(1 + i)^2 = 2i$, $(1 + i)^4 = (2i)^2 = -4$. Then $(1 + i)^{20} = [(1 + i)^4]^5 = (-4)^5 = -1024$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "(1+i)^4=-4"
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-normal-q174",
@@ -560,7 +559,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(1-i)^{12}=$:",
+    "question": "Evaluate $(1-i)^{12}$:",
     "options": {
       "A": "$64$",
       "B": "$64i$",
@@ -573,10 +572,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$-64$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Since $(1-i)^4=-4$, the expression is $(-4)^3=-64$.",
+    "explanation": "Since $(1 - i)^2 = -2i$, $(1 - i)^4 = (-2i)^2 = -4$. Then $(1 - i)^{12} = [(1 - i)^4]^3 = (-4)^3 = -64$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "(1-i)^4=-4"
+    "formula": "$(1 - i)^2 = -2i \\implies (1 - i)^{12} = (-2i)^6 = -64$"
   },
   {
     "id": "c11-ch1-normal-q175",
@@ -584,7 +583,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(1+i)^8=$:",
+    "question": "Evaluate $(1+i)^8$:",
     "options": {
       "A": "$16$",
       "B": "$-16$",
@@ -597,10 +596,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$-16i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Since $(1+i)^4=-4$, squaring gives $16$.",
+    "explanation": "Since $(1 + i)^2 = 2i$, $(1 + i)^4 = (2i)^2 = -4$. Then $(1 + i)^8 = [(1 + i)^4]^2 = (-4)^2 = 16$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "(1+i)^4=-4"
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-normal-q176",
@@ -608,7 +607,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac{1+i}{1-i}+\\frac{1-i}{1+i}=$:",
+    "question": "Evaluate $\\frac{1+i}{1-i}+\\frac{1-i}{1+i}$:",
     "options": {
       "A": "$2$",
       "B": "$-2$",
@@ -621,10 +620,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$2i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The two fractions equal $i$ and $-i$, respectively.",
+    "explanation": "Note that $\\frac{1+i}{1-i} = i$ and $\\frac{1-i}{1+i} = -i$. Adding both yields $i + (-i) = 0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "i"
+    "formula": "$\\frac{1+i}{1-i} = i$"
   },
   {
     "id": "c11-ch1-normal-q177",
@@ -632,7 +631,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\frac{2+i}{2-i}+\\frac{2-i}{2+i}=$:",
+    "question": "Evaluate $\\frac{2+i}{2-i}+\\frac{2-i}{2+i}$:",
     "options": {
       "A": "$\\frac{4}{5}$",
       "B": "$\\frac{6}{5}$",
@@ -645,10 +644,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$2$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The fractions become $\\frac{3+4i}{5}$ and $\\frac{3-4i}{5}$; their sum is $\\frac{6}{5}$.",
+    "explanation": "Multiplying each term by its conjugate denominator: $\\frac{2+i}{2-i} = \\frac{(2+i)^2}{2^2 - i^2} = \\frac{3 + 4i}{5}$, and $\\frac{2-i}{2+i} = \\frac{(2-i)^2}{2^2 - i^2} = \\frac{3 - 4i}{5}$. Adding both: $\\frac{3 + 4i}{5} + \\frac{3 - 4i}{5} = \\frac{6}{5}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{3+4i}{5}"
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-normal-q178",
@@ -656,7 +655,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\left(\\frac{2+i}{2-i}\\right)\\left(\\frac{2-i}{2+i}\\right)=$:",
+    "question": "Evaluate $\\left(\\frac{2+i}{2-i}\\right)\\left(\\frac{2-i}{2+i}\\right)$:",
     "options": {
       "A": "$-1$",
       "B": "$i$",
@@ -669,9 +668,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$1$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "The two factors are reciprocals.",
+    "explanation": "The two factors are exact reciprocals: $\\left(\\frac{2+i}{2-i}\\right)\\left(\\frac{2-i}{2+i}\\right) = \\frac{(2+i)(2-i)}{(2-i)(2+i)} = 1$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$z^{-1} = \\frac{\\bar{z}}{|z|^2} = \\frac{a - bi}{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q179",
@@ -692,10 +692,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$z=i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Multiplying by $z$ gives $z^2-2z+1=(z-1)^2=0$.",
+    "explanation": "Multiplying $z + \\frac{1}{z} = 2$ by $z$ gives $z^2 + 1 = 2z \\implies z^2 - 2z + 1 = 0 \\implies (z - 1)^2 = 0 \\implies z = 1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "z"
+    "formula": "$\\frac{a + bi}{c + di} = \\frac{(a + bi)(c - di)}{c^2 + d^2}$"
   },
   {
     "id": "c11-ch1-normal-q180",
@@ -719,7 +719,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "explanation": "Given $z - \\frac{1}{z} = 0$, multiplying both sides by $z$ gives $z^2 - 1 = 0 \\implies z^2 = 1 \\implies z = \\pm 1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "z"
+    "formula": "$\\frac{a + bi}{c + di} = \\frac{(a + bi)(c - di)}{c^2 + d^2}$"
   },
   {
     "id": "c11-ch1-normal-q181",
@@ -740,10 +740,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$z=3\\pm\\sqrt5$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The equation becomes $z^2-3z+1=0$; use the quadratic formula.",
+    "explanation": "Multiplying $z + \\frac{1}{z} = 3$ by $z$ gives $z^2 - 3z + 1 = 0$. Applying the quadratic formula: $z = \\frac{3 \\pm \\sqrt{(-3)^2 - 4(1)(1)}}{2} = \\frac{3 \\pm \\sqrt{9 - 4}}{2} = \\frac{3 \\pm \\sqrt{5}}{2}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "z^2-3z+1=0"
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-normal-q182",
@@ -751,7 +751,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z-\\frac{1}{z}=2i$, then $z=$:",
+    "question": "If $z-\\frac{1}{z}=2i$, then $z$ equals:",
     "options": {
       "A": "$1$",
       "B": "$-1$",
@@ -764,10 +764,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$i$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "The equation becomes $z^2-2iz-1=(z-i)^2=0$.",
+    "explanation": "Multiplying $z - \\frac{1}{z} = 2i$ by $z$ gives $z^2 - 1 = 2iz \\implies z^2 - 2iz - 1 = 0$. Recognizing the perfect square: since $-1 = i^2$, this is $z^2 - 2iz + i^2 = (z - i)^2 = 0 \\implies z = i$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "z^2-2iz-1=(z-i)^2=0"
+    "formula": "$\\frac{a + bi}{c + di} = \\frac{(a + bi)(c - di)}{c^2 + d^2}$"
   },
   {
     "id": "c11-ch1-normal-q183",
@@ -788,10 +788,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The expression factors as $(z+i)^2=0$.",
+    "explanation": "Since $-1 = i^2$, the quadratic equation can be written as $z^2 + 2iz + i^2 = 0$, which factors as $(z + i)^2 = 0$. Hence the repeated root is $z = -i$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "(z+i)^2=0"
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-normal-q184",
@@ -812,10 +812,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$i,-i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$z^4-1=(z^2-1)(z^2+1)$, giving $z=\\pm1,\\pm i$.",
+    "explanation": "Factoring $z^4 - 1 = 0$ as a difference of squares: $(z^2 - 1)(z^2 + 1) = 0 \\implies (z - 1)(z + 1)(z - i)(z + i) = 0$. Thus the four fourth roots of unity are $z = \\pm 1, \\pm i$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "z^4-1=(z^2-1)(z^2+1)"
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-normal-q185",
@@ -836,10 +836,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$\\pm i,\\pm2$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Let $u=z^2$. Then $(u+1)(u+4)=0$, so $z^2=-1$ or $-4$.",
+    "explanation": "Let $u = z^2$. The equation becomes $u^2 + 5u + 4 = 0$, which factors as $(u + 1)(u + 4) = 0$. Thus $u = -1$ or $u = -4$. Setting $z^2 = -1 \\implies z = \\pm i$, and $z^2 = -4 \\implies z = \\pm 2i$. Therefore, the solutions are $z = \\pm i, \\pm 2i$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "u=z^2"
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-normal-q186",
@@ -860,10 +860,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$\\pm1,\\pm2$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Let $u=z^2$. Then $(u-1)(u-4)=0$, so $z^2=1$ or $4$.",
+    "explanation": "Let $u = z^2$. The equation becomes $u^2 - 5u + 4 = 0$, which factors as $(u - 1)(u - 4) = 0$. Thus $u = 1$ or $u = 4$. Setting $z^2 = 1 \\implies z = \\pm 1$, and $z^2 = 4 \\implies z = \\pm 2$. Therefore, the solutions are $z = \\pm 1, \\pm 2$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "u=z^2"
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-normal-q187",
@@ -884,10 +884,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$2+i,\\,1$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The proposed roots have sum $3+i$ and product $2+2i$.",
+    "explanation": "The quadratic equation $z^2 - (3 + i)z + (2 + 2i) = 0$ factors as $(z - 2)(z - (1 + i)) = 0$. Checking: sum of roots is $2 + (1 + i) = 3 + i$, and product of roots is $2(1 + i) = 2 + 2i$. Thus the roots are $z = 2$ and $z = 1 + i$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "3+i"
+    "formula": "$\\alpha + \\beta = -\\frac{b}{a}$"
   },
   {
     "id": "c11-ch1-normal-q188",
@@ -908,9 +908,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$a+bi$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The coefficients are real, so non-real roots occur as conjugate pairs.",
+    "explanation": "Since $a, b \\in \\mathbb{R}$, the coefficients of $x^2 - 2ax + (a^2 + b^2) = 0$ are real. By the Complex Conjugate Root Theorem, non-real roots must occur in conjugate pairs. Since $a + bi$ is a root, the other root is $a - bi$.",
     "difficulty": "Hard",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-normal-q189",
@@ -931,10 +932,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$x^2-4x-13=0$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The other root is $-2-3i$; their sum is $-4$ and product is $13$.",
+    "explanation": "Since the coefficients are real, if $-2 + 3i$ is a root, its conjugate $-2 - 3i$ must also be a root. The sum of roots is $(-2 + 3i) + (-2 - 3i) = -4$, and their product is $(-2 + 3i)(-2 - 3i) = (-2)^2 + 3^2 = 4 + 9 = 13$. The quadratic equation is $x^2 - (-4)x + 13 = x^2 + 4x + 13 = 0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "-2-3i"
+    "formula": "$\\overline{z_1 z_2} = \\bar{z}_1 \\bar{z}_2$"
   },
   {
     "id": "c11-ch1-normal-q190",
@@ -942,7 +943,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=\\frac{3+4i}{4+3i}$, then $|z|=$:",
+    "question": "If $z=\\frac{3+4i}{4+3i}$, then $|z|$ equals:",
     "options": {
       "A": "$\\frac{3}{5}$",
       "B": "$\\frac{4}{5}$",
@@ -955,10 +956,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$1$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "The numerator and denominator both have modulus $5$.",
+    "explanation": "Using the quotient rule for moduli: $|z| = \\left|\\frac{3+4i}{4+3i}\\right| = \\frac{|3+4i|}{|4+3i|} = \\frac{\\sqrt{3^2+4^2}}{\\sqrt{4^2+3^2}} = \\frac{5}{5} = 1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "5"
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q191",
@@ -966,7 +967,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=\\frac{3+4i}{4+3i}$, then $\\operatorname{Re}(z)=$:",
+    "question": "If $z=\\frac{3+4i}{4+3i}$, then $\\operatorname{Re}(z)$ equals:",
     "options": {
       "A": "$\\frac{24}{25}$",
       "B": "$\\frac{7}{25}$",
@@ -979,10 +980,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$\\frac{3}{5}$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Rationalization gives $z=\\frac{24+7i}{25}$, so its real part is $\\frac{24}{25}$.",
+    "explanation": "Multiplying numerator and denominator by $4 - 3i$: $z = \\frac{(3+4i)(4-3i)}{(4+3i)(4-3i)} = \\frac{12 - 9i + 16i - 12i^2}{4^2 - (3i)^2} = \\frac{12 + 7i + 12}{16 + 9} = \\frac{24 + 7i}{25} = \\frac{24}{25} + \\frac{7}{25}i$. Thus $\\operatorname{Re}(z) = \\frac{24}{25}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "z=\\frac{24+7i}{25}"
+    "formula": "$\\frac{a + bi}{c + di} = \\frac{(a + bi)(c - di)}{c^2 + d^2}$"
   },
   {
     "id": "c11-ch1-normal-q192",
@@ -990,7 +991,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=\\frac{3+4i}{4+3i}$, then $\\operatorname{Im}(z)=$:",
+    "question": "If $z=\\frac{3+4i}{4+3i}$, then $\\operatorname{Im}(z)$ equals:",
     "options": {
       "A": "$\\frac{24}{25}$",
       "B": "$-\\frac{7}{25}$",
@@ -1003,10 +1004,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$\\frac{4}{5}$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "From $z=\\frac{24+7i}{25}$, the coefficient of $i$ is $\\frac{7}{25}$.",
+    "explanation": "Multiplying numerator and denominator by $4 - 3i$: $z = \\frac{(3+4i)(4-3i)}{(4+3i)(4-3i)} = \\frac{24 + 7i}{25} = \\frac{24}{25} + \\frac{7}{25}i$. Thus $\\operatorname{Im}(z) = \\frac{7}{25}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "z=\\frac{24+7i}{25}"
+    "formula": "$\\frac{a + bi}{c + di} = \\frac{(a + bi)(c - di)}{c^2 + d^2}$"
   },
   {
     "id": "c11-ch1-normal-q193",
@@ -1014,7 +1015,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$1+i+i^2+i^3+i^4=$:",
+    "question": "Evaluate $1+i+i^2+i^3+i^4$:",
     "options": {
       "A": "$0$",
       "B": "$1$",
@@ -1027,10 +1028,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The first four terms sum to zero, while $i^4=1$.",
+    "explanation": "Evaluating each power of $i$: $1 + i + i^2 + i^3 + i^4 = 1 + i + (-1) + (-i) + 1 = (1 - 1 + 1) + (i - i) = 1$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "i^4=1"
+    "formula": "$i^{4k+r} = (i^4)^k \\cdot i^r = i^r \\quad (i^2 = -1, i^4 = 1)$"
   },
   {
     "id": "c11-ch1-normal-q194",
@@ -1038,7 +1039,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\displaystyle\\sum_{k=1}^{100}i^k=$:",
+    "question": "Evaluate $\\displaystyle\\sum_{k=1}^{100}i^k$:",
     "options": {
       "A": "$1$",
       "B": "$-1$",
@@ -1051,10 +1052,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$0$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "The 100 terms form 25 complete cycles, and each cycle $i+i^2+i^3+i^4$ sums to zero.",
+    "explanation": "The sum of any four consecutive powers of $i$ is $i + i^2 + i^3 + i^4 = i - 1 - i + 1 = 0$. The sum $\\sum_{k=1}^{100} i^k$ contains $100 = 25 \\times 4$ terms, consisting of $25$ complete groups of four, so the sum is $25 \\times 0 = 0$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "i+i^2+i^3+i^4"
+    "formula": "$\\sum_{k=1}^4 i^{4n+k} = 0$"
   },
   {
     "id": "c11-ch1-normal-q195",
@@ -1062,7 +1063,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\displaystyle\\sum_{k=0}^{2025}i^k=$:",
+    "question": "Evaluate $\\displaystyle\\sum_{k=0}^{2025}i^k$:",
     "options": {
       "A": "$1+i$",
       "B": "$1-i$",
@@ -1075,10 +1076,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$0$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The first 2024 terms form complete groups of four; the remaining terms are $i^{2024}=1$ and $i^{2025}=i$.",
+    "explanation": "There are $2026$ terms: from $k = 0$ to $2025$. Grouping every four terms: the first $2024$ terms ($k = 0$ to $2023$) form $506$ groups of four that sum to zero, since $1 + i + i^2 + i^3 = 0$. The remaining terms are $i^{2024} + i^{2025} = 1 + i$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "i^{2024}=1"
+    "formula": "$\\sum_{k=1}^4 i^{4n+k} = 0$"
   },
   {
     "id": "c11-ch1-normal-q196",
@@ -1086,7 +1087,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(1+i)(1-i)(1+i)(1-i)=$:",
+    "question": "Evaluate $(1+i)(1-i)(1+i)(1-i)$:",
     "options": {
       "A": "$2$",
       "B": "$-4$",
@@ -1099,10 +1100,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$4i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Each conjugate pair has product $2$, so the total is $2\\times2=4$.",
+    "explanation": "Grouping as conjugate pairs: $(1 + i)(1 - i) = 1^2 - i^2 = 1 - (-1) = 2$. Thus $[(1 + i)(1 - i)] \\cdot [(1 + i)(1 - i)] = 2 \\times 2 = 4$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "2"
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-normal-q197",
@@ -1110,7 +1111,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$\\left|\\frac{3+4i}{1-2i}\\right|=$:",
+    "question": "Evaluate $\\left|\\frac{3+4i}{1-2i}\\right|$:",
     "options": {
       "A": "$5$",
       "B": "$\\sqrt5$",
@@ -1123,10 +1124,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$\\frac{1}{\\sqrt5}$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The modulus is $\\frac{|3+4i|}{|1-2i|}=\\frac{5}{\\sqrt5}=\\sqrt5$.",
+    "explanation": "By the quotient property of moduli: $\\left|\\frac{3+4i}{1-2i}\\right| = \\frac{|3+4i|}{|1-2i|} = \\frac{\\sqrt{3^2+4^2}}{\\sqrt{1^2+(-2)^2}} = \\frac{\\sqrt{25}}{\\sqrt{5}} = \\frac{5}{\\sqrt{5}} = \\sqrt{5}$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{|3+4i|}{|1-2i|}=\\frac{5}{\\sqrt5}=\\sqrt5"
+    "formula": "$\\frac{a + bi}{c + di} = \\frac{(a + bi)(c - di)}{c^2 + d^2}$"
   },
   {
     "id": "c11-ch1-normal-q198",
@@ -1134,7 +1135,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $|z|=2$, then $|z^5|=$:",
+    "question": "If $|z|=2$, then $|z^5|$ equals:",
     "options": {
       "A": "$10$",
       "B": "$16$",
@@ -1147,10 +1148,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$32$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Using the complex power modulus property $|z^n| = |z|^n$: $|z^5|=|z|^5=2^5=32$. Thus the value is $32$.",
+    "explanation": "Using the power property of moduli $|z^n| = |z|^n$: for $|z| = 2$, $|z^5| = |z|^5 = 2^5 = 32$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "|z^5|=|z|^5=2^5=32"
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q199",
@@ -1158,7 +1159,7 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=3+4i$, then $z\\bar{z}+z+\\bar{z}=$:",
+    "question": "If $z=3+4i$, then $z\\bar{z}+z+\\bar{z}$ equals:",
     "options": {
       "A": "$31$",
       "B": "$25$",
@@ -1171,10 +1172,10 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$35$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$z\\bar{z}=25$ and $z+\\bar{z}=6$, so the total is $31$.",
+    "explanation": "For $z = 3 + 4i$, $z\\bar{z} = |z|^2 = 3^2 + 4^2 = 25$, and $z + \\bar{z} = 2\\operatorname{Re}(z) = 2(3) = 6$. Therefore, $z\\bar{z} + z + \\bar{z} = 25 + 6 = 31$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "z\\bar{z}=25"
+    "formula": "$z\\bar{z} = |z|^2 = a^2 + b^2$"
   },
   {
     "id": "c11-ch1-normal-q200",
@@ -1195,9 +1196,9 @@ export const C11_CH1_NORMAL_PART4: Question[] = [
     "option_d": "$5\\pm4i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The first condition gives the real part $5$; then $25+b^2=29$, so $b=\\pm2$.",
+    "explanation": "Let $z = a + bi$. Then $z + \\bar{z} = 2a = 10 \\implies a = 5$. Since $z\\bar{z} = a^2 + b^2 = 29$, substituting $a = 5$ gives $25 + b^2 = 29 \\implies b^2 = 4 \\implies b = \\pm 2$. Thus $z = 5 \\pm 2i$.",
     "difficulty": "Hard",
     "difficulty_tier": "Normal",
-    "formula": "5"
+    "formula": "$z\\bar{z} = |z|^2 = a^2 + b^2$"
   }
 ];

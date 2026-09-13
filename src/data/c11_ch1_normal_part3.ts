@@ -1,10 +1,5 @@
-import { Question } from '../types';
+import { Question } from "../types";
 
-/**
- * Class 11 Mathematics - Chapter 1: Complex Numbers
- * Difficulty: Normal
- * Part 3 (Q101 - Q150) (50 MCQs)
- */
 export const C11_CH1_NORMAL_PART3: Question[] = [
   {
     "id": "c11-ch1-normal-q101",
@@ -12,7 +7,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(1+2i)^3=$:",
+    "question": "Evaluate $(1+2i)^3$:",
     "options": {
       "A": "$11+2i$",
       "B": "$-11-2i$",
@@ -25,10 +20,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$11-2i$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$(1+2i)^2=-3+4i$, and multiplying by $1+2i$ gives $-11-2i$.",
+    "explanation": "Expanding using the binomial cube formula $(a + b)^3 = a^3 + 3a^2 b + 3ab^2 + b^3$: $(1 + 2i)^3 = 1^3 + 3(1^2)(2i) + 3(1)(2i)^2 + (2i)^3 = 1 + 6i + 3(-4) + 8(-i) = 1 + 6i - 12 - 8i = -11 - 2i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(1+2i)^2=-3+4i"
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-normal-q102",
@@ -36,7 +31,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "$(2+i)^3=$:",
+    "question": "Evaluate $(2+i)^3$:",
     "options": {
       "A": "$11+2i$",
       "B": "$2-11i$",
@@ -49,10 +44,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$2+11i$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$(2+i)^2=3+4i$, and $(3+4i)(2+i)=2+11i$.",
+    "explanation": "Expanding using the binomial cube formula $(a + b)^3 = a^3 + 3a^2 b + 3ab^2 + b^3$: $(2 + i)^3 = 2^3 + 3(2^2)(i) + 3(2)(i^2) + i^3 = 8 + 12i + 6(-1) + (-i) = 8 + 12i - 6 - i = 2 + 11i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(2+i)^2=3+4i"
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-normal-q103",
@@ -60,7 +55,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $|z|=4$, then $\\left|\\frac{1}{z}\\right|=$:",
+    "question": "If $|z|=4$, then $\\left|\\frac{1}{z}\\right|$ equals:",
     "options": {
       "A": "$\\frac{1}{4}$",
       "B": "$4$",
@@ -73,9 +68,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$\\frac{1}{16}$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The modulus of a reciprocal is the reciprocal of the modulus.",
+    "explanation": "By the quotient property of moduli, for any non-zero complex number $z \\neq 0$: $\\left|\\frac{1}{z}\\right| = \\frac{|1|}{|z|} = \\frac{1}{|z|}$. Since $|z| = 4$, we obtain $\\left|\\frac{1}{z}\\right| = \\frac{1}{4}$.",
     "difficulty": "Medium",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q104",
@@ -96,10 +92,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$z=-3i$ only",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Write $z=bi$. Then $z\\bar{z}=b^2=9$, giving $b=\\pm3$.",
+    "explanation": "For $z = a + bi$, $\\operatorname{Re}(z) = 0 \\implies a = 0$, so $z = bi$ is purely imaginary with $b \\in \\mathbb{R}$. Then $z\\bar{z} = (bi)(-bi) = -b^2 i^2 = b^2$. Setting $b^2 = 9$ yields $b = \\pm 3$, so $z = \\pm 3i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z=bi"
+    "formula": "$\\operatorname{Re}(z) = c \\iff x = c \\quad \\text{(Vertical line)}$"
   },
   {
     "id": "c11-ch1-normal-q105",
@@ -107,7 +103,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z+\\bar{z}=8$ and $z-\\bar{z}=-6i$, then $z=$:",
+    "question": "If $z+\\bar{z}=8$ and $z-\\bar{z}=-6i$, then $z$ equals:",
     "options": {
       "A": "$3-4i$",
       "B": "$4-3i$",
@@ -120,10 +116,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$8-6i$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Adding the equations gives $2z=8-6i$, so $z=4-3i$.",
+    "explanation": "Adding the two equations: $(z + \\bar{z}) + (z - \\bar{z}) = 8 + (-6i) \\implies 2z = 8 - 6i \\implies z = \\frac{8 - 6i}{2} = 4 - 3i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "2z=8-6i"
+    "formula": "$z + \\bar{z} = 2\\operatorname{Re}(z)$"
   },
   {
     "id": "c11-ch1-normal-q106",
@@ -144,10 +140,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$z=0$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "For $z=a+bi$, comparison gives $a=2a$ and $-b=2b$, so $a=b=0$.",
+    "explanation": "Let $z = a + bi$. Then $\\bar{z} = a - bi$. The equation $\\bar{z} = 2z$ becomes $a - bi = 2(a + bi) = 2a + 2bi$. Equating real parts: $a = 2a \\implies a = 0$. Equating imaginary parts: $-b = 2b \\implies 3b = 0 \\implies b = 0$. Thus $z = 0 + 0i = 0$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z=a+bi"
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-normal-q107",
@@ -168,10 +164,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "Necessarily $1$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Since $z+\\bar{z}=2\\operatorname{Re}(z)$, the real part must be zero.",
+    "explanation": "For any complex number $z = a + bi$, $z + \\bar{z} = (a + bi) + (a - bi) = 2a = 2\\operatorname{Re}(z)$. Thus $z + \\bar{z} = 0 \\implies 2\\operatorname{Re}(z) = 0 \\implies \\operatorname{Re}(z) = 0$, which means $z$ is purely imaginary.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z+\\bar{z}=2\\operatorname{Re}(z)"
+    "formula": "$z + \\bar{z} = 2\\operatorname{Re}(z)$"
   },
   {
     "id": "c11-ch1-normal-q108",
@@ -192,10 +188,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$z=0$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The second condition makes $z$ purely imaginary, and the first gives $|z|=1$.",
+    "explanation": "From $z + \\bar{z} = 0$, we have $2\\operatorname{Re}(z) = 0 \\implies \\operatorname{Re}(z) = 0$, so $z = bi$ is purely imaginary ($b \\in \\mathbb{R}$). From $z\\bar{z} = |z|^2 = 1$, we have $b^2 = 1 \\implies b = \\pm 1$. Thus $z = \\pm i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z"
+    "formula": "$z\\bar{z} = |z|^2 = a^2 + b^2$"
   },
   {
     "id": "c11-ch1-normal-q109",
@@ -216,10 +212,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$z=0$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Given $z + \\frac{1}{z} = 0$, multiplying by $z$ gives $z^2 + 1 = 0 \\implies z^2 = -1 \\implies z = \\pm\\sqrt{-1} = \\pm i$.",
+    "explanation": "Given $z + \\frac{1}{z} = 0$, multiplying both sides by $z$ gives $z^2 + 1 = 0 \\implies z^2 = -1 \\implies z = \\pm\\sqrt{-1} = \\pm i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z"
+    "formula": "$\\frac{a + bi}{c + di} = \\frac{(a + bi)(c - di)}{c^2 + d^2}$"
   },
   {
     "id": "c11-ch1-normal-q110",
@@ -227,7 +223,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z=1+i$, then $z^{-2}=$:",
+    "question": "If $z=1+i$, then $z^{-2}$ equals:",
     "options": {
       "A": "$\\frac{i}{2}$",
       "B": "$2i$",
@@ -240,10 +236,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$-\\frac{i}{2}$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Since $z^2=2i$, $z^{-2}=\\frac{1}{2i}=-\\frac{i}{2}$.",
+    "explanation": "First compute $z^2 = (1 + i)^2 = 1 + 2i + i^2 = 1 + 2i - 1 = 2i$. Then $z^{-2} = \\frac{1}{z^2} = \\frac{1}{2i} = \\frac{-i}{2i(-i)} = \\frac{-i}{-2i^2} = -\\frac{i}{2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z^2=2i"
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-normal-q111",
@@ -251,7 +247,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $(2+i)z=5$, then $z=$:",
+    "question": "If $(2+i)z=5$, then $z$ equals:",
     "options": {
       "A": "$2-i$",
       "B": "$2+i$",
@@ -264,10 +260,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$1+2i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$z=\\frac{5}{2+i}=\\frac{5(2-i)}{5}=2-i$.",
+    "explanation": "Solving for $z$: $z = \\frac{5}{2+i}$. Multiplying numerator and denominator by the conjugate $2 - i$: $z = \\frac{5(2-i)}{(2+i)(2-i)} = \\frac{5(2-i)}{2^2 - i^2} = \\frac{5(2-i)}{4 - (-1)} = \\frac{5(2-i)}{5} = 2 - i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z=\\frac{5}{2+i}=\\frac{5(2-i)}{5}=2-i"
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-normal-q112",
@@ -275,7 +271,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $(1-i)z=2+2i$, then $z=$:",
+    "question": "If $(1-i)z=2+2i$, then $z$ equals:",
     "options": {
       "A": "$2$",
       "B": "$-2i$",
@@ -288,10 +284,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$1+i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Evaluating the mathematical expression step-by-step: $z=\\frac{2+2i}{1-i}=2i$, which yields $2i$.",
+    "explanation": "Solving for $z$: $z = \\frac{2+2i}{1-i}$. Factoring $2$ in the numerator gives $z = \\frac{2(1+i)}{1-i}$. Since $\\frac{1+i}{1-i} = \\frac{(1+i)^2}{1 - i^2} = \\frac{2i}{2} = i$, we have $z = 2(i) = 2i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z=\\frac{2+2i}{1-i}=2i"
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-normal-q113",
@@ -299,7 +295,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z+(2-i)=5+3i$, then $z=$:",
+    "question": "If $z+(2-i)=5+3i$, then $z$ equals:",
     "options": {
       "A": "$7+2i$",
       "B": "$3+4i$",
@@ -312,10 +308,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$7+4i$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Subtract $2-i$: $z=5+3i-2+i=3+4i$.",
+    "explanation": "Subtracting $2 - i$ from both sides gives $z = (5 + 3i) - (2 - i) = (5 - 2) + (3 - (-1))i = 3 + 4i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "2-i"
+    "formula": "$(a + bi) - (c + di) = (a - c) + (b - d)i$"
   },
   {
     "id": "c11-ch1-normal-q114",
@@ -323,7 +319,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z-(1+2i)=4-i$, then $z=$:",
+    "question": "If $z-(1+2i)=4-i$, then $z$ equals:",
     "options": {
       "A": "$3-3i$",
       "B": "$5-3i$",
@@ -336,10 +332,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$5+i$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Add $1+2i$ to both sides.",
+    "explanation": "Adding $1 + 2i$ to both sides gives $z = (4 - i) + (1 + 2i) = (4 + 1) + (-1 + 2)i = 5 + i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "1+2i"
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-normal-q115",
@@ -347,7 +343,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $2z+\\bar{z}=9+i$, then $z=$:",
+    "question": "If $2z+\\bar{z}=9+i$, then $z$ equals:",
     "options": {
       "A": "$3+i$",
       "B": "$3-i$",
@@ -360,10 +356,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$1+3i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Let $z=a+bi$. Then $2z+\\bar{z}=3a+bi$, so $a=3,b=1$.",
+    "explanation": "Let $z = a + bi$. Then $\\bar{z} = a - bi$. The equation $2z + \\bar{z} = 9 + i$ becomes $2(a + bi) + (a - bi) = (2a + a) + (2b - b)i = 3a + bi = 9 + i$. Equating components gives $3a = 9 \\implies a = 3$ and $b = 1$. Thus $z = 3 + i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z=a+bi"
+    "formula": "$z + \\bar{z} = 2\\operatorname{Re}(z)$"
   },
   {
     "id": "c11-ch1-normal-q116",
@@ -371,7 +367,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z+2\\bar{z}=6-3i$, then $z=$:",
+    "question": "If $z+2\\bar{z}=6-3i$, then $z$ equals:",
     "options": {
       "A": "$3+2i$",
       "B": "$2-3i$",
@@ -384,10 +380,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$3-2i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "For $z=a+bi$, $z+2\\bar{z}=3a-bi$. Hence $a=2,b=3$.",
+    "explanation": "Let $z = a + bi$. Then $\\bar{z} = a - bi$. Then $z + 2\\bar{z} = (a + bi) + 2(a - bi) = 3a - bi = 6 - 3i$. Equating real parts gives $3a = 6 \\implies a = 2$. Equating imaginary parts gives $-b = -3 \\implies b = 3$. Thus $z = 2 + 3i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z=a+bi"
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-normal-q117",
@@ -395,7 +391,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $z-\\bar{z}=8i$ and $z+\\bar{z}=6$, then $z=$:",
+    "question": "If $z-\\bar{z}=8i$ and $z+\\bar{z}=6$, then $z$ equals:",
     "options": {
       "A": "$4+3i$",
       "B": "$3+4i$",
@@ -408,10 +404,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$6+8i$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Adding the equations gives $2z=6+8i$.",
+    "explanation": "Adding the two equations $(z + \\bar{z}) + (z - \\bar{z}) = 6 + 8i \\implies 2z = 6 + 8i \\implies z = \\frac{6 + 8i}{2} = 3 + 4i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "2z=6+8i"
+    "formula": "$z + \\bar{z} = 2\\operatorname{Re}(z)$"
   },
   {
     "id": "c11-ch1-normal-q118",
@@ -432,10 +428,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$(0,2)$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: Since $(1+i)^2=2i=0+2i$. Thus the value is $(0,2)$.",
+    "explanation": "Expanding $(1 + i)^2 = 1 + 2i + i^2 = 1 + 2i - 1 = 0 + 2i$. Equating real and imaginary parts of $x + iy = 0 + 2i$ gives $x = 0$ and $y = 2$, so $(x, y) = (0, 2)$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(1+i)^2=2i=0+2i"
+    "formula": "$(1 + i)^2 = 2i$"
   },
   {
     "id": "c11-ch1-normal-q119",
@@ -456,10 +452,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$\\left(\\frac{1}{2},-\\frac{3}{2}\\right)$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Rationalization gives $\\frac{2+i}{1-i}=\\frac{1+3i}{2}$.",
+    "explanation": "Multiplying numerator and denominator by the conjugate $1 + i$: $\\frac{2+i}{1-i} = \\frac{(2+i)(1+i)}{(1-i)(1+i)} = \\frac{2 + 2i + i + i^2}{1 - i^2} = \\frac{2 + 3i - 1}{1 - (-1)} = \\frac{1 + 3i}{2} = \\frac{1}{2} + \\frac{3}{2}i$. Thus $x = \\frac{1}{2}$ and $y = \\frac{3}{2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{2+i}{1-i}=\\frac{1+3i}{2}"
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-normal-q120",
@@ -480,10 +476,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$(2,1)$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Expansion gives $x-y=3$ and $x+y=1$; solving yields $x=2,y=-1$.",
+    "explanation": "Expanding the left side: $(x + iy)(1 + i) = (x - y) + (x + y)i = 3 + i$. Equating real and imaginary parts: $x - y = 3$ and $x + y = 1$. Adding both equations gives $2x = 4 \\implies x = 2$. Substituting $x = 2$ gives $2 + y = 1 \\implies y = -1$. Thus $(x, y) = (2, -1)$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "x-y=3"
+    "formula": "$(a + bi)(c + di) = (ac - bd) + (ad + bc)i$"
   },
   {
     "id": "c11-ch1-normal-q121",
@@ -504,10 +500,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$(1,-2)$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Comparing parts gives $2x+y=5$ and $2y-x=0$.",
+    "explanation": "Expanding the left side: $(x + iy)(2 - i) = (2x + y) + (2y - x)i = 5 + 0i$. Equating components gives $2x + y = 5$ and $2y - x = 0 \\implies x = 2y$. Substituting into the first equation: $2(2y) + y = 5 \\implies 5y = 5 \\implies y = 1$, which gives $x = 2$. Thus $(x, y) = (2, 1)$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "2x+y=5"
+    "formula": "$(a + bi)(c + di) = (ac - bd) + (ad + bc)i$"
   },
   {
     "id": "c11-ch1-normal-q122",
@@ -528,10 +524,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$(3,1)$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Simplifying the complex expression into standard rectangular form $a + bi$: $x+iy=(2-i)(1+i)=3+i$. Equating real and imaginary components yields $(x, y) = $(3,1)$$.",
+    "explanation": "Multiplying both sides by $1 + i$: $x + iy = (2 - i)(1 + i) = 2 + 2i - i - i^2 = 2 + i - (-1) = 3 + i$. Equating components gives $x = 3$ and $y = 1$, so $(x, y) = (3, 1)$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "x+iy=(2-i)(1+i)=3+i"
+    "formula": "$\\frac{a + bi}{c + di} = \\frac{(a + bi)(c - di)}{c^2 + d^2}$"
   },
   {
     "id": "c11-ch1-normal-q123",
@@ -539,7 +535,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $(x+iy)+(x-iy)=10$, then $x=$:",
+    "question": "If $(x+iy)+(x-iy)=10$, then $x$ equals:",
     "options": {
       "A": "$5$",
       "B": "$10$",
@@ -552,10 +548,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$-5$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Combining the terms: $(x + iy) + (x - iy) = 2x = 10 \\implies x = \\frac{10}{2} = 5$.",
+    "explanation": "Combining the terms: $(x + iy) + (x - iy) = 2x$. Given $2x = 10$, dividing by $2$ gives $x = \\frac{10}{2} = 5$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "2x=10"
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-normal-q124",
@@ -563,7 +559,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $(x+iy)-(x-iy)=6i$, then $y=$:",
+    "question": "If $(x+iy)-(x-iy)=6i$, then $y$ equals:",
     "options": {
       "A": "$6$",
       "B": "$-3$",
@@ -576,10 +572,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$-6$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The left side is $2iy$, so $2iy=6i$.",
+    "explanation": "Simplifying the left side: $(x + iy) - (x - iy) = x + iy - x + iy = 2iy$. Setting $2iy = 6i$ and dividing both sides by $2i$ gives $y = 3$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "2iy"
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-normal-q125",
@@ -587,7 +583,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $|4+yi|=5$, then $y=$:",
+    "question": "If $|4+yi|=5$, then $y$ equals:",
     "options": {
       "A": "$3$",
       "B": "$\\pm3$",
@@ -603,7 +599,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "explanation": "The modulus is $|4 + yi| = \\sqrt{4^2 + y^2} = \\sqrt{16 + y^2} = 5$. Squaring both sides yields $16 + y^2 = 25 \\implies y^2 = 9 \\implies y = \\pm 3$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "16+y^2=25"
+    "formula": "$|a + bi| = \\sqrt{a^2 + b^2}$"
   },
   {
     "id": "c11-ch1-normal-q126",
@@ -624,10 +620,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$z=\\pm i$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Both $i^2$ and $(-i)^2$ equal $-1$.",
+    "explanation": "Taking the square root of both sides of $z^2 = -1$: $z = \\pm\\sqrt{-1} = \\pm i$. Indeed, $i^2 = -1$ and $(-i)^2 = (-1)^2 i^2 = 1(-1) = -1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "i^2"
+    "formula": "$\\sqrt{a + bi} = \\pm\\left(\\sqrt{\\frac{|z|+a}{2}} + i\\operatorname{sgn}(b)\\sqrt{\\frac{|z|-a}{2}}\\right)$"
   },
   {
     "id": "c11-ch1-normal-q127",
@@ -648,10 +644,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$z=-1$ only",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Expanding using the algebraic identity $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$ with $i^2 = -1$: $z^2-1=(z-1)(z+1)=0$. Thus the value is $z=\\pm1$.",
+    "explanation": "Rearranging $z^2 = 1$ gives $z^2 - 1 = 0 \\implies (z - 1)(z + 1) = 0 \\implies z = 1 \\text{ or } z = -1$, so $z = \\pm 1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z^2-1=(z-1)(z+1)=0"
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-normal-q128",
@@ -672,10 +668,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$\\pm(1+i)$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$[\\sqrt2(1+i)]^2=2(1+i)^2=4i$.",
+    "explanation": "Let $z = \\pm \\sqrt{2}(1 + i)$. Squaring gives $z^2 = (\\pm\\sqrt{2})^2 (1 + i)^2 = 2(1 + 2i + i^2) = 2(2i) = 4i$. Thus the square roots of $4i$ are $\\pm\\sqrt{2}(1 + i)$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "[\\sqrt2(1+i)]^2=2(1+i)^2=4i"
+    "formula": "$\\sqrt{a + bi} = \\pm\\left(\\sqrt{\\frac{|z|+a}{2}} + i\\operatorname{sgn}(b)\\sqrt{\\frac{|z|-a}{2}}\\right)$"
   },
   {
     "id": "c11-ch1-normal-q129",
@@ -696,10 +692,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$\\pm(1-i)$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$[\\sqrt2(1-i)]^2=2(1-i)^2=-4i$.",
+    "explanation": "Let $z = \\pm \\sqrt{2}(1 - i)$. Squaring gives $z^2 = (\\pm\\sqrt{2})^2 (1 - i)^2 = 2(1 - 2i + i^2) = 2(-2i) = -4i$. Thus the square roots of $-4i$ are $\\pm\\sqrt{2}(1 - i)$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "[\\sqrt2(1-i)]^2=2(1-i)^2=-4i"
+    "formula": "$\\sqrt{a + bi} = \\pm\\left(\\sqrt{\\frac{|z|+a}{2}} + i\\operatorname{sgn}(b)\\sqrt{\\frac{|z|-a}{2}}\\right)$"
   },
   {
     "id": "c11-ch1-normal-q130",
@@ -720,10 +716,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$\\pm2i$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "$x^2=-4$, so $x=\\pm\\sqrt{-4}=\\pm2i$.",
+    "explanation": "Rearranging $x^2 + 4 = 0$ gives $x^2 = -4$. Taking the square root of both sides gives $x = \\pm\\sqrt{-4} = \\pm\\sqrt{4}\\sqrt{-1} = \\pm 2i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "x^2=-4"
+    "formula": "$\\sqrt{a + bi} = \\pm\\left(\\sqrt{\\frac{|z|+a}{2}} + i\\operatorname{sgn}(b)\\sqrt{\\frac{|z|-a}{2}}\\right)$"
   },
   {
     "id": "c11-ch1-normal-q131",
@@ -744,10 +740,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$3\\pm i$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The quadratic formula gives $\\frac{6\\pm\\sqrt{-16}}2=3\\pm2i$.",
+    "explanation": "Using the quadratic formula $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$ with $a = 1, b = -6, c = 13$: $x = \\frac{6 \\pm \\sqrt{(-6)^2 - 4(1)(13)}}{2(1)} = \\frac{6 \\pm \\sqrt{36 - 52}}{2} = \\frac{6 \\pm \\sqrt{-16}}{2} = \\frac{6 \\pm 4i}{2} = 3 \\pm 2i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{6\\pm\\sqrt{-16}}2=3\\pm2i"
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-normal-q132",
@@ -768,10 +764,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$2\\pm i$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "$\\frac{-2\\pm\\sqrt{4-20}}2=-1\\pm2i$.",
+    "explanation": "Using the quadratic formula with $a = 1, b = 2, c = 5$: $x = \\frac{-2 \\pm \\sqrt{2^2 - 4(1)(5)}}{2(1)} = \\frac{-2 \\pm \\sqrt{4 - 20}}{2} = \\frac{-2 \\pm \\sqrt{-16}}{2} = \\frac{-2 \\pm 4i}{2} = -1 \\pm 2i$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{-2\\pm\\sqrt{4-20}}2=-1\\pm2i"
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-normal-q133",
@@ -792,10 +788,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$x^2+4x-13=0$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "The sum is $4$ and product is $2^2+3^2=13$, giving $x^2-4x+13=0$.",
+    "explanation": "A quadratic equation with roots $\\alpha$ and $\\beta$ is $x^2 - (\\alpha + \\beta)x + \\alpha\\beta = 0$. Here $\\alpha + \\beta = (2 + 3i) + (2 - 3i) = 4$, and $\\alpha\\beta = (2 + 3i)(2 - 3i) = 2^2 - (3i)^2 = 4 - (-9) = 13$. Thus the equation is $x^2 - 4x + 13 = 0$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "4"
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-normal-q134",
@@ -816,9 +812,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$1+5i$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "Non-real roots of equations with real coefficients occur in conjugate pairs.",
+    "explanation": "By the Complex Conjugate Root Theorem, for any polynomial with real coefficients, non-real complex roots always occur in conjugate pairs. Since $1 - 5i$ is a root, its complex conjugate $1 + 5i$ must also be a root.",
     "difficulty": "Medium",
-    "difficulty_tier": "Normal"
+    "difficulty_tier": "Normal",
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-normal-q135",
@@ -839,10 +836,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$-13$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "For $ax^2+bx+c=0$, the sum is $-b/a=-(-4)=4$.",
+    "explanation": "By Vieta's formulas, for any quadratic equation $ax^2 + bx + c = 0$, the sum of the roots is given by $-\\frac{b}{a}$. For $x^2 - 4x + 13 = 0$, $a = 1$ and $b = -4$, so the sum is $-\\frac{-4}{1} = 4$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "ax^2+bx+c=0"
+    "formula": "$\\alpha + \\beta = -\\frac{b}{a}$"
   },
   {
     "id": "c11-ch1-normal-q136",
@@ -863,10 +860,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$-13$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "By Vieta's formulas, for any quadratic equation $ax^2 + bx + c = 0$, the product of the roots is given by $\\frac{c}{a}$: The product is $c/a=13$.",
+    "explanation": "By Vieta's formulas, for any quadratic equation $ax^2 + bx + c = 0$, the product of the roots is given by $\\frac{c}{a}$. For $x^2 - 4x + 13 = 0$, $a = 1$ and $c = 13$, so the product of the roots is $\\frac{13}{1} = 13$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "c/a=13"
+    "formula": "$\\alpha \\beta = \\frac{c}{a}$"
   },
   {
     "id": "c11-ch1-normal-q137",
@@ -887,10 +884,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$x^2+6x-25=0$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Sum $=6$, product $=3^2+4^2=25$.",
+    "explanation": "For roots $3 + 4i$ and $3 - 4i$, their sum is $(3 + 4i) + (3 - 4i) = 6$, and their product is $(3 + 4i)(3 - 4i) = 3^2 + 4^2 = 9 + 16 = 25$. The quadratic equation is $x^2 - (\\text{sum})x + (\\text{product}) = x^2 - 6x + 25 = 0$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "=6"
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-normal-q138",
@@ -898,7 +895,7 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "subject": "Mathematics",
     "chapter_id": "c11-ch1",
     "chapter": "Complex Numbers",
-    "question": "If $3+4i$ is a root of $x^2+bx+25=0$, then $b=$:",
+    "question": "If $3+4i$ is a root of $x^2+bx+25=0$, then $b$ equals:",
     "options": {
       "A": "$6$",
       "B": "$4$",
@@ -911,10 +908,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$-6$",
     "correct_answer": "D",
     "correct_option": "D",
-    "explanation": "The other root is $3-4i$, so the sum is $6=-b$.",
+    "explanation": "Since the equation has real coefficients, the conjugate $3 - 4i$ is also a root. The sum of the roots is $(3 + 4i) + (3 - 4i) = 6$. By Vieta's formulas, the sum of the roots of $x^2 + bx + 25 = 0$ is $-\\frac{b}{1} = -b$. Hence $-b = 6 \\implies b = -6$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "3-4i"
+    "formula": "$\\overline{z_1 + z_2} = \\bar{z}_1 + \\bar{z}_2$"
   },
   {
     "id": "c11-ch1-normal-q139",
@@ -935,10 +932,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$p=4,q=-5$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "The sum is $4=-p$, and the product is $2^2+1^2=5=q$.",
+    "explanation": "The sum of the roots is $(2 + i) + (2 - i) = 4$. By Vieta's formulas, sum $= -p \\implies -p = 4 \\implies p = -4$. The product of the roots is $(2 + i)(2 - i) = 2^2 - i^2 = 4 - (-1) = 5$. By Vieta's formulas, product $= q \\implies q = 5$. Thus $p = -4$ and $q = 5$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "4=-p"
+    "formula": "$\\alpha + \\beta = -\\frac{b}{a}$"
   },
   {
     "id": "c11-ch1-normal-q140",
@@ -959,10 +956,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "Line $y=-x$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "The roots are $i$ and $-i$, both having zero real part.",
+    "explanation": "Solving $x^2 + 1 = 0$ gives $x^2 = -1 \\implies x = \\pm i$. In the complex (Argand) plane, the points $i = (0, 1)$ and $-i = (0, -1)$ have zero real parts, so they lie on the imaginary axis.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "i"
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-normal-q141",
@@ -983,10 +980,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$50$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Since $z-3 = 4i$, squaring gives $(z-3)^2 = -16 \\implies z^2 - 6z + 9 = -16 \\implies z^2 - 6z + 25 = 0$.",
+    "explanation": "Given $z = 3 + 4i$, we have $z - 3 = 4i$. Squaring both sides gives $(z - 3)^2 = (4i)^2 \\implies z^2 - 6z + 9 = -16 \\implies z^2 - 6z + 25 = 0$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(z-3)^2=-16"
+    "formula": "$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
   },
   {
     "id": "c11-ch1-normal-q142",
@@ -1007,10 +1004,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$0$",
     "correct_answer": "C",
     "correct_option": "C",
-    "explanation": "Since $1+\\omega^2 = -\\omega$ and $1+\\omega = -\\omega^2$, we have $(-2\\omega)(-2\\omega^2) = 4\\omega^3 = 4(1) = 4$.",
+    "explanation": "For the cube roots of unity, $1 + \\omega + \\omega^2 = 0 \\implies 1 + \\omega^2 = -\\omega$ and $1 + \\omega = -\\omega^2$, with $\\omega^3 = 1$. Substituting these: $(1 - \\omega + \\omega^2)(1 + \\omega - \\omega^2) = (-\\omega - \\omega)(-\\omega^2 - \\omega^2) = (-2\\omega)(-2\\omega^2) = 4\\omega^3 = 4(1) = 4$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "1+\\omega+\\omega^2=0"
+    "formula": "$\\omega^3 = 1, \\quad 1 + \\omega + \\omega^2 = 0$"
   },
   {
     "id": "c11-ch1-normal-q143",
@@ -1031,10 +1028,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$-i$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "In polar form $z = e^{i\\pi/4}$. Then $z^{12} = e^{i 3\\pi} = \\cos(3\\pi) + i\\sin(3\\pi) = -1$.",
+    "explanation": "In polar (exponential) form, $z = \\frac{1 + i}{\\sqrt{2}} = \\cos\\left(\\frac{\\pi}{4}\\right) + i\\sin\\left(\\frac{\\pi}{4}\\right) = e^{i\\pi/4}$. Applying De Moivre's theorem: $z^{12} = \\left(e^{i\\pi/4}\\right)^{12} = e^{i 3\\pi} = \\cos(3\\pi) + i\\sin(3\\pi) = -1 + 0i = -1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z^{12}=e^{i3\\pi}"
+    "formula": "$(\\cos\\theta + i\\sin\\theta)^n = \\cos(n\\theta) + i\\sin(n\\theta)$"
   },
   {
     "id": "c11-ch1-normal-q144",
@@ -1055,10 +1052,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$8$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Since $1\\pm i\\sqrt{3} = 2e^{\\pm i\\pi/3}$, cubing gives $8e^{i\\pi} + 8e^{-i\\pi} = 8(-1) + 8(-1) = -16$.",
+    "explanation": "In polar form, $1 + i\\sqrt{3} = 2\\left(\\cos\\frac{\\pi}{3} + i\\sin\\frac{\\pi}{3}\\right) = 2e^{i\\pi/3}$ and $1 - i\\sqrt{3} = 2e^{-i\\pi/3}$. Cubing both: $(1 + i\\sqrt{3})^3 = 2^3 e^{i\\pi} = 8(-1) = -8$, and $(1 - i\\sqrt{3})^3 = 2^3 e^{-i\\pi} = 8(-1) = -8$. Their sum is $(-8) + (-8) = -16$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(2e^{i\\pi/3})^3"
+    "formula": "$z = r(\\cos\\theta + i\\sin\\theta), \\quad r = |z|, \\; \\theta = \\operatorname{Arg}(z)$"
   },
   {
     "id": "c11-ch1-normal-q145",
@@ -1079,10 +1076,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$0$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "$|z|^2 = 2^2 + (-3)^2 = 13$, and $z\\bar{z} = |z|^2 = 13$. Thus, $|z|^2 + z\\bar{z} = 13 + 13 = 26$.",
+    "explanation": "For $z = 2 - 3i$, $|z|^2 = 2^2 + (-3)^2 = 4 + 9 = 13$. For any complex number, $z\\bar{z} = |z|^2 = 13$. Therefore, $|z|^2 + z\\bar{z} = 13 + 13 = 26$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "z\\bar{z}=|z|^2"
+    "formula": "$z\\bar{z} = |z|^2 = a^2 + b^2$"
   },
   {
     "id": "c11-ch1-normal-q146",
@@ -1103,10 +1100,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$(-5, -12)$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$(2+3i)^2 = 4 + 12i + (3i)^2 = 4 + 12i - 9 = -5 + 12i$. Thus $x = -5$ and $y = 12$.",
+    "explanation": "Expanding $(2 + 3i)^2 = 2^2 + 2(2)(3i) + (3i)^2 = 4 + 12i + 9i^2 = 4 + 12i - 9 = -5 + 12i$. Equating real and imaginary parts with $x + iy$ yields $x = -5$ and $y = 12$, so $(x, y) = (-5, 12)$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(a+bi)^2"
+    "formula": "$(a + bi) + (c + di) = (a + c) + (b + d)i$"
   },
   {
     "id": "c11-ch1-normal-q147",
@@ -1127,10 +1124,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$\\frac{3}{7}$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "Multiplying numerator and denominator by $3+4i$: $\\frac{3+4i}{3^2+(-4)^2} = \\frac{3+4i}{25}$. So $\\operatorname{Re} = \\frac{3}{25}$.",
+    "explanation": "Multiplying numerator and denominator by the conjugate $3 + 4i$: $\\frac{1}{3-4i} = \\frac{3+4i}{(3-4i)(3+4i)} = \\frac{3+4i}{3^2 + (-4)^2} = \\frac{3+4i}{9+16} = \\frac{3+4i}{25} = \\frac{3}{25} + \\frac{4}{25}i$. Thus the real part is $\\operatorname{Re} = \\frac{3}{25}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\frac{\\bar{z}}{|z|^2}"
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-normal-q148",
@@ -1151,10 +1148,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$-1$",
     "correct_answer": "A",
     "correct_option": "A",
-    "explanation": "$\\frac{(2+i)(1-i)}{(1+i)(1-i)} = \\frac{2 - 2i + i + 1}{2} = \\frac{3-i}{2} = \\frac{3}{2} - \\frac{1}{2}i$. The imaginary part is $-\\frac{1}{2}$.",
+    "explanation": "Multiplying numerator and denominator by the conjugate $1 - i$: $\\frac{2+i}{1+i} = \\frac{(2+i)(1-i)}{(1+i)(1-i)} = \\frac{2 - 2i + i - i^2}{1^2 - i^2} = \\frac{2 - i - (-1)}{1 - (-1)} = \\frac{3 - i}{2} = \\frac{3}{2} - \\frac{1}{2}i$. The imaginary part is $-\\frac{1}{2}$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "\\operatorname{Im}(z)"
+    "formula": "$\\overline{a + bi} = a - bi$"
   },
   {
     "id": "c11-ch1-normal-q149",
@@ -1175,10 +1172,10 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$-i$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "By De Moivre\'s theorem, $z^6 = \\cos(\\pi) + i\\sin(\\pi) = -1$.",
+    "explanation": "By De Moivre's theorem, $[\\cos(\\theta) + i\\sin(\\theta)]^n = \\cos(n\\theta) + i\\sin(n\\theta)$. Here $\\theta = \\frac{\\pi}{6}$ and $n = 6$, so $z^6 = \\cos\\left(6 \\cdot \\frac{\\pi}{6}\\right) + i\\sin\\left(6 \\cdot \\frac{\\pi}{6}\\right) = \\cos(\\pi) + i\\sin(\\pi) = -1 + 0i = -1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(\\cos\\theta+i\\sin\\theta)^n=\\cos(n\\theta)+i\\sin(n\\theta)"
+    "formula": "$(\\cos\\theta + i\\sin\\theta)^n = \\cos(n\\theta) + i\\sin(n\\theta)$"
   },
   {
     "id": "c11-ch1-normal-q150",
@@ -1199,9 +1196,9 @@ export const C11_CH1_NORMAL_PART3: Question[] = [
     "option_d": "$\\omega^2$",
     "correct_answer": "B",
     "correct_option": "B",
-    "explanation": "Since $1+\\omega = -\\omega^2$, we have $(1+\\omega)^3 = (-\\omega^2)^3 = -\\omega^6 = -(1)^2 = -1$.",
+    "explanation": "Since $\\omega$ is a complex cube root of unity, $1 + \\omega + \\omega^2 = 0 \\implies 1 + \\omega = -\\omega^2$. Cubing gives $(1 + \\omega)^3 = (-\\omega^2)^3 = -\\omega^6 = -(\\omega^3)^2 = -(1)^2 = -1$.",
     "difficulty": "Medium",
     "difficulty_tier": "Normal",
-    "formula": "(-\\omega^2)^3=-1"
+    "formula": "$\\omega^3 = 1, \\quad 1 + \\omega + \\omega^2 = 0$"
   }
 ];

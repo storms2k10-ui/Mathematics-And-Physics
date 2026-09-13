@@ -128,6 +128,32 @@ export function sanitizeLatex(str: string): string {
   // 12. Fix trailing % or \%
   s = s.replace(/\\%$/, '\\%');
 
+  // 13. Fix common missing backslashes before LaTeX keywords in math snippets
+  s = s.replace(/(\s|^)ar\{/g, '$1\\bar{');
+  s = s.replace(/(^|[^\\])\boverline\{/g, '$1\\overline{');
+  s = s.replace(/(^|[^\\])\bunderline\{/g, '$1\\underline{');
+  s = s.replace(/(^|[^\\])\bsqrt\{/g, '$1\\sqrt{');
+  s = s.replace(/(^|[^\\])\boperatorname\{/g, '$1\\operatorname{');
+  s = s.replace(/(^|[^\\])\bmathbb\{/g, '$1\\mathbb{');
+  s = s.replace(/(^|[^\\])\bmathbf\{/g, '$1\\mathbf{');
+  s = s.replace(/(^|[^\\])\bmathcal\{/g, '$1\\mathcal{');
+  s = s.replace(/(^|[^\\])\bimplies\b/g, '$1\\implies');
+  s = s.replace(/(^|[^\\])\biff\b/g, '$1\\iff');
+  s = s.replace(/(^|[^\\])\bcdot\b/g, '$1\\cdot');
+  s = s.replace(/(^|[^\\])\btimes\b/g, '$1\\times');
+  s = s.replace(/(^|[^\\])\bnotin\b/g, '$1\\notin');
+  s = s.replace(/(^|[^\\])\bneq\b/g, '$1\\neq');
+  s = s.replace(/(^|[^\\])\bleq\b/g, '$1\\le');
+  s = s.replace(/(^|[^\\])\bgeq\b/g, '$1\\ge');
+  s = s.replace(/(^|[^\\])\bapprox\b/g, '$1\\approx');
+  s = s.replace(/(^|[^\\])\binfty\b/g, '$1\\infty');
+  s = s.replace(/(^|[^\\])\bpm\b/g, '$1\\pm');
+  s = s.replace(/(^|[^\\])\bmp\b/g, '$1\\mp');
+  s = s.replace(/(^|[^\\])\bbar\{/g, '$1\\bar{');
+  s = s.replace(/(^|[^\\d])\bfrac\{/g, '$1\\frac{');
+  s = s.replace(/\bin\s+mathbb/g, '\\in \\mathbb');
+  s = s.replace(/\bin\s+\\mathbb/g, '\\in \\mathbb');
+
   return s;
 }
 
@@ -154,7 +180,21 @@ export function renderLatexToHtml(latex: string, isDisplayMode = false): string 
  */
 export function parseAndRenderMixedText(text: string, forceDisplayMode?: boolean): string {
   if (!text) return '';
-  const trimmed = text.trim();
+
+  // Clean raw control chars from string if present
+  const cleanText = text
+    .replace(/\x08inom\b/g, '\\binom')
+    .replace(/\x08eta\b/g, '\\beta')
+    .replace(/\x08egin\b/g, '\\begin')
+    .replace(/\x08ar\b/g, '\\bar')
+    .replace(/\x08/g, '\\b')
+    .replace(/\x0Crac\b/g, '\\frac')
+    .replace(/\x0C/g, '\\f')
+    .replace(/\x0Dight\b/g, '\\right')
+    .replace(/\x0D/g, '')
+    .replace(/\t(heta|times|text|tan|to|tau)\b/g, '\\$1');
+
+  const trimmed = cleanText.trim();
 
   // 1. If explicit displayMode is forced
   if (forceDisplayMode) {
@@ -200,14 +240,14 @@ export function parseAndRenderMixedText(text: string, forceDisplayMode?: boolean
   try {
     const tokens: { type: 'text' | 'inline-math' | 'display-math'; content: string }[] = [];
     let cursor = 0;
-    const mathRegex = /(\$\$[\s\S]*?\$\$|\$[^$\n]+?\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\))/g;
+    const mathRegex = /(\$\$[\s\S]*?\$\$|\$[^$]+?\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\))/g;
     let match: RegExpExecArray | null;
 
-    while ((match = mathRegex.exec(text)) !== null) {
+    while ((match = mathRegex.exec(cleanText)) !== null) {
       if (match.index > cursor) {
         tokens.push({
           type: 'text',
-          content: text.slice(cursor, match.index),
+          content: cleanText.slice(cursor, match.index),
         });
       }
 
@@ -364,7 +404,7 @@ export const MathDisplay: React.FC<MathDisplayProps> = ({
   // Inline equation / mixed text display layout
   return (
     <span
-      className={`math-display-inline inline-block max-w-full align-baseline font-normal leading-relaxed text-slate-900 dark:text-slate-100 ${sizeClasses} ${className}`}
+      className={`math-display-inline inline max-w-full align-baseline font-normal leading-relaxed text-slate-900 dark:text-slate-100 ${sizeClasses} ${className}`}
     >
       {isStringContent ? (
         <span
